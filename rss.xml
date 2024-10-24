@@ -3,24 +3,68 @@
 <channel>
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
-<link>https://vandeefeng.github.io/org-blog/</link>
-<lastBuildDate>Thu, 24 Oct 2024 15:46:05 +0800</lastBuildDate>
+<link>https://www.vandee.art/</link>
+<lastBuildDate>Thu, 24 Oct 2024 17:14:33 +0800</lastBuildDate>
 <item>
-  <title><![CDATA[Hello world]]></title>
+  <title><![CDATA[我的第一个 org 博客]]></title>
   <description><![CDATA[
-<div id="outline-container-org128ae24" class="outline-2">
-<h2 id="org128ae24">Hello!</h2>
-<div class="outline-text-2" id="text-org128ae24">
+<div id="outline-container-org7655592" class="outline-2">
+<h2 id="org7655592">一</h2>
+<div class="outline-text-2" id="text-org7655592">
 <p>
-This is the first blog with org-static-blog!
+从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
+</p>
+
+<p>
+随着对 Emacs 的使用，开始理解为什么之前看到有人用 Emacs 记录了自己的一生，org-mode 太好用了。
+</p>
+
+<p>
+我也不是一个前端程序员，对前端的设计兴趣也不大，也不需要一个炫技的页面来展示。一直在说回归本质，stay simple，在博客这点上，我就一直弄的越来越复杂。
+</p>
+
+<p>
+这个博客回归网页最基础的框架，只有 HTML，CSS，搜索是 JavaScript，然后就没有其他了。
+</p>
+
+<p>
+形式和内容一直是分不开的，但形式对我来说早就变得越来越不重要。我不敢说自己现在已经到了一个什么特别的境界，但每天我都能感受到我和自然界，万物之间的交融越来越自然了。
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://vandeefeng.github.io/org-blog/tags.html">Tags</a>: <a href="https://vandeefeng.github.io/org-blog/tag-personal.html">personal</a> </div>]]></description>
-  <category><![CDATA[personal]]></category>
-  <link>https://vandeefeng.github.io/org-blog/2024-06-23-hello-world.html</link>
-  <guid>https://vandeefeng.github.io/org-blog/2024-06-23-hello-world.html</guid>
-  <pubDate>Sun, 23 Jun 2024 18:04:00 +0800</pubDate>
+<div id="outline-container-orgedd428f" class="outline-2">
+<h2 id="orgedd428f">二</h2>
+<div class="outline-text-2" id="text-orgedd428f">
+<p>
+无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
+</p>
+
+<p>
+然后发现了这个 <a href="https://github.com/chenyo-17/org-static-blog">chenyo-17/org-static-blog: Here hosts my org static blog</a>，CSS 后面再慢慢改吧。
+</p>
+
+<p>
+之前的博客，还是可以通过：<a href="https://hugoblog-bxc.pages.dev">https://hugoblog-bxc.pages.dev</a> 来访问。
+</p>
+
+<p>
+新的博客地址还是 <a href="https://www.vandee.art">https://www.vandee.art</a> , 也可以通过 <a href="https://x.vandee.art/blog">https://x.vandee.art/blog</a> 来访问。
+</p>
+
+<p>
+回顾了一下这几年写的东西，那些记录的点滴穿珠成线，就像在漆黑无边的宇宙里，一个个闪光的思维点按照自然本身的秩序和规律联结在一起，一直延伸到现在。
+</p>
+
+<p>
+准备整理整理，陆续发在新博客里。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-blog.html">Blog</a> </div>]]></description>
+  <category><![CDATA[Blog]]></category>
+  <link>https://www.vandee.art/2024-10-24-my-first-org-blog.html</link>
+  <guid>https://www.vandee.art/2024-10-24-my-first-org-blog.html</guid>
+  <pubDate>Thu, 24 Oct 2024 15:04:00 +0800</pubDate>
 </item>
 </channel>
 </rss>

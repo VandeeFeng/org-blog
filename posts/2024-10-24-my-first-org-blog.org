@@ -1,0 +1,28 @@
+#+title: 我的第一个 org 博客
+#+date: <2024-10-24 15:04>
+#+description: 形式和内容一直是分不开的，但形式对我来说早就变得越来越不重要。我不敢说自己现在已经到了一个什么特别的境界，但每天我都能感受到我和自然界，万物之间的交融越来越自然了。
+#+filetags: Blog
+
+* 一
+从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
+
+随着对 Emacs 的使用，开始理解为什么之前看到有人用 Emacs 记录了自己的一生，org-mode 太好用了。
+
+我也不是一个前端程序员，对前端的设计兴趣也不大，也不需要一个炫技的页面来展示。一直在说回归本质，stay simple，在博客这点上，我就一直弄的越来越复杂。
+
+这个博客回归网页最基础的框架，只有 HTML，CSS，搜索是 JavaScript，然后就没有其他了。
+
+形式和内容一直是分不开的，但形式对我来说早就变得越来越不重要。我不敢说自己现在已经到了一个什么特别的境界，但每天我都能感受到我和自然界，万物之间的交融越来越自然了。
+
+* 二
+无意中发现了这个： [[https://github.com/bastibe/org-static-blog][org-static-blog]] ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
+
+然后发现了这个 [[https://github.com/chenyo-17/org-static-blog][chenyo-17/org-static-blog: Here hosts my org static blog]]，CSS 后面再慢慢改吧。
+
+之前的博客，还是可以通过：https://hugoblog-bxc.pages.dev 来访问。
+
+新的博客地址还是 https://www.vandee.art , 也可以通过 https://x.vandee.art/blog 来访问。
+
+回顾了一下这几年写的东西，那些记录的点滴穿珠成线，就像在漆黑无边的宇宙里，一个个闪光的思维点按照自然本身的秩序和规律联结在一起，一直延伸到现在。
+
+准备整理整理，陆续发在新博客里。
