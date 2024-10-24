@@ -16,6 +16,9 @@
 
 这篇的所有文字都是在 Emacs 里用 org-mode 写的。
 
+#+attr_html: :alt org-blog :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png]]
+
 * 二
 无意中发现了这个： [[https://github.com/bastibe/org-static-blog][org-static-blog]] ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 
