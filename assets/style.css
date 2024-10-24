@@ -452,3 +452,6 @@ tr:nth-child(even) {
     background-color: #b58900; /* Solarized Light yellow */
     color: #fdf6e3; /* Solarized Light base3 */
 }
+[data-fancybox="gallery"] {
+  cursor: pointer;
+}
