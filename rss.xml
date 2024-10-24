@@ -3,8 +3,8 @@
 <channel>
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
-<link>https://vandee.art</link>
-<lastBuildDate>Thu, 24 Oct 2024 14:49:05 +0800</lastBuildDate>
+<link>https://vandeefeng.github.io/org-blog/</link>
+<lastBuildDate>Thu, 24 Oct 2024 14:50:18 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Hello world]]></title>
   <description><![CDATA[
@@ -24,8 +24,8 @@ This is the first blog with org-static-blog!
 </div>
 <div class="taglist"><a href="https://vandee.art/tags.html">Tags</a>: <a href="https://vandee.art/tag-personal.html">personal</a> </div>]]></description>
   <category><![CDATA[personal]]></category>
-  <link>https://vandee.art/2024-06-23-hello-world.html</link>
-  <guid>https://vandee.art/2024-06-23-hello-world.html</guid>
+  <link>https://vandeefeng.github.io/org-blog/2024-06-23-hello-world.html</link>
+  <guid>https://vandeefeng.github.io/org-blog/2024-06-23-hello-world.html</guid>
   <pubDate>Sun, 23 Jun 2024 18:04:00 +0800</pubDate>
 </item>
 </channel>
