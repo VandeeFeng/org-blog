@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="大致流程是：通过osmos::memo书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/rss.xml"
+      title="RSS feed for https://www.vandee.art/">
+<title>用GitHub仓库做书签和AI摘要-流动知识检索</title>
+<meta property="og:title" content="用GitHub仓库做书签和AI摘要-流动知识检索">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="大致流程是：通过osmos::memo书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。">
+<meta property="og:url" content="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">
+<script type="text/javascript"
+             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+       </script>
+       <script type="text/x-mathjax-config">
+             MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'],['\\(','\\)']]}});
+       </script>
+       <meta name="author" content="Vandee">
+      <meta name="referrer" content="no-referrer">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="assets/style.css" type="text/css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+      <link rel="favicon" type="image/x-icon" href="favicon.ico">
+      <script src="assets/search.js"></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/">Vandee's blog</a></h1>
+      <nav>
+      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://wiki.vandee.art">Wiki</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search anywhere...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">12 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用GitHub仓库做书签和AI摘要-流动知识检索</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge32267c">GitHub 书签</a></li>
+<li><a href="#org1a55658">从GitHub书签到页面</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orge32267c" class="outline-2">
+<h2 id="orge32267c">GitHub 书签</h2>
+<div class="outline-text-2" id="text-orge32267c">
+<p>
+看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过GitHub Actions来总结网页文章内容并写入到GitHub仓库里。
+</p>
+
+<p>
+之前在思考流动知识检索的时候，完全没有想到利用GitHub Actions来构建workflow。
+</p>
+
+<p>
+大致流程是：通过<a href="https://github.com/osmoscraft/osmosmemo">osmos::memo</a> 书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。
+</p>
+
+<p>
+作者的主要思路：
+</p>
+
+<blockquote>
+<p>
+为了解决这些问题，我建立了一个新的存储库 [bookmark-summary](<a href="https://github.com/jerrylususu/bookmark-summary">https://github.com/jerrylususu/bookmark-summary</a>)。这个存储库可以视为现有书签存储库的辅助数据，其中包含了新增书签的 Markdown 格式全文、列表摘要、一句话总结，和现有存储库之间通过 Github Actions 联动。其工作原理如下：
+</p>
+
+<ol class="org-ol">
+<li>我通过书签插件，在现有的书签存储库中新增了一个条目</li>
+
+<li>代码提交到主干，触发名为 `summarize` 的 Github Actions（[yml 工作流文件](<a href="https://github.com/jerrylususu/bookmark-collection/blob/main/.github/workflows/bookmark_summary.yml">https://github.com/jerrylususu/bookmark-collection/blob/main/.github/workflows/bookmark_summary.yml</a>)）</li>
+
+<li><p>
+Github Actions 执行，首先 checkout 书签存储库和摘要存储库，然后执行
+</p>
+
+<p>
+process<sub>changes.py</sub>
+</p>
+
+<ol class="org-ol">
+<li>首先解析书签 README.md 文件，找到最近新增的条目标题和 URL</li>
+<li>将 URL 保存到 Wayback Machine</li>
+<li>输入 URL，使用 [jina reader](<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>) API 获取网址的 Markdown 全文，并保存到 `YYYYMM/{title}<sub>raw.md</sub>`</li>
+<li>输入 URL，使用 LLM 生成列表摘要（prompt 在 `summarize<sub>text</sub>` 函数 [link](<a href="https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80">https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80</a>)）</li>
+<li>输入列表摘要，使用 LLM 生成一句话总结</li>
+<li>将列表摘要和一句话总结保存到 `YYYYMM/{title}.md`（[效果示例](<a href="https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md">https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md</a>)）</li>
+<li>更新摘要存储库的 README.md，增加到摘要文件的链接</li>
+</ol></li>
+
+<li>Github Actions 提交变更到摘要存储库</li>
+</ol>
+</blockquote>
+
+<p>
+我跟着文章跑着试了一下，效果挺好的：
+</p>
+
+
+<figure id="org714f2e6">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" align="left" class="img" width="60%" height="60%">
+
+</figure>
+
+<p>
+Github Actions里模型、总结的prompt、输出的格式和方式都可以根据自己的需求修改。
+</p>
+
+<p>
+有一个小<a href="https://github.com/jerrylususu/bookmark-summary/issues/8">问题</a>正好别人也遇到了，运行`process<sub>changes.py</sub>`的时候由于要读取`data.json`文件，而初始文件没有内容，加上一个`{}`空字典就好了。可以在脚本里优化一下这个过程，如果没有data.json或者data.json文件为空自动写入数据。
+</p>
+
+<p>
+对我来说，这个保存书签bookmark和总结的workflow特别适合那些不痛不痒的文章，有些亮点但又不那么惊艳，丢掉又有点可惜，或者是纯记录价值的文章，对我特别有价值的都直接记录在我的PKM里了。再一个，备份数据是一个很好的习惯，<a href="https://www.bilibili.com/video/BV1yA4y1U77y/?share_source=copy_web&amp;vd_source=398bcc3ab9d37761117414d4da6caebe&amp;t=337">关键素材被删！找不到素材？影视飓风是如何摆脱丢数据噩梦的</a>:三备二介异地。就是一个数据备份3次，储存在2种介质当中，并且保证有一份完整的数据在异地，可以简称3-2-1原则了。
+</p>
+
+<p>
+之前尝试过<a href="https://github.com/ArchiveBox/ArchiveBox">archivebox</a>，就是个可以自己部署的Internet Archive。开源免费，支持docker，但这个项目太大了，作者这个轻巧的方案现在正符合我的需求。
+</p>
+
+<p>
+日常的阅读我现在基本都在Readwise了，这个workflow后面还可以和RAG结合起来，作为我<a href="https://www.vandee.art/posts/2024-06-18-the-freshness-date-of-information/">流动知识的检索</a>的数据库。后面想到什么好点子再融合进来，这个项目是一个很好的思路和模板，感谢作者的分享。
+</p>
+
+<p>
+我去掉了作者保存到 <a href="https://help.archive.org/help/using-the-wayback-machine/">Wayback Machine</a>（Internet Archive）的这一步，更改了按年份、月份保存文件，下面是修改后`process<sub>changes.py</sub>`的完整代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #51afef;">import</span> re
+<span style="color: #51afef;">from</span> typing <span style="color: #51afef;">import</span> List, Optional
+<span style="color: #51afef;">import</span> requests
+<span style="color: #51afef;">import</span> json
+<span style="color: #51afef;">from</span> datetime <span style="color: #51afef;">import</span> datetime
+<span style="color: #51afef;">from</span> pathlib <span style="color: #51afef;">import</span> Path
+<span style="color: #51afef;">from</span> dataclasses <span style="color: #51afef;">import</span> dataclass, asdict
+<span style="color: #51afef;">import</span> os
+<span style="color: #51afef;">import</span> logging
+<span style="color: #51afef;">import</span> time
+<span style="color: #51afef;">from</span> functools <span style="color: #51afef;">import</span> wraps
+<span style="color: #51afef;">from</span> urllib.parse <span style="color: #51afef;">import</span> quote
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-- configurations begin --</span>
+<span style="color: #dcaeea;">BOOKMARK_COLLECTION_REPO_NAME</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"bookmark-collection"</span>
+<span style="color: #dcaeea;">BOOKMARK_SUMMARY_REPO_NAME</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"bookmark-summary"</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-- configurations end --</span>
+
+logging.basicConfig(
+    level=logging.INFO,
+    <span style="color: #c678dd;">format</span>=<span style="color: #98be65;">'%(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(message)s'</span>,
+    datefmt=<span style="color: #98be65;">'%Y-%m-%d %H:%M:%S'</span>
+)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">log_execution_time</span>(func):
+    <span style="color: #ECBE7B;">@wraps</span>(func)
+    <span style="color: #51afef;">def</span> <span style="color: #c678dd;">wrapper</span>(*args, **kwargs):
+        logging.info(f<span style="color: #98be65;">'Entering </span>{func.<span style="color: #c678dd;">__name__</span>}<span style="color: #98be65;">'</span>)
+        <span style="color: #dcaeea;">start_time</span> = time.time()
+        <span style="color: #dcaeea;">result</span> = func(*args, **kwargs)
+        <span style="color: #dcaeea;">end_time</span> = time.time()
+        <span style="color: #dcaeea;">elapsed_time</span> = end_time - start_time
+        logging.info(f<span style="color: #98be65;">'Exiting </span>{func.<span style="color: #c678dd;">__name__</span>}<span style="color: #98be65;"> - Elapsed time: </span>{elapsed_time:.4f}<span style="color: #98be65;"> seconds'</span>)
+        <span style="color: #51afef;">return</span> result
+    <span style="color: #51afef;">return</span> wrapper
+
+<span style="color: #ECBE7B;">@dataclass</span>
+<span style="color: #51afef;">class</span> <span style="color: #ECBE7B;">SummarizedBookmark</span>:
+    year: <span style="color: #c678dd;">str</span>
+    month: <span style="color: #c678dd;">str</span>  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">yyyyMM</span>
+    title: <span style="color: #c678dd;">str</span>
+    url: <span style="color: #c678dd;">str</span>
+    timestamp: <span style="color: #c678dd;">int</span>  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">unix timestamp</span>
+
+<span style="color: #dcaeea;">CURRENT_YEAR</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y'</span>)
+<span style="color: #dcaeea;">CURRENT_MONTH</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%m'</span>)
+<span style="color: #dcaeea;">CURRENT_DATE</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y-%m-%d'</span>)
+<span style="color: #dcaeea;">CURRENT_DATE_AND_TIME</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y-%m-%d %H:%M:%S'</span>)
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_text_content</span>(url: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">jina_url</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"https://r.jina.ai/</span>{url}<span style="color: #98be65;">"</span>
+    <span style="color: #dcaeea;">response</span>: requests.Response = requests.get(jina_url)
+    <span style="color: #51afef;">return</span> response.text
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">call_openai_api</span>(prompt: <span style="color: #c678dd;">str</span>, content: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">model</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'OPENAI_API_MODEL'</span>, <span style="color: #98be65;">'gpt-4o-mini'</span>)
+    <span style="color: #dcaeea;">headers</span>: <span style="color: #c678dd;">dict</span> = {
+        <span style="color: #98be65;">"Authorization"</span>: f<span style="color: #98be65;">"Bearer </span>{os.environ['OPENAI_API_KEY']}<span style="color: #98be65;">"</span>,
+        <span style="color: #98be65;">"Content-Type"</span>: <span style="color: #98be65;">"application/json"</span>
+    }
+    <span style="color: #dcaeea;">data</span>: <span style="color: #c678dd;">dict</span> = {
+        <span style="color: #98be65;">"model"</span>: model,
+        <span style="color: #98be65;">"messages"</span>: [
+            {<span style="color: #98be65;">"role"</span>: <span style="color: #98be65;">"system"</span>, <span style="color: #98be65;">"content"</span>: prompt},
+            {<span style="color: #98be65;">"role"</span>: <span style="color: #98be65;">"user"</span>, <span style="color: #98be65;">"content"</span>: content}
+        ]
+    }
+    <span style="color: #dcaeea;">api_endpoint</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'OPENAI_API_ENDPOINT'</span>, <span style="color: #98be65;">'https://api.openai.com/v1/chat/completions'</span>)
+    <span style="color: #dcaeea;">response</span>: requests.Response = requests.post(api_endpoint, headers=headers, data=json.dumps(data))
+    <span style="color: #51afef;">return</span> response.json()[<span style="color: #98be65;">'choices'</span>][<span style="color: #da8548; font-weight: bold;">0</span>][<span style="color: #98be65;">'message'</span>][<span style="color: #98be65;">'content'</span>]
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">summarize_text</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">prompt</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"""</span>
+<span style="color: #98be65;">&#35831;&#29992;markdown&#21015;&#34920;&#26684;&#24335;**&#35814;&#32454;**&#24635;&#32467;&#25105;&#21457;&#36865;&#32473;&#20320;&#30340;&#25991;&#26412;&#12290;&#20805;&#20998;&#21512;&#29702;&#20351;&#29992;&#32553;&#36827;&#21644;&#23376;&#21015;&#34920;&#65292;&#22914;&#26524;&#26377;&#38656;&#35201;&#21487;&#20197;&#20351;&#29992;&#22810;&#23618;&#23376;&#21015;&#34920;&#65292;&#25110;&#26159;&#22312;&#23376;&#21015;&#34920;&#20013;&#21253;&#21547;&#22810;&#20010;&#26465;&#30446;&#65288;3&#20010;&#25110;&#20197;&#19978;&#65289;&#12290;&#22312;&#27599;&#20010;&#24635;&#32467;&#39033;&#24320;&#22836;&#65292;&#29992;&#31616;&#30701;&#30340;&#35789;&#35821;&#25551;&#36848;&#35813;&#39033;&#12290;&#24573;&#30053;&#21644;&#25991;&#31456;&#20027;&#20307;&#26080;&#20851;&#30340;&#20869;&#23481;&#65288;&#22914;&#24191;&#21578;&#65289;&#12290;&#26080;&#35770;&#21407;&#25991;&#35821;&#35328;&#20026;&#20309;&#65292;&#24635;&#26159;&#20351;&#29992;&#20013;&#25991;&#36827;&#34892;&#24635;&#32467;&#12290;</span>
+<span style="color: #98be65;">"""</span>
+    <span style="color: #51afef;">return</span> call_openai_api(prompt, text)
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">one_sentence_summary</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">prompt</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"&#20197;&#19979;&#26159;&#23545;&#19968;&#31687;&#38271;&#25991;&#30340;&#21015;&#34920;&#24418;&#24335;&#24635;&#32467;&#12290;&#35831;&#22522;&#20110;&#27492;&#36755;&#20986;&#23545;&#35813;&#25991;&#31456;&#30340;&#31616;&#30701;&#24635;&#32467;&#65292;&#38271;&#24230;&#19981;&#36229;&#36807;100&#20010;&#23383;&#12290;&#24635;&#26159;&#20351;&#29992;&#31616;&#20307;&#20013;&#25991;&#36755;&#20986;&#12290;"</span>
+    <span style="color: #51afef;">return</span> call_openai_api(prompt, text)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">slugify</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">invalid_fs_chars</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">'/</span><span style="color: #a9a1e1;">\\</span><span style="color: #98be65;">:*?"&lt;&gt;|'</span>
+    <span style="color: #51afef;">return</span> re.sub(r<span style="color: #98be65;">'['</span> + re.escape(invalid_fs_chars) + r<span style="color: #98be65;">'\s]+'</span>, <span style="color: #98be65;">'-'</span>, text.lower()).strip(<span style="color: #98be65;">'-'</span>)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_summary_file_path</span>(title: <span style="color: #c678dd;">str</span>, timestamp: <span style="color: #c678dd;">int</span>, year: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>, month: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>, in_readme_md: <span style="color: #c678dd;">bool</span> = <span style="color: #a9a1e1;">False</span>) -&gt; Path:
+    <span style="color: #dcaeea;">date_str</span> = datetime.fromtimestamp(timestamp).strftime(<span style="color: #98be65;">'%Y-%m-%d'</span>)
+    <span style="color: #dcaeea;">summary_filename</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"</span>{date_str}<span style="color: #98be65;">-</span>{slugify(title)}<span style="color: #98be65;">.md"</span>
+    <span style="color: #51afef;">if</span> year <span style="color: #51afef;">is</span> <span style="color: #a9a1e1;">None</span>:
+        <span style="color: #dcaeea;">year</span> = CURRENT_YEAR
+    <span style="color: #51afef;">if</span> month <span style="color: #51afef;">is</span> <span style="color: #a9a1e1;">None</span>:
+        <span style="color: #dcaeea;">month</span> = CURRENT_MONTH
+    <span style="color: #51afef;">if</span> in_readme_md:
+        <span style="color: #dcaeea;">root</span>: Path = Path(year, month)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
+    <span style="color: #51afef;">else</span>:
+        <span style="color: #dcaeea;">root</span>: Path = Path(BOOKMARK_SUMMARY_REPO_NAME, year, month)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
+    <span style="color: #51afef;">return</span> Path(root, summary_filename)
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_text_content_path</span>(title: <span style="color: #c678dd;">str</span>, in_summary_md: <span style="color: #c678dd;">bool</span> = <span style="color: #a9a1e1;">False</span>) -&gt; Path:
+    <span style="color: #dcaeea;">text_content_filename</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"</span>{CURRENT_DATE}<span style="color: #98be65;">-</span>{slugify(title)}<span style="color: #98be65;">_raw.md"</span>
+    <span style="color: #dcaeea;">root</span>: Path = Path(BOOKMARK_SUMMARY_REPO_NAME, CURRENT_YEAR, CURRENT_MONTH)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; YEAR/MONTH</span>
+    <span style="color: #51afef;">if</span> in_summary_md:
+        <span style="color: #dcaeea;">root</span> = Path(<span style="color: #98be65;">"."</span>)
+    <span style="color: #51afef;">return</span> Path(root, text_content_filename)
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">build_summary_file</span>(title: <span style="color: #c678dd;">str</span>, url: <span style="color: #c678dd;">str</span>, summary: <span style="color: #c678dd;">str</span>, one_sentence: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #51afef;">return</span> f<span style="color: #98be65;">"""# </span>{title}
+<span style="color: #98be65;">- URL: </span>{url}
+<span style="color: #98be65;">- Added At: </span>{CURRENT_DATE_AND_TIME}
+<span style="color: #98be65;">- [[</span>{get_text_content_path(<span style="color: #dcaeea;">title</span>, <span style="color: #dcaeea;">in_summary_md</span>=<span style="color: #a9a1e1;">True</span>][Link To Text]]<span style="color: #98be65;">})</span>
+
+<span style="color: #98be65;">## TL;DR</span>
+{one_sentence}
+
+<span style="color: #98be65;">## Summary</span>
+{summary}
+<span style="color: #98be65;">"""</span>
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">build_summary_readme_md</span>(summarized_bookmarks: List[SummarizedBookmark]) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">initial_prefix</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"""# Bookmark Summary</span>
+<span style="color: #98be65;">&#35835;&#21462; bookmark-collection &#20013;&#30340;&#20070;&#31614;&#65292;&#20351;&#29992; jina reader &#33719;&#21462;&#25991;&#26412;&#20869;&#23481;&#65292;&#28982;&#21518;&#20351;&#29992; LLM &#24635;&#32467;&#25991;&#26412;&#12290;&#35814;&#32454;&#23454;&#29616;&#35831;&#21442;&#35265; process_changes.py&#12290;&#38656;&#35201;&#21644; bookmark-collection &#20013;&#30340; Github Action &#19968;&#36215;&#20351;&#29992;&#12290;</span>
+
+<span style="color: #98be65;">## Summarized Bookmarks</span>
+<span style="color: #98be65;">"""</span>
+    <span style="color: #dcaeea;">summary_list</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">""</span>
+    <span style="color: #dcaeea;">sorted_summarized_bookmarks</span> = <span style="color: #c678dd;">sorted</span>(summarized_bookmarks, key=<span style="color: #51afef;">lambda</span> bookmark: bookmark.timestamp, reverse=<span style="color: #a9a1e1;">True</span>)
+    <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> sorted_summarized_bookmarks:
+        <span style="color: #dcaeea;">summary_file_path</span> = get_summary_file_path(
+            title=bookmark.title,
+            timestamp=bookmark.timestamp,
+            month=bookmark.month,
+            in_readme_md=<span style="color: #a9a1e1;">True</span>
+        )
+        <span style="color: #dcaeea;">summary_list</span> += f<span style="color: #98be65;">"- (</span>{datetime.fromtimestamp(bookmark.timestamp).strftime('%Y-%m-%d')}<span style="color: #98be65;">) [[</span>{summary_file_path}<span style="color: #98be65;">][</span>{bookmark.title}<span style="color: #98be65;">]]</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>
+    <span style="color: #51afef;">return</span> initial_prefix + summary_list
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">process_bookmark_file</span>():
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21019;&#24314;&#36335;&#24452;&#20026; year/month &#30340;&#25991;&#20214;&#22841;</span>
+    Path(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/</span>{CURRENT_YEAR}<span style="color: #98be65;">/</span>{CURRENT_MONTH}<span style="color: #98be65;">'</span>).mkdir(parents=<span style="color: #a9a1e1;">True</span>, exist_ok=<span style="color: #a9a1e1;">True</span>)
+
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_COLLECTION_REPO_NAME}<span style="color: #98be65;">/README.md'</span>, <span style="color: #98be65;">'r'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        <span style="color: #dcaeea;">bookmark_lines</span>: List[<span style="color: #c678dd;">str</span>] = f.readlines()
+
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/data.json'</span>, <span style="color: #98be65;">'r'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        <span style="color: #dcaeea;">summarized_bookmark_dicts</span> = json.load(f)
+        <span style="color: #dcaeea;">summarized_bookmarks</span> = [SummarizedBookmark(**bookmark) <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmark_dicts]
+
+    <span style="color: #dcaeea;">summarized_urls</span> = <span style="color: #c678dd;">set</span>([bookmark.url <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmarks])
+
+    <span style="color: #dcaeea;">title</span>: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>
+    <span style="color: #dcaeea;">url</span>: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>
+    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> bookmark_lines:
+        <span style="color: #51afef;">match</span>: re.Match = re.search(r<span style="color: #98be65;">'- \[(.*?)\]\((.*?)\)'</span>, line)
+        <span style="color: #51afef;">if</span> <span style="color: #51afef;">match</span> <span style="color: #51afef;">and</span> <span style="color: #51afef;">match</span>.group(<span style="color: #da8548; font-weight: bold;">2</span>) <span style="color: #51afef;">not</span> <span style="color: #51afef;">in</span> summarized_urls:
+            <span style="color: #dcaeea;">title</span>, <span style="color: #dcaeea;">url</span> = <span style="color: #51afef;">match</span>.groups()
+            <span style="color: #51afef;">break</span>
+
+    <span style="color: #51afef;">if</span> title <span style="color: #51afef;">and</span> url:
+        <span style="color: #dcaeea;">text_content</span>: <span style="color: #c678dd;">str</span> = get_text_content(url)
+        <span style="color: #dcaeea;">summary</span>: <span style="color: #c678dd;">str</span> = summarize_text(text_content)
+        <span style="color: #dcaeea;">one_sentence</span>: <span style="color: #c678dd;">str</span> = one_sentence_summary(summary)
+        <span style="color: #dcaeea;">summary_file_content</span>: <span style="color: #c678dd;">str</span> = build_summary_file(title, url, summary, one_sentence)
+        <span style="color: #dcaeea;">timestamp</span> = <span style="color: #c678dd;">int</span>(datetime.now().timestamp())
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20445;&#23384;&#21407;&#22987;&#25991;&#26412;&#20869;&#23481;</span>
+        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(get_text_content_path(title), <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+            f.write(text_content)
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20445;&#23384;&#24635;&#32467;&#25991;&#20214;</span>
+        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(get_summary_file_path(title, timestamp), <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+            f.write(summary_file_content)
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#28155;&#21152;&#21040;&#24635;&#32467;&#20070;&#31614;&#21015;&#34920;</span>
+        summarized_bookmarks.append(SummarizedBookmark(
+            year=CURRENT_YEAR,
+            month=CURRENT_MONTH,
+            title=title,
+            url=url,
+            timestamp=timestamp
+        ))
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032; README &#21644;&#25968;&#25454;&#25991;&#20214;</span>
+        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/README.md'</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+            f.write(build_summary_readme_md(summarized_bookmarks))
+
+        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/data.json'</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+            json.dump([asdict(bookmark) <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmarks], f, indent=<span style="color: #da8548; font-weight: bold;">2</span>, ensure_ascii=<span style="color: #a9a1e1;">False</span>)
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">main</span>():
+    process_bookmark_file()
+
+<span style="color: #51afef;">if</span> <span style="color: #c678dd;">__name__</span> == <span style="color: #98be65;">"__main__"</span>:
+    main()
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1a55658" class="outline-2">
+<h2 id="org1a55658">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org1a55658">
+<p>
+突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改`process<sub>changes.py</sub>`代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到`index.html`，这是现在的保存书签 - AI总结 - clip页面全流程：
+</p>
+
+
+<figure id="orgcd1b824">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" align="left" class="img" width="60%" height="60%">
+
+</figure>
+
+<p>
+全部完整代码在 <a href="https://github.com/VandeeFeng/bookmark-summary">bookmark-summary</a>。AI摘要的prompt和md初始页可以再完善一下。
+</p>
+
+<p>
+再次感谢 <a href="https://github.com/theowenyoung/clip">Owen&rsquo;s Clip</a> , <a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引</a>这两个项目的作者。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-input.html">Input</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+        <p>© 2022-2024 Vandee. Some rights reserved.</p>
+        <div class="social-links">
+        </div>
+      </footer></div>
+</body>
+</html>

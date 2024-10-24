@@ -1,5 +1,5 @@
 #+title: PKM（个人知识管理）构建手册 - Emacs
-#+date: <2024-10-24 19:47>
+#+date: <2024-05-22 19:47>
 #+description: 一个基于Emacs，org-mode的PKM构建手册
 #+filetags: PKM Emacs Org
 
@@ -263,11 +263,11 @@ Ref:
 
   这个通过定义带快速选择键的关键词时，在快速选择键后用"X/Y"来表示，X表示进入该状态时的动作，Y表示离开该状态时的动作。对于一个状态(以"DONE"为例)，以下形式都是合法的:
 
-  ```
+  #+begin_src
   DONE(d@)       ; 进入时添加笔记
   DONE(d/!)      ; 离开时添加变更信息
   DONE(d@/!)     ; 进入时添加笔记，离开时添加变更信息
-  ```
+  #+end_src
 
  - 除了基于 headline 的任务管理外，Org mode 还提供基于列表的任务管理，即将每个列表项作为任务，方法是在列表标记与列表项内容之间添加一个 "[ ]" 标记(注意中间包含一个字符的预留位置)，这个标记在 Org mode 中被称为 **checkbox** 。这种任务只有三种状态(待办、进行中和完成)，分别用 `[ ]`, `[-]` 和 `[X]` 表示。
 
@@ -275,10 +275,10 @@ Ref:
 
    用"TODO"等关键词标记为headline为任务时，使用的快捷键同样适用于checkbox，不过略有不同:
 
-   | 快捷键     | 功能                                                   | 备注             |
-   | ---------- | ------------------------------------------------------ | ---------------- |
+   | 快捷键      | 功能                                          | 备注          |
+   |------------+-----------------------------------------------+---------------|
    | C-S-return | 在当前列表项的内容后面建立一个同级列表项，标记为 "[ ]" | 无列表项时不创建 |
-   | M-S-return | 在当前列表项后建立一个同级列表项，标记为T"[ ]"         |                  |
+   | M-S-return | 在当前列表项后建立一个同级列表项，标记为 "[ ]"       |               |
 
    使用`shift+← →方向键`也可以快速更改TODO的状态。
 
@@ -1065,10 +1065,13 @@ Ref：[[https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15][抛砖引玉
 
 Ref: https://github.com/karthink/gptel?tab=readme-ov-file#include-more-context-with-requests
 
-| **To add context 添加上下文** |                                                              |
-| ----------------------------- | ------------------------------------------------------------ |
-| `gptel-add`                   | Add/remove a region or buffer to gptel’s context.  Add/remove marked files in Dired. 在 gptel 上下文中添加/删除区域或缓冲区。在 Dired 中添加/删除标记的文件。 |
-| `gptel-add-file`              | Add a (text-readable) file to gptel’s context.  Also available from the transient menu. 将（文本可读）文件添加到 gptel 的上下文中。也可以从瞬态菜单中获得。 |
+
+| To add context 添加上下文 |                                                                                                                                                     |
+|--------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| gptel-add                | Add/remove a region or buffer to gptel’s context.  Add/remove marked files in Dired. 在 gptel 上下文中添加/删除区域或缓冲区。在 Dired 中添加/删除标记的文件。 |
+| gptel-add-file           | Add a (text-readable) file to gptel’s context.  Also available from the transient menu. 将（文本可读）文件添加到 gptel 的上下文中。也可以从瞬态菜单中获得。    |
+
+
 
 #+begin_src emacs-lisp
 ;;基本配置
