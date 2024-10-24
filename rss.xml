@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Thu, 24 Oct 2024 21:56:47 +0800</lastBuildDate>
+<lastBuildDate>Thu, 24 Oct 2024 22:00:53 +0800</lastBuildDate>
 <item>
   <title><![CDATA[我的第一个 org 博客]]></title>
   <description><![CDATA[
@@ -83,24 +83,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc22d169">GitHub 书签</a></li>
-<li><a href="#org1590123">从GitHub书签到页面</a></li>
+<li><a href="#orgf902df9">GitHub 书签</a></li>
+<li><a href="#orgb2bea35">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgc22d169" class="outline-2">
-<h2 id="orgc22d169">GitHub 书签</h2>
-<div class="outline-text-2" id="text-orgc22d169">
+<div id="outline-container-orgf902df9" class="outline-2">
+<h2 id="orgf902df9">GitHub 书签</h2>
+<div class="outline-text-2" id="text-orgf902df9">
 <p>
-看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过GitHub Actions来总结网页文章内容并写入到GitHub仓库里。
+看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
 
 <p>
-之前在思考流动知识检索的时候，完全没有想到利用GitHub Actions来构建workflow。
+之前在思考流动知识检索的时候，完全没有想到利用 GitHub Actions来构建 workflow。
 </p>
 
 <p>
-大致流程是：通过<a href="https://github.com/osmoscraft/osmosmemo">osmos::memo</a> 书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。
+大致流程是：通过 <a href="https://github.com/osmoscraft/osmosmemo">osmos::memo</a> 书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用 GitHub Actions 读取这些链接用LLM做总结并保存到另一个 bookmark-summary 仓库。
 </p>
 
 <p>
@@ -144,7 +144,7 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="orgb50b201">
+<figure id="orgd9b5f68">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -154,7 +154,7 @@ Github Actions里模型、总结的prompt、输出的格式和方式都可以根
 </p>
 
 <p>
-有一个小<a href="https://github.com/jerrylususu/bookmark-summary/issues/8">问题</a>正好别人也遇到了，运行`process<sub>changes.py</sub>`的时候由于要读取`data.json`文件，而初始文件没有内容，加上一个`{}`空字典就好了。可以在脚本里优化一下这个过程，如果没有data.json或者data.json文件为空自动写入数据。
+有一个小<a href="https://github.com/jerrylususu/bookmark-summary/issues/8">问题</a>正好别人也遇到了，运行 <code>process_changes.py</code> 的时候由于要读取 <code>data.json</code> 文件，而初始文件没有内容，加上一个 <code>{}</code> 空字典就好了。可以在脚本里优化一下这个过程，如果没有 data.json 或者 data.json 文件为空自动写入数据。
 </p>
 
 <p>
@@ -162,15 +162,15 @@ Github Actions里模型、总结的prompt、输出的格式和方式都可以根
 </p>
 
 <p>
-之前尝试过<a href="https://github.com/ArchiveBox/ArchiveBox">archivebox</a>，就是个可以自己部署的Internet Archive。开源免费，支持docker，但这个项目太大了，作者这个轻巧的方案现在正符合我的需求。
+之前尝试过 <a href="https://github.com/ArchiveBox/ArchiveBox">archivebox</a>，就是个可以自己部署的 Internet Archive。开源免费，支持 docker，但这个项目太大了，作者这个轻巧的方案现在正符合我的需求。
 </p>
 
 <p>
-日常的阅读我现在基本都在Readwise了，这个workflow后面还可以和RAG结合起来，作为我<a href="https://www.vandee.art/posts/2024-06-18-the-freshness-date-of-information/">流动知识的检索</a>的数据库。后面想到什么好点子再融合进来，这个项目是一个很好的思路和模板，感谢作者的分享。
+日常的阅读我现在基本都在 Readwise了，这个 workflow 后面还可以和RAG结合起来，作为我<a href="https://www.vandee.art/posts/2024-06-18-the-freshness-date-of-information/">流动知识的检索</a>的数据库。后面想到什么好点子再融合进来，这个项目是一个很好的思路和模板，感谢作者的分享。
 </p>
 
 <p>
-我去掉了作者保存到 <a href="https://help.archive.org/help/using-the-wayback-machine/">Wayback Machine</a>（Internet Archive）的这一步，更改了按年份、月份保存文件，下面是修改后`process<sub>changes.py</sub>`的完整代码：
+我去掉了作者保存到 <a href="https://help.archive.org/help/using-the-wayback-machine/">Wayback Machine</a>（Internet Archive）的这一步，更改了按年份、月份保存文件，下面是修改后 <code>process_changes.py</code> 的完整代码：
 </p>
 
 <div class="org-src-container">
@@ -379,15 +379,15 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org1590123" class="outline-2">
-<h2 id="org1590123">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org1590123">
+<div id="outline-container-orgb2bea35" class="outline-2">
+<h2 id="orgb2bea35">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-orgb2bea35">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改`process<sub>changes.py</sub>`代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到`index.html`，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="org809a8af">
+<figure id="orgb9e95d1">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>

@@ -7,11 +7,11 @@
 
 * GitHub 书签
 
-看到了[[https://nekonull.me/posts/llm_x_bookmark/][LLM x 书签收藏：摘要 & 全文索引 - Nekonull's Garden]]这篇文章，思路很值得借鉴，通过GitHub Actions来总结网页文章内容并写入到GitHub仓库里。
+看到了[[https://nekonull.me/posts/llm_x_bookmark/][LLM x 书签收藏：摘要 & 全文索引 - Nekonull's Garden]]这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 
-之前在思考流动知识检索的时候，完全没有想到利用GitHub Actions来构建workflow。
+之前在思考流动知识检索的时候，完全没有想到利用 GitHub Actions来构建 workflow。
 
-大致流程是：通过[[https://github.com/osmoscraft/osmosmemo][osmos::memo]] 书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。
+大致流程是：通过 [[https://github.com/osmoscraft/osmosmemo][osmos::memo]] 书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用 GitHub Actions 读取这些链接用LLM做总结并保存到另一个 bookmark-summary 仓库。
 
 作者的主要思路：
 
@@ -44,15 +44,15 @@
 
 Github Actions里模型、总结的prompt、输出的格式和方式都可以根据自己的需求修改。
 
-有一个小[[https://github.com/jerrylususu/bookmark-summary/issues/8][问题]]正好别人也遇到了，运行`process_changes.py`的时候由于要读取`data.json`文件，而初始文件没有内容，加上一个`{}`空字典就好了。可以在脚本里优化一下这个过程，如果没有data.json或者data.json文件为空自动写入数据。
+有一个小[[https://github.com/jerrylususu/bookmark-summary/issues/8][问题]]正好别人也遇到了，运行 ~process_changes.py~ 的时候由于要读取 ~data.json~ 文件，而初始文件没有内容，加上一个 ~{}~ 空字典就好了。可以在脚本里优化一下这个过程，如果没有 data.json 或者 data.json 文件为空自动写入数据。
 
 对我来说，这个保存书签bookmark和总结的workflow特别适合那些不痛不痒的文章，有些亮点但又不那么惊艳，丢掉又有点可惜，或者是纯记录价值的文章，对我特别有价值的都直接记录在我的PKM里了。再一个，备份数据是一个很好的习惯，[[https://www.bilibili.com/video/BV1yA4y1U77y/?share_source=copy_web&vd_source=398bcc3ab9d37761117414d4da6caebe&t=337][关键素材被删！找不到素材？影视飓风是如何摆脱丢数据噩梦的]]:三备二介异地。就是一个数据备份3次，储存在2种介质当中，并且保证有一份完整的数据在异地，可以简称3-2-1原则了。
 
-之前尝试过[[https://github.com/ArchiveBox/ArchiveBox][archivebox]]，就是个可以自己部署的Internet Archive。开源免费，支持docker，但这个项目太大了，作者这个轻巧的方案现在正符合我的需求。
+之前尝试过 [[https://github.com/ArchiveBox/ArchiveBox][archivebox]]，就是个可以自己部署的 Internet Archive。开源免费，支持 docker，但这个项目太大了，作者这个轻巧的方案现在正符合我的需求。
 
-日常的阅读我现在基本都在Readwise了，这个workflow后面还可以和RAG结合起来，作为我[[https://www.vandee.art/posts/2024-06-18-the-freshness-date-of-information/][流动知识的检索]]的数据库。后面想到什么好点子再融合进来，这个项目是一个很好的思路和模板，感谢作者的分享。
+日常的阅读我现在基本都在 Readwise了，这个 workflow 后面还可以和RAG结合起来，作为我[[https://www.vandee.art/posts/2024-06-18-the-freshness-date-of-information/][流动知识的检索]]的数据库。后面想到什么好点子再融合进来，这个项目是一个很好的思路和模板，感谢作者的分享。
 
-我去掉了作者保存到 [[https://help.archive.org/help/using-the-wayback-machine/][Wayback Machine]]（Internet Archive）的这一步，更改了按年份、月份保存文件，下面是修改后`process_changes.py`的完整代码：
+我去掉了作者保存到 [[https://help.archive.org/help/using-the-wayback-machine/][Wayback Machine]]（Internet Archive）的这一步，更改了按年份、月份保存文件，下面是修改后 ~process_changes.py~ 的完整代码：
 
 #+begin_src python
 import re
