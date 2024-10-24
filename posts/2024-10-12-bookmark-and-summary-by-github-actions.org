@@ -39,7 +39,7 @@
 
 我跟着文章跑着试了一下，效果挺好的：
 
-#+attr_html: :alt  :align left :class img :width 60% :height 60%
+#+attr_html: :alt  :class img :width 60% :height 60%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif]]
 
 Github Actions里模型、总结的prompt、输出的格式和方式都可以根据自己的需求修改。
@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
 突然想起来了之前的[[https://www.vandee.art/posts/2024-04-29-vandee-clip/][clip]]，这两个整合到一起正好。于是进一步修改`process_changes.py`代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到`index.html`，这是现在的保存书签 - AI总结 - clip页面全流程：
 
-#+attr_html: :alt  :align left :class img :width 60% :height 60%
+#+attr_html: :alt :class img :width 60% :height 60%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif]]
 
 全部完整代码在 [[https://github.com/VandeeFeng/bookmark-summary][bookmark-summary]]。AI摘要的prompt和md初始页可以再完善一下。

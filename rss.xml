@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Thu, 24 Oct 2024 21:49:31 +0800</lastBuildDate>
+<lastBuildDate>Thu, 24 Oct 2024 21:56:47 +0800</lastBuildDate>
 <item>
   <title><![CDATA[我的第一个 org 博客]]></title>
   <description><![CDATA[
@@ -83,14 +83,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge32267c">GitHub 书签</a></li>
-<li><a href="#org1a55658">从GitHub书签到页面</a></li>
+<li><a href="#orgc22d169">GitHub 书签</a></li>
+<li><a href="#org1590123">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orge32267c" class="outline-2">
-<h2 id="orge32267c">GitHub 书签</h2>
-<div class="outline-text-2" id="text-orge32267c">
+<div id="outline-container-orgc22d169" class="outline-2">
+<h2 id="orgc22d169">GitHub 书签</h2>
+<div class="outline-text-2" id="text-orgc22d169">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过GitHub Actions来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -144,8 +144,8 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="org714f2e6">
-<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" align="left" class="img" width="60%" height="60%">
+<figure id="orgb50b201">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
 
@@ -379,16 +379,16 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org1a55658" class="outline-2">
-<h2 id="org1a55658">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org1a55658">
+<div id="outline-container-org1590123" class="outline-2">
+<h2 id="org1590123">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org1590123">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改`process<sub>changes.py</sub>`代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到`index.html`，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="orgcd1b824">
-<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" align="left" class="img" width="60%" height="60%">
+<figure id="org809a8af">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
 
