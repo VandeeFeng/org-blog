@@ -4,16 +4,22 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://vandee.art</link>
-<lastBuildDate>Thu, 24 Oct 2024 14:10:53 +0800</lastBuildDate>
+<lastBuildDate>Thu, 24 Oct 2024 14:49:05 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Hello world]]></title>
   <description><![CDATA[
-<div id="outline-container-org6079f08" class="outline-2">
-<h2 id="org6079f08"><span class="section-number-2">1.</span> Hallo!</h2>
+<div id="outline-container-org2644f56" class="outline-2">
+<h2 id="org2644f56"><span class="section-number-2">1.</span> Hallo!</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This is the first blog with org-static-blog!
 </p>
+
+
+<figure id="orgb049eb3">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif" alt="January.gif">
+
+</figure>
 </div>
 </div>
 <div class="taglist"><a href="https://vandee.art/tags.html">Tags</a>: <a href="https://vandee.art/tag-personal.html">personal</a> </div>]]></description>
