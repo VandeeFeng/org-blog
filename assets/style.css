@@ -293,7 +293,7 @@ tr:nth-child(even) {
     margin-top: 0;
     background-color: #282c34;
     border: 1px solid #3e4451;
-    border-left: 3px solid #528bff;
+    /* border-left: 3px solid #528bff; */
     color: #abb2bf;
     page-break-inside: avoid;
     font-family: "JetBrains Mono", "Menlo", "Monaco", "Consolas", "Courier New",
