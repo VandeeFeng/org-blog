@@ -262,7 +262,7 @@ if __name__ == "__main__":
 
 
 
-突然想起来了之前的[[https://www.vandee.art/posts/2024-04-29-vandee-clip/][clip]]，这两个整合到一起正好。于是进一步修改`process_changes.py`代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到`index.html`，这是现在的保存书签 - AI总结 - clip页面全流程：
+突然想起来了之前的[[https://www.vandee.art/posts/2024-04-29-vandee-clip/][clip]]，这两个整合到一起正好。于是进一步修改 ~process_changes.py~ 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 ~index.md~ ，这是现在的保存书签 - AI总结 - clip页面全流程：
 
 #+attr_html: :alt :class img :width 60% :height 60%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif]]

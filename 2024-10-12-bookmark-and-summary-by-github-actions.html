@@ -46,14 +46,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf902df9">GitHub 书签</a></li>
-<li><a href="#orgb2bea35">从GitHub书签到页面</a></li>
+<li><a href="#org089f838">GitHub 书签</a></li>
+<li><a href="#org6aed2b7">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgf902df9" class="outline-2">
-<h2 id="orgf902df9">GitHub 书签</h2>
-<div class="outline-text-2" id="text-orgf902df9">
+<div id="outline-container-org089f838" class="outline-2">
+<h2 id="org089f838">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org089f838">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -107,7 +107,7 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="orgd9b5f68">
+<figure id="org3a45b5c">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -342,15 +342,15 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgb2bea35" class="outline-2">
-<h2 id="orgb2bea35">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-orgb2bea35">
+<div id="outline-container-org6aed2b7" class="outline-2">
+<h2 id="org6aed2b7">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org6aed2b7">
 <p>
-突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改`process<sub>changes.py</sub>`代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到`index.html`，这是现在的保存书签 - AI总结 - clip页面全流程：
+突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="orgb9e95d1">
+<figure id="orgcc54e22">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
