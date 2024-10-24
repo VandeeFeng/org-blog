@@ -17,7 +17,7 @@
 
 这篇的所有文字都是在 Emacs 里用 org-mode 写的。
 
-#+attr_html: :alt org-blog :class lazy :width 50% :height 50%
+#+attr_html: :alt org-blog :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png]]
 
 * 二

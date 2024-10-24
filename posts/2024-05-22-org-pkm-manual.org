@@ -87,7 +87,7 @@ Januarys用来记录每天的日志，作为简单明了的回顾和展开。如
 
 *example* ：
 
-#+attr_html: :alt  :class lazy :width 50% :height 50%
+#+attr_html: :alt  :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif]]
 
 核心：原子笔记 + 双链。
@@ -148,7 +148,7 @@ Stay foolish，stay simple。
 example：
 Emacs，org-roam，模板创建Daily和note：
 
-#+attr_html: :alt :class lazy :width 50% :height 50%
+#+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif]]
 
 **** Org-tag
