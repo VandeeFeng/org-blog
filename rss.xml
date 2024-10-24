@@ -4,13 +4,13 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Thu, 24 Oct 2024 17:14:33 +0800</lastBuildDate>
+<lastBuildDate>Thu, 24 Oct 2024 17:28:21 +0800</lastBuildDate>
 <item>
   <title><![CDATA[我的第一个 org 博客]]></title>
   <description><![CDATA[
-<div id="outline-container-org7655592" class="outline-2">
-<h2 id="org7655592">一</h2>
-<div class="outline-text-2" id="text-org7655592">
+<div id="outline-container-org00c8268" class="outline-2">
+<h2 id="org00c8268">一</h2>
+<div class="outline-text-2" id="text-org00c8268">
 <p>
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 </p>
@@ -30,11 +30,15 @@
 <p>
 形式和内容一直是分不开的，但形式对我来说早就变得越来越不重要。我不敢说自己现在已经到了一个什么特别的境界，但每天我都能感受到我和自然界，万物之间的交融越来越自然了。
 </p>
+
+<p>
+这篇的所有文字都是在 Emacs 里用 org-mode 写的。
+</p>
 </div>
 </div>
-<div id="outline-container-orgedd428f" class="outline-2">
-<h2 id="orgedd428f">二</h2>
-<div class="outline-text-2" id="text-orgedd428f">
+<div id="outline-container-orgcc3c086" class="outline-2">
+<h2 id="orgcc3c086">二</h2>
+<div class="outline-text-2" id="text-orgcc3c086">
 <p>
 无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 </p>
