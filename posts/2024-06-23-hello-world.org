@@ -3,8 +3,6 @@
 #+description: This is a very first org static blog
 #+filetags: personal
 
-* Hallo!
+* Hello!
 This is the first blog with org-static-blog!
 
-#+ATTR_LATEX: :width "20%"
-[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif]]
