@@ -4,6 +4,13 @@
 #+filetags: Blog
 #+OPTIONS: toc:nil
 
+
+
+#+HTML: <b>AI摘要</b>
+#+HTML: <p id="aitext">正在生成中……</p>
+#+HTML: <p id="ai-output"></p>
+#+HTML: <script src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/codes/summary.js"></script>
+#+HTML: <br>
 * 一
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 
