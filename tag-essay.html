@@ -18,7 +18,7 @@
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -62,8 +62,25 @@
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
         <p>© 2022-2024 Vandee. Some rights reserved.</p>
-        <div class="social-links">
-        </div>
-      </footer></div>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
 </body>
 </html>

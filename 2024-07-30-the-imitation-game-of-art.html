@@ -21,7 +21,7 @@
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -55,16 +55,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3981b73">模仿、游戏、亵渎</a></li>
-<li><a href="#orgf1a9be5">艺术和模仿</a></li>
-<li><a href="#orgd77faee">创造力与记忆力</a></li>
-<li><a href="#org56621e9">模仿游戏</a></li>
+<li><a href="#org9a44112">模仿、游戏、亵渎</a></li>
+<li><a href="#orgc74d128">艺术和模仿</a></li>
+<li><a href="#orgf0a45f7">创造力与记忆力</a></li>
+<li><a href="#org02d5238">模仿游戏</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org3981b73" class="outline-2">
-<h2 id="org3981b73">模仿、游戏、亵渎</h2>
-<div class="outline-text-2" id="text-org3981b73">
+<div id="outline-container-org9a44112" class="outline-2">
+<h2 id="org9a44112">模仿、游戏、亵渎</h2>
+<div class="outline-text-2" id="text-org9a44112">
 <p>
 <a href="https://mp.weixin.qq.com/s/1Lz276s_RjdaSN3NXOIuHw">模仿、游戏和亵渎</a>，RSS推送了这个订阅。如果你也喜欢思考，那么大概率你也会爱上这篇文章里提出的思考。
 </p>
@@ -120,9 +120,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgf1a9be5" class="outline-2">
-<h2 id="orgf1a9be5">艺术和模仿</h2>
-<div class="outline-text-2" id="text-orgf1a9be5">
+<div id="outline-container-orgc74d128" class="outline-2">
+<h2 id="orgc74d128">艺术和模仿</h2>
+<div class="outline-text-2" id="text-orgc74d128">
 <p>
 《艺术的故事》和《现代艺术150年》这两本书从历史的角度，阐述了一个让我担忧的结论：艺术本身可能并不存在，存在的只是艺术品。
 </p>
@@ -182,9 +182,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgd77faee" class="outline-2">
-<h2 id="orgd77faee">创造力与记忆力</h2>
-<div class="outline-text-2" id="text-orgd77faee">
+<div id="outline-container-orgf0a45f7" class="outline-2">
+<h2 id="orgf0a45f7">创造力与记忆力</h2>
+<div class="outline-text-2" id="text-orgf0a45f7">
 <p>
 <a href="https://shwin.co/blog/creativity-fundamentally-comes-from-memorization">创造力从根本上来自记忆 &#x2014; Creativity Fundamentally Comes From Memorization</a>，正好看到这篇推送，和前几天的post主题挺契合，几个观点挺有意思：
 </p>
@@ -276,9 +276,9 @@ Another strategy that works well in both humor and famous EDM drops is &ldquo;vi
 </ul>
 </div>
 </div>
-<div id="outline-container-org56621e9" class="outline-2">
-<h2 id="org56621e9">模仿游戏</h2>
-<div class="outline-text-2" id="text-org56621e9">
+<div id="outline-container-org02d5238" class="outline-2">
+<h2 id="org02d5238">模仿游戏</h2>
+<div class="outline-text-2" id="text-org02d5238">
 <p>
 <a href="https://movie.douban.com/subject/10463953/">模仿游戏</a>是我很喜欢的一部电影，讲的是图灵（本尼迪克特·康伯巴奇 Benedict Cumberbatch 饰）制作密码破译机的故事。电影的名字和今天讨论的模仿游戏完全是一个巧合。只是在重复敲打模仿、游戏时，这个电影一直在我的脑子里窜来窜去，干脆把你放出来好了。黑客帝国也放出来好了，<a href="https://www.vandee.art/posts/2023-02-23-undefined/">蓝色药丸还是红色药丸？</a>🤣。
 </p>
@@ -322,8 +322,25 @@ The most interesting part is: you get to define your own dimensions.
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
         <p>© 2022-2024 Vandee. Some rights reserved.</p>
-        <div class="social-links">
-        </div>
-      </footer></div>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
 </body>
 </html>

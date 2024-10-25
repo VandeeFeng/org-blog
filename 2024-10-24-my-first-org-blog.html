@@ -21,7 +21,7 @@
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -51,9 +51,9 @@
       </header></div>
 <div id="content">
 <div class="post-date">24 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a></h1>
-<div id="outline-container-org2189d71" class="outline-2">
-<h2 id="org2189d71">一</h2>
-<div class="outline-text-2" id="text-org2189d71">
+<div id="outline-container-org3173e07" class="outline-2">
+<h2 id="org3173e07">一</h2>
+<div class="outline-text-2" id="text-org3173e07">
 <p>
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 </p>
@@ -79,15 +79,15 @@
 </p>
 
 
-<figure id="org59cd671">
+<figure id="org9183b38">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png" alt="org-blog" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org64a8161" class="outline-2">
-<h2 id="org64a8161">二</h2>
-<div class="outline-text-2" id="text-org64a8161">
+<div id="outline-container-org179a95c" class="outline-2">
+<h2 id="org179a95c">二</h2>
+<div class="outline-text-2" id="text-org179a95c">
 <p>
 无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 </p>
@@ -175,8 +175,25 @@ Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.w
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
         <p>© 2022-2024 Vandee. Some rights reserved.</p>
-        <div class="social-links">
-        </div>
-      </footer></div>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
 </body>
 </html>

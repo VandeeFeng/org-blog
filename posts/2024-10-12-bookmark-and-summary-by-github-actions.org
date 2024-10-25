@@ -1,4 +1,4 @@
-#+title: 用GitHub仓库做书签和AI摘要-流动知识检索
+#+title: 用 GitHub 仓库做书签和 AI 摘要-流动知识检索
 #+date: <2024-10-12 21:08>
 #+description: 大致流程是：通过osmos::memo书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。
 #+filetags: Input Github Python

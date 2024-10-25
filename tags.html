@@ -18,7 +18,7 @@
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -61,15 +61,15 @@
 <div class="post-date">15 Mar 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html">三颗大包菜</a></h2>
 <div class="post-date">30 Jul 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-07-30-the-imitation-game-of-art.html">艺术的模仿游戏</a></h2>
 <h1 class="tags-title">Posts tagged "github":</h1>
-<div class="post-date">12 Oct 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用GitHub仓库做书签和AI摘要-流动知识检索</a></h2>
+<div class="post-date">12 Oct 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要-流动知识检索</a></h2>
 <h1 class="tags-title">Posts tagged "input":</h1>
-<div class="post-date">12 Oct 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用GitHub仓库做书签和AI摘要-流动知识检索</a></h2>
+<div class="post-date">12 Oct 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要-流动知识检索</a></h2>
 <h1 class="tags-title">Posts tagged "org":</h1>
 <div class="post-date">22 May 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a></h2>
 <h1 class="tags-title">Posts tagged "pkm":</h1>
 <div class="post-date">22 May 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a></h2>
 <h1 class="tags-title">Posts tagged "python":</h1>
-<div class="post-date">12 Oct 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用GitHub仓库做书签和AI摘要-流动知识检索</a></h2>
+<div class="post-date">12 Oct 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要-流动知识检索</a></h2>
 <h1 class="tags-title">Posts tagged "ramble":</h1>
 <div class="post-date">20 Nov 2023</div><h2 class="post-title"><a href="https://www.vandee.art/2023-11-20-get-rich-slow.html">富有的概率</a></h2>
 <div class="post-date">03 Mar 2024</div><h2 class="post-title"><a href="https://www.vandee.art/2024-03-03-a-Monkey-shaking-the-branch.html">摇树枝的猴子</a></h2>
@@ -84,8 +84,25 @@
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
         <p>© 2022-2024 Vandee. Some rights reserved.</p>
-        <div class="social-links">
-        </div>
-      </footer></div>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
 </body>
 </html>
