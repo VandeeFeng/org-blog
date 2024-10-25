@@ -41,6 +41,8 @@ blockquote {
     color: #657b83; /* Solarized Light base00 */
     position: relative;
     border-radius: 0 4px 4px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
 }
 
 blockquote::before {
