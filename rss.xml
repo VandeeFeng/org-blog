@@ -4,13 +4,13 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Fri, 25 Oct 2024 04:26:28 +0800</lastBuildDate>
+<lastBuildDate>Fri, 25 Oct 2024 14:59:17 +0800</lastBuildDate>
 <item>
-  <title><![CDATA[我的第一个 org 博客]]></title>
+  <title><![CDATA[我的第一篇 org 博客]]></title>
   <description><![CDATA[
-<div id="outline-container-org24bff1b" class="outline-2">
-<h2 id="org24bff1b">一</h2>
-<div class="outline-text-2" id="text-org24bff1b">
+<div id="outline-container-org2189d71" class="outline-2">
+<h2 id="org2189d71">一</h2>
+<div class="outline-text-2" id="text-org2189d71">
 <p>
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 </p>
@@ -36,15 +36,15 @@
 </p>
 
 
-<figure id="org9ba4cc3">
+<figure id="org59cd671">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png" alt="org-blog" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-orgbd5782a" class="outline-2">
-<h2 id="orgbd5782a">二</h2>
-<div class="outline-text-2" id="text-orgbd5782a">
+<div id="outline-container-org64a8161" class="outline-2">
+<h2 id="org64a8161">二</h2>
+<div class="outline-text-2" id="text-org64a8161">
 <p>
 无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 </p>
@@ -66,8 +66,66 @@
 </p>
 
 <p>
-准备整理整理，陆续发在新博客里。
+积累和理论在平常可能体现不出区别，但同样的事情在这些的基础之上的表达就是会更准确。就像上面我的那段话，看看有学问的人是怎么表达的：
 </p>
+<blockquote>
+<p>
+在远古时期，大脑中所有负责感官的皮质，都跟负责记忆的海马体直接相连。但是随着人类进化，大脑皮质不断折叠，复杂化，其他感觉皮质跟海马体的路径被拉长了，只有一种感官始终保持不变。哪种感官呢？答案是：嗅觉。
+</p>
+
+<p>
+所以，从某种程度来说，嗅觉跟记忆的联系是最为密切的。你一定有过这种经历：闻到某种气味，突然像打开了一道开关，大脑开始回放起一系列对应的画面，纤毫毕现 —— 这就是嗅觉的力量。
+</p>
+
+<p>
+最经典的例子，就是普鲁斯特在《追忆似水年华》里面提到品尝到童年的小蛋糕时的感受了：
+</p>
+
+<p>
+即使人亡物毁，久远的往事了无陈迹，唯独气味和滋味虽说更脆弱却更有生命力；虽说更虚幻却更经久不散，更忠贞不矢，它们仍然对依稀往事寄托着回忆、期待和希望，它们以几乎无从辨认的蛛丝马迹，坚强不屈地支撑起整座回忆的巨厦。
+</p>
+
+<p>
+Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w</a>
+</p>
+</blockquote>
+
+<p>
+准备整理整理之前的博客文章，陆续发在新博客里。
+</p>
+
+<p>
+之前的 markdwon to org 的脚本又派上用场了：
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">defun</span> <span style="color: #c678dd;">my-markdown-to-org</span> <span style="color: #c678dd;">()</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">interactive</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">save-excursion</span>
+    <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#26631;&#39064;&#20026;Org-mode&#26631;&#39064;</span>
+    <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #51afef;">while</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"^\s*</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">#+</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;"> </span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">.*</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">"</span> nil t<span style="color: #a9a1e1;">)</span>
+      <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">let</span> <span style="color: #51afef;">(</span><span style="color: #c678dd;">(</span>level <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">length</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+            <span style="color: #c678dd;">(</span>title1 <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">concat</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">make-string</span> level ?*<span style="color: #98be65;">)</span> <span style="color: #98be65;">" "</span> title1<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#38142;&#25509;&#20026;Org-mode&#38142;&#25509;,&#20294;&#26159;&#36339;&#36807;&#22270;&#29255;&#38142;&#25509;</span>
+  <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">while</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"\\[</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">.*?</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">\\](</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">.*?</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">)"</span> nil t<span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #51afef;">let</span> <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">(</span>title <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+          <span style="color: #51afef;">(</span>url <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span>
+      <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">unless</span> <span style="color: #51afef;">(</span><span style="color: #51afef;">and</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">string-match</span> <span style="color: #98be65;">"</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">jpeg</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">|</span><span style="color: #98be65;">png</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">|</span><span style="color: #98be65;">svg</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">"</span> url<span style="color: #c678dd;">)</span>
+                   <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">string-match</span> <span style="color: #98be65;">"https"</span> url<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">format</span> <span style="color: #98be65;">"[[%s][%s]]"</span> url title<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#20195;&#30721;&#22359;&#20026;Org-mode&#20195;&#30721;&#22359;</span>
+  <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">while</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"^```"</span> nil t<span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #51afef;">if</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">looking-back</span> <span style="color: #98be65;">"^```"</span><span style="color: #a9a1e1;">)</span>
+        <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">progn</span>
+          <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #98be65;">"#+begin_src"</span><span style="color: #51afef;">)</span>
+          <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"^```"</span> nil t<span style="color: #51afef;">)</span>
+          <span style="color: #51afef;">(</span><span style="color: #51afef;">if</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">looking-back</span> <span style="color: #98be65;">"^```"</span><span style="color: #c678dd;">)</span>
+              <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #98be65;">"#+end_src"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
 </div>
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-blog.html">Blog</a> </div>]]></description>
@@ -83,14 +141,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga42f9d5">GitHub 书签</a></li>
-<li><a href="#orgcb7f1f1">从GitHub书签到页面</a></li>
+<li><a href="#orgabfff5c">GitHub 书签</a></li>
+<li><a href="#orgd4e910f">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orga42f9d5" class="outline-2">
-<h2 id="orga42f9d5">GitHub 书签</h2>
-<div class="outline-text-2" id="text-orga42f9d5">
+<div id="outline-container-orgabfff5c" class="outline-2">
+<h2 id="orgabfff5c">GitHub 书签</h2>
+<div class="outline-text-2" id="text-orgabfff5c">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -144,7 +202,7 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="org30e8406">
+<figure id="orga34767c">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -379,15 +437,15 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgcb7f1f1" class="outline-2">
-<h2 id="orgcb7f1f1">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-orgcb7f1f1">
+<div id="outline-container-orgd4e910f" class="outline-2">
+<h2 id="orgd4e910f">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-orgd4e910f">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="org9440656">
+<figure id="org1ff71bd">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -416,16 +474,16 @@ logging.basicConfig(
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgea92b41">模仿、游戏、亵渎</a></li>
-<li><a href="#orgbc859e1">艺术和模仿</a></li>
-<li><a href="#org506ec40">创造力与记忆力</a></li>
-<li><a href="#orge2ebaf3">模仿游戏</a></li>
+<li><a href="#org3981b73">模仿、游戏、亵渎</a></li>
+<li><a href="#orgf1a9be5">艺术和模仿</a></li>
+<li><a href="#orgd77faee">创造力与记忆力</a></li>
+<li><a href="#org56621e9">模仿游戏</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgea92b41" class="outline-2">
-<h2 id="orgea92b41">模仿、游戏、亵渎</h2>
-<div class="outline-text-2" id="text-orgea92b41">
+<div id="outline-container-org3981b73" class="outline-2">
+<h2 id="org3981b73">模仿、游戏、亵渎</h2>
+<div class="outline-text-2" id="text-org3981b73">
 <p>
 <a href="https://mp.weixin.qq.com/s/1Lz276s_RjdaSN3NXOIuHw">模仿、游戏和亵渎</a>，RSS推送了这个订阅。如果你也喜欢思考，那么大概率你也会爱上这篇文章里提出的思考。
 </p>
@@ -481,9 +539,9 @@ logging.basicConfig(
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc859e1" class="outline-2">
-<h2 id="orgbc859e1">艺术和模仿</h2>
-<div class="outline-text-2" id="text-orgbc859e1">
+<div id="outline-container-orgf1a9be5" class="outline-2">
+<h2 id="orgf1a9be5">艺术和模仿</h2>
+<div class="outline-text-2" id="text-orgf1a9be5">
 <p>
 《艺术的故事》和《现代艺术150年》这两本书从历史的角度，阐述了一个让我担忧的结论：艺术本身可能并不存在，存在的只是艺术品。
 </p>
@@ -543,9 +601,9 @@ logging.basicConfig(
 </p>
 </div>
 </div>
-<div id="outline-container-org506ec40" class="outline-2">
-<h2 id="org506ec40">创造力与记忆力</h2>
-<div class="outline-text-2" id="text-org506ec40">
+<div id="outline-container-orgd77faee" class="outline-2">
+<h2 id="orgd77faee">创造力与记忆力</h2>
+<div class="outline-text-2" id="text-orgd77faee">
 <p>
 <a href="https://shwin.co/blog/creativity-fundamentally-comes-from-memorization">创造力从根本上来自记忆 &#x2014; Creativity Fundamentally Comes From Memorization</a>，正好看到这篇推送，和前几天的post主题挺契合，几个观点挺有意思：
 </p>
@@ -637,9 +695,9 @@ Another strategy that works well in both humor and famous EDM drops is &ldquo;vi
 </ul>
 </div>
 </div>
-<div id="outline-container-orge2ebaf3" class="outline-2">
-<h2 id="orge2ebaf3">模仿游戏</h2>
-<div class="outline-text-2" id="text-orge2ebaf3">
+<div id="outline-container-org56621e9" class="outline-2">
+<h2 id="org56621e9">模仿游戏</h2>
+<div class="outline-text-2" id="text-org56621e9">
 <p>
 <a href="https://movie.douban.com/subject/10463953/">模仿游戏</a>是我很喜欢的一部电影，讲的是图灵（本尼迪克特·康伯巴奇 Benedict Cumberbatch 饰）制作密码破译机的故事。电影的名字和今天讨论的模仿游戏完全是一个巧合。只是在重复敲打模仿、游戏时，这个电影一直在我的脑子里窜来窜去，干脆把你放出来好了。黑客帝国也放出来好了，<a href="https://www.vandee.art/posts/2023-02-23-undefined/">蓝色药丸还是红色药丸？</a>🤣。
 </p>
@@ -694,31 +752,31 @@ The most interesting part is: you get to define your own dimensions.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org265a71e">Intro</a></li>
-<li><a href="#orgecf0827">Manual</a>
+<li><a href="#org6ac895d">Intro</a></li>
+<li><a href="#org395eda3">Manual</a>
 <ul>
-<li><a href="#org8f999b9">Prerequisites</a></li>
-<li><a href="#org94c94dc">PKM</a>
+<li><a href="#orgb9028f0">Prerequisites</a></li>
+<li><a href="#orgd3aedaf">PKM</a>
 <ul>
-<li><a href="#orga4f517f">Principles</a></li>
-<li><a href="#org11d4ca0">Methods</a></li>
+<li><a href="#org148117e">Principles</a></li>
+<li><a href="#orgf1874d8">Methods</a></li>
 </ul>
 </li>
-<li><a href="#orge17af47">PKM with LLM</a>
+<li><a href="#orgaf45a08">PKM with LLM</a>
 <ul>
-<li><a href="#org3547ccc">工具推荐</a></li>
+<li><a href="#org0009924">工具推荐</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org6dde6c3">ChangeLog</a></li>
-<li><a href="#orgabe8b27">Thanks</a></li>
+<li><a href="#orgcd90e7c">ChangeLog</a></li>
+<li><a href="#orgb6b5e41">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org265a71e" class="outline-2">
-<h2 id="org265a71e">Intro</h2>
-<div class="outline-text-2" id="text-org265a71e">
+<div id="outline-container-org6ac895d" class="outline-2">
+<h2 id="org6ac895d">Intro</h2>
+<div class="outline-text-2" id="text-org6ac895d">
 <blockquote>
 <p>
 For me, taking notes helps make sure that I’m really thinking hard about what’s in there. If I disagree with the book, sometimes it takes a long time to read the books because I’m writing so much in the margin. <a href="https://youtu.be/eTFy8RnUkoU?t=11">Bill Gates</a>
@@ -758,9 +816,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 </p>
 </div>
 </div>
-<div id="outline-container-orgecf0827" class="outline-2">
-<h2 id="orgecf0827">Manual</h2>
-<div class="outline-text-2" id="text-orgecf0827">
+<div id="outline-container-org395eda3" class="outline-2">
+<h2 id="org395eda3">Manual</h2>
+<div class="outline-text-2" id="text-org395eda3">
 <p>
 这是一个以 <a href="https://zh.wikipedia.org/wiki/Emacs">Emacs</a> 为基础编辑器、文件管理的Org-mode本地笔记PKM。
 </p>
@@ -779,9 +837,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 <li>PKM-with-LLM：PKM和大语言模型结合的使用、ollama、RAG(待更新)</li>
 </ul>
 </div>
-<div id="outline-container-org8f999b9" class="outline-3">
-<h3 id="org8f999b9">Prerequisites</h3>
-<div class="outline-text-3" id="text-org8f999b9">
+<div id="outline-container-orgb9028f0" class="outline-3">
+<h3 id="orgb9028f0">Prerequisites</h3>
+<div class="outline-text-3" id="text-orgb9028f0">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>，<a href="https://github.com/doomemacs/doomemacs">doomemacs</a>，<a href="https://orgmode.org/">Org mode for GNU Emacs</a>，<a href="https://www.orgroam.com/">Org-roam</a>。
 </p>
@@ -833,9 +891,9 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://w
 </p>
 </div>
 </div>
-<div id="outline-container-org94c94dc" class="outline-3">
-<h3 id="org94c94dc">PKM</h3>
-<div class="outline-text-3" id="text-org94c94dc">
+<div id="outline-container-orgd3aedaf" class="outline-3">
+<h3 id="orgd3aedaf">PKM</h3>
+<div class="outline-text-3" id="text-orgd3aedaf">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -853,7 +911,7 @@ Januarys用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="orge3f1b77">
+<figure id="orgbac7364">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -886,9 +944,9 @@ Stay foolish，stay simple。
 本地笔记没有在线笔记软件方便的地方就是多端同步与预览。我的本地笔记已经上传到了GitHub仓库，通过Git同步。临时需要修改的直接在GitHub仓库里就修改了。预览方面，我的笔记输出到了 <a href="https://wiki.vandee.art">Vandee — Wiki</a>
 </p>
 </div>
-<div id="outline-container-orga4f517f" class="outline-4">
-<h4 id="orga4f517f">Principles</h4>
-<div class="outline-text-4" id="text-orga4f517f">
+<div id="outline-container-org148117e" class="outline-4">
+<h4 id="org148117e">Principles</h4>
+<div class="outline-text-4" id="text-org148117e">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -926,9 +984,9 @@ Stay foolish，stay simple。
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org11d4ca0" class="outline-4">
-<h4 id="org11d4ca0">Methods</h4>
-<div class="outline-text-4" id="text-org11d4ca0">
+<div id="outline-container-orgf1874d8" class="outline-4">
+<h4 id="orgf1874d8">Methods</h4>
+<div class="outline-text-4" id="text-orgf1874d8">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -963,14 +1021,14 @@ Emacs，org-roam，模板创建Daily和note：
 </p>
 
 
-<figure id="orgb642d71">
+<figure id="org0885efd">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 <ul class="org-ul">
-<li><a id="orgcba7b88"></a>Org-tag<br>
-<div class="outline-text-5" id="text-orgcba7b88">
+<li><a id="org8caccd1"></a>Org-tag<br>
+<div class="outline-text-5" id="text-org8caccd1">
 <p>
 org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的**标签的统一性**，大小写或者单复数不统一会很麻烦。
 </p>
@@ -1074,8 +1132,8 @@ Ref:
 </ul>
 </div>
 </li>
-<li><a id="orge25ff50"></a>Org-agenda<br>
-<div class="outline-text-5" id="text-orge25ff50">
+<li><a id="org44f9899"></a>Org-agenda<br>
+<div class="outline-text-5" id="text-org44f9899">
 <p>
 最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用`#TODO`来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 </p>
@@ -1107,8 +1165,8 @@ Ref:
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org596e4b0"></a><span class="todo TODO">TODO</span> <br>
-<div class="outline-text-6" id="text-org596e4b0">
+<li><a id="org62ef20b"></a><span class="todo TODO">TODO</span> <br>
+<div class="outline-text-6" id="text-org62ef20b">
 <ul class="org-ul">
 <li><p>
 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入`<code>[/]</code>`或者`<code>[%]</code>`。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
@@ -1222,8 +1280,8 @@ Ref：
 </li>
 </ul>
 </li>
-<li><a id="org58aa93f"></a>Org-capture<br>
-<div class="outline-text-5" id="text-org58aa93f">
+<li><a id="org665d514"></a>Org-capture<br>
+<div class="outline-text-5" id="text-org665d514">
 <p>
 <a href="https://orgmode.org/manual/Capture.html">Org-capture</a> 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 </p>
@@ -1327,8 +1385,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org223f6bf"></a>Org-roam<br>
-<div class="outline-text-5" id="text-org223f6bf">
+<li><a id="org42043f7"></a>Org-roam<br>
+<div class="outline-text-5" id="text-org42043f7">
 <p>
 <a href="https://www.orgroam.com/">Org-roam</a> 是Emacs的一个包，也是org-mode 的扩展，可以简单的实现双链，通过org-roam-ui直观的预览。
 </p>
@@ -1444,8 +1502,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org0abaf03"></a>Org-export<br>
-<div class="outline-text-5" id="text-org0abaf03">
+<li><a id="org02ec134"></a>Org-export<br>
+<div class="outline-text-5" id="text-org02ec134">
 <p>
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些<a href="https://orgmode.org/zh-CN/tools.html">工具</a> 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 </p>
@@ -1506,8 +1564,8 @@ Ref：<a href="https://orgmode.org/manual/Exporting.html">Exporting (The Org Man
 </p>
 </div>
 </li>
-<li><a id="org8a6a0f6"></a>Org with Zotero<br>
-<div class="outline-text-5" id="text-org8a6a0f6">
+<li><a id="orga7a3dd2"></a>Org with Zotero<br>
+<div class="outline-text-5" id="text-orga7a3dd2">
 <p>
 书和论文的PDF文件，我现在全部放在<a href="https://www.zotero.org/">Zotero</a>。快速复制单个笔记到org-mode也挺简单：
 </p>
@@ -1569,8 +1627,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org172eeda"></a>Org-mode美化<br>
-<div class="outline-text-5" id="text-org172eeda">
+<li><a id="org4363163"></a>Org-mode美化<br>
+<div class="outline-text-5" id="text-org4363163">
 <p>
 我觉得原生的就挺好看，可读性也还好。
 </p>
@@ -1616,8 +1674,8 @@ Ref：
 </div>
 </div>
 </li>
-<li><a id="org655a4af"></a>Org-protocol<br>
-<div class="outline-text-5" id="text-org655a4af">
+<li><a id="org4a7f99e"></a>Org-protocol<br>
+<div class="outline-text-5" id="text-org4a7f99e">
 <p>
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 </p>
@@ -1669,8 +1727,8 @@ Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的appl
 </ul>
 </div>
 </li>
-<li><a id="org3ab0f0e"></a>网页摘录和after-reading<br>
-<div class="outline-text-5" id="text-org3ab0f0e">
+<li><a id="org8e058f0"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-org8e058f0">
 <p>
 利用org-capture，做剪藏和摘录很方便。现在保存在`clip.org`文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 </p>
@@ -1709,8 +1767,8 @@ after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org1e18c51"></a>tools<br>
-<div class="outline-text-6" id="text-org1e18c51">
+<li><a id="org8b0026d"></a>tools<br>
+<div class="outline-text-6" id="text-org8b0026d">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -1757,15 +1815,15 @@ Reader does two things:
 </li>
 </ul>
 </li>
-<li><a id="orgbe2941a"></a>输入法设置<br>
-<div class="outline-text-5" id="text-orgbe2941a">
+<li><a id="org48b0b58"></a>输入法设置<br>
+<div class="outline-text-5" id="text-org48b0b58">
 <p>
 由于使用了evil，如果使用系统的输入法，每次在`:w`保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org8e297b8"></a>SIS<br>
-<div class="outline-text-6" id="text-org8e297b8">
+<li><a id="orgfdc7d8c"></a>SIS<br>
+<div class="outline-text-6" id="text-orgfdc7d8c">
 <p>
 <a href="https://github.com/laishulu/emacs-smart-input-source">emacs-smart-input-source</a> 是一个可以自动切换输入法的Emacs包。
 </p>
@@ -1807,8 +1865,8 @@ Reader does two things:
 </div>
 </div>
 </li>
-<li><a id="org6b6c2de"></a>pyim<br>
-<div class="outline-text-6" id="text-org6b6c2de">
+<li><a id="org6722629"></a>pyim<br>
+<div class="outline-text-6" id="text-org6722629">
 <p>
 <a href="https://github.com/tumashu/pyim">pyim</a> 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 </p>
@@ -1894,8 +1952,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="orge28a2c5"></a>RIME<br>
-<div class="outline-text-6" id="text-orge28a2c5">
+<li><a id="org828d2e9"></a>RIME<br>
+<div class="outline-text-6" id="text-org828d2e9">
 <p>
 如果说PKM是纸，那么输入法就是笔。
 </p>
@@ -1998,8 +2056,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 </li>
 </ul>
 </li>
-<li><a id="org1532805"></a>Others<br>
-<div class="outline-text-5" id="text-org1532805">
+<li><a id="org5d96271"></a>Others<br>
+<div class="outline-text-5" id="text-org5d96271">
 <ul class="org-ul">
 <li><a href="https://github.com/lijigang/100-questions-about-orgmode">lijigang/100-questions-about-orgmode: It&rsquo;s all about <b>orgmode</b> !</a></li>
 
@@ -2068,9 +2126,9 @@ Emacs里的其他笔记相关使用包
 </ul>
 </div>
 </div>
-<div id="outline-container-orge17af47" class="outline-3">
-<h3 id="orge17af47">PKM with LLM</h3>
-<div class="outline-text-3" id="text-orge17af47">
+<div id="outline-container-orgaf45a08" class="outline-3">
+<h3 id="orgaf45a08">PKM with LLM</h3>
+<div class="outline-text-3" id="text-orgaf45a08">
 <p>
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
 </p>
@@ -2091,13 +2149,13 @@ Emacs里的其他笔记相关使用包
 现在我的日常问答都在本地使用Open WebUI，可以导出聊天还有数据库可以直接备份，甚至还可以给对话打tag，当然也可以搜索。
 </p>
 </div>
-<div id="outline-container-org3547ccc" class="outline-4">
-<h4 id="org3547ccc">工具推荐</h4>
-<div class="outline-text-4" id="text-org3547ccc">
+<div id="outline-container-org0009924" class="outline-4">
+<h4 id="org0009924">工具推荐</h4>
+<div class="outline-text-4" id="text-org0009924">
 </div>
 <ul class="org-ul">
-<li><a id="org166e9b4"></a>Ollama<br>
-<div class="outline-text-5" id="text-org166e9b4">
+<li><a id="orgfe68304"></a>Ollama<br>
+<div class="outline-text-5" id="text-orgfe68304">
 <p>
 <a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 </p>
@@ -2119,8 +2177,8 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 </ul>
 </div>
 </li>
-<li><a id="org0065f2a"></a>Open WebUI<br>
-<div class="outline-text-5" id="text-org0065f2a">
+<li><a id="org2d8980f"></a>Open WebUI<br>
+<div class="outline-text-5" id="text-org2d8980f">
 <p>
 <a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 </p>
@@ -2202,8 +2260,8 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 </p>
 </div>
 </li>
-<li><a id="orgb1b077a"></a>Aider<br>
-<div class="outline-text-5" id="text-orgb1b077a">
+<li><a id="org6136c3c"></a>Aider<br>
+<div class="outline-text-5" id="text-org6136c3c">
 <p>
 <a href="https://github.com/Aider-AI/aider">Aider</a> 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个<a href="https://github.com/tninja/aider.el">aider.el</a>。
 </p>
@@ -2255,8 +2313,8 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 </div>
 </li>
-<li><a id="org171dcef"></a>gptel<br>
-<div class="outline-text-5" id="text-org171dcef">
+<li><a id="org55318cd"></a>gptel<br>
+<div class="outline-text-5" id="text-org55318cd">
 <p>
 <a href="https://github.com/karthink/gptel">gptel: A simple LLM client for Emacs</a> 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 </p>
@@ -2343,8 +2401,8 @@ Ref: <a href="https://github.com/karthink/gptel?tab=readme-ov-file#include-more-
 </div>
 </div>
 </li>
-<li><a id="org83ceea3"></a><b>Kotaemon</b><br>
-<div class="outline-text-5" id="text-org83ceea3">
+<li><a id="orgfa6c9c4"></a><b>Kotaemon</b><br>
+<div class="outline-text-5" id="text-orgfa6c9c4">
 <p>
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 </p>
@@ -2385,9 +2443,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </div>
 </div>
 </div>
-<div id="outline-container-org6dde6c3" class="outline-2">
-<h2 id="org6dde6c3">ChangeLog</h2>
-<div class="outline-text-2" id="text-org6dde6c3">
+<div id="outline-container-orgcd90e7c" class="outline-2">
+<h2 id="orgcd90e7c">ChangeLog</h2>
+<div class="outline-text-2" id="text-orgcd90e7c">
 <ul class="org-ul">
 <li><p>
 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如<a href="https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el">dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs</a>这是一个把org-roam和Logseq联用的el。
@@ -2410,9 +2468,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </ul>
 </div>
 </div>
-<div id="outline-container-orgabe8b27" class="outline-2">
-<h2 id="orgabe8b27">Thanks</h2>
-<div class="outline-text-2" id="text-orgabe8b27">
+<div id="outline-container-orgb6b5e41" class="outline-2">
+<h2 id="orgb6b5e41">Thanks</h2>
+<div class="outline-text-2" id="text-orgb6b5e41">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>
@@ -2445,15 +2503,15 @@ Imagining and creating！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2b28a56">《现代艺术150年》</a></li>
-<li><a href="#org4d1b665">艺术简史</a></li>
-<li><a href="#orga7d235b">艺术的价值</a></li>
+<li><a href="#org26c77d8">《现代艺术150年》</a></li>
+<li><a href="#org2c21b51">艺术简史</a></li>
+<li><a href="#orgeb77859">艺术的价值</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org2b28a56" class="outline-2">
-<h2 id="org2b28a56">《现代艺术150年》</h2>
-<div class="outline-text-2" id="text-org2b28a56">
+<div id="outline-container-org26c77d8" class="outline-2">
+<h2 id="org26c77d8">《现代艺术150年》</h2>
+<div class="outline-text-2" id="text-org26c77d8">
 <p>
 <a href="https://www.bilibili.com/video/BV1ax4y1z7Tr/">拍卖网站上盲买了一幅毕加索，只为告诉你什么叫做艺术之殇</a> ，刷到了这个视频。
 </p>
@@ -2492,9 +2550,9 @@ Imagining and creating！
 </p>
 </div>
 </div>
-<div id="outline-container-org4d1b665" class="outline-2">
-<h2 id="org4d1b665">艺术简史</h2>
-<div class="outline-text-2" id="text-org4d1b665">
+<div id="outline-container-org2c21b51" class="outline-2">
+<h2 id="org2c21b51">艺术简史</h2>
+<div class="outline-text-2" id="text-org2c21b51">
 <p>
 我不是什么艺术科班学生，也没有特别出众的艺术特长，更没有什么实际的艺术运作经历，只是一个艺术爱好者，平常拍拍照、唱唱歌、录录音（写谱还在学，AI赶紧出个自动写谱的！），纯粹是瞎聊。有一个概念是<a href="https://wangyurui.com/posts/si-wei-mo-xing-04-si-xiang-shi-yan-5744df28">思想实验</a>，我就勉强把自己的瞎想往上面靠了。在想象力方面，我还是对自己有信心的。
 </p>
@@ -2560,9 +2618,9 @@ Imagining and creating！
 </p>
 </div>
 </div>
-<div id="outline-container-orga7d235b" class="outline-2">
-<h2 id="orga7d235b">艺术的价值</h2>
-<div class="outline-text-2" id="text-orga7d235b">
+<div id="outline-container-orgeb77859" class="outline-2">
+<h2 id="orgeb77859">艺术的价值</h2>
+<div class="outline-text-2" id="text-orgeb77859">
 <p>
 确实，到了现在，如同开始提到的那个视频里所说，销售高端艺术和销售高端房产，在本质上其实是一样的，决定一栋房子价值的是地段地段地段，而决定一件艺术品价值的是出处出处出处。资本也在很大程度上影响着艺术。
 </p>
@@ -2608,27 +2666,402 @@ Imagining and creating！
   <pubDate>Sun, 05 May 2024 21:29:00 +0800</pubDate>
 </item>
 <item>
+  <title><![CDATA[三颗大包菜]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org28e4346">书的香味</a></li>
+<li><a href="#orgd869630">三颗大包菜的分量</a></li>
+</ul>
+</div>
+</nav>
+
+<figure id="org802af24">
+<img src="https://s2.loli.net/2024/03/15/bUw5MqRz639pIHs.jpg" class="img ：height 50%" width="50%">
+
+</figure>
+<div id="outline-container-org28e4346" class="outline-2">
+<h2 id="org28e4346">书的香味</h2>
+<div class="outline-text-2" id="text-org28e4346">
+<p>
+好几天没吃有机娃娃菜了，思来想去，还是它在一大堆乱七八糟的食物中脱引而出。买完菜回来路上，看到一个摆着许多书的大摊子，支棱起来的简陋的棚子上面挂着一个牌子，醒目的写着：全场图书，买二本送三本。
+</p>
+
+<p>
+老实说，不是这个牌子，我今天是应该不会走过去的。我也一贯没觉得自己的热爱足以给我不加思考就不自觉行动的动力。如果我是因为热爱读书，喜欢看王小波的书，在白嫖完电子版之后我应该早就在书店买了精装版，而现在却是在一个图书大甩卖的街边小摊，而且很可能是盗版。开始写标题和日期的时候才发现，今天正好是315。
+</p>
+
+<p>
+就看书这个事，有必要多写几句。我不是一个爱看书的人，从我看过的书那少的可怜的数量就足以说明。但是走过路过书店，总是会不自觉看一眼，但又很少走进去。为数不多的进去书店的时候，也只是翻看翻看书皮，正过来看又反过来看，回忆起来真不知道自己当时是在干嘛。只记得，印刷书的油墨味道好闻，把书捧在手里的感觉巴适，还有把纸张翻页过去，手指摩擦纸面的触感，这些总在我看到书的时候不自觉的被调动起来。如此说来，我对书的兴趣从一开始就不是因为书的内容和书这个承载知识的载体本身，这个兴趣的源头极有可能是因为<a href="https://www.vandee.art/posts/2022-11-24-undefined/">无聊</a>。
+</p>
+</div>
+</div>
+<div id="outline-container-orgd869630" class="outline-2">
+<h2 id="orgd869630">三颗大包菜的分量</h2>
+<div class="outline-text-2" id="text-orgd869630">
+<p>
+买了时代三部曲和其他几本看过的觉得不错的就走了，一共140元。
+</p>
+
+<p>
+这六本还是有点沉的，大约是三颗大包菜的重量。四舍五入，一个时代，一个人的一生现在也就约等于三个大包菜。
+</p>
+
+<p>
+在那个书摊上，还有许多很有分量的书，比如：《穷查理宝典》、《纳瓦尔宝典》、中国四大名著、《白夜行》等东野圭吾小说，再就是儿童图书和一些畅销书。整个书摊大概三百本左右，如此分量，一个简陋的书摊架子足以，因为书摊架子只会不自觉的提供向上的支持力平衡书的重力，这对于铁架子加上厚木板的组合太轻松了。
+</p>
+
+<p>
+也因为书架不会看书，所以只能本能的、不自觉的提供材料的支持力和张力，感受到书本的物理重量；而我会看书，除了提供把书拿起来、翻页之外好像也没多少其他我这个材料本能的、不自觉的力量，况且三个大包菜的重量我已经觉得沉了。因此我远不如一个三百本也不费吹灰之力的书架。但在路过书店这个事上，我比书架做得好，我自觉的就像不自觉一样，这是书架做不到的。
+</p>
+
+<p>
+王小波的书放在书摊里不起眼，这个不起眼有三：和中国四大名著放一起的不起眼，和《穷查理宝典》、《纳瓦尔宝典》，还有和育儿、儿童书放一起的不起眼。四大名著自不用说，这是正统文学文化根基的分量，《穷查理宝典》这是教人致富的财富分量、名人典型的分量，育儿、儿童书、畅销书这是生活消遣、童趣的分量（今天书摊里看的人最多的也是这一块）。对于我这种没有看书“不自觉”的人来说，更不起眼，很可能以前在书店已经路过王小波的书许多次了。
+</p>
+
+<p>
+我今天买这些书的行为可能在我读了这些文字的时候就已经决定了，一个作家、文学创作者，跳出了艺术创作的体裁本身，这正是我现在在思考和践行的过程。我既想看看王小波的答案，更想找到新的自己的答案。
+</p>
+<blockquote>
+<p>
+<b>没有科学知识的人比有科学知识的人更容易犯错误；但没有艺术修养的人就没有这个缺点，他还有容易满足的好处。假如一个社会里，人们一点文学修养都没有，那么任何作品都会使他们满意。</b> 举个例子说， 美国人是不怎么读文学书的，一部《廊桥遗梦》就可以使他们如痴如狂。相反，假如在某个国家里，欣赏文学作品是他们的生活方式，那就只有最好的作品才能使他们得到满足。我想，法国最有资格算作这类国家。一部《情人》曾使法国为之轰动。大家都知道，这本书的作者是刚去世不久的杜拉斯。这本书有四个中文译本，其中最好的当属王道乾先生的译本。我总觉得读过了《情人》，就算知道了现代小说艺术；读过道乾先生的译笔，就算知道什么是现代中国的文学语言了。
+</p>
+
+<p>
+有位作家朋友对我说，她很喜欢《情人》那种自由的叙事风格。她以为《情人》是信笔写来的，是自由发挥的结果。我的看法则相反，我 认为这篇小说的每一个段落都经过精心的安排：第一次读时，你会感到极大的震撼；但再带着挑剔的眼光重读几遍，就会发现没有一段的安排经不起推敲。从全书第一句“我已经老了”，给人带来无限的沧桑感开 始，到结尾的一句“他说他爱她将一直爱到他死”，带来绝望的悲凉终，感情的变化都在准确的控制之下。 <b>叙事没有按时空的顺序展开，但有另一种逻辑作为线索，这种逻辑我把它叫做艺术——这种写法本身就是种无与伦比的创造</b> 。我对这件事很有把握，是因为我也这样写过：把小说的文件调入电脑，反复调动每一个段落，假如原来的小说足够好的话，逐渐就能找到这种线索；花上比写原稿多三到五倍的时间，就能得到一篇新小说，比旧的好得没法比。事实上，《情人》也确实是这样改过，一直改到改不动，才交给出版社。《情人》这种现代经典与以往小 说的不同之处，在于它需要更多的心血。我的作家朋友听了以后感觉有点泄气：这么写一本书，也不见得能多赚稿费，不是亏了吗？但我以为，我们一点都不亏。现在世界上已经有了杜拉斯，有了《情人》，这位作家和她的作品给我们一个范本，再写起来已经容易多了。 <b>假如没范本，让你凭空去创造这样一种写法，那才是最困难的事</b> ：六七十年代，法国有一批新小说作家，立意要改变小说的写法，作品也算是好 看，但和《情人》是没法比的。有了这样的小说，阅读才不算是过时的 陋习——任凭你有宽银幕、环绕立体声，看电影的感觉终归不能和读这 样的小说相比。
+</p>
+
+<p>
+引自“用一生来学习艺术”收录于《沉默的大多数》—王小波
+</p>
+</blockquote>
+
+<p>
+《黄金时代》、《白银时代》、《青铜时代》、《黑铁时代》，真想看看王小波写的这个时代。
+</p>
+
+<p>
+<a href="https://lizhi.turkyden.com">李志</a>被禁言了，《黄金时代》王小波被删减了，我们这个时代的最后是几颗大包菜不起眼的躺在书架上呢。
+</p>
+
+
+<figure id="orge9649d8">
+<img src="https://s2.loli.net/2024/03/15/yIuJ2pEOVnZ1MA7.jpg" class="img ：height 50%" width="50%">
+
+</figure>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> </div>]]></description>
+  <category><![CDATA[Essay]]></category>
+  <link>https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html</link>
+  <guid>https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html</guid>
+  <pubDate>Fri, 15 Mar 2024 14:26:00 +0800</pubDate>
+</item>
+<item>
+  <title><![CDATA[摇树枝的猴子]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org62a45e4">摇树枝的猴子</a></li>
+<li><a href="#org3be36de">开源的知识</a></li>
+<li><a href="#orgbb8db2e">幸福</a></li>
+<li><a href="#org125d27b">跬步与千里</a></li>
+</ul>
+</div>
+</nav>
+<p>
+我觉得自己是个不会种地的农民，总是赶不上节气。 —王小波《黄金时代》
+</p>
+
+
+<figure id="org78039dc">
+<img src="https://s2.loli.net/2024/03/03/GVe18fzdCjXF5Ra.jpg" class="img" width="50%" height="50%">
+
+</figure>
+<div id="outline-container-org62a45e4" class="outline-2">
+<h2 id="org62a45e4">摇树枝的猴子</h2>
+<div class="outline-text-2" id="text-org62a45e4">
+<blockquote>
+<p>
+这场访谈聊开后，许志远在猝不及防的问宁浩，你最大的弱点是什么呢？
+宁浩这才回答，&#x2026;但我觉得我怯懦，
+</p>
+
+<p>
+或许在这个意义价值普遍被消解的时代，荒诞与发疯已经成为常态，已经成为了人们一种自我保护的方式。
+</p>
+
+<p>
+在宁浩的办公室门前有一尊斗战胜佛像，对此他解释，每个人的人生都像孙悟空一样，走过一个被规范了的过程。
+</p>
+
+<p>
+最后他讲了一个猴子摇树枝的故事，有人曾经问宁浩你为什么拍电影，他说小时候老看见动物园里有一只猴子被关在笼子里，没事就晃树枝，他想知道为什么，意义是什么。过了几个月之后再去看，他发现那只猴子还在那晃树枝。宁浩突然明白这只猴子能怎么样呢，他觉得自己晃树枝晃得比别的猴子晃得好，它就瞬间产生了一个意义，就是它不晃树枝又做什么呢。那我们就是要去找到我们人生中的各种意义，拍拍电影，晃晃树枝。
+</p>
+
+<p>
+或许对于宁浩来说，如今拍电影就是在笼子里晃树枝。这让我想到红毯先生最后一幕，刘维持在封闭的大楼里，踩着平衡车来来回回兜圈子，搭上时代的车无意义的回旋，最重要的好像是学会站稳好了。
+</p>
+
+<p>
+来源：<a href="https://www.bilibili.com/video/BV1f4421A7yU/?share_source=copy_web&amp;vd_source=398bcc3ab9d37761117414d4da6caebe&amp;t=670">吃了这些真瓜，更懂《红毯先生》 【精准空降到 11:10】 </a>
+</p>
+</blockquote>
+
+<p>
+经常看到网上的这类话，大致意思是：人生或许本来就没有意义，是人类赋予了生命意义、追寻这个“没有意义的人生”就是意义、这个没有意义本身就是意义，诸如此类。
+</p>
+
+<p>
+在前几年我或许还会赞同一些，但现在只是不反对。混淆哲理和哲学是个老问题，在生活中问题不大，混为一谈甚至还有诸多好处，哲学的学术语义也逐渐被日常口语语义哲理所覆盖，古典哲学的内涵也早就演变成了分析哲学和语言哲学，如此说来也无可厚非。
+</p>
+
+<p>
+人生意义这个问题，就好像，一定体积的水被放在一个既定外形的容器内，
+哲理的意思是：水本来没有特别意义，装在瓶子里，有了容器，就有了形状，我们喝水，这个水于是有了被喝意义，人生也是如此。很显然这和哲学没有一点关系。
+</p>
+
+<p>
+我是物质决定意识的拥护者，
+</p>
+<blockquote>
+<p>
+不，我们身上没有任何东西可以逃过自然法则。假如真有那样的东西，那我们早该发现了。我们身上并没有违背事物自然表现的东西。整个现代科学，从物理学到化学，从生物学到神经科学，都在巩固我们的这一认知。这个困惑的解答在别处。当我们认为自己很自由的时候，我们确实做得到，因为我们的行为由身体内部的大脑决定，不受外部因素左右。但是自由并不意味着我们的行为不受自然规律的支配，而是说明自然规律通过大脑的运作来决定我们的行为。我们的自由决定，是我们大脑中数十亿个神经元相互作用的结果，其交互极为丰富，无比迅速。 <b>我们的抉择固然自由，但却不可能超出神经元的相互作用。</b> 这是否意味着当我做出决定的时候，那个决定的人就是“我”呢？ 对，当然是这样，难道“我”还能做出与我的神经元不同的决定吗？那也太荒谬了。 <b>正如7世纪荷兰哲学家斯宾诺莎（Baruch Spinoza ）极为清楚地认识到的那样，这二者是一回事。其实并没有“我”和“我大脑的神经元”之分，这两者本是一码事。一个人就是一个程序，复杂而又极其完备。</b>
+</p>
+
+<p>
+—卡洛·罗韦利《七堂极简物理课》
+</p>
+</blockquote>
+
+<p>
+笛卡尔的<a href="https://wangyurui.com/posts/wo-si-gu-wo-zai-9f4374ba">我思故我在</a>，现在仍然可以是人类的强心剂。我一直抱有一个观点：哲学唯物唯心的答案在我们找到外星人(不低于人类的高等文明)之后自然会有结论，内禀的矛盾还得参照系统外部。即便是物质决定的意识，我们人类所反应出的意识也只是宇宙里并不唯一的版本，只不过我们统治了地球的生态。我们在物质绝对规律（科学）所反馈的意识下，来演绎、归纳物质的规律，这本身从源头开始就是矛盾的，因此我也一直更愿意把这些称为“发现”而不是“发明”。
+</p>
+
+<p>
+康德的先验理论、黑格尔的绝对精神和形而上学放在现在一定是违背现代科学理论体系的，但谁又能完全否定物质就是不那个“神”呢？我们掌握了物质的绝对的全部奥秘就能掌控我们自己的人生，人类的文明么？犹太人第一个说不，薛定谔第二个。
+</p>
+
+<p>
+<b>不怀疑和否定存在，就无法肯定存在</b> 。作为物质来说，人类、人类文明必然是没有意义的（熵是老大），物质就是现代文明，现代科学的“神”，但臣服于物质的一定不是人类，人类也一定不会臣服于物质，因为“我思故我在”，因为在同一个物质体系中人类文明一直延续到了现在，因为人类的爱和非理性就是这个无秩序的物质世界带来秩序和无序的最大变数。
+</p>
+
+<p>
+许多生物都会繁殖、生殖，但只有人类说，爱。
+</p>
+
+<p>
+宁浩可能正处于笛卡尔怀疑自己的那个阶段，我很喜欢宁浩，很想再看到疯狂的石头、疯狂的赛车这样的作品。我们就是摇树枝的猴子，爱就完事了，毫无意义又怎样？只因为，我们存在。（并没有存在是意义本身的意思）
+</p>
+</div>
+</div>
+<div id="outline-container-org3be36de" class="outline-2">
+<h2 id="org3be36de">开源的知识</h2>
+<div class="outline-text-2" id="text-org3be36de">
+<blockquote>
+<p>
+这几天被收藏最多的链接之一，一定有这个飞书文档。
+</p>
+
+<p>
+一群年轻人用手工协作的方式，一砖一瓦的砌成了可能是中文互联网里最好的AI知识库，然后本着开源的理念把文档共享给所有人。
+</p>
+
+<p>
+说实话，这让我有点依稀感觉到维基百科的古典文化了，文档的主要创作者刚刚开了一场直播，讲他们是怎么打造这项宏大工程，以及在欠缺回报的预期下，为何这么多人愿意参与到共建行为里。
+</p>
+
+<p>
+在过去，这本来不会构成一个问题，因为互联网的起源，就始于一台主机与另一台主机的连接，任何信息的交换，都伴随着数据的上传和下载，上世纪九十年代马化腾和雷军作为志愿者主动维护的FidoNET，也承载着饱含热情的共享兴趣，再往后「做一个有种的男人」，也见证了BT与电驴的浪潮兴衰。
+</p>
+
+<p>
+商业化在某种程度上破坏了互联网的初衷，虽然未必应当批判市场的选择，但是利用而非填平信息鸿沟的做法泛滥起来，终究是让人失望的，就像OpenAI自己都还在研究Sora，关于如何精通Sora的付费课程已经齐刷刷的上市了，好笑的背后，其实充满了悲哀。
+</p>
+
+<p>
+所以看到年轻人赤手空拳的打破围栏，重新拽回「我为人人、人人为我」的互联网精神，让AI的知识得到普惠传递，这份拾光筑梦的本色，真的值得记录下来。
+</p>
+
+<p>
+来源：<a href="https://weibo.com/1560906700/O37SZek39">https://weibo.com/1560906700/O37SZek39</a>
+</p>
+</blockquote>
+
+<p>
+就是这个<a href="https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e">通往AGI之路-飞书文档</a> 了，再看看<a href="https://www.thepaper.cn/newsDetail_forward_137600">李一舟</a>。
+</p>
+
+<p>
+<a href="https://www.vandee.art/2023-12-06-learn-all-the-time.html">Learn All The Time</a> 里我提到了认知盈余，以及价值的一些思考。
+</p>
+
+<blockquote>
+<p>
+因此知识的交换，互联网信息的共享，认知盈余这种价值的形成是一定的。
+</p>
+
+<p>
+我相信那些固有价值一直都是还是存在的。也就是马克思所说的劳动、劳动品价值或者商品的使用价值。 <b>它们不应该在现在习以为常的资本和货币华丽耀眼的盛装舞蹈中被渐渐淡忘。知识和认知更是这样。</b> 并不是所有价值都能在货币里的得到应有的体现，也并不是所有价值都能够或应该参与货币的这场变装游戏，并不是所有的价值最后都会被披上货币的外衣。固有的价值，在其他对象化的形式之中，也一样会展现出它自身的价值。
+</p>
+</blockquote>
+
+<p>
+我认为真正的“知识”就应该是开源的，它是人类历史文明延续的结晶，有着自身固有的价值，不是个人和个体的体量可以承载的。
+</p>
+
+<p>
+<a href="https://www.thepaper.cn/newsDetail_forward_26530853">马斯克状告OpenAI，称自己被骗惨了，要求赔钱、开源</a>，看马斯克继续打怪。
+</p>
+</div>
+</div>
+<div id="outline-container-orgbb8db2e" class="outline-2">
+<h2 id="orgbb8db2e">幸福</h2>
+<div class="outline-text-2" id="text-orgbb8db2e">
+<p>
+<a href="https://1q43.blog/post/5322">幸福的积分 – 虹线</a>，这篇文章很长，我也没有读完，但很有价值。<a href="https://mp.weixin.qq.com/s/COs1bul0aCiMFAw4OT9q6Q">中国可能在经历一波“文艺复兴”</a>，九边最近也发了一篇。
+</p>
+
+<p>
+这两篇都和幸福有关，感兴趣的可以看看。
+</p>
+
+<p>
+这个话题太大，现在也没什么特别的想法，只觉得：假如说，人得到自己希求的东西就是幸福，那就言之成理。倘若说因为某件事是幸福的，所以我们就希求它，那就是错误的。
+</p>
+<blockquote>
+<p>
+罗素在讨论伦理问题时曾经指出，人人都希求幸福。假如说，人得到自己希求的东西就是幸福，那就言之成理。倘若说因为某件事是幸福的，所以我们就希求它，那就是错误的。谁也不是因为吃是幸福的才饿的呀。幸福的来源，就是不计苦乐、不计利弊、自然存在的需要，这种需要的种类、分量，都不是可以任意指定的。
+</p>
+
+<p>
+—王小波《沉默的大多数》
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org125d27b" class="outline-2">
+<h2 id="org125d27b">跬步与千里</h2>
+<div class="outline-text-2" id="text-org125d27b">
+<blockquote>
+<p>
+说起来，这是我的问题。我活在一个巨大的错觉里。我曾经以为大家达成了很多基本共识，但并没有。我曾经以为很多常识性的观念只有历史价值，但也不是。就像王小波的杂文，我一度觉得写得很有趣，但是内容都是老生常谈而已。我这么想也并非没有理由。当时整个社会对王小波的杂文都是一边倒地赞赏，但并没引发太大的争论。四平八稳的常识能引发什么争论呢？
+</p>
+
+<p>
+但是，现在如果再爆出《花拉子模信使问题》、《思维的乐趣》《积极的结论》这样的文章，就很可能引发争论，很多人就会不认可，甚至会骂。我猜想，以后有些年轻人再读王小波，甚至可能会受到思想上的震撼：原来还可以这样思考问题！
+我并没有贬低人家的意思。这是没有办法的事情，我们就是要不断发现常识，不断重申一些简单得不能再简单的道理，不断将老生常谈谈了又谈。王小波常读常新，已经灌过一百次的醍醐随时准备灌第一百零一次。有人可能会觉得这是原地打转，但要想保持原地打转，都需要付出艰巨的努力。这个过程就是西西弗斯推石头一样。它考验的不是智力。这不需要太高的智力，它考验的是耐心和勇气。大家都觉得中国式父母唠叨，但他们再唠叨也唠叨不过咱们的常识输出者。他们必须不停地说，不停地说，把同样的道理用不同方式说了又说。可是他们真的不能停下来。
+</p>
+
+<p>
+这让我想起《爱丽丝镜中奇缘》里，红皇后对爱丽丝说的一句话。她说：“在这个世界上，你必须不停地奔跑，才能保持在原地。”
+</p>
+
+<p>
+来源：<a href="https://mp.weixin.qq.com/s/IMCnW_6sZPIZlsFwj_QF6g">关于莫言的争论，让我有种巨大的荒谬感</a>
+</p>
+</blockquote>
+
+<p>
+也是看到王小波这三个字才看完的，作者中肯的态度也挺喜欢，
+</p>
+
+<p>
+“在这个世界上，你必须不停地奔跑，才能保持在原地。”这话，说的挺好。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> <a href="https://www.vandee.art/tag-thinking.html">Thinking</a> </div>]]></description>
+  <category><![CDATA[Ramble]]></category>
+  <category><![CDATA[Thinking]]></category>
+  <link>https://www.vandee.art/2024-03-03-a-Monkey-shaking-the-branch.html</link>
+  <guid>https://www.vandee.art/2024-03-03-a-Monkey-shaking-the-branch.html</guid>
+  <pubDate>Sun, 03 Mar 2024 14:41:00 +0800</pubDate>
+</item>
+<item>
+  <title><![CDATA[羊好可怜]]></title>
+  <description><![CDATA[
+<div id="outline-container-orgdfd2c0b" class="outline-2">
+<h2 id="orgdfd2c0b">羊好可怜</h2>
+<div class="outline-text-2" id="text-orgdfd2c0b">
+<p>
+最近爱上了家附近的一家羊肉粉，很还原贵阳的风味。羊肉片的薄厚适中，量也不多不少，粉快见底了，肉也差不多吃完，辣椒面更是香而不呛喉。这种凝结于劳动实践中的精确剂量，比任何公式都要准确，随手一抓每次我吃来都刚刚好。虽然这样同样我也是被“算计者”，却全然没有被大数据计算的那种厌烦感。
+</p>
+
+<p>
+吃了差不多有两个月了，本来每次都吃的香香的，全身暖和，直到今天。
+</p>
+
+<p>
+从地铁出来，走过两个红绿灯，直行500米之后，我和往常一样又点了一碗。正夹起一片羊肉，突然听到身后一个小女孩说：妈妈，妈妈，羊好可怜啊。妈妈没说话，然后是小女孩的重复。
+</p>
+
+<p>
+我没有回过头去看他们是不是还是点了一碗，也没有听清女孩妈妈最后说的什么，也许是她还是没想好怎么解释，也许是对店员的一个点头，可能是直接走远了所以听不到，可能是我注意力还是在香香的羊肉上选择性过滤了。我可以确定的是，她一定说了话，而我在一瞬间思考的空白之后，吃的还是挺香。
+</p>
+</div>
+</div>
+<div id="outline-container-org06f33f3" class="outline-2">
+<h2 id="org06f33f3">困扰</h2>
+<div class="outline-text-2" id="text-org06f33f3">
+<p>
+路上无数个关于善恶、佛教信仰、素食环保的问题相互纠结，后悔没仔细听听女孩妈妈是怎么回答的，这样我可能可以知道一个正确的答案或者排除一个错误的。不想清楚这个问题到不是很困扰我想以后小孩教育的事，最要紧的是这会直接影响我下一次吃粉的体验。我知道下一次我再吃的时候，一定又会再想这个问题。
+</p>
+
+<p>
+困扰我的不是人应不应该吃羊的事；也不是是不是吃羊了就是大恶人，不吃就又日行了一善，少吃了一片就又积了一德。因为凭我现在的道行是一定回答不了的，所以干脆先丢到一边。
+</p>
+
+<p>
+让我现在能困扰，又还能接着想想的是：我小时候究竟有没有问过这个问题（模糊的印象里我肯定说过）；为什么听到小女孩这个问题的时候，心里还是有犹豫。如果我是那个问题答案的任意一边，我都应该不会犹豫，我不知道我犹豫的是什么。我只想吃羊肉的时候还是香香的。
+</p>
+
+<p>
+这让我突然想到超市猪肉包装上的卡通猪logo、电梯里最近的猪肉广告，是不是其实他们还是会心存愧疚，要不然为什么要把这个东西画的这么可爱，好像那个健康快乐的猪的形象可以让消费者联想到这个猪肉很健康，让我们从开始就觉得吃着这个健康快乐的卡通猪是一个也会让很快乐的事，就像电梯广告里卡通猪说的：我吃的健康，肉味更香（画面是一个微笑的大猪脸）。
+</p>
+
+<p>
+小女孩的问题我可能会这样回答：我也这么认为，羊是真挺可怜的，你看替罪羔羊这个成语，羊也被用来祭祀和献祭。但《圣经》里也有说：“次日，约翰看见耶稣来到他那里，就说，看哪，神的羔羊，除去（或作背负）世人罪孽的。”（约翰福音1:29），同样也是基督教动物象征符号，象征耶稣及其追随者。
+</p>
+
+<p>
+我知道，这次我又会是局外人了。因为，虽然下一次我还会再想这个问题，我也还是会吃的很香。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> <a href="https://www.vandee.art/tag-局外人.html">局外人</a> </div>]]></description>
+  <category><![CDATA[Essay]]></category>
+  <category><![CDATA[局外人]]></category>
+  <link>https://www.vandee.art/2024-02-01-poor-sheep.html</link>
+  <guid>https://www.vandee.art/2024-02-01-poor-sheep.html</guid>
+  <pubDate>Thu, 01 Feb 2024 14:52:00 +0800</pubDate>
+</item>
+<item>
   <title><![CDATA[Learn All The Time]]></title>
   <description><![CDATA[
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org549236a">尝试维持两种相反的想法</a>
+<li><a href="#org52fbd00">尝试维持两种相反的想法</a>
 <ul>
-<li><a href="#org3e5f5d0">太极张三丰</a></li>
-<li><a href="#orga95021d">从事物之间的联系出发</a></li>
+<li><a href="#org7468d9d">太极张三丰</a></li>
+<li><a href="#orgc4d3be0">从事物之间的联系出发</a></li>
 </ul>
 </li>
-<li><a href="#org6a74926">认知盈余</a></li>
-<li><a href="#org6d75f10">Learn，learn，and learn</a></li>
-<li><a href="#orge8aa084">Reference</a></li>
+<li><a href="#org1a03133">认知盈余</a></li>
+<li><a href="#org1f5bf41">Learn，learn，and learn</a></li>
+<li><a href="#org3b3b149">Reference</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org549236a" class="outline-2">
-<h2 id="org549236a">尝试维持两种相反的想法</h2>
-<div class="outline-text-2" id="text-org549236a">
+<div id="outline-container-org52fbd00" class="outline-2">
+<h2 id="org52fbd00">尝试维持两种相反的想法</h2>
+<div class="outline-text-2" id="text-org52fbd00">
 <p>
 作家<a href="https://en.wikipedia.org/wiki/F._Scott_Fitzgerald">F·斯科特·菲茨杰拉德</a>（F. Scott Fitzgerald,小说《了不起的盖茨比》作者）谈什么是聪明的头脑：
 </p>
@@ -2650,9 +3083,9 @@ Source: <a href="https://click.convertkit-mail4.com/k0u7xn6xqnf6hdz6pdeu9h8w8p57
 如同<a href="https://zh.wikipedia.org/wiki/%E4%BC%8F%E7%88%BE%E6%B3%B0">伏尔泰</a>可能所说：我并不同意你的观点，但是我誓死捍卫你说话的权利。虽然<a href="https://www.douban.com/note/616832515/?_i=1838282i5YSKNh">不是伏尔泰原话</a>但不妨碍引用，借谁的口无妨。一位伟大的农夫和伟大的哲学家没有区别。
 </p>
 </div>
-<div id="outline-container-org3e5f5d0" class="outline-3">
-<h3 id="org3e5f5d0">太极张三丰</h3>
-<div class="outline-text-3" id="text-org3e5f5d0">
+<div id="outline-container-org7468d9d" class="outline-3">
+<h3 id="org7468d9d">太极张三丰</h3>
+<div class="outline-text-3" id="text-org7468d9d">
 <p>
 这既是一种包容的人生态度，更是让思维保持活跃和客观的修行的一种实际方法。这当然不是说，要精神分裂，每时每刻都和相反的想法做斗争，而是共存。**让事物的本质从不同角度，同时呈现在思维当中，这绝对可以说是一种修行**。就像张三丰悟出的太极，它无形又包容万千变化，这是自我与万物的变化保持的微妙平衡，是自我与外界对话，信息交换的微妙平衡。这真是人类与自然最完美的关系的一种了。
 </p>
@@ -2698,9 +3131,9 @@ Source: <a href="https://click.convertkit-mail4.com/k0u7xn6xqnf6hdz6pdeu9h8w8p57
 </p>
 </div>
 </div>
-<div id="outline-container-orga95021d" class="outline-3">
-<h3 id="orga95021d">从事物之间的联系出发</h3>
-<div class="outline-text-3" id="text-orga95021d">
+<div id="outline-container-orgc4d3be0" class="outline-3">
+<h3 id="orgc4d3be0">从事物之间的联系出发</h3>
+<div class="outline-text-3" id="text-orgc4d3be0">
 <p>
 扯远了一点，回到开头说的太极的修行。
 </p>
@@ -2796,9 +3229,9 @@ Source: <a href="https://click.convertkit-mail4.com/k0u7xn6xqnf6hdz6pdeu9h8w8p57
 </div>
 </div>
 </div>
-<div id="outline-container-org6a74926" class="outline-2">
-<h2 id="org6a74926">认知盈余</h2>
-<div class="outline-text-2" id="text-org6a74926">
+<div id="outline-container-org1a03133" class="outline-2">
+<h2 id="org1a03133">认知盈余</h2>
+<div class="outline-text-2" id="text-org1a03133">
 <p>
 在<a href="https://wangyurui.com/posts/leng-jing-tong-xun-no-103-clay-shirky-a45f1c03">棱镜通讯 No . 103 Clay Shirky - 太隐</a>这篇推送里，看到了“认知盈余”这个概念，挺有意思。
 </p>
@@ -2907,9 +3340,9 @@ After a certain point, wealth and power cease to be the taut  constraints on one
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org6d75f10" class="outline-2">
-<h2 id="org6d75f10">Learn，learn，and learn</h2>
-<div class="outline-text-2" id="text-org6d75f10">
+<div id="outline-container-org1f5bf41" class="outline-2">
+<h2 id="org1f5bf41">Learn，learn，and learn</h2>
+<div class="outline-text-2" id="text-org1f5bf41">
 <p>
 最近都在说查理·芒格的格言和它的故事。与其说芒格爱读书，不如说是爱学习和思考。
 </p>
@@ -3015,9 +3448,9 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 </p>
 </div>
 </div>
-<div id="outline-container-orge8aa084" class="outline-2">
-<h2 id="orge8aa084">Reference</h2>
-<div class="outline-text-2" id="text-orge8aa084">
+<div id="outline-container-org3b3b149" class="outline-2">
+<h2 id="org3b3b149">Reference</h2>
+<div class="outline-text-2" id="text-org3b3b149">
 <ul class="org-ul">
 <li><a href="https://book.douban.com/subject/33424487/">时间的秩序</a></li>
 <li><a href="https://wangyurui.com/posts/leng-jing-tong-xun-no-103-clay-shirky-a45f1c03">棱镜通讯 No . 103 Clay Shirky - 太隐</a></li>
@@ -3032,6 +3465,140 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
   <link>https://www.vandee.art/2023-12-06-learn-all-the-time.html</link>
   <guid>https://www.vandee.art/2023-12-06-learn-all-the-time.html</guid>
   <pubDate>Wed, 06 Dec 2023 21:33:00 +0800</pubDate>
+</item>
+<item>
+  <title><![CDATA[富有的概率]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6fd71cd">薛定谔的富有</a></li>
+<li><a href="#org32a6343">提升自己是最大的储蓄</a></li>
+<li><a href="#orgc53da52">Reference</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org6fd71cd" class="outline-2">
+<h2 id="org6fd71cd">薛定谔的富有</h2>
+<div class="outline-text-2" id="text-org6fd71cd">
+<p>
+做梦中彩票这种事，我天天也在想，正好这两天看到了这些，挺有共鸣。<a href="https://letters.geekplux.com/51/?ref=geekplux-lab-newsletter">为什么要慢慢变富</a>、<a href="https://www.bilibili.com/video/BV14c411u7S4/">【绝对珍藏】桥水创始人瑞·达利欧讲解 &rsquo;不断变化的世界秩序&rsquo;动画完整版 40分钟【中英精校】<sub>哔哩哔哩</sub><sub>bilibili</sub></a>
+</p>
+
+<p>
+从经济学角度来思考问题，确实可以让现实的问题简单一些，它不像哲学那样弯弯曲曲，直接的经济学模型带来直接的计算结果。
+</p>
+
+<p>
+<a href="https://letters.geekplux.com/51/?ref=geekplux-lab-newsletter">为什么要慢慢变富</a>里作者说到：
+</p>
+
+<blockquote>
+<p>
+fortune 有幸运也有财富的意思，实际上这两个词也基本划等号。
+</p>
+
+<p>
+&#x2026;
+</p>
+
+<p>
+众所周知我们的人生就是一场概率的游戏，这个说法我都说过无数次了。天降横财、一夜荣华、时来运转的概率和买彩票差不多。相对于这些不确定的事情，我们能掌握的可能是那些收益率低于 5% 的事情。这些事情可大可小，可以跟金融相关也可以跟自身提升相关，总之有正向收益的事情，你都可以把它理解成**增加确定性**的事情，也即增加概率的事情。比如：&#x2026;
+</p>
+
+<p>
+&#x2026;
+</p>
+
+<p>
+如果把变富看作一场赌博，那么我们应该赌概率大的事情，而不是收益率大的事情，赌长期的事情，而不是短期的事情。其实对于每个普通人，只要不去做一些突破自己认知但又完全无法衡量风险的事情，基本上是不会回退的。那么，你变富就是一件确定的事情。也许选择比努力重要，但努力决定了确定性的大小。
+</p>
+
+<p>
+所以，慢慢变富其实是一种复利，既然是复利，那它的增长就是指数型的。只要我们每天还在进步，那我们缺的就不是那些让人焦虑的快速致富的机会，而是时间。一口吃不成胖子，但一口一口吃，总有一天会胖的。我们也许要做的是尽量延长自己玩这个长期游戏的时间。
+</p>
+
+<p>
+&#x2026;
+</p>
+
+<p>
+很大程度上，变富实际上是认知在增长，也许等我们认知水平到了一定程度，财富自然而然就来了。而且，这个过程会是非常有趣的，会是一种享受，持续的增长会释放内啡肽，过快的刺激只会带来多巴胺。
+</p>
+</blockquote>
+
+<p>
+fortune 有幸运也有财富的意思，实际上这两个词也基本划等号。许多复杂的谜题的答案，往往就是题面本身。
+</p>
+
+<p>
+随着了解初步的量子力学、决定论、宇宙目的论等概念，我逐渐对一些观点有了倾向性：
+</p>
+
+<ul class="org-ul">
+<li>对于生命本身而言，它确实可以说是有目的性的，细胞分裂是你无法阻止的生命的脉动，贪婪的基因其实只有一个目的，让自己无限复制下去。但对于宇宙和物质而言，或许就是回到大爆炸的原点，无限膨胀再坍塌、无限收束、压缩。还有在诺兰电影<a href="https://movie.douban.com/subject/30444960/">信条</a>里被大家熟知的热力学第二定律，熵增加原理。</li>
+<li>每时每刻发生的事情，都是概率。用这种极其不确定的概念来体会现实中看似确定发生的事情，挺美妙的。最近还下单了个龟壳，学学周文王。**在不确定性中寻求希望中的确定性**，也就是人类一直在做的事情。</li>
+</ul>
+
+<p>
+所以其实每个人都有富有的可能性，只是你还没有到达“富有态”🤣，可能性的大小不一样罢了。我们应该做的也是其实能做到的，就是增加这种可能性的大小。
+</p>
+</div>
+</div>
+<div id="outline-container-org32a6343" class="outline-2">
+<h2 id="org32a6343">提升自己是最大的储蓄</h2>
+<div class="outline-text-2" id="text-org32a6343">
+<p>
+<b>很大程度上，变富实际上是认知在增长</b> ，也许等我们认知水平到了一定程度，财富自然而然就来了。
+</p>
+
+<p>
+我一直很赞同这个观点。之前看到一句话：你只能赚到你认知范围以内的钱，也是一个意思。fortune，真正的富有一定是两方面的：财富富有和精神富有，也真就和字面一样，是种幸运。应该没有人会讨厌活着拒绝真正的&rsquo;‘富有“，但正如罗翔在<a href="https://www.bilibili.com/video/BV1j84y1D7pP">【麦家x罗翔x衣戈猜想】人生海海，错了再来</a> 里所说，正如一个智者所说：名利，它可能追逐的，就是那些并不在乎它的人。
+</p>
+
+<p>
+富有从来不是真正富有的人本来的目的，它是伴随的一个概率。该有的都有了的时候，你想不富有其实也挺难的，名利会追逐你，甩都甩不掉，甚至反过来吞噬你。当所有的导向富有的概率事件都发生了的时候，最后那一点别人没有的”运气“，才是fortune真正到来的时候。当然这个运气，也可以说成是你的实力、命运，或者缺少这个运气的人的抱怨和忌妒。
+</p>
+
+<p>
+<b>提升自己就是最大的人生储蓄，最大的财富。</b> 当然富有了之后，它是真理，富有之前，它是一坨shit。
+</p>
+
+<p>
+瑞达利欧的《原则》，看了一点开头就一直放着了，现在确实还看不懂。<a href="https://www.bilibili.com/video/BV14c411u7S4/">【绝对珍藏】桥水创始人瑞·达利欧讲解 &rsquo;不断变化的世界秩序&rsquo;动画完整版 40分钟【中英精校】<sub>哔哩哔哩</sub><sub>bilibili</sub></a>里提到的经济周期，宏观的经济运行规律，是从历史的不确定性中找到确定性，瑞达利欧总结出这些，称作原则。
+</p>
+
+<p>
+但历史的进程和拐点，往往来自于那些不确定性，往往是这些不确定的人做出的不确定的事带来新的稳定与秩序。乔布斯不去”剽窃“施乐的图形界面，就不会有现在的苹果、比尔·盖茨不去接着”剽窃“苹果也不会有现在的微软、余华也想不到自己找了一个文化馆的工作到后来写出了《活着》、爱因斯坦质疑牛顿经典力学提出相对论、马云去了一趟美国回来忽悠了一帮朋友创建了阿里。
+</p>
+
+<p>
+你以为我接下来会说，所以我们要向上面说的那些人那样啥的啥的，并不是，这些历史的结果和他们并没有什么绝对的联系。
+</p>
+
+<p>
+我今天一出门，无非两个结果，出太阳了，还是出太阳了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc53da52" class="outline-2">
+<h2 id="orgc53da52">Reference</h2>
+<div class="outline-text-2" id="text-orgc53da52">
+<ul class="org-ul">
+<li><a href="https://letters.geekplux.com/51/?ref=geekplux-lab-newsletter">为什么要慢慢变富</a></li>
+<li><a href="https://www.bilibili.com/video/BV14c411u7S4/">【绝对珍藏】桥水创始人瑞·达利欧讲解 &rsquo;不断变化的世界秩序&rsquo;动画完整版 40分钟【中英精校】<sub>哔哩哔哩</sub><sub>bilibili</sub></a></li>
+<li><a href="https://www.thepaper.cn/newsDetail_forward_24958915">作家余华已死，网红余华活着</a></li>
+</ul>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-thinking.html">Thinking</a> <a href="https://www.vandee.art/tag-essay.html">Essay</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
+  <category><![CDATA[Thinking]]></category>
+  <category><![CDATA[Essay]]></category>
+  <category><![CDATA[Ramble]]></category>
+  <link>https://www.vandee.art/2023-11-20-get-rich-slow.html</link>
+  <guid>https://www.vandee.art/2023-11-20-get-rich-slow.html</guid>
+  <pubDate>Mon, 20 Nov 2023 14:54:00 +0800</pubDate>
 </item>
 </channel>
 </rss>

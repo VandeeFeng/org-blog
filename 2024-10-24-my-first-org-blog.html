@@ -7,8 +7,8 @@
       type="application/rss+xml"
       href="https://www.vandee.art/rss.xml"
       title="RSS feed for https://www.vandee.art/">
-<title>我的第一个 org 博客</title>
-<meta property="og:title" content="我的第一个 org 博客">
+<title>我的第一篇 org 博客</title>
+<meta property="og:title" content="我的第一篇 org 博客">
 <meta property="og:type" content="article" />
 <meta property="og:description" content="形式和内容一直是分不开的，但形式对我来说早就变得越来越不重要。我不敢说自己现在已经到了一个什么特别的境界，但每天我都能感受到我和自然界，万物之间的交融越来越自然了。">
 <meta property="og:url" content="https://www.vandee.art/2024-10-24-my-first-org-blog.html">
@@ -50,10 +50,10 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">24 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一个 org 博客</a></h1>
-<div id="outline-container-org24bff1b" class="outline-2">
-<h2 id="org24bff1b">一</h2>
-<div class="outline-text-2" id="text-org24bff1b">
+<div class="post-date">24 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a></h1>
+<div id="outline-container-org2189d71" class="outline-2">
+<h2 id="org2189d71">一</h2>
+<div class="outline-text-2" id="text-org2189d71">
 <p>
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 </p>
@@ -79,15 +79,15 @@
 </p>
 
 
-<figure id="org9ba4cc3">
+<figure id="org59cd671">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png" alt="org-blog" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-orgbd5782a" class="outline-2">
-<h2 id="orgbd5782a">二</h2>
-<div class="outline-text-2" id="text-orgbd5782a">
+<div id="outline-container-org64a8161" class="outline-2">
+<h2 id="org64a8161">二</h2>
+<div class="outline-text-2" id="text-org64a8161">
 <p>
 无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 </p>
@@ -109,8 +109,66 @@
 </p>
 
 <p>
-准备整理整理，陆续发在新博客里。
+积累和理论在平常可能体现不出区别，但同样的事情在这些的基础之上的表达就是会更准确。就像上面我的那段话，看看有学问的人是怎么表达的：
 </p>
+<blockquote>
+<p>
+在远古时期，大脑中所有负责感官的皮质，都跟负责记忆的海马体直接相连。但是随着人类进化，大脑皮质不断折叠，复杂化，其他感觉皮质跟海马体的路径被拉长了，只有一种感官始终保持不变。哪种感官呢？答案是：嗅觉。
+</p>
+
+<p>
+所以，从某种程度来说，嗅觉跟记忆的联系是最为密切的。你一定有过这种经历：闻到某种气味，突然像打开了一道开关，大脑开始回放起一系列对应的画面，纤毫毕现 —— 这就是嗅觉的力量。
+</p>
+
+<p>
+最经典的例子，就是普鲁斯特在《追忆似水年华》里面提到品尝到童年的小蛋糕时的感受了：
+</p>
+
+<p>
+即使人亡物毁，久远的往事了无陈迹，唯独气味和滋味虽说更脆弱却更有生命力；虽说更虚幻却更经久不散，更忠贞不矢，它们仍然对依稀往事寄托着回忆、期待和希望，它们以几乎无从辨认的蛛丝马迹，坚强不屈地支撑起整座回忆的巨厦。
+</p>
+
+<p>
+Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w</a>
+</p>
+</blockquote>
+
+<p>
+准备整理整理之前的博客文章，陆续发在新博客里。
+</p>
+
+<p>
+之前的 markdwon to org 的脚本又派上用场了：
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">defun</span> <span style="color: #c678dd;">my-markdown-to-org</span> <span style="color: #c678dd;">()</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">interactive</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">save-excursion</span>
+    <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#26631;&#39064;&#20026;Org-mode&#26631;&#39064;</span>
+    <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #51afef;">while</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"^\s*</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">#+</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;"> </span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">.*</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">"</span> nil t<span style="color: #a9a1e1;">)</span>
+      <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">let</span> <span style="color: #51afef;">(</span><span style="color: #c678dd;">(</span>level <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">length</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+            <span style="color: #c678dd;">(</span>title1 <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">concat</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">make-string</span> level ?*<span style="color: #98be65;">)</span> <span style="color: #98be65;">" "</span> title1<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#38142;&#25509;&#20026;Org-mode&#38142;&#25509;,&#20294;&#26159;&#36339;&#36807;&#22270;&#29255;&#38142;&#25509;</span>
+  <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">while</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"\\[</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">.*?</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">\\](</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">.*?</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">)"</span> nil t<span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #51afef;">let</span> <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">(</span>title <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+          <span style="color: #51afef;">(</span>url <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span>
+      <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">unless</span> <span style="color: #51afef;">(</span><span style="color: #51afef;">and</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">string-match</span> <span style="color: #98be65;">"</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">jpeg</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">|</span><span style="color: #98be65;">png</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">|</span><span style="color: #98be65;">svg</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">"</span> url<span style="color: #c678dd;">)</span>
+                   <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">string-match</span> <span style="color: #98be65;">"https"</span> url<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+        <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">format</span> <span style="color: #98be65;">"[[%s][%s]]"</span> url title<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#20195;&#30721;&#22359;&#20026;Org-mode&#20195;&#30721;&#22359;</span>
+  <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">while</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"^```"</span> nil t<span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #51afef;">if</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">looking-back</span> <span style="color: #98be65;">"^```"</span><span style="color: #a9a1e1;">)</span>
+        <span style="color: #a9a1e1;">(</span><span style="color: #51afef;">progn</span>
+          <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #98be65;">"#+begin_src"</span><span style="color: #51afef;">)</span>
+          <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"^```"</span> nil t<span style="color: #51afef;">)</span>
+          <span style="color: #51afef;">(</span><span style="color: #51afef;">if</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">looking-back</span> <span style="color: #98be65;">"^```"</span><span style="color: #c678dd;">)</span>
+              <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #98be65;">"#+end_src"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
 </div>
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-blog.html">Blog</a> </div></div>

@@ -1,4 +1,4 @@
-#+title: 我的第一个 org 博客
+#+title: 我的第一篇 org 博客
 #+date: <2024-10-24 15:04>
 #+description: 形式和内容一直是分不开的，但形式对我来说早就变得越来越不重要。我不敢说自己现在已经到了一个什么特别的境界，但每天我都能感受到我和自然界，万物之间的交融越来越自然了。
 #+filetags: Blog
@@ -31,4 +31,47 @@
 
 回顾了一下这几年写的东西，那些记录的点滴穿珠成线，就像在漆黑无边的宇宙里，一个个闪光的思维点按照自然本身的秩序和规律联结在一起，一直延伸到现在。
 
-准备整理整理，陆续发在新博客里。
+积累和理论在平常可能体现不出区别，但同样的事情在这些的基础之上的表达就是会更准确。就像上面我的那段话，看看有学问的人是怎么表达的：
+#+begin_quote
+在远古时期，大脑中所有负责感官的皮质，都跟负责记忆的海马体直接相连。但是随着人类进化，大脑皮质不断折叠，复杂化，其他感觉皮质跟海马体的路径被拉长了，只有一种感官始终保持不变。哪种感官呢？答案是：嗅觉。
+
+所以，从某种程度来说，嗅觉跟记忆的联系是最为密切的。你一定有过这种经历：闻到某种气味，突然像打开了一道开关，大脑开始回放起一系列对应的画面，纤毫毕现 —— 这就是嗅觉的力量。
+
+最经典的例子，就是普鲁斯特在《追忆似水年华》里面提到品尝到童年的小蛋糕时的感受了：
+
+    即使人亡物毁，久远的往事了无陈迹，唯独气味和滋味虽说更脆弱却更有生命力；虽说更虚幻却更经久不散，更忠贞不矢，它们仍然对依稀往事寄托着回忆、期待和希望，它们以几乎无从辨认的蛛丝马迹，坚强不屈地支撑起整座回忆的巨厦。
+
+Source: https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w
+#+end_quote
+
+准备整理整理之前的博客文章，陆续发在新博客里。
+
+之前的 markdwon to org 的脚本又派上用场了：
+#+begin_src emacs-lisp
+(defun my-markdown-to-org ()
+  (interactive)
+  (save-excursion
+    ;; 转换Markdown标题为Org-mode标题
+    (goto-char (point-min))
+    (while (re-search-forward "^\s*\\(#+\\) \\(.*\\)" nil t)
+      (let ((level (length (match-string 1)))
+            (title1 (match-string 2)))
+        (replace-match (concat (make-string level ?*) " " title1)))))
+  ;; 转换Markdown链接为Org-mode链接,但是跳过图片链接
+  (goto-char (point-min))
+  (while (re-search-forward "\\[\\(.*?\\)\\](\\(.*?\\))" nil t)
+    (let ((title (match-string 1))
+          (url (match-string 2)))
+      (unless (and (string-match "\\(jpeg\\|png\\|svg\\)" url)
+                   (string-match "https" url))
+        (replace-match (format "[[%s][%s]]" url title)))))
+  ;; 转换Markdown代码块为Org-mode代码块
+  (goto-char (point-min))
+  (while (re-search-forward "^```" nil t)
+    (if (looking-back "^```")
+        (progn
+          (replace-match "#+begin_src")
+          (re-search-forward "^```" nil t)
+          (if (looking-back "^```")
+              (replace-match "#+end_src"))))))
+#+end_src
