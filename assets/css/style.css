@@ -532,10 +532,6 @@ tr:nth-child(even) {
         padding: 8px;
     }
     
-    ul, ol {
-        padding-left: 20px; // Reduce left padding for lists on mobile
-    }
-    
     li {
         margin-bottom: 0.5em; // Add some vertical space between list items
     }
@@ -547,8 +543,14 @@ img {
     border-radius: 3px;
 }
 
-// Add this new rule for lists
+
 ul, ol {
     word-wrap: break-word;
     overflow-wrap: break-word;
+}
+
+li {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all; 
 }
