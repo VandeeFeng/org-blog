@@ -526,6 +526,9 @@ tr:nth-child(even) {
     
     table {
         font-size: 14px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
     
     td, th {
