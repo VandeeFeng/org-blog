@@ -541,10 +541,10 @@ tr:nth-child(even) {
         padding: 8px;
     }
     ul, ol {
-        padding-left: 20px; // Reduced from 20px
+        padding-left: 25px; // Reduced from 20px
+        margin-bottom: 0.5em;
     }
     li {
-        margin-bottom: 0.5em;
         overflow-wrap: break-word;
         word-wrap: break-word;
         word-break: break-all; 
@@ -561,6 +561,7 @@ img {
 ul, ol {
     word-wrap: break-word;
     overflow-wrap: break-word;
+    margin-bottom: 0.5em;
 }
 
 li {
