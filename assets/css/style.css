@@ -530,13 +530,24 @@ tr:nth-child(even) {
         overflow-x: auto;
         white-space: nowrap;
     }
+
+    table th,
+    table td {
+        font-size: 12px; // Ensure consistent font size on mobile
+        padding: 6px;
+    }
     
     td, th {
         padding: 8px;
     }
-    
+    ul, ol {
+        padding-left: 10px; // Reduced from 20px
+    }
     li {
-        margin-bottom: 0.5em; // Add some vertical space between list items
+        margin-bottom: 0.5em;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all; 
     }
 }
 
@@ -555,5 +566,7 @@ ul, ol {
 li {
     overflow-wrap: break-word;
     word-wrap: break-word;
-    word-break: break-all; 
+    word-break: break-all;
 }
+
+
