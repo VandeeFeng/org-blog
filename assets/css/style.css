@@ -499,11 +499,16 @@ tr:nth-child(even) {
     body {
         font-size: 16px;
         line-height: 1.5;
-        padding: 10px;
+        padding: 15px; // 增加到15px
         max-width: 100%;
         width: 100%;
+        margin: 0 auto;
     }
-    
+    #content {
+        max-width: 92%; // 或者使用具体像素值，如 540px
+        margin: 0 auto;
+        padding: 0 10px;
+    }
     header h1 {
         font-size: 24px;
     }
@@ -557,6 +562,12 @@ tr:nth-child(even) {
         word-wrap: break-word;
         word-break: break-all; 
     }
+    // 调整文章内容的边距
+    p, blockquote, .org-src-container, table {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
 }
 
 img {
@@ -577,5 +588,4 @@ li {
     word-wrap: break-word;
     word-break: break-all;
 }
-
 
