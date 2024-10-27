@@ -142,10 +142,10 @@ server {
 
 最后放图：
 
-#+attr_html: :alt  :class img :width 60% :height 60
+#+attr_html: :alt  :class img :width 60% :height 60%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png]]
 
-#+attr_html: :alt  :class img :width 60% :height 60
+#+attr_html: :alt  :class img :width 60% :height 60%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png]]
 
 * 小结
