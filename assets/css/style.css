@@ -316,6 +316,14 @@ tr:nth-child(even) {
     content: none;
 }
 
+.org-src-container pre.src-lisp::before {
+    content: "lisp";
+}
+
+.org-src-container pre.src-emacs-lisp::before {
+    content: "emacs-lisp";
+}
+
 .org-src-container pre.src-bash::before {
     content: "bash";
 }
