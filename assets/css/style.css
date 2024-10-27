@@ -499,16 +499,20 @@ tr:nth-child(even) {
     body {
         font-size: 16px;
         line-height: 1.5;
-        padding: 15px; // 增加到15px
+        padding: 15px;
         max-width: 100%;
         width: 100%;
-        margin: 0 auto;
+        margin: 0; // 移除 auto，因为我们要用 content 来控制居中
+        padding: 0; // 移除 body 的内边距，改由 content 来控制
     }
+
     #content {
-        max-width: 92%; // 或者使用具体像素值，如 540px
-        margin: 0 auto;
-        padding: 0 10px;
+        max-width: 95%;
+        margin: 0 auto; // 这个保持不变
+        padding: 15px; // 统一使用相同的内边距
+        box-sizing: border-box; // 确保 padding 不会导致宽度溢出
     }
+
     header h1 {
         font-size: 24px;
     }
@@ -588,4 +592,5 @@ li {
     word-wrap: break-word;
     word-break: break-all;
 }
+
 
