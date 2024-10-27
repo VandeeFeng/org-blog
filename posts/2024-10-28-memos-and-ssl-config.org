@@ -88,10 +88,8 @@ https://your_server_ip:7002
 默认账号密码：admin/123456
 #+end_src
 
-#+attr_html: :alt :class img ：width 30% :height 30%
-[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/certd.png]]
 
-按照官方文档，五分钟就生成了 SSL 证书，然后 copy 到 VPS 里，在 Nginx 设置 ssl_certificate 的文件路径。
+按照官方文档，五分钟就生成了 SSL 证书，然后 copy 到 VPS 里，在 Nginx 设置 ~ssl_certificate~ 的文件路径。
 
 Nginx 的配置：
 #+begin_src
