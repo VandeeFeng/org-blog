@@ -95,9 +95,8 @@ Nginx 的配置：
 #+begin_src
 server {
 
-
   listen 80;
-  server_name memos.vandee.art;
+  server_name your_domain_or_server;
 
   # 在这里重定向HTTP到HTTPS
   return 301 https://$host$request_uri;
@@ -106,7 +105,7 @@ server {
 
 server {
   listen 443 ssl;
-  server_name memos.vandee.art;
+  server_name your_domain_or_server;
 
   ssl_certificate /your/path/to/fullchain.pem;  # 替换为你的证书路径
   ssl_certificate_key /your/path/to/privkey.pem;  # 替换为你的私钥路径
