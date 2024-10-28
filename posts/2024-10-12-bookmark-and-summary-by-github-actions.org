@@ -16,11 +16,11 @@
 作者的主要思路：
 
 #+begin_quote
-为了解决这些问题，我建立了一个新的存储库 [bookmark-summary](https://github.com/jerrylususu/bookmark-summary)。这个存储库可以视为现有书签存储库的辅助数据，其中包含了新增书签的 Markdown 格式全文、列表摘要、一句话总结，和现有存储库之间通过 Github Actions 联动。其工作原理如下：
+为了解决这些问题，我建立了一个新的存储库 [[https://github.com/jerrylususu/bookmark-summary][bookmark-summary]]。这个存储库可以视为现有书签存储库的辅助数据，其中包含了新增书签的 Markdown 格式全文、列表摘要、一句话总结，和现有存储库之间通过 Github Actions 联动。其工作原理如下：
 
 1. 我通过书签插件，在现有的书签存储库中新增了一个条目
 
-2. 代码提交到主干，触发名为 `summarize` 的 Github Actions（[yml 工作流文件](https://github.com/jerrylususu/bookmark-collection/blob/main/.github/workflows/bookmark_summary.yml)）
+2. 代码提交到主干，触发名为 `summarize` 的 Github Actions（[[https://github.com/jerrylususu/bookmark-collection/blob/main/.github/workflows/bookmark_summary.yml][yml 工作流文件]]）
 
 3. Github Actions 执行，首先 checkout 书签存储库和摘要存储库，然后执行
 
@@ -28,10 +28,10 @@
 
    1. 首先解析书签 README.md 文件，找到最近新增的条目标题和 URL
    2. 将 URL 保存到 Wayback Machine
-   3. 输入 URL，使用 [jina reader](https://jina.ai/reader/) API 获取网址的 Markdown 全文，并保存到 `YYYYMM/{title}_raw.md`
-   4. 输入 URL，使用 LLM 生成列表摘要（prompt 在 `summarize_text` 函数 [link](https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80)）
+   3. 输入 URL，使用 [[https://jina.ai/reader/][jina reader]] API 获取网址的 Markdown 全文，并保存到 `YYYYMM/{title}_raw.md`
+   4. 输入 URL，使用 LLM 生成列表摘要（prompt 在 `summarize_text` 函数 [[https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80][link]]）
    5. 输入列表摘要，使用 LLM 生成一句话总结
-   6. 将列表摘要和一句话总结保存到 `YYYYMM/{title}.md`（[效果示例](https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md)）
+   6. 将列表摘要和一句话总结保存到 `YYYYMM/{title}.md`（[[https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md][效果示例]]）
    7. 更新摘要存储库的 README.md，增加到摘要文件的链接
 
 4. Github Actions 提交变更到摘要存储库
@@ -256,11 +256,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 #+end_src
 
 * 从GitHub书签到页面
-
-
 
 突然想起来了之前的[[https://www.vandee.art/posts/2024-04-29-vandee-clip/][clip]]，这两个整合到一起正好。于是进一步修改 ~process_changes.py~ 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 ~index.md~ ，这是现在的保存书签 - AI总结 - clip页面全流程：
 

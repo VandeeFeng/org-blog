@@ -55,14 +55,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org96e26ec">GitHub 书签</a></li>
-<li><a href="#org6ff2998">从GitHub书签到页面</a></li>
+<li><a href="#org1793a59">GitHub 书签</a></li>
+<li><a href="#org4c033fa">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org96e26ec" class="outline-2">
-<h2 id="org96e26ec">GitHub 书签</h2>
-<div class="outline-text-2" id="text-org96e26ec">
+<div id="outline-container-org1793a59" class="outline-2">
+<h2 id="org1793a59">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org1793a59">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -81,13 +81,13 @@
 
 <blockquote>
 <p>
-为了解决这些问题，我建立了一个新的存储库 [bookmark-summary](<a href="https://github.com/jerrylususu/bookmark-summary">https://github.com/jerrylususu/bookmark-summary</a>)。这个存储库可以视为现有书签存储库的辅助数据，其中包含了新增书签的 Markdown 格式全文、列表摘要、一句话总结，和现有存储库之间通过 Github Actions 联动。其工作原理如下：
+为了解决这些问题，我建立了一个新的存储库 <a href="https://github.com/jerrylususu/bookmark-summary">bookmark-summary</a>。这个存储库可以视为现有书签存储库的辅助数据，其中包含了新增书签的 Markdown 格式全文、列表摘要、一句话总结，和现有存储库之间通过 Github Actions 联动。其工作原理如下：
 </p>
 
 <ol class="org-ol">
 <li>我通过书签插件，在现有的书签存储库中新增了一个条目</li>
 
-<li>代码提交到主干，触发名为 `summarize` 的 Github Actions（[yml 工作流文件](<a href="https://github.com/jerrylususu/bookmark-collection/blob/main/.github/workflows/bookmark_summary.yml">https://github.com/jerrylususu/bookmark-collection/blob/main/.github/workflows/bookmark_summary.yml</a>)）</li>
+<li>代码提交到主干，触发名为 `summarize` 的 Github Actions（<a href="https://github.com/jerrylususu/bookmark-collection/blob/main/.github/workflows/bookmark_summary.yml">yml 工作流文件</a>）</li>
 
 <li><p>
 Github Actions 执行，首先 checkout 书签存储库和摘要存储库，然后执行
@@ -100,10 +100,10 @@ process<sub>changes.py</sub>
 <ol class="org-ol">
 <li>首先解析书签 README.md 文件，找到最近新增的条目标题和 URL</li>
 <li>将 URL 保存到 Wayback Machine</li>
-<li>输入 URL，使用 [jina reader](<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>) API 获取网址的 Markdown 全文，并保存到 `YYYYMM/{title}<sub>raw.md</sub>`</li>
-<li>输入 URL，使用 LLM 生成列表摘要（prompt 在 `summarize<sub>text</sub>` 函数 [link](<a href="https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80">https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80</a>)）</li>
+<li>输入 URL，使用 <a href="https://jina.ai/reader/">jina reader</a> API 获取网址的 Markdown 全文，并保存到 `YYYYMM/{title}<sub>raw.md</sub>`</li>
+<li>输入 URL，使用 LLM 生成列表摘要（prompt 在 `summarize<sub>text</sub>` 函数 <a href="https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80">link</a>）</li>
 <li>输入列表摘要，使用 LLM 生成一句话总结</li>
-<li>将列表摘要和一句话总结保存到 `YYYYMM/{title}.md`（[效果示例](<a href="https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md">https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md</a>)）</li>
+<li>将列表摘要和一句话总结保存到 `YYYYMM/{title}.md`（<a href="https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md">效果示例</a>）</li>
 <li>更新摘要存储库的 README.md，增加到摘要文件的链接</li>
 </ol></li>
 
@@ -116,7 +116,7 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="orgff0562e">
+<figure id="org408a7e0">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -347,19 +347,20 @@ logging.basicConfig(
 
 <span style="color: #51afef;">if</span> <span style="color: #c678dd;">__name__</span> == <span style="color: #98be65;">"__main__"</span>:
     main()
+
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org6ff2998" class="outline-2">
-<h2 id="org6ff2998">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org6ff2998">
+<div id="outline-container-org4c033fa" class="outline-2">
+<h2 id="org4c033fa">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org4c033fa">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="orgaf66c89">
+<figure id="orgef3d24e">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
