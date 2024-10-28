@@ -504,14 +504,13 @@ tr:nth-child(even) {
         padding: 0;
     }
 
-    #content {
+    #content, header, #search-container {  // 添加 header 和 search-container
         width: 100%;
         max-width: 92%;
         margin: 0 auto;
-        padding: 15px;
+        padding: 10px;
         box-sizing: border-box;
     }
-
     header h1 {
         font-size: 24px;
     }
@@ -523,11 +522,6 @@ tr:nth-child(even) {
     
     nav a {
         margin-bottom: 10px;
-    }
-    
-    #search-container {
-        max-width: 100%;
-        margin-top: 10px;
     }
     
     .top-link {
@@ -571,6 +565,20 @@ tr:nth-child(even) {
         margin-right: auto;
         max-width: 100%;
     }
+    header {
+        padding: 10px 0;  // 只保留上下内边距
+    }
+    #search-container {
+        max-width: 92%;  // 与内容区域保持一致
+        margin: 10px auto;  // 上下margin 10px，左右自动居中
+        padding: 0;  // 移除内边距
+    }
+
+    #search-input {
+        width: 100%;  // 搜索框占满容器宽度
+        box-sizing: border-box;
+    }
+
 }
 
 img {
