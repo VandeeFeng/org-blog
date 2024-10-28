@@ -29,6 +29,8 @@ Andy 的 [[https://andymatuschak.org/books/][Why books donʼt work   Andy Matusc
 这些都是不科学的，因为它们没有调动起我们人类真正掌握知识的方式 —— 即我们认知的过程。
 
 *to understand something, you must actively engage with it*.
+
+Source: [[https://geekplux.com/newsletters/41][为什么读书无用 -#41 - GeekPlux]]
 #+end_quote
 
 信息输入的载体，还是得量体裁衣，关键在于认知的过程。也就是 Andy 所说的，to understand something, you must actively engage with it.（2024-10-28-add：Andy 算是我 PKM 和笔记的启蒙导师了，现在的 tiddlywink 就是仿造 Andy 个人网站的翻页效果。）
