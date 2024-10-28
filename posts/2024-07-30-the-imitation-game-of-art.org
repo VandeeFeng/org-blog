@@ -120,7 +120,7 @@ Another strategy that works well in both humor and famous EDM drops is "violatin
 
 * 模仿游戏
 
-[[https://movie.douban.com/subject/10463953/][模仿游戏]]是我很喜欢的一部电影，讲的是图灵（本尼迪克特·康伯巴奇 Benedict Cumberbatch 饰）制作密码破译机的故事。电影的名字和今天讨论的模仿游戏完全是一个巧合。只是在重复敲打模仿、游戏时，这个电影一直在我的脑子里窜来窜去，干脆把你放出来好了。黑客帝国也放出来好了，[[https://www.vandee.art/posts/2023-02-23-undefined/][蓝色药丸还是红色药丸？]]🤣。
+[[https://movie.douban.com/subject/10463953/][模仿游戏]]是我很喜欢的一部电影，讲的是图灵（本尼迪克特·康伯巴奇 Benedict Cumberbatch 饰）制作密码破译机的故事。电影的名字和今天讨论的模仿游戏完全是一个巧合。只是在重复敲打模仿、游戏时，这个电影一直在我的脑子里窜来窜去，干脆把你放出来好了。黑客帝国也放出来好了，[[https://www.vandee.art/2023-02-23-blue-or-red.html][蓝色药丸还是红色药丸？]] 🤣。
 
 现在的LLM大语言模型同样是一个模仿游戏。LLM是一个巨大的ZIP文档，它是一个世界的快照，压缩了快照时间点互联网、人类知识的巨大信息，是现实世界最大的模仿游戏，往后更会是人类历史的一部分，它既是记录者也是开创者。
 
