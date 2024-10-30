@@ -55,20 +55,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgede5534">起因</a></li>
-<li><a href="#org53d4de9">Memos</a></li>
-<li><a href="#org7c6a27e">SSL</a></li>
-<li><a href="#org94636c9">Memos 静态页面</a></li>
-<li><a href="#org478b40f">小结</a></li>
+<li><a href="#orga31be8a">起因</a></li>
+<li><a href="#orga1d77c4">Memos</a></li>
+<li><a href="#orgb6b94c2">SSL</a></li>
+<li><a href="#orgd04bfc8">Memos 静态页面</a></li>
+<li><a href="#org52e6961">小结</a></li>
 </ul>
 </div>
 </nav>
 <p>
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
-<div id="outline-container-orgede5534" class="outline-2">
-<h2 id="orgede5534">起因</h2>
-<div class="outline-text-2" id="text-orgede5534">
+<div id="outline-container-orga31be8a" class="outline-2">
+<h2 id="orga31be8a">起因</h2>
+<div class="outline-text-2" id="text-orga31be8a">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -86,9 +86,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org53d4de9" class="outline-2">
-<h2 id="org53d4de9">Memos</h2>
-<div class="outline-text-2" id="text-org53d4de9">
+<div id="outline-container-orga1d77c4" class="outline-2">
+<h2 id="orga1d77c4">Memos</h2>
+<div class="outline-text-2" id="text-orga1d77c4">
 <p>
 几个版本的主要特色：
 </p>
@@ -96,11 +96,11 @@
 <li>0.18.2: 最简洁最稳定的版本，加入了 timeline 。</li>
 <li>0.19.1 增加一键导出所有 memos 到 markdown，侧边栏可折叠。</li>
 <li>0.20.1 修复一系列 bugs，在 explore 页面内容太长的会折叠，点击 show more 会跳转到这个单独的 memo 页面。</li>
-<li>0.22.X 版本之前的数据库在更新之后问题都不是很大，22 之后之前的数据库在读取的时候会不兼容。0.22.X 版本取消了单个页面的分享，也取消了一键导出，增加了多个标签同时筛选。</li>
+<li>最新的0.22.5 版本取消了单个页面的分享，也取消了一键导出。</li>
 </ul>
 
 <p>
-在测试了几个版本之后，我最终选择了 0.18.2 版本。对于我这个新用户，没有之前看到的数据迁移和 API 变更带来的困扰，感觉 Memos 还是挺好用的。版本便更之前一定要做好数据库备份。
+对于我这个新用户，没有之前看到的数据迁移和 API 变更带来的困扰，感觉 Memos 还是挺好用的。版本便更之前一定要做好数据库备份。
 </p>
 
 <p>
@@ -111,7 +111,7 @@
 <pre class="src src-ymal">version: "3.0"
 services:
   memos:
-    image: neosmemo/memos:0.18.2
+    image: neosmemo/memos:0.18.0 #版本 tag
     restart: always
     depends_on:
       - db
@@ -156,9 +156,9 @@ sudo nginx -t # 检查配置是否有问题
 </div>
 </div>
 </div>
-<div id="outline-container-org7c6a27e" class="outline-2">
-<h2 id="org7c6a27e">SSL</h2>
-<div class="outline-text-2" id="text-org7c6a27e">
+<div id="outline-container-orgb6b94c2" class="outline-2">
+<h2 id="orgb6b94c2">SSL</h2>
+<div class="outline-text-2" id="text-orgb6b94c2">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
@@ -262,9 +262,9 @@ server {
 </p>
 </div>
 </div>
-<div id="outline-container-org94636c9" class="outline-2">
-<h2 id="org94636c9">Memos 静态页面</h2>
-<div class="outline-text-2" id="text-org94636c9">
+<div id="outline-container-orgd04bfc8" class="outline-2">
+<h2 id="orgd04bfc8">Memos 静态页面</h2>
+<div class="outline-text-2" id="text-orgd04bfc8">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -279,21 +279,21 @@ server {
 </p>
 
 
-<figure id="orgbcd0ebb">
+<figure id="orgaac882c">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org156e517">
+<figure id="orge8b370b">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org478b40f" class="outline-2">
-<h2 id="org478b40f">小结</h2>
-<div class="outline-text-2" id="text-org478b40f">
+<div id="outline-container-org52e6961" class="outline-2">
+<h2 id="org52e6961">小结</h2>
+<div class="outline-text-2" id="text-org52e6961">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>
