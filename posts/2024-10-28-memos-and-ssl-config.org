@@ -16,9 +16,18 @@
 再一个，VPS 每个月 4T 的流量还是要用一用。顺便再熟悉熟悉 Linux 和 SSH，还有 GO。
 
 * Memos
-我也选择了 0.18.2 版本，实验了一下 Stable 版本，在部署的时候 Postgres 数据库报错，0.18.2 就没问题。
-#+begin_src ymal
 
+几个版本的主要特色：
+- 0.18.2: 最简洁最稳定的版本，加入了 timeline 。
+- 0.19.1 增加一键导出所有 memos 到 markdown，侧边栏可折叠。
+- 0.20.1 修复一系列 bugs，在 explore 页面内容太长的会折叠，点击 show more 会跳转到这个单独的 memo 页面。
+- 0.22.X 版本之前的数据库在更新之后问题都不是很大，22 之后之前的数据库在读取的时候会不兼容。0.22.X 版本取消了单个页面的分享，也取消了一键导出，增加了多个标签同时筛选。
+
+在测试了几个版本之后，我最终选择了 0.18.2 版本。对于我这个新用户，没有之前看到的数据迁移和 API 变更带来的困扰，感觉 Memos 还是挺好用的。版本便更之前一定要做好数据库备份。
+
+~docker-compose.yml~:
+
+#+begin_src ymal
 version: "3.0"
 services:
   memos:
@@ -88,7 +97,6 @@ https://your_server_ip:7002
 默认账号密码：admin/123456
 #+end_src
 
-
 按照官方文档，五分钟就生成了 SSL 证书，然后 copy 到 VPS 里，在 Nginx 设置 ~ssl_certificate~ 的文件路径。
 
 Nginx 的配置：
@@ -131,12 +139,33 @@ server {
 }
 #+end_src
 
+后来发现更直接的是直接在 VPS 里使用 certbot。
+
+#+begin_src bash
+# 安装
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
+
+# 申请证书
+sudo certbot --nginx -d app1.example.com -d app2.example.com
+
+# --nginx：使用 Nginx 插件，Certbot 会自动修改 Nginx 配置。
+# -d：指定你要申请证书的域名，可以一次性为多个域名申请。
+
+# Certbot 会询问一些基本问题：输入电子邮件地址（用于接收证书到期提醒）。同意服务条款（输入 A 同意）。是否愿意 共享你的邮箱 给 EFF（自愿）。询问你是否要 将 HTTP 重定向为 HTTPS：选择 2 将所有 HTTP 请求重定向为 HTTPS（推荐）。
+
+# 自动续签
+sudo certbot renew --dry-run
+#+end_src
+
 到这里，我终于可以用 https + 域名来访问 Memos 了，但这还不够好玩，不够自定义。
+
 * Memos 静态页面
 [[https://github.com/eallion/memos.top][eallion/memos.top]] 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 
 到这里，饶了一大圈又回到了用 [[https://github.com/ccbikai/BroadcastChannel][ccbikai/BroadcastChannel]] 5 分钟部署的样子🤣。
 
+从 0.18.2 更改为了 0.20.1 版本之后，这个项目的图片不能正常显示。
 最后放图：
 
 #+attr_html: :alt  :class img :width 60% :height 60%
