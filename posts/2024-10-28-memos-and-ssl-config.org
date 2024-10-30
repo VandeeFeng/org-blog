@@ -160,12 +160,33 @@ sudo certbot renew --dry-run
 
 到这里，我终于可以用 https + 域名来访问 Memos 了，但这还不够好玩，不够自定义。
 
-* Memos 静态页面
+* Memos 自定义
+** 自定义 css 和 JavaScript
+
+适用 0.20.X 以上版本
+
+#+begin_src
+document.documentElement.classList.add("dark") # 强制未登录 explore 暗黑模式
+
+/* 隐藏 通知 选项卡 */
+#header-inbox {
+  display: none;
+}
+
+/* 隐藏统计计数器容器 */
+.w-auto.border.dark\:border-zinc-800.pl-1.pr-1\.5.rounded-md.flex.justify-between.items-center {
+  display: none;
+}
+
+#+end_src
+
+** Memos.top
 [[https://github.com/eallion/memos.top][eallion/memos.top]] 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
+
+[[https://blog.memos.ee/category/memos/][分类 Memos 下的文章 - Memos | 一个开源的碎片化笔记工具的不完全指南]] 顺便找到了作者的一个网站。
 
 到这里，饶了一大圈又回到了用 [[https://github.com/ccbikai/BroadcastChannel][ccbikai/BroadcastChannel]] 5 分钟部署的样子🤣。
 
-从 0.18.2 更改为了 0.20.1 版本之后，这个项目的图片不能正常显示。
 最后放图：
 
 #+attr_html: :alt  :class img :width 60% :height 60%
@@ -173,6 +194,8 @@ sudo certbot renew --dry-run
 
 #+attr_html: :alt  :class img :width 60% :height 60%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png]]
+
+Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top 适合从 API 从头设计自己的页面。不想花那么多功夫，把 Memos 的页面保存到 HTML 文件，让 Cursor 随便改了改 CSS。
 
 * 小结
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
