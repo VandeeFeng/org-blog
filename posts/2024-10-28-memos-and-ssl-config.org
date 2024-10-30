@@ -166,8 +166,7 @@ sudo certbot renew --dry-run
 适用 0.20.X 以上版本
 
 #+begin_src
-document.documentElement.classList.add("dark") # 强制未登录 explore 暗黑模式
-
+# CSS 部分
 /* 隐藏 通知 选项卡 */
 #header-inbox {
   display: none;
