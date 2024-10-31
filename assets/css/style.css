@@ -292,6 +292,32 @@ tr:nth-child(even) {
     margin-bottom: 1.6em;
 }
 
+.copy-button {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    color: #93a1a1;
+    background-color: transparent;
+    border: 1px solid #93a1a1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    color: #fdf6e3;
+    background-color: #93a1a1;
+}
+
+.copy-button.copied {
+    color: #859900;
+    border-color: #859900;
+}
+
+
+
 .org-src-container pre.src {
     margin-top: 0;
     background-color: #282c34;
@@ -306,13 +332,12 @@ tr:nth-child(even) {
     max-width: 100%;
     overflow: auto;
     padding: 1em 1.5em;
-    padding-top: 2em;
+    padding-top: 2.5em;
     display: block;
     word-wrap: break-word;
     position: relative;
     border-radius: 4px;
 }
-
 
 .org-src-container pre.src::before {
     position: absolute;
@@ -550,34 +575,5 @@ li {
     word-wrap: break-word;
     word-break: break-all;
 }
-
-.org-src-container {
-    position: relative;
-}
-
-.copy-button {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.8rem;
-    color: #93a1a1;
-    background-color: transparent;
-    border: 1px solid #93a1a1;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.copy-button:hover {
-    color: #fdf6e3;
-    background-color: #93a1a1;
-}
-
-.copy-button.copied {
-    color: #859900;
-    border-color: #859900;
-}
-
 
 
