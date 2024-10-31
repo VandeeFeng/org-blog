@@ -135,7 +135,7 @@ Stay foolish，stay simple。
 
 在双链部分由于原则上已经和思维高度同步，因此不需要做额外的增加思维成本的检索，只要在记录原子笔记的时候，顺其自然，高度提炼出明确、简洁的一句话概念即可。
 
-在标签tags部分，我习惯把标签当作是一个object的二、三级属性来看待。例如《黄金时代》这本书，它的基础属性是book，我不会再重复标注它，而是写在property里，记下`Type: book`方便我通过函数来列举所有的书目，tag则记下文学、王小波。我习惯用单数来强调它是个属性，区别与复数的category集合的概念。
+在标签tags部分，我习惯把标签当作是一个object的二、三级属性来看待。例如《黄金时代》这本书，它的基础属性是book，我不会再重复标注它，而是写在property里，记下~Type: book~方便我通过函数来列举所有的书目，tag则记下文学、王小波。我习惯用单数来强调它是个属性，区别与复数的category集合的概念。
 
 我看过许多博客和PKM，许多情况下，他们的tags在语义概念上都混用了，我习惯把tags和categories分开，分类就是分类，标签就是标签。category、property、tag还是需要在逻辑里有自然的分类，理清楚一个概念的内涵与外延。混用会导致tags越来越多，成百上千的tags反而会增加检索的成本，过个几年，大多数的tags你已经忘了当时为什么记下了，单独再去整理标签无疑是个巨大的工程，tags也失去了应当有的作用。tags的构建同样应当同步与自身的思维习惯，自身对概念、语义的记忆。
 
@@ -151,34 +151,34 @@ Emacs，org-roam，模板创建Daily和note：
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif]]
 
-**** Org-tag
+** Org-tag
 
-org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的**标签的统一性**，大小写或者单复数不统一会很麻烦。
+org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的*标签的统一性*，大小写或者单复数不统一会很麻烦。
 
-在org的任意标题之后加上 `:TAG1::TAG2:` 就打上了标签。
+在org的任意标题之后加上 ~:TAG1::TAG2:~ 就打上了标签。
 
-**进阶用法**如下：
+*进阶用法*如下：
 
 在Org Mode中，你可以通过按下快捷键来为项目或任务添加预定义的标签。以下是具体的步骤：
 
 1. 光标定位：将光标移动到你想要添加标签的项目或任务上。
-2. *添加标签：按下快捷键 `C-c C-q`，org-set-tags-command，这将打开标签过滤器。可以直接在标题的最后输入标签。在输入冒号后，M-TAG* 提供了标签的自动补全和选择功能。
-3. 使用快捷键：在标签过滤器中，输入你为标签分配的字符常量作为快捷键。例如，如果你为 `@work` 标签分配了字符 `w`，那么在标签过滤器中输入 `w`。
-4. 确认添加：按下 `Enter` 键，这将为项目或任务添加相应的标签。
+2. *添加标签：按下快捷键 ~C-c C-q~，org-set-tags-command，这将打开标签过滤器。可以直接在标题的最后输入标签。在输入冒号后，M-TAG* 提供了标签的自动补全和选择功能。
+3. 使用快捷键：在标签过滤器中，输入你为标签分配的字符常量作为快捷键。例如，如果你为 ~@work~ 标签分配了字符 ~w~，那么在标签过滤器中输入 ~w~。
+4. 确认添加：按下 ~Enter~ 键，这将为项目或任务添加相应的标签。
 
-默认情况下，org 模式使用标准的 minibuffer 来输入标签 。然而，emacs 还提供了另外一种叫做 *fast tag selection* 的快速标签选择方式。在这种方式下可以仅用一个键来完成标签的选择和反选。要想使用这种方式，首先要为常使用的标签分配一个唯一字符。这个字符可以在 '.**emacs**' 中通过配置 **org-tag-alist** 来设置。比如，需要在很多文件中为很多项添加 '**:home:**' 标签。在这种情况下，可以这样设置：
+默认情况下，org 模式使用标准的 minibuffer 来输入标签 。然而，emacs 还提供了另外一种叫做 *fast tag selection* 的快速标签选择方式。在这种方式下可以仅用一个键来完成标签的选择和反选。要想使用这种方式，首先要为常使用的标签分配一个唯一字符。这个字符可以在 '.*emacs*' 中通过配置 *org-tag-alist* 来设置。比如，需要在很多文件中为很多项添加 '*:home:*' 标签。在这种情况下，可以这样设置：
 
 #+begin_src
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ? h ) ("@laptop" . ?l)))
 #+end_src
 
-如果标签仅仅和当前使用的文件相关，那么可以像下面这样在文件中添加 **TAGS** 选项：
+如果标签仅仅和当前使用的文件相关，那么可以像下面这样在文件中添加 *TAGS* 选项：
 
 #+begin_src
 #+TAGS: @work(w) @home(h) @tennisclub(t) laptop(l) pc(p)
 #+end_src
 
-标签接口会在一个 splash windows 中显示可用的标签。如果想在一个特定的标签后换行，需要在标签列表中插入一个 '**\n**' 。
+标签接口会在一个 splash windows 中显示可用的标签。如果想在一个特定的标签后换行，需要在标签列表中插入一个 '*\n*' 。
 
 #+begin_src
 #+TAGS: @work(w) @home(h) @tennisclub(t) \n laptop(l) pc(p)
@@ -197,11 +197,11 @@ org里的标签功能也很全面，支持多个分组，可以自动补全，�
 #+TAGS: { @work(w) @home(h) @tennisclub(t) } laptop(l) pc(p)
 #+end_src
 
-在这种情况下， ~@work(w) @home(h) @tennisclub(t) ~ 三个标签最多同时选择一个
+在这种情况下， ~@work(w) @home(h) @tennisclub(t)~ 三个标签最多同时选择一个
 
-org 也允许多个分组。当光标在这些行上的时候，不要忘了按 **C-c C-c** 来激活其它修改。
+org 也允许多个分组。当光标在这些行上的时候，不要忘了按 *C-c C-c* 来激活其它修改。
 
-如果要在 **org-tags-alist** 中设置排它的标签组，必需要用 **:startgroup** 和 **:endgroup** 标签对，而不是用大括号。类似的，可以用 **:newline** 来声明一个新行。上面的例子也可以用下面的方式进行设置：
+如果要在 *org-tags-alist* 中设置排它的标签组，必需要用 *:startgroup* 和 *:endgroup* 标签对，而不是用大括号。类似的，可以用 *:newline* 来声明一个新行。上面的例子也可以用下面的方式进行设置：
 
 #+begin_src
 (setq org-tag-alist '((:startgroup . nil)
@@ -219,11 +219,11 @@ Ref:
 - [[https://www.cnblogs.com/btea/p/4412375.html][emacs org mode 中的标签全参考 - 咖啡加茶 - 博客园]]
 - [[https://www.zmonster.me/2018/02/28/org-mode-capture.html][强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster's Blog]]
 
-**** Org-agenda
+** Org-agenda
 
-最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用`#TODO`来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
+最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用 ~#TODO~ 来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 
-之前考虑到和其他笔记软件通用的问题，journal全部以单独的文件按照年份生成，现在改为集中在一个`journal.org`文件里。要不然以后org-agenda每次要扫描几年的journal文档会很头疼，现在改为每年一个单独的`20xx-journal.org`文件。
+之前考虑到和其他笔记软件通用的问题，journal全部以单独的文件按照年份生成，现在改为集中在一个 ~journal.org~ 文件里。要不然以后org-agenda每次要扫描几年的journal文档会很头疼，现在改为每年一个单独的 ~20xx-journal.org~ 文件。
 
 需要注意的是：在最开始设置好org-agenda要包括的文件或文件夹
 
@@ -243,9 +243,9 @@ Ref:
 这是现在的样子：
 
 
-***** TODO
+*** TODOs
 
-- 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入`[/]`或者`[%]`。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
+- 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入~[/]~或者~[%]~。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
 
   #+begin_src
   * TODO Organize party [1/3]
@@ -269,7 +269,7 @@ Ref:
   DONE(d@/!)     ; 进入时添加笔记，离开时添加变更信息
   #+end_src
 
- - 除了基于 headline 的任务管理外，Org mode 还提供基于列表的任务管理，即将每个列表项作为任务，方法是在列表标记与列表项内容之间添加一个 "[ ]" 标记(注意中间包含一个字符的预留位置)，这个标记在 Org mode 中被称为 **checkbox** 。这种任务只有三种状态(待办、进行中和完成)，分别用 `[ ]`, `[-]` 和 `[X]` 表示。
+ - 除了基于 headline 的任务管理外，Org mode 还提供基于列表的任务管理，即将每个列表项作为任务，方法是在列表标记与列表项内容之间添加一个 "[ ]" 标记(注意中间包含一个字符的预留位置)，这个标记在 Org mode 中被称为 *checkbox* 。这种任务只有三种状态(待办、进行中和完成)，分别用 ~[ ]~, ~[-]~ 和 ~[X]~ 表示。
 
    若要将用 checkbox 标记的任务标记为完成，将光标移动到对应的行，然后使用快捷键 "C-c C-c"  即可。对于包含子任务的任务，如果其子任务未全部完成，用此快捷键更改其子任务状态时，该任务的状态会自动设置为  "进行中([-])"，表示子任务未全部完成；当用快捷键将所有子任务标记为完成时，它会自动更新为完成状态。
 
@@ -280,7 +280,7 @@ Ref:
    | C-S-return | 在当前列表项的内容后面建立一个同级列表项，标记为 "[ ]" | 无列表项时不创建 |
    | M-S-return | 在当前列表项后建立一个同级列表项，标记为 "[ ]"       |               |
 
-   使用`shift+← →方向键`也可以快速更改TODO的状态。
+   使用~shift+← →方向键~也可以快速更改TODO的状态。
 
  - TODO sequence
    #+begin_src emacs-lisp
@@ -299,15 +299,15 @@ Ref：
 - [[https://www.zmonster.me/2015/07/15/org-mode-planning.html][强大的 Org mode(2): 任务管理 · ZMonster's Blog]]
 - [[https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html#sec-5][Org-mode 简明手册 - open source - 博客园]]
 
-**** Org-capture
+** Org-capture
 
 [[https://orgmode.org/manual/Capture.html][Org-capture]] 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 
 目前PKM里的Journal-日志、clip-剪藏、task-TODO等都是用org-capture处理的。
 
-一定要在最开始先设置好org的默认笔记目录：`(setq org-directory "~/your/path/org/")`
+一定要在最开始先设置好org的默认笔记目录： ~(setq org-directory "~/your/path/org/")~
 
-需要注意的是：对于Doom-Emacs，需要在`(after！org)`里写上关于org的配置来覆盖Doom-Emacs的默认配置。
+需要注意的是：对于Doom-Emacs，需要在~(after！org)~里写上关于org的配置来覆盖Doom-Emacs的默认配置。
 
 如果常规的org-capture参数不足以满足你的需求，这个函数可能对你有帮助：
 
@@ -385,21 +385,21 @@ Ref：
 - [[https://www.zmonster.me/2018/02/28/org-mode-capture.html][强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster's Blog]]
 - [[https://orgmode.org/manual/Capture.html][Capture (The Org Manual)]]
 
-**** Org-roam
+** Org-roam
 
 [[https://www.orgroam.com/][Org-roam]] 是Emacs的一个包，也是org-mode 的扩展，可以简单的实现双链，通过org-roam-ui直观的预览。
 
 也不是必须，只需要解决双链的查看就可以了。
 
-org-roam也有它的capture，可以直接生成org笔记。而org-roam的「 node-insert 」可以快速在文档里直接插入新的笔记。与常规的org-mode`.org`文件不同的是，它可以通过带id的node「 节点 」链接来实现org-mode里的双链功能。每一个org-roam笔记都有唯一的id。
+org-roam也有它的capture，可以直接生成org笔记。而org-roam的「 node-insert 」可以快速在文档里直接插入新的笔记。与常规的org-mode~.org~文件不同的是，它可以通过带id的node「 节点 」链接来实现org-mode里的双链功能。每一个org-roam笔记都有唯一的id。
 
-其他属性和使用基本与org-mode一致，也是生成`.org`文件。同样也需要配置org-roam的capture-templates。原来用org-roam创建Journal日志文件，现在已经用org-capture替代。
+其他属性和使用基本与org-mode一致，也是生成~.org~文件。同样也需要配置org-roam的capture-templates。原来用org-roam创建Journal日志文件，现在已经用org-capture替代。
 
-org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大纲结构视图，对于我来说用起来很亲切。如果你觉得org-mode可读性不强，那么org-roam-ui一定会让你喜欢。org-roam-ui是在浏览器里通过`org-roam-protocol`访问，需要在配置加上`(require 'org-roam-protocol)`。
+org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大纲结构视图，对于我来说用起来很亲切。如果你觉得org-mode可读性不强，那么org-roam-ui一定会让你喜欢。org-roam-ui是在浏览器里通过~org-roam-protocol~访问，需要在配置加上~(require 'org-roam-protocol)~。
 
-同样也需要在最开始设置好org-roam笔记的文件夹：`(setq org-roam-directory "~/your/roam/directory/")`
+同样也需要在最开始设置好org-roam笔记的文件夹： ~(setq org-roam-directory "~/your/roam/directory/")~
 
-有一个坑，org-roam会自动生成一个`.orgids`文件来记录生成的每个org-roam笔记的id，如果不设置会在系统根目录下自动生成。加上`(org-id-locations-file "~/your/path/to/.orgids")`即可。在一开始我一度认为我的电脑是不是哪里出了问题🤣，这个文件冷不丁的就冒出来了，删了重启又有了。官方文档和各大论坛里都没有这个设置，困扰了我很久，还是GPT帮我解决了。
+有一个坑，org-roam会自动生成一个~.orgids~文件来记录生成的每个org-roam笔记的id，如果不设置会在系统根目录下自动生成。加上~(org-id-locations-file "~/your/path/to/.orgids")~即可。在一开始我一度认为我的电脑是不是哪里出了问题🤣，这个文件冷不丁的就冒出来了，删了重启又有了。官方文档和各大论坛里都没有这个设置，困扰了我很久，还是GPT帮我解决了。
 
 下面是模板和相关配置：
 
@@ -412,12 +412,12 @@ org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大
   (setq org-roam-v2-ack t)
   :custom
   ;; (org-roam-dailies-capture-templates
-  ;;  '(("d" "daily" plain "* %<%Y-%m-%d>\n** TODO\n- \n** Inbox\n- %?"
+  ;;  '(("d" "daily" plain "* %<%Y-%m-%d>\n* TODO\n- \n* Inbox\n- %?"
   ;;     :if-new (file+head "%<%Y>/%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n"))))
   (org-roam-directory "~/Vandee/pkm/roam/")
   (org-id-locations-file "~/Vandee/pkm/roam/.orgids")
   (org-roam-capture-templates
-   `(("n" "note" plain "%?"
+   ~(("n" "note" plain "%?"
       :if-new (file+head "${title}.org"
                          "#+TITLE: ${title}\n#+UID: %<%Y%m%d%H%M%S>\n#+FILETAGS: \n#+TYPE: \n#+SOURCE: \n#+DATE: %<%Y-%m-%d>\n")
       :unnarrowed t))
@@ -444,7 +444,7 @@ org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大
 
 #+end_src
 
-**org-roam-capture模板分组**
+*org-roam-capture模板分组*
 
 #+begin_src
 ;; org-roam-capture模板分组
@@ -479,7 +479,7 @@ Ref：
 
 
 
-**** Org-export
+** Org-export
 
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些[[https://orgmode.org/zh-CN/tools.html][工具]] 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 
@@ -504,18 +504,18 @@ Ref：
         (replace-match (format "[[%s][%s]]" url title)))))
   ;; 转换Markdown代码块为Org-mode代码块
   (goto-char (point-min))
-  (while (re-search-forward "^```" nil t)
-    (if (looking-back "^```")
+  (while (re-search-forward "^~~~" nil t)
+    (if (looking-back "^~~~")
         (progn
           (replace-match "#+begin_src")
-          (re-search-forward "^```" nil t)
-          (if (looking-back "^```")
+          (re-search-forward "^~~~" nil t)
+          (if (looking-back "^~~~")
               (replace-match "#+end_src"))))))
 #+end_src
 
 
 
-- **Markdown to org-mode**:
+- *Markdown to org-mode*:
 
   Pandoc转换md到org会有小问题，批量转换还是悠着点。
 
@@ -525,11 +525,11 @@ Ref：
 
 Ref：[[https://orgmode.org/manual/Exporting.html][Exporting (The Org Manual)]]、[[https://orgmode.org/zh-CN/tools.html][工具 | Org mode]]
 
-**** Org with Zotero
+** Org with Zotero
 
 书和论文的PDF文件，我现在全部放在[[https://www.zotero.org/][Zotero]]。快速复制单个笔记到org-mode也挺简单：
 
-通过下载这个[[https://raw.githubusercontent.com/Zotero-ODF-Scan/zotero-odf-scan/master/attic/Zotero%20Select%20Item.js][文件]]到 zotero 资料目录下的 translators 文件下，将其命名为 `Zotero Select Item.js` ，重启 Zotero 后在编辑-> 首选项中配置便捷复制的 Item Format 为 Zotero Select Item:
+通过下载这个[[https://raw.githubusercontent.com/Zotero-ODF-Scan/zotero-odf-scan/master/attic/Zotero%20Select%20Item.js][文件]]到 zotero 资料目录下的 translators 文件下，将其命名为 ~Zotero Select Item.js~ ，重启 Zotero 后在编辑-> 首选项中配置便捷复制的 Item Format 为 Zotero Select Item:
 
 这样就可以自定义复制粘贴过去的格式了。
 
@@ -573,7 +573,7 @@ Ref：
 - https://hsingko.pages.dev/post/2022/07/04/zotero-and-orgmode/
 - https://www.mkbehr.com/posts/a-research-workflow-with-zotero-and-org-mode/
 
-**** Org-mode美化
+** Org-mode美化
 
 我觉得原生的就挺好看，可读性也还好。
 
@@ -614,7 +614,7 @@ Ref：
 
 #+end_src
 
-**** Org-protocol
+** Org-protocol
 
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 
@@ -640,9 +640,9 @@ Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading�
 
   Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的applescript。
 
-**** 网页摘录和after-reading
+** 网页摘录和after-reading
 
-利用org-capture，做剪藏和摘录很方便。现在保存在`clip.org`文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
+利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 
 有一个JavaScript我一直在用，可以选定一个网页的特定内容，在翻译和剪藏的时候挺有用，同时也微微提升了一点阅读体验。我用 [[https://github.com/OwO-Network/DeepLX][DeepLX]]  通过沉浸式翻译如果单次翻译内容太多会报错和限制，Deepl的中文翻译还是吊打其他的。
 
@@ -662,7 +662,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 最近[[https://www.vandee.art/posts/2024-07-24-start-to-get-readwies/][还是入坑了 Readwise]]。
 
-***** tools
+*** tools
 
 - 网站：<https://jina.ai/reader/>
 
@@ -672,8 +672,8 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
   Reader does two things:
 
-  - **Read**: It converts any URL to an **LLM-friendly** input with `https://r.jina.ai/https://your.url`. Get improved output for your agent and RAG systems at no cost.
-  - **Search**: It searches the web for a given query with `https://s.jina.ai/your+query`. This allows your LLMs to access the latest world knowledge from the web.
+  - *Read*: It converts any URL to an *LLM-friendly* input with ~https://r.jina.ai/https://your.url~. Get improved output for your agent and RAG systems at no cost.
+  - *Search*: It searches the web for a given query with ~https://s.jina.ai/your+query~. This allows your LLMs to access the latest world knowledge from the web.
 
   添加下面代码到书签保存，点击书签就可以提取网页内容到markdown格式了。
 
@@ -688,11 +688,11 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 - [[https://sspai.com/post/89828][u-Sir/drag-to-preview]]，最近发现一个Firefox浏览器插件，可以选中网页链接拖拽弹出单独的窗口预览网页，在窗口外区域鼠标点击即可关闭，很符合我的胃口。
 
-**** 输入法设置
+** 输入法设置
 
-由于使用了evil，如果使用系统的输入法，每次在`:w`保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
+由于使用了evil，如果使用系统的输入法，每次在~:w~保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 
-***** SIS
+*** SIS
 
 [[https://github.com/laishulu/emacs-smart-input-source][emacs-smart-input-source]] 是一个可以自动切换输入法的Emacs包。
 
@@ -731,11 +731,11 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 
 
-***** pyim
+*** pyim
 
 [[https://github.com/tumashu/pyim][pyim]] 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 
-可能是由于我用Homebrew安装的Emacs-plus，再加上使用的doomemacs，emacs报错：编译时无法找到 `emacs-module.h` ，一直无法在Emacs里加载 [[https://github.com/DogLooksGood/emacs-rime][emacs-rime]] 。Emacs-rime的[[https://github.com/DogLooksGood/emacs-rime/blob/master/INSTALLATION.org#%E7%BC%96%E8%AF%91%E6%97%B6%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0-emacs-moduleh-][文档]]里写加上`(rime-emacs-module-header-root "~/emacs/include")`，我试了所有的Emacs可能的路径都不行。我在Linux-Ubuntu虚拟机里，没有任何问题。
+可能是由于我用Homebrew安装的Emacs-plus，再加上使用的doomemacs，emacs报错：编译时无法找到 ~emacs-module.h~ ，一直无法在Emacs里加载 [[https://github.com/DogLooksGood/emacs-rime][emacs-rime]] 。Emacs-rime的[[https://github.com/DogLooksGood/emacs-rime/blob/master/INSTALLATION.org#%E7%BC%96%E8%AF%91%E6%97%B6%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0-emacs-moduleh-][文档]]里写加上~(rime-emacs-module-header-root "~/emacs/include")~，我试了所有的Emacs可能的路径都不行。我在Linux-Ubuntu虚拟机里，没有任何问题。
 
 这个输入法是Emacs里内置的，如果没有指定内置的输入法，会使用系统自带的。把内置的输入法设置好，同时也解决了中英混合输入的问题，在写代码的时候，来回切换输入法太磨叽了。
 
@@ -750,7 +750,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 
 
-**pyim 设置**：
+*pyim 设置* ：
 
 #+begin_src
 ;;输入法 https://github.com/tumashu/pyim
@@ -801,7 +801,7 @@ Ref：
 
 - [[https://emacs-china.org/t/os-smart-input-source/13436][（重新设计）中英文混打：OS输入法管理包 smart-input-source - Emacs-general - Emacs China]]
 
-***** RIME
+*** RIME
 
 如果说PKM是纸，那么输入法就是笔。
 
@@ -818,7 +818,7 @@ style/horizontal 將徹底移除，雖然本版程序仍支持，但會被新控
 
 而且最好直接在输入法外观的配置文件里，修改输入法外观的配置，而不是通用配置，反正我在通用设置里不起作用。
 
-**下面是简单的安装步骤**：
+*下面是简单的安装步骤* ：
 
 #+begin_src bash
 ;; mac:
@@ -884,7 +884,7 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 - [[https://github.com/gshang2017/rime-dict][gshang2017/rime-dict: RIME输入法(拼音)自用词库(包含英语，基础，维基，搜狗等词库)，词频基于腾讯AI向量词库逆序生成。]]  自建词库，导入专业领域词汇
 
-**** Others
+** Others
 
 - [[https://github.com/lijigang/100-questions-about-orgmode][lijigang/100-questions-about-orgmode: It's all about *orgmode* !]]
 
@@ -939,13 +939,13 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 *** 工具推荐
 
-**** Ollama
+** Ollama
 
 [[https://ollama.com/][Ollama]] 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 
 ollama支持主流的开源模型如llama3，所有支持模型可查看：
 
-**Model library**：Ollama supports a list of models available on [[https://ollama.com/library][ollama.com/library]]
+*Model library* ：Ollama supports a list of models available on [[https://ollama.com/library][ollama.com/library]]
 
 相关文章：
 
@@ -953,7 +953,7 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 
 
 
-**** Open WebUI
+** Open WebUI
 
 [[https://github.com/open-webui/open-webui][Open WebUI]] 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 
@@ -961,21 +961,21 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 
 Open WebUI 在2024-10-06的版本中[[https://github.com/open-webui/open-webui/releases/tag/v0.3.31][更新]]了支持类似Claude artifacts的artifacts: *🎨 Artifacts Feature*: Render web content and SVGs directly in the interface, supporting quick iterations and live changes，不过只支持原生的HTML和CSS。还更新了Overview，可以在白板里展示对话的内容，太实用了，史诗级更新！
 
-**其他主要功能**：
+*其他主要功能*：
 
-- 📚 本地 RAG 集成：通过突破性的检索增强生成 (RAG) 支持深入探索聊天交互的未来。此功能将文档交互无缝集成到您的聊天体验中。您可以将文档直接加载到聊天中或将文件添加到文档库中，在查询之前使用 `#` 命令轻松访问它们。
+- 📚 本地 RAG 集成：通过突破性的检索增强生成 (RAG) 支持深入探索聊天交互的未来。此功能将文档交互无缝集成到您的聊天体验中。您可以将文档直接加载到聊天中或将文件添加到文档库中，在查询之前使用 ~#~ 命令轻松访问它们。
 
-- 🔍 RAG 的网络搜索：使用 `SearXNG` 、 `Google PSE` 、 `Brave Search` 、 `serpstack` 、 `serper` 、 `Serply` 、 `DuckDuckGo` 和 `TavilySearch` 并将结果直接注入您的聊天体验中。
+- 🔍 RAG 的网络搜索：使用 ~SearXNG~ 、 ~Google PSE~ 、 ~Brave Search~ 、 ~serpstack~ 、 ~serper~ 、 ~Serply~ 、 ~DuckDuckGo~ 和 ~TavilySearch~ 并将结果直接注入您的聊天体验中。
 
-- 🌐 网页浏览功能：使用 `#` 命令后跟 URL，将网站无缝集成到您的聊天体验中。此功能允许您将网络内容直接合并到您的对话中，从而增强交互的丰富性和深度。
+- 🌐 网页浏览功能：使用 ~#~ 命令后跟 URL，将网站无缝集成到您的聊天体验中。此功能允许您将网络内容直接合并到您的对话中，从而增强交互的丰富性和深度。
 
-**docker部署相当简单**：
+*docker部署相当简单* ：
 
-- CLI: `docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main`
+- CLI: ~docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main~
 
 - Docker compose: https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml
 
-  #+begin_src docker
+  #+begin_src yaml
 services:
     ollama:
       volumes:
@@ -1016,7 +1016,7 @@ services:
 
 Ref：[[https://docs.openwebui.com/][Open WebUI 官方手册]]
 
-**** Aider
+** Aider
 
 [[https://github.com/Aider-AI/aider][Aider]] 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个[[https://github.com/tninja/aider.el][aider.el]]。
 
@@ -1031,7 +1031,7 @@ python -m pip install -U aider-chat
 
 实测在doomEmacs里要使用ollama的本地模型需要这样写：
 
-#+begin_src lisp
+#+begin_src emacs-lisp
 (use-package aider
   :config
   (setq aider-args '("--model" "ollama/llama3.1"))
@@ -1051,17 +1051,17 @@ python -m pip install -U aider-chat
 
 Ref：[[https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15][抛砖引玉: 介绍命令行AI编程工具aider以及emacs集成aider.el - Emacs-general - Emacs China]]
 
-**** gptel
+** gptel
 
 [[https://github.com/karthink/gptel][gptel: A simple LLM client for Emacs]] 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 
 
-**最近更新了**，可以支持直接添加文件、文本到上下文，awesome！居然还支持转换MD格式到Org？
+*最近更新了* ，可以支持直接添加文件、文本到上下文，awesome！居然还支持转换MD格式到Org？
 
 
 您可以使用 gptel 的查询包含其他文本区域、缓冲区或文件。这个附加上下文是“实时”的，而不是快照。添加后，将在每次查询时扫描并包含区域、缓冲区或文件。
 
-您可以从菜单中将选定的区域、缓冲区或文件添加到 gptel 的上下文中，或调用 `gptel-add` 。 （要添加文件，请在 Dired 中使用 `gptel-add` 或使用专用的 `gptel-add-file` 命令。）
+您可以从菜单中将选定的区域、缓冲区或文件添加到 gptel 的上下文中，或调用 ~gptel-add~ 。 （要添加文件，请在 Dired 中使用 ~gptel-add~ 或使用专用的 ~gptel-add-file~ 命令。）
 
 Ref: https://github.com/karthink/gptel?tab=readme-ov-file#include-more-context-with-requests
 
@@ -1107,7 +1107,7 @@ Ref: https://github.com/karthink/gptel?tab=readme-ov-file#include-more-context-w
 
 
 
-**** *Kotaemon*
+** *Kotaemon*
 
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 
@@ -1121,7 +1121,7 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 
 - For end users:
   - A clean & minimalistic UI for RAG-based QA.
-  - Supports LLM API providers (OpenAI, AzureOpenAI, Cohere, etc) and local LLMs (via `ollama` and `llama-cpp-python`).
+  - Supports LLM API providers (OpenAI, AzureOpenAI, Cohere, etc) and local LLMs (via ~ollama~ and ~llama-cpp-python`).
   - Easy installation scripts.
 - For developers:
   - A framework for building your own RAG-based document QA pipeline.
@@ -1138,7 +1138,7 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 
   还有一大堆新更新。
 
-- 2024-10-13: 增加了 Aider (一个CLI AI编程助手)在Emacs里的安装。最近开源的从代码到部署的 [[https://github.com/stackblitz/bolt.new][bolt.new]]  也很强，还有Pythagora的 [[https://github.com/Pythagora-io/gpt-pilot][gpt-pilot]]，AI辅助编程的项目越来越多了，感谢cursor带来了这么多的竞争者。
+- 2024-10-13: 增加了 Aider (一个CLI AI编程助手)在 Emacs 里的安装。最近开源的从代码到部署的 [[https://github.com/stackblitz/bolt.new][bolt.new]]  也很强，还有 Pythagora 的 [[https://github.com/Pythagora-io/gpt-pilot][gpt-pilot]]， AI 辅助编程的项目越来越多了，感谢 cursor 带来了这么多的竞争者。
 - 2024-10-24: 将 MD 文档转换成 org 文档的校对，删除了部分不必要的介绍。
 
 * Thanks
@@ -1147,6 +1147,6 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 
 另见：[[https://www.vandee.art/posts/2024-08-02-nvim-pkm-manual/][PKM（个人知识管理）构建手册 - Nvim]]
 
-这里是我日常使用的实用小工具： [[https://www.vandee.art/posts/2024-07-26-useful-tools-recommended/][实用小玩意收集]]
+这里是我日常使用的实用小工具： [[https://www.vandee.art/2024-07-26-useful-tools-recommended.html][实用小玩意收集]]
 
 Imagining and creating！
