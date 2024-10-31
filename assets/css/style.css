@@ -306,15 +306,13 @@ tr:nth-child(even) {
     max-width: 100%;
     overflow: auto;
     padding: 1em 1.5em;
+    padding-top: 2em;
     display: block;
     word-wrap: break-word;
     position: relative;
     border-radius: 4px;
 }
 
-.org-src-container pre.src::before {
-    content: none;
-}
 
 .org-src-container pre.src-lisp::before {
     content: "lisp";
@@ -379,14 +377,25 @@ tr:nth-child(even) {
 .org-src-container pre.src::before {
     position: absolute;
     top: 0;
-    right: 0;
-    background-color: #528bff;
-    color: #fff;
-    padding: 2px 8px;
+    left: 0;
+    background-color: #282c34;  /* 深色背景 */
+    color: #abb2bf;  /* 浅色文字 */
+    padding: 4px 10px;  /* 稍微增加内边距 */
     font-size: 0.85em;
-    font-weight: normal;
-    border-bottom-left-radius: 4px;
+    font-weight: 500;  /* 稍微加粗 */
+    border-radius: 4px 0 4px 0;  /* 右下角圆角 */
     text-transform: lowercase;
+    font-family: "JetBrains Mono", monospace;  /* 使用等宽字体 */
+    border-right: 1px solid #3e4451;  /* 右边框 */
+    border-bottom: 1px solid #3e4451;  /* 下边框 */
+    opacity: 0.9;  /* 稍微透明 */
+    transition: all 0.3s ease;  /* 添加过渡效果 */
+}
+
+/* 悬停效果 */
+.org-src-container pre.src:hover::before {
+    opacity: 1;
+    background-color: #3e4451;
 }
 
 .post-date {
@@ -598,6 +607,34 @@ li {
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-all;
+}
+
+.org-src-container {
+    position: relative;
+}
+
+.copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+    color: #93a1a1;
+    background-color: transparent;
+    border: 1px solid #93a1a1;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.copy-button:hover {
+    color: #fdf6e3;
+    background-color: #93a1a1;
+}
+
+.copy-button.copied {
+    color: #859900;
+    border-color: #859900;
 }
 
 

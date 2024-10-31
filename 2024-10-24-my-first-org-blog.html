@@ -33,6 +33,7 @@
        </script>
 
        <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
        <script src="assets/js/search.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
@@ -51,9 +52,9 @@
       </header></div>
 <div id="content">
 <div class="post-date">24 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a></h1>
-<div id="outline-container-org25668f4" class="outline-2">
-<h2 id="org25668f4">一</h2>
-<div class="outline-text-2" id="text-org25668f4">
+<div id="outline-container-orgac4ad81" class="outline-2">
+<h2 id="orgac4ad81">一</h2>
+<div class="outline-text-2" id="text-orgac4ad81">
 <p>
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 </p>
@@ -79,15 +80,15 @@
 </p>
 
 
-<figure id="org441ff0d">
+<figure id="orgaca3e1f">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png" alt="org-blog" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org8d460a5" class="outline-2">
-<h2 id="org8d460a5">二</h2>
-<div class="outline-text-2" id="text-org8d460a5">
+<div id="outline-container-orgdb557db" class="outline-2">
+<h2 id="orgdb557db">二</h2>
+<div class="outline-text-2" id="text-orgdb557db">
 <p>
 无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 </p>
@@ -166,7 +167,17 @@ Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.w
           <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #98be65;">"#+begin_src"</span><span style="color: #51afef;">)</span>
           <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"^```"</span> nil t<span style="color: #51afef;">)</span>
           <span style="color: #51afef;">(</span><span style="color: #51afef;">if</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">looking-back</span> <span style="color: #98be65;">"^```"</span><span style="color: #c678dd;">)</span>
-              <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #98be65;">"#+end_src"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+              <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #98be65;">"#+end_src"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#34892;&#20869;&#20195;&#30721;&#20026;Org-mode&#34892;&#20869;&#20195;&#30721;&#65292;&#28155;&#21152;&#31354;&#26684;</span>
+  <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">while</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"`</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">[</span><span style="color: #51afef; font-weight: bold;">^</span><span style="color: #98be65;">`]+?</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">`"</span> nil t<span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">format</span> <span style="color: #98be65;">" ~%s~ "</span> <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+
+  <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">&#36716;&#25442;Markdown&#24378;&#35843;&#20026;Org-mode&#24378;&#35843;&#65292;&#28155;&#21152;&#31354;&#26684;</span>
+  <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">goto-char</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">point-min</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">while</span> <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">re-search-forward</span> <span style="color: #98be65;">"\\*\\*</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">(</span><span style="color: #98be65;">.*?</span><span style="color: #51afef; font-weight: bold;">\\</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">\\*\\*"</span> nil t<span style="color: #98be65;">)</span>
+    <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">replace-match</span> <span style="color: #a9a1e1;">(</span><span style="color: #a9a1e1;">format</span> <span style="color: #98be65;">" *%s* "</span> <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">match-string</span> <span style="color: #da8548; font-weight: bold;">1</span><span style="color: #51afef;">)</span><span style="color: #a9a1e1;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+
 </pre>
 </div>
 </div>
