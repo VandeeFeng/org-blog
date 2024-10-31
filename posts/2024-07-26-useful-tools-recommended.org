@@ -1,0 +1,296 @@
+#+title: 实用小玩意收集
+#+date: <2024-07-26 13:42>
+#+description: 汇总一些实用的工具、软件、网站，长期更新
+#+filetags: Tool Useful
+
+汇总一些实用的工具、软件、网站，长期更新。
+
+阮一峰的GitHub weekly issues： https://github.com/ruanyf/weekly/issues ，可以找到许多有意思的东西。
+
+llama-index 的GitHub，里面有详细的具体代码和案例，太值得学习了: https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks
+
+日常的搜集第一次整理之后有了工具汇总表格版：[[https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view][tools]] ，这里做第二次筛选。
+
+** My Favorites
+- *Claude Enginner*
+
+  Claude Engineer 是一个交互式命令行界面（CLI），利用 Anthropic 的 Claude-3.5-Sonnet 模型的强大功能来协助完成软件开发任务。该工具将大型语言模型的功能与实用的文件系统操作和网络搜索功能相结合。
+
+  最近Claude的artifacts大火了一把。OpenAI明显后劲不足了。
+
+  Source: https://github.com/Doriandarko/claude-engineer
+
+- *RIME*
+
+  输入法就是笔。
+
+  [[https://rime.im/][RIME | 中州韻輸入法引擎]]，配合 [[https://github.com/iDvel/rime-ice][iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库]]，多平台多端同步。已经使用了几年，非常巴适，手机端也可以同步配置。
+
+  以前输入法就各种偷偷记录用户输入习惯，现在各个输入法又还要内置AI再记录一遍。本地配置、不需要联网的输入法是我的刚需，更何况，rime还可以自挂词库。
+
+- *OpenSearch GPT*
+
+  A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for *you*.
+
+  开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
+
+  我试着在Cloudflare上部署了一下，完全可行。这是每个人都可以定制的属于自己的搜索引擎。
+
+  Url: https://opensearch-ai.pages.dev/
+
+  GitHub: https://github.com/supermemoryai/opensearch-ai
+
+- *Napkin*
+
+  一个可以根据文字内容生成关系图的在线笔记编辑工具，目前还在beta测试阶段可以免费体验PRO的内容，生产力提高不是一点点。生成的关系图可以再详细编辑标题，图标等等，支持导出为PNG、SVG、PDF。
+
+  Url：https://www.napkin.ai/
+
+- *Zen*
+
+  基于Firefox的开源浏览器，作者特别强调了隐私保护。compact模式下，可以隐藏地址栏和边栏，视觉体验和Arc就一样了。但是操作逻辑还是很不一样，Arc的space确实好用，把搜藏夹转到了侧边栏，迷你搜索栏这个设计真的天才，在交互上Arc确实可以说颠覆了传统浏览器的使用习惯。
+
+  让我决定用下去是因为，他们现在的更新真的很勤，前一天Mac快捷键的问题，第二天就修复了，做开源是需要热情的。Firefox一直是我的主力浏览器，但这几年的发展很有问题，期待Zen。
+
+  Url: https://github.com/zen-browser/desktop
+
+- *PixPin*
+
+  Mac的终于出来了。这是我用过最好用的截图软件了。
+
+  PixPin的名字来源于“Pixel Pin”，简单来说是一个截图、贴图的工具，但是PixPin以截图和贴图两大功能为核心做了大量的优化功能，目标是提升用户在工作时的工作效率，无论用户使用电脑做何种工作，都可以使用PixPin提高工作效率。
+
+  Url: https://pixpinapp.com/
+
+** 论文
+
+- alphaxiv：斯坦福大学的学生做的一个论文讨论平台。可以理解为基于arXiv论文的Twitter，可以对论文评论，讨论。
+
+  If you find a paper on arXiv that you’d like to discuss, simply replace arxiv.org with alphaxiv.org in the URL.
+
+  Url：https://www.alphaxiv.org/
+
+- [[https://www.aminer.cn/][AI论文检索平台 aminer]]
+
+- [[https://paperswithcode.com/][paper with code]]
+
+  这是一个论文和对应工程实现（含代码、数据集、测试方法等）的索引工具。下次你看到别人推荐优质论文时，可以直接用它去找代码实现
+
+- [[https://www.connectedpapers.com/][Connected Papers | Find and explore academic papers]]
+
+- [[https://briefgpt.xyz/][BriefGPT - AI 论文速递]]  一个中文论文推送网站，还可以
+
+- Intro: 一个非常好用的AI论文阅读工具：TXYZ
+
+  Source:  https://www.txyz.ai/
+
+** AI
+
+- *Dify*
+
+  Dify是一个开源LLM应用程序开发平台。 Dify 的直观界面结合了 AI 工作流程、RAG 管道、代理功能、模型管理、可观察性功能等，让您快速从原型转向生产。
+
+  GitHub: https://github.com/langgenius/dify
+
+  [[https://dify101.com/][Dify 101: Comprehensive Guide to Mastering Dify.ai | AI Application Development Tutorial]]
+
+  https://dify.ai/
+
+- [[https://fireworks.ai/][Fireworks - Fastest Inference for Generative AI]]
+
+- [[https://www.together.ai/][Together AI]]
+
+- [[https://console.groq.com/playground][Playground - GroqCloud]]
+
+- [[https://aistudio.google.com/app/prompts/new_chat][Google AI Studio]]
+
+  Gemini 1.5 Flash免费套餐包含： 每分钟15次请求（RPM）每分钟100万个Token（TPM）每天1,500次Token（RPD） 免费上下文缓存服务，每小时最多可存储100万个Token 免费微调
+
+
+
+** LLM Web Chat
+
+- *DuckDuckGo AI Chat*
+
+  DuckDuckGo推出的AI聊天网页。已更新GPT-4o。
+
+  https://duckduckgo.com/?q=DuckDuckGo&ia=chat&atb=v409-1
+
+- *HuggingChat*
+
+  HuggingFace推出的AI聊天网页，支持最新的Llama 3.1-405B。
+
+  https://huggingface.co/chat/
+
+- *POE*
+
+  一个聚合LLM聊天网站，可选择的模型很多，Flux也有。
+
+  https://poe.com/
+
+- *delve*
+
+  一个可以根据回答内容递进搜索的AI聊天网页。
+
+  https://delve.a9.io/
+
+- *WinGPT*
+
+  一个仿window风格的AI聊天网页，免费GPT-4o。
+
+  https://wingpt.vercel.app/
+
+- *ChatGPT-Next-Web*
+
+  很早一批开始做GPT生意的了，他们这还可以买KEY。
+
+  A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。
+
+  在 1 分钟内使用 Vercel **免费一键部署**个人的GPT聊天实例。
+
+  GitHub: https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web
+
+- *Open WebUI*
+
+  Open WebUI 是一个可扩展、功能丰富且用户友好的自托管 WebUI，旨在完全离线操作。它支持各种 LLM 运行程序，包括 Ollama 和 OpenAI 兼容的 API。
+
+  docker轻松部署。
+
+  GitHub: https://github.com/open-webui/open-webui
+
+
+
+** Search
+
+- **OpenSearch GPT**
+
+  A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for *you*.
+
+  开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
+
+  Url: https://opensearch-ai.pages.dev/
+
+  GitHub: https://github.com/supermemoryai/opensearch-ai
+
+  Twitter: https://x.com/DhravyaShah/status/1818469911490162784
+
+  https://github.com/Dhravya/cloudflare-saas-stack  这是作者的之前的Cloudflare全栈方案。
+
+- **Perplexica**
+
+  GitHub: https://github.com/ItzCrazyKns/Perplexica
+
+  perplexity的开源平替，GitHub 11.4K Star。可docker部署，支持ollama本地模型。由于它的网络搜索依赖于SearXNG，等于还附送了一个SearXNG的本地实例。
+
+- **Grep**
+
+  一个快速从GitHub仓库查找内容的网站，支持正则，可以直接搜索代码内容
+
+  Url: https://grep.app/
+
+- **秘塔 AI 搜索**
+
+  秘塔 AI 搜索是一个基于大模型的新一代智能搜索引擎。它通过理解用户意图，提供无广告、高质量的搜索结果，让用户快速直达所需信息。秘塔 AI 搜索具有语义理解能力强、支持多轮对话式搜索、支持语音输入等优点。
+
+  国内信息的搜索它挺强。
+
+  https://metaso.cn/
+
+- *Felo AI Search*
+
+  Felo AI Search 是一款由日本公司 Sparticle 开发的新一代智能搜索引擎，旨在打破语言障碍，为用户提供轻松获取全球信息的途径，特别适合需要详细和全面答案的研究人员和学习者，以及希望快速掌握实时新闻和权威信息的用户。
+
+  最近一直在体验，信息源很丰富。
+
+  https://felo.ai/search
+
+- *devv.ai*
+
+  程序员搜索利器
+
+  https://devv.ai/zh
+
+- *mwmbl*
+
+  一个可以由用户提供爬取源的开源搜索引擎，github 文档里还介绍了其他许多优秀的搜索引擎
+  https://mwmbl.org/
+
+  GitHub: https://github.com/mwmbl/mwmbl
+
+- *SearchGPT*
+
+  OpenAI推出的搜索。
+
+  https://openai.com/index/searchgpt-prototype/
+
+** Others
+
+另见：表格版 [[https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view][tools]]
+
+- Intro: 一个电子书翻译工具，7K star.利用大语言模型（如 ChatGPT、Claude 等）对文件和图书进行多语言翻译的制作，支持的格式有 epub、txt 以及 srt 等。最近，作者将之前吴恩达老师开源的翻译工作流整合到项目中，使得翻译的效果更加好。
+
+  Source: https://github.com/yihong0618/bilingual_book_maker?tab=readme-ov-file
+
+- GitHub 上一个开源的终端 AI 助手 AI Shell。
+
+  在终端命令行界面（CLI）上，可通过自然语言转换为对应执行的 Shell 命令，类似于 GitHub Copilot X CLI。
+
+  GitHub：https://github.com/BuilderIO/ai-shell
+
+- 一款Python下的网络爬虫与浏览器自动化库：Crawlee-Python，快速构建爬虫的工具
+
+  Crawlee可以从网站下载HTML、PDF、JPG、PNG及其他格式的文件，与 BeautifulSoup、Playwright 及原生 HTTP 兼容
+
+  支持有头和无头模式，具有代理轮换功能，支持自动并行抓取、错误自动重试和会话管理等功能
+
+  https://github.com/apify/crawlee-python?tab=readme-ov-file
+
+- Intro: GitHub 上一套基于 Cloudflare 的全栈 SaaS 开发模板 cloudflare-saas-stack。利用该模板，可以快速在 Cloudflare 上构建并部署全栈应用，包括数据库、认证、样式、存储等功能。
+
+  很香！
+
+  Source: https://github.com/supermemoryai/supermemory
+
+- Stirling-PDF
+
+  一个本地的处理 PDF 的工具，界面是 Web UI，可以支持 Docker 部署。
+
+  各种主要的 PDF 操作都可以支持。比如拆分、合并、转换格式、重新排列、添加图片、旋转、压缩等等。这个本地托管的网络应用最初完全由 ChatGPT 制作，后来逐渐发展，增加了许多功能，以满足你对 PDF 的各种需求。
+
+  Stirling PDF 不会对外发送任何数据以进行记录或跟踪。
+
+  所有的文件和 PDF 要么只在客户端处理，要么只在服务器内存中暂存，用于执行任务，或者仅在执行任务时保存在临时文件中。一旦用户下载了文件，那些文件就会从服务器上删除。
+
+  https://github.com/Stirling-Tools/Stirling-PDF
+
+- 部署deeplx到cloudflare，比部署到docker方便
+
+  https://github.com/ifyour/deeplx-for-cloudflare
+
+- 吴恩达老师开源了一套 AI Agent 翻译工作流 Translation Agent。经他们的测试，该工作流翻译质量甚至可以媲美领先的商业翻译工具
+
+  GitHub: https://github.com/andrewyng/translation-agent
+
+- 功能颇为强大的 GPT 学术优化开源项目 GPT Academic，目前 60.2k Star！
+
+  GitHub: https://github.com/binary-husky/gpt_academic
+
+- Intro: 开源离线Notion,支持本地LLM，JavaScript自定义功能
+
+  Source: https://github.com/mayneyao/eidos  、 https://eidos.space
+
+*** PDF相关
+
+PDF转Markdown 方案
+
+1. document-convert（开源）：https://github.com/multimodal-art-projection/MAP-NEO/tree/main/Matrix/document-convert
+2. Ragflow（开源）：https://github.com/infiniflow/ragflow
+3. gptpdf（开源）：https://github.com/CosmosShadow/gptpdf
+4. 百度云Textmind（闭源）：https://cloud.baidu.com/product/textmind.html
+5. doc2x（闭源）：[[https://doc2x.noedgeai.com/][https://doc2x.noedgeai.com]]
+6. 腾讯云文档解析（闭源）：https://cloud.tencent.com/document/product/1759/107504
+7. marker（开源）：https://github.com/VikParuchuri/marker
+8. PDF-Extract-Kit（开源）：https://github.com/opendatalab/PDF-Extract-Kit
+9. zerox（开源）：https://github.com/getomni-ai/zerox
+10. OminiParse（开源）：https://github.com/adithya-s-k/omniparse
+11. MinerU（开源）：https://github.com/opendatalab/MinerU
