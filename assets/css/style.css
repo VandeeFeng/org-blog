@@ -314,82 +314,24 @@ tr:nth-child(even) {
 }
 
 
-.org-src-container pre.src-lisp::before {
-    content: "lisp";
-}
-
-.org-src-container pre.src-emacs-lisp::before {
-    content: "emacs-lisp";
-}
-
-.org-src-container pre.src-bash::before {
-    content: "bash";
-}
-
-.org-src-container pre.src-cpp::before {
-    content: "cpp";
-}
-
-.org-src-container pre.src-css::before {
-    content: "css";
-}
-
-.org-src-container pre.src-go::before {
-    content: "go";
-}
-
-.org-src-container pre.src-haskell::before {
-    content: "haskell";
-}
-
-.org-src-container pre.src-html::before {
-    content: "html";
-}
-
-.org-src-container pre.src-js::before {
-    content: "js";
-}
-
-.org-src-container pre.src-lsp::before {
-    content: "lsp";
-}
-
-.org-src-container pre.src-org::before {
-    content: "org";
-}
-
-.org-src-container pre.src-python::before {
-    content: "python";
-}
-
-.org-src-container pre.src-rust::before {
-    content: "rust";
-}
-
-.org-src-container pre.src-solidity::before {
-    content: "solidity";
-}
-
-.org-src-container pre.src-sql::before {
-    content: "sql";
-}
-
 .org-src-container pre.src::before {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #282c34;  /* 深色背景 */
-    color: #abb2bf;  /* 浅色文字 */
-    padding: 4px 10px;  /* 稍微增加内边距 */
+    background-color: #282c34;
+    color: #abb2bf;
+    padding: 4px 10px;
     font-size: 0.85em;
-    font-weight: 500;  /* 稍微加粗 */
-    border-radius: 4px 0 4px 0;  /* 右下角圆角 */
+    font-weight: 500;
+    border-radius: 4px 0 4px 0;
     text-transform: lowercase;
-    font-family: "JetBrains Mono", monospace;  /* 使用等宽字体 */
-    border-right: 1px solid #3e4451;  /* 右边框 */
-    border-bottom: 1px solid #3e4451;  /* 下边框 */
-    opacity: 0.9;  /* 稍微透明 */
-    transition: all 0.3s ease;  /* 添加过渡效果 */
+    font-family: "JetBrains Mono", monospace;
+    border-right: 1px solid #3e4451;
+    border-bottom: 1px solid #3e4451;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    content: attr(data-lang);
+    display: var(--show-lang-label, none);  /* 默认隐藏 */
 }
 
 /* 悬停效果 */

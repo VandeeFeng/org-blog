@@ -32,4 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // 将按钮添加到代码块容器中
         block.appendChild(copyButton);
     });
+
+    // 为所有代码块添加语言标签
+    document.querySelectorAll('.org-src-container pre[class*="src-"]').forEach(pre => {
+        const lang = pre.className.match(/src-([\w-]+)/)?.[1];
+        if (lang && lang !== 'nil') {
+            pre.setAttribute('data-lang', lang);
+            pre.style.setProperty('--show-lang-label', 'block');
+        }
+    });
 });
