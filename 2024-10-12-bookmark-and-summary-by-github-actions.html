@@ -33,6 +33,7 @@
        </script>
 
        <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
        <script src="assets/js/search.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
@@ -55,14 +56,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgafc8ea5">GitHub 书签</a></li>
-<li><a href="#orgc75ee95">从GitHub书签到页面</a></li>
+<li><a href="#org1069776">GitHub 书签</a></li>
+<li><a href="#org3f71974">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgafc8ea5" class="outline-2">
-<h2 id="orgafc8ea5">GitHub 书签</h2>
-<div class="outline-text-2" id="text-orgafc8ea5">
+<div id="outline-container-org1069776" class="outline-2">
+<h2 id="org1069776">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org1069776">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -116,7 +117,7 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="orgbebfbd6">
+<figure id="orge03ba4a">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -352,15 +353,15 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgc75ee95" class="outline-2">
-<h2 id="orgc75ee95">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-orgc75ee95">
+<div id="outline-container-org3f71974" class="outline-2">
+<h2 id="org3f71974">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org3f71974">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="orgc91ed2c">
+<figure id="org0bee737">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
