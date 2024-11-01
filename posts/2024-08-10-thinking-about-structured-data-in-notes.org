@@ -7,7 +7,7 @@ pre-training预训练，fine-turing微调，到现在的热门赛道RAG，都需
 
 在这个趋势下，PKM和LLM结合时笔记的数据格式问题就更加重要了。
 
-上一次考虑笔记数据层面的时候还是在[[https://www.vandee.art/2024-11-01-my-pkm-building-logs.html#org6551661][obsidian 和 logseq 联用的 PKM 尝试]]，让我从obsidian转到了Logseq：
+上一次考虑笔记数据层面的时候还是在[[https://www.vandee.art/2024-11-01-my-pkm-building-logs.html#orgacab3a6][obsidian 和 logseq 联用的 PKM 尝试]]，让我从obsidian转到了Logseq：
 #+begin_quote
 [[https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g][Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？]]
 
