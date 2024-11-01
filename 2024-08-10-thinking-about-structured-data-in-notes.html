@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Markdown一定是做笔记适用性最强的格式，但在数据层面一定不是。多维表格—数据库—RAG—LLM是一个值得思考的Workflow。表格提供了低代码的数据操作体验，数据库作为数据的备份和支撑，RAG结合笔记和LLM做思维拓展、总结、提取。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/rss.xml"
+      title="RSS feed for https://www.vandee.art/">
+<title>本地笔记结构化数据的思考</title>
+<meta property="og:title" content="本地笔记结构化数据的思考">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Markdown一定是做笔记适用性最强的格式，但在数据层面一定不是。多维表格—数据库—RAG—LLM是一个值得思考的Workflow。表格提供了低代码的数据操作体验，数据库作为数据的备份和支撑，RAG结合笔记和LLM做思维拓展、总结、提取。">
+<meta property="og:url" content="https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="no-referrer">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+
+       <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
+      <nav>
+      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://wiki.vandee.art">Wiki</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search anywhere...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">10 Aug 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html">本地笔记结构化数据的思考</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf0cc649">TiddlyWiki</a>
+<ul>
+<li><a href="#org479ef09">简介</a></li>
+<li><a href="#orgab03bd1">10分钟部署一个Wiki笔记本</a></li>
+<li><a href="#orgefba5d7">功能特性</a></li>
+</ul>
+</li>
+<li><a href="#orgc73130e">Teable</a></li>
+<li><a href="#org66ad573">小结</a></li>
+</ul>
+</div>
+</nav>
+<p>
+pre-training预训练，fine-turing微调，到现在的热门赛道RAG，都需要高质量数据的支撑。各大LLM阵营到现在也还在争夺各大数据平台的API和授权，偷偷训练。比起在技术上实现更大的突破，数据层面要轻松许多。
+</p>
+
+<p>
+在这个趋势下，PKM和LLM结合时笔记的数据格式问题就更加重要了。
+</p>
+
+<p>
+上一次考虑笔记数据层面的时候还是在<a href="https://www.vandee.art/2024-11-01-my-pkm-building-logs.html#org6551661">obsidian 和 logseq 联用的 PKM 尝试</a>，让我从obsidian转到了Logseq：
+</p>
+<blockquote>
+<p>
+<a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a>
+</p>
+
+<p>
+从易用性和数据呈现来看，很显然它是，从保存数据和数据结构的角度来看，markdown 不是一个很优秀的格式。当然这是当数据到达一个相当的量级才需要考虑的事。
+</p>
+
+<p>
+<b>做电子笔记，实际上是在做数据储存和数据处理。</b>
+</p>
+
+<p>
+数据编辑的易用性，和数据检索、数据结构之间的取舍很关键。
+</p>
+</blockquote>
+
+<p>
+结构化文档数据有更少的噪声、更清晰的数据结构和关系结构、支持更复杂的SQL查询，进而从数据源头提高RAG向量化的质量。
+</p>
+
+<p>
+在搜索结构化数据和PostgreSQL的时候，了解到了TiddlyWiki和Teable。
+</p>
+<div id="outline-container-orgf0cc649" class="outline-2">
+<h2 id="orgf0cc649">TiddlyWiki</h2>
+<div class="outline-text-2" id="text-orgf0cc649">
+<p>
+这纯属是一个意外惊喜。一直想做一个类似Andy的<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子笔记</a>页面，非常简洁，又很还原纸张翻页的感觉。没想到在TiddlyWiki里实现了。
+</p>
+
+<p>
+<a href="https://wiki.vandee.art/">Vandee — Wiki</a>这是我的Wiki，可以随意编辑体验。
+</p>
+</div>
+<div id="outline-container-org479ef09" class="outline-3">
+<h3 id="org479ef09">简介</h3>
+<div class="outline-text-3" id="text-org479ef09">
+<p>
+TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方的host服务、第三方的发行版等等。
+</p>
+
+<p>
+只需要一个 <code>.html</code> 文件就可以实现一个在线随时可编辑的功能非常全面的笔记wiki。从没想过一个笔记体系可以有如此简洁高效的形式。
+</p>
+
+<p>
+打开<a href="https://tiddlywiki.com/#GettingStarted">TiddlyWiki — a non-linear personal web notebook</a>，点击download会下载一个 <code>empty.html</code> 的文件，你已经拥有一个自己的Wiki了。 桌面版和Node.js版都没这个方便。有开发需求的可以考虑Node.js版本。
+</p>
+</div>
+</div>
+<div id="outline-container-orgab03bd1" class="outline-3">
+<h3 id="orgab03bd1">10分钟部署一个Wiki笔记本</h3>
+<div class="outline-text-3" id="text-orgab03bd1">
+<p>
+<b>GitHub:</b>
+</p>
+
+<ul class="org-ul">
+<li>新建一个GitHub仓库，上传这个HTML文件，随便起个名字例如 <code>index.html</code> 。</li>
+<li>可以直接使用GitHub Pages来发布这个页面。</li>
+</ul>
+
+<p>
+<b>Cloudflare:</b>
+</p>
+
+<ul class="org-ul">
+<li>在Cloudflare的page里新建一个GitHub项目，选择刚才的仓库，其他的都不用填，部署就完事了。</li>
+<li>国内的GitHub经常抽风，Cloudflare Pages可以稳定访问。</li>
+</ul>
+
+<p>
+没有自己的域名GitHub和Cloudflare自带的域名也可以直接访问。比发布静态MD博客方便许多。
+</p>
+
+<p>
+<b>保存与同步</b>
+</p>
+
+<p>
+在GitHub上申请一个密钥，然后在TiddlyWiki的设置-保存-GitHub里填入相关信息和密钥，就可以直接同步保存到GitHub了。
+</p>
+
+<p>
+这样就实现了一个可以在线预览编辑，本地编辑同步，GitHub版本回滚的极简笔记wiki。
+</p>
+</div>
+</div>
+<div id="outline-container-orgefba5d7" class="outline-3">
+<h3 id="orgefba5d7">功能特性</h3>
+<div class="outline-text-3" id="text-orgefba5d7">
+<p>
+TiddlyWiki有许多主题模板和插件。文件支持TiddlyWiki格式、JavaScript等等默认格式，装了插件之后就可以支持Markdown了。
+</p>
+
+<p>
+<a href="https://crazko.github.io/krystal/">Krystal</a>插件完美复刻了Andy笔记页面，这太让我惊喜了，正是看到这个插件才让我想开始尝试TiddlyWiki。当然也提供反链，这是我的刚需。也同样可以通过Tag分类管理笔记。
+</p>
+
+<p>
+最大的特点是方便，一个HTML网页在浏览器里打开就完事了，基本零依赖。想要加点什么，直接在这个HTML文档里写点JavaScript就可以了。
+</p>
+
+<p>
+特别适合零碎的记录还有日志。初步使用感觉不太适合完全当作主知识库来使用，单个笔记文件的导出、没有文件夹管理都是需要斟酌的问题。
+</p>
+
+<p>
+但是TiddlyWiki可以导出JSON、CSV，也就是说可以直接导入SQL。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc73130e" class="outline-2">
+<h2 id="orgc73130e">Teable</h2>
+<div class="outline-text-2" id="text-orgc73130e">
+<p>
+GitHub：<a href="https://github.com/teableio/teable">https://github.com/teableio/teable</a>
+</p>
+
+<p>
+官网：<a href="https://www.teable.io/">https://www.teable.io/</a> 、文档：<a href="https://help.teable.cn/">https://help.teable.cn/</a>
+</p>
+
+<p>
+Teable是一个开源的GoogleSheets、Airtable，并且提供了PostgreSQL集成，目前8.8k Star。支持Docker本地部署，一键Railway部署，通过 SQL 访问表格数据，当然也有官方的host，目前还没有看到收费的方案。
+</p>
+
+<p>
+我在Docker上试用了一下，API和PostgreSQL部分做的很方便。免费申请一个AWS E2 服务器实例，就可以玩起来了。
+</p>
+
+<p>
+之前在使用obsidian的时候，就有许多在线表格和笔记结合的方案。现在是时候考虑一下结构化数据，SQL的问题了。
+</p>
+
+<p>
+正好TiddlyWiki支持导出到Json和CSV，Teable又支持CSV的导入和导出。从数据库到表格到PKM是一个很可行的思路。
+</p>
+
+<p>
+在TiddlyWiki里写一个JavaScript的插件来同步Teable应该不难实现，Teable的API支持原数据的导出。应该有这种插件但是我还没找到。这一步实现之后应该可以发展出一个更适合RAG与LLM的笔记方案。
+</p>
+</div>
+</div>
+<div id="outline-container-org66ad573" class="outline-2">
+<h2 id="org66ad573">小结</h2>
+<div class="outline-text-2" id="text-org66ad573">
+<p>
+我一直没有依赖太多的手段或方法来从形式上实现笔记之间的链接，这是我迭代到现在最核心的笔记原则。就像开头说的Andy的<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子笔记</a>一样，简洁、高效的笔记记录和阅读体验始终是我追求的第一位。
+</p>
+
+<p>
+Notion里的一大堆表格数据库，对于笔记本身真的有很大帮助么？反链和高度原子化的笔记在笔记形式的层面就非常足够了。原子笔记的标题是高度提炼的概念，而反链会显示和这个概念相关联的其他概念，这是最简单也是最核心的实现思维链条与笔记之间的同步的方法了。
+</p>
+
+<p>
+在我需要引用其他概念的原子笔记时，只要敲击相关的概念词汇，相关联部分都会自动补全，我完全不需要在表格和数据库里重复查找相关的内容再提炼一遍，我认为这是最自然的笔记方法。做笔记本身不需要复杂的检索查询逻辑。
+</p>
+
+<p>
+但在数据结构层面，这是另一个问题，数据需要足够“复杂”的检索系统。在RAG的过程当中，依赖于LLM对文档的语义理解的局限性一直在那里，SQL或结构化文档可以直接查询键值对让LLM提取相应的内容。从技术上来优化RAG的效果对于普通人来说成本太高，而从数据结构本身来优化就容易许多。
+</p>
+
+<p>
+Markdown一定是做笔记适用性最强的格式，但在数据层面一定不是。多维表格—数据库—RAG—LLM是一个值得思考的Workflow。表格提供了低代码的数据操作体验，数据库作为数据的备份和支撑，RAG结合笔记和LLM做思维拓展、总结、提取。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+        <p>© 2022-2024 Vandee. Some rights reserved.</p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>

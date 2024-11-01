@@ -1,0 +1,97 @@
+#+title: 本地笔记结构化数据的思考
+#+date: <2024-08-10 16:31>
+#+description: Markdown一定是做笔记适用性最强的格式，但在数据层面一定不是。多维表格—数据库—RAG—LLM是一个值得思考的Workflow。表格提供了低代码的数据操作体验，数据库作为数据的备份和支撑，RAG结合笔记和LLM做思维拓展、总结、提取。
+#+filetags: PKM
+
+pre-training预训练，fine-turing微调，到现在的热门赛道RAG，都需要高质量数据的支撑。各大LLM阵营到现在也还在争夺各大数据平台的API和授权，偷偷训练。比起在技术上实现更大的突破，数据层面要轻松许多。
+
+在这个趋势下，PKM和LLM结合时笔记的数据格式问题就更加重要了。
+
+上一次考虑笔记数据层面的时候还是在[[https://www.vandee.art/2024-11-01-my-pkm-building-logs.html#org6551661][obsidian 和 logseq 联用的 PKM 尝试]]，让我从obsidian转到了Logseq：
+#+begin_quote
+[[https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g][Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？]]
+
+从易用性和数据呈现来看，很显然它是，从保存数据和数据结构的角度来看，markdown 不是一个很优秀的格式。当然这是当数据到达一个相当的量级才需要考虑的事。
+
+*做电子笔记，实际上是在做数据储存和数据处理。*
+
+数据编辑的易用性，和数据检索、数据结构之间的取舍很关键。
+#+end_quote
+
+结构化文档数据有更少的噪声、更清晰的数据结构和关系结构、支持更复杂的SQL查询，进而从数据源头提高RAG向量化的质量。
+
+在搜索结构化数据和PostgreSQL的时候，了解到了TiddlyWiki和Teable。
+
+* TiddlyWiki
+
+这纯属是一个意外惊喜。一直想做一个类似Andy的[[https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU][原子笔记]]页面，非常简洁，又很还原纸张翻页的感觉。没想到在TiddlyWiki里实现了。
+
+[[https://wiki.vandee.art/][Vandee — Wiki]]这是我的Wiki，可以随意编辑体验。
+
+** 简介
+
+TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方的host服务、第三方的发行版等等。
+
+只需要一个 ~.html~ 文件就可以实现一个在线随时可编辑的功能非常全面的笔记wiki。从没想过一个笔记体系可以有如此简洁高效的形式。
+
+打开[[https://tiddlywiki.com/#GettingStarted][TiddlyWiki — a non-linear personal web notebook]]，点击download会下载一个 ~empty.html~ 的文件，你已经拥有一个自己的Wiki了。 桌面版和Node.js版都没这个方便。有开发需求的可以考虑Node.js版本。
+
+** 10分钟部署一个Wiki笔记本
+
+*GitHub:*
+
+- 新建一个GitHub仓库，上传这个HTML文件，随便起个名字例如 ~index.html~ 。
+- 可以直接使用GitHub Pages来发布这个页面。
+
+*Cloudflare:*
+
+- 在Cloudflare的page里新建一个GitHub项目，选择刚才的仓库，其他的都不用填，部署就完事了。
+- 国内的GitHub经常抽风，Cloudflare Pages可以稳定访问。
+
+没有自己的域名GitHub和Cloudflare自带的域名也可以直接访问。比发布静态MD博客方便许多。
+
+*保存与同步*
+
+在GitHub上申请一个密钥，然后在TiddlyWiki的设置-保存-GitHub里填入相关信息和密钥，就可以直接同步保存到GitHub了。
+
+这样就实现了一个可以在线预览编辑，本地编辑同步，GitHub版本回滚的极简笔记wiki。
+
+** 功能特性
+
+TiddlyWiki有许多主题模板和插件。文件支持TiddlyWiki格式、JavaScript等等默认格式，装了插件之后就可以支持Markdown了。
+
+[[https://crazko.github.io/krystal/][Krystal]]插件完美复刻了Andy笔记页面，这太让我惊喜了，正是看到这个插件才让我想开始尝试TiddlyWiki。当然也提供反链，这是我的刚需。也同样可以通过Tag分类管理笔记。
+
+最大的特点是方便，一个HTML网页在浏览器里打开就完事了，基本零依赖。想要加点什么，直接在这个HTML文档里写点JavaScript就可以了。
+
+特别适合零碎的记录还有日志。初步使用感觉不太适合完全当作主知识库来使用，单个笔记文件的导出、没有文件夹管理都是需要斟酌的问题。
+
+但是TiddlyWiki可以导出JSON、CSV，也就是说可以直接导入SQL。
+
+* Teable
+
+GitHub：<https://github.com/teableio/teable>
+
+官网：<https://www.teable.io/> 、文档：<https://help.teable.cn/>
+
+Teable是一个开源的GoogleSheets、Airtable，并且提供了PostgreSQL集成，目前8.8k Star。支持Docker本地部署，一键Railway部署，通过 SQL 访问表格数据，当然也有官方的host，目前还没有看到收费的方案。
+
+我在Docker上试用了一下，API和PostgreSQL部分做的很方便。免费申请一个AWS E2 服务器实例，就可以玩起来了。
+
+之前在使用obsidian的时候，就有许多在线表格和笔记结合的方案。现在是时候考虑一下结构化数据，SQL的问题了。
+
+正好TiddlyWiki支持导出到Json和CSV，Teable又支持CSV的导入和导出。从数据库到表格到PKM是一个很可行的思路。
+
+在TiddlyWiki里写一个JavaScript的插件来同步Teable应该不难实现，Teable的API支持原数据的导出。应该有这种插件但是我还没找到。这一步实现之后应该可以发展出一个更适合RAG与LLM的笔记方案。
+
+* 小结
+
+我一直没有依赖太多的手段或方法来从形式上实现笔记之间的链接，这是我迭代到现在最核心的笔记原则。就像开头说的Andy的[[https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU][原子笔记]]一样，简洁、高效的笔记记录和阅读体验始终是我追求的第一位。
+
+Notion里的一大堆表格数据库，对于笔记本身真的有很大帮助么？反链和高度原子化的笔记在笔记形式的层面就非常足够了。原子笔记的标题是高度提炼的概念，而反链会显示和这个概念相关联的其他概念，这是最简单也是最核心的实现思维链条与笔记之间的同步的方法了。
+
+在我需要引用其他概念的原子笔记时，只要敲击相关的概念词汇，相关联部分都会自动补全，我完全不需要在表格和数据库里重复查找相关的内容再提炼一遍，我认为这是最自然的笔记方法。做笔记本身不需要复杂的检索查询逻辑。
+
+但在数据结构层面，这是另一个问题，数据需要足够“复杂”的检索系统。在RAG的过程当中，依赖于LLM对文档的语义理解的局限性一直在那里，SQL或结构化文档可以直接查询键值对让LLM提取相应的内容。从技术上来优化RAG的效果对于普通人来说成本太高，而从数据结构本身来优化就容易许多。
+
+Markdown一定是做笔记适用性最强的格式，但在数据层面一定不是。多维表格—数据库—RAG—LLM是一个值得思考的Workflow。表格提供了低代码的数据操作体验，数据库作为数据的备份和支撑，RAG结合笔记和LLM做思维拓展、总结、提取。
