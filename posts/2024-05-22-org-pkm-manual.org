@@ -151,7 +151,7 @@ Emacs，org-roam，模板创建Daily和note：
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif]]
 
-** Org-tag
+**** Org-tag
 
 org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的*标签的统一性*，大小写或者单复数不统一会很麻烦。
 
@@ -219,7 +219,7 @@ Ref:
 - [[https://www.cnblogs.com/btea/p/4412375.html][emacs org mode 中的标签全参考 - 咖啡加茶 - 博客园]]
 - [[https://www.zmonster.me/2018/02/28/org-mode-capture.html][强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster's Blog]]
 
-** Org-agenda
+**** Org-agenda
 
 最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用 ~#TODO~ 来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 
@@ -238,12 +238,11 @@ Ref:
 
 #+end_src
 
-
-
 这是现在的样子：
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-06-15%2011.28.09.png]]
 
-
-*** TODOs
+**** TODOs
 
 - 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入~[/]~或者~[%]~。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
 
@@ -299,7 +298,7 @@ Ref：
 - [[https://www.zmonster.me/2015/07/15/org-mode-planning.html][强大的 Org mode(2): 任务管理 · ZMonster's Blog]]
 - [[https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html#sec-5][Org-mode 简明手册 - open source - 博客园]]
 
-** Org-capture
+**** Org-capture
 
 [[https://orgmode.org/manual/Capture.html][Org-capture]] 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 
@@ -385,9 +384,12 @@ Ref：
 - [[https://www.zmonster.me/2018/02/28/org-mode-capture.html][强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster's Blog]]
 - [[https://orgmode.org/manual/Capture.html][Capture (The Org Manual)]]
 
-** Org-roam
+**** Org-roam
 
 [[https://www.orgroam.com/][Org-roam]] 是Emacs的一个包，也是org-mode 的扩展，可以简单的实现双链，通过org-roam-ui直观的预览。
+
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam-ui-2024-05-22%2013.31.40.png]]
 
 也不是必须，只需要解决双链的查看就可以了。
 
@@ -479,7 +481,7 @@ Ref：
 
 
 
-** Org-export
+**** Org-export
 
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些[[https://orgmode.org/zh-CN/tools.html][工具]] 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 
@@ -525,7 +527,7 @@ Ref：
 
 Ref：[[https://orgmode.org/manual/Exporting.html][Exporting (The Org Manual)]]、[[https://orgmode.org/zh-CN/tools.html][工具 | Org mode]]
 
-** Org with Zotero
+**** Org with Zotero
 
 书和论文的PDF文件，我现在全部放在[[https://www.zotero.org/][Zotero]]。快速复制单个笔记到org-mode也挺简单：
 
@@ -573,7 +575,7 @@ Ref：
 - https://hsingko.pages.dev/post/2022/07/04/zotero-and-orgmode/
 - https://www.mkbehr.com/posts/a-research-workflow-with-zotero-and-org-mode/
 
-** Org-mode美化
+**** Org-mode美化
 
 我觉得原生的就挺好看，可读性也还好。
 
@@ -614,7 +616,7 @@ Ref：
 
 #+end_src
 
-** Org-protocol
+**** Org-protocol
 
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 
@@ -640,9 +642,12 @@ Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading�
 
   Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的applescript。
 
-** 网页摘录和after-reading
+**** 网页摘录和after-reading
 
 利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
+
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif]]
 
 有一个JavaScript我一直在用，可以选定一个网页的特定内容，在翻译和剪藏的时候挺有用，同时也微微提升了一点阅读体验。我用 [[https://github.com/OwO-Network/DeepLX][DeepLX]]  通过沉浸式翻译如果单次翻译内容太多会报错和限制，Deepl的中文翻译还是吊打其他的。
 
@@ -662,7 +667,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 最近[[https://www.vandee.art/posts/2024-07-24-start-to-get-readwies/][还是入坑了 Readwise]]。
 
-*** tools
+***** tools
 
 - 网站：<https://jina.ai/reader/>
 
@@ -688,11 +693,11 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 - [[https://sspai.com/post/89828][u-Sir/drag-to-preview]]，最近发现一个Firefox浏览器插件，可以选中网页链接拖拽弹出单独的窗口预览网页，在窗口外区域鼠标点击即可关闭，很符合我的胃口。
 
-** 输入法设置
+**** 输入法设置
 
 由于使用了evil，如果使用系统的输入法，每次在~:w~保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 
-*** SIS
+***** SIS
 
 [[https://github.com/laishulu/emacs-smart-input-source][emacs-smart-input-source]] 是一个可以自动切换输入法的Emacs包。
 
@@ -731,7 +736,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 
 
-*** pyim
+***** pyim
 
 [[https://github.com/tumashu/pyim][pyim]] 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 
@@ -801,8 +806,11 @@ Ref：
 
 - [[https://emacs-china.org/t/os-smart-input-source/13436][（重新设计）中英文混打：OS输入法管理包 smart-input-source - Emacs-general - Emacs China]]
 
-*** RIME
+***** RIME
 
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-07-03%2018.58.44.png
+]]
 如果说PKM是纸，那么输入法就是笔。
 
 再次强烈推荐 [[https://rime.im/][RIME | 中州韻輸入法引擎]]，配合 [[https://github.com/iDvel/rime-ice][iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库]]，多平台多端同步。已经使用了几年，非常巴适，手机端也可以同步配置。
@@ -884,7 +892,7 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 - [[https://github.com/gshang2017/rime-dict][gshang2017/rime-dict: RIME输入法(拼音)自用词库(包含英语，基础，维基，搜狗等词库)，词频基于腾讯AI向量词库逆序生成。]]  自建词库，导入专业领域词汇
 
-** Others
+**** Others
 
 - [[https://github.com/lijigang/100-questions-about-orgmode][lijigang/100-questions-about-orgmode: It's all about *orgmode* !]]
 
@@ -936,10 +944,15 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 现在我的日常问答都在本地使用Open WebUI，可以导出聊天还有数据库可以直接备份，甚至还可以给对话打tag，当然也可以搜索。
 
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png]]
 
-*** 工具推荐
+需要联网搜索的内容现在基本在perplexity了，碰巧的是，最近搜索到了自己博客的内容🤣，纪念一下：
 
-** Ollama
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png]]
+
+*** Ollama
 
 [[https://ollama.com/][Ollama]] 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 
@@ -952,8 +965,7 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 - [[https://blog.inoki.cc/2024/04/16/Ollama-cn/][Ollama 架构解析 | Inoki in the world]]
 
 
-
-** Open WebUI
+*** Open WebUI
 
 [[https://github.com/open-webui/open-webui][Open WebUI]] 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 
@@ -961,7 +973,13 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 
 Open WebUI 在2024-10-06的版本中[[https://github.com/open-webui/open-webui/releases/tag/v0.3.31][更新]]了支持类似Claude artifacts的artifacts: *🎨 Artifacts Feature*: Render web content and SVGs directly in the interface, supporting quick iterations and live changes，不过只支持原生的HTML和CSS。还更新了Overview，可以在白板里展示对话的内容，太实用了，史诗级更新！
 
-*其他主要功能*：
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-03.png]]
+
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-41.png]]
+
+*其他主要功能* ：
 
 - 📚 本地 RAG 集成：通过突破性的检索增强生成 (RAG) 支持深入探索聊天交互的未来。此功能将文档交互无缝集成到您的聊天体验中。您可以将文档直接加载到聊天中或将文件添加到文档库中，在查询之前使用 ~#~ 命令轻松访问它们。
 
@@ -1016,7 +1034,7 @@ services:
 
 Ref：[[https://docs.openwebui.com/][Open WebUI 官方手册]]
 
-** Aider
+*** Aider
 
 [[https://github.com/Aider-AI/aider][Aider]] 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个[[https://github.com/tninja/aider.el][aider.el]]。
 
@@ -1051,13 +1069,17 @@ python -m pip install -U aider-chat
 
 Ref：[[https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15][抛砖引玉: 介绍命令行AI编程工具aider以及emacs集成aider.el - Emacs-general - Emacs China]]
 
-** gptel
+*** gptel
 
 [[https://github.com/karthink/gptel][gptel: A simple LLM client for Emacs]] 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/ollama-emacs.gif]]
 
 *最近更新了* ，可以支持直接添加文件、文本到上下文，awesome！居然还支持转换MD格式到Org？
 
+#+attr_html: :alt :class img :width 50% :height 50%
+[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/gptel-summary.gif]]
 
 您可以使用 gptel 的查询包含其他文本区域、缓冲区或文件。这个附加上下文是“实时”的，而不是快照。添加后，将在每次查询时扫描并包含区域、缓冲区或文件。
 
@@ -1106,8 +1128,7 @@ Ref: https://github.com/karthink/gptel?tab=readme-ov-file#include-more-context-w
 #+end_src
 
 
-
-** *Kotaemon*
+*** *Kotaemon*
 
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 
@@ -1145,7 +1166,7 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 
-另见：[[https://www.vandee.art/posts/2024-08-02-nvim-pkm-manual/][PKM（个人知识管理）构建手册 - Nvim]]
+另见：[[https://www.vandee.art/2024-08-02-nvim-pkm-manual.html][PKM（个人知识管理）构建手册 - Nvim]]
 
 这里是我日常使用的实用小工具： [[https://www.vandee.art/2024-07-26-useful-tools-recommended.html][实用小玩意收集]]
 

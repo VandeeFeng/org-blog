@@ -4,7 +4,944 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Thu, 31 Oct 2024 15:41:37 +0800</lastBuildDate>
+<lastBuildDate>Fri, 01 Nov 2024 15:43:06 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[我的 PKM 构建 Log]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6a5b313">前言</a></li>
+<li><a href="#org1d31990">笔记和 PKM 的构建 Log</a>
+<ul>
+<li><a href="#org4b3300c">2022-07-20 开始系统的记笔记</a>
+<ul>
+<li><a href="#org46de50f">Add</a></li>
+<li><a href="#orgb2c57bc">为什么要花这么多心思在记笔记？</a></li>
+</ul>
+</li>
+<li><a href="#org990d59c">2023-07-19 又一次知识管理逻辑的完善</a>
+<ul>
+<li><a href="#org7913370">Add</a></li>
+<li><a href="#orgac0a8f2">知识管理与记录</a></li>
+<li><a href="#org843cefc">重新折腾obsidian</a></li>
+<li><a href="#orgbb0ce77">知识管理与文档记录的意义</a></li>
+</ul>
+</li>
+<li><a href="#orga884d9e">2023-09-14 obsidian和logseq联用的PKM尝试</a>
+<ul>
+<li><a href="#orga307ca2">Add</a></li>
+<li><a href="#org1e3069f">Logseq</a></li>
+<li><a href="#orgba7489e">ob和Logseq的简单对比</a></li>
+<li><a href="#org449ce0a">现在的选择</a></li>
+<li><a href="#org88281c8">Reference</a></li>
+</ul>
+</li>
+<li><a href="#orgb0a0af6">2024-04-13 神的编辑器</a>
+<ul>
+<li><a href="#org7159bc3">Add</a></li>
+<li><a href="#org320d3f8">做自己的笔记“软件”</a></li>
+<li><a href="#orgb4a48c0">Emacs</a></li>
+</ul>
+</li>
+<li><a href="#org3a61fb0">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
+<ul>
+<li><a href="#org4c8872c">Add</a></li>
+<li><a href="#orged519f9">PKM去形式化</a></li>
+<li><a href="#org54cbcd8">nb</a></li>
+<li><a href="#orgb872411">去形式化之后的PKM</a></li>
+<li><a href="#org5b2fac5">Logseq适配Quartz</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org6114aa3">Emacs 阶段</a></li>
+<li><a href="#org64572f5">ChangeLog</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org6a5b313" class="outline-2">
+<h2 id="org6a5b313">前言</h2>
+<div class="outline-text-2" id="text-org6a5b313">
+<p>
+最近开始 all in Emacs，用 org-mode 写作和生成静态博客页面，顺便对以前的写作再迭代整理一次。
+</p>
+
+<p>
+知识的循环是固定结构化知识不可缺少的一步。
+</p>
+
+<p>
+在整理这些关于 PKM 和笔记零散的博客的过程种，依然能回忆起某些段落，某些反复推敲的文字背后那些思考的火花。它们依然滋滋作响，这些思维的闪光穿越了时间和空间，它们在历史和记录中变得永恒。它们当然是宇宙里不可能被侦测到的无穷小量，但它们的能量在物质的永恒中已经签上了自己的 ID。
+</p>
+</div>
+</div>
+<div id="outline-container-org1d31990" class="outline-2">
+<h2 id="org1d31990">笔记和 PKM 的构建 Log</h2>
+<div class="outline-text-2" id="text-org1d31990">
+<p>
+这部分是之前相关零散文章的整理， <code>Add</code> 是新增，其他部分是之前的原文（部分修改）。
+</p>
+</div>
+<div id="outline-container-org4b3300c" class="outline-3">
+<h3 id="org4b3300c">2022-07-20 开始系统的记笔记</h3>
+<div class="outline-text-3" id="text-org4b3300c">
+<p>
+Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
+</p>
+
+<p>
+好处在哪里：Typora解决文本编辑，obsidian解决文档的本地储存和分类，并且win，mac，都能用。notion解决网络储存，并且有着强大的数据库和嵌入系统。这样基本实现了跨平台，跨终端，本地和网络双储存，多平台同步笔记。
+</p>
+
+<p>
+Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么执着于markdown格式，因为它简单高效，门槛也低，在网络文本传输有天然的优势。这中间还要解决的一个问题就是本地图片上传。利用Typora和gitee图床就可以完美解决。obsidian配合icloud也可以多平台同步。
+</p>
+</div>
+<div id="outline-container-org46de50f" class="outline-4">
+<h4 id="org46de50f">Add</h4>
+<div class="outline-text-4" id="text-org46de50f">
+<p>
+最开始接触到做笔记这个概念是从 Notion 开始，那个时候 Notion 正火。随后由于网络问题转到了 markdown 和 obsidian，开始折腾本地笔记。
+</p>
+</div>
+</div>
+<div id="outline-container-orgb2c57bc" class="outline-4">
+<h4 id="orgb2c57bc">为什么要花这么多心思在记笔记？</h4>
+<div class="outline-text-4" id="text-orgb2c57bc">
+<p>
+也还是从疫情说起，疫情让协同办公变成刚需。团队协作当中，本地与网络文档同步直接影响工作的效率。而对于个人，记笔记也直接影响信息的处理效率。而信息的输入与存储直接影响了，我们对于外界的认知，对信息的接受与处理，在准确全面的认知之下，思维才有用武之地。
+</p>
+
+<p>
+我个人习惯每个星期会整理一次，做好输出与整理。一个月之后再进行一次，如此反复。
+</p>
+
+<p>
+基维百科：文件是对思想创意的书面呈现，档案是对事物发展过程的书面保存，文档可以说就是主观和客观的书面记录。
+</p>
+
+<p>
+文档其实是我们工作学习生活都离不开的一个记录形式。
+</p>
+
+<p>
+汉谟拉比法典可以说就是最早的文档了。从社会发展的角度来说，人类各项基础活动都离不开书写和记录还有归档。文档的记录更直接关乎人类历史的发展与承接。信息处理的效率，更直接影响着文明发展的快慢。现在网络一秒钟传输的数据量，已经是几千年前全世界文档记录量的不知道多少倍了。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org990d59c" class="outline-3">
+<h3 id="org990d59c">2023-07-19 又一次知识管理逻辑的完善</h3>
+<div class="outline-text-3" id="text-org990d59c">
+<p>
+最近刷到了这个文章<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>，重新思考了一下知识管理的逻辑。
+</p>
+
+<p>
+距离上一次更新正好一年。在当时的方案中，由于还不能实现科学上网自由，obsidian的插件许多都没有，也没想着太折腾，notion的剪藏与数据库实在是方便。但是对于文档记录，本地储存才是一劳永逸的，notion的网络又还是时好时坏。还是决定再折腾一下。
+</p>
+</div>
+<div id="outline-container-org7913370" class="outline-4">
+<h4 id="org7913370">Add</h4>
+<div class="outline-text-4" id="text-org7913370">
+<p>
+现在互联网已经被 AI 内容污染的不成样了。那个时候开始意识到历史和记录的意义了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgac0a8f2" class="outline-4">
+<h4 id="orgac0a8f2">知识管理与记录</h4>
+<div class="outline-text-4" id="text-orgac0a8f2">
+<p>
+<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>里提到
+</p>
+
+<blockquote>
+<p>
+我给这个生活管理系统的标签是「知行合一」， <b>希望能够让知识流动起来，融贯到生活中的方方面面，来指导我们更好地行动，创造出更多的价值。</b>
+</p>
+
+<p>
+也希望能帮你做到「知行合一」。
+</p>
+</blockquote>
+
+<p>
+简单来说，人类学习一项事物，或者说认知一个事物的基本逻辑是：
+</p>
+
+<p>
+<a href="https://www.vandee.art/posts/20230313-295a230d.html?highlight=%E4%BF%A1%E6%81%AF#%E8%A1%A8%E4%B8%8E%E9%87%8C"> <b>物质实质 — 物质表象 — 生理接受 — 思维转化 — 信息处理 — 信息表达 — 认知迭代的过程</b> </a>
+</p>
+
+<p>
+现在垃圾信息越来越多了，GTP等LLM生成式AI会制造更多信息垃圾。
+</p>
+
+<p>
+从互联网诞生之初，垃圾信息就是使用者面临的一大难题。如何从无数信息中寻找到有用信息？搜索引擎的需求由此而来。早期的垃圾信息都是由人工生成，因此其数量受制于人类工作的局限性。但随着生成式 AI 的到来，大批量生成将使得垃圾信息的量级远超过去。五月初，新闻评级公司 NewsGuard 发现有 49 个假新闻网站使用 AI 生成内容。到 6 月底，这个数字增加到了 277。这些 AI 生成内容网站旨在通过 Google 的广告获利。来源：<a href="https://www.solidot.org/story?sid=75525">https://www.solidot.org/story?sid=75525</a>
+</p>
+
+<p>
+信息输入是认知的源头，重要性不言而喻，去年折腾了一下RSS订阅来粗略的管理信息输入，
+</p>
+
+<p>
+有了相对良性的信息输入，才能反哺思维的建立，最后一个阶段，就是思维加工之后，形成档案记录，循环到新的信息输入当中。所以，知识管理与记录是认知迭代环节中，非常重要的一环。从互联网时代，到大数据，到现在的生成式AI，每天基于互联网产生的数据早已超过过去纸质档案数据的总和。科学的文档管理和检索系统，提高信息查找的准确度与效率，非常有必要。
+</p>
+</div>
+</div>
+<div id="outline-container-org843cefc" class="outline-4">
+<h4 id="org843cefc">重新折腾obsidian</h4>
+<div class="outline-text-4" id="text-org843cefc">
+<p>
+正好前段时间Anytype的内测通过了，体验了一下，copy了一下它的设计理念， <b>决定以object-tag-type-relation的逻辑来整理信息，统一对于信息处理，思维上的内在逻辑分类，以及文档管理、记录、输出的外在分类。</b>
+</p>
+
+<p>
+既然要重新整理，干脆把obsidian捡起来吧。
+</p>
+
+<p>
+这次要解决的重点问题是：
+</p>
+<ul class="org-ul">
+<li>notion的剪藏与数据库需求</li>
+<li>思维逻辑与外在记录的统一</li>
+<li>信息、任务管理的自动化更新</li>
+</ul>
+
+<p>
+参考这些以及<a href="https://forum-zh.obsidian.md/">Obsidian 中文论坛 </a>，折腾了几天，
+</p>
+<ul class="org-ul">
+<li><a href="https://client.sspai.com/post/73958#">玩转 Obsidian 08：利用 Dataview 打造自动化 HomePage - 少数派 (sspai.com)</a></li>
+<li><a href="https://www.bilibili.com/video/BV1YT4y167dL/?vd_source=6d02c197c6cb438dff451b14b29c6080">从零开始保姆级教程：用Obsidian搭建个人书库（一）<sub>哔哩哔哩</sub><sub>bilibili</sub></a></li>
+<li><a href="https://sspai.com/post/77304">从卡片笔记到 Obsidian：本质、方法与工具 - 少数派 (sspai.com)</a></li>
+<li><a href="https://sspai.com/post/80634">去中心化笔记体系 - 少数派 (sspai.com)</a></li>
+<li><a href="https://forum-zh.obsidian.md/t/topic/75">obsidian使用Maoxian插件完美剪藏网页文章 - 经验分享 - Obsidian 中文论坛</a></li>
+<li><a href="https://forum-zh.obsidian.md/t/topic/200">我的 Obsidian 工作流：模板+QuickAdd+Dataview 快速创建和自动索引 - 经验分享 - Obsidian 中文论坛</a></li>
+</ul>
+
+<p>
+依赖obsidian的qucikadd和dataview插件，加上快捷指令，基本实现了这次知识管理更新的目的。
+</p>
+
+<p>
+几个主要界面:
+</p>
+
+
+<figure id="org3cf8d9d">
+<img src="https://s2.loli.net/2023/07/19/EeMl1FW29UHJONI.jpg" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+创建Daily来记录每天的Todo以及零碎的信息，通过标签和obsidian的双链来链接，让信息关联。两个主页用来自动更新数据和汇总，DB folder插件生成的类似notion的数据库，解决文档的标签，分类，查找，归档。
+</p>
+
+<p>
+这几年折腾了几次，但始终要明确的是：知识管理的目的是管理知识，是为了提高效率，而不是为了管理而管理。
+</p>
+</div>
+</div>
+<div id="outline-container-orgbb0ce77" class="outline-4">
+<h4 id="orgbb0ce77">知识管理与文档记录的意义</h4>
+<div class="outline-text-4" id="text-orgbb0ce77">
+<p>
+<a href="https://www.bilibili.com/video/BV14Y4y1n7YQ/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">【苏星河】全网都在吹的飞书，到底是个什么软件？<sub>哔哩哔哩</sub><sub>bilibili</sub></a>这个视频的最后说的很有道理：
+</p>
+
+<blockquote>
+<p>
+文档全称文件与档案，其中文基百科对于文件的解释是其实对思想创意的书面呈现，而对于档案则是对事物发展过程的书面保存。关于事物的所有文档，就是关于该事物在主观思想与客观过程这两个层面的完整书面记录。
+</p>
+
+<p>
+而我们知道人类所进行过的所有活动，其实无外乎就是主观思想与客观构成的一系列纠缠统一，所以文档工具也就自然而然地成为了我们工作学习社会发展的核心内容，贯穿始终。
+</p>
+
+<p>
+那历史上最早的文档其实就是5000年前的楔形文字，这苏美人在泥板上努力刻下的符号，本质就是在以书面的形式呈现。作为文档最大的问题显然就是极低的内容承载效率，一块硕大的泥巴只能记录非常有限的内容
+于是直到3000年后，蔡伦改进的造纸术，才让轻薄柔韧造价低廉的纸张成为了文章在现实世界中最完美的承载。
+</p>
+
+<p>
+拥有和纸张文档后，人们便开始疯狂书写记录世界。于是如何才能提高内容输入效率，又成为了许多人关注的全新议题。在随后的1000多年里，以表音文字为代表的中国发明了雕版印刷，而以表音文字为代表的欧美则偏爱活字印刷，总之这两种印刷术都大大提高了内容的输入效率。而且欧美国家后期发明的打字机，更是将活字印刷的效率发挥到了极致，输入方式的进化将文档的生产与传播效率提高到了全新的高度。
+但这也同时放大了一个原本不起眼的问题，那就是文档的内容编辑效率。
+</p>
+
+<p>
+虽然写这件事从未改变，但为了写的效率，我们付出了整整5000年的努力。
+因为就像我们开头说的，文档是人类思想与行为的书面记录，其中思想与行为赋予着人类特殊的价值，而书面记录则让多人合作与传承成为可能。
+所以提高文档工具的效率，就是在提高人类发展的效率。
+</p>
+</blockquote>
+
+<p>
+现在的文档记录基本上都依赖于互联网信息，而现阶段GPT等LLM生成式AI，会生成许多虚假内容，<a href="https://www.ifanr.com/1553456?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">疯狂污染互联网，人类比 AI 擅长多了 </a>
+</p>
+
+<p>
+这也是为什么许多大佬会站出来抵制生成式AI，Twitter限制用户浏览推文数量，Reddit论坛关闭API，Claude、BingChat、bard，包括马斯克最近要成立的XAI，也都是在争夺文档信息，同样也是在争夺历史。
+</p>
+
+<p>
+<b>文档是人类思想与行为的书面记录，其中思想与行为赋予着人类特殊的价值，而书面记录则让多人合作与传承成为可能，所以提高文档工具的效率，就是在提高人类发展的效率。</b>
+</p>
+
+<p>
+<b>这些文档也就是人类的历史，但现在AI信息污染的过程本身，也同样是人类历史的一部分。</b>
+</p>
+
+<p>
+这又让我想起了刚开始用chatGPT的时候，问过他的一个问题：美国是现在的世界老大么？
+</p>
+
+<p>
+记得当时的答案还是相对客观的，不知道百年之后，各大XXXGPT的回答是什么。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orga884d9e" class="outline-3">
+<h3 id="orga884d9e">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
+<div class="outline-text-3" id="text-orga884d9e">
+<p>
+距上一次折腾，不知不觉已经两个月了。在“深入”使用obsidian(后面简称ob)这两个月期间，一个之前暂时搁置的问题逐渐浮现出来：那就是数据储存形式。
+</p>
+
+<p>
+也正好看到了这篇文章<a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a>。
+</p>
+
+<p>
+从易用性和数据呈现来看，很显然它是，从保存数据和数据结构的角度来看，markdown不是一个很优秀的格式。当然这是当数据到达一个相当的量级才需要考虑的事。于是，开始了解Logseq。
+</p>
+
+<p>
+没有最好的笔记软件，适合自己的才是最好的。
+</p>
+</div>
+<div id="outline-container-orga307ca2" class="outline-4">
+<h4 id="orga307ca2">Add</h4>
+<div class="outline-text-4" id="text-orga307ca2">
+<p>
+这个时候开始意识到数据的重要性了，以前的纸质记录、现在的电子记录，都是数据。现在的社会是信息和数据的社会，在 AI 介入之后，更是如此。没有最好的笔记软件，只有最适合自己的笔记软件，这句话一直说到现在。Logseq 是一个很好的笔记软件设计，但现在回过头来看，它从设计底层强制性的使用 markdown 语法里的列表格式来实现的块并不是那么容易让所有人接受，只要导入了其他 markdown 文档，就会强制性的加上列表格式。也是从 Logseq 开始，我第一次接触到了 Lisp 语言这个概念。
+</p>
+</div>
+</div>
+<div id="outline-container-org1e3069f" class="outline-4">
+<h4 id="org1e3069f">Logseq</h4>
+<div class="outline-text-4" id="text-org1e3069f">
+<p>
+第一次打开Logseq就被UI的设计吸引，这是一种美学上的天然的吸引。和第一次打开Typora的感觉很像。
+</p>
+
+<p>
+<a href="https://bytetalk.fm/posts/episode-7">跟 Logseq 的创造者天生聊聊 Logseq 的故事</a>里介绍到：Logseq是开源的，由Clojure / ClojureScript开发。dataScript 库，函数式语言在数据操作方面会有些优势 ，可以写出很丰富的 query。 要知道，鼎鼎大名的Roam Research也是基于Clojure开发。
+</p>
+
+<p>
+Roam Research为什么如此受追捧，除了双链和block之外，我觉得它的Query和数据结构才是重点，并且它
+</p>
+
+<blockquote>
+<ul class="org-ul">
+<li>第三，协作性。Conor 的野心，是让每一个学生 <b>不需要通过</b> 高质量的学校教育，就能自行从 Roam Research 组建的全社会协作知识网络中，学会任何自己想学会的知识和技能，并且能够更容易探索与创造知识。</li>
+<li>第四，激励性。为了促进人们生产和分享知识，Roam Research 想方设法降低知识采集和生产的成本，激发人们的创造、分享和协作行为。</li>
+</ul>
+
+<p>
+Source：<a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a>
+</p>
+</blockquote>
+
+<p>
+<a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a>
+</p>
+
+<p>
+Logseq的开发者<a href="https://twitter.com/tiensonqin">秦天生</a>也说到，想做一个 GitHub 和 Wikipedia 的 2.0 版本。从开发到理念，可以说和Roam Research殊路同归。
+</p>
+
+<p>
+在这一点上，Logseq发展的很完美。而这几点，同样是我想做PKM，或者说，对知识本身的理解和态度。
+</p>
+
+<p>
+<b>知识是上帝给人类的财富，它就应该是开源的。</b>
+</p>
+
+<p>
+因此，和ob相比，这种设计开发理念，更吸引我。
+</p>
+</div>
+</div>
+<div id="outline-container-orgba7489e" class="outline-4">
+<h4 id="orgba7489e">ob和Logseq的简单对比</h4>
+<div class="outline-text-4" id="text-orgba7489e">
+<p>
+我认为obsidian的生命力来源于社区和插件，与其说用ob不如说是再用它的插件，ob开放了插件API，让爱好者自由发挥。
+</p>
+
+<p>
+ob更像是一个全能的高达，身上装备者各种插件盔甲和武器，你可以根据自己的Project、GTD、PKM，制定出个性化很高的管理系统。 <b>插件是ob很大的一个优势。</b>
+</p>
+
+<p>
+<b>ob和Logseq的对比：</b>
+</p>
+
+<p>
+obsidian：
+</p>
+
+<ul class="org-ul">
+<li>page为单位，你的每一篇笔记就是一个markdown文档，通过双链链接起来。当然ob也有块的概念，
+但和Logseq可展开的块不一样，ob的块是文字的每一行，可以通过 <code>^</code> 来标记和检索。</li>
+<li>有文件夹系统，习惯文件夹管理的，这是ob的很大优势。</li>
+<li>除了ob自带的搜索功能，数据呈现和检索其实主要依靠dataview插件，而这个不是数据结构层面的。
+Logseq的dataScript库在数据结构上优势更大。</li>
+<li>可以通过 <b>TagFolder</b> 、 <b>Tag Summary</b> 等插件自己制作标签页，标签管理方面自由度也很高。</li>
+<li>ob的多端同步很方便，这依赖于 <b>Remotely Save</b> 这个插件。</li>
+<li>和Zotero的联动依靠插件来导入高亮和笔记。</li>
+</ul>
+
+<p>
+Logseq：
+</p>
+
+<ul class="org-ul">
+<li>块为最小单位,使得它的颗粒可以很小，每一个block都可以展开并且关联和查询。这是和ob以page为单位，很不一样的地方。</li>
+<li>每一个tag会自动生成标签页，这样很方便做 Tag<sub>Pages</sub>，和moc。这样就可以通过标签页来链接block。它的标签可以看做一个特殊的块，也就是标签的moc。</li>
+<li>它没有文件夹，因此moc很重要，类似的它提供了一个专门的Contents页面，相当于文件夹管理。</li>
+<li>日志系统和todo系统很完善。logseq自带日志，它就是一个log。Logseq的理念应该是用日志来串联，而不是
+把分类的经历消耗在文件夹的分类。当然如何选择是自己的事，我们一样可以手动用文件夹分类储存管理。</li>
+<li>Outline大纲模式，在markdown里，每一个block就是一个无序列表格式。</li>
+<li>Logseq的同步相对麻烦，得git和Working Copy结合起来。</li>
+<li>可以直接接入Zotero的API，这很方便。</li>
+</ul>
+
+<p>
+总体来说，ob很大，Logseq更小。ob处理大量文字也不会卡，而在Logseq一个块如果包含太多文字会报错无法编辑。Logseq自带的日志系统很好用，开箱即写，用outline提炼出更精简的文字来做思维的串联。
+</p>
+</div>
+</div>
+<div id="outline-container-org449ce0a" class="outline-4">
+<h4 id="org449ce0a">现在的选择</h4>
+<div class="outline-text-4" id="text-org449ce0a">
+<p>
+<b>做电子笔记，实际上是在做数据储存和数据处理。</b>
+</p>
+
+<p>
+数据编辑的易用性，和数据检索、数据结构之间的取舍很关键。从这个角度出发，可能随着时间偏移，重心会偏向Logseq和数据结构方面。
+</p>
+
+<p>
+而ob本身就可以看做是一个Logseq的库和inbox来使用，反过来Logseq也可以包含在ob的文件夹系统里。这完全取决于自身的需求。
+</p>
+
+<p>
+现在基本上把ob当做一个大的inbox和Markdown文件管理编辑系统，Logseq来做长青笔记和日志。
+</p>
+
+<p>
+Read Later用Omnivore，剪藏网页，可以自动导入Logseq和ob，roma-highlighter浏览器插件做高亮剪藏。
+</p>
+
+<p>
+Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
+</p>
+
+<p>
+这里要强烈推荐Omnivore，和一年六七百的Readwise相比，基本功能都有，但它是开源和免费的。
+</p>
+
+<p>
+最后，几个原则，也是提醒自己：
+</p>
+
+<ul class="org-ul">
+<li>做笔记是方法，不是目的。</li>
+<li>信息很容易被误认为是知识，而做笔记不是汇总信息，是提炼思维，汇总元知识。</li>
+</ul>
+
+<p>
+没有最好的笔记软件，只有最适合自己的笔记软件。
+</p>
+</div>
+</div>
+<div id="outline-container-org88281c8" class="outline-4">
+<h4 id="org88281c8">Reference</h4>
+<div class="outline-text-4" id="text-org88281c8">
+<ul class="org-ul">
+<li><a href="https://sspai.com/post/82793">Obsidian技巧：通过多个标签快速定位文件(by TagFolder) - 少数派 (sspai.com)</a></li>
+<li><a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a></li>
+<li><a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a></li>
+<li><a href="https://bytetalk.fm/posts/episode-7">跟 Logseq 的创造者天生聊聊 Logseq 的故事</a></li>
+<li><a href="https://www.bilibili.com/video/BV1vM4y1h7H4/?p=44&amp;spm_id_from=pageDriver">Obsidian中的标签，到底该如何使用？（第三集 设计你的标签页）<sub>哔哩哔哩</sub><sub>bilibili</sub></a></li>
+<li><a href="https://www.bilibili.com/video/BV1bP411H7rx/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">Obsidian的全局引用你用对了吗？Johnny学Obsidian<sub>哔哩哔哩</sub><sub>bilibili</sub></a></li>
+<li><a href="https://pkmer.cn/">PKMer</a></li>
+<li><a href="https://sspai.com/post/80042#!">双剑合璧：Obsidian和Logseq联用的一些经验 - 少数派 (sspai.com)</a></li>
+<li><a href="https://www.bilibili.com/video/BV1pm4y1A79c/?p=3&amp;vd_source=92184533e359726f138fee9650261f0f">03 ios终端(手机和平板)的logseq同步设置<sub>哔哩哔哩</sub><sub>bilibili</sub></a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb0a0af6" class="outline-3">
+<h3 id="orgb0a0af6">2024-04-13 神的编辑器</h3>
+<div class="outline-text-3" id="text-orgb0a0af6">
+</div>
+<div id="outline-container-org7159bc3" class="outline-4">
+<h4 id="org7159bc3">Add</h4>
+<div class="outline-text-4" id="text-org7159bc3">
+<p>
+开始正式使用 Emacs 了，脱离笔记软件，将做笔记这个事从使用工具记录变成了思维概念上的一种习惯，而不是一个行为。
+</p>
+</div>
+</div>
+<div id="outline-container-org320d3f8" class="outline-4">
+<h4 id="org320d3f8">做自己的笔记“软件”</h4>
+<div class="outline-text-4" id="text-org320d3f8">
+<p>
+在订阅里看到推荐的这篇文章  <a href="https://wiki.heptabase.com/the-roadmap?lang=zh-Hant">My Vision - The Roadmap | Heptabase Public Wiki</a>，大概讲了一下Heptabase 下一步的Roadmap，还有一些笔记理念上的东西。Heptabase 有所耳闻，因为订阅的价格一直没有去尝试。
+如同这个文章里说的：
+</p>
+<blockquote>
+<p>
+在<a href="https://wiki.heptabase.com/the-knowledge-lifecycle?lang=zh-Hant"> <b>上一篇文章的結尾</b> </a>，我將 Heptabase 的願景描繪如下：
+</p>
+
+<p>
+<b>總結來說，在「知識的生命週期」這個維度上，我們希望能透過 [[<a href="https://heptabase.com/">https://heptabase.com/</a>][ *Heptabase</b> ]] 的工具來幫助全世界的知識工作者打通「探索 → 收集 → 思考 → 創作 → 分享」的知識生命週期，讓資訊具備原生的互用性、讓想法的脈絡可被追蹤、讓集體知識的創建更為容易，進而演化出一個脈絡化的知識網路。
+</p>
+</blockquote>
+
+<p>
+一个笔记软件的生命力，我认为最重要的是：产品设计理念，社区活跃度。obsidian的设计理念，我记得ob的作者曾经说过，他的初衷就是做一个可以一直用下去不用换的笔记软件。放在现在来说，已经不太能打了，但是社区、插件的活跃也一定会让ob延续下去。科学的知识、信息处理理念加上新的技术和设计，会催生出一个又一个的笔记、知识软件，Roam Research、Notion、obsidian、Logseq、Heptabase、craft、思源笔记、甚至飞书文档等等。一个可以一直用下去的笔记软件一定不是最好的，也不会是最适合自己的，如果是那样的话，说明自己的需求一直没有提升。
+</p>
+
+<p>
+从txt，到word，exel，各种电脑、手机里的备忘录，这些现代化的文本、文档记录软件、工具，都为了一件事：提升信息、知识记录、处理的效率。做笔记也好，笔记软件也好，都是学习的一部分，知识的一部分，是思维、知识的呈现。没有最好的笔记软件，只有不断迭代的学习方法，最本末倒置的事情就是把笔记和学习绑定在了学习工具上。
+</p>
+
+<p>
+从折腾ob开始，就一直想找到一个自由度更高，更科学的笔记体系和软件，偶然刷到这篇文章<a href="https://sspai.com/post/87028">构建可持续发展的个人工作流 01：认识篇</a>，让我想到了一些pkm和笔记软件的灵感
+</p>
+
+<p>
+这次的结论是：最适合自己的笔记软件，就是自己做的。从折腾obsidian 到 PKM 和 Logseq，这一次的目标：回归数据本身，回归思维本身，回归知识本身。
+</p>
+
+<p>
+现在流行且科学有效的笔记软件基本基于 Zettelkasten 卡片盒笔记、双链、卡片式笔记、数据库检索，再就是wiki类知识分享这几个底层逻辑。而知识管理、学习、信息处理从来不是被笔记、笔记软件主导的，是独立的思维和方法。现在LLM技术的突破，各种GPT的出现，AI革命必然会让知识处理的效率指数提升，代码、计算机技术的壁垒也随之被打破了。而知识、信息处理的效率一定和认知提升的效率正相关，从竹简、简牍到印刷、打字机，再到互联网、电脑，现在是AI。人类知识认知推动着科学、技术，技术也同样革命着认知。
+</p>
+
+<p>
+因此，何必再依赖于市面上的笔记软件，自己做一个就好。一个满足双链、卡片、数据库、标签检索的数据处理工具，就是做电子数据笔记最本质的需求。
+</p>
+
+<p>
+于是，正式进军定制个人硅基第二大脑的第一步，Emacs。
+</p>
+</div>
+</div>
+<div id="outline-container-orgb4a48c0" class="outline-4">
+<h4 id="orgb4a48c0">Emacs</h4>
+<div class="outline-text-4" id="text-orgb4a48c0">
+<p>
+回归数据本身，那第一件事就是找到笔和纸，也就是编辑器。
+</p>
+
+<p>
+网上查了查，有这么一个比喻：Emacs是神的编辑器，而Vim是编辑器之神。
+</p>
+
+<p>
+这两个都没用过，简单体验了spacemasc、doomemacs、vim、neovim、LunarVim、spacevim之后，对我现在的认知而言，Vim更像是一个api，一套文本编辑处理的方法，代码编辑器的极致，而Emacs是一个基于ELisp的系统。
+</p>
+
+<p>
+用编辑器构建系统，还是从系统构建编辑器，我现在选择了后者，等编程能力提升了或许会再来用Vim。
+</p>
+
+<p>
+doomemacs的界面更符合我的审美，插件管理起来也挺方便，就先用这个了。总之先迈出了定制化硅基第二大脑的第一步，加上乌鸦logo和Lust for life 的底标🤣。
+</p>
+
+
+<figure id="orgc7a27be">
+<img src="https://s2.loli.net/2024/04/08/7suBLpiKVqDz25a.png" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+<a href="https://www.vandee.art/2023-09-18-read-or-listen.html">to understand something, you must actively engage with it</a>，我认为学习一个新东西比较有效的方式，直接上手操作（本能的反应更能检验对陌生知识的反馈情况），然后分享出来，一个人学还是慢一些，三人行必有大佬
+</p>
+
+<p>
+关于Emacs的学习，后面都会放到这个GitHub仓库 <a href="https://github.com/VandeeFeng/doomemacs">doomemacs</a>。
+</p>
+
+<p>
+Logseq现在的pkm体系用的还是挺顺手，效率也挺高，不会弃用，现阶段的目标是把Emacs的org笔记和Logseq结合起来，一起作为笔和纸。doomemacs，evil模式绑定Vim键位，代码编辑和窗口的切换，效率是真的高。没用过原生Emacs不用习惯Emacs的键位倒成了一个优势。
+</p>
+
+<p>
+剩下的就是思维逻辑的提升和具象化到编程里了，先把Lisp学一学，再从Rust、Go、Python、C++里选一个（搞的跟都会了一样🤣）。
+</p>
+
+<p>
+Roam Research、Notion、Logseq、Heptabase的笔记设计理念都还挺不错，先copy一下，加入到我还没开始的苏格拉底·贾维斯逻辑小助手项目。
+</p>
+
+<p>
+Just learn, learn, and learn。
+</p>
+<blockquote>
+<p>
+进化论中有一条定律叫 <b>“多洛不可逆定律”</b> ，说的是一个物种一旦失去了某种特征，就永远不会再获得这种特征，因为最初赋予它这种特征的路径是如此复杂，以至于无法复制。假设一种动物有角，然后它进化到失去角。它进化到重新长出角的几率为零，因为最初赋予它角的路径是如此复杂&#x2013;在特定的环境和竞争条件下经过数百万年的选择，而这种选择在未来不会重复。你不能把进化特征说成是运气&#x2013;它们是在非常特殊的力量作用下产生的。只是你永远无法依赖这些力量完全按照过去的方式重演。
+</p>
+
+<p>
+来源：<a href="https://collabfund.com/blog/lucky-vs-repeatable/">Lucky vs. Repeatable · Collab Fund</a>
+</p>
+</blockquote>
+
+<p>
+AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各种提升效率的工具以让我们能有更多时间和精力满足反效率（需要大量时间和经历成效比较慢的事）的爱好和精神需求，不管AI会如何影响人类，不能丢掉的一定包括艺术、学习、爱和想象力。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3a61fb0" class="outline-3">
+<h3 id="org3a61fb0">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
+<div class="outline-text-3" id="text-org3a61fb0">
+</div>
+<div id="outline-container-org4c8872c" class="outline-4">
+<h4 id="org4c8872c">Add</h4>
+<div class="outline-text-4" id="text-org4c8872c">
+<p>
+从这里开始梳理出了自己 PKM 的原则。也从 nb 了解到了 CLI 笔记工具，开始琢磨用 bash 脚本做笔记了。
+</p>
+
+<p>
+把人自身的思维看作一个向量，它有自己的方向和属性，在大脑里让它们串联起来的是一个个神经元和突触，在笔记里就是双链和索引。因此，要在PKM里最大程度复现大脑思维的流动，我认为，最自然的方式就是让笔记向量与思维最自然的习惯同步。
+</p>
+</div>
+</div>
+<div id="outline-container-orged519f9" class="outline-4">
+<h4 id="orged519f9">PKM去形式化</h4>
+<div class="outline-text-4" id="text-orged519f9">
+<p>
+书接上回，现在的PKM第一原则是：数据的去形式化和通用性。只基于md文档的通用基础语法，其他功能以不污染文档内容的方式来实现。
+</p>
+
+<p>
+为了实现这个目标，写了一些简单的bash脚本模板生成md，还有Emacs的Lisp函数做tag检索、文本查询，并将本地PKM-base库(最原子化的常青笔记)和Ollama对接（暂时用的是[Reor](<a href="https://github.com/reorproject/reor">https://github.com/reorproject/reor</a>)）做一些思维扩展。卡在了md文档的全局引用和相对链接转换。
+</p>
+
+<p>
+正愁着呢，在Github里无意中发现了一个宝藏！[nb](<a href="https://github.com/xwmx/nb">https://github.com/xwmx/nb</a>)，牛逼！
+</p>
+</div>
+</div>
+<div id="outline-container-org54cbcd8" class="outline-4">
+<h4 id="org54cbcd8">nb</h4>
+<div class="outline-text-4" id="text-org54cbcd8">
+<p>
+我愿称其为最强CLI笔记工具！完美匹配我现在的所有需求，设计思路也和我不谋而合，还支持用Emacs做编辑器。虽然Emacs也可以通过自定义函数和插件来复现这些功能，但既然有现成的，就先copy吧🤣。
+</p>
+
+<p>
+果然你能想到的99%都已经有人完成了101%。
+</p>
+
+
+<figure id="org6ad2320">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-05-13_09-54-33.png" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+macOS /Homebrew安装，`brew install xwmx/taps/nb`。nb也提供自己的shell，md预览可通过[GUI web browsers](<a href="https://xwmx.github.io/nb/#-browsing">https://xwmx.github.io/nb/#-browsing</a>)，经常写md的基本也不需要预览。命令基本都是大白话，不需要刻意记忆，还提供[Shortcut Aliases](<a href="https://xwmx.github.io/nb/#shortcut-aliases">https://xwmx.github.io/nb/#shortcut-aliases</a>)自定义命令 。nb不是一个笔记软件，是一个CLI工具。
+</p>
+</div>
+</div>
+<div id="outline-container-orgb872411" class="outline-4">
+<h4 id="orgb872411">去形式化之后的PKM</h4>
+<div class="outline-text-4" id="text-orgb872411">
+<p>
+bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
+</p>
+
+
+<figure id="org0a9abdc">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nbnb.gif" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+本地文档的双链、全局引用、tag、检索、查询、同步，这些关键功能现在都可以实现了，PKM脱离笔记软件初步达成。由于之前ob和Logseq联用保留了文件夹结构，现在还是沿用ACCESS结构换成nb和Emacs来管理，nb提供全局的检索和双链，Emacs做统筹（org-mode还在犹豫），部署就先用 [Quartz v4.2.3](<a href="https://quartz.jzhao.xyz/">https://quartz.jzhao.xyz/</a>)  ，暂时当作我的[数字花园](<a href="https://dg.vandee.art">https://dg.vandee.art</a>)，欢迎来玩！Blog练笔，Clip剪藏，Garden做wiki。目前还是不太想all in one ，以后可能会做个后端数据库。
+</p>
+
+<p>
+至于Logseq和 ob以及其他笔记软件里的通过块ID来引用块、嵌入块，查询语句，通过css和js实现的排版样式等，这些通过非md标准语法实现的功能，全部舍弃。尽最大可能减少笔记元数据转化为其他形式的成本，它应该可以独立于笔记软件又具备优秀的兼容性。
+</p>
+
+<p>
+这些在各种笔记软件里实现的个性化功能，比如白板、卡片、思维导图，当然提升了信息处理的效率，但最核心的还是双链，以及思维的同步率。
+</p>
+
+<p>
+把人自身的思维看作一个向量，它有自己的方向和属性，在大脑里让它们串联起来的是一个个神经元和突触，在笔记里就是双链和索引。因此，要在PKM里最大程度复现大脑思维的流动，我认为，最自然的方式就是让笔记向量与思维最自然的习惯同步。
+</p>
+
+<p>
+例如我们的语言系统，我们不会在用母语表达一些简单想法的时候还费力思考，笔记也应该是一样。当我大脑里现在想到一个概念，需要在笔记里找到相应的内容，脱口而出时，就应该只需要按照思维本来的习惯检索到笔记。
+</p>
+
+<p>
+比如我现在想表达：王小波牛逼！在PKM里我只需要输入王小波牛逼这个一模一样的内容，和这个向量相关的信息都会以双链链接起来，而不需要我再按照tag做二级查询，通过属性反过来找概念。这些tag标注的是向量的属性以便做复杂的分类和列举，例如《黄金时代》，文学，王小波，这些在大脑里自然联系起来的概念，不应该在笔记查询的时候再做重复的检索，我不需要反过来通过查询文学、王小波，来找到《黄金时代》，然后再找到我想在书里表达的概念。而是自然的通过和王小波牛逼这个概念同步联系起来的反链呈现。这就要求原子笔记里的概念有极高的抽象程度以及自身思维习惯同步率。
+</p>
+
+<p>
+解决了这个问题，我觉得无论笔记形式怎么变，用什么笔记软件，思维向量的生命周期就可以在这些形式里延长。
+</p>
+
+<p>
+到现在，我更加确定，下一个笔记软件何必是笔记软件。
+</p>
+
+<p>
+至于为什么一直折腾做笔记这件事，因为思维的具象化一直是这几年我着重思考的问题，平常思考的哲学和艺术都是它的分支，它们都是思维抽象而成的具象表达。思维呈现的效果和处理的效率都和做笔记正相关，也同样作用于认知。现在正处于量变的积累过程，效率就更加重要了。现在的PKM可以让我的思维向量更好的碰撞，因为高度同步于我自身的思维，它们在数据里延续着生命，自发地碰撞出思维的电子火花。这一点经过一年的折腾已经得到验证。
+</p>
+
+<p>
+之前说要通过这些具象化的思维材料复刻一个自己的数字人，可得捏的像一些。
+</p>
+</div>
+</div>
+<div id="outline-container-org5b2fac5" class="outline-4">
+<h4 id="org5b2fac5">Logseq适配Quartz</h4>
+<div class="outline-text-4" id="text-org5b2fac5">
+<p>
+这次在logseq格式转化的时候，几个问题小折腾了一会。
+</p>
+
+<p>
+七拼八凑了一下，下面是用GPT缝合的，Logseq重新排版批量输出为md格式的Python代码。这段代码会把Logseq文档头部的 <code>key:: value</code> 格式化为标准的yaml格式并去除标题前面的无序列表符号。Logseq本身可以输出text但排版不是很完美，也不方便。Logseq和ob联用的兄弟们应该用得上。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-*- coding = utf-8 -*-</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@Project : Logseq&#26631;&#39064;&#20248;&#21270;</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@File : Logseq&#26684;&#24335;&#20248;&#21270;.py</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@time : 2024/05/11</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@Author : Vandee</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@Description &#65306;&#36866;&#21512;yaml&#20026;Logseq&#30340;::&#26679;&#24335;</span>
+
+<span style="color: #51afef;">import</span> re
+<span style="color: #51afef;">import</span> os
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Frontmatter consts for start and end of Frontmatter YAML heading in Markdown</span>
+<span style="color: #dcaeea;">FRONTMATTER_START_STR</span> = <span style="color: #98be65;">"---</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>
+<span style="color: #dcaeea;">FRONTMATTER_END_STR</span> = <span style="color: #98be65;">"---</span><span style="color: #a9a1e1;">\n\n</span><span style="color: #98be65;">"</span>
+<span style="color: #dcaeea;">FRONTMATTER_PARAM_NAME_REGEXP</span>: <span style="color: #c678dd;">str</span> = r<span style="color: #98be65;">"[A-Za-z0-9-_.]+::\s"</span>
+<span style="color: #dcaeea;">LOGSEQ_LIST_REGEXP</span>: <span style="color: #c678dd;">str</span> = r<span style="color: #98be65;">"^[\s\t]*- "</span>
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">load_logseq_sanitized</span>(file_path: <span style="color: #c678dd;">str</span>, encoding: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"utf-8"</span>) -&gt; <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>]:
+
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(file_path, <span style="color: #98be65;">"r"</span>, encoding=encoding) <span style="color: #51afef;">as</span> f:
+        <span style="color: #dcaeea;">lines</span>: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>] = f.readlines()
+
+    <span style="color: #dcaeea;">return_lines</span>: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>] = []
+    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> lines:
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">we skip empty lines</span>
+        <span style="color: #51afef;">if</span> line <span style="color: #51afef;">in</span> (<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"- </span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"-</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"- </span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>):
+            <span style="color: #51afef;">continue</span>
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">we remove "- " or "  " from the beginning of line as</span>
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">it's Logseq specific "everyghing is a list" approach</span>
+        <span style="color: #51afef;">if</span> line.startswith((<span style="color: #98be65;">"- "</span>, <span style="color: #98be65;">"  "</span>)):
+            <span style="color: #dcaeea;">line</span> = line[<span style="color: #da8548; font-weight: bold;">2</span>:]
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">we remove first occurance of tab character ("\\t") from a line as</span>
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">it's indicating list item</span>
+        <span style="color: #51afef;">if</span> line.startswith(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>):
+            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">""</span>, <span style="color: #da8548; font-weight: bold;">1</span>)
+
+        return_lines.append(line)
+
+    <span style="color: #51afef;">return</span> return_lines
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">logseq2markdown</span>(logseq_lines: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>]) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #83898d;">"""Goes through list of Logseq sanitized lines (provided by `load_logseq_sanitized()`) and</span>
+<span style="color: #83898d;">    translates them to proper Markdown and Frontmatter.</span>
+
+<span style="color: #83898d;">    Args:</span>
+<span style="color: #83898d;">        logseq_lines (list[str]): List of sanitized lines from Logseq file loader</span>
+
+<span style="color: #83898d;">    Returns:</span>
+<span style="color: #83898d;">        str: String containing Frontmatter header in YML format followed by proper Markdown.</span>
+<span style="color: #83898d;">    """</span>
+    <span style="color: #dcaeea;">mk_content</span>: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>] = []
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Using dict here as we don't want to have duplicate parameter names in Frontmatter</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">(each should have unique indentifier).</span>
+
+    <span style="color: #dcaeea;">mk_frontmatter</span>: <span style="color: #c678dd;">dict</span>[<span style="color: #c678dd;">str</span>, <span style="color: #c678dd;">str</span>] = {}
+
+    <span style="color: #dcaeea;">param_regex</span> = re.<span style="color: #c678dd;">compile</span>(FRONTMATTER_PARAM_NAME_REGEXP)
+    <span style="color: #dcaeea;">logseq_list_regexp</span> = re.<span style="color: #c678dd;">compile</span>(LOGSEQ_LIST_REGEXP)
+
+    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> logseq_lines:
+        <span style="color: #dcaeea;">params_result</span> = param_regex.findall(line)
+        <span style="color: #dcaeea;">logseq_list_result</span> = logseq_list_regexp.findall(line)
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line containts "logseq.order-list-type:: number" it should be</span>
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">numbered list and this line should be ommited</span>
+        <span style="color: #51afef;">if</span> -<span style="color: #da8548; font-weight: bold;">1</span> != line.find(<span style="color: #98be65;">"logseq.order-list-type:: number"</span>):
+            <span style="color: #dcaeea;">line</span> = mk_content.pop()
+            <span style="color: #dcaeea;">line</span> = line.lstrip(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>)
+            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"- "</span>, <span style="color: #98be65;">"1. "</span>, <span style="color: #da8548; font-weight: bold;">1</span>)
+            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"    "</span>)
+            mk_content.append(line)
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line containts "logseq.order-list-type:: bulllet" it should be</span>
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">bullet point list and this line should be ommited</span>
+        <span style="color: #51afef;">elif</span> -<span style="color: #da8548; font-weight: bold;">1</span> != line.find(<span style="color: #98be65;">"logseq.order-list-type:: bullet"</span>):
+            <span style="color: #dcaeea;">line</span> = mk_content.pop()
+            <span style="color: #dcaeea;">line</span> = line.lstrip(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>)
+            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"- "</span>, <span style="color: #98be65;">"* "</span>, <span style="color: #da8548; font-weight: bold;">1</span>)
+            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"    "</span>)
+            mk_content.append(line)
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line is proper unordered list we parse it as such</span>
+        <span style="color: #51afef;">elif</span> logseq_list_result:
+            <span style="color: #dcaeea;">line</span> = line.lstrip(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>)
+            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"    "</span>)
+            mk_content.append(line)
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line starts with "# " (meaning h1 in html) we parse it as Frontmatter "title:" param</span>
+        <span style="color: #51afef;">elif</span> line.startswith(<span style="color: #98be65;">"# "</span>):
+            <span style="color: #dcaeea;">mk_frontmatter</span>[<span style="color: #98be65;">"title"</span>] = <span style="color: #98be65;">'"'</span> + line[<span style="color: #da8548; font-weight: bold;">2</span>:].strip() + <span style="color: #98be65;">'"'</span>
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line doesn't have any Logseq-specific parameters like numbered or bullet list in it</span>
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">and has Frontmatter param format we add it to Frontmatter header</span>
+        <span style="color: #51afef;">elif</span> params_result:
+            mk_frontmatter[params_result[<span style="color: #da8548; font-weight: bold;">0</span>][<span style="color: #da8548; font-weight: bold;">0</span>:-<span style="color: #da8548; font-weight: bold;">3</span>]] = line[<span style="color: #c678dd;">len</span>(params_result[<span style="color: #da8548; font-weight: bold;">0</span>]) :]
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">otherwise we add it to content as any other Markdown element</span>
+        <span style="color: #51afef;">else</span>:
+            mk_content.append(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span> + line)
+
+    <span style="color: #dcaeea;">return_string</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">""</span>
+    <span style="color: #51afef;">if</span> mk_frontmatter:
+        <span style="color: #dcaeea;">return_string</span> = (
+            FRONTMATTER_START_STR
+            + <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>.join(
+                [
+                    f<span style="color: #98be65;">"</span>{fm_item[0]}<span style="color: #98be65;">: </span>{fm_item[1].strip()}<span style="color: #98be65;">"</span>
+                    <span style="color: #51afef;">for</span> fm_item <span style="color: #51afef;">in</span> <span style="color: #c678dd;">list</span>(mk_frontmatter.items())
+                ]
+            )
+            + <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>
+            + FRONTMATTER_END_STR
+        )
+
+    <span style="color: #51afef;">return</span> return_string + <span style="color: #98be65;">""</span>.join(mk_content)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">process_folder</span>(input_folder: <span style="color: #c678dd;">str</span>, output_folder: <span style="color: #c678dd;">str</span>):
+    <span style="color: #83898d;">"""&#22788;&#29702;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#25991;&#20214;&#65292;&#24182;&#23558;&#32467;&#26524;&#23548;&#20986;&#21040;&#36755;&#20986;&#25991;&#20214;&#22841;&#12290;</span>
+
+<span style="color: #83898d;">    Args:</span>
+<span style="color: #83898d;">        input_folder (str): &#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;</span>
+<span style="color: #83898d;">        output_folder (str): &#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;</span>
+<span style="color: #83898d;">    """</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#30830;&#20445;&#36755;&#20986;&#25991;&#20214;&#22841;&#23384;&#22312;&#65292;&#22914;&#26524;&#19981;&#23384;&#22312;&#21017;&#21019;&#24314;</span>
+    <span style="color: #51afef;">if</span> <span style="color: #51afef;">not</span> os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#36941;&#21382;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#27599;&#20010;&#25991;&#20214;</span>
+    <span style="color: #51afef;">for</span> file_name <span style="color: #51afef;">in</span> os.listdir(input_folder):
+        <span style="color: #51afef;">if</span> file_name.endswith(<span style="color: #98be65;">".md"</span>):  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20165;&#22788;&#29702;&#20197; .md &#32467;&#23614;&#30340;&#25991;&#20214;</span>
+            <span style="color: #dcaeea;">input_file_path</span> = os.path.join(input_folder, file_name)
+            <span style="color: #dcaeea;">output_file_path</span> = os.path.join(output_folder, file_name)
+
+            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21152;&#36733;&#12289;&#22788;&#29702;&#21644;&#23548;&#20986;&#25991;&#20214;</span>
+            <span style="color: #dcaeea;">logseq_lines</span> = load_logseq_sanitized(file_path=input_file_path)
+            <span style="color: #dcaeea;">markdown_content</span> = logseq2markdown(logseq_lines)
+
+            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23558;&#36716;&#25442;&#21518;&#30340;&#20869;&#23481;&#20889;&#20837;&#21040;&#36755;&#20986;&#25991;&#20214;&#20013;</span>
+            <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(output_file_path, <span style="color: #98be65;">"w"</span>, encoding=<span style="color: #98be65;">"utf-8"</span>) <span style="color: #51afef;">as</span> f:
+                f.write(markdown_content)
+
+            <span style="color: #c678dd;">print</span>(f<span style="color: #98be65;">"&#25991;&#20214; '</span>{file_name}<span style="color: #98be65;">' &#24050;&#22788;&#29702;&#24182;&#23548;&#20986;&#21040; '</span>{output_folder}<span style="color: #98be65;">'"</span>)
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20027;&#31243;&#24207;&#20013;&#20351;&#29992;&#21629;&#20196;&#34892;&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
+<span style="color: #51afef;">if</span> <span style="color: #c678dd;">__name__</span> == <span style="color: #98be65;">"__main__"</span>:
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
+    <span style="color: #dcaeea;">input_folder</span> = <span style="color: #c678dd;">input</span>(<span style="color: #98be65;">"&#35831;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span>)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
+    <span style="color: #dcaeea;">output_folder</span> = <span style="color: #c678dd;">input</span>(<span style="color: #98be65;">"&#35831;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span>)
+
+    process_folder(input_folder, output_folder)
+</pre>
+</div>
+
+<p>
+处理之后，Logseq库接近700个文档99%的排版都没问题，部分三级列表以上的复杂排版，列表会多出一些空行或层级错位，Logseq复杂排版的换行和简单的 <code>\r\n</code> 还是有区别。可能也有CRLF和LF的问题，mac和win互相git，脚本里用的是LF，如果你是win最好还是 <code>\r\n</code> 。Quartz在转换md到html的时候换行逻辑不一样，在Typora里看是有换行的，但是Quartz部署成网页之后部分换行就没了。
+</p>
+
+<p>
+yaml区域的逻辑可以再用yaml库优化，后面再完善这个格式化脚本来把任意其他排版统一成我的标准样式。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6114aa3" class="outline-2">
+<h2 id="org6114aa3">Emacs 阶段</h2>
+<div class="outline-text-2" id="text-org6114aa3">
+<p>
+中间使用了 2 个月的 Nvim，还是放不下 Emacs。
+</p>
+
+<p>
+然后就到了现在重度使用 Emacs 了：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ， <a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a>。
+</p>
+
+<p>
+脱离笔记软件并不是脱离某个具体的体系和产品，而是将这些体系变成自己的，进而脱离笔记软件和传统笔记方法的固定思维。现在在 Emacs 里，我依然会使用 bash 脚本来完成部分零散的笔记，例如结合我的 tiddlywink，快速构建 Markdown 笔记。
+</p>
+
+<p>
+无论是 Emacs 还是 Nvim，它们都可以用 bash 脚本作为依赖最低的方法扩展自己记录笔记的方式。Nvim 和 Emacs 我真的都很喜欢，但是 org-mode 给我的编辑体验是其他任何其他纯文本形式替代不了的。
+</p>
+
+<p>
+Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系统链接起来，你可以在任何环境使用这只笔。忘掉所有招式就练成太极了。
+</p>
+</div>
+</div>
+<div id="outline-container-org64572f5" class="outline-2">
+<h2 id="org64572f5">ChangeLog</h2>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
+  <category><![CDATA[PKM]]></category>
+  <link>https://www.vandee.art/2024-11-01-my-pkm-building-logs.html</link>
+  <guid>https://www.vandee.art/2024-11-01-my-pkm-building-logs.html</guid>
+  <pubDate>Fri, 01 Nov 2024 12:45:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[还是入坑了 Memos]]></title>
   <description><![CDATA[
@@ -797,6 +1734,1213 @@ logging.basicConfig(
   <link>https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html</link>
   <guid>https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html</guid>
   <pubDate>Sat, 12 Oct 2024 21:08:00 +0800</pubDate>
+</item>
+<item>
+  <title><![CDATA[PKM（个人知识管理）构建手册 - Nvim]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc27661f">Intro</a></li>
+<li><a href="#orgaa4c916">Manual</a>
+<ul>
+<li><a href="#orgf85d5d1">Prerequisites</a></li>
+<li><a href="#org5c098d7">PKM</a>
+<ul>
+<li><a href="#orge6ca133">Principles</a></li>
+<li><a href="#org6a1e877">Methods</a></li>
+</ul>
+</li>
+<li><a href="#org5ba62b7">PKM with LLM</a>
+<ul>
+<li><a href="#org30a0a09">Ollama</a></li>
+<li><a href="#orga515738">Open WebUI</a></li>
+<li><a href="#org06bd7ad"><b>Kotaemon</b></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org1dff30f">Thanks</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orgc27661f" class="outline-2">
+<h2 id="orgc27661f">Intro</h2>
+<div class="outline-text-2" id="text-orgc27661f">
+<p>
+在之前的使用 nb 的时候已经在琢磨使用bash脚本来做笔记的框架。期间因为没有找到有效的处理双链和反链的方法，无意间了解到了Emacs里的org-roam可以提供反链，正好又在学习代码的初期急需一个编辑器，于是在Emacs还是Nvim之间选择了Emacs。
+</p>
+
+<p>
+直到这几天无意间发现了<a href="https://github.com/vimwiki/vimwiki">vimwiki/vimwiki: Personal Wiki for Vim</a>，如果当初的搜索关键字多了几个字，这几个月关于做笔记的探索将会截然不同。
+</p>
+
+<p>
+想 <b>脱离笔记软件</b> 回归数据本身，这是当初停止使用Logseq、obsidian的最大原因。
+</p>
+
+<p>
+<a href="https://mischavandenburg.com/zet/neovim-zettelkasten/">我的 Neovim Zettelkasten：我如何使用 Vim 和 Bash 在 Markdown 中做笔记 |米沙·范登伯格</a> ，随即搜到了这篇文章，让我决定开始尝试Nvim做笔记的方案。Bash其实就是依赖性最小的工具。
+</p>
+
+<p>
+org-capture可以用bash脚本来实现，双链通过VImwiki实现，反链同样可以通过bash脚本正则查询实现。在迁移配置到其他环境时Nvim的轻便优势就更大了，在我的Linux虚拟机里迁移一次DoomEmacs将近要安装配置半个多小时，而Nvim一个dotfile，5分钟搞定安装到配置。
+</p>
+
+<p>
+Emacs是一个赛博乐高，我很享受这几个月使用Emacs收获的快乐，但它并不能完全扩展成一个兼容性很强的方法。
+</p>
+
+<p>
+Emacs也完全是一个操作系统，对比起来Nvim作为编辑器的最大优势就在于轻巧。Org-mode里让我最喜欢的一点就是标题可折叠和自定义显示层级，对各种语言、格式的兼容性都很强。代码块部分可以直接生成结果，可以直接在代码块里使用jupyter，这对于做coding笔记来说很方便。再就是org-capture。它像是一个办公室。这里有书柜、办公桌、台灯，你可以在这里构建任何其他你喜欢的东西，但搬家是个大工程。
+</p>
+
+<p>
+这些功能都依赖于Emacs、依赖于org-mode，用的越多，对它们的依赖就越大，因为Emacs和org真的很好用。 <code>.org</code> 文件转换起来并不麻烦，org基本可以输出成任何其他格式的文件，但迁移之后也就失去了org的功能特性。
+</p>
+
+<p>
+Notion、Logseq、Obsidian、Roam Research、Heptabase，未来还会有更多的笔记软件，适合自己的才是最好的，选择一个笔记软件、笔记工具就是在选择一个生态、一个系统。你可能会想，既然有这么多成熟的笔记生态了，为什么还要自己折腾这些？因为这些就是他们当初不满意现有的生态，折腾出来的适合自己的笔记方法。我不太想依赖于别人的方法，下一个笔记软件，何必是笔记软件。
+</p>
+
+<p>
+通过RAG将PKM和LLM结合起来一定以未来更有效的学习方式。结构化的文档有更少的噪声、清晰的数据结构和关系进、支持更复杂的SQL查询，进而从数据源头提高RAG向量化的质量。从数据层面来思考笔记的形式、回归数据本质是这次要继续探索的方向。PKM笔记文档和PostgreSQL链接起来是下一步要解决的问题。
+</p>
+
+<p>
+这个手册主要介绍了以 Nvim 和 bash 脚本构建 PKM 体系的方法，供和我一样在 Nvim 和 Emacs 之间做过选择的兄弟们参考。
+</p>
+
+<p>
+我现在依然是 Emacs 的重度使用者，脱离笔记软件并不是脱离某个具体的体系和产品，而是将这些体系变成自己的，进而脱离笔记软件和传统笔记方法的固定思维。现在在 Emacs 里，我依然会使用 bash 脚本来完成部分零散的笔记，例如结合我的 tiddlywink，快速构建 Markdown 笔记。
+</p>
+
+<p>
+无论是 Emacs 还是 Nvim，它们都可以用 bash 脚本作为依赖最低的方法扩展自己记录笔记的方式。Nvim 和 Emacs 我真的都很喜欢，但是 org-mode 给我的编辑体验是其他任何其他纯文本形式替代不了的。
+</p>
+
+<p>
+Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系统链接起来，你可以在任何环境使用这只笔。忘掉所有招式就练成太极了。
+</p>
+
+
+<figure id="org9f47865">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nvimdash.png" class="img" width="50%" height="50%">
+
+</figure>
+</div>
+</div>
+<div id="outline-container-orgaa4c916" class="outline-2">
+<h2 id="orgaa4c916">Manual</h2>
+<div class="outline-text-2" id="text-orgaa4c916">
+<p>
+这是一个以 <a href="https://neovim.io/">Neovim</a> 为基础编辑器、文件管理的Markdown本地笔记PKM。
+</p>
+
+<p>
+本手册包括：
+</p>
+
+<ul class="org-ul">
+<li>Prerequisites：开始构建本PKM需要的工具和准备工作</li>
+<li>PKM：本PKM的构建原则和具体方法</li>
+<li>PKM with LLM：PKM和大语言模型结合的使用</li>
+</ul>
+</div>
+<div id="outline-container-orgf85d5d1" class="outline-3">
+<h3 id="orgf85d5d1">Prerequisites</h3>
+<div class="outline-text-3" id="text-orgf85d5d1">
+<p>
+Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://neovim.io/">Neovim</a>，<a href="https://github.com/LazyVim/LazyVim">LazyVim</a>，<a href="https://github.com/vimwiki/vimwiki">Vimwiki</a>，<a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a>，<a href="https://sw.kovidgoyal.net/kitty/">kitty</a> 或其他terminal。
+</p>
+
+<p>
+开始你可能需要对Nvim，Markdown，Git，vim编辑模式有一些了解，这些可以帮助到你：
+</p>
+
+<ul class="org-ul">
+<li><a href="https://neovim.io/doc/">Documentation - Neovim</a></li>
+<li><a href="https://www.lazyvim.org/">🚀 Getting Started | LazyVim</a></li>
+<li><a href="https://www.markdownguide.org/basic-syntax/">Basic Syntax | Markdown Guide</a></li>
+<li><a href="https://github.com/topics/nvim">nvim · GitHub Topics</a></li>
+<li><a href="https://github.com/LunarVim/Neovim-from-scratch">LunarVim/Neovim-from-scratch: 📚 A Neovim config designed from scratch to be understandable</a></li>
+<li><a href="https://github.com/craftzdog/dotfiles-public">craftzdog/dotfiles-public: My personal dotfiles</a></li>
+<li><a href="https://oi-wiki.org/tools/editor/vim/">Vim - OI Wiki</a></li>
+<li><a href="https://www.runoob.com/linux/linux-vim.html">Linux vi/vim | 菜鸟教程</a></li>
+</ul>
+
+<p>
+不太建议上手Nvim就直接使用<a href="https://nvchad.com/">NvChad</a>这种类似于DoomEmacs的集成配置，它们的文件结构不利于自定义个性化配置。Nvim配置起来比Emacs简易许多，不太需要一步到位的集成方案。
+</p>
+
+<p>
+<a href="https://github.com/LazyVim/LazyVim">LazyVim</a>既是一个插件安装管理器同时也是一个初始的简易Nvim配置，从这里开始。
+</p>
+</div>
+</div>
+<div id="outline-container-org5c098d7" class="outline-3">
+<h3 id="org5c098d7">PKM</h3>
+<div class="outline-text-3" id="text-org5c098d7">
+<p>
+整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
+</p>
+
+<p>
+Journals用来记录每天的日志，作为简单明了的回顾和展开。如果你不喜欢文件夹管理，我觉得这个是很有必要的。
+</p>
+
+<p>
+在Nvim里，我暂时使用Bash脚本来创建Journals。以年月日展示，在Typora的侧边栏可以直观的选择特定日期的日志。为了展示MD标题层级的效果，脚本设置了在Typora里默认打开，可以根据需求更改。Nvim里正则搜索特定日期的标题就可以找到当天的日志了。
+</p>
+
+
+<figure id="orgfbe1972">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/jounalbash.gif" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+核心： <b>原子笔记</b> + <b>双链</b> 。
+</p>
+
+<p>
+你可能需要了解「 <b>原子笔记</b> 」（或者常青笔记，whatever）：<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">Evergreen notes should be atomic</a>。
+</p>
+
+<p>
+双链和反链让笔记之间的关联更加直观，当原子笔记很多的时候，反链可以直观的反应出和当前笔记相关的其他笔记。它应该同步于思维的链条。
+</p>
+
+<p>
+Zettelkasten 其实并不那么重要。
+</p>
+
+<p>
+Stay foolish，stay simple。
+</p>
+
+<p>
+<b>关于同步</b> ：
+</p>
+
+<p>
+本地笔记没有在线笔记软件方便的地方就是多端同步与预览。我的本地笔记已经上传到了GitHub仓库，通过Git同步。临时需要修改的直接在GitHub仓库里就修改了。预览方面，我的笔记输出到了<a href="https://dg.vandee.art/">Vandee&rsquo;s Digital Garden</a>。
+</p>
+</div>
+<div id="outline-container-orge6ca133" class="outline-4">
+<h4 id="orge6ca133">Principles</h4>
+<div class="outline-text-4" id="text-orge6ca133">
+<ul class="org-ul">
+<li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
+<li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
+<li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E4%B8%B2%E8%81%94%E5%BA%94%E8%AF%A5%E5%AE%8C%E5%85%A8%E4%BE%9D%E9%9D%A0%E4%B8%8E%E6%80%9D%E7%BB%B4%E7%9A%84%E5%90%8C%E6%AD%A5">笔记之间的串联应该完全依靠与思维的同步</a></li>
+<li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E5%BA%94%E8%AF%A5%E8%AE%A9%E7%9F%A5%E8%AF%86%E6%B5%81%E5%8A%A8%E8%B5%B7%E6%9D%A5">笔记应该让知识流动起来</a></li>
+<li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E5%B1%82%E7%BA%A7%E9%80%BB%E8%BE%91">笔记应该有优秀的层级逻辑</a></li>
+<li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC%E5%9C%A8%E4%BA%8E%E5%A2%9E%E6%8F%B4%E6%9C%AA%E6%9D%A5%E7%9A%84%E8%87%AA%E5%B7%B1">笔记的核心价值在于增援未来的自己</a></li>
+</ul>
+
+<p>
+无思维不笔记，PKM不做本末倒置的事，让它帮助自己拓展思维，提升思维、学习、认知的效率，<a href="https://dg.vandee.art/Cards/%E6%89%BE%E5%88%B0%E7%9F%A5%E8%AF%86%E7%9A%84%E7%BC%9D%E9%9A%99">找到知识的缝隙</a>，更好的认知世界、认知自我才是本质。
+</p>
+</div>
+</div>
+<div id="outline-container-org6a1e877" class="outline-4">
+<h4 id="org6a1e877">Methods</h4>
+<div class="outline-text-4" id="text-org6a1e877">
+<p>
+在最开始需要构建的关键体系就是检索的逻辑。
+</p>
+
+<p>
+在双链部分由于原则上已经和思维高度同步，因此不需要做额外的增加思维成本的检索，只要在记录原子笔记的时候，顺其自然，高度提炼出明确、简洁的一句话概念即可。
+</p>
+
+<p>
+在标签tags部分，我习惯把标签当作是一个object的二、三级属性来看待。例如《黄金时代》这本书，它的基础属性是book，我不会再重复标注它，而是写在property里，记下 <code>Type: book</code> 方便我通过函数来列举所有的书目，tag则记下文学、王小波。我习惯用单数来强调它是个属性，区别与复数的category集合的概念。
+</p>
+
+<p>
+我看过许多博客和PKM，许多情况下，他们的tags在语义概念上都混用了，我习惯把tags和categories分开，分类就是分类，标签就是标签。category、property、tag还是需要在逻辑里有自然的分类，理清楚一个概念的内涵与外延。混用会导致tags越来越多，成百上千的tags反而会增加检索的成本，过个几年，大多数的tags你已经忘了当时为什么记下了，单独再去整理标签无疑是个巨大的工程，tags也失去了应当有的作用。tags的构建同样应当同步与自身的思维习惯，自身对概念、语义的记忆。
+</p>
+
+<p>
+当然这也完全取决于每个人自己的习惯。
+</p>
+
+<p>
+学习、获取信息和知识是在做加法，PKM里更多的应该是减法，<a href="https://dg.vandee.art/Sources/Articles/Stay-learn,-Stay-unlearn%EF%BD%9C%E8%AF%95%E8%A1%8C%E9%94%99%E8%AF%AF102">Learn and unlearn</a>。
+</p>
+
+<p>
+整体配置、配置文件结构参考：<a href="https://github.com/craftzdog/dotfiles-public">craftzdog/dotfiles-public: My personal dotfiles</a> 。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org8efc49d"></a>Vimwiki<br>
+<div class="outline-text-5" id="text-org8efc49d">
+<p>
+Vimwiki提供了类似于org-roam的insert功能，选中文字直接Enter即可在配置的笔记目录下生成笔记。当然也可以 <code>/path/notes</code> 的形式在相对路径的文件夹里生成对应文件。
+</p>
+
+<p>
+VImwiki这个相对路径直接生成文件的实现很重要。在ob里可以直接 <code>[[note1][[note1]]</code> 或 <code>[note1]</code> 引用 <code>note1</code> ，但这在其他笔记软件里是不支持的。许多md博客生成框架例如hugo，是不支持这种全局通过文件名引用的。Vimwiki支持 <code>[[note1][/pkm/note1]]</code> 这样的格式，保留了相对路径在以后兼容其他框架的时候修改起来就很方便。
+</p>
+
+<p>
+然后就可以开始愉快的写md笔记了。反链暂时我使用正则对当前文件名搜索，得到其他引用文件。Lua还不是很熟，后面写一个脚本来打印出搜索的结果。这个在Emacs里可以通过embark在minibuffer里实现。
+</p>
+
+<ul class="org-ul">
+<li><p>
+Lazy安装：
+</p>
+
+<p>
+<code>{'vimwiki/vimwiki'}</code>
+</p>
+
+<p>
+官方文档里，没有直接写明Lazy的安装方式，我还以为不支持，其实是支持的。
+</p></li>
+
+<li><p>
+配置笔记文件夹
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lua">-- vim
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': 'md'}]
+
+-- lua
+vim.g.vimwiki_list = {
+  {
+    path = '~/vimwiki/',
+    syntax = 'markdown',
+    ext = 'md'
+  }
+}
+</pre>
+</div></li>
+</ul>
+</div>
+</li>
+<li><a id="org3ffaa86"></a>Bash - MD capture<br>
+<div class="outline-text-5" id="text-org3ffaa86">
+<p>
+我现在自用的bash脚本包括导航脚本和特定笔记脚本两种，根据这两个模板常用的笔记需求基本可以满足。基本复现org-capture里自定义模板、特定位置写入内容、指定文件生成位置。
+</p>
+
+
+<figure id="org39f7883">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/mdnotesbash.gif" class="img" width="50%" height="50%">
+
+</figure>
+</div>
+<ul class="org-ul">
+<li><a id="org5afd191"></a>使用Bash脚本步骤<br>
+<div class="outline-text-6" id="text-org5afd191">
+<ul class="org-ul">
+<li>添加脚本文件夹环境全局访问： <code>.bash_profile</code>  or  <code>.bashrc</code> 文件里写入 <code>export PATH="~/path/my_scripts:$PATH"</code></li>
+
+<li>添加脚本可执行权限：terminal里 <code>cd ~/path/my_scripts</code> 到脚本文件夹位置， <code>chmod +x script_name.sh</code></li>
+<li>添加别名： <code>alias script_alias='path/my_scripts/script_name.sh'</code> ，然后 <code>source ~/.bash_profile</code>  or  <code>source ~/.bashrc</code></li>
+
+<li>Nvim里打开terminal或直接打开系统terminal，输入脚本名字或别名。</li>
+
+<li>如果使用的是Homebrew安装的Bash，在脚本里替换 <code>#!/bin/bash</code> 为 <code>#!/opt/homebrew/bin/bash</code></li>
+</ul>
+</div>
+</li>
+<li><a id="orgaea0c1d"></a>脚本模板参考<br>
+<div class="outline-text-6" id="text-orgaea0c1d">
+<ul class="org-ul">
+<li><p>
+导航脚本，选择创建笔记的类型：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #5B6268;">#</span><span style="color: #5B6268;">!/bin/</span><span style="color: #51afef;">bash</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#36864;&#20986;&#33050;&#26412;&#30340;&#38519;&#38449;</span>
+<span style="color: #51afef;">trap</span> <span style="color: #98be65;">'</span><span style="color: #98be65;">echo</span><span style="color: #98be65;"> "&#36864;&#20986;&#33050;&#26412;&#12290;"; exit'</span> SIGINT
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23450;&#20041;&#33050;&#26412;&#30446;&#24405;</span>
+<span style="color: #dcaeea;">script_dir</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">HOME</span><span style="color: #98be65;">/path/"</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23450;&#20041;&#25805;&#20316;&#21644;&#23545;&#24212;&#30340;&#33050;&#26412;</span>
+<span style="color: #c678dd;">declare</span> -A <span style="color: #dcaeea;">operations</span>=<span style="color: #51afef;">(</span>
+  <span style="color: #c678dd;">[</span><span style="color: #da8548; font-weight: bold;">1</span><span style="color: #c678dd;">]</span>=<span style="color: #98be65;">"Journals.sh"</span>
+  <span style="color: #c678dd;">[</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #c678dd;">]</span>=<span style="color: #98be65;">"NotesMD.sh"</span>
+  <span style="color: #c678dd;">[</span><span style="color: #da8548; font-weight: bold;">3</span><span style="color: #c678dd;">]</span>=<span style="color: #98be65;">"AtomicMD.sh"</span>
+  <span style="color: #c678dd;">[</span><span style="color: #da8548; font-weight: bold;">4</span><span style="color: #c678dd;">]</span>=<span style="color: #98be65;">"BlogMD.sh"</span>
+<span style="color: #51afef;">)</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26174;&#31034;&#25805;&#20316;&#36873;&#25321;&#21015;&#34920;&#24182;&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;</span>
+<span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#35831;&#36873;&#25321;&#35201;&#25191;&#34892;&#30340;&#25805;&#20316;&#65288;&#36755;&#20837;&#24207;&#21495;&#65289;:"</span>
+<span style="color: #51afef;">for</span> i<span style="color: #51afef;"> in</span> $<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">seq 1 $</span><span style="color: #c678dd; font-weight: bold;">{</span><span style="color: #51afef; font-weight: bold;">#operations</span><span style="color: #98be65; font-weight: bold;">[</span><span style="color: #51afef; font-weight: bold;">@</span><span style="color: #98be65; font-weight: bold;">]</span><span style="color: #c678dd; font-weight: bold;">}</span><span style="color: #51afef;">)</span>; <span style="color: #51afef;">do</span>
+  <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">i</span><span style="color: #98be65;">. </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">{operations[$i]}</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">done</span>
+<span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#25110;&#32773;&#36755;&#20837; 'q' &#36864;&#20986;&#33050;&#26412;"</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35835;&#21462;&#29992;&#25143;&#36755;&#20837;</span>
+<span style="color: #c678dd;">read</span> -p <span style="color: #98be65;">"&#36755;&#20837;&#24207;&#21495;: "</span> choice
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#29992;&#25143;&#26159;&#21542;&#36873;&#25321;&#36864;&#20986;&#33050;&#26412;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">choice</span><span style="color: #98be65;">"</span> == <span style="color: #98be65;">"q"</span> <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+  <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#36864;&#20986;&#33050;&#26412;&#12290;"</span>
+  <span style="color: #51afef;">exit</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26681;&#25454;&#29992;&#25143;&#36755;&#20837;&#30340;&#24207;&#21495;&#25191;&#34892;&#30456;&#24212;&#30340;&#33050;&#26412;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> -n <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">{operations[$choice]}</span><span style="color: #98be65;">"</span> <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+  <span style="color: #dcaeea;">script_path</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">{script_dir}</span><span style="color: #98be65;">${operations[</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">choice</span><span style="color: #98be65;">]}"</span>
+  <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#25191;&#34892; </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">{operations[$choice]}</span><span style="color: #98be65;"> &#33050;&#26412;..."</span>
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25191;&#34892;&#30456;&#24212;&#30340;&#33050;&#26412;</span>
+  <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">script_path</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">else</span>
+  <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#26080;&#25928;&#30340;&#24207;&#21495;&#65292;&#35831;&#36755;&#20837;1&#21040;4&#20043;&#38388;&#30340;&#25968;&#23383;&#12290;"</span>
+  <span style="color: #51afef;">exit</span> <span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#37266;&#29992;&#25143;&#24050;&#25191;&#34892;&#30456;&#24212;&#33050;&#26412;</span>
+<span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#24050;&#25191;&#34892;&#36873;&#25321;&#30340;&#33050;&#26412;&#12290;"</span>
+
+</pre>
+</div></li>
+<li><p>
+Journal脚本，生成每天的日志：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #5B6268;">#</span><span style="color: #5B6268;">!/bin/</span><span style="color: #51afef;">bash</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#31995;&#32479;&#35821;&#35328;&#29615;&#22659;&#20026;&#33521;&#25991;</span>
+<span style="color: #c678dd;">export</span> <span style="color: #dcaeea;">LC_ALL</span>=en_US.UTF-8
+<span style="color: #c678dd;">export</span> <span style="color: #dcaeea;">LANG</span>=en_US.UTF-8
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#32477;&#23545;&#36335;&#24452;</span>
+<span style="color: #dcaeea;">base_path</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">HOME</span><span style="color: #98be65;">/path/Journals"</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#33719;&#21462;&#24403;&#21069;&#24180;&#20221;</span>
+<span style="color: #dcaeea;">current_year</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date +"%Y"</span><span style="color: #51afef;">)</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35810;&#38382;&#29992;&#25143;&#36755;&#20837;&#26085;&#26399;</span>
+<span style="color: #c678dd;">read</span> -p <span style="color: #98be65;">"Please enter the </span><span style="color: #98be65;">date</span><span style="color: #98be65;"> (YYYY-MM-DD or MM-DD) [default: </span><span style="color: #51afef; font-weight: bold;">$(</span><span style="color: #51afef; font-weight: bold;">date +"%Y-%m-%d"</span><span style="color: #51afef; font-weight: bold;">)</span><span style="color: #98be65;">], or 'q' to quit: "</span> input_date
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22914;&#26524;&#29992;&#25143;&#36755;&#20837; 'q'&#65292;&#21017;&#36864;&#20986;&#33050;&#26412;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_date</span><span style="color: #98be65;">"</span> == <span style="color: #98be65;">"q"</span> <span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Exiting the script."</span>
+    <span style="color: #51afef;">exit</span> <span style="color: #da8548; font-weight: bold;">0</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22914;&#26524;&#29992;&#25143;&#27809;&#26377;&#36755;&#20837;&#26085;&#26399;&#65292;&#21017;&#20351;&#29992;&#24403;&#22825;&#26085;&#26399;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span> -z <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_date</span><span style="color: #98be65;">"</span> <span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #dcaeea;">input_date</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date +"%Y-%m-%d"</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#36755;&#20837;&#26684;&#24335;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> $<span style="color: #dcaeea;">input_date</span> =~ ^<span style="color: #98be65;">(</span><span style="color: #a9a1e1;">[</span>0-9<span style="color: #a9a1e1;">]{</span><span style="color: #da8548; font-weight: bold;">4</span><span style="color: #a9a1e1;">}</span><span style="color: #98be65;">)</span>-<span style="color: #98be65;">(</span><span style="color: #a9a1e1;">[</span>0-9<span style="color: #a9a1e1;">]{</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #a9a1e1;">}</span><span style="color: #98be65;">)</span>-<span style="color: #98be65;">(</span><span style="color: #a9a1e1;">[</span>0-9<span style="color: #a9a1e1;">]{</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #a9a1e1;">}</span><span style="color: #98be65;">)</span>$ <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23436;&#25972;&#30340; YYYY-MM-DD &#26684;&#24335;</span>
+    <span style="color: #dcaeea;">input_year</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">echo "$input_date" | cut -d'-' -f1</span><span style="color: #51afef;">)</span>
+    <span style="color: #dcaeea;">input_month</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">echo "$input_date" | cut -d'-' -f2</span><span style="color: #51afef;">)</span>
+    <span style="color: #dcaeea;">input_day</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">echo "$input_date" | cut -d'-' -f3</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">elif</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> $<span style="color: #dcaeea;">input_date</span> =~ ^<span style="color: #98be65;">(</span><span style="color: #a9a1e1;">[</span>0-9<span style="color: #a9a1e1;">]{</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #a9a1e1;">}</span><span style="color: #98be65;">)</span>-<span style="color: #98be65;">(</span><span style="color: #a9a1e1;">[</span>0-9<span style="color: #a9a1e1;">]{</span><span style="color: #da8548; font-weight: bold;">2</span><span style="color: #a9a1e1;">}</span><span style="color: #98be65;">)</span>$ <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">MM-DD &#26684;&#24335;&#65292;&#20351;&#29992;&#24403;&#21069;&#24180;&#20221;</span>
+    <span style="color: #dcaeea;">input_year</span>=$<span style="color: #dcaeea;">current_year</span>
+    <span style="color: #dcaeea;">input_month</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">echo "$input_date" | cut -d'-' -f1</span><span style="color: #51afef;">)</span>
+    <span style="color: #dcaeea;">input_day</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">echo "$input_date" | cut -d'-' -f2</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">else</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Invalid </span><span style="color: #98be65;">date</span><span style="color: #98be65;"> format. Please use YYYY-MM-DD or MM-DD."</span>
+    <span style="color: #51afef;">exit</span> <span style="color: #da8548; font-weight: bold;">1</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#29983;&#25104; Journal &#25991;&#20214;&#36335;&#24452;</span>
+<span style="color: #dcaeea;">journal_filename</span>=<span style="color: #98be65;">"Journal-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">.md"</span>
+<span style="color: #dcaeea;">journal_path</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">base_path</span><span style="color: #98be65;">/</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">journal_filename</span><span style="color: #98be65;">"</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#25991;&#20214;&#26159;&#21542;&#24050;&#23384;&#22312;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span> -f <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">journal_path</span><span style="color: #98be65;">"</span> <span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Journal file already exists: </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">journal_path</span><span style="color: #98be65;">"</span>
+    <span style="color: #dcaeea;">target_file</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">journal_path</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">else</span>
+    <span style="color: #ECBE7B;">touch</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">journal_path</span><span style="color: #98be65;">"</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Journal file created: </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">journal_path</span><span style="color: #98be65;">"</span>
+    <span style="color: #dcaeea;">target_file</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">journal_path</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#33719;&#21462;&#24403;&#21069;&#26085;&#26399;&#20449;&#24687;</span>
+<span style="color: #dcaeea;">current_date</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date +"%Y-%m-%d"</span><span style="color: #51afef;">)</span>
+<span style="color: #dcaeea;">current_month_name</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date +"%b"</span><span style="color: #51afef;">)</span>
+<span style="color: #dcaeea;">current_day_name</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date +"%A"</span><span style="color: #51afef;">)</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20351;&#29992; </span><span style="color: #5B6268;">date</span><span style="color: #5B6268;"> &#21629;&#20196;&#33719;&#21462;&#36755;&#20837;&#26085;&#26399;&#30340;&#26376;&#20221;&#21644;&#26143;&#26399;&#20960;&#30340;&#21517;&#31216;</span>
+<span style="color: #dcaeea;">input_month_name</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date -j -f "%Y-%m-%d" "$input_year-$input_month-$input_day" +"%b"</span><span style="color: #51afef;">)</span>
+<span style="color: #dcaeea;">input_day_name</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date -j -f "%Y-%m-%d" "$input_year-$input_month-$input_day" +"%A"</span><span style="color: #51afef;">)</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#24403;&#21069;&#24180;&#20221;&#22836;&#26159;&#21542;&#23384;&#22312;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef; font-weight: bold;">!</span> <span style="color: #ECBE7B;">grep</span> -q <span style="color: #98be65;">"# </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">"</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"# </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">"</span> &gt;&gt; <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Current year header inserted in </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">: # </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">else</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Current year header already exists, no need to insert it again"</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#24403;&#21069;&#26376;&#20221;&#22836;&#26159;&#21542;&#23384;&#22312;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef; font-weight: bold;">!</span> <span style="color: #ECBE7B;">grep</span> -q <span style="color: #98be65;">"## </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month</span><span style="color: #98be65;"> </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month_name</span><span style="color: #98be65;">"</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"## </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month</span><span style="color: #98be65;"> </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month_name</span><span style="color: #98be65;">"</span> &gt;&gt; <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Current month header inserted in </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">: ## </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month</span><span style="color: #98be65;"> </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month_name</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">else</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Current month header already exists, no need to insert it again"</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#24403;&#21069;&#26085;&#26399;&#22836;&#26159;&#21542;&#23384;&#22312;</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef; font-weight: bold;">!</span> <span style="color: #ECBE7B;">grep</span> -q <span style="color: #98be65;">"### </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_day</span><span style="color: #98be65;"> </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_day_name</span><span style="color: #98be65;">"</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"### </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_day</span><span style="color: #98be65;"> </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_day_name</span><span style="color: #98be65;">"</span> &gt;&gt; <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Current day of the week header inserted in </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">: ### </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_year</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_month</span><span style="color: #98be65;">-</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_day</span><span style="color: #98be65;"> </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">input_day_name</span><span style="color: #98be65;">"</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">""</span> &gt;&gt; <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"- TODOs"</span> &gt;&gt; <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"- Inbox"</span> &gt;&gt; <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23558;&#20809;&#26631;&#23450;&#20301;&#22312;"- Inbox"&#36825;&#19968;&#34892;</span>
+    sed -i <span style="color: #98be65;">''</span> -e <span style="color: #98be65;">'/- Inbox/G'</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">else</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Current day of the week header already exists"</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#29992;Typora&#25171;&#24320;&#29983;&#25104;&#30340;&#26085;&#35760;&#25991;&#20214;</span>
+open -a Typora <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">target_file</span><span style="color: #98be65;">"</span>
+
+</pre>
+</div></li>
+
+<li><p>
+Notes脚本，生成一般的笔记：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #5B6268;">#</span><span style="color: #5B6268;">!/bin/</span><span style="color: #51afef;">bash</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;Markdown&#25991;&#20214;&#30340;&#21517;&#31216;&#65292;&#24182;&#26816;&#26597;&#26159;&#21542;&#36755;&#20837;&#20102;"q"&#20197;&#36864;&#20986;&#33050;&#26412;</span>
+<span style="color: #51afef;">while</span> true; <span style="color: #51afef;">do</span>
+  <span style="color: #c678dd;">read</span> -p <span style="color: #98be65;">"&#35831;&#36755;&#20837;Markdown&#25991;&#20214;&#30340;&#21517;&#31216;&#65288;&#19981;&#21253;&#21547;.md&#25193;&#23637;&#21517;&#65289;&#25110;&#36755;&#20837;'q'&#36864;&#20986;: "</span> filename
+  <span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">filename</span><span style="color: #98be65;">"</span> == <span style="color: #98be65;">"q"</span> <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#36864;&#20986;&#33050;&#26412;&#12290;"</span>
+    <span style="color: #51afef;">exit</span>
+  <span style="color: #51afef;">fi</span>
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22914;&#26524;&#29992;&#25143;&#27809;&#26377;&#36755;&#20837;&#20219;&#20309;&#20869;&#23481;&#65292;&#21017;&#20351;&#29992;&#24403;&#21069;&#26085;&#26399;&#21644;&#26102;&#38388;&#20316;&#20026;&#25991;&#20214;&#21517;</span>
+  <span style="color: #dcaeea;">filename</span>=$<span style="color: #51afef;">{</span><span style="color: #dcaeea;">filename</span>:-$<span style="color: #c678dd;">(</span><span style="color: #51afef; font-weight: bold;">date '+%Y%m%d%H%M%S'</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">}</span>
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#36755;&#20837;&#26159;&#21542;&#26377;&#25928;&#65292;&#22914;&#26524;&#20026;&#31354;&#21017;&#32487;&#32493;&#35810;&#38382;</span>
+  <span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span> -z <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">filename</span><span style="color: #98be65;">"</span> <span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"&#25991;&#20214;&#21517;&#19981;&#33021;&#20026;&#31354;&#65292;&#35831;&#36755;&#20837;&#25991;&#20214;&#21517;&#25110;&#36755;&#20837;'q'&#36864;&#20986;&#12290;"</span>
+    <span style="color: #51afef;">continue</span>
+  <span style="color: #51afef;">fi</span>
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#19968;&#26086;&#33719;&#24471;&#26377;&#25928;&#36755;&#20837;&#65292;&#36339;&#20986;&#24490;&#29615;</span>
+  <span style="color: #51afef;">break</span>
+<span style="color: #51afef;">done</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#26159;&#21542;&#24050;&#32463;&#23384;&#22312;&#35813;&#30446;&#24405;&#65292;&#22914;&#26524;&#19981;&#23384;&#22312;&#21017;&#21019;&#24314;</span>
+<span style="color: #dcaeea;">mdNotesDir</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">HOME</span><span style="color: #98be65;">/path/"</span>
+<span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span> <span style="color: #51afef; font-weight: bold;">!</span> -d <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">mdNotesDir</span><span style="color: #98be65;">"</span> <span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+  <span style="color: #ECBE7B;">mkdir</span> -p <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">mdNotesDir</span><span style="color: #98be65;">"</span>
+<span style="color: #51afef;">fi</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26500;&#24314;&#23436;&#25972;&#30340;&#25991;&#20214;&#36335;&#24452;</span>
+<span style="color: #dcaeea;">fullPath</span>=<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">{mdNotesDir}</span><span style="color: #98be65;">${filename}.md"</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#33719;&#21462;&#24403;&#21069;&#30340;&#26085;&#26399;&#21644;&#26102;&#38388;</span>
+<span style="color: #dcaeea;">current_date</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date '+%Y-%m-%d'</span><span style="color: #51afef;">)</span>
+<span style="color: #dcaeea;">current_date_yyyyMMddHHmmss</span>=$<span style="color: #51afef;">(</span><span style="color: #51afef; font-weight: bold;">date '+%Y%m%d%H%M%S'</span><span style="color: #51afef;">)</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21019;&#24314;&#24182;&#20889;&#20837; YAML &#22836;&#20449;&#24687;&#21040; Markdown &#25991;&#20214;</span>
+<span style="color: #ECBE7B;">cat</span> &gt; <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">fullPath</span><span style="color: #98be65;">"</span> &lt;&lt;EOF
+<span style="color: #98be65;">---</span>
+<span style="color: #98be65;">UID: $current_date_yyyyMMddHHmmss</span>
+<span style="color: #98be65;">title: $filename</span>
+<span style="color: #98be65;">alias:</span>
+<span style="color: #98be65;">areas:</span>
+<span style="color: #98be65;">tags:</span>
+<span style="color: #98be65;">rank:</span>
+<span style="color: #98be65;">source:</span>
+<span style="color: #98be65;">type: Article</span>
+<span style="color: #98be65;">date: $current_date</span>
+<span style="color: #98be65;">---</span>
+<span style="color: #98be65;">EOF</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#37266;&#29992;&#25143;&#25991;&#20214;&#24050;&#21019;&#24314;</span>
+<span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Markdown &#25991;&#20214; '</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">fullPath</span><span style="color: #98be65;">' &#24050;&#21019;&#24314;&#12290;"</span>
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20351;&#29992; open &#21629;&#20196;&#33258;&#21160;&#25171;&#24320;&#25991;&#20214;</span>
+open -a <span style="color: #98be65;">"typora"</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">fullPath</span><span style="color: #98be65;">"</span>
+
+</pre>
+</div></li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org21083df"></a>ToggleTerm<br>
+<div class="outline-text-5" id="text-org21083df">
+
+<figure id="orga2a2ad3">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/bash-quote.gif" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+<a href="https://github.com/akinsho/toggleterm.nvim">akinsho/toggleterm.nvim</a> 可以在Nvim里快速创建一个内置终端。结合Bash脚本，体验和Emacs里使用org-capture差不多。当然，org-capture可以结合org-protocol，还是要强大太多。
+</p>
+
+<ul class="org-ul">
+<li><p>
+安装：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lua">  {
+    -- amongst your other plugins
+    {'akinsho/toggleterm.nvim', version = "*", config = true}
+    -- or
+    {'akinsho/toggleterm.nvim', version = "*", opts = {--[[ things you want to change go here]]}}
+  }
+</pre>
+</div></li>
+<li><p>
+参考配置：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lua">local toggleterm = require("toggleterm")
+
+  toggleterm.setup({
+      size = 15, - 设置窗口大小
+      open_mapping = "&lt;C-\\&gt;",
+      start_in_insert = true,
+      direction = "horizontal", - 设置窗口横向或竖向
+      shell = vim.o.shell, - 设置需要使用的shell
+  })
+
+  - 在Terminal里使用vim的移动指令
+  function _G.set_terminal_keymaps()
+    local opts = { noremap = true }
+    vim.api.nvim_buf_set_keymap(0, 't', '&lt;esc&gt;', [[&lt;C-\&gt;&lt;C-n&gt;]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[&lt;C-\&gt;&lt;C-n&gt;]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '&lt;C-h&gt;', [[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;h]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '&lt;C-j&gt;', [[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;j]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '&lt;C-k&gt;', [[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;k]], opts)
+    vim.api.nvim_buf_set_keymap(0, 't', '&lt;C-l&gt;', [[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;l]], opts)
+  end
+
+  vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+
+  function _LAZYGIT_TOGGLE()
+    lazygit:toggle()
+  end
+
+  local node = Terminal:new({ cmd = "node", hidden = true })
+
+  function _NODE_TOGGLE()
+    node:toggle()
+  end
+
+  local python = Terminal:new({ cmd = "python3", hidden = true })
+
+  function _PYTHON_TOGGLE()
+    python:toggle()
+  end
+
+  -- 为 Python 终端设置快捷键
+  vim.api.nvim_set_keymap('n', '&lt;leader&gt;tp', ':lua _PYTHON_TOGGLE()&lt;CR&gt;', { noremap = true, silent = true })
+  -- 快速打开Terminal
+  vim.keymap.set("n", "&lt;Leader&gt;tt", function()
+    require("toggleterm").toggle()
+  end, { desc = "ToggleTerm" })
+
+  -- end
+</pre>
+</div></li>
+</ul>
+</div>
+</li>
+<li><a id="orgdcc6550"></a>中英输入法问题<br>
+<ul class="org-ul">
+<li><a id="org4097bed"></a>im-select-nvim<br>
+<div class="outline-text-6" id="text-org4097bed">
+<p>
+<a href="https://github.com/keaising/im-select.nvim">keaising/im-select.nvim</a> 这个插件可以在Nvim里让nomal模式下自动切换成英文输入，在insert模式下自动切换回中文输入。刚需。
+</p>
+<ul class="org-ul">
+<li><p>
+先安装im-select
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">Install
+
+Download URL: https://github.com/daipeihust/im-select
+
+Check installation<span style="color: #51afef;"> in</span> bash/zsh
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">find</span><span style="color: #5B6268;"> binary</span>
+$ which im-select
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Get current im name</span>
+$ im-select
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Try to switch to English keyboard</span>
+$ im-select com.apple.keylayout.ABC
+
+Check<span style="color: #51afef;"> in</span> NeoVim
+
+:!which im-select
+
+</pre>
+</div></li>
+
+<li><p>
+im-select-nvim的安装和配置
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lua">{
+    "keaising/im-select.nvim",
+    config = function()
+        require('im_select').setup({
+            -- IM will be set to `default_im_select` in `normal` mode
+            -- For Windows/WSL, default: "1033", aka: English US Keyboard
+            -- For macOS, default: "com.apple.keylayout.ABC", aka: US
+            -- For Linux, default:
+            --               "keyboard-us" for Fcitx5
+            --               "1" for Fcitx
+            --               "xkb:us::eng" for ibus
+            -- You can use `im-select` or `fcitx5-remote -n` to get the IM's name
+            default_im_select  = "com.apple.keylayout.ABC",
+
+            -- Can be binary's name, binary's full path, or a table, e.g. 'im-select',
+            -- '/usr/local/bin/im-select' for binary without extra arguments,
+            -- or { "AIMSwitcher.exe", "--imm" } for binary need extra arguments to work.
+            -- For Windows/WSL, default: "im-select.exe"
+            -- For macOS, default: "im-select"
+            -- For Linux, default: "fcitx5-remote" or "fcitx-remote" or "ibus"
+            default_command = "/opt/homebrew/bin/im-select",
+
+            -- Restore the default input method state when the following events are triggered
+            set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
+
+            -- Restore the previous used input method state when the following events
+            -- are triggered, if you don't want to restore previous used im in Insert mode,
+            -- e.g. deprecated `disable_auto_restore = 1`, just let it empty
+            -- as `set_previous_events = {}`
+            set_previous_events = { "InsertEnter" },
+
+            -- Show notification about how to install executable binary when binary missed
+            keep_quiet_on_no_binary = false,
+
+            -- Async run `default_command` to switch IM or not
+            async_switch_im = true
+        })
+    end,
+},
+
+</pre>
+</div></li>
+</ul>
+
+<p>
+Ref:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/lei4519/blog/issues/85">完善 Rime Vim Mode：支持 Linux &amp; 自动切换回中文模式 · Issue #85 · lei4519/blog</a></li>
+<li><a href="https://sspai.com/post/71322">Vim 的中文支持及解决思路 - 少数派</a></li>
+<li><a href="https://jdhao.github.io/2021/02/25/nvim_ime_mode_auto_switch/">如何让 Neovim 中文输入时自动切换输入法 · Blowfish</a></li>
+</ul>
+</div>
+</li>
+<li><a id="org2f572d4"></a>RIME<br>
+<div class="outline-text-6" id="text-org2f572d4">
+<p>
+如果说PKM是纸，那么输入法就是笔。
+</p>
+
+<p>
+再次强烈推荐 <a href="https://rime.im/">RIME | 中州韻輸入法引擎</a>，配合 <a href="https://github.com/iDvel/rime-ice">iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库</a>，多平台多端同步。已经使用了几年，非常巴适，手机端也可以同步配置。
+</p>
+
+<p>
+以前输入法就各种偷偷记录用户输入习惯，现在各个输入法又还要内置AI再记录一遍。本地配置、不需要联网的输入法是我的刚需，更何况，rime还可以自挂词库。
+</p>
+
+<p>
+一个巨坑，最近的RIME更新在<a href="https://github.com/rime/squirrel/releases/tag/1.0.0">Release 1.0.0 · rime/squirrel</a>版本里改变了候选词横向和竖向的设置：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">style/horizontal 將徹底移除，雖然本版程序仍支持，但會被新控件的默認值覆蓋
+請使用 candidate_list_layout: stacked/linear 和 text_orientation: horizontal/vertical
+</pre>
+</div>
+
+<p>
+而且最好直接在输入法外观的配置文件里，修改输入法外观的配置，而不是通用配置，反正我在通用设置里不起作用。
+</p>
+
+<p>
+<b>下面是简单的安装步骤</b> ：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">;; mac:
+;; mac rime: https://rime.im/download/
+Homebrew: brew install --cask squirrel
+&#25110;&#32773;&#30452;&#25509;&#19979;&#36733;
+;; mac rime-ice
+&#20351;&#29992;&#19996;&#39118;&#30772; plum &#23433;&#35013;: https://github.com/rime/plum
+<span style="color: #ECBE7B;">curl</span> -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bash
+
+&#23433;&#35013; rime-ice:
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#20840;&#37096;&#25991;&#20214;
+bash rime-install iDvel/rime-ice:others/recipes/full
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#25152;&#26377;&#35789;&#24211;&#25991;&#20214;<span style="color: #51afef;">&#65288;</span>&#21253;&#21547;&#19979;&#38754;&#19977;&#20010;<span style="color: #51afef;">&#65289;</span>
+bash rime-install iDvel/rime-ice:others/recipes/all_dicts
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#25340;&#38899;&#35789;&#24211;&#25991;&#20214;<span style="color: #51afef;">&#65288;</span> cn_dicts/ &#30446;&#24405;&#20869;&#25152;&#26377;&#25991;&#20214;<span style="color: #51afef;">&#65289;</span>
+bash rime-install iDvel/rime-ice:others/recipes/cn_dicts
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#33521;&#25991;&#35789;&#24211;&#25991;&#20214;<span style="color: #51afef;">&#65288;</span> en_dicts/ &#30446;&#24405;&#20869;&#25152;&#26377;&#25991;&#20214;<span style="color: #51afef;">&#65289;</span>
+bash rime-install iDvel/rime-ice:others/recipes/en_dicts
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032; opencc <span style="color: #51afef;">&#65288;</span> opencc/ &#30446;&#24405;&#20869;&#25152;&#26377;&#25991;&#20214;<span style="color: #51afef;">&#65289;</span>
+bash rime-install iDvel/rime-ice:others/recipes/opencc
+
+;;&#25110;&#20351;&#29992; rime-auto-deploy&#65306;https://github.com/Mark24Code/rime-auto-deploy&#65292;&#36825;&#20010;&#21644;plum&#21482;&#29992;&#36873;&#19968;&#20010;&#12290;
+
+=======================================================
+;;Linux
+ibus:
+https://github.com/rime/home/wiki/RimeWithIBus
+<span style="color: #ECBE7B;">sudo</span> apt-get install ibus-rime                   <span style="color: #5B6268;">#</span><span style="color: #5B6268;">ibus</span>
+
+fcitx5:
+<span style="color: #ECBE7B;">sudo</span> pacman -Sy fcitx5-rime                      <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Arch Linux</span>
+<span style="color: #ECBE7B;">sudo</span> apt update &amp;&amp; <span style="color: #ECBE7B;">sudo</span> apt install fcitx5-rime  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Ubuntu / Debian / Deepin</span>
+<span style="color: #ECBE7B;">sudo</span> zypper install fcitx5-rime                  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">OpenSUSE</span>
+<span style="color: #ECBE7B;">sudo</span> dnf install fcitx5-rime                     <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Fedora</span>
+
+plum and rime-ice&#65306;
+<span style="color: #ECBE7B;">git</span> clone --depth <span style="color: #da8548; font-weight: bold;">1</span> https://github.com/rime/plum ~/plum
+
+;; &#20999;&#25442;&#21040;&#19996;&#39118;&#30772;&#30340;&#30446;&#24405;
+<span style="color: #ECBE7B;">cd</span> ~/plum
+
+;; &#22914;&#26524;&#20320;&#20351;&#29992;Fcitx5&#65292;&#20320;&#38656;&#35201;&#21152;&#20837;&#21442;&#25968;&#65292;&#35753;&#19996;&#39118;&#30772;&#25226;&#37197;&#32622;&#25991;&#20214;&#20889;&#21040;&#27491;&#30830;&#30340;&#20301;&#32622;
+<span style="color: #dcaeea;">rime_frontend</span>=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
+
+;; &#22914;&#26524;&#20320;&#26159;&#29992;IBus&#65292;&#21017;&#19981;&#38656;&#21152;&#21442;&#25968;&#65292;&#22240;&#20026;&#19996;&#39118;&#30772;&#40664;&#35748;&#26159;&#20026;IBus&#29256;&#30340;RIME&#25171;&#36896;&#12290;
+bash rime-install iDvel/rime-ice:others/recipes/full
+
+</pre>
+</div>
+
+
+<p>
+其他可以参考下面的文章:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://sspai.com/post/84373#!">自由输入法 RIME 简明配置指南 - 少数派</a></li>
+
+<li><a href="https://sspai.com/post/89281">RIME + 雾凇拼音，打造绝佳的开源文字输入体验 - 少数派</a></li>
+
+<li><a href="https://sspai.com/post/90068">让 RIME 体验更上一层楼：如何用 MediaWiki 扩展词库 - 少数派</a>  导入wiki</li>
+
+<li><a href="https://github.com/gshang2017/rime-dict">gshang2017/rime-dict: RIME输入法(拼音)自用词库(包含英语，基础，维基，搜狗等词库)，词频基于腾讯AI向量词库逆序生成。</a>  自建词库，导入专业领域词汇</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org06dc2a0"></a>MarkdownPreview<br>
+<div class="outline-text-5" id="text-org06dc2a0">
+<p>
+<a href="https://github.com/iamcco/markdown-preview.nvim">iamcco/markdown-preview.nvim</a>提供实时的markdown预览，对于经常写md的不是那么必须，拿不准的可以预览看看的整体效果。输入 <code>:MarkdownPreview</code> 就会在浏览器里打开预览。
+</p>
+
+<p>
+当然，还有个更简单的办法，在Typora里打开:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lua">
+-- 定义一个函数,用于在 Typora 中打开当前缓冲区文件 --
+local function open_with_typora()
+    local current_file = vim.api.nvim_buf_get_name(0)
+    vim.cmd('!open -a Typora "' .. current_file .. '"')
+end
+
+-- 将该函数绑定到 &lt;leader&gt;t 快捷键
+vim.keymap.set('n', '&lt;leader&gt;fo', open_with_typora, { desc = 'Open current buffer in Typora' })
+
+-- end
+</pre>
+</div>
+
+<ul class="org-ul">
+<li><p>
+安装
+</p>
+
+<p>
+在Nvim里使用Lazy安装会报错，这个 <a href="https://github.com/iamcco/markdown-preview.nvim/issues/690">issue</a> 给出了解决办法：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lua">  {
+    -- Install markdown preview, use npx if available.
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function(plugin)
+      if vim.fn.executable "npx" then
+        vim.cmd("!cd " .. plugin.dir .. " &amp;&amp; cd app &amp;&amp; npx --yes yarn install")
+      else
+        vim.cmd [[Lazy load markdown-preview.nvim]]
+        vim.fn["mkdp#util#install"]()
+      end
+    end,
+    init = function()
+      if vim.fn.executable "npx" then vim.g.mkdp_filetypes = { "markdown" } end
+    end,
+  },
+</pre>
+</div></li>
+
+<li><p>
+配置
+</p>
+
+<p>
+其他的基本不用怎么配置，下面是指定浏览器的配置：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">Add the following to your Neovim init script:
+
+Linux
+
+  function OpenMarkdownPreview (url)
+    execute "silent ! firefox --new-window " . a:url
+  endfunction
+  let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+
+Replace firefox with chrome if you prefer. Both browsers recognize the --new-window option.
+
+macOS
+
+  function OpenMarkdownPreview (url)
+    execute "silent ! open -a Firefox -n --args --new-window " . a:url
+  endfunction
+  let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+
+Replace Firefox with Google\ Chrome or Brave\ Browser if you prefer. They all recognize the --new-window option.
+
+</pre>
+</div></li>
+</ul>
+</div>
+</li>
+<li><a id="org7992507"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-org7992507">
+<p>
+利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
+</p>
+
+<p>
+有一个JavaScript我一直在用，可以选定一个网页的特定内容，在翻译和剪藏的时候挺有用，同时也微微提升了一点阅读体验。我用 <a href="https://github.com/OwO-Network/DeepLX">DeepLX</a>  通过沉浸式翻译如果单次翻译内容太多会报错和限制，Deepl的中文翻译还是吊打其他的。
+</p>
+
+<p>
+下面的代码保存到书签，单击书签就可以了：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">javascript:(function(){var e=document.body;const n=document.head.appendChild(document.createElement("style"));n.textContent=".mainonly { outline: 2px solid red; }";const t=CSS.supports("selector(:has(*))");function o(n){n instanceof HTMLElement&amp;&amp;(e.classList.remove("mainonly"),(e=n).classList.add("mainonly"))}function s(e){o(e.target)}function a(o){if(o.preventDefault(),t)n.textContent=":not(:has(.mainonly), .mainonly, .mainonly *) { display: none; }";else{n.textContent=":not(.mainonly *, .mainonly-ancestor) { display: none; }";var s=e;do{s.classList.add("mainonly-ancestor")}while(s=s.parentElement)}l()}function i(n){n.preventDefault(),n.deltaY&lt;0?o(e.parentElement):o(e.firstElementChild)}function l(){document.removeEventListener("mouseover",s),document.removeEventListener("click",a),document.removeEventListener("wheel",i)}document.addEventListener("mouseover",s),document.addEventListener("click",a),document.addEventListener("wheel",i,{passive:!1}),document.addEventListener("keydown",(function o(s){if("Escape"===s.key&amp;&amp;(n.remove(),document.removeEventListener("keydown",o),l(),e?.classList.remove("mainonly"),!t))for(const e of document.getElementsByClassName("mainonly-ancestor"))e.classList.remove("mainonly-ancestor")}))}())
+</pre>
+</div>
+
+<p>
+after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a>，开源免费，支持RSS和Newsletter，可以自动同步高亮标注、摘录到Obsidian和Logseq。这部分用来做 <a href="https://www.vandee.art/posts/2024-06-18-%E4%BF%A1%E6%81%AF%E7%9A%84%E4%BF%9D%E9%B2%9C%E6%9C%9F-%E6%B5%81%E5%8A%A8%E7%9F%A5%E8%AF%86%E7%9A%84%E6%A3%80%E7%B4%A2/">流动知识的检索</a>，文档+RAG现在的项目也越来越多了。用AI来过滤、总结这些信息流很巴适。
+</p>
+
+<p>
+简单写了一个python用来直接获取高亮摘录并与本地LLM问答：<a href="https://www.vandee.art/posts/2024-07-08-omnivore-with-llm-in-python/">RSS 订阅和本地 LLM 结合的初步尝试 - 流动知识检索 | Vandee&rsquo;s Blog</a>
+</p>
+
+<p>
+有条件直接上 <a href="https://readwise.io/">Readwise</a>，配合Notion、Obsidian、Logseq都挺好用。<a href="https://getpocket.com/home?src=navbar">Pocket</a>、<a href="https://github.com/usememos/memos">memos</a> 也挺不错，可以把阅读整合到PKM里。
+</p>
+
+<p>
+<a href="https://n8n.akashio.com/welcome">欢迎来到 n8n 中文教程 | 简单易懂的现代魔法</a>这里给出了一个 omnivore 到 notion 的 workflow。
+</p>
+
+<p>
+最近<a href="https://www.vandee.art/posts/2024-07-24-start-to-get-readwies/">还是入坑了 Readwise</a>。
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org23e03ad"></a>tools<br>
+<div class="outline-text-6" id="text-org23e03ad">
+<ul class="org-ul">
+<li><p>
+网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
+</p>
+
+<p>
+Github：<a href="https://github.com/jina-ai/reader">https://github.com/jina-ai/reader</a>
+</p>
+
+<p>
+它可以提取网页内容并转换为markdown格式，还支持直接搜索，支持API。
+</p>
+
+<p>
+Reader does two things:
+</p>
+
+<ul class="org-ul">
+<li><b>Read</b>: It converts any URL to an <b>LLM-friendly</b> input with <code>https://r.jina.ai/https://your.url</code>. Get improved output for your agent and RAG systems at no cost.</li>
+<li><b>Search</b>: It searches the web for a given query with <code>https://s.jina.ai/your+query</code>. This allows your LLMs to access the latest world knowledge from the web.</li>
+</ul>
+
+<p>
+添加下面代码到书签保存，点击书签就可以提取网页内容到markdown格式了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-javascript">  javascript: <span style="color: #51afef;">var</span> <span style="color: #dcaeea;">currentUrl</span> = window.location.href;<span style="color: #51afef;">var</span> <span style="color: #dcaeea;">newUrl</span> = <span style="color: #98be65;">"https://r.jina.ai/"</span> + currentUrl;window.open(newUrl, <span style="color: #98be65;">'_blank'</span>);window.history.pushState({}, <span style="color: #98be65;">''</span>, currentUrl);
+</pre>
+</div></li>
+</ul>
+
+
+<p>
+以这个工具为跳板，就可以干许多有意思的事情了。
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/JimmyLv/BibiGPT-v1">JimmyLv/BibiGPT-v1</a> 这个项目可以自己部署，总结B站、YouTube、抖音等等的视频内容，挺好用。</li>
+
+<li><a href="https://sspai.com/post/89828">u-Sir/drag-to-preview</a>，最近发现一个Firefox浏览器插件，可以选中网页链接拖拽弹出单独的窗口预览网页，在窗口外区域鼠标点击即可关闭，很符合我的胃口。</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5ba62b7" class="outline-3">
+<h3 id="org5ba62b7">PKM with LLM</h3>
+<div class="outline-text-3" id="text-org5ba62b7">
+<p>
+本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
+</p>
+
+<p>
+看到一个大佬已经用Ollama、RAG在MacBook Pro M3 Max上实现了基于obsidian的个人AI知识助手：<a href="https://lopespm.com/machine_learning/2024/06/24/personal-llm.html">个人本地 (Llama3 8B) LLM 使用 WhatsApp + Obsidian 数据扩展 - Byte Tank</a>，和我的思路基本一致。
+</p>
+
+<p>
+简单写了一个python用来直接获取高亮摘录并与本地LLM问答：<a href="https://www.vandee.art/posts/2024-07-08-omnivore-with-llm-in-python/">RSS 订阅和本地 LLM 结合的初步尝试 - 流动知识检索 | Vandee&rsquo;s Blog</a>
+</p>
+
+<p>
+很久之前，看到一篇文章提出了一个观点：随着和LLM互动的增多，特别是现在各种LLM平台，ChatGPT、Claude、perplexity等等，查询、回顾、汇总这些问答是一个值得注意的点。
+</p>
+
+<p>
+现在我的日常问答都在本地使用Open WebUI，可以导出聊天还有数据库可以直接备份，甚至还可以给对话打tag，当然也可以搜索。
+</p>
+</div>
+<div id="outline-container-org30a0a09" class="outline-4">
+<h4 id="org30a0a09">Ollama</h4>
+<div class="outline-text-4" id="text-org30a0a09">
+<p>
+<a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
+</p>
+
+<p>
+ollama支持主流的开源模型如llama3，所有支持模型可查看：
+</p>
+
+<p>
+<b>Model library</b> ：Ollama supports a list of models available on <a href="https://ollama.com/library">ollama.com/library</a>
+</p>
+
+<p>
+相关文章：
+</p>
+
+<ul class="org-ul">
+<li><a href="https://blog.inoki.cc/2024/04/16/Ollama-cn/">Ollama 架构解析 | Inoki in the world</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga515738" class="outline-4">
+<h4 id="orga515738">Open WebUI</h4>
+<div class="outline-text-4" id="text-orga515738">
+<p>
+<a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
+</p>
+
+<p>
+<a href="https://openwebui.com/#open-webui-community">社区</a>提供了插件和功能，质变的是：可以让本地LLM搜索web的内容。
+</p>
+
+<p>
+Open WebUI 在2024-10-06的版本中<a href="https://github.com/open-webui/open-webui/releases/tag/v0.3.31">更新</a>了支持类似Claude artifacts的artifacts: <b>🎨 Artifacts Feature</b>: Render web content and SVGs directly in the interface, supporting quick iterations and live changes，不过只支持原生的HTML和CSS。还更新了Overview，可以在白板里展示对话的内容，太实用了，史诗级更新！
+</p>
+
+<p>
+*其他主要功能*：
+</p>
+
+<ul class="org-ul">
+<li>📚 本地 RAG 集成：通过突破性的检索增强生成 (RAG) 支持深入探索聊天交互的未来。此功能将文档交互无缝集成到您的聊天体验中。您可以将文档直接加载到聊天中或将文件添加到文档库中，在查询之前使用 <code>#</code> 命令轻松访问它们。</li>
+
+<li>🔍 RAG 的网络搜索：使用 <code>SearXNG</code> 、 <code>Google PSE</code> 、 <code>Brave Search</code> 、 <code>serpstack</code> 、 <code>serper</code> 、 <code>Serply</code> 、 <code>DuckDuckGo</code> 和 <code>TavilySearch</code> 并将结果直接注入您的聊天体验中。</li>
+
+<li>🌐 网页浏览功能：使用 <code>#</code> 命令后跟 URL，将网站无缝集成到您的聊天体验中。此功能允许您将网络内容直接合并到您的对话中，从而增强交互的丰富性和深度。</li>
+</ul>
+
+<p>
+<b>docker部署相当简单</b> ：
+</p>
+
+<ul class="org-ul">
+<li>CLI: <code>docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main</code></li>
+
+<li><p>
+Docker compose: <a href="https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml">https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml</a>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #dcaeea;">services</span>:
+    <span style="color: #dcaeea;">ollama</span>:
+      <span style="color: #dcaeea;">volumes</span>:
+        - ollama:/root/.ollama
+      <span style="color: #dcaeea;">container_name</span>: ollama
+      <span style="color: #dcaeea;">pull_policy</span>: always
+      <span style="color: #dcaeea;">tty</span>: <span style="color: #a9a1e1;">true</span>
+      <span style="color: #dcaeea;">restart</span>: unless-stopped
+      <span style="color: #dcaeea;">image</span>: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+
+    <span style="color: #dcaeea;">open-webui</span>:
+      <span style="color: #dcaeea;">build</span>:
+        <span style="color: #dcaeea;">context</span>: .
+        <span style="color: #dcaeea;">args</span>:
+          <span style="color: #dcaeea;">OLLAMA_BASE_URL</span>: <span style="color: #98be65;">'/ollama'</span>
+        <span style="color: #dcaeea;">dockerfile</span>: Dockerfile
+      <span style="color: #dcaeea;">image</span>: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+      <span style="color: #dcaeea;">container_name</span>: open-webui
+      <span style="color: #dcaeea;">volumes</span>:
+        - open-webui:/app/backend/data
+      <span style="color: #dcaeea;">depends_on</span>:
+        - ollama
+      <span style="color: #dcaeea;">ports</span>:
+        - ${OPEN_WEBUI_PORT-3000}:8080
+      <span style="color: #dcaeea;">environment</span>:
+        - <span style="color: #98be65;">'OLLAMA_BASE_URL=http://ollama:11434'</span>
+        - <span style="color: #98be65;">'WEBUI_SECRET_KEY='</span>
+      <span style="color: #dcaeea;">extra_hosts</span>:
+        - host.docker.internal:host-gateway
+      <span style="color: #dcaeea;">restart</span>: unless-stopped
+
+  <span style="color: #dcaeea;">volumes</span>:
+    <span style="color: #dcaeea;">ollama</span>: {<span style="color: #dcaeea;">}</span>
+<span style="color: #dcaeea;">    open-webui</span>: {}
+</pre>
+</div></li>
+
+<li><a href="https://docs.openwebui.com/getting-started/updating"> Updating | Open WebUI</a></li>
+</ul>
+
+<p>
+Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org06bd7ad" class="outline-4">
+<h4 id="org06bd7ad"><b>Kotaemon</b></h4>
+<div class="outline-text-4" id="text-org06bd7ad">
+<p>
+从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
+</p>
+
+<p>
+GitHub: <a href="https://github.com/Cinnamon/kotaemon">https://github.com/Cinnamon/kotaemon</a>
+</p>
+
+<p>
+Hugging Face 在线体验: <a href="https://huggingface.co/spaces/cin-model/kotaemon-demo">https://huggingface.co/spaces/cin-model/kotaemon-demo</a>
+</p>
+
+<p>
+官方介绍：
+</p>
+
+<p>
+This project serves as a functional RAG UI for both end users who want to do QA on their documents and developers who want to build their own RAG pipeline.
+</p>
+
+<ul class="org-ul">
+<li>For end users:
+<ul class="org-ul">
+<li>A clean &amp; minimalistic UI for RAG-based QA.</li>
+<li>Supports LLM API providers (OpenAI, AzureOpenAI, Cohere, etc) and local LLMs (via <code>ollama</code> and ~llama-cpp-python`).</li>
+<li>Easy installation scripts.</li>
+</ul></li>
+<li>For developers:
+<ul class="org-ul">
+<li>A framework for building your own RAG-based document QA pipeline.</li>
+<li>Customize and see your RAG pipeline in action with the provided UI (built with <a href="https://github.com/gradio-app/gradio">Gradio</a>).</li>
+<li>If you use Gradio for development, check out our theme here: <a href="https://github.com/lone17/kotaemon-gradio-theme">kotaemon-gradio-theme</a>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org1dff30f" class="outline-2">
+<h2 id="org1dff30f">Thanks</h2>
+<div class="outline-text-2" id="text-org1dff30f">
+<p>
+这个手册会持续更新，如果对你有所帮助，我会很开心。
+</p>
+
+<p>
+另见：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a>
+</p>
+
+<p>
+这里是我日常使用的实用小工具： <a href="https://www.vandee.art/2024-07-26-useful-tools-recommended.html">实用小玩意收集</a>
+</p>
+
+<p>
+Imagining and creating！
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
+  <category><![CDATA[PKM]]></category>
+  <link>https://www.vandee.art/2024-08-02-nvim-pkm-manual.html</link>
+  <guid>https://www.vandee.art/2024-08-02-nvim-pkm-manual.html</guid>
+  <pubDate>Fri, 02 Aug 2024 14:30:00 +0800</pubDate>
 </item>
 <item>
   <title><![CDATA[艺术的模仿游戏]]></title>
@@ -1676,61 +3820,35 @@ PDF转Markdown 方案
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org87b125a">Intro</a></li>
-<li><a href="#org405e9ed">Manual</a>
+<li><a href="#org7fd7b55">Intro</a></li>
+<li><a href="#org826678b">Manual</a>
 <ul>
-<li><a href="#org031f642">Prerequisites</a></li>
-<li><a href="#org48547ac">PKM</a>
+<li><a href="#orgb0917dc">Prerequisites</a></li>
+<li><a href="#org8626d7b">PKM</a>
 <ul>
-<li><a href="#org400fbd6">Principles</a></li>
-<li><a href="#org009d432">Methods</a></li>
+<li><a href="#org05434ae">Principles</a></li>
+<li><a href="#org756b5d1">Methods</a></li>
 </ul>
 </li>
-<li><a href="#orgf512623">Org-tag</a></li>
-<li><a href="#org96ace06">Org-agenda</a>
+<li><a href="#orgdb7950b">PKM with LLM</a>
 <ul>
-<li><a href="#org62434fa">TODOs</a></li>
+<li><a href="#org4c20d47">Ollama</a></li>
+<li><a href="#org63d3f7e">Open WebUI</a></li>
+<li><a href="#orgb35dcc7">Aider</a></li>
+<li><a href="#org403b4dc">gptel</a></li>
+<li><a href="#orga081dd4"><b>Kotaemon</b></a></li>
 </ul>
 </li>
-<li><a href="#org709e5e2">Org-capture</a></li>
-<li><a href="#orgb32a116">Org-roam</a></li>
-<li><a href="#org5db8d76">Org-export</a></li>
-<li><a href="#orgd4ce6c7">Org with Zotero</a></li>
-<li><a href="#org743b3af">Org-mode美化</a></li>
-<li><a href="#orge9326b8">Org-protocol</a></li>
-<li><a href="#orgaf01456">网页摘录和after-reading</a>
-<ul>
-<li><a href="#org94dead4">tools</a></li>
 </ul>
 </li>
-<li><a href="#orgee0b3c3">输入法设置</a>
-<ul>
-<li><a href="#org3c07712">SIS</a></li>
-<li><a href="#org3ecd6de">pyim</a></li>
-<li><a href="#orgea35b09">RIME</a></li>
-</ul>
-</li>
-<li><a href="#org64e1864">Others</a></li>
-<li><a href="#orged1b798">PKM with LLM</a>
-<ul>
-<li><a href="#org79f9326">工具推荐</a></li>
-</ul>
-</li>
-<li><a href="#orgb76da40">Ollama</a></li>
-<li><a href="#org24cce95">Open WebUI</a></li>
-<li><a href="#orgc126799">Aider</a></li>
-<li><a href="#org12629c1">gptel</a></li>
-<li><a href="#org475a9dd"><b>Kotaemon</b></a></li>
-</ul>
-</li>
-<li><a href="#org1ebda5d">ChangeLog</a></li>
-<li><a href="#org1583fb2">Thanks</a></li>
+<li><a href="#org5ed4c76">ChangeLog</a></li>
+<li><a href="#org95d539f">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org87b125a" class="outline-2">
-<h2 id="org87b125a">Intro</h2>
-<div class="outline-text-2" id="text-org87b125a">
+<div id="outline-container-org7fd7b55" class="outline-2">
+<h2 id="org7fd7b55">Intro</h2>
+<div class="outline-text-2" id="text-org7fd7b55">
 <blockquote>
 <p>
 For me, taking notes helps make sure that I’m really thinking hard about what’s in there. If I disagree with the book, sometimes it takes a long time to read the books because I’m writing so much in the margin. <a href="https://youtu.be/eTFy8RnUkoU?t=11">Bill Gates</a>
@@ -1770,9 +3888,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 </p>
 </div>
 </div>
-<div id="outline-container-org405e9ed" class="outline-2">
-<h2 id="org405e9ed">Manual</h2>
-<div class="outline-text-2" id="text-org405e9ed">
+<div id="outline-container-org826678b" class="outline-2">
+<h2 id="org826678b">Manual</h2>
+<div class="outline-text-2" id="text-org826678b">
 <p>
 这是一个以 <a href="https://zh.wikipedia.org/wiki/Emacs">Emacs</a> 为基础编辑器、文件管理的Org-mode本地笔记PKM。
 </p>
@@ -1791,9 +3909,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 <li>PKM-with-LLM：PKM和大语言模型结合的使用、ollama、RAG(待更新)</li>
 </ul>
 </div>
-<div id="outline-container-org031f642" class="outline-3">
-<h3 id="org031f642">Prerequisites</h3>
-<div class="outline-text-3" id="text-org031f642">
+<div id="outline-container-orgb0917dc" class="outline-3">
+<h3 id="orgb0917dc">Prerequisites</h3>
+<div class="outline-text-3" id="text-orgb0917dc">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>，<a href="https://github.com/doomemacs/doomemacs">doomemacs</a>，<a href="https://orgmode.org/">Org mode for GNU Emacs</a>，<a href="https://www.orgroam.com/">Org-roam</a>。
 </p>
@@ -1845,9 +3963,9 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://w
 </p>
 </div>
 </div>
-<div id="outline-container-org48547ac" class="outline-3">
-<h3 id="org48547ac">PKM</h3>
-<div class="outline-text-3" id="text-org48547ac">
+<div id="outline-container-org8626d7b" class="outline-3">
+<h3 id="org8626d7b">PKM</h3>
+<div class="outline-text-3" id="text-org8626d7b">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -1865,7 +3983,7 @@ Januarys用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="org3d69577">
+<figure id="orgfefbbfc">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -1898,9 +4016,9 @@ Stay foolish，stay simple。
 本地笔记没有在线笔记软件方便的地方就是多端同步与预览。我的本地笔记已经上传到了GitHub仓库，通过Git同步。临时需要修改的直接在GitHub仓库里就修改了。预览方面，我的笔记输出到了 <a href="https://wiki.vandee.art">Vandee — Wiki</a>
 </p>
 </div>
-<div id="outline-container-org400fbd6" class="outline-4">
-<h4 id="org400fbd6">Principles</h4>
-<div class="outline-text-4" id="text-org400fbd6">
+<div id="outline-container-org05434ae" class="outline-4">
+<h4 id="org05434ae">Principles</h4>
+<div class="outline-text-4" id="text-org05434ae">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -1938,9 +4056,9 @@ Stay foolish，stay simple。
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org009d432" class="outline-4">
-<h4 id="org009d432">Methods</h4>
-<div class="outline-text-4" id="text-org009d432">
+<div id="outline-container-org756b5d1" class="outline-4">
+<h4 id="org756b5d1">Methods</h4>
+<div class="outline-text-4" id="text-org756b5d1">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -1975,16 +4093,14 @@ Emacs，org-roam，模板创建Daily和note：
 </p>
 
 
-<figure id="org8c901df">
+<figure id="orge59412b">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
-</div>
-</div>
-<div id="outline-container-orgf512623" class="outline-3">
-<h3 id="orgf512623">Org-tag</h3>
-<div class="outline-text-3" id="text-orgf512623">
+<ul class="org-ul">
+<li><a id="orgccf1896"></a>Org-tag<br>
+<div class="outline-text-5" id="text-orgccf1896">
 <p>
 org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的*标签的统一性*，大小写或者单复数不统一会很麻烦。
 </p>
@@ -2087,10 +4203,9 @@ Ref:
 <li><a href="https://www.zmonster.me/2018/02/28/org-mode-capture.html">强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster&rsquo;s Blog</a></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org96ace06" class="outline-3">
-<h3 id="org96ace06">Org-agenda</h3>
-<div class="outline-text-3" id="text-org96ace06">
+</li>
+<li><a id="org89b903f"></a>Org-agenda<br>
+<div class="outline-text-5" id="text-org89b903f">
 <p>
 最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用 <code>#TODO</code> 来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 </p>
@@ -2115,15 +4230,18 @@ Ref:
 </pre>
 </div>
 
-
-
 <p>
 这是现在的样子：
 </p>
+
+<figure id="orgbff23a2">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-06-15%2011.28.09.png" class="img" width="50%" height="50%">
+
+</figure>
 </div>
-<div id="outline-container-org62434fa" class="outline-4">
-<h4 id="org62434fa">TODOs</h4>
-<div class="outline-text-4" id="text-org62434fa">
+</li>
+<li><a id="org1a5a80d"></a>TODOs<br>
+<div class="outline-text-5" id="text-org1a5a80d">
 <ul class="org-ul">
 <li><p>
 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入~<code>[/]</code>~或者~<code>[%]</code>~。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
@@ -2234,11 +4352,9 @@ Ref：
 <li><a href="https://www.cnblogs.com/Open_Source/archive/2011/07/17/2108747.html#sec-5">Org-mode 简明手册 - open source - 博客园</a></li>
 </ul>
 </div>
-</div>
-</div>
-<div id="outline-container-org709e5e2" class="outline-3">
-<h3 id="org709e5e2">Org-capture</h3>
-<div class="outline-text-3" id="text-org709e5e2">
+</li>
+<li><a id="org5ec3cb9"></a>Org-capture<br>
+<div class="outline-text-5" id="text-org5ec3cb9">
 <p>
 <a href="https://orgmode.org/manual/Capture.html">Org-capture</a> 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 </p>
@@ -2341,13 +4457,18 @@ Ref：
 <li><a href="https://orgmode.org/manual/Capture.html">Capture (The Org Manual)</a></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-orgb32a116" class="outline-3">
-<h3 id="orgb32a116">Org-roam</h3>
-<div class="outline-text-3" id="text-orgb32a116">
+</li>
+<li><a id="org3498283"></a>Org-roam<br>
+<div class="outline-text-5" id="text-org3498283">
 <p>
 <a href="https://www.orgroam.com/">Org-roam</a> 是Emacs的一个包，也是org-mode 的扩展，可以简单的实现双链，通过org-roam-ui直观的预览。
 </p>
+
+
+<figure id="orgd393674">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam-ui-2024-05-22%2013.31.40.png" class="img" width="50%" height="50%">
+
+</figure>
 
 <p>
 也不是必须，只需要解决双链的查看就可以了。
@@ -2459,10 +4580,9 @@ Ref：
 <li><a href="https://emacs-china.org/t/org-roam-v2-org-roam-ui-emacs-29-sqlite/17806">Org-roam(v2) 以及 org-roam-ui 的使用姿势（已支持Emacs 29 内置的 sqlite) - Org-mode - Emacs China</a></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org5db8d76" class="outline-3">
-<h3 id="org5db8d76">Org-export</h3>
-<div class="outline-text-3" id="text-org5db8d76">
+</li>
+<li><a id="orgfe8f718"></a>Org-export<br>
+<div class="outline-text-5" id="text-orgfe8f718">
 <p>
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些<a href="https://orgmode.org/zh-CN/tools.html">工具</a> 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 </p>
@@ -2522,10 +4642,9 @@ Pandoc转换md到org会有小问题，批量转换还是悠着点。
 Ref：<a href="https://orgmode.org/manual/Exporting.html">Exporting (The Org Manual)</a>、<a href="https://orgmode.org/zh-CN/tools.html">工具 | Org mode</a>
 </p>
 </div>
-</div>
-<div id="outline-container-orgd4ce6c7" class="outline-3">
-<h3 id="orgd4ce6c7">Org with Zotero</h3>
-<div class="outline-text-3" id="text-orgd4ce6c7">
+</li>
+<li><a id="org187a16b"></a>Org with Zotero<br>
+<div class="outline-text-5" id="text-org187a16b">
 <p>
 书和论文的PDF文件，我现在全部放在<a href="https://www.zotero.org/">Zotero</a>。快速复制单个笔记到org-mode也挺简单：
 </p>
@@ -2586,10 +4705,9 @@ Ref：
 <li><a href="https://www.mkbehr.com/posts/a-research-workflow-with-zotero-and-org-mode/">https://www.mkbehr.com/posts/a-research-workflow-with-zotero-and-org-mode/</a></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-org743b3af" class="outline-3">
-<h3 id="org743b3af">Org-mode美化</h3>
-<div class="outline-text-3" id="text-org743b3af">
+</li>
+<li><a id="orgccf4957"></a>Org-mode美化<br>
+<div class="outline-text-5" id="text-orgccf4957">
 <p>
 我觉得原生的就挺好看，可读性也还好。
 </p>
@@ -2634,10 +4752,9 @@ Ref：
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-orge9326b8" class="outline-3">
-<h3 id="orge9326b8">Org-protocol</h3>
-<div class="outline-text-3" id="text-orge9326b8">
+</li>
+<li><a id="org57c75ef"></a>Org-protocol<br>
+<div class="outline-text-5" id="text-org57c75ef">
 <p>
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 </p>
@@ -2688,13 +4805,18 @@ Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的appl
 </p></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-orgaf01456" class="outline-3">
-<h3 id="orgaf01456">网页摘录和after-reading</h3>
-<div class="outline-text-3" id="text-orgaf01456">
+</li>
+<li><a id="org261c09b"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-org261c09b">
 <p>
 利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 </p>
+
+
+<figure id="org57071e7">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif" class="img" width="50%" height="50%">
+
+</figure>
 
 <p>
 有一个JavaScript我一直在用，可以选定一个网页的特定内容，在翻译和剪藏的时候挺有用，同时也微微提升了一点阅读体验。我用 <a href="https://github.com/OwO-Network/DeepLX">DeepLX</a>  通过沉浸式翻译如果单次翻译内容太多会报错和限制，Deepl的中文翻译还是吊打其他的。
@@ -2729,9 +4851,9 @@ after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a
 最近<a href="https://www.vandee.art/posts/2024-07-24-start-to-get-readwies/">还是入坑了 Readwise</a>。
 </p>
 </div>
-<div id="outline-container-org94dead4" class="outline-4">
-<h4 id="org94dead4">tools</h4>
-<div class="outline-text-4" id="text-org94dead4">
+<ul class="org-ul">
+<li><a id="org8b1fb95"></a>tools<br>
+<div class="outline-text-6" id="text-org8b1fb95">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -2775,18 +4897,18 @@ Reader does two things:
 <li><a href="https://sspai.com/post/89828">u-Sir/drag-to-preview</a>，最近发现一个Firefox浏览器插件，可以选中网页链接拖拽弹出单独的窗口预览网页，在窗口外区域鼠标点击即可关闭，很符合我的胃口。</li>
 </ul>
 </div>
-</div>
-</div>
-<div id="outline-container-orgee0b3c3" class="outline-3">
-<h3 id="orgee0b3c3">输入法设置</h3>
-<div class="outline-text-3" id="text-orgee0b3c3">
+</li>
+</ul>
+</li>
+<li><a id="orgfcd7693"></a>输入法设置<br>
+<div class="outline-text-5" id="text-orgfcd7693">
 <p>
 由于使用了evil，如果使用系统的输入法，每次在~:w~保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 </p>
 </div>
-<div id="outline-container-org3c07712" class="outline-4">
-<h4 id="org3c07712">SIS</h4>
-<div class="outline-text-4" id="text-org3c07712">
+<ul class="org-ul">
+<li><a id="orgfc61749"></a>SIS<br>
+<div class="outline-text-6" id="text-orgfc61749">
 <p>
 <a href="https://github.com/laishulu/emacs-smart-input-source">emacs-smart-input-source</a> 是一个可以自动切换输入法的Emacs包。
 </p>
@@ -2827,10 +4949,9 @@ Reader does two things:
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org3ecd6de" class="outline-4">
-<h4 id="org3ecd6de">pyim</h4>
-<div class="outline-text-4" id="text-org3ecd6de">
+</li>
+<li><a id="org287ae82"></a>pyim<br>
+<div class="outline-text-6" id="text-org287ae82">
 <p>
 <a href="https://github.com/tumashu/pyim">pyim</a> 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 </p>
@@ -2915,11 +5036,11 @@ Ref：
 <li><a href="https://emacs-china.org/t/os-smart-input-source/13436">（重新设计）中英文混打：OS输入法管理包 smart-input-source - Emacs-general - Emacs China</a></li>
 </ul>
 </div>
-</div>
-<div id="outline-container-orgea35b09" class="outline-4">
-<h4 id="orgea35b09">RIME</h4>
-<div class="outline-text-4" id="text-orgea35b09">
-<p>
+</li>
+<li><a id="org5a3c083"></a>RIME<br>
+<div class="outline-text-6" id="text-org5a3c083">
+<p class="img" width="50%" height="50%">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-07-03%2018.58.44.png%20" class="img" width="50%" height="50%">
 如果说PKM是纸，那么输入法就是笔。
 </p>
 
@@ -3018,11 +5139,11 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 <li><a href="https://github.com/gshang2017/rime-dict">gshang2017/rime-dict: RIME输入法(拼音)自用词库(包含英语，基础，维基，搜狗等词库)，词频基于腾讯AI向量词库逆序生成。</a>  自建词库，导入专业领域词汇</li>
 </ul>
 </div>
-</div>
-</div>
-<div id="outline-container-org64e1864" class="outline-3">
-<h3 id="org64e1864">Others</h3>
-<div class="outline-text-3" id="text-org64e1864">
+</li>
+</ul>
+</li>
+<li><a id="org342ad99"></a>Others<br>
+<div class="outline-text-5" id="text-org342ad99">
 <ul class="org-ul">
 <li><a href="https://github.com/lijigang/100-questions-about-orgmode">lijigang/100-questions-about-orgmode: It&rsquo;s all about <b>orgmode</b> !</a></li>
 
@@ -3087,10 +5208,13 @@ Emacs里的其他笔记相关使用包
 <li><a href="https://mischavandenburg.com/zet/neovim-zettelkasten/">我的 Neovim Zettelkasten：我如何使用 Vim 和 Bash 在 Markdown 中做笔记 |米沙·范登伯格</a> 很强，之前用bash来生成md笔记的思路一下子扩展了。使用CLI来做笔记是一个很终极的方案。</li>
 </ul>
 </div>
+</li>
+</ul>
 </div>
-<div id="outline-container-orged1b798" class="outline-3">
-<h3 id="orged1b798">PKM with LLM</h3>
-<div class="outline-text-3" id="text-orged1b798">
+</div>
+<div id="outline-container-orgdb7950b" class="outline-3">
+<h3 id="orgdb7950b">PKM with LLM</h3>
+<div class="outline-text-3" id="text-orgdb7950b">
 <p>
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
 </p>
@@ -3110,14 +5234,26 @@ Emacs里的其他笔记相关使用包
 <p>
 现在我的日常问答都在本地使用Open WebUI，可以导出聊天还有数据库可以直接备份，甚至还可以给对话打tag，当然也可以搜索。
 </p>
+
+
+<figure id="org5ce8d8d">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+需要联网搜索的内容现在基本在perplexity了，碰巧的是，最近搜索到了自己博客的内容🤣，纪念一下：
+</p>
+
+
+<figure id="org598f9f1">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png" class="img" width="50%" height="50%">
+
+</figure>
 </div>
-<div id="outline-container-org79f9326" class="outline-4">
-<h4 id="org79f9326">工具推荐</h4>
-</div>
-</div>
-<div id="outline-container-orgb76da40" class="outline-3">
-<h3 id="orgb76da40">Ollama</h3>
-<div class="outline-text-3" id="text-orgb76da40">
+<div id="outline-container-org4c20d47" class="outline-4">
+<h4 id="org4c20d47">Ollama</h4>
+<div class="outline-text-4" id="text-org4c20d47">
 <p>
 <a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 </p>
@@ -3139,9 +5275,9 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 </ul>
 </div>
 </div>
-<div id="outline-container-org24cce95" class="outline-3">
-<h3 id="org24cce95">Open WebUI</h3>
-<div class="outline-text-3" id="text-org24cce95">
+<div id="outline-container-org63d3f7e" class="outline-4">
+<h4 id="org63d3f7e">Open WebUI</h4>
+<div class="outline-text-4" id="text-org63d3f7e">
 <p>
 <a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 </p>
@@ -3154,8 +5290,20 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 Open WebUI 在2024-10-06的版本中<a href="https://github.com/open-webui/open-webui/releases/tag/v0.3.31">更新</a>了支持类似Claude artifacts的artifacts: <b>🎨 Artifacts Feature</b>: Render web content and SVGs directly in the interface, supporting quick iterations and live changes，不过只支持原生的HTML和CSS。还更新了Overview，可以在白板里展示对话的内容，太实用了，史诗级更新！
 </p>
 
+
+<figure id="org397ceeb">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-03.png" class="img" width="50%" height="50%">
+
+</figure>
+
+
+<figure id="org1ea8a93">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-41.png" class="img" width="50%" height="50%">
+
+</figure>
+
 <p>
-*其他主要功能*：
+<b>其他主要功能</b> ：
 </p>
 
 <ul class="org-ul">
@@ -3223,9 +5371,9 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgc126799" class="outline-3">
-<h3 id="orgc126799">Aider</h3>
-<div class="outline-text-3" id="text-orgc126799">
+<div id="outline-container-orgb35dcc7" class="outline-4">
+<h4 id="orgb35dcc7">Aider</h4>
+<div class="outline-text-4" id="text-orgb35dcc7">
 <p>
 <a href="https://github.com/Aider-AI/aider">Aider</a> 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个<a href="https://github.com/tninja/aider.el">aider.el</a>。
 </p>
@@ -3277,18 +5425,28 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 </div>
 </div>
-<div id="outline-container-org12629c1" class="outline-3">
-<h3 id="org12629c1">gptel</h3>
-<div class="outline-text-3" id="text-org12629c1">
+<div id="outline-container-org403b4dc" class="outline-4">
+<h4 id="org403b4dc">gptel</h4>
+<div class="outline-text-4" id="text-org403b4dc">
 <p>
 <a href="https://github.com/karthink/gptel">gptel: A simple LLM client for Emacs</a> 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 </p>
 
 
+<figure id="orgc6802a8">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/ollama-emacs.gif" class="img" width="50%" height="50%">
+
+</figure>
+
 <p>
 <b>最近更新了</b> ，可以支持直接添加文件、文本到上下文，awesome！居然还支持转换MD格式到Org？
 </p>
 
+
+<figure id="orgc1bf85a">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/gptel-summary.gif" class="img" width="50%" height="50%">
+
+</figure>
 
 <p>
 您可以使用 gptel 的查询包含其他文本区域、缓冲区或文件。这个附加上下文是“实时”的，而不是快照。添加后，将在每次查询时扫描并包含区域、缓冲区或文件。
@@ -3366,9 +5524,9 @@ Ref: <a href="https://github.com/karthink/gptel?tab=readme-ov-file#include-more-
 </div>
 </div>
 </div>
-<div id="outline-container-org475a9dd" class="outline-3">
-<h3 id="org475a9dd"><b>Kotaemon</b></h3>
-<div class="outline-text-3" id="text-org475a9dd">
+<div id="outline-container-orga081dd4" class="outline-4">
+<h4 id="orga081dd4"><b>Kotaemon</b></h4>
+<div class="outline-text-4" id="text-orga081dd4">
 <p>
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 </p>
@@ -3406,9 +5564,10 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </div>
 </div>
 </div>
-<div id="outline-container-org1ebda5d" class="outline-2">
-<h2 id="org1ebda5d">ChangeLog</h2>
-<div class="outline-text-2" id="text-org1ebda5d">
+</div>
+<div id="outline-container-org5ed4c76" class="outline-2">
+<h2 id="org5ed4c76">ChangeLog</h2>
+<div class="outline-text-2" id="text-org5ed4c76">
 <ul class="org-ul">
 <li><p>
 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如<a href="https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el">dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs</a>这是一个把org-roam和Logseq联用的el。
@@ -3431,15 +5590,15 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </ul>
 </div>
 </div>
-<div id="outline-container-org1583fb2" class="outline-2">
-<h2 id="org1583fb2">Thanks</h2>
-<div class="outline-text-2" id="text-org1583fb2">
+<div id="outline-container-org95d539f" class="outline-2">
+<h2 id="org95d539f">Thanks</h2>
+<div class="outline-text-2" id="text-org95d539f">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>
 
 <p>
-另见：<a href="https://www.vandee.art/posts/2024-08-02-nvim-pkm-manual/">PKM（个人知识管理）构建手册 - Nvim</a>
+另见：<a href="https://www.vandee.art/2024-08-02-nvim-pkm-manual.html">PKM（个人知识管理）构建手册 - Nvim</a>
 </p>
 
 <p>
