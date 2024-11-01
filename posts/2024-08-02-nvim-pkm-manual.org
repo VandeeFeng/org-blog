@@ -27,7 +27,7 @@ Notion、Logseq、Obsidian、Roam Research、Heptabase，未来还会有更多�
 
 这个手册主要介绍了以 Nvim 和 bash 脚本构建 PKM 体系的方法，供和我一样在 Nvim 和 Emacs 之间做过选择的兄弟们参考。
 
-我现在依然是 Emacs 的重度使用者，脱离笔记软件并不是脱离某个具体的体系和产品，而是将这些体系变成自己的，进而脱离笔记软件和传统笔记方法的固定思维。现在在 Emacs 里，我依然会使用 bash 脚本来完成部分零散的笔记，例如结合我的 tiddlywink，快速构建 Markdown 笔记。
+我现在依然是 Emacs 的重度使用者，脱离笔记软件并不是脱离某个具体的体系和产品，而是将这些体系变成自己的，进而脱离笔记软件和传统笔记方法的固定思维。现在在 Emacs 里，我依然会使用 bash 脚本来完成部分零散的笔记，例如结合我的 TiddlyWiki，快速构建 Markdown 笔记。
 
 无论是 Emacs 还是 Nvim，它们都可以用 bash 脚本作为依赖最低的方法扩展自己记录笔记的方式。Nvim 和 Emacs 我真的都很喜欢，但是 org-mode 给我的编辑体验是其他任何其他纯文本形式替代不了的。
 
