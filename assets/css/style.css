@@ -576,4 +576,31 @@ li {
     word-break: break-all;
 }
 
+#content h1 {
+    font-size: 2.1em;
+    margin-bottom: 0.7em;
+}
+
+#content h2 {
+    font-size: 1.7em;
+    margin-bottom: 0.6em;
+}
+
+#content h3 {
+    font-size: 1.35em;
+    margin-bottom: 0.5em;
+}
+
+#content h4 {
+    font-size: 1.1em;
+    margin-bottom: 0.4em;
+}
+
+#content h5 {
+    font-size: 0.9em;
+    margin-bottom: 0.3em;
+}
+
+
+
 
