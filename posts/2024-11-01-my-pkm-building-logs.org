@@ -292,9 +292,9 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 *** PKM去形式化
 书接上回，现在的PKM第一原则是：数据的去形式化和通用性。只基于md文档的通用基础语法，其他功能以不污染文档内容的方式来实现。
 
-为了实现这个目标，写了一些简单的bash脚本模板生成md，还有Emacs的Lisp函数做tag检索、文本查询，并将本地PKM-base库(最原子化的常青笔记)和Ollama对接（暂时用的是[Reor](https://github.com/reorproject/reor)）做一些思维扩展。卡在了md文档的全局引用和相对链接转换。
+为了实现这个目标，写了一些简单的bash脚本模板生成md，还有Emacs的Lisp函数做tag检索、文本查询，并将本地PKM-base库(最原子化的常青笔记)和Ollama对接（暂时用的是[[https://github.com/reorproject/reor][Reor]]）做一些思维扩展。卡在了md文档的全局引用和相对链接转换。
 
-正愁着呢，在Github里无意中发现了一个宝藏！[nb](https://github.com/xwmx/nb)，牛逼！
+正愁着呢，在Github里无意中发现了一个宝藏！[[https://github.com/xwmx/nb][nb]]，牛逼！
 
 *** nb
 我愿称其为最强CLI笔记工具！完美匹配我现在的所有需求，设计思路也和我不谋而合，还支持用Emacs做编辑器。虽然Emacs也可以通过自定义函数和插件来复现这些功能，但既然有现成的，就先copy吧🤣。
@@ -304,7 +304,7 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-05-13_09-54-33.png]]
 
-macOS /Homebrew安装，`brew install xwmx/taps/nb`。nb也提供自己的shell，md预览可通过[GUI web browsers](https://xwmx.github.io/nb/#-browsing)，经常写md的基本也不需要预览。命令基本都是大白话，不需要刻意记忆，还提供[Shortcut Aliases](https://xwmx.github.io/nb/#shortcut-aliases)自定义命令 。nb不是一个笔记软件，是一个CLI工具。
+macOS /Homebrew安装， ~brew install xwmx/taps/nb~ 。nb也提供自己的shell，md预览可通过[[https://xwmx.github.io/nb/#-browsing][GUI web browsers]]，经常写md的基本也不需要预览。命令基本都是大白话，不需要刻意记忆，还提供[[https://xwmx.github.io/nb/#shortcut-aliases][Shortcut Aliases]]自定义命令 。nb不是一个笔记软件，是一个CLI工具。
 
 *** 去形式化之后的PKM
 
@@ -313,7 +313,7 @@ bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nbnb.gif]]
 
-本地文档的双链、全局引用、tag、检索、查询、同步，这些关键功能现在都可以实现了，PKM脱离笔记软件初步达成。由于之前ob和Logseq联用保留了文件夹结构，现在还是沿用ACCESS结构换成nb和Emacs来管理，nb提供全局的检索和双链，Emacs做统筹（org-mode还在犹豫），部署就先用 [Quartz v4.2.3](https://quartz.jzhao.xyz/)  ，暂时当作我的[数字花园](https://dg.vandee.art)，欢迎来玩！Blog练笔，Clip剪藏，Garden做wiki。目前还是不太想all in one ，以后可能会做个后端数据库。
+本地文档的双链、全局引用、tag、检索、查询、同步，这些关键功能现在都可以实现了，PKM脱离笔记软件初步达成。由于之前ob和Logseq联用保留了文件夹结构，现在还是沿用ACCESS结构换成nb和Emacs来管理，nb提供全局的检索和双链，Emacs做统筹（org-mode还在犹豫），部署就先用 [[https://quartz.jzhao.xyz/][Quartz v4.2.3]]  ，暂时当作我的[[https://dg.vandee.art][数字花园]]，欢迎来玩！Blog练笔，Clip剪藏，Garden做wiki。目前还是不太想all in one ，以后可能会做个后端数据库。
 
 至于Logseq和 ob以及其他笔记软件里的通过块ID来引用块、嵌入块，查询语句，通过css和js实现的排版样式等，这些通过非md标准语法实现的功能，全部舍弃。尽最大可能减少笔记元数据转化为其他形式的成本，它应该可以独立于笔记软件又具备优秀的兼容性。
 
@@ -339,7 +339,6 @@ bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 七拼八凑了一下，下面是用GPT缝合的，Logseq重新排版批量输出为md格式的Python代码。这段代码会把Logseq文档头部的 ~key:: value~ 格式化为标准的yaml格式并去除标题前面的无序列表符号。Logseq本身可以输出text但排版不是很完美，也不方便。Logseq和ob联用的兄弟们应该用得上。
 
 #+begin_src python
-
 # -*- coding = utf-8 -*-
 # @Project : Logseq标题优化
 # @File : Logseq格式优化.py
@@ -495,6 +494,7 @@ if __name__ == "__main__":
     output_folder = input("请输入输出文件夹路径：")
 
     process_folder(input_folder, output_folder)
+
 #+end_src
 
 处理之后，Logseq库接近700个文档99%的排版都没问题，部分三级列表以上的复杂排版，列表会多出一些空行或层级错位，Logseq复杂排版的换行和简单的 ~\r\n~ 还是有区别。可能也有CRLF和LF的问题，mac和win互相git，脚本里用的是LF，如果你是win最好还是 ~\r\n~ 。Quartz在转换md到html的时候换行逻辑不一样，在Typora里看是有换行的，但是Quartz部署成网页之后部分换行就没了。
