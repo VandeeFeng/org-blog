@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
 ** workflow
 
-#+begin_src yml
+#+begin_src yaml
 
 name: Save Bookmark to Readwise
 
@@ -435,7 +435,7 @@ if __name__ == "__main__":
 
 ** workflow
 
-#+begin_src yml
+#+begin_src yaml
 
 name: Sync Readwise Articles
 on:

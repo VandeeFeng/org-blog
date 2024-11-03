@@ -27,7 +27,7 @@
 
 ~docker-compose.yml~:
 
-#+begin_src ymal
+#+begin_src yaml
 version: "3.0"
 services:
   memos:
@@ -56,7 +56,7 @@ services:
 ip + 5230 就可以访问了，到这里都很惬意，Nginx 的配置才是让我头痛的开始。由于我还部署了 WeWeRSS，按照官方文档的 Nginx 配置了之后，占用了我的 80 端口，在配置 Memos 的时候一度不知道为什么域名不能直接访问。兜了一大圈，终于发现问题出现端口在这里，把 WeWeRSS 的端口还有 Nginx 的默认欢迎页面端口释放之后，就可以直接利用 Nginx 的反代用域名访问 docker 部署在端口上的项目了。
 
 Nginx 命令：
-#+begin_src
+#+begin_src bash
 sudo systemctl restart nginx # 修改了配置文件之后重启服务
 
 sudo vim /etc/nginx/sites-available/conf_name  # 设置配置文件
@@ -73,7 +73,7 @@ sudo nginx -t # 检查配置是否有问题
 
 在网上找了一大圈，发现一个最简单也最符合现在需求的：[[https://certd.docmirror.cn/][Certd]]，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 
-#+begin_src ymal
+#+begin_src bash
 
 # 随便创建一个目录
 mkdir certd

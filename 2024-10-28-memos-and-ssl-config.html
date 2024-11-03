@@ -56,25 +56,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5261d19">起因</a></li>
-<li><a href="#org5618990">Memos</a></li>
-<li><a href="#org25fccf8">SSL</a></li>
-<li><a href="#orgc7ed13a">Memos 自定义</a>
+<li><a href="#org45c4063">起因</a></li>
+<li><a href="#org6a433f1">Memos</a></li>
+<li><a href="#orgc2cea20">SSL</a></li>
+<li><a href="#org5946b01">Memos 自定义</a>
 <ul>
-<li><a href="#orgf2c0ff2">自定义 css 和 JavaScript</a></li>
-<li><a href="#org60e763b">Memos.top</a></li>
+<li><a href="#orgd5c3c67">自定义 css 和 JavaScript</a></li>
+<li><a href="#org3f0686b">Memos.top</a></li>
 </ul>
 </li>
-<li><a href="#org1f3e71b">小结</a></li>
+<li><a href="#org2c7148b">小结</a></li>
 </ul>
 </div>
 </nav>
 <p>
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
-<div id="outline-container-org5261d19" class="outline-2">
-<h2 id="org5261d19">起因</h2>
-<div class="outline-text-2" id="text-org5261d19">
+<div id="outline-container-org45c4063" class="outline-2">
+<h2 id="org45c4063">起因</h2>
+<div class="outline-text-2" id="text-org45c4063">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -92,9 +92,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org5618990" class="outline-2">
-<h2 id="org5618990">Memos</h2>
-<div class="outline-text-2" id="text-org5618990">
+<div id="outline-container-org6a433f1" class="outline-2">
+<h2 id="org6a433f1">Memos</h2>
+<div class="outline-text-2" id="text-org6a433f1">
 <p>
 几个版本的主要特色：
 </p>
@@ -114,28 +114,28 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ymal">version: "3.0"
-services:
-  memos:
-    image: neosmemo/memos:0.18.0 #版本 tag
-    restart: always
-    depends_on:
+<pre class="src src-yaml"><span style="color: #dcaeea;">version</span>: <span style="color: #98be65;">"3.0"</span>
+<span style="color: #dcaeea;">services</span>:
+  <span style="color: #dcaeea;">memos</span>:
+    <span style="color: #dcaeea;">image</span>: neosmemo/memos:0.18.0 <span style="color: #5B6268;">#</span><span style="color: #5B6268;">&#29256;&#26412; tag</span>
+    <span style="color: #dcaeea;">restart</span>: always
+    <span style="color: #dcaeea;">depends_on</span>:
       - db
-    ports:
+    <span style="color: #dcaeea;">ports</span>:
       - 5230:5230
-    environment:
+    <span style="color: #dcaeea;">environment</span>:
       - MEMOS_DRIVER=postgres
       - MEMOS_DSN=user=memos password=secret dbname=memosdb host=db sslmode=disable
 
-  db:
-    image: postgres:16.1
-    restart: unless-stopped
-    volumes:
-      - "./database:/var/lib/postgresql/data/"
-    environment:
-      POSTGRES_USER: memos
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: memosdb
+  <span style="color: #dcaeea;">db</span>:
+    <span style="color: #dcaeea;">image</span>: postgres:16.1
+    <span style="color: #dcaeea;">restart</span>: unless-stopped
+    <span style="color: #dcaeea;">volumes</span>:
+      - <span style="color: #98be65;">"./database:/var/lib/postgresql/data/"</span>
+    <span style="color: #dcaeea;">environment</span>:
+      <span style="color: #dcaeea;">POSTGRES_USER</span>: memos
+      <span style="color: #dcaeea;">POSTGRES_PASSWORD</span>: secret
+      <span style="color: #dcaeea;">POSTGRES_DB</span>: memosdb
 
 </pre>
 </div>
@@ -148,49 +148,49 @@ ip + 5230 就可以访问了，到这里都很惬意，Nginx 的配置才是让�
 Nginx 命令：
 </p>
 <div class="org-src-container">
-<pre class="src src-nil">sudo systemctl restart nginx # 修改了配置文件之后重启服务
+<pre class="src src-bash"><span style="color: #ECBE7B;">sudo</span> systemctl restart nginx <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20462;&#25913;&#20102;&#37197;&#32622;&#25991;&#20214;&#20043;&#21518;&#37325;&#21551;&#26381;&#21153;</span>
 
-sudo vim /etc/nginx/sites-available/conf_name  # 设置配置文件
+<span style="color: #ECBE7B;">sudo</span> vim /etc/nginx/sites-available/conf_name  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;</span>
 
-sudo ln -s /etc/nginx/sites-available/conf_name /etc/nginx/sites-enabled/ # 设置配置文件可用
+<span style="color: #ECBE7B;">sudo</span> <span style="color: #ECBE7B;">ln</span> -s /etc/nginx/sites-available/conf_name /etc/nginx/sites-enabled/ <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;&#21487;&#29992;</span>
 
-sudo rm /etc/nginx/sites-enabled/conf_name # 移除配置
+<span style="color: #ECBE7B;">sudo</span> <span style="color: #ECBE7B;">rm</span> /etc/nginx/sites-enabled/conf_name <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#31227;&#38500;&#37197;&#32622;</span>
 
-sudo nginx -t # 检查配置是否有问题
+<span style="color: #ECBE7B;">sudo</span> nginx -t <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#37197;&#32622;&#26159;&#21542;&#26377;&#38382;&#39064;</span>
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org25fccf8" class="outline-2">
-<h2 id="org25fccf8">SSL</h2>
-<div class="outline-text-2" id="text-org25fccf8">
+<div id="outline-container-orgc2cea20" class="outline-2">
+<h2 id="orgc2cea20">SSL</h2>
+<div class="outline-text-2" id="text-orgc2cea20">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ymal">
-# 随便创建一个目录
-mkdir certd
-# 进入目录
-cd certd
-# 下载docker-compose.yaml文件，或者手动下载放到certd目录下
+<pre class="src src-bash">
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#38543;&#20415;&#21019;&#24314;&#19968;&#20010;&#30446;&#24405;</span>
+<span style="color: #ECBE7B;">mkdir</span> certd
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#36827;&#20837;&#30446;&#24405;</span>
+<span style="color: #ECBE7B;">cd</span> certd
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#19979;&#36733;docker-compose.yaml&#25991;&#20214;&#65292;&#25110;&#32773;&#25163;&#21160;&#19979;&#36733;&#25918;&#21040;certd&#30446;&#24405;&#19979;</span>
 wget https://gitee.com/certd/certd/raw/v2/docker/run/docker-compose.yaml
 
-# 可以根据需要修改里面的配置
-# 1.修改镜像版本号【可选】
-# 2.配置数据保存路径【可选】
-# 3.修改端口号【可选】
-vi docker-compose.yaml # 【可选】
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21487;&#20197;&#26681;&#25454;&#38656;&#35201;&#20462;&#25913;&#37324;&#38754;&#30340;&#37197;&#32622;</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">1.&#20462;&#25913;&#38236;&#20687;&#29256;&#26412;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">2.&#37197;&#32622;&#25968;&#25454;&#20445;&#23384;&#36335;&#24452;&#12304;&#21487;&#36873;&#12305;</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">3.&#20462;&#25913;&#31471;&#21475;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
+vi docker-compose.yaml <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#12304;&#21487;&#36873;&#12305;</span>
 
-# 启动certd
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21551;&#21160;certd</span>
 docker compose up -d
 
-# 访问
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35775;&#38382;</span>
 http://your_server_ip:7001
 https://your_server_ip:7002
-默认账号密码：admin/123456
+&#40664;&#35748;&#36134;&#21495;&#23494;&#30721;&#65306;admin/123456
 </pre>
 </div>
 
@@ -268,13 +268,13 @@ server {
 </p>
 </div>
 </div>
-<div id="outline-container-orgc7ed13a" class="outline-2">
-<h2 id="orgc7ed13a">Memos 自定义</h2>
-<div class="outline-text-2" id="text-orgc7ed13a">
+<div id="outline-container-org5946b01" class="outline-2">
+<h2 id="org5946b01">Memos 自定义</h2>
+<div class="outline-text-2" id="text-org5946b01">
 </div>
-<div id="outline-container-orgf2c0ff2" class="outline-3">
-<h3 id="orgf2c0ff2">自定义 css 和 JavaScript</h3>
-<div class="outline-text-3" id="text-orgf2c0ff2">
+<div id="outline-container-orgd5c3c67" class="outline-3">
+<h3 id="orgd5c3c67">自定义 css 和 JavaScript</h3>
+<div class="outline-text-3" id="text-orgd5c3c67">
 <p>
 适用 0.20.X 以上版本
 </p>
@@ -295,9 +295,9 @@ server {
 </div>
 </div>
 </div>
-<div id="outline-container-org60e763b" class="outline-3">
-<h3 id="org60e763b">Memos.top</h3>
-<div class="outline-text-3" id="text-org60e763b">
+<div id="outline-container-org3f0686b" class="outline-3">
+<h3 id="org3f0686b">Memos.top</h3>
+<div class="outline-text-3" id="text-org3f0686b">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -315,13 +315,13 @@ server {
 </p>
 
 
-<figure id="orga831dc3">
+<figure id="org4d88e35">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org551c54c">
+<figure id="org89a229a">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -332,9 +332,9 @@ Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top
 </div>
 </div>
 </div>
-<div id="outline-container-org1f3e71b" class="outline-2">
-<h2 id="org1f3e71b">小结</h2>
-<div class="outline-text-2" id="text-org1f3e71b">
+<div id="outline-container-org2c7148b" class="outline-2">
+<h2 id="org2c7148b">小结</h2>
+<div class="outline-text-2" id="text-org2c7148b">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>

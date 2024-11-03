@@ -54,16 +54,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9140e86">结合之前的 bookmark-collection</a>
+<li><a href="#orgb3c93fd">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#org8f77272">python</a></li>
-<li><a href="#org92b541c">workflow</a></li>
+<li><a href="#org0bfc91b">python</a></li>
+<li><a href="#orgd8dd3d2">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orgfdfb278">Readwise highlights</a>
+<li><a href="#org8f00826">Readwise highlights</a>
 <ul>
-<li><a href="#org4e0b72f">python</a></li>
-<li><a href="#orgb502d59">workflow</a></li>
+<li><a href="#orgd2cb276">python</a></li>
+<li><a href="#org1e79b9a">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -72,9 +72,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-org9140e86" class="outline-2">
-<h2 id="org9140e86">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org9140e86">
+<div id="outline-container-orgb3c93fd" class="outline-2">
+<h2 id="orgb3c93fd">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orgb3c93fd">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -91,9 +91,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org8f77272" class="outline-3">
-<h3 id="org8f77272">python</h3>
-<div class="outline-text-3" id="text-org8f77272">
+<div id="outline-container-org0bfc91b" class="outline-3">
+<h3 id="org0bfc91b">python</h3>
+<div class="outline-text-3" id="text-org0bfc91b">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -202,67 +202,67 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org92b541c" class="outline-3">
-<h3 id="org92b541c">workflow</h3>
-<div class="outline-text-3" id="text-org92b541c">
+<div id="outline-container-orgd8dd3d2" class="outline-3">
+<h3 id="orgd8dd3d2">workflow</h3>
+<div class="outline-text-3" id="text-orgd8dd3d2">
 <div class="org-src-container">
-<pre class="src src-yml">
-name: Save Bookmark to Readwise
+<pre class="src src-yaml">
+<span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
 
-on:
-  push:
-    branches:
+<span style="color: #a9a1e1;">on</span>:
+  <span style="color: #dcaeea;">push</span>:
+    <span style="color: #dcaeea;">branches</span>:
       - main
-    paths:
-      - '**.md'
-  workflow_dispatch:
+    <span style="color: #dcaeea;">paths</span>:
+      - <span style="color: #98be65;">'**.md'</span>
+  <span style="color: #dcaeea;">workflow_dispatch</span>:
 
-permissions:
-  contents: read
-  actions: write
+<span style="color: #dcaeea;">permissions</span>:
+  <span style="color: #dcaeea;">contents</span>: read
+  <span style="color: #dcaeea;">actions</span>: write
 
-jobs:
-  save-to-readwise:
-    runs-on: ubuntu-latest
+<span style="color: #dcaeea;">jobs</span>:
+  <span style="color: #dcaeea;">save-to-readwise</span>:
+    <span style="color: #dcaeea;">runs-on</span>: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    <span style="color: #dcaeea;">steps</span>:
+    - <span style="color: #dcaeea;">name</span>: Checkout repository
+      <span style="color: #dcaeea;">uses</span>: actions/checkout@v4
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">token</span>: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+    - <span style="color: #dcaeea;">name</span>: Set up Python
+      <span style="color: #dcaeea;">uses</span>: actions/setup-python@v4
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">python-version</span>: <span style="color: #98be65;">'3.10'</span>
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests PyGithub
+    - <span style="color: #dcaeea;">name</span>: Install dependencies
+      <span style="color: #dcaeea;">run</span>: |
+        <span style="color: #98be65;">python -m pip install --upgrade pip</span>
+<span style="color: #98be65;">        pip install requests PyGithub</span>
 
-    - name: Run bookmark saver
-      env:
-        READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-      run: python save_to_readwise.py
+    - <span style="color: #dcaeea;">name</span>: Run bookmark saver
+      <span style="color: #dcaeea;">env</span>:
+        <span style="color: #dcaeea;">READWISE_TOKEN</span>: ${{ secrets.READWISE_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_REPOSITORY</span>: ${{ github.repository }}
+      <span style="color: #dcaeea;">run</span>: python save_to_readwise.py
 
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfdfb278" class="outline-2">
-<h2 id="orgfdfb278">Readwise highlights</h2>
-<div class="outline-text-2" id="text-orgfdfb278">
+<div id="outline-container-org8f00826" class="outline-2">
+<h2 id="org8f00826">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org8f00826">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-org4e0b72f" class="outline-3">
-<h3 id="org4e0b72f">python</h3>
-<div class="outline-text-3" id="text-org4e0b72f">
+<div id="outline-container-orgd2cb276" class="outline-3">
+<h3 id="orgd2cb276">python</h3>
+<div class="outline-text-3" id="text-orgd2cb276">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -523,91 +523,91 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-orgb502d59" class="outline-3">
-<h3 id="orgb502d59">workflow</h3>
-<div class="outline-text-3" id="text-orgb502d59">
+<div id="outline-container-org1e79b9a" class="outline-3">
+<h3 id="org1e79b9a">workflow</h3>
+<div class="outline-text-3" id="text-org1e79b9a">
 <div class="org-src-container">
-<pre class="src src-yml">
-name: Sync Readwise Articles
-on:
-  schedule:
-    # 每天凌晨 1 点运行 (UTC 时间，对应北京时间 9 点)
-    - cron: '0 1 * * *'
+<pre class="src src-yaml">
+<span style="color: #dcaeea;">name</span>: Sync Readwise Articles
+<span style="color: #a9a1e1;">on</span>:
+  <span style="color: #dcaeea;">schedule</span>:
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#27599;&#22825;&#20940;&#26216; 1 &#28857;&#36816;&#34892; (UTC &#26102;&#38388;&#65292;&#23545;&#24212;&#21271;&#20140;&#26102;&#38388; 9 &#28857;)</span>
+    - <span style="color: #dcaeea;">cron</span>: <span style="color: #98be65;">'0 1 * * *'</span>
 
-  # 支持手动触发，并添加输入参数
-  workflow_dispatch:
-    inputs:
-      start_date:
-        description: 'Start date (YYYY-MM-DD, e.g., 2024-01-01)'
-        required: false
-        type: string
-        default: ''
-      end_date:
-        description: 'End date (YYYY-MM-DD, leave empty for current date)'
-        required: false
-        type: string
-        default: ''
-      all_time:
-        description: 'Fetch all highlights (overrides date range if selected)'
-        type: boolean
-        required: false
-        default: false
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25903;&#25345;&#25163;&#21160;&#35302;&#21457;&#65292;&#24182;&#28155;&#21152;&#36755;&#20837;&#21442;&#25968;</span>
+  <span style="color: #dcaeea;">workflow_dispatch</span>:
+    <span style="color: #dcaeea;">inputs</span>:
+      <span style="color: #dcaeea;">start_date</span>:
+        <span style="color: #dcaeea;">description</span>: <span style="color: #98be65;">'Start date (YYYY-MM-DD, e.g., 2024-01-01)'</span>
+        <span style="color: #dcaeea;">required</span>: <span style="color: #a9a1e1;">false</span>
+        <span style="color: #dcaeea;">type</span>: string
+        <span style="color: #dcaeea;">default</span>: <span style="color: #98be65;">''</span>
+      <span style="color: #dcaeea;">end_date</span>:
+        <span style="color: #dcaeea;">description</span>: <span style="color: #98be65;">'End date (YYYY-MM-DD, leave empty for current date)'</span>
+        <span style="color: #dcaeea;">required</span>: <span style="color: #a9a1e1;">false</span>
+        <span style="color: #dcaeea;">type</span>: string
+        <span style="color: #dcaeea;">default</span>: <span style="color: #98be65;">''</span>
+      <span style="color: #dcaeea;">all_time</span>:
+        <span style="color: #dcaeea;">description</span>: <span style="color: #98be65;">'Fetch all highlights (overrides date range if selected)'</span>
+        <span style="color: #dcaeea;">type</span>: boolean
+        <span style="color: #dcaeea;">required</span>: <span style="color: #a9a1e1;">false</span>
+        <span style="color: #dcaeea;">default</span>: <span style="color: #a9a1e1;">false</span>
 
-permissions:
-  contents: write      # 仓库内容的读写权限
+<span style="color: #dcaeea;">permissions</span>:
+  <span style="color: #dcaeea;">contents</span>: write      <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20179;&#24211;&#20869;&#23481;&#30340;&#35835;&#20889;&#26435;&#38480;</span>
 
-jobs:
-  sync:
-    runs-on: ubuntu-latest
+<span style="color: #dcaeea;">jobs</span>:
+  <span style="color: #dcaeea;">sync</span>:
+    <span style="color: #dcaeea;">runs-on</span>: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    <span style="color: #dcaeea;">steps</span>:
+    - <span style="color: #dcaeea;">name</span>: Checkout repository
+      <span style="color: #dcaeea;">uses</span>: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-        cache-dependency-path: '**/requirements.txt'
+    - <span style="color: #dcaeea;">name</span>: Set up Python
+      <span style="color: #dcaeea;">uses</span>: actions/setup-python@v5
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">python-version</span>: <span style="color: #98be65;">'3.10'</span>
+        <span style="color: #dcaeea;">cache</span>: <span style="color: #98be65;">'pip'</span>
+        <span style="color: #dcaeea;">cache-dependency-path</span>: <span style="color: #98be65;">'**/requirements.txt'</span>
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+    - <span style="color: #dcaeea;">name</span>: Install dependencies
+      <span style="color: #dcaeea;">run</span>: |
+        <span style="color: #98be65;">python -m pip install --upgrade pip</span>
+<span style="color: #98be65;">        pip install -r requirements.txt</span>
 
-    - name: Run sync script
-      env:
-        READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        INPUT_START_DATE: ${{ github.event.inputs.start_date }}
-        INPUT_END_DATE: ${{ github.event.inputs.end_date }}
-        INPUT_ALL_TIME: ${{ github.event.inputs.all_time }}
-      run: python readwise_sync.py
+    - <span style="color: #dcaeea;">name</span>: Run sync script
+      <span style="color: #dcaeea;">env</span>:
+        <span style="color: #dcaeea;">READWISE_TOKEN</span>: ${{ secrets.READWISE_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #dcaeea;">INPUT_START_DATE</span>: ${{ github.event.inputs.start_date }}
+        <span style="color: #dcaeea;">INPUT_END_DATE</span>: ${{ github.event.inputs.end_date }}
+        <span style="color: #dcaeea;">INPUT_ALL_TIME</span>: ${{ github.event.inputs.all_time }}
+      <span style="color: #dcaeea;">run</span>: python readwise_sync.py
 
-    - name: Check for changes
-      id: verify-changed-files
-      run: |
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "changes_found=true" &gt;&gt; $GITHUB_OUTPUT
-        else
-          echo "changes_found=false" &gt;&gt; $GITHUB_OUTPUT
-        fi
+    - <span style="color: #dcaeea;">name</span>: Check for changes
+      <span style="color: #dcaeea;">id</span>: verify-changed-files
+      <span style="color: #dcaeea;">run</span>: |
+        if [ -n <span style="color: #98be65;">"$(git status --porcelain)"</span> ]; then
+          echo <span style="color: #98be65;">"changes_found=true"</span> &gt;&gt; $GITHUB_OUTPUT
+<span style="color: #98be65;">        else</span>
+          echo <span style="color: #98be65;">"changes_found=false"</span> &gt;&gt; $GITHUB_OUTPUT
+<span style="color: #98be65;">        fi</span>
 
-    - name: Commit changes
-      if: steps.verify-changed-files.outputs.changes_found == 'true'
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add articles.json last_update.json
-        git commit -m "Update Readwise articles [skip ci]" || echo "No changes to commit"
+    - <span style="color: #dcaeea;">name</span>: Commit changes
+      <span style="color: #dcaeea;">if</span>: steps.verify-changed-files.outputs.changes_found == <span style="color: #98be65;">'true'</span>
+      <span style="color: #dcaeea;">run</span>: |
+        git config --local user.email <span style="color: #98be65;">"github-actions[bot]@users.noreply.github.com"</span>
+        git config --local user.name <span style="color: #98be65;">"github-actions[bot]"</span>
+<span style="color: #98be65;">        git add articles.json last_update.json</span>
+        git commit -m <span style="color: #98be65;">"Update Readwise articles [skip ci]"</span> || echo <span style="color: #98be65;">"No changes to commit"</span>
 
-    - name: Push changes
-      if: steps.verify-changed-files.outputs.changes_found == 'true'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+    - <span style="color: #dcaeea;">name</span>: Push changes
+      <span style="color: #dcaeea;">if</span>: steps.verify-changed-files.outputs.changes_found == <span style="color: #98be65;">'true'</span>
+      <span style="color: #dcaeea;">uses</span>: ad-m/github-push-action@master
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #dcaeea;">branch</span>: ${{ github.ref }}
 
 </pre>
 </div>

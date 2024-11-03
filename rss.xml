@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sun, 03 Nov 2024 16:08:18 +0800</lastBuildDate>
+<lastBuildDate>Sun, 03 Nov 2024 20:59:27 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Readwise 和 GitHub Actions 联用 - 流动知识检索]]></title>
   <description><![CDATA[
@@ -12,16 +12,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9140e86">结合之前的 bookmark-collection</a>
+<li><a href="#orgb3c93fd">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#org8f77272">python</a></li>
-<li><a href="#org92b541c">workflow</a></li>
+<li><a href="#org0bfc91b">python</a></li>
+<li><a href="#orgd8dd3d2">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orgfdfb278">Readwise highlights</a>
+<li><a href="#org8f00826">Readwise highlights</a>
 <ul>
-<li><a href="#org4e0b72f">python</a></li>
-<li><a href="#orgb502d59">workflow</a></li>
+<li><a href="#orgd2cb276">python</a></li>
+<li><a href="#org1e79b9a">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -30,9 +30,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-org9140e86" class="outline-2">
-<h2 id="org9140e86">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org9140e86">
+<div id="outline-container-orgb3c93fd" class="outline-2">
+<h2 id="orgb3c93fd">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orgb3c93fd">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -49,9 +49,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org8f77272" class="outline-3">
-<h3 id="org8f77272">python</h3>
-<div class="outline-text-3" id="text-org8f77272">
+<div id="outline-container-org0bfc91b" class="outline-3">
+<h3 id="org0bfc91b">python</h3>
+<div class="outline-text-3" id="text-org0bfc91b">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -160,67 +160,67 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org92b541c" class="outline-3">
-<h3 id="org92b541c">workflow</h3>
-<div class="outline-text-3" id="text-org92b541c">
+<div id="outline-container-orgd8dd3d2" class="outline-3">
+<h3 id="orgd8dd3d2">workflow</h3>
+<div class="outline-text-3" id="text-orgd8dd3d2">
 <div class="org-src-container">
-<pre class="src src-yml">
-name: Save Bookmark to Readwise
+<pre class="src src-yaml">
+<span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
 
-on:
-  push:
-    branches:
+<span style="color: #a9a1e1;">on</span>:
+  <span style="color: #dcaeea;">push</span>:
+    <span style="color: #dcaeea;">branches</span>:
       - main
-    paths:
-      - '**.md'
-  workflow_dispatch:
+    <span style="color: #dcaeea;">paths</span>:
+      - <span style="color: #98be65;">'**.md'</span>
+  <span style="color: #dcaeea;">workflow_dispatch</span>:
 
-permissions:
-  contents: read
-  actions: write
+<span style="color: #dcaeea;">permissions</span>:
+  <span style="color: #dcaeea;">contents</span>: read
+  <span style="color: #dcaeea;">actions</span>: write
 
-jobs:
-  save-to-readwise:
-    runs-on: ubuntu-latest
+<span style="color: #dcaeea;">jobs</span>:
+  <span style="color: #dcaeea;">save-to-readwise</span>:
+    <span style="color: #dcaeea;">runs-on</span>: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    <span style="color: #dcaeea;">steps</span>:
+    - <span style="color: #dcaeea;">name</span>: Checkout repository
+      <span style="color: #dcaeea;">uses</span>: actions/checkout@v4
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">token</span>: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+    - <span style="color: #dcaeea;">name</span>: Set up Python
+      <span style="color: #dcaeea;">uses</span>: actions/setup-python@v4
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">python-version</span>: <span style="color: #98be65;">'3.10'</span>
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests PyGithub
+    - <span style="color: #dcaeea;">name</span>: Install dependencies
+      <span style="color: #dcaeea;">run</span>: |
+        <span style="color: #98be65;">python -m pip install --upgrade pip</span>
+<span style="color: #98be65;">        pip install requests PyGithub</span>
 
-    - name: Run bookmark saver
-      env:
-        READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-      run: python save_to_readwise.py
+    - <span style="color: #dcaeea;">name</span>: Run bookmark saver
+      <span style="color: #dcaeea;">env</span>:
+        <span style="color: #dcaeea;">READWISE_TOKEN</span>: ${{ secrets.READWISE_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_REPOSITORY</span>: ${{ github.repository }}
+      <span style="color: #dcaeea;">run</span>: python save_to_readwise.py
 
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfdfb278" class="outline-2">
-<h2 id="orgfdfb278">Readwise highlights</h2>
-<div class="outline-text-2" id="text-orgfdfb278">
+<div id="outline-container-org8f00826" class="outline-2">
+<h2 id="org8f00826">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org8f00826">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-org4e0b72f" class="outline-3">
-<h3 id="org4e0b72f">python</h3>
-<div class="outline-text-3" id="text-org4e0b72f">
+<div id="outline-container-orgd2cb276" class="outline-3">
+<h3 id="orgd2cb276">python</h3>
+<div class="outline-text-3" id="text-orgd2cb276">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -481,91 +481,91 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-orgb502d59" class="outline-3">
-<h3 id="orgb502d59">workflow</h3>
-<div class="outline-text-3" id="text-orgb502d59">
+<div id="outline-container-org1e79b9a" class="outline-3">
+<h3 id="org1e79b9a">workflow</h3>
+<div class="outline-text-3" id="text-org1e79b9a">
 <div class="org-src-container">
-<pre class="src src-yml">
-name: Sync Readwise Articles
-on:
-  schedule:
-    # 每天凌晨 1 点运行 (UTC 时间，对应北京时间 9 点)
-    - cron: '0 1 * * *'
+<pre class="src src-yaml">
+<span style="color: #dcaeea;">name</span>: Sync Readwise Articles
+<span style="color: #a9a1e1;">on</span>:
+  <span style="color: #dcaeea;">schedule</span>:
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#27599;&#22825;&#20940;&#26216; 1 &#28857;&#36816;&#34892; (UTC &#26102;&#38388;&#65292;&#23545;&#24212;&#21271;&#20140;&#26102;&#38388; 9 &#28857;)</span>
+    - <span style="color: #dcaeea;">cron</span>: <span style="color: #98be65;">'0 1 * * *'</span>
 
-  # 支持手动触发，并添加输入参数
-  workflow_dispatch:
-    inputs:
-      start_date:
-        description: 'Start date (YYYY-MM-DD, e.g., 2024-01-01)'
-        required: false
-        type: string
-        default: ''
-      end_date:
-        description: 'End date (YYYY-MM-DD, leave empty for current date)'
-        required: false
-        type: string
-        default: ''
-      all_time:
-        description: 'Fetch all highlights (overrides date range if selected)'
-        type: boolean
-        required: false
-        default: false
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25903;&#25345;&#25163;&#21160;&#35302;&#21457;&#65292;&#24182;&#28155;&#21152;&#36755;&#20837;&#21442;&#25968;</span>
+  <span style="color: #dcaeea;">workflow_dispatch</span>:
+    <span style="color: #dcaeea;">inputs</span>:
+      <span style="color: #dcaeea;">start_date</span>:
+        <span style="color: #dcaeea;">description</span>: <span style="color: #98be65;">'Start date (YYYY-MM-DD, e.g., 2024-01-01)'</span>
+        <span style="color: #dcaeea;">required</span>: <span style="color: #a9a1e1;">false</span>
+        <span style="color: #dcaeea;">type</span>: string
+        <span style="color: #dcaeea;">default</span>: <span style="color: #98be65;">''</span>
+      <span style="color: #dcaeea;">end_date</span>:
+        <span style="color: #dcaeea;">description</span>: <span style="color: #98be65;">'End date (YYYY-MM-DD, leave empty for current date)'</span>
+        <span style="color: #dcaeea;">required</span>: <span style="color: #a9a1e1;">false</span>
+        <span style="color: #dcaeea;">type</span>: string
+        <span style="color: #dcaeea;">default</span>: <span style="color: #98be65;">''</span>
+      <span style="color: #dcaeea;">all_time</span>:
+        <span style="color: #dcaeea;">description</span>: <span style="color: #98be65;">'Fetch all highlights (overrides date range if selected)'</span>
+        <span style="color: #dcaeea;">type</span>: boolean
+        <span style="color: #dcaeea;">required</span>: <span style="color: #a9a1e1;">false</span>
+        <span style="color: #dcaeea;">default</span>: <span style="color: #a9a1e1;">false</span>
 
-permissions:
-  contents: write      # 仓库内容的读写权限
+<span style="color: #dcaeea;">permissions</span>:
+  <span style="color: #dcaeea;">contents</span>: write      <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20179;&#24211;&#20869;&#23481;&#30340;&#35835;&#20889;&#26435;&#38480;</span>
 
-jobs:
-  sync:
-    runs-on: ubuntu-latest
+<span style="color: #dcaeea;">jobs</span>:
+  <span style="color: #dcaeea;">sync</span>:
+    <span style="color: #dcaeea;">runs-on</span>: ubuntu-latest
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    <span style="color: #dcaeea;">steps</span>:
+    - <span style="color: #dcaeea;">name</span>: Checkout repository
+      <span style="color: #dcaeea;">uses</span>: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-        cache-dependency-path: '**/requirements.txt'
+    - <span style="color: #dcaeea;">name</span>: Set up Python
+      <span style="color: #dcaeea;">uses</span>: actions/setup-python@v5
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">python-version</span>: <span style="color: #98be65;">'3.10'</span>
+        <span style="color: #dcaeea;">cache</span>: <span style="color: #98be65;">'pip'</span>
+        <span style="color: #dcaeea;">cache-dependency-path</span>: <span style="color: #98be65;">'**/requirements.txt'</span>
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+    - <span style="color: #dcaeea;">name</span>: Install dependencies
+      <span style="color: #dcaeea;">run</span>: |
+        <span style="color: #98be65;">python -m pip install --upgrade pip</span>
+<span style="color: #98be65;">        pip install -r requirements.txt</span>
 
-    - name: Run sync script
-      env:
-        READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        INPUT_START_DATE: ${{ github.event.inputs.start_date }}
-        INPUT_END_DATE: ${{ github.event.inputs.end_date }}
-        INPUT_ALL_TIME: ${{ github.event.inputs.all_time }}
-      run: python readwise_sync.py
+    - <span style="color: #dcaeea;">name</span>: Run sync script
+      <span style="color: #dcaeea;">env</span>:
+        <span style="color: #dcaeea;">READWISE_TOKEN</span>: ${{ secrets.READWISE_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #dcaeea;">INPUT_START_DATE</span>: ${{ github.event.inputs.start_date }}
+        <span style="color: #dcaeea;">INPUT_END_DATE</span>: ${{ github.event.inputs.end_date }}
+        <span style="color: #dcaeea;">INPUT_ALL_TIME</span>: ${{ github.event.inputs.all_time }}
+      <span style="color: #dcaeea;">run</span>: python readwise_sync.py
 
-    - name: Check for changes
-      id: verify-changed-files
-      run: |
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "changes_found=true" &gt;&gt; $GITHUB_OUTPUT
-        else
-          echo "changes_found=false" &gt;&gt; $GITHUB_OUTPUT
-        fi
+    - <span style="color: #dcaeea;">name</span>: Check for changes
+      <span style="color: #dcaeea;">id</span>: verify-changed-files
+      <span style="color: #dcaeea;">run</span>: |
+        if [ -n <span style="color: #98be65;">"$(git status --porcelain)"</span> ]; then
+          echo <span style="color: #98be65;">"changes_found=true"</span> &gt;&gt; $GITHUB_OUTPUT
+<span style="color: #98be65;">        else</span>
+          echo <span style="color: #98be65;">"changes_found=false"</span> &gt;&gt; $GITHUB_OUTPUT
+<span style="color: #98be65;">        fi</span>
 
-    - name: Commit changes
-      if: steps.verify-changed-files.outputs.changes_found == 'true'
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add articles.json last_update.json
-        git commit -m "Update Readwise articles [skip ci]" || echo "No changes to commit"
+    - <span style="color: #dcaeea;">name</span>: Commit changes
+      <span style="color: #dcaeea;">if</span>: steps.verify-changed-files.outputs.changes_found == <span style="color: #98be65;">'true'</span>
+      <span style="color: #dcaeea;">run</span>: |
+        git config --local user.email <span style="color: #98be65;">"github-actions[bot]@users.noreply.github.com"</span>
+        git config --local user.name <span style="color: #98be65;">"github-actions[bot]"</span>
+<span style="color: #98be65;">        git add articles.json last_update.json</span>
+        git commit -m <span style="color: #98be65;">"Update Readwise articles [skip ci]"</span> || echo <span style="color: #98be65;">"No changes to commit"</span>
 
-    - name: Push changes
-      if: steps.verify-changed-files.outputs.changes_found == 'true'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+    - <span style="color: #dcaeea;">name</span>: Push changes
+      <span style="color: #dcaeea;">if</span>: steps.verify-changed-files.outputs.changes_found == <span style="color: #98be65;">'true'</span>
+      <span style="color: #dcaeea;">uses</span>: ad-m/github-push-action@master
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #dcaeea;">branch</span>: ${{ github.ref }}
 
 </pre>
 </div>
@@ -1520,25 +1520,25 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5261d19">起因</a></li>
-<li><a href="#org5618990">Memos</a></li>
-<li><a href="#org25fccf8">SSL</a></li>
-<li><a href="#orgc7ed13a">Memos 自定义</a>
+<li><a href="#org45c4063">起因</a></li>
+<li><a href="#org6a433f1">Memos</a></li>
+<li><a href="#orgc2cea20">SSL</a></li>
+<li><a href="#org5946b01">Memos 自定义</a>
 <ul>
-<li><a href="#orgf2c0ff2">自定义 css 和 JavaScript</a></li>
-<li><a href="#org60e763b">Memos.top</a></li>
+<li><a href="#orgd5c3c67">自定义 css 和 JavaScript</a></li>
+<li><a href="#org3f0686b">Memos.top</a></li>
 </ul>
 </li>
-<li><a href="#org1f3e71b">小结</a></li>
+<li><a href="#org2c7148b">小结</a></li>
 </ul>
 </div>
 </nav>
 <p>
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
-<div id="outline-container-org5261d19" class="outline-2">
-<h2 id="org5261d19">起因</h2>
-<div class="outline-text-2" id="text-org5261d19">
+<div id="outline-container-org45c4063" class="outline-2">
+<h2 id="org45c4063">起因</h2>
+<div class="outline-text-2" id="text-org45c4063">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -1556,9 +1556,9 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </p>
 </div>
 </div>
-<div id="outline-container-org5618990" class="outline-2">
-<h2 id="org5618990">Memos</h2>
-<div class="outline-text-2" id="text-org5618990">
+<div id="outline-container-org6a433f1" class="outline-2">
+<h2 id="org6a433f1">Memos</h2>
+<div class="outline-text-2" id="text-org6a433f1">
 <p>
 几个版本的主要特色：
 </p>
@@ -1578,28 +1578,28 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ymal">version: "3.0"
-services:
-  memos:
-    image: neosmemo/memos:0.18.0 #版本 tag
-    restart: always
-    depends_on:
+<pre class="src src-yaml"><span style="color: #dcaeea;">version</span>: <span style="color: #98be65;">"3.0"</span>
+<span style="color: #dcaeea;">services</span>:
+  <span style="color: #dcaeea;">memos</span>:
+    <span style="color: #dcaeea;">image</span>: neosmemo/memos:0.18.0 <span style="color: #5B6268;">#</span><span style="color: #5B6268;">&#29256;&#26412; tag</span>
+    <span style="color: #dcaeea;">restart</span>: always
+    <span style="color: #dcaeea;">depends_on</span>:
       - db
-    ports:
+    <span style="color: #dcaeea;">ports</span>:
       - 5230:5230
-    environment:
+    <span style="color: #dcaeea;">environment</span>:
       - MEMOS_DRIVER=postgres
       - MEMOS_DSN=user=memos password=secret dbname=memosdb host=db sslmode=disable
 
-  db:
-    image: postgres:16.1
-    restart: unless-stopped
-    volumes:
-      - "./database:/var/lib/postgresql/data/"
-    environment:
-      POSTGRES_USER: memos
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: memosdb
+  <span style="color: #dcaeea;">db</span>:
+    <span style="color: #dcaeea;">image</span>: postgres:16.1
+    <span style="color: #dcaeea;">restart</span>: unless-stopped
+    <span style="color: #dcaeea;">volumes</span>:
+      - <span style="color: #98be65;">"./database:/var/lib/postgresql/data/"</span>
+    <span style="color: #dcaeea;">environment</span>:
+      <span style="color: #dcaeea;">POSTGRES_USER</span>: memos
+      <span style="color: #dcaeea;">POSTGRES_PASSWORD</span>: secret
+      <span style="color: #dcaeea;">POSTGRES_DB</span>: memosdb
 
 </pre>
 </div>
@@ -1612,49 +1612,49 @@ ip + 5230 就可以访问了，到这里都很惬意，Nginx 的配置才是让�
 Nginx 命令：
 </p>
 <div class="org-src-container">
-<pre class="src src-nil">sudo systemctl restart nginx # 修改了配置文件之后重启服务
+<pre class="src src-bash"><span style="color: #ECBE7B;">sudo</span> systemctl restart nginx <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20462;&#25913;&#20102;&#37197;&#32622;&#25991;&#20214;&#20043;&#21518;&#37325;&#21551;&#26381;&#21153;</span>
 
-sudo vim /etc/nginx/sites-available/conf_name  # 设置配置文件
+<span style="color: #ECBE7B;">sudo</span> vim /etc/nginx/sites-available/conf_name  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;</span>
 
-sudo ln -s /etc/nginx/sites-available/conf_name /etc/nginx/sites-enabled/ # 设置配置文件可用
+<span style="color: #ECBE7B;">sudo</span> <span style="color: #ECBE7B;">ln</span> -s /etc/nginx/sites-available/conf_name /etc/nginx/sites-enabled/ <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;&#21487;&#29992;</span>
 
-sudo rm /etc/nginx/sites-enabled/conf_name # 移除配置
+<span style="color: #ECBE7B;">sudo</span> <span style="color: #ECBE7B;">rm</span> /etc/nginx/sites-enabled/conf_name <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#31227;&#38500;&#37197;&#32622;</span>
 
-sudo nginx -t # 检查配置是否有问题
+<span style="color: #ECBE7B;">sudo</span> nginx -t <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#37197;&#32622;&#26159;&#21542;&#26377;&#38382;&#39064;</span>
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org25fccf8" class="outline-2">
-<h2 id="org25fccf8">SSL</h2>
-<div class="outline-text-2" id="text-org25fccf8">
+<div id="outline-container-orgc2cea20" class="outline-2">
+<h2 id="orgc2cea20">SSL</h2>
+<div class="outline-text-2" id="text-orgc2cea20">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-ymal">
-# 随便创建一个目录
-mkdir certd
-# 进入目录
-cd certd
-# 下载docker-compose.yaml文件，或者手动下载放到certd目录下
+<pre class="src src-bash">
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#38543;&#20415;&#21019;&#24314;&#19968;&#20010;&#30446;&#24405;</span>
+<span style="color: #ECBE7B;">mkdir</span> certd
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#36827;&#20837;&#30446;&#24405;</span>
+<span style="color: #ECBE7B;">cd</span> certd
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#19979;&#36733;docker-compose.yaml&#25991;&#20214;&#65292;&#25110;&#32773;&#25163;&#21160;&#19979;&#36733;&#25918;&#21040;certd&#30446;&#24405;&#19979;</span>
 wget https://gitee.com/certd/certd/raw/v2/docker/run/docker-compose.yaml
 
-# 可以根据需要修改里面的配置
-# 1.修改镜像版本号【可选】
-# 2.配置数据保存路径【可选】
-# 3.修改端口号【可选】
-vi docker-compose.yaml # 【可选】
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21487;&#20197;&#26681;&#25454;&#38656;&#35201;&#20462;&#25913;&#37324;&#38754;&#30340;&#37197;&#32622;</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">1.&#20462;&#25913;&#38236;&#20687;&#29256;&#26412;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">2.&#37197;&#32622;&#25968;&#25454;&#20445;&#23384;&#36335;&#24452;&#12304;&#21487;&#36873;&#12305;</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">3.&#20462;&#25913;&#31471;&#21475;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
+vi docker-compose.yaml <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#12304;&#21487;&#36873;&#12305;</span>
 
-# 启动certd
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21551;&#21160;certd</span>
 docker compose up -d
 
-# 访问
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35775;&#38382;</span>
 http://your_server_ip:7001
 https://your_server_ip:7002
-默认账号密码：admin/123456
+&#40664;&#35748;&#36134;&#21495;&#23494;&#30721;&#65306;admin/123456
 </pre>
 </div>
 
@@ -1732,13 +1732,13 @@ server {
 </p>
 </div>
 </div>
-<div id="outline-container-orgc7ed13a" class="outline-2">
-<h2 id="orgc7ed13a">Memos 自定义</h2>
-<div class="outline-text-2" id="text-orgc7ed13a">
+<div id="outline-container-org5946b01" class="outline-2">
+<h2 id="org5946b01">Memos 自定义</h2>
+<div class="outline-text-2" id="text-org5946b01">
 </div>
-<div id="outline-container-orgf2c0ff2" class="outline-3">
-<h3 id="orgf2c0ff2">自定义 css 和 JavaScript</h3>
-<div class="outline-text-3" id="text-orgf2c0ff2">
+<div id="outline-container-orgd5c3c67" class="outline-3">
+<h3 id="orgd5c3c67">自定义 css 和 JavaScript</h3>
+<div class="outline-text-3" id="text-orgd5c3c67">
 <p>
 适用 0.20.X 以上版本
 </p>
@@ -1759,9 +1759,9 @@ server {
 </div>
 </div>
 </div>
-<div id="outline-container-org60e763b" class="outline-3">
-<h3 id="org60e763b">Memos.top</h3>
-<div class="outline-text-3" id="text-org60e763b">
+<div id="outline-container-org3f0686b" class="outline-3">
+<h3 id="org3f0686b">Memos.top</h3>
+<div class="outline-text-3" id="text-org3f0686b">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -1779,13 +1779,13 @@ server {
 </p>
 
 
-<figure id="orga831dc3">
+<figure id="org4d88e35">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org551c54c">
+<figure id="org89a229a">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -1796,9 +1796,9 @@ Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top
 </div>
 </div>
 </div>
-<div id="outline-container-org1f3e71b" class="outline-2">
-<h2 id="org1f3e71b">小结</h2>
-<div class="outline-text-2" id="text-org1f3e71b">
+<div id="outline-container-org2c7148b" class="outline-2">
+<h2 id="org2c7148b">小结</h2>
+<div class="outline-text-2" id="text-org2c7148b">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>
