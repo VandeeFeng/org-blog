@@ -54,16 +54,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org868e506">结合之前的 bookmark-collection</a>
+<li><a href="#org30057ec">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#orgfc666f3">python</a></li>
-<li><a href="#orgf07785e">workflow</a></li>
+<li><a href="#orgf014f5e">python</a></li>
+<li><a href="#org2b49854">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org02f8b89">Readwise highlights</a>
+<li><a href="#orgd6b8f64">Readwise highlights</a>
 <ul>
-<li><a href="#org848e520">python</a></li>
-<li><a href="#org7693981">workflow</a></li>
+<li><a href="#orge95a918">python</a></li>
+<li><a href="#org3eb8305">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -72,11 +72,11 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-org868e506" class="outline-2">
-<h2 id="org868e506">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org868e506">
+<div id="outline-container-org30057ec" class="outline-2">
+<h2 id="org30057ec">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-org30057ec">
 <p>
-现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2md</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
+现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
 
 <p>
@@ -87,9 +87,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 主要思路是，在 push 的时候会运行这个 Python 脚本，读取新增内容，获取 URL 使用 readwise 的 API 保存。
 </p>
 </div>
-<div id="outline-container-orgfc666f3" class="outline-3">
-<h3 id="orgfc666f3">python</h3>
-<div class="outline-text-3" id="text-orgfc666f3">
+<div id="outline-container-orgf014f5e" class="outline-3">
+<h3 id="orgf014f5e">python</h3>
+<div class="outline-text-3" id="text-orgf014f5e">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -134,8 +134,8 @@ logging.basicConfig(
     <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">None</span>
 
 <span style="color: #51afef;">def</span> <span style="color: #c678dd;">has_save_tag</span>(line: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">bool</span>:
-    <span style="color: #83898d;">"""&#26816;&#26597;&#26159;&#21542;&#21253;&#21547; #2md &#26631;&#31614;"""</span>
-    <span style="color: #51afef;">return</span> <span style="color: #c678dd;">bool</span>(re.search(r<span style="color: #98be65;">'#2md\b'</span>, line))
+    <span style="color: #83898d;">"""&#26816;&#26597;&#26159;&#21542;&#21253;&#21547; #2clip &#26631;&#31614;"""</span>
+    <span style="color: #51afef;">return</span> <span style="color: #c678dd;">bool</span>(re.search(r<span style="color: #98be65;">'#2clip\b'</span>, line))
 
 <span style="color: #51afef;">def</span> <span style="color: #c678dd;">trigger_workflow</span>():
     <span style="color: #83898d;">"""&#35302;&#21457;&#21478;&#19968;&#20010;workflow"""</span>
@@ -198,9 +198,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgf07785e" class="outline-3">
-<h3 id="orgf07785e">workflow</h3>
-<div class="outline-text-3" id="text-orgf07785e">
+<div id="outline-container-org2b49854" class="outline-3">
+<h3 id="org2b49854">workflow</h3>
+<div class="outline-text-3" id="text-org2b49854">
 <div class="org-src-container">
 <pre class="src src-yml">
 name: Save Bookmark to Readwise
@@ -249,16 +249,16 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-org02f8b89" class="outline-2">
-<h2 id="org02f8b89">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org02f8b89">
+<div id="outline-container-orgd6b8f64" class="outline-2">
+<h2 id="orgd6b8f64">Readwise highlights</h2>
+<div class="outline-text-2" id="text-orgd6b8f64">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-org848e520" class="outline-3">
-<h3 id="org848e520">python</h3>
-<div class="outline-text-3" id="text-org848e520">
+<div id="outline-container-orge95a918" class="outline-3">
+<h3 id="orge95a918">python</h3>
+<div class="outline-text-3" id="text-orge95a918">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -519,9 +519,9 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-org7693981" class="outline-3">
-<h3 id="org7693981">workflow</h3>
-<div class="outline-text-3" id="text-org7693981">
+<div id="outline-container-org3eb8305" class="outline-3">
+<h3 id="org3eb8305">workflow</h3>
+<div class="outline-text-3" id="text-org3eb8305">
 <div class="org-src-container">
 <pre class="src src-yml">
 name: Sync Readwise Articles
