@@ -11,7 +11,7 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 
 这样就统一起来了，所有的链接都保存在 bookmark-collection 仓库。有保存价值的会触发 clip workflow 保存原文。
 
-主要思路是，在 push 的时候会运行这个 Python 脚本，读取第一行内容，获取 URL 使用 readwise 的 API 保存。
+主要思路是，在 push 的时候会运行这个 Python 脚本，读取新增内容，获取 URL 使用 readwise 的 API 保存。
 ** python
 
 #+begin_src python
@@ -28,6 +28,28 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 
+def get_added_content():
+    """获取这次提交新增的内容"""
+    try:
+        g = Github(os.environ['GITHUB_TOKEN'])
+        repo = g.get_repo(os.environ['GITHUB_REPOSITORY'])
+
+        commit_sha = os.environ.get('GITHUB_SHA')
+        commit = repo.get_commit(commit_sha)
+
+        for file in commit.files:
+            if file.filename.endswith('.md'):
+                if file.patch and '+' in file.patch:
+                    added_lines = [line[1:] for line in file.patch.split('\n')
+                                 if line.startswith('+') and not line.startswith('+++')]
+                    # 返回所有新增的行
+                    return added_lines
+        return []
+
+    except Exception as e:
+        logging.error(f"Error getting commit content: {str(e)}")
+        raise
+
 def extract_url(line: str):
     """从行中提取URL"""
     match = re.search(r'\((.*?)\)', line)
@@ -36,51 +58,59 @@ def extract_url(line: str):
     return None
 
 def has_save_tag(line: str) -> bool:
-    """检查是否包含 #savemd 标签"""
-    # return '#2md' in line
+    """检查是否包含 #2md 标签"""
     return bool(re.search(r'#2md\b', line))
 
 def trigger_workflow():
-    """使用PyGithub触发另一个workflow"""
+    """触发另一个workflow"""
     try:
         g = Github(os.environ['GITHUB_TOKEN'])
         repo = g.get_repo(os.environ['GITHUB_REPOSITORY'])
 
-        # 获取指定workflow
-        workflow = repo.get_workflow("bookmark_summary.yml")
-
-        # 触发workflow
+        workflow = repo.get_workflow("convert-markdown.yml")
         workflow.create_dispatch("main")
-        logging.info("Successfully triggered the other workflow")
+        logging.info("Successfully triggered the convert-markdown workflow")
     except Exception as e:
         logging.error(f"Failed to trigger workflow: {str(e)}")
+        raise
 
 def main():
     try:
-        # 读取第一行
-        with open('bookmarks.md', 'r', encoding='utf-8') as f:
-            first_line = f.readline().strip()
+        # 获取所有新增的内容
+        added_lines = get_added_content()
+        if not added_lines:
+            logging.info("No new markdown content found in this commit")
+            return
 
-        # 检查是否包含 #savemd 标签
-        if has_save_tag(first_line):
-            logging.info("Found #savemd tag, triggering other workflow")
+        trigger_needed = False
+
+        # 处理每一行新增的内容
+        for line in added_lines:
+            line = line.strip()
+            logging.info(f"Processing line: {line}")
+
+            # 检查标签
+            if has_save_tag(line):
+                trigger_needed = True
+
+            # 提取并处理URL
+            url = extract_url(line)
+            if url:
+                response = requests.post(
+                    url="https://readwise.io/api/v3/save/",
+                    headers={"Authorization": f"Token {os.environ['READWISE_TOKEN']}"},
+                    json={
+                        "url": url,
+                        "tags": ["bookmark"]
+                    }
+                )
+                response.raise_for_status()
+                logging.info(f"Successfully saved URL: {url}")
+
+        # 如果发现了标签，触发workflow
+        if trigger_needed:
+            logging.info("Found #savemd tag, triggering workflow")
             trigger_workflow()
-
-        # 提取URL并发送到Readwise
-        url = extract_url(first_line)
-        if url:
-            response = requests.post(
-                url="https://readwise.io/api/v3/save/",
-                headers={"Authorization": f"Token {os.environ['READWISE_TOKEN']}"},
-                json={
-                    "url": url,
-                    "tags": ["bookmark"]
-                }
-            )
-            response.raise_for_status()
-            logging.info(f"Successfully saved URL: {url}")
-        else:
-            logging.error("No URL found in the first line")
 
     except Exception as e:
         logging.error(f"Error: {str(e)}")
@@ -88,7 +118,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 #+end_src
 
 ** workflow
