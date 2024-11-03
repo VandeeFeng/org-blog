@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sun, 03 Nov 2024 15:44:05 +0800</lastBuildDate>
+<lastBuildDate>Sun, 03 Nov 2024 15:56:49 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Readwise 和 GitHub Actions 联用 - 流动知识检索]]></title>
   <description><![CDATA[
@@ -12,16 +12,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org30057ec">结合之前的 bookmark-collection</a>
+<li><a href="#org76d9740">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#orgf014f5e">python</a></li>
-<li><a href="#org2b49854">workflow</a></li>
+<li><a href="#org6e4fe33">python</a></li>
+<li><a href="#orga75fda5">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orgd6b8f64">Readwise highlights</a>
+<li><a href="#org6b04250">Readwise highlights</a>
 <ul>
-<li><a href="#orge95a918">python</a></li>
-<li><a href="#org3eb8305">workflow</a></li>
+<li><a href="#org49c3abe">python</a></li>
+<li><a href="#org10aab25">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -30,9 +30,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-org30057ec" class="outline-2">
-<h2 id="org30057ec">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org30057ec">
+<div id="outline-container-org76d9740" class="outline-2">
+<h2 id="org76d9740">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-org76d9740">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -45,9 +45,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 主要思路是，在 push 的时候会运行这个 Python 脚本，读取新增内容，获取 URL 使用 readwise 的 API 保存。
 </p>
 </div>
-<div id="outline-container-orgf014f5e" class="outline-3">
-<h3 id="orgf014f5e">python</h3>
-<div class="outline-text-3" id="text-orgf014f5e">
+<div id="outline-container-org6e4fe33" class="outline-3">
+<h3 id="org6e4fe33">python</h3>
+<div class="outline-text-3" id="text-org6e4fe33">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -156,9 +156,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org2b49854" class="outline-3">
-<h3 id="org2b49854">workflow</h3>
-<div class="outline-text-3" id="text-org2b49854">
+<div id="outline-container-orga75fda5" class="outline-3">
+<h3 id="orga75fda5">workflow</h3>
+<div class="outline-text-3" id="text-orga75fda5">
 <div class="org-src-container">
 <pre class="src src-yml">
 name: Save Bookmark to Readwise
@@ -207,16 +207,16 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-orgd6b8f64" class="outline-2">
-<h2 id="orgd6b8f64">Readwise highlights</h2>
-<div class="outline-text-2" id="text-orgd6b8f64">
+<div id="outline-container-org6b04250" class="outline-2">
+<h2 id="org6b04250">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org6b04250">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-orge95a918" class="outline-3">
-<h3 id="orge95a918">python</h3>
-<div class="outline-text-3" id="text-orge95a918">
+<div id="outline-container-org49c3abe" class="outline-3">
+<h3 id="org49c3abe">python</h3>
+<div class="outline-text-3" id="text-org49c3abe">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -477,9 +477,9 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-org3eb8305" class="outline-3">
-<h3 id="org3eb8305">workflow</h3>
-<div class="outline-text-3" id="text-org3eb8305">
+<div id="outline-container-org10aab25" class="outline-3">
+<h3 id="org10aab25">workflow</h3>
+<div class="outline-text-3" id="text-org10aab25">
 <div class="org-src-container">
 <pre class="src src-yml">
 name: Sync Readwise Articles
@@ -568,8 +568,10 @@ jobs:
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
+  <category><![CDATA[Github]]></category>
+  <category><![CDATA[Python]]></category>
   <link>https://www.vandee.art/2024-11-03-readwise-and-github-actions.html</link>
   <guid>https://www.vandee.art/2024-11-03-readwise-and-github-actions.html</guid>
   <pubDate>Sun, 03 Nov 2024 14:55:00 +0800</pubDate>
@@ -1973,14 +1975,14 @@ Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.w
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1069776">GitHub 书签</a></li>
-<li><a href="#org3f71974">从GitHub书签到页面</a></li>
+<li><a href="#org498e0a3">GitHub 书签</a></li>
+<li><a href="#org5392d53">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org1069776" class="outline-2">
-<h2 id="org1069776">GitHub 书签</h2>
-<div class="outline-text-2" id="text-org1069776">
+<div id="outline-container-org498e0a3" class="outline-2">
+<h2 id="org498e0a3">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org498e0a3">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -2034,7 +2036,7 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="orge03ba4a">
+<figure id="org1f72d78">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -2270,15 +2272,15 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org3f71974" class="outline-2">
-<h2 id="org3f71974">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org3f71974">
+<div id="outline-container-org5392d53" class="outline-2">
+<h2 id="org5392d53">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org5392d53">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="org0bee737">
+<figure id="org573852c">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -2292,8 +2294,8 @@ logging.basicConfig(
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-input.html">Input</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div>]]></description>
-  <category><![CDATA[Input]]></category>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div>]]></description>
+  <category><![CDATA[PKM]]></category>
   <category><![CDATA[Github]]></category>
   <category><![CDATA[Python]]></category>
   <link>https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html</link>

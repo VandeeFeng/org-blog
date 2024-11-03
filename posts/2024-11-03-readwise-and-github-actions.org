@@ -1,7 +1,7 @@
 #+title: Readwise 和 GitHub Actions 联用 - 流动知识检索
 #+date: <2024-11-03 14:55>
 #+description:
-#+filetags: PKM
+#+filetags: PKM Github Python
 
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 
