@@ -612,3 +612,10 @@ li {
 #archive {
     margin-top: 20px; /* 添加上边距 */
 }
+
+.org-src-container pre {
+    max-height: 400px; /* 设置最大高度 */
+    overflow: hidden; /* 隐藏超出部分 */
+    transition: max-height 0.5s ease; /* 平滑过渡效果 */
+}
+
