@@ -649,26 +649,58 @@ li {
     font-size: 1.2rem; /* 稍微大一点的字体大小 */
 }
 
-.heading-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
+/* 重置所有标题的基础样式 */
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5 {
+    margin: 0;
+    padding: 0;
 }
 
+/* 为包含标题的包装器设置合适的边距 */
+#content .heading-wrapper {
+    margin-bottom: 0.7em;
+}
+
+/* 保持锚点的样式不变，但确保它不影响布局 */
 .heading-anchor {
     opacity: 0;
     color: #93a1a1;
     text-decoration: none;
     transition: opacity 0.2s ease;
-    font-size: 1.4em; /* 增大字体大小 */
-    font-weight: bold; /* 加粗使其更显眼 */
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    transform: translateY(-0.06em); /* 向上微调 */
 }
 
+/* 当鼠标悬停在标题包装器上时显示锚点 */
 .heading-wrapper:hover .heading-anchor {
     opacity: 1;
 }
 
+/* 当鼠标直接悬停在锚点上时的样式 */
 .heading-anchor:hover {
     color: #268bd2;
     text-decoration: none;
+}
+
+.heading-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: inherit;  /* 继承margin以保持原有的文档流间距 */
+    padding: 0;
+}
+
+.heading-wrapper h2,
+.heading-wrapper h3 {
+    margin: 0;
+    padding: 0;
 }
