@@ -674,7 +674,7 @@ li {
     font-weight: bold;
     margin: 0;
     padding: 0;
-    line-height: 1;
+    /*line-height: 1;*/
     display: inline-flex;
     align-items: center;
     transform: translateY(-0.06em); /* 向上微调 */
