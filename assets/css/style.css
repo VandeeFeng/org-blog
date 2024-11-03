@@ -21,6 +21,7 @@ header h1 {
     margin: 0;
 }
 
+
 a {
     color: #073642;
     text-decoration: none;
@@ -576,6 +577,13 @@ li {
     word-break: break-all;
 }
 
+#content h1.title {
+    font-size: 1.9em; /* 调整字体大小，缩小一点 */
+}
+#content h1.tags-title {
+    font-size: 1.8em; /* 调整字体大小，缩小一点 */
+}
+
 #content h1 {
     /*font-size: 2.1em;*/
     margin-bottom: 0.7em;
@@ -599,4 +607,8 @@ li {
 #content h5 {
      /*font-size: 0.9em;*/
     margin-bottom: 0.3em;
+}
+
+#archive {
+    margin-top: 20px; /* 添加上边距 */
 }
