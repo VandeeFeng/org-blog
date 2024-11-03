@@ -619,3 +619,34 @@ li {
     transition: max-height 0.5s ease; /* 平滑过渡效果 */
 }
 
+
+/* 展开和收起按钮的基本样式 */
+.toggle-button {
+    padding: 0.25rem 0.5rem; /* 内边距 */
+    font-size: 0.8rem; /* 字体大小 */
+    color: #93a1a1; /* 字体颜色 */
+    background-color: transparent; /* 背景透明 */
+    border: 1px solid #93a1a1; /* 边框颜色 */
+    border-radius: 4px; /* 圆角 */
+    cursor: pointer; /* 鼠标指针样式 */
+    transition: all 0.3s ease; /* 过渡效果 */
+}
+
+/* 悬停效果 */
+.toggle-button:hover {
+    color: #fdf6e3; /* 悬停时字体颜色 */
+    background-color: #93a1a1; /* 悬停时背景颜色 */
+}
+
+.expand-wrapper {
+    margin-top: 1rem; /* 上边距 */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 省略号和按钮之间的间距 */
+}
+
+/* 省略号样式 */
+.code-ellipsis {
+    color: #93a1a1; /* 与按钮颜色保持一致 */
+    font-size: 1.2rem; /* 稍微大一点的字体大小 */
+}
