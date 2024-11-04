@@ -44,15 +44,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });*/
 
+
 document.addEventListener('DOMContentLoaded', function() {
     // 使用 WeakMap 存储状态和原始内容
     const originalContents = new WeakMap();
     const expandStates = new WeakMap();
 
+    // 检查是否为移动设备
+    const isMobileDevice = () => window.innerWidth <= 768;
+
     // 创建用于自动折叠的 Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
+            if (!entry.isIntersecting && !isMobileDevice()) { // 只在非移动设备上执行自动折叠
                 const block = entry.target;
                 const pre = block.querySelector('pre');
                 const expandButton = block.querySelector('.toggle-button');
@@ -134,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         block.appendChild(copyButton);
 
         // 处理长代码的折叠功能
-        if (lines.length > 50) {
+        if (lines.length > 50) { // 移除设备检查，保留折叠功能
             // 重置pre的内容为前50行
             pre.innerHTML = lines.slice(0, 50).join('\n');
 
