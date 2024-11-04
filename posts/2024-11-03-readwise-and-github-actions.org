@@ -23,7 +23,6 @@ import logging
 import requests
 from github import Github
 
-# 配置日志
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(message)s',
@@ -44,7 +43,6 @@ def get_added_content():
                 if file.patch and '+' in file.patch:
                     added_lines = [line[1:] for line in file.patch.split('\n')
                                  if line.startswith('+') and not line.startswith('+++')]
-                    # 返回所有新增的行
                     return added_lines
         return []
 
@@ -54,12 +52,14 @@ def get_added_content():
 
 def extract_url(line: str):
     """从行中提取URL"""
-    match = re.search(r'\((.*?)\)', line)
+    # 更严格的URL提取模式
+    url_pattern = r'\((https?://[^\s)]+)\)'
+    match = re.search(url_pattern, line)
     if match:
         return match.group(1)
     return None
 
-def has_save_tag(line: str) -> bool:
+def has_clip_tag(line: str) -> bool:
     """检查是否包含 #2clip 标签"""
     return bool(re.search(r'#2clip\b', line))
 
@@ -69,9 +69,9 @@ def trigger_workflow():
         g = Github(os.environ['GITHUB_TOKEN'])
         repo = g.get_repo(os.environ['GITHUB_REPOSITORY'])
 
-        workflow = repo.get_workflow("convert-markdown.yml")
+        workflow = repo.get_workflow("bookmark_summary.yml")
         workflow.create_dispatch("main")
-        logging.info("Successfully triggered the convert-markdown workflow")
+        logging.info("Successfully triggered the bookmark_summary workflow")
     except Exception as e:
         logging.error(f"Failed to trigger workflow: {str(e)}")
         raise
@@ -92,26 +92,30 @@ def main():
             logging.info(f"Processing line: {line}")
 
             # 检查标签
-            if has_save_tag(line):
+            if has_clip_tag(line):
                 trigger_needed = True
+                logging.info("Found #2clip tag")
 
-            # 提取并处理URL
+            # 提取并处理URL（无论是否有标签）
             url = extract_url(line)
             if url:
-                response = requests.post(
-                    url="https://readwise.io/api/v3/save/",
-                    headers={"Authorization": f"Token {os.environ['READWISE_TOKEN']}"},
-                    json={
-                        "url": url,
-                        "tags": ["bookmark"]
-                    }
-                )
-                response.raise_for_status()
-                logging.info(f"Successfully saved URL: {url}")
+                try:
+                    response = requests.post(
+                        url="https://readwise.io/api/v3/save/",
+                        headers={"Authorization": f"Token {os.environ['READWISE_TOKEN']}"},
+                        json={
+                            "url": url,
+                            "tags": ["Bookmark"]
+                        }
+                    )
+                    response.raise_for_status()
+                    logging.info(f"Successfully saved URL: {url}")
+                except requests.exceptions.RequestException as e:
+                    logging.error(f"Failed to save URL {url}: {str(e)}")
 
         # 如果发现了标签，触发workflow
         if trigger_needed:
-            logging.info("Found #savemd tag, triggering workflow")
+            logging.info("Triggering workflow due to #2clip tag")
             trigger_workflow()
 
     except Exception as e:

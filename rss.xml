@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sun, 03 Nov 2024 20:59:27 +0800</lastBuildDate>
+<lastBuildDate>Mon, 04 Nov 2024 14:51:51 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Readwise 和 GitHub Actions 联用 - 流动知识检索]]></title>
   <description><![CDATA[
@@ -12,16 +12,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb3c93fd">结合之前的 bookmark-collection</a>
+<li><a href="#orgfd9dc56">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#org0bfc91b">python</a></li>
-<li><a href="#orgd8dd3d2">workflow</a></li>
+<li><a href="#orgc905a65">python</a></li>
+<li><a href="#org9adc8af">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org8f00826">Readwise highlights</a>
+<li><a href="#orga99b297">Readwise highlights</a>
 <ul>
-<li><a href="#orgd2cb276">python</a></li>
-<li><a href="#org1e79b9a">workflow</a></li>
+<li><a href="#org0f9ef19">python</a></li>
+<li><a href="#org3271490">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -30,9 +30,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-orgb3c93fd" class="outline-2">
-<h2 id="orgb3c93fd">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-orgb3c93fd">
+<div id="outline-container-orgfd9dc56" class="outline-2">
+<h2 id="orgfd9dc56">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orgfd9dc56">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -49,9 +49,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org0bfc91b" class="outline-3">
-<h3 id="org0bfc91b">python</h3>
-<div class="outline-text-3" id="text-org0bfc91b">
+<div id="outline-container-orgc905a65" class="outline-3">
+<h3 id="orgc905a65">python</h3>
+<div class="outline-text-3" id="text-orgc905a65">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -59,7 +59,6 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 <span style="color: #51afef;">import</span> requests
 <span style="color: #51afef;">from</span> github <span style="color: #51afef;">import</span> Github
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#37197;&#32622;&#26085;&#24535;</span>
 logging.basicConfig(
     level=logging.INFO,
     <span style="color: #c678dd;">format</span>=<span style="color: #98be65;">'%(asctime)s - %(message)s'</span>,
@@ -80,7 +79,6 @@ logging.basicConfig(
                 <span style="color: #51afef;">if</span> <span style="color: #c678dd;">file</span>.patch <span style="color: #51afef;">and</span> <span style="color: #98be65;">'+'</span> <span style="color: #51afef;">in</span> <span style="color: #c678dd;">file</span>.patch:
                     <span style="color: #dcaeea;">added_lines</span> = [line[<span style="color: #da8548; font-weight: bold;">1</span>:] <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> <span style="color: #c678dd;">file</span>.patch.split(<span style="color: #98be65;">'</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">'</span>)
                                  <span style="color: #51afef;">if</span> line.startswith(<span style="color: #98be65;">'+'</span>) <span style="color: #51afef;">and</span> <span style="color: #51afef;">not</span> line.startswith(<span style="color: #98be65;">'+++'</span>)]
-                    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#36820;&#22238;&#25152;&#26377;&#26032;&#22686;&#30340;&#34892;</span>
                     <span style="color: #51afef;">return</span> added_lines
         <span style="color: #51afef;">return</span> []
 
@@ -90,12 +88,14 @@ logging.basicConfig(
 
 <span style="color: #51afef;">def</span> <span style="color: #c678dd;">extract_url</span>(line: <span style="color: #c678dd;">str</span>):
     <span style="color: #83898d;">"""&#20174;&#34892;&#20013;&#25552;&#21462;URL"""</span>
-    <span style="color: #51afef;">match</span> = re.search(r<span style="color: #98be65;">'\((.*?)\)'</span>, line)
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#20005;&#26684;&#30340;URL&#25552;&#21462;&#27169;&#24335;</span>
+    <span style="color: #dcaeea;">url_pattern</span> = r<span style="color: #98be65;">'\((https?://[^\s)]+)\)'</span>
+    <span style="color: #51afef;">match</span> = re.search(url_pattern, line)
     <span style="color: #51afef;">if</span> <span style="color: #51afef;">match</span>:
         <span style="color: #51afef;">return</span> <span style="color: #51afef;">match</span>.group(<span style="color: #da8548; font-weight: bold;">1</span>)
     <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">None</span>
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">has_save_tag</span>(line: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">bool</span>:
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">has_clip_tag</span>(line: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">bool</span>:
     <span style="color: #83898d;">"""&#26816;&#26597;&#26159;&#21542;&#21253;&#21547; #2clip &#26631;&#31614;"""</span>
     <span style="color: #51afef;">return</span> <span style="color: #c678dd;">bool</span>(re.search(r<span style="color: #98be65;">'#2clip\b'</span>, line))
 
@@ -105,9 +105,9 @@ logging.basicConfig(
         <span style="color: #dcaeea;">g</span> = Github(os.environ[<span style="color: #98be65;">'GITHUB_TOKEN'</span>])
         <span style="color: #dcaeea;">repo</span> = g.get_repo(os.environ[<span style="color: #98be65;">'GITHUB_REPOSITORY'</span>])
 
-        <span style="color: #dcaeea;">workflow</span> = repo.get_workflow(<span style="color: #98be65;">"convert-markdown.yml"</span>)
+        <span style="color: #dcaeea;">workflow</span> = repo.get_workflow(<span style="color: #98be65;">"bookmark_summary.yml"</span>)
         workflow.create_dispatch(<span style="color: #98be65;">"main"</span>)
-        logging.info(<span style="color: #98be65;">"Successfully triggered the convert-markdown workflow"</span>)
+        logging.info(<span style="color: #98be65;">"Successfully triggered the bookmark_summary workflow"</span>)
     <span style="color: #51afef;">except</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #51afef;">as</span> e:
         logging.error(f<span style="color: #98be65;">"Failed to trigger workflow: </span>{<span style="color: #c678dd;">str</span>(e)}<span style="color: #98be65;">"</span>)
         <span style="color: #51afef;">raise</span>
@@ -128,26 +128,30 @@ logging.basicConfig(
             logging.info(f<span style="color: #98be65;">"Processing line: </span>{line}<span style="color: #98be65;">"</span>)
 
             <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#26631;&#31614;</span>
-            <span style="color: #51afef;">if</span> has_save_tag(line):
+            <span style="color: #51afef;">if</span> has_clip_tag(line):
                 <span style="color: #dcaeea;">trigger_needed</span> = <span style="color: #a9a1e1;">True</span>
+                logging.info(<span style="color: #98be65;">"Found #2clip tag"</span>)
 
-            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#21462;&#24182;&#22788;&#29702;URL</span>
+            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#21462;&#24182;&#22788;&#29702;URL&#65288;&#26080;&#35770;&#26159;&#21542;&#26377;&#26631;&#31614;&#65289;</span>
             <span style="color: #dcaeea;">url</span> = extract_url(line)
             <span style="color: #51afef;">if</span> url:
-                <span style="color: #dcaeea;">response</span> = requests.post(
-                    url=<span style="color: #98be65;">"https://readwise.io/api/v3/save/"</span>,
-                    headers={<span style="color: #98be65;">"Authorization"</span>: f<span style="color: #98be65;">"Token </span>{os.environ['READWISE_TOKEN']}<span style="color: #98be65;">"</span>},
-                    json={
-                        <span style="color: #98be65;">"url"</span>: url,
-                        <span style="color: #98be65;">"tags"</span>: [<span style="color: #98be65;">"bookmark"</span>]
-                    }
-                )
-                response.raise_for_status()
-                logging.info(f<span style="color: #98be65;">"Successfully saved URL: </span>{url}<span style="color: #98be65;">"</span>)
+                <span style="color: #51afef;">try</span>:
+                    <span style="color: #dcaeea;">response</span> = requests.post(
+                        url=<span style="color: #98be65;">"https://readwise.io/api/v3/save/"</span>,
+                        headers={<span style="color: #98be65;">"Authorization"</span>: f<span style="color: #98be65;">"Token </span>{os.environ['READWISE_TOKEN']}<span style="color: #98be65;">"</span>},
+                        json={
+                            <span style="color: #98be65;">"url"</span>: url,
+                            <span style="color: #98be65;">"tags"</span>: [<span style="color: #98be65;">"Bookmark"</span>]
+                        }
+                    )
+                    response.raise_for_status()
+                    logging.info(f<span style="color: #98be65;">"Successfully saved URL: </span>{url}<span style="color: #98be65;">"</span>)
+                <span style="color: #51afef;">except</span> requests.exceptions.RequestException <span style="color: #51afef;">as</span> e:
+                    logging.error(f<span style="color: #98be65;">"Failed to save URL </span>{url}<span style="color: #98be65;">: </span>{<span style="color: #c678dd;">str</span>(e)}<span style="color: #98be65;">"</span>)
 
         <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22914;&#26524;&#21457;&#29616;&#20102;&#26631;&#31614;&#65292;&#35302;&#21457;workflow</span>
         <span style="color: #51afef;">if</span> trigger_needed:
-            logging.info(<span style="color: #98be65;">"Found #savemd tag, triggering workflow"</span>)
+            logging.info(<span style="color: #98be65;">"Triggering workflow due to #2clip tag"</span>)
             trigger_workflow()
 
     <span style="color: #51afef;">except</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #51afef;">as</span> e:
@@ -160,9 +164,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgd8dd3d2" class="outline-3">
-<h3 id="orgd8dd3d2">workflow</h3>
-<div class="outline-text-3" id="text-orgd8dd3d2">
+<div id="outline-container-org9adc8af" class="outline-3">
+<h3 id="org9adc8af">workflow</h3>
+<div class="outline-text-3" id="text-org9adc8af">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
@@ -211,16 +215,16 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org8f00826" class="outline-2">
-<h2 id="org8f00826">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org8f00826">
+<div id="outline-container-orga99b297" class="outline-2">
+<h2 id="orga99b297">Readwise highlights</h2>
+<div class="outline-text-2" id="text-orga99b297">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-orgd2cb276" class="outline-3">
-<h3 id="orgd2cb276">python</h3>
-<div class="outline-text-3" id="text-orgd2cb276">
+<div id="outline-container-org0f9ef19" class="outline-3">
+<h3 id="org0f9ef19">python</h3>
+<div class="outline-text-3" id="text-org0f9ef19">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -481,9 +485,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org1e79b9a" class="outline-3">
-<h3 id="org1e79b9a">workflow</h3>
-<div class="outline-text-3" id="text-org1e79b9a">
+<div id="outline-container-org3271490" class="outline-3">
+<h3 id="org3271490">workflow</h3>
+<div class="outline-text-3" id="text-org3271490">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Sync Readwise Articles
