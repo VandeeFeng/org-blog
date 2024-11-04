@@ -45,27 +45,31 @@ document.addEventListener('DOMContentLoaded', function() {
 });*/
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 使用 WeakMap 存储状态和原始内容
     const originalContents = new WeakMap();
     const expandStates = new WeakMap();
     
     // 创建用于自动折叠的 Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
+            if (!entry.isIntersecting && entry.boundingClientRect.bottom <= 0) {
                 const block = entry.target;
-                const pre = block.querySelector('pre');
-                const expandButton = block.querySelector('.toggle-button');
-
-                // 检查当前是否是展开状态
+                
                 if (expandStates.get(block) === true) {
-                    // 在折叠之前记录当前滚动位置和元素位置
-                    const scrollTop = window.scrollY;
-                    const blockTop = block.getBoundingClientRect().top;
-                    const absoluteBlockTop = scrollTop + blockTop;
+                    const pre = block.querySelector('pre');
+                    const expandButton = block.querySelector('.toggle-button');
+                    
+                    // 记录代码块底部的位置
+                    const blockBottom = block.getBoundingClientRect().bottom;
+                    const absoluteBottom = window.scrollY + blockBottom;
 
                     // 获取原始内容并只显示前50行
                     const lines = originalContents.get(block).split('\n');
+                    
+                    // 使用绝对定位临时固定底部位置
+                    const originalPosition = window.getComputedStyle(block).position;
+                    block.style.position = 'relative';
+                    
+                    // 更新内容
                     pre.innerHTML = lines.slice(0, 50).join('\n');
                     pre.style.maxHeight = '400px';
 
@@ -77,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     ellipsis.textContent = '...';
                     ellipsis.className = 'code-ellipsis';
 
-                    // 重置按钮文本
                     if (expandButton) {
                         expandButton.textContent = 'Expand';
                         expandWrapper.appendChild(ellipsis);
@@ -87,21 +90,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // 更新状态
                     expandStates.set(block, false);
-
-                    // 在下一个微任务中调整滚动位置
+                    
+                    // 计算新的底部位置
+                    const newBottom = block.getBoundingClientRect().bottom;
+                    const newAbsoluteBottom = window.scrollY + newBottom;
+                    
+                    // 调整滚动位置，使折叠后的底部对齐原来的底部
+                    const adjustment = absoluteBottom - newAbsoluteBottom;
+                    if (adjustment !== 0) {
+                        window.scrollBy(0, -adjustment);
+                    }
+                    
+                    // 恢复原始定位
                     requestAnimationFrame(() => {
-                        // 计算高度变化
-                        const newBlockTop = block.getBoundingClientRect().top;
-                        const newAbsoluteBlockTop = window.scrollY + newBlockTop;
-                        const heightDifference = absoluteBlockTop - newAbsoluteBlockTop;
-                        
-                        // 调整滚动位置以保持相对位置不变
-                        if (heightDifference !== 0) {
-                            window.scrollTo({
-                                top: window.scrollY - heightDifference,
-                                behavior: 'instant' // 使用即时滚动避免动画
-                            });
-                        }
+                        block.style.position = originalPosition;
                     });
                 }
             }
@@ -112,8 +114,20 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0
     });
 
-    const codeBlocks = document.querySelectorAll('.org-src-container');
+    // 添加 CSS 样式以支持平滑过渡
+    const style = document.createElement('style');
+    style.textContent = `
+        .org-src-container {
+            transition: max-height 0.3s ease;
+        }
+        .org-src-container pre {
+            transition: max-height 0.3s ease;
+        }
+    `;
+    document.head.appendChild(style);
 
+    const codeBlocks = document.querySelectorAll('.org-src-container');
+    
     codeBlocks.forEach(block => {
         const pre = block.querySelector('pre');
         const originalHTML = pre.innerHTML;
@@ -156,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (lines.length > 50) {
             // 重置pre的内容为前50行
             pre.innerHTML = lines.slice(0, 50).join('\n');
+            pre.style.maxHeight = '400px';
 
             // 创建展开包装器
             const expandWrapper = document.createElement('div');
@@ -174,11 +189,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // 添加展开/折叠功能
             expandButton.addEventListener('click', () => {
                 const currentState = expandStates.get(block);
-                
-                // 记录点击时的滚动位置和元素位置
-                const scrollTop = window.scrollY;
-                const blockTop = block.getBoundingClientRect().top;
-                const absoluteBlockTop = scrollTop + blockTop;
+
+                // 记录底部位置
+                const blockBottom = block.getBoundingClientRect().bottom;
+                const absoluteBottom = window.scrollY + blockBottom;
 
                 if (!currentState) {
                     // 展开
@@ -201,19 +215,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     expandStates.set(block, false);
                 }
 
-                // 在布局更新后调整滚动位置
+                // 调整滚动位置以保持底部对齐
                 requestAnimationFrame(() => {
-                    // 计算新的位置和高度变化
-                    const newBlockTop = block.getBoundingClientRect().top;
-                    const newAbsoluteBlockTop = window.scrollY + newBlockTop;
-                    const heightDifference = absoluteBlockTop - newAbsoluteBlockTop;
-                    
-                    // 调整滚动位置
-                    if (heightDifference !== 0) {
-                        window.scrollTo({
-                            top: window.scrollY - heightDifference,
-                            behavior: 'instant'
-                        });
+                    const newBottom = block.getBoundingClientRect().bottom;
+                    const newAbsoluteBottom = window.scrollY + newBottom;
+                    const adjustment = absoluteBottom - newAbsoluteBottom;
+                    if (adjustment !== 0) {
+                        window.scrollBy(0, -adjustment);
                     }
                 });
             });
@@ -223,20 +231,8 @@ document.addEventListener('DOMContentLoaded', function() {
             expandWrapper.appendChild(expandButton);
             pre.appendChild(expandWrapper);
 
-            // 设置初始状态
-            pre.style.maxHeight = '400px';
-
             // 添加到观察器
             observer.observe(block);
-        }
-    });
-
-    // 为所有代码块添加语言标签
-    document.querySelectorAll('.org-src-container pre[class*="src-"]').forEach(pre => {
-        const lang = pre.className.match(/src-([\w-]+)/)?.[1];
-        if (lang && lang !== 'nil') {
-            pre.setAttribute('data-lang', lang);
-            pre.style.setProperty('--show-lang-label', 'block');
         }
     });
 });
