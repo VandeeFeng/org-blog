@@ -42,14 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
             pre.style.setProperty('--show-lang-label', 'block');
         }
     });
-});
-*/
+});*/
 
 document.addEventListener('DOMContentLoaded', function() {
     // 使用 WeakMap 存储状态和原始内容
     const originalContents = new WeakMap();
     const expandStates = new WeakMap();
-
+    
     // 创建用于自动折叠的 Intersection Observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -60,7 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // 检查当前是否是展开状态
                 if (expandStates.get(block) === true) {
-                    console.log('Block left viewport, collapsing...'); // 调试日志
+                    // 在折叠之前记录当前滚动位置和元素位置
+                    const scrollTop = window.scrollY;
+                    const blockTop = block.getBoundingClientRect().top;
+                    const absoluteBlockTop = scrollTop + blockTop;
 
                     // 获取原始内容并只显示前50行
                     const lines = originalContents.get(block).split('\n');
@@ -85,6 +87,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // 更新状态
                     expandStates.set(block, false);
+
+                    // 在下一个微任务中调整滚动位置
+                    requestAnimationFrame(() => {
+                        // 计算高度变化
+                        const newBlockTop = block.getBoundingClientRect().top;
+                        const newAbsoluteBlockTop = window.scrollY + newBlockTop;
+                        const heightDifference = absoluteBlockTop - newAbsoluteBlockTop;
+                        
+                        // 调整滚动位置以保持相对位置不变
+                        if (heightDifference !== 0) {
+                            window.scrollTo({
+                                top: window.scrollY - heightDifference,
+                                behavior: 'instant' // 使用即时滚动避免动画
+                            });
+                        }
+                    });
                 }
             }
         });
@@ -156,6 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // 添加展开/折叠功能
             expandButton.addEventListener('click', () => {
                 const currentState = expandStates.get(block);
+                
+                // 记录点击时的滚动位置和元素位置
+                const scrollTop = window.scrollY;
+                const blockTop = block.getBoundingClientRect().top;
+                const absoluteBlockTop = scrollTop + blockTop;
 
                 if (!currentState) {
                     // 展开
@@ -165,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     expandWrapper.innerHTML = '';
                     expandWrapper.appendChild(expandButton);
                     pre.appendChild(expandWrapper);
-                    expandStates.set(block, true);  // 更新状态为展开
+                    expandStates.set(block, true);
                 } else {
                     // 折叠
                     pre.innerHTML = lines.slice(0, 50).join('\n');
@@ -175,8 +198,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     expandWrapper.appendChild(ellipsis);
                     expandWrapper.appendChild(expandButton);
                     pre.appendChild(expandWrapper);
-                    expandStates.set(block, false);  // 更新状态为折叠
+                    expandStates.set(block, false);
                 }
+
+                // 在布局更新后调整滚动位置
+                requestAnimationFrame(() => {
+                    // 计算新的位置和高度变化
+                    const newBlockTop = block.getBoundingClientRect().top;
+                    const newAbsoluteBlockTop = window.scrollY + newBlockTop;
+                    const heightDifference = absoluteBlockTop - newAbsoluteBlockTop;
+                    
+                    // 调整滚动位置
+                    if (heightDifference !== 0) {
+                        window.scrollTo({
+                            top: window.scrollY - heightDifference,
+                            behavior: 'instant'
+                        });
+                    }
+                });
             });
 
             // 组装展开部分
