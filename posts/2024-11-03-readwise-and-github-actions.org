@@ -51,9 +51,9 @@ def get_added_content():
         raise
 
 def extract_url(line: str):
-    """从行中提取URL"""
-    # 更严格的URL提取模式
-    url_pattern = r'\((https?://[^\s)]+)\)'
+    """从行中提取URL，支持markdown格式的链接"""
+    # 更新后的URL提取模式
+    url_pattern = r'\((https?://[\w\-._~:/?#\[\]@!$&\'()*+,;=.%]+)\)'
     match = re.search(url_pattern, line)
     if match:
         return match.group(1)

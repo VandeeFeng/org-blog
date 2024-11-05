@@ -54,16 +54,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfd9dc56">结合之前的 bookmark-collection</a>
+<li><a href="#orgabb9d14">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#orgc905a65">python</a></li>
-<li><a href="#org9adc8af">workflow</a></li>
+<li><a href="#orga6509ee">python</a></li>
+<li><a href="#orgb875f61">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orga99b297">Readwise highlights</a>
+<li><a href="#org80b1430">Readwise highlights</a>
 <ul>
-<li><a href="#org0f9ef19">python</a></li>
-<li><a href="#org3271490">workflow</a></li>
+<li><a href="#orgc333b63">python</a></li>
+<li><a href="#org5dc1765">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -72,9 +72,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-orgfd9dc56" class="outline-2">
-<h2 id="orgfd9dc56">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-orgfd9dc56">
+<div id="outline-container-orgabb9d14" class="outline-2">
+<h2 id="orgabb9d14">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orgabb9d14">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -91,9 +91,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-orgc905a65" class="outline-3">
-<h3 id="orgc905a65">python</h3>
-<div class="outline-text-3" id="text-orgc905a65">
+<div id="outline-container-orga6509ee" class="outline-3">
+<h3 id="orga6509ee">python</h3>
+<div class="outline-text-3" id="text-orga6509ee">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -129,9 +129,9 @@ logging.basicConfig(
         <span style="color: #51afef;">raise</span>
 
 <span style="color: #51afef;">def</span> <span style="color: #c678dd;">extract_url</span>(line: <span style="color: #c678dd;">str</span>):
-    <span style="color: #83898d;">"""&#20174;&#34892;&#20013;&#25552;&#21462;URL"""</span>
-    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#20005;&#26684;&#30340;URL&#25552;&#21462;&#27169;&#24335;</span>
-    <span style="color: #dcaeea;">url_pattern</span> = r<span style="color: #98be65;">'\((https?://[^\s)]+)\)'</span>
+    <span style="color: #83898d;">"""&#20174;&#34892;&#20013;&#25552;&#21462;URL&#65292;&#25903;&#25345;markdown&#26684;&#24335;&#30340;&#38142;&#25509;"""</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#21518;&#30340;URL&#25552;&#21462;&#27169;&#24335;</span>
+    <span style="color: #dcaeea;">url_pattern</span> = r<span style="color: #98be65;">'\((https?://[\w\-._~:/?#\[\]@!$&amp;\'()*+,;=.%]+)\)'</span>
     <span style="color: #51afef;">match</span> = re.search(url_pattern, line)
     <span style="color: #51afef;">if</span> <span style="color: #51afef;">match</span>:
         <span style="color: #51afef;">return</span> <span style="color: #51afef;">match</span>.group(<span style="color: #da8548; font-weight: bold;">1</span>)
@@ -206,9 +206,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org9adc8af" class="outline-3">
-<h3 id="org9adc8af">workflow</h3>
-<div class="outline-text-3" id="text-org9adc8af">
+<div id="outline-container-orgb875f61" class="outline-3">
+<h3 id="orgb875f61">workflow</h3>
+<div class="outline-text-3" id="text-orgb875f61">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
@@ -257,16 +257,16 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orga99b297" class="outline-2">
-<h2 id="orga99b297">Readwise highlights</h2>
-<div class="outline-text-2" id="text-orga99b297">
+<div id="outline-container-org80b1430" class="outline-2">
+<h2 id="org80b1430">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org80b1430">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-org0f9ef19" class="outline-3">
-<h3 id="org0f9ef19">python</h3>
-<div class="outline-text-3" id="text-org0f9ef19">
+<div id="outline-container-orgc333b63" class="outline-3">
+<h3 id="orgc333b63">python</h3>
+<div class="outline-text-3" id="text-orgc333b63">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -527,9 +527,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org3271490" class="outline-3">
-<h3 id="org3271490">workflow</h3>
-<div class="outline-text-3" id="text-org3271490">
+<div id="outline-container-org5dc1765" class="outline-3">
+<h3 id="org5dc1765">workflow</h3>
+<div class="outline-text-3" id="text-org5dc1765">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Sync Readwise Articles
