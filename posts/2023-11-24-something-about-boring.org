@@ -3,7 +3,6 @@
 #+description:
 #+filetags: Philosophy Ramble Readings
 
-
 * 都是因为无聊
 
 在罗翔老师这个视频的最后[[https://www.bilibili.com/video/BV1584y1v7AH/][【罗翔】“网课爆破”犯了什么法？]]
