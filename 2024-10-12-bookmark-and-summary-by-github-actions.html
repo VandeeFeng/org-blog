@@ -56,14 +56,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org498e0a3">GitHub 书签</a></li>
-<li><a href="#org5392d53">从GitHub书签到页面</a></li>
+<li><a href="#orgba6cd83">GitHub 书签</a></li>
+<li><a href="#orga2e6a6d">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org498e0a3" class="outline-2">
-<h2 id="org498e0a3">GitHub 书签</h2>
-<div class="outline-text-2" id="text-org498e0a3">
+<div id="outline-container-orgba6cd83" class="outline-2">
+<h2 id="orgba6cd83">GitHub 书签</h2>
+<div class="outline-text-2" id="text-orgba6cd83">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -95,14 +95,14 @@ Github Actions 执行，首先 checkout 书签存储库和摘要存储库，然�
 </p>
 
 <p>
-process<sub>changes.py</sub>
+process_changes.py
 </p>
 
 <ol class="org-ol">
 <li>首先解析书签 README.md 文件，找到最近新增的条目标题和 URL</li>
 <li>将 URL 保存到 Wayback Machine</li>
-<li>输入 URL，使用 <a href="https://jina.ai/reader/">jina reader</a> API 获取网址的 Markdown 全文，并保存到 `YYYYMM/{title}<sub>raw.md</sub>`</li>
-<li>输入 URL，使用 LLM 生成列表摘要（prompt 在 `summarize<sub>text</sub>` 函数 <a href="https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80">link</a>）</li>
+<li>输入 URL，使用 <a href="https://jina.ai/reader/">jina reader</a> API 获取网址的 Markdown 全文，并保存到 `YYYYMM/{title}_raw.md`</li>
+<li>输入 URL，使用 LLM 生成列表摘要（prompt 在 `summarize_text` 函数 <a href="https://github.com/jerrylususu/bookmark-summary/blob/main/process_changes.py#L80">link</a>）</li>
 <li>输入列表摘要，使用 LLM 生成一句话总结</li>
 <li>将列表摘要和一句话总结保存到 `YYYYMM/{title}.md`（<a href="https://github.com/jerrylususu/bookmark-summary/blob/main/202410/2024-10-02-a-local-first-case-study-jakelazaroff.com.md">效果示例</a>）</li>
 <li>更新摘要存储库的 README.md，增加到摘要文件的链接</li>
@@ -117,7 +117,7 @@ process<sub>changes.py</sub>
 </p>
 
 
-<figure id="org1f72d78">
+<figure id="org824e6f6">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -353,15 +353,15 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org5392d53" class="outline-2">
-<h2 id="org5392d53">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org5392d53">
+<div id="outline-container-orga2e6a6d" class="outline-2">
+<h2 id="orga2e6a6d">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-orga2e6a6d">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="org573852c">
+<figure id="org87a3bf3">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -378,7 +378,9 @@ logging.basicConfig(
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>© 2022-2024 Vandee. Some rights reserved.</p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 

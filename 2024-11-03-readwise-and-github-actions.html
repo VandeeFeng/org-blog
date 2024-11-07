@@ -54,16 +54,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgabb9d14">结合之前的 bookmark-collection</a>
+<li><a href="#org9530781">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#orga6509ee">python</a></li>
-<li><a href="#orgb875f61">workflow</a></li>
+<li><a href="#org7c3c1b3">python</a></li>
+<li><a href="#orgf1aa1be">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org80b1430">Readwise highlights</a>
+<li><a href="#org2c4f981">Readwise highlights</a>
 <ul>
-<li><a href="#orgc333b63">python</a></li>
-<li><a href="#org5dc1765">workflow</a></li>
+<li><a href="#org41b411a">python</a></li>
+<li><a href="#org23f18a1">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -72,9 +72,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-orgabb9d14" class="outline-2">
-<h2 id="orgabb9d14">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-orgabb9d14">
+<div id="outline-container-org9530781" class="outline-2">
+<h2 id="org9530781">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-org9530781">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -91,9 +91,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-orga6509ee" class="outline-3">
-<h3 id="orga6509ee">python</h3>
-<div class="outline-text-3" id="text-orga6509ee">
+<div id="outline-container-org7c3c1b3" class="outline-3">
+<h3 id="org7c3c1b3">python</h3>
+<div class="outline-text-3" id="text-org7c3c1b3">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -206,9 +206,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgb875f61" class="outline-3">
-<h3 id="orgb875f61">workflow</h3>
-<div class="outline-text-3" id="text-orgb875f61">
+<div id="outline-container-orgf1aa1be" class="outline-3">
+<h3 id="orgf1aa1be">workflow</h3>
+<div class="outline-text-3" id="text-orgf1aa1be">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
@@ -257,16 +257,16 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org80b1430" class="outline-2">
-<h2 id="org80b1430">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org80b1430">
+<div id="outline-container-org2c4f981" class="outline-2">
+<h2 id="org2c4f981">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org2c4f981">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-orgc333b63" class="outline-3">
-<h3 id="orgc333b63">python</h3>
-<div class="outline-text-3" id="text-orgc333b63">
+<div id="outline-container-org41b411a" class="outline-3">
+<h3 id="org41b411a">python</h3>
+<div class="outline-text-3" id="text-org41b411a">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -527,9 +527,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org5dc1765" class="outline-3">
-<h3 id="org5dc1765">workflow</h3>
-<div class="outline-text-3" id="text-org5dc1765">
+<div id="outline-container-org23f18a1" class="outline-3">
+<h3 id="org23f18a1">workflow</h3>
+<div class="outline-text-3" id="text-org23f18a1">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Sync Readwise Articles
@@ -621,7 +621,9 @@ logging.basicConfig(
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>© 2022-2024 Vandee. Some rights reserved.</p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 

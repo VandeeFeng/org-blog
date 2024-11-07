@@ -56,35 +56,35 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7fd7b55">Intro</a></li>
-<li><a href="#org826678b">Manual</a>
+<li><a href="#org23a62f7">Intro</a></li>
+<li><a href="#org342b6e1">Manual</a>
 <ul>
-<li><a href="#orgb0917dc">Prerequisites</a></li>
-<li><a href="#org8626d7b">PKM</a>
+<li><a href="#org2616e4c">Prerequisites</a></li>
+<li><a href="#org9bfcd20">PKM</a>
 <ul>
-<li><a href="#org05434ae">Principles</a></li>
-<li><a href="#org756b5d1">Methods</a></li>
+<li><a href="#orge9aa487">Principles</a></li>
+<li><a href="#org9e63775">Methods</a></li>
 </ul>
 </li>
-<li><a href="#orgdb7950b">PKM with LLM</a>
+<li><a href="#orgf583bb3">PKM with LLM</a>
 <ul>
-<li><a href="#org4c20d47">Ollama</a></li>
-<li><a href="#org63d3f7e">Open WebUI</a></li>
-<li><a href="#orgb35dcc7">Aider</a></li>
-<li><a href="#org403b4dc">gptel</a></li>
-<li><a href="#orga081dd4"><b>Kotaemon</b></a></li>
+<li><a href="#orge675af3">Ollama</a></li>
+<li><a href="#orgd351dc8">Open WebUI</a></li>
+<li><a href="#orgbe2293b">Aider</a></li>
+<li><a href="#org8b17734">gptel</a></li>
+<li><a href="#org8832ce9"><b>Kotaemon</b></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org5ed4c76">ChangeLog</a></li>
-<li><a href="#org95d539f">Thanks</a></li>
+<li><a href="#org653a6f0">ChangeLog</a></li>
+<li><a href="#org32a436b">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org7fd7b55" class="outline-2">
-<h2 id="org7fd7b55">Intro</h2>
-<div class="outline-text-2" id="text-org7fd7b55">
+<div id="outline-container-org23a62f7" class="outline-2">
+<h2 id="org23a62f7">Intro</h2>
+<div class="outline-text-2" id="text-org23a62f7">
 <blockquote>
 <p>
 For me, taking notes helps make sure that I’m really thinking hard about what’s in there. If I disagree with the book, sometimes it takes a long time to read the books because I’m writing so much in the margin. <a href="https://youtu.be/eTFy8RnUkoU?t=11">Bill Gates</a>
@@ -124,9 +124,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 </p>
 </div>
 </div>
-<div id="outline-container-org826678b" class="outline-2">
-<h2 id="org826678b">Manual</h2>
-<div class="outline-text-2" id="text-org826678b">
+<div id="outline-container-org342b6e1" class="outline-2">
+<h2 id="org342b6e1">Manual</h2>
+<div class="outline-text-2" id="text-org342b6e1">
 <p>
 这是一个以 <a href="https://zh.wikipedia.org/wiki/Emacs">Emacs</a> 为基础编辑器、文件管理的Org-mode本地笔记PKM。
 </p>
@@ -145,9 +145,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 <li>PKM-with-LLM：PKM和大语言模型结合的使用、ollama、RAG(待更新)</li>
 </ul>
 </div>
-<div id="outline-container-orgb0917dc" class="outline-3">
-<h3 id="orgb0917dc">Prerequisites</h3>
-<div class="outline-text-3" id="text-orgb0917dc">
+<div id="outline-container-org2616e4c" class="outline-3">
+<h3 id="org2616e4c">Prerequisites</h3>
+<div class="outline-text-3" id="text-org2616e4c">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>，<a href="https://github.com/doomemacs/doomemacs">doomemacs</a>，<a href="https://orgmode.org/">Org mode for GNU Emacs</a>，<a href="https://www.orgroam.com/">Org-roam</a>。
 </p>
@@ -159,7 +159,7 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://w
 <ul class="org-ul">
 <li><a href="https://github.com/doomemacs/doomemacs/tree/master">GitHub - doomemacs/doomemacs: An Emacs framework for the stubborn martian hacker</a></li>
 
-<li><a href="https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org#on-windows">doomemacs/docs/getting<sub>started.org</sub> at master · doomemacs/doomemacs · GitHub</a></li>
+<li><a href="https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org#on-windows">doomemacs/docs/getting_started.org at master · doomemacs/doomemacs · GitHub</a></li>
 
 <li><a href="https://www.gnu.org/software/emacs/manual/">GNU Emacs Manuals Online</a></li>
 
@@ -199,9 +199,9 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://w
 </p>
 </div>
 </div>
-<div id="outline-container-org8626d7b" class="outline-3">
-<h3 id="org8626d7b">PKM</h3>
-<div class="outline-text-3" id="text-org8626d7b">
+<div id="outline-container-org9bfcd20" class="outline-3">
+<h3 id="org9bfcd20">PKM</h3>
+<div class="outline-text-3" id="text-org9bfcd20">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -219,7 +219,7 @@ Januarys用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="orgfefbbfc">
+<figure id="org7c25ba2">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -252,9 +252,9 @@ Stay foolish，stay simple。
 本地笔记没有在线笔记软件方便的地方就是多端同步与预览。我的本地笔记已经上传到了GitHub仓库，通过Git同步。临时需要修改的直接在GitHub仓库里就修改了。预览方面，我的笔记输出到了 <a href="https://wiki.vandee.art">Vandee — Wiki</a>
 </p>
 </div>
-<div id="outline-container-org05434ae" class="outline-4">
-<h4 id="org05434ae">Principles</h4>
-<div class="outline-text-4" id="text-org05434ae">
+<div id="outline-container-orge9aa487" class="outline-4">
+<h4 id="orge9aa487">Principles</h4>
+<div class="outline-text-4" id="text-orge9aa487">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -292,9 +292,9 @@ Stay foolish，stay simple。
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org756b5d1" class="outline-4">
-<h4 id="org756b5d1">Methods</h4>
-<div class="outline-text-4" id="text-org756b5d1">
+<div id="outline-container-org9e63775" class="outline-4">
+<h4 id="org9e63775">Methods</h4>
+<div class="outline-text-4" id="text-org9e63775">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -329,14 +329,14 @@ Emacs，org-roam，模板创建Daily和note：
 </p>
 
 
-<figure id="orge59412b">
+<figure id="orgc55c37c">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 <ul class="org-ul">
-<li><a id="orgccf1896"></a>Org-tag<br>
-<div class="outline-text-5" id="text-orgccf1896">
+<li><a id="orgd686db3"></a>Org-tag<br>
+<div class="outline-text-5" id="text-orgd686db3">
 <p>
 org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的*标签的统一性*，大小写或者单复数不统一会很麻烦。
 </p>
@@ -440,8 +440,8 @@ Ref:
 </ul>
 </div>
 </li>
-<li><a id="org89b903f"></a>Org-agenda<br>
-<div class="outline-text-5" id="text-org89b903f">
+<li><a id="org059ec9a"></a>Org-agenda<br>
+<div class="outline-text-5" id="text-org059ec9a">
 <p>
 最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用 <code>#TODO</code> 来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 </p>
@@ -470,14 +470,14 @@ Ref:
 这是现在的样子：
 </p>
 
-<figure id="orgbff23a2">
+<figure id="org052ee32">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-06-15%2011.28.09.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </li>
-<li><a id="org1a5a80d"></a>TODOs<br>
-<div class="outline-text-5" id="text-org1a5a80d">
+<li><a id="org2e01baf"></a>TODOs<br>
+<div class="outline-text-5" id="text-org2e01baf">
 <ul class="org-ul">
 <li><p>
 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入~<code>[/]</code>~或者~<code>[%]</code>~。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
@@ -589,8 +589,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org5ec3cb9"></a>Org-capture<br>
-<div class="outline-text-5" id="text-org5ec3cb9">
+<li><a id="org4d95b1c"></a>Org-capture<br>
+<div class="outline-text-5" id="text-org4d95b1c">
 <p>
 <a href="https://orgmode.org/manual/Capture.html">Org-capture</a> 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 </p>
@@ -694,14 +694,14 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org3498283"></a>Org-roam<br>
-<div class="outline-text-5" id="text-org3498283">
+<li><a id="org0b031d5"></a>Org-roam<br>
+<div class="outline-text-5" id="text-org0b031d5">
 <p>
 <a href="https://www.orgroam.com/">Org-roam</a> 是Emacs的一个包，也是org-mode 的扩展，可以简单的实现双链，通过org-roam-ui直观的预览。
 </p>
 
 
-<figure id="orgd393674">
+<figure id="org183a84b">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam-ui-2024-05-22%2013.31.40.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -817,8 +817,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="orgfe8f718"></a>Org-export<br>
-<div class="outline-text-5" id="text-orgfe8f718">
+<li><a id="org552951a"></a>Org-export<br>
+<div class="outline-text-5" id="text-org552951a">
 <p>
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些<a href="https://orgmode.org/zh-CN/tools.html">工具</a> 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 </p>
@@ -879,8 +879,8 @@ Ref：<a href="https://orgmode.org/manual/Exporting.html">Exporting (The Org Man
 </p>
 </div>
 </li>
-<li><a id="org187a16b"></a>Org with Zotero<br>
-<div class="outline-text-5" id="text-org187a16b">
+<li><a id="orge71ec8b"></a>Org with Zotero<br>
+<div class="outline-text-5" id="text-orge71ec8b">
 <p>
 书和论文的PDF文件，我现在全部放在<a href="https://www.zotero.org/">Zotero</a>。快速复制单个笔记到org-mode也挺简单：
 </p>
@@ -942,8 +942,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="orgccf4957"></a>Org-mode美化<br>
-<div class="outline-text-5" id="text-orgccf4957">
+<li><a id="org4ebfa1a"></a>Org-mode美化<br>
+<div class="outline-text-5" id="text-org4ebfa1a">
 <p>
 我觉得原生的就挺好看，可读性也还好。
 </p>
@@ -989,8 +989,8 @@ Ref：
 </div>
 </div>
 </li>
-<li><a id="org57c75ef"></a>Org-protocol<br>
-<div class="outline-text-5" id="text-org57c75ef">
+<li><a id="org1486572"></a>Org-protocol<br>
+<div class="outline-text-5" id="text-org1486572">
 <p>
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 </p>
@@ -1042,14 +1042,14 @@ Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的appl
 </ul>
 </div>
 </li>
-<li><a id="org261c09b"></a>网页摘录和after-reading<br>
-<div class="outline-text-5" id="text-org261c09b">
+<li><a id="org02e1b1e"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-org02e1b1e">
 <p>
 利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 </p>
 
 
-<figure id="org57071e7">
+<figure id="org2b4f3bd">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -1088,8 +1088,8 @@ after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org8b1fb95"></a>tools<br>
-<div class="outline-text-6" id="text-org8b1fb95">
+<li><a id="org60fcd9a"></a>tools<br>
+<div class="outline-text-6" id="text-org60fcd9a">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -1136,15 +1136,15 @@ Reader does two things:
 </li>
 </ul>
 </li>
-<li><a id="orgfcd7693"></a>输入法设置<br>
-<div class="outline-text-5" id="text-orgfcd7693">
+<li><a id="orgc7fa8fd"></a>输入法设置<br>
+<div class="outline-text-5" id="text-orgc7fa8fd">
 <p>
 由于使用了evil，如果使用系统的输入法，每次在~:w~保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgfc61749"></a>SIS<br>
-<div class="outline-text-6" id="text-orgfc61749">
+<li><a id="org8e5d8cb"></a>SIS<br>
+<div class="outline-text-6" id="text-org8e5d8cb">
 <p>
 <a href="https://github.com/laishulu/emacs-smart-input-source">emacs-smart-input-source</a> 是一个可以自动切换输入法的Emacs包。
 </p>
@@ -1186,8 +1186,8 @@ Reader does two things:
 </div>
 </div>
 </li>
-<li><a id="org287ae82"></a>pyim<br>
-<div class="outline-text-6" id="text-org287ae82">
+<li><a id="org675bbd7"></a>pyim<br>
+<div class="outline-text-6" id="text-org675bbd7">
 <p>
 <a href="https://github.com/tumashu/pyim">pyim</a> 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 </p>
@@ -1273,8 +1273,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org5a3c083"></a>RIME<br>
-<div class="outline-text-6" id="text-org5a3c083">
+<li><a id="orge865edd"></a>RIME<br>
+<div class="outline-text-6" id="text-orge865edd">
 <p class="img" width="50%" height="50%">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-07-03%2018.58.44.png%20" class="img" width="50%" height="50%">
 如果说PKM是纸，那么输入法就是笔。
@@ -1378,8 +1378,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 </li>
 </ul>
 </li>
-<li><a id="org342ad99"></a>Others<br>
-<div class="outline-text-5" id="text-org342ad99">
+<li><a id="org276042b"></a>Others<br>
+<div class="outline-text-5" id="text-org276042b">
 <ul class="org-ul">
 <li><a href="https://github.com/lijigang/100-questions-about-orgmode">lijigang/100-questions-about-orgmode: It&rsquo;s all about <b>orgmode</b> !</a></li>
 
@@ -1448,9 +1448,9 @@ Emacs里的其他笔记相关使用包
 </ul>
 </div>
 </div>
-<div id="outline-container-orgdb7950b" class="outline-3">
-<h3 id="orgdb7950b">PKM with LLM</h3>
-<div class="outline-text-3" id="text-orgdb7950b">
+<div id="outline-container-orgf583bb3" class="outline-3">
+<h3 id="orgf583bb3">PKM with LLM</h3>
+<div class="outline-text-3" id="text-orgf583bb3">
 <p>
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
 </p>
@@ -1472,7 +1472,7 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="org5ce8d8d">
+<figure id="org6954828">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -1482,14 +1482,14 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="org598f9f1">
+<figure id="orged1ce69">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
-<div id="outline-container-org4c20d47" class="outline-4">
-<h4 id="org4c20d47">Ollama</h4>
-<div class="outline-text-4" id="text-org4c20d47">
+<div id="outline-container-orge675af3" class="outline-4">
+<h4 id="orge675af3">Ollama</h4>
+<div class="outline-text-4" id="text-orge675af3">
 <p>
 <a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 </p>
@@ -1511,9 +1511,9 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 </ul>
 </div>
 </div>
-<div id="outline-container-org63d3f7e" class="outline-4">
-<h4 id="org63d3f7e">Open WebUI</h4>
-<div class="outline-text-4" id="text-org63d3f7e">
+<div id="outline-container-orgd351dc8" class="outline-4">
+<h4 id="orgd351dc8">Open WebUI</h4>
+<div class="outline-text-4" id="text-orgd351dc8">
 <p>
 <a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 </p>
@@ -1527,13 +1527,13 @@ Open WebUI 在2024-10-06的版本中<a href="https://github.com/open-webui/open-
 </p>
 
 
-<figure id="org397ceeb">
+<figure id="org25c664d">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-03.png" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="org1ea8a93">
+<figure id="org1f41767">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-41.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -1607,9 +1607,9 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 </p>
 </div>
 </div>
-<div id="outline-container-orgb35dcc7" class="outline-4">
-<h4 id="orgb35dcc7">Aider</h4>
-<div class="outline-text-4" id="text-orgb35dcc7">
+<div id="outline-container-orgbe2293b" class="outline-4">
+<h4 id="orgbe2293b">Aider</h4>
+<div class="outline-text-4" id="text-orgbe2293b">
 <p>
 <a href="https://github.com/Aider-AI/aider">Aider</a> 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个<a href="https://github.com/tninja/aider.el">aider.el</a>。
 </p>
@@ -1661,15 +1661,15 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 </div>
 </div>
-<div id="outline-container-org403b4dc" class="outline-4">
-<h4 id="org403b4dc">gptel</h4>
-<div class="outline-text-4" id="text-org403b4dc">
+<div id="outline-container-org8b17734" class="outline-4">
+<h4 id="org8b17734">gptel</h4>
+<div class="outline-text-4" id="text-org8b17734">
 <p>
 <a href="https://github.com/karthink/gptel">gptel: A simple LLM client for Emacs</a> 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 </p>
 
 
-<figure id="orgc6802a8">
+<figure id="orge2b8833">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/ollama-emacs.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -1679,7 +1679,7 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 
 
-<figure id="orgc1bf85a">
+<figure id="orgea33784">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/gptel-summary.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -1760,9 +1760,9 @@ Ref: <a href="https://github.com/karthink/gptel?tab=readme-ov-file#include-more-
 </div>
 </div>
 </div>
-<div id="outline-container-orga081dd4" class="outline-4">
-<h4 id="orga081dd4"><b>Kotaemon</b></h4>
-<div class="outline-text-4" id="text-orga081dd4">
+<div id="outline-container-org8832ce9" class="outline-4">
+<h4 id="org8832ce9"><b>Kotaemon</b></h4>
+<div class="outline-text-4" id="text-org8832ce9">
 <p>
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 </p>
@@ -1801,9 +1801,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </div>
 </div>
 </div>
-<div id="outline-container-org5ed4c76" class="outline-2">
-<h2 id="org5ed4c76">ChangeLog</h2>
-<div class="outline-text-2" id="text-org5ed4c76">
+<div id="outline-container-org653a6f0" class="outline-2">
+<h2 id="org653a6f0">ChangeLog</h2>
+<div class="outline-text-2" id="text-org653a6f0">
 <ul class="org-ul">
 <li><p>
 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如<a href="https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el">dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs</a>这是一个把org-roam和Logseq联用的el。
@@ -1826,9 +1826,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </ul>
 </div>
 </div>
-<div id="outline-container-org95d539f" class="outline-2">
-<h2 id="org95d539f">Thanks</h2>
-<div class="outline-text-2" id="text-org95d539f">
+<div id="outline-container-org32a436b" class="outline-2">
+<h2 id="org32a436b">Thanks</h2>
+<div class="outline-text-2" id="text-org32a436b">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>
@@ -1849,7 +1849,9 @@ Imagining and creating！
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/tag-org.html">Org</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>© 2022-2024 Vandee. Some rights reserved.</p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 
