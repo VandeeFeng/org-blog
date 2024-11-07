@@ -1,7 +1,7 @@
 #+title: 我的 PKM 构建 Log
 #+date: <2024-11-01 12:45>
 #+description:
-#+filetags: PKM
+#+filetags: PKM Blog
 
 
 * 前言
