@@ -6,10 +6,10 @@
       type="application/rss+xml"
       href="https://www.vandee.art/rss.xml"
       title="RSS feed for https://www.vandee.art/">
-<title>Readwise 和 GitHub Actions 联用 - 流动知识检索</title>
-<meta property="og:title" content="Readwise 和 GitHub Actions 联用 - 流动知识检索">
+<title>数据库的搭建 - 流动知识检索</title>
+<meta property="og:title" content="数据库的搭建 - 流动知识检索">
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.vandee.art/2024-11-03-readwise-and-github-actions.html">
+<meta property="og:url" content="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="no-referrer">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,32 +49,47 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">03 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-11-03-readwise-and-github-actions.html">Readwise 和 GitHub Actions 联用 - 流动知识检索</a></h1>
+<div class="post-date">10 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">数据库的搭建 - 流动知识检索</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2176327">结合之前的 bookmark-collection</a>
+<li><a href="#org490d3a4">同步保存到 Readwise</a>
 <ul>
-<li><a href="#orgcaad012">python</a></li>
-<li><a href="#org96f61cb">workflow</a></li>
+<li><a href="#org9fa2b7b">python</a></li>
+<li><a href="#org9646b73">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org2227510">Readwise highlights</a>
+<li><a href="#orgdc67e56">PocketBase</a>
 <ul>
-<li><a href="#org9df93b3">python</a></li>
-<li><a href="#orgaca2ec2">workflow</a></li>
+<li><a href="#org7b543bb">docker 部署到 VPS</a></li>
+<li><a href="#org06a5f32">Python</a></li>
+<li><a href="#orgf8b0d73">workflow</a></li>
+</ul>
+</li>
+<li><a href="#org8362f78">Readwise highlights</a>
+<ul>
+<li><a href="#org28e6db7">python</a></li>
+<li><a href="#orgb8822e5">workflow</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 <p>
-Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
+Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。而这些流动知识的数据越来越多，以 10 年 20 年来度量，必须用数据库来完善和管理了，也是碰巧看到了这个项目：<a href="https://github.com/pocketbase/pocketbase">pocketbase/pocketbase: Open Source realtime backend in 1 file</a> ,很简洁的管理 UI，支持 S3 数据备份，支持 API 导入和导出。
 </p>
-<div id="outline-container-org2176327" class="outline-2">
-<h2 id="org2176327">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org2176327">
+
+<p>
+在 Claude 的协助下，有了现在的方案。
+</p>
+
+<p>
+主要思路：利用 GitHub 为中转站， <code>osmos::memos</code> 插件保存文章，同步保存到 Readwise 进行阅读和高亮，再同步保存到 pocketbase 做数据库处理。
+</p>
+<div id="outline-container-org490d3a4" class="outline-2">
+<h2 id="org490d3a4">同步保存到 Readwise</h2>
+<div class="outline-text-2" id="text-org490d3a4">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -91,9 +106,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-orgcaad012" class="outline-3">
-<h3 id="orgcaad012">python</h3>
-<div class="outline-text-3" id="text-orgcaad012">
+<div id="outline-container-org9fa2b7b" class="outline-3">
+<h3 id="org9fa2b7b">python</h3>
+<div class="outline-text-3" id="text-org9fa2b7b">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -206,9 +221,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org96f61cb" class="outline-3">
-<h3 id="org96f61cb">workflow</h3>
-<div class="outline-text-3" id="text-org96f61cb">
+<div id="outline-container-org9646b73" class="outline-3">
+<h3 id="org9646b73">workflow</h3>
+<div class="outline-text-3" id="text-org9646b73">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
@@ -257,16 +272,264 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org2227510" class="outline-2">
-<h2 id="org2227510">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org2227510">
+<div id="outline-container-orgdc67e56" class="outline-2">
+<h2 id="orgdc67e56">PocketBase</h2>
+<div class="outline-text-2" id="text-orgdc67e56">
+<p>
+需要在仓库的 secret 里增加 <code>POCKETBASE_TOKEN</code> 、 <code>POCKETBASE_API</code> 两个secert，填入自己的 pocketbase API 地址和请求头。
+</p>
+
+<p>
+这个请求头我也是看了好半天文档才弄明白：
+</p>
+
+<p>
+你需要在指定的 collection 的 API Rules 里，手动加上 <code>@request.headers.x_token = "Your_token"</code> ,这里填入的内容就是 <code>POCKETBASE_TOKEN</code> ， <code>POCKETBASE_API</code> 在每个 collection 里会显示。
+</p>
+
+<p>
+由于这里指定了 header，在 python 的部分就得特别处理：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #dcaeea;">second_response</span> = requests.post(
+    url=os.environ[<span style="color: #98be65;">'POCKETBASE_API'</span>],
+    headers={
+        <span style="color: #98be65;">"x_token"</span>: f<span style="color: #98be65;">"</span>{os.environ['POCKETBASE_TOKEN']}<span style="color: #98be65;">"</span>,
+        <span style="color: #98be65;">"Content-Type"</span>: <span style="color: #98be65;">"application/json"</span>
+    },
+    json={
+        <span style="color: #98be65;">"URL"</span>: url,
+        <span style="color: #98be65;">"title"</span>: title
+    }
+)
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org7b543bb" class="outline-3">
+<h3 id="org7b543bb">docker 部署到 VPS</h3>
+<div class="outline-text-3" id="text-org7b543bb">
+<div class="org-src-container">
+<pre class="src src-yaml">
+<span style="color: #dcaeea;">version</span>: <span style="color: #98be65;">"3.7"</span>
+<span style="color: #dcaeea;">services</span>:
+  <span style="color: #dcaeea;">pocketbase</span>:
+    <span style="color: #dcaeea;">image</span>: ghcr.io/muchobien/pocketbase:latest
+    <span style="color: #dcaeea;">container_name</span>: pocketbase
+    <span style="color: #dcaeea;">restart</span>: unless-stopped
+    <span style="color: #dcaeea;">ports</span>:
+      - <span style="color: #98be65;">"8090:8090"</span>
+    <span style="color: #dcaeea;">volumes</span>:
+      - <span style="color: #98be65;">"./data:/pb_data"</span>
+    <span style="color: #dcaeea;">healthcheck</span>: <span style="color: #5B6268;">#</span><span style="color: #5B6268;">optional (recommended) since v0.10.0</span>
+      <span style="color: #dcaeea;">test</span>: wget --no-verbose --tries=1 --spider http://localhost:8090/api/health || exit 1
+      <span style="color: #dcaeea;">interval</span>: 5s
+      <span style="color: #dcaeea;">timeout</span>: 5s
+      <span style="color: #dcaeea;">retries</span>: 5
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org06a5f32" class="outline-3">
+<h3 id="org06a5f32">Python</h3>
+<div class="outline-text-3" id="text-org06a5f32">
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #51afef;">import</span> os
+<span style="color: #51afef;">import</span> re
+<span style="color: #51afef;">import</span> logging
+<span style="color: #51afef;">import</span> requests
+<span style="color: #51afef;">from</span> github <span style="color: #51afef;">import</span> Github
+
+logging.basicConfig(
+    level=logging.INFO,
+    <span style="color: #c678dd;">format</span>=<span style="color: #98be65;">'%(asctime)s - %(message)s'</span>,
+    datefmt=<span style="color: #98be65;">'%Y-%m-%d %H:%M:%S'</span>
+)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_added_content</span>():
+    <span style="color: #83898d;">"""&#33719;&#21462;&#36825;&#27425;&#25552;&#20132;&#26032;&#22686;&#30340;&#20869;&#23481;"""</span>
+    <span style="color: #51afef;">try</span>:
+        <span style="color: #dcaeea;">g</span> = Github(os.environ[<span style="color: #98be65;">'GITHUB_TOKEN'</span>])
+        <span style="color: #dcaeea;">repo</span> = g.get_repo(os.environ[<span style="color: #98be65;">'GITHUB_REPOSITORY'</span>])
+        <span style="color: #dcaeea;">commit_sha</span> = os.environ.get(<span style="color: #98be65;">'GITHUB_SHA'</span>)
+        <span style="color: #dcaeea;">commit</span> = repo.get_commit(commit_sha)
+        <span style="color: #51afef;">for</span> <span style="color: #c678dd;">file</span> <span style="color: #51afef;">in</span> commit.files:
+            <span style="color: #51afef;">if</span> <span style="color: #c678dd;">file</span>.filename.endswith(<span style="color: #98be65;">'.md'</span>):
+                <span style="color: #51afef;">if</span> <span style="color: #c678dd;">file</span>.patch <span style="color: #51afef;">and</span> <span style="color: #98be65;">'+'</span> <span style="color: #51afef;">in</span> <span style="color: #c678dd;">file</span>.patch:
+                    <span style="color: #dcaeea;">added_lines</span> = [line[<span style="color: #da8548; font-weight: bold;">1</span>:] <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> <span style="color: #c678dd;">file</span>.patch.split(<span style="color: #98be65;">'</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">'</span>)
+                                 <span style="color: #51afef;">if</span> line.startswith(<span style="color: #98be65;">'+'</span>) <span style="color: #51afef;">and</span> <span style="color: #51afef;">not</span> line.startswith(<span style="color: #98be65;">'+++'</span>)]
+                    <span style="color: #51afef;">return</span> added_lines
+        <span style="color: #51afef;">return</span> []
+    <span style="color: #51afef;">except</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #51afef;">as</span> e:
+        logging.error(f<span style="color: #98be65;">"Error getting commit content: </span>{<span style="color: #c678dd;">str</span>(e)}<span style="color: #98be65;">"</span>)
+        <span style="color: #51afef;">raise</span>
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">extract_url_and_title</span>(line: <span style="color: #c678dd;">str</span>):
+    <span style="color: #83898d;">"""&#20174;&#34892;&#20013;&#25552;&#21462;URL&#21644;&#26631;&#39064;&#65292;&#25903;&#25345;markdown&#26684;&#24335;&#30340;&#38142;&#25509; [title](url)"""</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#21518;&#30340;&#25552;&#21462;&#27169;&#24335;&#65292;&#21516;&#26102;&#33719;&#21462;&#26631;&#39064;&#21644;URL</span>
+    <span style="color: #dcaeea;">pattern</span> = r<span style="color: #98be65;">'\[(.*?)\]\((https?://[\w\-._~:/?#\[\]@!$&amp;\'()*+,;=.%]+)\)'</span>
+    <span style="color: #51afef;">match</span> = re.search(pattern, line)
+    <span style="color: #51afef;">if</span> <span style="color: #51afef;">match</span>:
+        <span style="color: #dcaeea;">title</span> = <span style="color: #51afef;">match</span>.group(<span style="color: #da8548; font-weight: bold;">1</span>)
+        <span style="color: #dcaeea;">url</span> = <span style="color: #51afef;">match</span>.group(<span style="color: #da8548; font-weight: bold;">2</span>)
+        <span style="color: #51afef;">return</span> url, title
+    <span style="color: #51afef;">return</span> <span style="color: #a9a1e1;">None</span>, <span style="color: #a9a1e1;">None</span>
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">has_clip_tag</span>(line: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">bool</span>:
+    <span style="color: #83898d;">"""&#26816;&#26597;&#26159;&#21542;&#21253;&#21547; #2clip &#26631;&#31614;"""</span>
+    <span style="color: #51afef;">return</span> <span style="color: #c678dd;">bool</span>(re.search(r<span style="color: #98be65;">'#2clip\b'</span>, line))
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">trigger_workflow</span>():
+    <span style="color: #83898d;">"""&#35302;&#21457;&#21478;&#19968;&#20010;workflow"""</span>
+    <span style="color: #51afef;">try</span>:
+        <span style="color: #dcaeea;">g</span> = Github(os.environ[<span style="color: #98be65;">'GITHUB_TOKEN'</span>])
+        <span style="color: #dcaeea;">repo</span> = g.get_repo(os.environ[<span style="color: #98be65;">'GITHUB_REPOSITORY'</span>])
+        <span style="color: #dcaeea;">workflow</span> = repo.get_workflow(<span style="color: #98be65;">"bookmark_summary.yml"</span>)
+        workflow.create_dispatch(<span style="color: #98be65;">"main"</span>)
+        logging.info(<span style="color: #98be65;">"Successfully triggered the bookmark_summary workflow"</span>)
+    <span style="color: #51afef;">except</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #51afef;">as</span> e:
+        logging.error(f<span style="color: #98be65;">"Failed to trigger workflow: </span>{<span style="color: #c678dd;">str</span>(e)}<span style="color: #98be65;">"</span>)
+        <span style="color: #51afef;">raise</span>
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">main</span>():
+    <span style="color: #51afef;">try</span>:
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#33719;&#21462;&#25152;&#26377;&#26032;&#22686;&#30340;&#20869;&#23481;</span>
+        <span style="color: #dcaeea;">added_lines</span> = get_added_content()
+        <span style="color: #51afef;">if</span> <span style="color: #51afef;">not</span> added_lines:
+            logging.info(<span style="color: #98be65;">"No new markdown content found in this commit"</span>)
+            <span style="color: #51afef;">return</span>
+
+        <span style="color: #dcaeea;">trigger_needed</span> = <span style="color: #a9a1e1;">False</span>
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22788;&#29702;&#27599;&#19968;&#34892;&#26032;&#22686;&#30340;&#20869;&#23481;</span>
+        <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> added_lines:
+            <span style="color: #dcaeea;">line</span> = line.strip()
+            logging.info(f<span style="color: #98be65;">"Processing line: </span>{line}<span style="color: #98be65;">"</span>)
+
+            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#26631;&#31614;</span>
+            <span style="color: #51afef;">if</span> has_clip_tag(line):
+                <span style="color: #dcaeea;">trigger_needed</span> = <span style="color: #a9a1e1;">True</span>
+                logging.info(<span style="color: #98be65;">"Found #2clip tag"</span>)
+
+            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#21462;&#24182;&#22788;&#29702;URL&#21644;&#26631;&#39064;&#65288;&#26080;&#35770;&#26159;&#21542;&#26377;&#26631;&#31614;&#65289;</span>
+            <span style="color: #dcaeea;">url</span>, <span style="color: #dcaeea;">title</span> = extract_url_and_title(line)
+            <span style="color: #51afef;">if</span> url:
+                <span style="color: #51afef;">try</span>:
+                    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21457;&#36865;&#21040; Readwise</span>
+                    <span style="color: #dcaeea;">response</span> = requests.post(
+                        url=<span style="color: #98be65;">"https://readwise.io/api/v3/save/"</span>,
+                        headers={<span style="color: #98be65;">"Authorization"</span>: f<span style="color: #98be65;">"Token </span>{os.environ['READWISE_TOKEN']}<span style="color: #98be65;">"</span>},
+                        json={
+                            <span style="color: #98be65;">"url"</span>: url,
+                            <span style="color: #98be65;">"tags"</span>: [<span style="color: #98be65;">"Bookmark"</span>]
+                        }
+                    )
+                    response.raise_for_status()
+                    logging.info(f<span style="color: #98be65;">"Successfully saved URL to Readwise: </span>{url}<span style="color: #98be65;">"</span>)
+
+                    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21457;&#36865;&#21040;&#31532;&#20108;&#20010; API endpoint</span>
+                    <span style="color: #dcaeea;">second_response</span> = requests.post(
+                        url=os.environ[<span style="color: #98be65;">'POCKETBASE_API'</span>],
+                        headers={
+                            <span style="color: #98be65;">"x_token"</span>: f<span style="color: #98be65;">"</span>{os.environ['POCKETBASE_TOKEN']}<span style="color: #98be65;">"</span>,
+                            <span style="color: #98be65;">"Content-Type"</span>: <span style="color: #98be65;">"application/json"</span>
+                        },
+                        json={
+                            <span style="color: #98be65;">"URL"</span>: url,
+                            <span style="color: #98be65;">"title"</span>: title
+                        }
+                    )
+                    second_response.raise_for_status()
+                    logging.info(f<span style="color: #98be65;">"Successfully saved URL to pocketbase: </span>{url}<span style="color: #98be65;">"</span>)
+
+                <span style="color: #51afef;">except</span> requests.exceptions.RequestException <span style="color: #51afef;">as</span> e:
+                    logging.error(f<span style="color: #98be65;">"Failed to save URL </span>{url}<span style="color: #98be65;">: </span>{<span style="color: #c678dd;">str</span>(e)}<span style="color: #98be65;">"</span>)
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22914;&#26524;&#21457;&#29616;&#20102;&#26631;&#31614;&#65292;&#35302;&#21457;workflow</span>
+        <span style="color: #51afef;">if</span> trigger_needed:
+            logging.info(<span style="color: #98be65;">"Triggering workflow due to #2clip tag"</span>)
+            trigger_workflow()
+
+    <span style="color: #51afef;">except</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #51afef;">as</span> e:
+        logging.error(f<span style="color: #98be65;">"Error: </span>{<span style="color: #c678dd;">str</span>(e)}<span style="color: #98be65;">"</span>)
+        <span style="color: #51afef;">raise</span>
+
+<span style="color: #51afef;">if</span> <span style="color: #c678dd;">__name__</span> == <span style="color: #98be65;">"__main__"</span>:
+    main()
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf8b0d73" class="outline-3">
+<h3 id="orgf8b0d73">workflow</h3>
+<div class="outline-text-3" id="text-orgf8b0d73">
+<div class="org-src-container">
+<pre class="src src-yaml"><span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
+
+<span style="color: #a9a1e1;">on</span>:
+  <span style="color: #dcaeea;">push</span>:
+    <span style="color: #dcaeea;">branches</span>:
+      - main
+    <span style="color: #dcaeea;">paths</span>:
+      - <span style="color: #98be65;">'**.md'</span>
+  <span style="color: #dcaeea;">workflow_dispatch</span>:
+
+<span style="color: #dcaeea;">permissions</span>:
+  <span style="color: #dcaeea;">contents</span>: read
+  <span style="color: #dcaeea;">actions</span>: write
+
+<span style="color: #dcaeea;">jobs</span>:
+  <span style="color: #dcaeea;">save-to-readwise</span>:
+    <span style="color: #dcaeea;">runs-on</span>: ubuntu-latest
+
+    <span style="color: #dcaeea;">steps</span>:
+    - <span style="color: #dcaeea;">name</span>: Checkout repository
+      <span style="color: #dcaeea;">uses</span>: actions/checkout@v4
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">token</span>: ${{ secrets.GITHUB_TOKEN }}
+
+    - <span style="color: #dcaeea;">name</span>: Set up Python
+      <span style="color: #dcaeea;">uses</span>: actions/setup-python@v4
+      <span style="color: #dcaeea;">with</span>:
+        <span style="color: #dcaeea;">python-version</span>: <span style="color: #98be65;">'3.10'</span>
+
+    - <span style="color: #dcaeea;">name</span>: Install dependencies
+      <span style="color: #dcaeea;">run</span>: |
+        <span style="color: #98be65;">python -m pip install --upgrade pip</span>
+<span style="color: #98be65;">        pip install requests PyGithub</span>
+
+    - <span style="color: #dcaeea;">name</span>: Run bookmark saver
+      <span style="color: #dcaeea;">env</span>:
+        <span style="color: #dcaeea;">READWISE_TOKEN</span>: ${{ secrets.READWISE_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #dcaeea;">GITHUB_REPOSITORY</span>: ${{ github.repository }}
+        <span style="color: #dcaeea;">POCKETBASE_API</span>: ${{ secrets.POCKETBASE_API }}
+        <span style="color: #dcaeea;">POCKETBASE_TOKEN</span>: ${{ secrets.POCKETBASE_TOKEN }}
+      <span style="color: #dcaeea;">run</span>: python save_to_readwise.py
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8362f78" class="outline-2">
+<h2 id="org8362f78">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org8362f78">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
+
+<p>
+后面可以直接把 highlights 导入到 pocketbase。
+</p>
 </div>
-<div id="outline-container-org9df93b3" class="outline-3">
-<h3 id="org9df93b3">python</h3>
-<div class="outline-text-3" id="text-org9df93b3">
+<div id="outline-container-org28e6db7" class="outline-3">
+<h3 id="org28e6db7">python</h3>
+<div class="outline-text-3" id="text-org28e6db7">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -527,9 +790,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgaca2ec2" class="outline-3">
-<h3 id="orgaca2ec2">workflow</h3>
-<div class="outline-text-3" id="text-orgaca2ec2">
+<div id="outline-container-orgb8822e5" class="outline-3">
+<h3 id="orgb8822e5">workflow</h3>
+<div class="outline-text-3" id="text-orgb8822e5">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Sync Readwise Articles
@@ -618,7 +881,7 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> <a href="https://www.vandee.art/tag-database.html">Database</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>
