@@ -610,6 +610,56 @@ jobs:
           git push
 
 #+end_src
+** bash
+顺便把 websites 也用 bash 脚本保存在 teable 里了，之前一直用 org-capture，现在太多了不好检索。让 Claude 把之前的列表转换为了 csv 导入到了 teable。
+
+#+begin_src bash
+
+#!/bin/bash
+
+while true; do
+  # 提示用户输入信息
+  read -p "Enter Name (or type 'q' to quit): " name
+  if [[ "$name" == "q" ]]; then
+    echo "Exiting..."
+    break
+  fi
+
+  read -p "Enter Intro (or type 'q' to quit): " intro
+  if [[ "$intro" == "q" ]]; then
+    echo "Exiting..."
+    break
+  fi
+
+  read -p "Enter Source (or type 'q' to quit): " source
+  if [[ "$source" == "q" ]]; then
+    echo "Exiting..."
+    break
+  fi
+# 发送 POST 请求
+curl --request POST \
+  --url https://app.teable.io/api/table/TEABLE_ID/record \
+  --header 'Authorization: Bearer TEABLE_TOKEN' \
+  --header 'content-type: application/json' \
+  --data "$(cat <<EOF
+{
+  "typecast": true,
+  "records": [{
+    "fields": {
+      "Name": "$name",
+      "Intro": "$intro",
+      "Source": "$source"
+    }
+  }]
+}
+EOF
+)"
+
+
+echo "$name $source 内容已成功写入 table websites"
+done
+
+#+end_src
 * PocketBase
 
 需要在仓库的 secret 里增加 ~POCKETBASE_TOKEN~ 、 ~POCKETBASE_API~ 两个secert，填入自己的 pocketbase API 地址和请求头。

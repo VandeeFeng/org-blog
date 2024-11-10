@@ -54,29 +54,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0eb47d3">同步保存到 Readwise</a>
+<li><a href="#orge1e763c">同步保存到 Readwise</a>
 <ul>
-<li><a href="#org98317a8">python</a></li>
-<li><a href="#org17ff94d">workflow</a></li>
+<li><a href="#org2409c82">python</a></li>
+<li><a href="#org7386949">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org9a0068a">Teable</a>
+<li><a href="#org31a5496">Teable</a>
 <ul>
-<li><a href="#orgf31dbe5">Python</a></li>
-<li><a href="#org8ae2c47">workflow</a></li>
+<li><a href="#org1aa039f">Python</a></li>
+<li><a href="#orgdee3d53">workflow</a></li>
+<li><a href="#org8bd2902">bash</a></li>
 </ul>
 </li>
-<li><a href="#orgb65c593">PocketBase</a>
+<li><a href="#org882229e">PocketBase</a>
 <ul>
-<li><a href="#orga256559">docker 部署到 VPS</a></li>
-<li><a href="#org3d5d335">Python</a></li>
-<li><a href="#orgc1091e5">workflow</a></li>
+<li><a href="#org969f26b">docker 部署到 VPS</a></li>
+<li><a href="#org850ab56">Python</a></li>
+<li><a href="#orgc79acec">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org247309a">Readwise highlights</a>
+<li><a href="#org5066242">Readwise highlights</a>
 <ul>
-<li><a href="#org122e9fb">python</a></li>
-<li><a href="#org5e0b376">workflow</a></li>
+<li><a href="#org413e781">python</a></li>
+<li><a href="#org1c416cc">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -101,9 +102,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 <p>
 主要思路：利用 GitHub 为中转站， <code>osmos::memos</code> 插件保存文章，同步保存到 Readwise 进行阅读和高亮，再同步保存到 pocketbase 或 teable 做数据库处理。现在暂时选择了 teable 的方案。
 </p>
-<div id="outline-container-org0eb47d3" class="outline-2">
-<h2 id="org0eb47d3">同步保存到 Readwise</h2>
-<div class="outline-text-2" id="text-org0eb47d3">
+<div id="outline-container-orge1e763c" class="outline-2">
+<h2 id="orge1e763c">同步保存到 Readwise</h2>
+<div class="outline-text-2" id="text-orge1e763c">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -120,9 +121,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org98317a8" class="outline-3">
-<h3 id="org98317a8">python</h3>
-<div class="outline-text-3" id="text-org98317a8">
+<div id="outline-container-org2409c82" class="outline-3">
+<h3 id="org2409c82">python</h3>
+<div class="outline-text-3" id="text-org2409c82">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -235,9 +236,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org17ff94d" class="outline-3">
-<h3 id="org17ff94d">workflow</h3>
-<div class="outline-text-3" id="text-org17ff94d">
+<div id="outline-container-org7386949" class="outline-3">
+<h3 id="org7386949">workflow</h3>
+<div class="outline-text-3" id="text-org7386949">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
@@ -286,9 +287,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org9a0068a" class="outline-2">
-<h2 id="org9a0068a">Teable</h2>
-<div class="outline-text-2" id="text-org9a0068a">
+<div id="outline-container-org31a5496" class="outline-2">
+<h2 id="org31a5496">Teable</h2>
+<div class="outline-text-2" id="text-org31a5496">
 <p>
 在 bookmark-collection 仓库增加两个 secret： <code>TEABLE_TABLE_ID</code> ， <code>TEABLE_TOKEN</code> 。
 </p>
@@ -297,9 +298,9 @@ logging.basicConfig(
 <code>TEABLE_TABLE_ID</code> 就是要写入表格的 ID，在地址栏的 <code>&amp;tableId=</code> 后面就是 ID 了。 <code>TEABLE_TOKEN</code> 就是 API 。
 </p>
 </div>
-<div id="outline-container-orgf31dbe5" class="outline-3">
-<h3 id="orgf31dbe5">Python</h3>
-<div class="outline-text-3" id="text-orgf31dbe5">
+<div id="outline-container-org1aa039f" class="outline-3">
+<h3 id="org1aa039f">Python</h3>
+<div class="outline-text-3" id="text-org1aa039f">
 <p>
 在 bookmark-summary 里修改 py 脚本：
 </p>
@@ -661,9 +662,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org8ae2c47" class="outline-3">
-<h3 id="org8ae2c47">workflow</h3>
-<div class="outline-text-3" id="text-org8ae2c47">
+<div id="outline-container-orgdee3d53" class="outline-3">
+<h3 id="orgdee3d53">workflow</h3>
+<div class="outline-text-3" id="text-orgdee3d53">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -734,10 +735,67 @@ logging.basicConfig(
 </div>
 </div>
 </div>
+<div id="outline-container-org8bd2902" class="outline-3">
+<h3 id="org8bd2902">bash</h3>
+<div class="outline-text-3" id="text-org8bd2902">
+<p>
+顺便把 websites 也用 bash 脚本保存在 teable 里了，之前一直用 org-capture，现在太多了不好检索。让 Claude 把之前的列表转换为了 csv 导入到了 teable。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">
+<span style="color: #5B6268;">#</span><span style="color: #5B6268;">!/bin/bash</span>
+
+<span style="color: #51afef;">while</span> true; <span style="color: #51afef;">do</span>
+  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#20449;&#24687;</span>
+  <span style="color: #c678dd;">read</span> -p <span style="color: #98be65;">"Enter Name (or type 'q' to quit): "</span> name
+  <span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">name</span><span style="color: #98be65;">"</span> == <span style="color: #98be65;">"q"</span> <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Exiting..."</span>
+    <span style="color: #51afef;">break</span>
+  <span style="color: #51afef;">fi</span>
+
+  <span style="color: #c678dd;">read</span> -p <span style="color: #98be65;">"Enter Intro (or type 'q' to quit): "</span> intro
+  <span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">intro</span><span style="color: #98be65;">"</span> == <span style="color: #98be65;">"q"</span> <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Exiting..."</span>
+    <span style="color: #51afef;">break</span>
+  <span style="color: #51afef;">fi</span>
+
+  <span style="color: #c678dd;">read</span> -p <span style="color: #98be65;">"Enter Source (or type 'q' to quit): "</span> source
+  <span style="color: #51afef;">if</span> <span style="color: #51afef;">[</span><span style="color: #c678dd;">[</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">source</span><span style="color: #98be65;">"</span> == <span style="color: #98be65;">"q"</span> <span style="color: #c678dd;">]</span><span style="color: #51afef;">]</span>; <span style="color: #51afef;">then</span>
+    <span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"Exiting..."</span>
+    <span style="color: #51afef;">break</span>
+  <span style="color: #51afef;">fi</span>
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21457;&#36865; POST &#35831;&#27714;</span>
+<span style="color: #ECBE7B;">curl</span> --request POST <span style="color: #98be65;">\</span>
+  --url https://app.teable.io/api/table/TEABLE_ID/record <span style="color: #98be65;">\</span>
+  --header <span style="color: #98be65;">'Authorization: Bearer TEABLE_TOKEN'</span> <span style="color: #98be65;">\</span>
+  --header <span style="color: #98be65;">'content-type: application/json'</span> <span style="color: #98be65;">\</span>
+  --data <span style="color: #98be65;">"$(</span><span style="color: #51afef; font-weight: bold;">cat &lt;&lt;EOF</span>
+<span style="color: #98be65;">{</span>
+<span style="color: #98be65;">  "typecast": true,</span>
+<span style="color: #98be65;">  "records": [{</span>
+<span style="color: #98be65;">    "fields": {</span>
+<span style="color: #98be65;">      "Name": "</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">name</span><span style="color: #98be65;">",</span>
+<span style="color: #98be65;">      "Intro": "</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">intro</span><span style="color: #98be65;">",</span>
+<span style="color: #98be65;">      "Source": "</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">source</span><span style="color: #98be65;">"</span>
+<span style="color: #98be65;">    }</span>
+<span style="color: #98be65;">  }]</span>
+<span style="color: #98be65;">}</span>
+<span style="color: #98be65;">EOF</span>
+<span style="color: #98be65;">)"</span>
+
+
+<span style="color: #ECBE7B;">echo</span> <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">name</span><span style="color: #98be65;"> </span><span style="color: #a9a1e1;">$</span><span style="color: #dcaeea;">source</span><span style="color: #98be65;"> &#20869;&#23481;&#24050;&#25104;&#21151;&#20889;&#20837; table websites"</span>
+<span style="color: #51afef;">done</span>
+
+</pre>
 </div>
-<div id="outline-container-orgb65c593" class="outline-2">
-<h2 id="orgb65c593">PocketBase</h2>
-<div class="outline-text-2" id="text-orgb65c593">
+</div>
+</div>
+</div>
+<div id="outline-container-org882229e" class="outline-2">
+<h2 id="org882229e">PocketBase</h2>
+<div class="outline-text-2" id="text-org882229e">
 <p>
 需要在仓库的 secret 里增加 <code>POCKETBASE_TOKEN</code> 、 <code>POCKETBASE_API</code> 两个secert，填入自己的 pocketbase API 地址和请求头。
 </p>
@@ -771,9 +829,9 @@ logging.basicConfig(
 </pre>
 </div>
 </div>
-<div id="outline-container-orga256559" class="outline-3">
-<h3 id="orga256559">docker 部署到 VPS</h3>
-<div class="outline-text-3" id="text-orga256559">
+<div id="outline-container-org969f26b" class="outline-3">
+<h3 id="org969f26b">docker 部署到 VPS</h3>
+<div class="outline-text-3" id="text-org969f26b">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">version</span>: <span style="color: #98be65;">"3.7"</span>
@@ -796,9 +854,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org3d5d335" class="outline-3">
-<h3 id="org3d5d335">Python</h3>
-<div class="outline-text-3" id="text-org3d5d335">
+<div id="outline-container-org850ab56" class="outline-3">
+<h3 id="org850ab56">Python</h3>
+<div class="outline-text-3" id="text-org850ab56">
 <p>
 修改 bookmark-collection 仓库的 py 脚本：
 </p>
@@ -931,9 +989,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgc1091e5" class="outline-3">
-<h3 id="orgc1091e5">workflow</h3>
-<div class="outline-text-3" id="text-orgc1091e5">
+<div id="outline-container-orgc79acec" class="outline-3">
+<h3 id="orgc79acec">workflow</h3>
+<div class="outline-text-3" id="text-orgc79acec">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -987,9 +1045,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org247309a" class="outline-2">
-<h2 id="org247309a">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org247309a">
+<div id="outline-container-org5066242" class="outline-2">
+<h2 id="org5066242">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org5066242">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
@@ -998,9 +1056,9 @@ logging.basicConfig(
 后面可以直接把 highlights 导入到 pocketbase。
 </p>
 </div>
-<div id="outline-container-org122e9fb" class="outline-3">
-<h3 id="org122e9fb">python</h3>
-<div class="outline-text-3" id="text-org122e9fb">
+<div id="outline-container-org413e781" class="outline-3">
+<h3 id="org413e781">python</h3>
+<div class="outline-text-3" id="text-org413e781">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -1261,9 +1319,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org5e0b376" class="outline-3">
-<h3 id="org5e0b376">workflow</h3>
-<div class="outline-text-3" id="text-org5e0b376">
+<div id="outline-container-org1c416cc" class="outline-3">
+<h3 id="org1c416cc">workflow</h3>
+<div class="outline-text-3" id="text-org1c416cc">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Sync Readwise Articles
