@@ -54,30 +54,44 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org490d3a4">同步保存到 Readwise</a>
+<li><a href="#org0eb47d3">同步保存到 Readwise</a>
 <ul>
-<li><a href="#org9fa2b7b">python</a></li>
-<li><a href="#org9646b73">workflow</a></li>
+<li><a href="#org98317a8">python</a></li>
+<li><a href="#org17ff94d">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orgdc67e56">PocketBase</a>
+<li><a href="#org9a0068a">Teable</a>
 <ul>
-<li><a href="#org7b543bb">docker 部署到 VPS</a></li>
-<li><a href="#org06a5f32">Python</a></li>
-<li><a href="#orgf8b0d73">workflow</a></li>
+<li><a href="#orgf31dbe5">Python</a></li>
+<li><a href="#org8ae2c47">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org8362f78">Readwise highlights</a>
+<li><a href="#orgb65c593">PocketBase</a>
 <ul>
-<li><a href="#org28e6db7">python</a></li>
-<li><a href="#orgb8822e5">workflow</a></li>
+<li><a href="#orga256559">docker 部署到 VPS</a></li>
+<li><a href="#org3d5d335">Python</a></li>
+<li><a href="#orgc1091e5">workflow</a></li>
+</ul>
+</li>
+<li><a href="#org247309a">Readwise highlights</a>
+<ul>
+<li><a href="#org122e9fb">python</a></li>
+<li><a href="#org5e0b376">workflow</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
 <p>
-Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。而这些流动知识的数据越来越多，以 10 年 20 年来度量，必须用数据库来完善和管理了，也是碰巧看到了这个项目：<a href="https://github.com/pocketbase/pocketbase">pocketbase/pocketbase: Open Source realtime backend in 1 file</a> ,很简洁的管理 UI，支持 S3 数据备份，支持 API 导入和导出。
+Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。而这些流动知识的数据越来越多，以 10 年 20 年来度量，必须用数据库来完善和管理了，也是碰巧看到了这个项目：<a href="https://github.com/pocketbase/pocketbase">pocketbase/pocketbase: Open Source realtime backend in 1 file</a> ,很简洁的管理 UI，支持 S3 数据备份，支持 API 导入和导出。还有一个更轻量的选择 <a href="https://github.com/teableio/teable">teableio/teable: ✨ The Next Gen Airtable Alternative: No-Code Postgres</a> ，用了半年了，之前一直没好好看它们的 API，只是不能直接用数据库的 API 导入数据，但是是可以直接用 API 添加 Record 到表格的。
+</p>
+
+<p>
+pocketbase 这个项目的优势是更适合长文内容的保存，内置编辑器，但是不支持直接导入表格或 csv 文件，但可以导入 JSON 和 S3 自动备份。
+</p>
+
+<p>
+teable 则更偏向于可视化表格，不太适合长文内容的保存。由于我的长文都用 clip 保存了，clip 面向阅读体验，而teable 用来快速的查询，面向数据。现在只保存了三个 field：title，url，和一句话内容总结，方便我时间长了之后回忆和查找相关文章。
 </p>
 
 <p>
@@ -85,11 +99,11 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 </p>
 
 <p>
-主要思路：利用 GitHub 为中转站， <code>osmos::memos</code> 插件保存文章，同步保存到 Readwise 进行阅读和高亮，再同步保存到 pocketbase 做数据库处理。
+主要思路：利用 GitHub 为中转站， <code>osmos::memos</code> 插件保存文章，同步保存到 Readwise 进行阅读和高亮，再同步保存到 pocketbase 或 teable 做数据库处理。现在暂时选择了 teable 的方案。
 </p>
-<div id="outline-container-org490d3a4" class="outline-2">
-<h2 id="org490d3a4">同步保存到 Readwise</h2>
-<div class="outline-text-2" id="text-org490d3a4">
+<div id="outline-container-org0eb47d3" class="outline-2">
+<h2 id="org0eb47d3">同步保存到 Readwise</h2>
+<div class="outline-text-2" id="text-org0eb47d3">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -106,9 +120,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org9fa2b7b" class="outline-3">
-<h3 id="org9fa2b7b">python</h3>
-<div class="outline-text-3" id="text-org9fa2b7b">
+<div id="outline-container-org98317a8" class="outline-3">
+<h3 id="org98317a8">python</h3>
+<div class="outline-text-3" id="text-org98317a8">
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #51afef;">import</span> os
 <span style="color: #51afef;">import</span> re
@@ -221,9 +235,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org9646b73" class="outline-3">
-<h3 id="org9646b73">workflow</h3>
-<div class="outline-text-3" id="text-org9646b73">
+<div id="outline-container-org17ff94d" class="outline-3">
+<h3 id="org17ff94d">workflow</h3>
+<div class="outline-text-3" id="text-org17ff94d">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
@@ -272,9 +286,458 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgdc67e56" class="outline-2">
-<h2 id="orgdc67e56">PocketBase</h2>
-<div class="outline-text-2" id="text-orgdc67e56">
+<div id="outline-container-org9a0068a" class="outline-2">
+<h2 id="org9a0068a">Teable</h2>
+<div class="outline-text-2" id="text-org9a0068a">
+<p>
+在 bookmark-collection 仓库增加两个 secret： <code>TEABLE_TABLE_ID</code> ， <code>TEABLE_TOKEN</code> 。
+</p>
+
+<p>
+<code>TEABLE_TABLE_ID</code> 就是要写入表格的 ID，在地址栏的 <code>&amp;tableId=</code> 后面就是 ID 了。 <code>TEABLE_TOKEN</code> 就是 API 。
+</p>
+</div>
+<div id="outline-container-orgf31dbe5" class="outline-3">
+<h3 id="orgf31dbe5">Python</h3>
+<div class="outline-text-3" id="text-orgf31dbe5">
+<p>
+在 bookmark-summary 里修改 py 脚本：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">
+<span style="color: #51afef;">import</span> re
+<span style="color: #51afef;">from</span> typing <span style="color: #51afef;">import</span> List, Optional
+<span style="color: #51afef;">import</span> requests
+<span style="color: #51afef;">import</span> json
+<span style="color: #51afef;">from</span> datetime <span style="color: #51afef;">import</span> datetime
+<span style="color: #51afef;">from</span> pathlib <span style="color: #51afef;">import</span> Path
+<span style="color: #51afef;">from</span> dataclasses <span style="color: #51afef;">import</span> dataclass, asdict
+<span style="color: #51afef;">import</span> os
+<span style="color: #51afef;">import</span> logging
+<span style="color: #51afef;">import</span> time
+<span style="color: #51afef;">from</span> functools <span style="color: #51afef;">import</span> wraps
+<span style="color: #51afef;">from</span> urllib.parse <span style="color: #51afef;">import</span> quote
+<span style="color: #51afef;">import</span> http.client
+
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-- configurations begin --</span>
+<span style="color: #dcaeea;">BOOKMARK_COLLECTION_REPO_NAME</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"bookmark-collection"</span>
+<span style="color: #dcaeea;">BOOKMARK_SUMMARY_REPO_NAME</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"bookmark-summary"</span>
+<span style="color: #dcaeea;">TEABLE_TABLE_ID</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'TEABLE_TABLE_ID'</span>)
+<span style="color: #dcaeea;">TEABLE_TOKEN</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'TEABLE_TOKEN'</span>)
+<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-- configurations end --</span>
+
+logging.basicConfig(
+    level=logging.INFO,
+    <span style="color: #c678dd;">format</span>=<span style="color: #98be65;">'%(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(message)s'</span>,
+    datefmt=<span style="color: #98be65;">'%Y-%m-%d %H:%M:%S'</span>
+)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">log_execution_time</span>(func):
+    <span style="color: #ECBE7B;">@wraps</span>(func)
+    <span style="color: #51afef;">def</span> <span style="color: #c678dd;">wrapper</span>(*args, **kwargs):
+        logging.info(f<span style="color: #98be65;">'Entering </span>{func.<span style="color: #c678dd;">__name__</span>}<span style="color: #98be65;">'</span>)
+        <span style="color: #dcaeea;">start_time</span> = time.time()
+        <span style="color: #dcaeea;">result</span> = func(*args, **kwargs)
+        <span style="color: #dcaeea;">end_time</span> = time.time()
+        <span style="color: #dcaeea;">elapsed_time</span> = end_time - start_time
+        logging.info(f<span style="color: #98be65;">'Exiting </span>{func.<span style="color: #c678dd;">__name__</span>}<span style="color: #98be65;"> - Elapsed time: </span>{elapsed_time:.4f}<span style="color: #98be65;"> seconds'</span>)
+        <span style="color: #51afef;">return</span> result
+    <span style="color: #51afef;">return</span> wrapper
+
+<span style="color: #ECBE7B;">@dataclass</span>
+<span style="color: #51afef;">class</span> <span style="color: #ECBE7B;">SummarizedBookmark</span>:
+    year: <span style="color: #c678dd;">str</span>
+    month: <span style="color: #c678dd;">str</span>  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">yyyyMM</span>
+    title: <span style="color: #c678dd;">str</span>
+    url: <span style="color: #c678dd;">str</span>
+    timestamp: <span style="color: #c678dd;">int</span>  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">unix timestamp</span>
+    summary: <span style="color: #c678dd;">str</span>
+
+<span style="color: #dcaeea;">CURRENT_YEAR</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y'</span>)
+<span style="color: #dcaeea;">CURRENT_MONTH</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%m'</span>)
+<span style="color: #dcaeea;">CURRENT_DATE</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y-%m-%d'</span>)
+<span style="color: #dcaeea;">CURRENT_DATE_AND_TIME</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y-%m-%d %H:%M:%S'</span>)
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_text_content</span>(url: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">jina_url</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"https://r.jina.ai/</span>{url}<span style="color: #98be65;">"</span>
+    <span style="color: #dcaeea;">response</span>: requests.Response = requests.get(jina_url)
+    <span style="color: #51afef;">return</span> response.text
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">call_openai_api</span>(prompt: <span style="color: #c678dd;">str</span>, content: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">model</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'OPENAI_API_MODEL'</span>, <span style="color: #98be65;">'gpt-4o-mini'</span>)
+    <span style="color: #dcaeea;">headers</span>: <span style="color: #c678dd;">dict</span> = {
+        <span style="color: #98be65;">"Authorization"</span>: f<span style="color: #98be65;">"Bearer </span>{os.environ['OPENAI_API_KEY']}<span style="color: #98be65;">"</span>,
+        <span style="color: #98be65;">"Content-Type"</span>: <span style="color: #98be65;">"application/json"</span>
+    }
+    <span style="color: #dcaeea;">data</span>: <span style="color: #c678dd;">dict</span> = {
+        <span style="color: #98be65;">"model"</span>: model,
+        <span style="color: #98be65;">"messages"</span>: [
+            {<span style="color: #98be65;">"role"</span>: <span style="color: #98be65;">"system"</span>, <span style="color: #98be65;">"content"</span>: prompt},
+            {<span style="color: #98be65;">"role"</span>: <span style="color: #98be65;">"user"</span>, <span style="color: #98be65;">"content"</span>: content}
+        ]
+    }
+    <span style="color: #dcaeea;">api_endpoint</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'OPENAI_API_ENDPOINT'</span>, <span style="color: #98be65;">'https://api.openai.com/v1/chat/completions'</span>)
+    <span style="color: #dcaeea;">response</span>: requests.Response = requests.post(api_endpoint, headers=headers, data=json.dumps(data))
+    <span style="color: #51afef;">return</span> response.json()[<span style="color: #98be65;">'choices'</span>][<span style="color: #da8548; font-weight: bold;">0</span>][<span style="color: #98be65;">'message'</span>][<span style="color: #98be65;">'content'</span>]
+<span style="color: #98be65;">'''</span>
+<span style="color: #98be65;">def clean_prompt(prompt: str) -&gt; str:</span>
+<span style="color: #98be65;">    """&#28165;&#29702;&#21644;&#39564;&#35777;prompt&#26684;&#24335;"""</span>
+<span style="color: #98be65;">    # &#31227;&#38500;&#22810;&#20313;&#30340;&#31354;&#30333;&#23383;&#31526;</span>
+<span style="color: #98be65;">    prompt = prompt.strip()</span>
+<span style="color: #98be65;">    # &#30830;&#20445;XML&#22768;&#26126;&#22312;&#31532;&#19968;&#34892;</span>
+<span style="color: #98be65;">    if not prompt.startswith('&lt;?xml'):</span>
+<span style="color: #98be65;">        prompt = '&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">' + prompt</span>
+<span style="color: #98be65;">    # &#39564;&#35777;XML&#26684;&#24335;</span>
+<span style="color: #98be65;">    try:</span>
+<span style="color: #98be65;">        from xml.etree import ElementTree</span>
+<span style="color: #98be65;">        ElementTree.fromstring(prompt)</span>
+<span style="color: #98be65;">    except ElementTree.ParseError as e:</span>
+<span style="color: #98be65;">        logging.warning(f"Prompt XML format warning: {e}")</span>
+<span style="color: #98be65;">    return prompt</span>
+<span style="color: #98be65;">'''</span>
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">summarize_text</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">prompt</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"""</span>
+<span style="color: #98be65;">{#- &#29992;&#31616;&#20307;&#20013;&#25991;&#20013;&#25991;&#36914;&#34892;&#25991;&#31456;&#25688;&#35201; -#}</span>
+
+<span style="color: #98be65;">## Profile:&#8203;</span>
+<span style="color: #98be65;">- author: Vandee&#8203;</span>
+<span style="color: #98be65;">- role: &#25991;&#31456;&#20869;&#23481;&#28145;&#24230;&#24635;&#32467;&#24605;&#32771;&#21161;&#25163;</span>
+<span style="color: #98be65;">- language: &#20013;&#25991;&#8203;</span>
+<span style="color: #98be65;">- description: &#20840;&#38754;&#30340;&#24635;&#32467;&#25991;&#31456;&#30340;&#20027;&#35201;&#35266;&#28857;&#65292;&#24182;&#32467;&#21512;&#20005;&#35880;&#30340;&#36923;&#36753;&#24605;&#32500;&#20998;&#26512;&#25991;&#31456;&#35201;&#28857;&#65292;&#21078;&#26512;&#25991;&#31456;&#20869;&#23481;&#12290;</span>
+
+<span style="color: #98be65;">## Goals:</span>
+<span style="color: #98be65;">- &#31532;&#19968;&#27493;&#65292;&#20180;&#32454;&#38405;&#35835;&#25991;&#31456;&#20869;&#23481;&#12290;</span>
+<span style="color: #98be65;">- &#31532;&#20108;&#27493;,&#23545;&#27599;&#20010;&#27573;&#33853;&#36827;&#34892;&#24635;&#32467;,&#24635;&#32467;&#25991;&#31456;&#30340;&#20027;&#35201;&#20869;&#23481;&#65292;&#29702;&#28165;&#26970;&#20316;&#32773;&#34920;&#36798;&#20102;&#20160;&#20040;&#35266;&#28857;&#12289;&#20316;&#32773;&#35299;&#20915;&#20102;&#37027;&#20123;&#20855;&#20307;&#30340;&#38382;&#39064;&#12290;</span>
+<span style="color: #98be65;">- &#31532;&#19977;&#27493;,&#25991;&#31456;&#35201;&#28857;&#24635;&#32467;&#12290;&#26681;&#25454;&#21407;&#25991;&#20869;&#23481;,&#25552;&#28860;&#20986;&#25991;&#31456;&#30340;5&#20010;&#20197;&#20869;&#30340;&#20027;&#35201;&#35266;&#28857;&#25110;&#20316;&#32773;&#35299;&#20915;&#30340;&#38382;&#39064;&#12290;</span>
+<span style="color: #98be65;">- &#31532;&#22235;&#27493;,&#26681;&#25454;&#19978;&#38754;&#19977;&#27493;&#65292;&#25353;&#29031;&#25351;&#23450;&#30340;&#36755;&#20986;&#26684;&#24335;,&#25972;&#29702;&#20986;&#25991;&#31456;&#20869;&#23481;&#30340;&#24635;&#32467;&#12290;</span>
+
+<span style="color: #98be65;">## Constrains:&#8203;</span>
+<span style="color: #98be65;">- &#25991;&#31456;&#20869;&#23481;&#24635;&#32467;&#30340;{&#25688;&#35201;}&#23383;&#25968;&#25511;&#21046;&#22312;380&#20010;&#20013;&#25991;&#27721;&#23383;&#20197;&#20869;&#12290;</span>
+<span style="color: #98be65;">- &#23613;&#21487;&#33021;&#36824;&#21407;&#25991;&#31456;&#20013;&#30340;&#19987;&#19994;&#35789;&#27719;,&#24182;&#23545;&#20854;&#36827;&#34892;&#36890;&#20439;&#35299;&#37322;&#12290;</span>
+<span style="color: #98be65;">- &#22312;&#24635;&#32467;&#30340;&#36807;&#31243;&#20013;,&#23436;&#20840;&#25353;&#29031;&#25991;&#31456;&#20316;&#32773;&#30340;&#34920;&#36798;&#20869;&#23481;&#36827;&#34892;&#25972;&#29702;,&#19981;&#28155;&#21152;&#20320;&#30340;&#39069;&#22806;&#35266;&#28857;&#12290;</span>
+<span style="color: #98be65;">- &#25152;&#26377;&#36755;&#20986;&#29992;&#20013;&#25991;&#29983;&#25104;&#12290;</span>
+<span style="color: #98be65;">- &#25991;&#31456;&#20869;&#23481;&#37324;&#30340;"&#25105;&#8220;&#26159;&#25991;&#31456;&#30340;&#21407;&#20316;&#32773;&#65292;&#19981;&#35201;&#20195;&#20837; Vandee &#30340;&#36523;&#20221;&#12290;</span>
+
+<span style="color: #98be65;">## Skills:&#8203;</span>
+<span style="color: #98be65;">- &#21892;&#20110;&#29992;&#27969;&#30021;&#36890;&#39034;&#30340;&#31616;&#20307;&#20013;&#25991;&#24635;&#32467;&#20869;&#23481;&#37325;&#28857;&#12290;</span>
+<span style="color: #98be65;">- &#20855;&#26377;&#33391;&#22909;&#30340;&#36923;&#36753;&#24605;&#32500;&#33021;&#21147;,&#33021;&#22815;&#28145;&#20837;&#20998;&#26512;&#25991;&#31456;&#20869;&#23481;&#12290;</span>
+<span style="color: #98be65;">- &#25484;&#25569;&#25991;&#31456;&#30456;&#20851;&#39046;&#22495;&#30340;&#19987;&#19994;&#30693;&#35782;,&#33021;&#22815;&#20934;&#30830;&#29702;&#35299;&#21644;&#38416;&#36848;&#19987;&#19994;&#27010;&#24565;&#12290;</span>
+<span style="color: #98be65;">- &#25797;&#38271;&#20197;&#36890;&#20439;&#26131;&#25026;&#30340;&#26041;&#24335;&#35299;&#37322;&#22797;&#26434;&#30340;&#19987;&#19994;&#20869;&#23481;&#12290;</span>
+
+<span style="color: #98be65;">## Workflows:&#8203;</span>
+<span style="color: #98be65;">- &#36880;&#27573;&#38405;&#35835;&#25991;&#31456;&#20869;&#23481;&#12290;</span>
+<span style="color: #98be65;">- &#24635;&#32467;&#25991;&#31456;&#30340;&#20869;&#23481;&#24182;&#29983;&#25104;{&#25688;&#35201;}&#12290;&#36825;&#19968;&#27493;&#20320;&#38656;&#35201;&#20840;&#38754;&#29702;&#35299;&#25991;&#31456;&#20869;&#23481;&#30340;&#20027;&#39064;&#12289;&#20869;&#23481;&#30340;&#36923;&#36753;&#26694;&#26550;&#12289;&#20316;&#32773;&#30340;&#25552;&#20986;&#30340;&#35266;&#28857;&#65292;&#25688;&#35201;&#19981;&#23569;&#20110;270&#20010;&#20013;&#25991;&#27721;&#23383;&#12290;</span>
+<span style="color: #98be65;">- &#20877;&#27425;&#22238;&#39038;&#21407;&#25991;&#25152;&#26377;&#20869;&#23481;&#65292;&#22312;&#19978;&#19968;&#27493;&#24635;&#32467;&#20986;{&#25688;&#35201;}&#30340;&#22522;&#30784;&#19978;&#65292;&#36827;&#34892;&#28145;&#20837;&#20998;&#26512;&#12290;&#36825;&#19968;&#27493;&#20320;&#38656;&#35201;&#29702;&#28165;&#36825;&#20123;&#20869;&#23481;&#20043;&#38388;&#30340;&#36923;&#36753;&#20851;&#31995;&#12289;&#19987;&#19994;&#27010;&#24565;&#12289;&#21517;&#35789;&#27010;&#24565;&#65292;&#24182;&#30528;&#37325;&#20851;&#27880;&#21407;&#25991;&#20869;&#23481;&#37324;&#22810;&#27425;&#20986;&#29616;&#30340;&#35789;&#27719;&#25110;&#27010;&#24565;&#65292;&#29305;&#21035;&#20851;&#27880;&#20316;&#32773;&#25552;&#20986;&#20102;&#20160;&#20040;&#35266;&#28857;&#12289;&#20316;&#32773;&#35299;&#20915;&#20102;&#37027;&#20123;&#20855;&#20307;&#30340;&#38382;&#39064;&#12289;&#20316;&#32773;&#20307;&#24735;&#20986;&#20102;&#21738;&#20123;&#36947;&#29702;&#12289;&#20316;&#32773;&#24471;&#20986;&#20102;&#20160;&#20040;&#37325;&#22823;&#30340;&#30740;&#31350;&#32467;&#35770;&#65292;&#26368;&#21518;&#26803;&#29702;&#20986;{&#31934;&#28860;&#20869;&#23481;}&#12290;</span>
+<span style="color: #98be65;">- &#26681;&#25454;&#21407;&#25991;&#20869;&#23481;&#21644;&#20320;&#19978;&#19968;&#27493;&#30340;{&#31934;&#28860;&#20869;&#23481;}&#65292;&#25552;&#28860;&#20986;&#25991;&#31456;&#30340;&#33267;&#23569;4&#20010;&#35201;&#28857;&#29983;&#25104;{&#35201;&#28857;&#24635;&#32467;}&#65292;&#20320;&#19981;&#29992;&#36755;&#20986;{&#31934;&#28860;&#20869;&#23481;}&#12290;</span>
+<span style="color: #98be65;">- &#20320;&#38656;&#35201;&#25353;&#29031;markdown&#26377;&#24207;&#21015;&#34920;&#30340;&#26684;&#24335;&#21015;&#20986;&#19978;&#19968;&#27493;{&#35201;&#28857;&#24635;&#32467;}&#20013;&#30340;&#35201;&#28857;&#65292;&#24182;&#26681;&#25454;&#35201;&#28857;&#25152;&#22312;&#30340;&#21407;&#25991;&#24182;&#20005;&#26684;&#26681;&#25454;&#25991;&#31456;&#20869;&#23481;&#25193;&#23637;&#23545;&#35813;&#35201;&#28857;&#30340;&#35299;&#26512;&#65292;&#26041;&#20415;&#35835;&#32773;&#29702;&#35299;&#36825;&#20123;&#35201;&#28857;&#30340;&#24847;&#24605;&#12290;</span>
+<span style="color: #98be65;">- &#25353;&#29031;&#25351;&#23450;&#30340;&#36755;&#20986;&#26684;&#24335;,&#25972;&#29702;&#20986;&#25991;&#31456;&#20869;&#23481;&#30340;&#24635;&#32467;&#12290;&#8220;&#25688;&#35201;&#8220;&#21644;&#8221;&#35201;&#28857;&#24635;&#32467;&#8220;&#21482;&#38656;&#35201;&#25353;&#29031;markdown&#26684;&#24335;&#21152;&#31895;&#65292;&#19981;&#35201;&#29992;&#26631;&#39064;&#26684;&#24335;&#12290;</span>
+
+<span style="color: #98be65;">## OutputFormat:</span>
+<span style="color: #98be65;">**&#25688;&#35201;**&#65306;</span>
+<span style="color: #98be65;">{&#25688;&#35201;}</span>
+<span style="color: #98be65;">**&#35201;&#28857;&#24635;&#32467;**&#65306;</span>
+<span style="color: #98be65;">{&#35201;&#28857;&#24635;&#32467;}</span>
+<span style="color: #98be65;">"""</span>
+    <span style="color: #dcaeea;">result</span> = call_openai_api(prompt, text)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20808;&#35843;&#29992; API &#24182;&#23384;&#20648;&#32467;&#26524;</span>
+    time.sleep(<span style="color: #da8548; font-weight: bold;">1</span>)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#31561;&#24453; 1 &#31186;</span>
+    <span style="color: #51afef;">return</span> result  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#36820;&#22238;&#32467;&#26524;</span>
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">one_sentence_summary</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">prompt</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"&#20197;&#19979;&#26159;&#23545;&#19968;&#31687;&#38271;&#25991;&#30340;&#21015;&#34920;&#24418;&#24335;&#24635;&#32467;&#12290;&#35831;&#22522;&#20110;&#27492;&#36755;&#20986;&#23545;&#35813;&#25991;&#31456;&#30340;&#31616;&#30701;&#24635;&#32467;&#65292;&#38271;&#24230;&#19981;&#36229;&#36807;100&#20010;&#23383;&#12290;&#24635;&#26159;&#20351;&#29992;&#31616;&#20307;&#20013;&#25991;&#36755;&#20986;&#12290;"</span>
+    <span style="color: #51afef;">return</span> call_openai_api(prompt, text)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">slugify</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">invalid_fs_chars</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">'/</span><span style="color: #a9a1e1;">\\</span><span style="color: #98be65;">:*?"&lt;&gt;|'</span>
+    <span style="color: #51afef;">return</span> re.sub(r<span style="color: #98be65;">'['</span> + re.escape(invalid_fs_chars) + r<span style="color: #98be65;">'\s]+'</span>, <span style="color: #98be65;">'-'</span>, text.lower()).strip(<span style="color: #98be65;">'-'</span>)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_summary_file_path</span>(title: <span style="color: #c678dd;">str</span>, timestamp: <span style="color: #c678dd;">int</span>, year: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>, month: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>, in_readme_md: <span style="color: #c678dd;">bool</span> = <span style="color: #a9a1e1;">False</span>) -&gt; Path:
+    <span style="color: #dcaeea;">date_str</span> = datetime.fromtimestamp(timestamp).strftime(<span style="color: #98be65;">'%Y-%m-%d'</span>)
+    <span style="color: #dcaeea;">summary_filename</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"</span>{date_str}<span style="color: #98be65;">-</span>{slugify(title)}<span style="color: #98be65;">.md"</span>
+    <span style="color: #51afef;">if</span> year <span style="color: #51afef;">is</span> <span style="color: #a9a1e1;">None</span>:
+        <span style="color: #dcaeea;">year</span> = CURRENT_YEAR
+    <span style="color: #51afef;">if</span> month <span style="color: #51afef;">is</span> <span style="color: #a9a1e1;">None</span>:
+        <span style="color: #dcaeea;">month</span> = CURRENT_MONTH
+    <span style="color: #51afef;">if</span> in_readme_md:
+        <span style="color: #dcaeea;">root</span>: Path = Path(year, month)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
+    <span style="color: #51afef;">else</span>:
+        <span style="color: #dcaeea;">root</span>: Path = Path(BOOKMARK_SUMMARY_REPO_NAME, year, month)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
+    <span style="color: #51afef;">return</span> Path(root, summary_filename)
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_text_content_path</span>(title: <span style="color: #c678dd;">str</span>, in_summary_md: <span style="color: #c678dd;">bool</span> = <span style="color: #a9a1e1;">False</span>) -&gt; Path:
+    <span style="color: #dcaeea;">text_content_filename</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"</span>{CURRENT_DATE}<span style="color: #98be65;">-</span>{slugify(title)}<span style="color: #98be65;">_raw.md"</span>
+    <span style="color: #dcaeea;">root</span>: Path = Path(BOOKMARK_SUMMARY_REPO_NAME, CURRENT_YEAR, CURRENT_MONTH)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; YEAR/MONTH</span>
+    <span style="color: #51afef;">if</span> in_summary_md:
+        <span style="color: #dcaeea;">root</span> = Path(<span style="color: #98be65;">"."</span>)
+    <span style="color: #51afef;">return</span> Path(root, text_content_filename)
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">build_summary_file</span>(title: <span style="color: #c678dd;">str</span>, url: <span style="color: #c678dd;">str</span>, summary: <span style="color: #c678dd;">str</span>, one_sentence: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #83898d;">"""&#26500;&#24314;&#24635;&#32467;&#25991;&#20214;&#30340;&#20869;&#23481;&#12290;"""</span>
+    <span style="color: #51afef;">return</span> f<span style="color: #98be65;">"""# </span>{title}
+<span style="color: #98be65;">- URL: </span>{url}
+<span style="color: #98be65;">- Added At: </span>{CURRENT_DATE_AND_TIME}
+<span style="color: #98be65;">- [Link To Text](</span>{get_text_content_path(<span style="color: #dcaeea;">title</span>, <span style="color: #dcaeea;">in_summary_md</span>=<span style="color: #a9a1e1;">True</span>)}<span style="color: #98be65;">)</span>
+
+<span style="color: #98be65;">## Summary</span>
+{summary}
+<span style="color: #98be65;">"""</span>
+
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">build_index_md</span>(title: <span style="color: #c678dd;">str</span>, url: <span style="color: #c678dd;">str</span>, summary: <span style="color: #c678dd;">str</span>, one_sentence: <span style="color: #c678dd;">str</span>, text_content: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #83898d;">"""&#26500;&#24314; index.md &#25991;&#20214;&#20869;&#23481;&#65292;&#28155;&#21152; YAML &#22836;&#37096;&#24182;&#21253;&#21547;&#20840;&#25991;&#20869;&#23481;&#12290;"""</span>
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22788;&#29702;&#26631;&#39064;&#20013;&#30340;&#20882;&#21495;</span>
+    <span style="color: #dcaeea;">yaml_safe_title</span> = title.replace(<span style="color: #98be65;">':'</span>, <span style="color: #98be65;">'-'</span>)
+
+    <span style="color: #51afef;">return</span> f<span style="color: #98be65;">"""---</span>
+<span style="color: #98be65;">title: </span>{yaml_safe_title}
+<span style="color: #98be65;">date: </span>{CURRENT_DATE}
+<span style="color: #98be65;">extra:</span>
+<span style="color: #98be65;">  source: </span>{url}
+<span style="color: #98be65;">  original_title: </span>{title}
+<span style="color: #98be65;">---</span>
+<span style="color: #98be65;">## Summary</span>
+{summary}
+<span style="color: #98be65;">## Full Content</span>
+{text_content}
+<span style="color: #98be65;">"""</span>
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">build_summary_readme_md</span>(summarized_bookmarks: List[SummarizedBookmark]) -&gt; <span style="color: #c678dd;">str</span>:
+    <span style="color: #dcaeea;">initial_prefix</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"""# Clip</span>
+<span style="color: #98be65;">&#24635;&#20250;&#26377;&#19968;&#20123;&#27809;&#36798;&#21040;&#25105;&#24819;&#25910;&#24405;&#21040;PKM&#20307;&#31995;&#37324;&#26631;&#20934;&#30340;&#25991;&#31456;&#65292;&#20294;&#21448;&#24323;&#20043;&#21487;&#24796;&#12290;&#20171;&#20110;&#36825;&#20004;&#32773;&#20043;&#38388;&#30340;&#65292;&#23601;&#25918;&#22312;&#36825;&#20010;clip&#37324;&#20102;&#12290;&#21306;&#21035;&#20110;&#31508;&#35760;&#65292;&#36825;&#37324;&#20027;&#35201;&#26159;&#21407;&#25991;&#30340; Markdown&#12290;</span>
+
+<span style="color: #98be65;">Inspired by :[Owen's Clip](https://github.com/theowenyoung/clip) , [LLM x &#20070;&#31614;&#25910;&#34255;&#65306;&#25688;&#35201; &amp; &#20840;&#25991;&#32034;&#24341; - Nekonull's Garden](https://nekonull.me/posts/llm_x_bookmark/)</span>
+
+<span style="color: #98be65;">## Summarized Bookmarks</span>
+<span style="color: #98be65;">"""</span>
+    <span style="color: #dcaeea;">summary_list</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">""</span>
+    <span style="color: #dcaeea;">sorted_summarized_bookmarks</span> = <span style="color: #c678dd;">sorted</span>(summarized_bookmarks, key=<span style="color: #51afef;">lambda</span> bookmark: bookmark.timestamp, reverse=<span style="color: #a9a1e1;">True</span>)
+    <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> sorted_summarized_bookmarks:
+        <span style="color: #dcaeea;">summary_file_path</span> = get_summary_file_path(
+            title=bookmark.title,
+            timestamp=bookmark.timestamp,
+            month=bookmark.month,
+            in_readme_md=<span style="color: #a9a1e1;">True</span>
+        )
+        <span style="color: #dcaeea;">summary_list</span> += f<span style="color: #98be65;">"- (</span>{datetime.fromtimestamp(bookmark.timestamp).strftime('%Y-%m-%d')}<span style="color: #98be65;">) [</span>{bookmark.title}<span style="color: #98be65;">](</span>{summary_file_path}<span style="color: #98be65;">)</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>
+    <span style="color: #51afef;">return</span> initial_prefix + summary_list
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">post_to_teable</span>(title: <span style="color: #c678dd;">str</span>, url: <span style="color: #c678dd;">str</span>, one_sentence: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #a9a1e1;">None</span>:
+    <span style="color: #83898d;">"""</span>
+<span style="color: #83898d;">    Post a bookmark record to Teable</span>
+<span style="color: #83898d;">    """</span>
+    <span style="color: #51afef;">try</span>:
+        <span style="color: #dcaeea;">conn</span> = http.client.HTTPSConnection(<span style="color: #98be65;">"app.teable.io"</span>)
+
+        <span style="color: #dcaeea;">payload</span> = {
+            <span style="color: #98be65;">"typecast"</span>: <span style="color: #a9a1e1;">True</span>,
+            <span style="color: #98be65;">"records"</span>: [{
+                <span style="color: #98be65;">"fields"</span>: {
+                    <span style="color: #98be65;">"Title"</span>: title,
+                    <span style="color: #98be65;">"Source"</span>: url,
+                    <span style="color: #98be65;">"Summary"</span>: one_sentence,
+                }
+            }]
+        }
+
+        <span style="color: #dcaeea;">headers</span> = {
+            <span style="color: #98be65;">'Authorization'</span>: f<span style="color: #98be65;">"Bearer </span>{TEABLE_TOKEN}<span style="color: #98be65;">"</span>,
+            <span style="color: #98be65;">'Content-Type'</span>: <span style="color: #98be65;">"application/json"</span>
+        }
+
+        conn.request(
+            <span style="color: #98be65;">"POST"</span>,
+            f<span style="color: #98be65;">"/api/table/</span>{TEABLE_TABLE_ID}<span style="color: #98be65;">/record"</span>,
+            json.dumps(payload),
+            headers
+        )
+
+        <span style="color: #dcaeea;">response</span> = conn.getresponse()
+        <span style="color: #51afef;">if</span> response.status <span style="color: #51afef;">not</span> <span style="color: #51afef;">in</span> (<span style="color: #da8548; font-weight: bold;">200</span>, <span style="color: #da8548; font-weight: bold;">201</span>):
+            logging.error(f<span style="color: #98be65;">"Failed to post to Teable. Status: </span>{response.status}<span style="color: #98be65;">, Response: </span>{response.read().decode()}<span style="color: #98be65;">"</span>)
+        <span style="color: #51afef;">else</span>:
+            logging.info(<span style="color: #98be65;">"Successfully posted to Teable"</span>)
+
+    <span style="color: #51afef;">except</span> <span style="color: #ECBE7B;">Exception</span> <span style="color: #51afef;">as</span> e:
+        logging.error(f<span style="color: #98be65;">"Error posting to Teable: </span>{<span style="color: #c678dd;">str</span>(e)}<span style="color: #98be65;">"</span>)
+    <span style="color: #51afef;">finally</span>:
+        conn.close()
+
+<span style="color: #ECBE7B;">@log_execution_time</span>
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">process_bookmark_file</span>():
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35835;&#21462;&#20070;&#31614;&#21644;&#24050;&#24635;&#32467;&#20070;&#31614;</span>
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_COLLECTION_REPO_NAME}<span style="color: #98be65;">/README.md'</span>, <span style="color: #98be65;">'r'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        <span style="color: #dcaeea;">bookmark_lines</span> = f.readlines()
+
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/data.json'</span>, <span style="color: #98be65;">'r'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        <span style="color: #dcaeea;">summarized_bookmark_dicts</span> = json.load(f)
+        <span style="color: #dcaeea;">summarized_bookmarks</span> = [SummarizedBookmark(**bookmark) <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmark_dicts]
+
+    <span style="color: #dcaeea;">summarized_urls</span> = {bookmark.url <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmarks}
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25214;&#21040;&#26410;&#24635;&#32467;&#30340;&#20070;&#31614;</span>
+    <span style="color: #dcaeea;">title</span>, <span style="color: #dcaeea;">url</span> = <span style="color: #a9a1e1;">None</span>, <span style="color: #a9a1e1;">None</span>
+    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> bookmark_lines:
+        <span style="color: #51afef;">match</span> = re.search(r<span style="color: #98be65;">'- \[(.*?)\]\((.*?)\)'</span>, line)
+        <span style="color: #51afef;">if</span> <span style="color: #51afef;">match</span> <span style="color: #51afef;">and</span> <span style="color: #51afef;">match</span>.group(<span style="color: #da8548; font-weight: bold;">2</span>) <span style="color: #51afef;">not</span> <span style="color: #51afef;">in</span> summarized_urls:
+            <span style="color: #dcaeea;">title</span>, <span style="color: #dcaeea;">url</span> = <span style="color: #51afef;">match</span>.groups()
+            <span style="color: #51afef;">break</span>
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#22914;&#26524;&#27809;&#26377;&#25214;&#21040;&#26032;&#30340;&#20070;&#31614;&#65292;&#21017;&#36864;&#20986;</span>
+    <span style="color: #51afef;">if</span> <span style="color: #51afef;">not</span> title <span style="color: #51afef;">or</span> <span style="color: #51afef;">not</span> url:
+        logging.info(<span style="color: #98be65;">"No new bookmarks to summarize."</span>)
+        <span style="color: #51afef;">return</span>
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23558;&#26631;&#39064;&#26684;&#24335;&#21270;&#20026;&#25991;&#20214;&#21517;</span>
+    <span style="color: #dcaeea;">title_slug</span> = slugify(title)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21019;&#24314; YEAR/MONTH/ &#30446;&#24405;</span>
+    <span style="color: #dcaeea;">monthly_path</span> = Path(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/</span>{CURRENT_YEAR}<span style="color: #98be65;">/</span>{CURRENT_MONTH}<span style="color: #98be65;">'</span>)
+    monthly_path.mkdir(parents=<span style="color: #a9a1e1;">True</span>, exist_ok=<span style="color: #a9a1e1;">True</span>)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21019;&#24314; content/YEAR/MONTH/TITLE/ &#30446;&#24405;</span>
+    <span style="color: #dcaeea;">content_path</span> = Path(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/content/</span>{CURRENT_YEAR}<span style="color: #98be65;">/</span>{CURRENT_MONTH}<span style="color: #98be65;">/</span>{title_slug}<span style="color: #98be65;">'</span>)
+    content_path.mkdir(parents=<span style="color: #a9a1e1;">True</span>, exist_ok=<span style="color: #a9a1e1;">True</span>)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#33719;&#21462;&#21644;&#24635;&#32467;&#20869;&#23481;</span>
+    <span style="color: #dcaeea;">text_content</span> = get_text_content(url)
+    <span style="color: #dcaeea;">summary</span> = summarize_text(text_content)
+    <span style="color: #dcaeea;">one_sentence</span> = one_sentence_summary(summary)
+    <span style="color: #dcaeea;">timestamp</span> = <span style="color: #c678dd;">int</span>(datetime.now().timestamp())
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20351;&#29992;&#24403;&#21069;&#26085;&#26399;&#21019;&#24314;&#21069;&#32512;</span>
+    <span style="color: #dcaeea;">date_prefix</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y-%m-%d-'</span>)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20445;&#23384;&#21407;&#22987;&#20869;&#23481;&#21040; YEAR/MONTH/yyyy-MM-dd-title_raw.md</span>
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(monthly_path / f<span style="color: #98be65;">"</span>{date_prefix}{title_slug}<span style="color: #98be65;">_raw.md"</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        f.write(text_content)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20445;&#23384;&#24635;&#32467;&#20869;&#23481;&#21040; YEAR/MONTH/yyyy-MM-dd-title.md</span>
+    <span style="color: #dcaeea;">summary_content</span> = build_summary_file(title, url, summary, one_sentence)
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(monthly_path / f<span style="color: #98be65;">"</span>{date_prefix}{title_slug}<span style="color: #98be65;">.md"</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        f.write(summary_content)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20445;&#23384; index.md &#21040; content/YEAR/MONTH/TITLE/index.md</span>
+    <span style="color: #dcaeea;">index_content</span> = build_index_md(title, url, summary, one_sentence, text_content)
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(content_path / <span style="color: #98be65;">"index.md"</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        f.write(index_content)
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#24050;&#24635;&#32467;&#30340;&#20070;&#31614;&#25968;&#25454;</span>
+    summarized_bookmarks.append(SummarizedBookmark(
+        title=title,
+        url=url,
+        summary=one_sentence,
+        year=CURRENT_YEAR,
+        month=CURRENT_MONTH,
+        timestamp=timestamp
+    ))
+
+    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032; README &#21644; data.json</span>
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/Bookmarks_List.md'</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        f.write(build_summary_readme_md(summarized_bookmarks))
+
+    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/data.json'</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
+        json.dump([asdict(bookmark) <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmarks], f, indent=<span style="color: #da8548; font-weight: bold;">2</span>, ensure_ascii=<span style="color: #a9a1e1;">False</span>)
+
+        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Post to Teable</span>
+    <span style="color: #51afef;">if</span> TEABLE_TOKEN <span style="color: #51afef;">and</span> TEABLE_TABLE_ID:
+        post_to_teable(title, url, one_sentence)
+    <span style="color: #51afef;">else</span>:
+        logging.warning(<span style="color: #98be65;">"Teable API token or table ID not set, skipping Teable update"</span>)
+
+<span style="color: #51afef;">def</span> <span style="color: #c678dd;">main</span>():
+    process_bookmark_file()
+
+<span style="color: #51afef;">if</span> <span style="color: #c678dd;">__name__</span> == <span style="color: #98be65;">"__main__"</span>:
+    main()
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ae2c47" class="outline-3">
+<h3 id="org8ae2c47">workflow</h3>
+<div class="outline-text-3" id="text-org8ae2c47">
+<p>
+修改 bookmark-collection 仓库的 yaml：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-yaml">
+<span style="color: #dcaeea;">name</span>: Bookmark Summary
+
+<span style="color: #a9a1e1;">on</span>:
+  <span style="color: #dcaeea;">workflow_dispatch</span>:  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21482;&#20445;&#30041;&#25163;&#21160;&#35302;&#21457;&#21644;&#34987;&#20854;&#20182; workflow &#35302;&#21457;&#30340;&#24773;&#20917;</span>
+<span style="color: #dcaeea;">concurrency</span>:
+  <span style="color: #dcaeea;">group</span>: mygroup
+  <span style="color: #dcaeea;">cancel-in-progress</span>: <span style="color: #a9a1e1;">false</span>
+
+<span style="color: #dcaeea;">jobs</span>:
+  <span style="color: #dcaeea;">summarize</span>:
+    <span style="color: #dcaeea;">runs-on</span>: ubuntu-latest
+    <span style="color: #dcaeea;">steps</span>:
+      - <span style="color: #dcaeea;">name</span>: Checkout bookmark-collection
+        <span style="color: #dcaeea;">uses</span>: actions/checkout@v2
+        <span style="color: #dcaeea;">with</span>:
+          <span style="color: #dcaeea;">path</span>: bookmark-collection
+
+      - <span style="color: #dcaeea;">name</span>: Checkout bookmark-summary
+        <span style="color: #dcaeea;">uses</span>: actions/checkout@v2
+        <span style="color: #dcaeea;">with</span>:
+          <span style="color: #dcaeea;">repository</span>: VandeeFeng/bookmark-summary
+          <span style="color: #dcaeea;">path</span>: bookmark-summary
+          <span style="color: #dcaeea;">token</span>: ${{ secrets.PAT }}
+
+      - <span style="color: #dcaeea;">name</span>: Set up Python
+        <span style="color: #dcaeea;">uses</span>: actions/setup-python@v2
+        <span style="color: #dcaeea;">with</span>:
+          <span style="color: #dcaeea;">python-version</span>: <span style="color: #98be65;">'3.x'</span>
+
+      - <span style="color: #dcaeea;">name</span>: Install dependencies with retry
+        <span style="color: #dcaeea;">uses</span>: nick-fields/retry@v3  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20351;&#29992; retry &#21253;&#35013;&#23433;&#35013;&#20381;&#36182;&#27493;&#39588;</span>
+        <span style="color: #dcaeea;">with</span>:
+          <span style="color: #dcaeea;">timeout_minutes</span>: 2  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#27599;&#27425;&#23581;&#35797;&#30340;&#36229;&#26102;&#26102;&#38388;&#65288;2&#20998;&#38047;&#65289;</span>
+          <span style="color: #dcaeea;">max_attempts</span>: 3  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26368;&#22823;&#37325;&#35797;&#27425;&#25968;</span>
+          <span style="color: #dcaeea;">command</span>: |
+            <span style="color: #98be65;">python -m pip install --upgrade pip</span>
+<span style="color: #98be65;">            pip install requests waybackpy</span>
+
+      - <span style="color: #dcaeea;">name</span>: Process changes with retry
+        <span style="color: #dcaeea;">uses</span>: nick-fields/retry@v3  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21253;&#35013;&#21464;&#26356;&#22788;&#29702;&#27493;&#39588;</span>
+        <span style="color: #dcaeea;">with</span>:
+          <span style="color: #dcaeea;">timeout_minutes</span>: 2  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#27599;&#27425;&#23581;&#35797;&#30340;&#36229;&#26102;&#26102;&#38388;&#65288;5&#20998;&#38047;&#65289;</span>
+          <span style="color: #dcaeea;">max_attempts</span>: 3  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26368;&#22823;&#37325;&#35797;&#27425;&#25968;</span>
+          <span style="color: #dcaeea;">command</span>: |
+            <span style="color: #98be65;">OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \</span>
+<span style="color: #98be65;">            OPENAI_API_MODEL=${{ secrets.OPENAI_API_MODEL }} \</span>
+<span style="color: #98be65;">            OPENAI_API_ENDPOINT=${{ secrets.OPENAI_API_ENDPOINT }} \</span>
+<span style="color: #98be65;">            TEABLE_TABLE_ID=${{ secrets.TEABLE_TABLE_ID }} \</span>
+<span style="color: #98be65;">            TEABLE_TOKEN=${{ secrets.TEABLE_TOKEN }} \</span>
+<span style="color: #98be65;">            python bookmark-summary/process_changes.py</span>
+
+      - <span style="color: #dcaeea;">name</span>: Commit changes to bookmark-summary
+        <span style="color: #dcaeea;">run</span>: |
+          <span style="color: #98be65;">cd bookmark-summary</span>
+          git config --local user.email <span style="color: #98be65;">"action@github.com"</span>
+          git config --local user.name <span style="color: #98be65;">"GitHub Action"</span>
+<span style="color: #98be65;">          git add .</span>
+          git commit -m <span style="color: #98be65;">"Add new summaries"</span> || echo <span style="color: #98be65;">"No changes to commit"</span>
+<span style="color: #98be65;">          git push</span>
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb65c593" class="outline-2">
+<h2 id="orgb65c593">PocketBase</h2>
+<div class="outline-text-2" id="text-orgb65c593">
 <p>
 需要在仓库的 secret 里增加 <code>POCKETBASE_TOKEN</code> 、 <code>POCKETBASE_API</code> 两个secert，填入自己的 pocketbase API 地址和请求头。
 </p>
@@ -284,7 +747,7 @@ logging.basicConfig(
 </p>
 
 <p>
-你需要在指定的 collection 的 API Rules 里，手动加上 <code>@request.headers.x_token = "Your_token"</code> ,这里填入的内容就是 <code>POCKETBASE_TOKEN</code> ， <code>POCKETBASE_API</code> 在每个 collection 里会显示。
+需要在指定的 collection 的 API Rules 里，手动加上 <code>@request.headers.x_token = "Your_token"</code> ,这里填入的内容就是 <code>POCKETBASE_TOKEN</code> ， <code>POCKETBASE_API</code> 在每个 collection 里会显示。
 </p>
 
 <p>
@@ -308,9 +771,9 @@ logging.basicConfig(
 </pre>
 </div>
 </div>
-<div id="outline-container-org7b543bb" class="outline-3">
-<h3 id="org7b543bb">docker 部署到 VPS</h3>
-<div class="outline-text-3" id="text-org7b543bb">
+<div id="outline-container-orga256559" class="outline-3">
+<h3 id="orga256559">docker 部署到 VPS</h3>
+<div class="outline-text-3" id="text-orga256559">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">version</span>: <span style="color: #98be65;">"3.7"</span>
@@ -333,9 +796,13 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org06a5f32" class="outline-3">
-<h3 id="org06a5f32">Python</h3>
-<div class="outline-text-3" id="text-org06a5f32">
+<div id="outline-container-org3d5d335" class="outline-3">
+<h3 id="org3d5d335">Python</h3>
+<div class="outline-text-3" id="text-org3d5d335">
+<p>
+修改 bookmark-collection 仓库的 py 脚本：
+</p>
+
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> os
@@ -464,9 +931,13 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgf8b0d73" class="outline-3">
-<h3 id="orgf8b0d73">workflow</h3>
-<div class="outline-text-3" id="text-orgf8b0d73">
+<div id="outline-container-orgc1091e5" class="outline-3">
+<h3 id="orgc1091e5">workflow</h3>
+<div class="outline-text-3" id="text-orgc1091e5">
+<p>
+修改 bookmark-collection 仓库的 yaml：
+</p>
+
 <div class="org-src-container">
 <pre class="src src-yaml"><span style="color: #dcaeea;">name</span>: Save Bookmark to Readwise
 
@@ -516,9 +987,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-org8362f78" class="outline-2">
-<h2 id="org8362f78">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org8362f78">
+<div id="outline-container-org247309a" class="outline-2">
+<h2 id="org247309a">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org247309a">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
@@ -527,9 +998,9 @@ logging.basicConfig(
 后面可以直接把 highlights 导入到 pocketbase。
 </p>
 </div>
-<div id="outline-container-org28e6db7" class="outline-3">
-<h3 id="org28e6db7">python</h3>
-<div class="outline-text-3" id="text-org28e6db7">
+<div id="outline-container-org122e9fb" class="outline-3">
+<h3 id="org122e9fb">python</h3>
+<div class="outline-text-3" id="text-org122e9fb">
 <div class="org-src-container">
 <pre class="src src-python">
 <span style="color: #51afef;">import</span> requests
@@ -790,9 +1261,9 @@ logging.basicConfig(
 </div>
 </div>
 </div>
-<div id="outline-container-orgb8822e5" class="outline-3">
-<h3 id="orgb8822e5">workflow</h3>
-<div class="outline-text-3" id="text-orgb8822e5">
+<div id="outline-container-org5e0b376" class="outline-3">
+<h3 id="org5e0b376">workflow</h3>
+<div class="outline-text-3" id="text-org5e0b376">
 <div class="org-src-container">
 <pre class="src src-yaml">
 <span style="color: #dcaeea;">name</span>: Sync Readwise Articles
