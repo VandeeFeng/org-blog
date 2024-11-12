@@ -75,9 +75,9 @@ Start with：[[https://git-scm.com/download][Git]]，[[https://www.gnu.org/softw
 
 如何安装和基本的配置，上面都可以解决。如果你止步在了这里，直接放弃或许是更好的选择，或者使用[[https://obsidian.md/][obsidian]]、[[https://logseq.com/][Logseq]]这样的Markdown笔记工具，更或者使用Logseq的org编辑模式，用Logseq来管理org文档（不推荐长期这么做），适合自己的才是最好的。
 
-强烈建议用 purcell 大神的配置作为精装修的开始。在开始上手的时候，DoomEmacs 的体验是很好的，但是 DoomEmacs 有许多自己的宏和类似语法糖的语句和原生 Emacs 是不通用的，许多适配的细节也不好自己调整。包管理用 ~use-package~ 和 ~git submodule~ 就挺方便的了。
+强烈建议用 purcell 大神的配置作为高档毛坯房的开始。在开始上手的时候，DoomEmacs 的体验是很好的，但是 DoomEmacs 有许多自己的宏和类似语法糖的语句和原生 Emacs 是不通用的，许多适配的细节也不好自己调整，长期使用 Emacs 当然还是原生的好折腾一些。包管理用 ~use-package~ 和 ~git submodule~ 就挺方便的了。
 
-现在我也从 DoomEmacs 转为自己配置了，这是我之前的doomemacs[[https://github.com/VandeeFeng/doomemacs][配置]]。
+现在我也从 DoomEmacs 转为自己配置了，这是我之前的doomemacs[[https://github.com/VandeeFeng/doomemacs][配置]]，这个手册的配置代码示例是基于 DoomEmacs 的，原生 Emacs 和不使用 ~use-package~ 的需要修改。
 
 ** PKM
 
@@ -1163,7 +1163,7 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 
 - 2024-10-13: 增加了 Aider (一个CLI AI编程助手)在 Emacs 里的安装。最近开源的从代码到部署的 [[https://github.com/stackblitz/bolt.new][bolt.new]]  也很强，还有 Pythagora 的 [[https://github.com/Pythagora-io/gpt-pilot][gpt-pilot]]， AI 辅助编程的项目越来越多了，感谢 cursor 带来了这么多的竞争者。
 - 2024-10-24: 将 MD 文档转换成 org 文档的校对，删除了部分不必要的介绍。
-
+- 2024-11-12: 从 DoomEmacs 转向原生 Emacs 自己配置。
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。

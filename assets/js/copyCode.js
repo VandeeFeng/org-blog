@@ -195,11 +195,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 为所有代码块添加语言标签
-    document.querySelectorAll('.org-src-container pre[class*="src-"]').forEach(pre => {
-        const lang = pre.className.match(/src-([\w-]+)/)?.[1];
-        if (lang && lang !== 'nil') {
-            pre.setAttribute('data-lang', lang);
+    // 修改语言标签处理逻辑
+    document.querySelectorAll('.org-src-container pre').forEach(pre => {
+        // 检查是否有语言类名
+        const langMatch = pre.className.match(/src-([\w-]+)/);
+        if (langMatch && langMatch[1] !== 'nil') {
+            // 如果有语言类名且不是 nil，添加语言标签
+            pre.setAttribute('data-lang', langMatch[1]);
+            pre.style.setProperty('--show-lang-label', 'block');
+        } else {
+            // 如果没有语言类名或是 nil，添加一个默认的代码标签
+            pre.setAttribute('data-lang', 'code');
             pre.style.setProperty('--show-lang-label', 'block');
         }
     });
