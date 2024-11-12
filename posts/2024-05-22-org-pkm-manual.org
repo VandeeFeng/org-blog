@@ -75,7 +75,9 @@ Start with：[[https://git-scm.com/download][Git]]，[[https://www.gnu.org/softw
 
 如何安装和基本的配置，上面都可以解决。如果你止步在了这里，直接放弃或许是更好的选择，或者使用[[https://obsidian.md/][obsidian]]、[[https://logseq.com/][Logseq]]这样的Markdown笔记工具，更或者使用Logseq的org编辑模式，用Logseq来管理org文档（不推荐长期这么做），适合自己的才是最好的。
 
-也可以参考我会一直更新的doomemacs[[https://github.com/VandeeFeng/doomemacs][配置]]。
+强烈建议用 purcell 大神的配置作为精装修的开始。在开始上手的时候，DoomEmacs 的体验是很好的，但是 DoomEmacs 有许多自己的宏和类似语法糖的语句和原生 Emacs 是不通用的，许多适配的细节也不好自己调整。包管理用 ~use-package~ 和 ~git submodule~ 就挺方便的了。
+
+现在我也从 DoomEmacs 转为自己配置了，这是我之前的doomemacs[[https://github.com/VandeeFeng/doomemacs][配置]]。
 
 ** PKM
 
