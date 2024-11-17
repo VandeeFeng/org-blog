@@ -330,6 +330,7 @@ tr:nth-child(even) {
     line-height: 1.6;
     max-width: 100%;
     overflow: auto;
+    scrollbar-width: thin;
     padding: 1em 1.5em;
     padding-top: 2.5em;
     display: block;
@@ -694,4 +695,32 @@ li {
 .heading-wrapper h3 {
     margin: 0;
     padding: 0;
+}
+
+/* Webkit浏览器的滚动条样式 */
+.org-src-container pre.src::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.org-src-container pre.src::-webkit-scrollbar-track {
+    background: #1f2937;  /* 深灰色轨道 */
+    border-radius: 4px;
+}
+
+
+/* 滚动条交叉处的样式 */
+.org-src-container pre.src::-webkit-scrollbar-corner {
+    background: #1f2937;
+}
+
+.org-src-container pre.src::-webkit-scrollbar-thumb {
+    background-color: #6b7280;  /* 深灰色滑块 */
+    border-radius: 3px;
+    border: 2px solid #1f2937;  /* 边框颜色与轨道颜色相同 */
+
+}
+
+.org-src-container pre.src::-webkit-scrollbar-thumb:hover {
+    background-color: #9ca3af;  /* 悬停时稍微亮一点 */
 }
