@@ -4,7 +4,6 @@
 #+filetags: PKM Emacs
 
 
-
 * Intro
 
 #+begin_quote
@@ -171,7 +170,7 @@ org里的标签功能也很全面，支持多个分组，可以自动补全，�
 在Org Mode中，你可以通过按下快捷键来为项目或任务添加预定义的标签。以下是具体的步骤：
 
 1. 光标定位：将光标移动到你想要添加标签的项目或任务上。
-2. *添加标签：按下快捷键 ~C-c C-q~，org-set-tags-command，这将打开标签过滤器。可以直接在标题的最后输入标签。在输入冒号后，M-TAG* 提供了标签的自动补全和选择功能。
+2. *添加标签：按下快捷键 ~C-c C-q~ ，org-set-tags-command，这将打开标签过滤器。可以直接在标题的最后输入标签。在输入冒号后，M-TAG* 提供了标签的自动补全和选择功能。
 3. 使用快捷键：在标签过滤器中，输入你为标签分配的字符常量作为快捷键。例如，如果你为 ~@work~ 标签分配了字符 ~w~，那么在标签过滤器中输入 ~w~。
 4. 确认添加：按下 ~Enter~ 键，这将为项目或任务添加相应的标签。
 
@@ -221,7 +220,6 @@ org 也允许多个分组。当光标在这些行上的时候，不要忘了按 
 #+end_src
 
 
-
 Ref:
 
 - [[https://orgmode.org/manual/Tags.html#:~:text=Org%20mode%20has%20extensive%20support%20for%20tags.%20Every,by%20a%20single%20colon%2C%20e.g.%2C%20%E2%80%98%20%3Awork%3A%20%E2%80%99.][Tags (The Org Manual)]]
@@ -253,7 +251,7 @@ Ref:
 
 **** TODOs
 
-- 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入~[/]~或者~[%]~。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
+- 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入 ~[/]~ 或者 ~[%]~ 。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
 
   #+begin_src
   * TODO Organize party [1/3]
@@ -387,7 +385,6 @@ Ref：
 #+end_src
 
 
-
 Ref：
 
 - [[https://www.zmonster.me/2018/02/28/org-mode-capture.html][强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster's Blog]]
@@ -410,7 +407,7 @@ org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大
 
 同样也需要在最开始设置好org-roam笔记的文件夹： ~(setq org-roam-directory "~/your/roam/directory/")~
 
-有一个坑，org-roam会自动生成一个~.orgids~文件来记录生成的每个org-roam笔记的id，如果不设置会在系统根目录下自动生成。加上~(org-id-locations-file "~/your/path/to/.orgids")~即可。在一开始我一度认为我的电脑是不是哪里出了问题🤣，这个文件冷不丁的就冒出来了，删了重启又有了。官方文档和各大论坛里都没有这个设置，困扰了我很久，还是GPT帮我解决了。
+有一个坑，org-roam会自动生成一个~.orgids~文件来记录生成的每个org-roam笔记的id，如果不设置会在系统根目录下自动生成。加上 ~(org-id-locations-file "~/your/path/to/.orgids"~)即可。在一开始我一度认为我的电脑是不是哪里出了问题🤣，这个文件冷不丁的就冒出来了，删了重启又有了。官方文档和各大论坛里都没有这个设置，困扰了我很久，还是GPT帮我解决了。
 
 下面是模板和相关配置：
 
@@ -488,8 +485,6 @@ Ref：
 - [[https://d12frosted.io/tags/org-roam.html][Boris Buliga - org-roam]]
 - [[https://emacs-china.org/t/org-roam-v2-org-roam-ui-emacs-29-sqlite/17806][Org-roam(v2) 以及 org-roam-ui 的使用姿势（已支持Emacs 29 内置的 sqlite) - Org-mode - Emacs China]]
 
-
-
 **** Org-export
 
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些[[https://orgmode.org/zh-CN/tools.html][工具]] 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
@@ -523,7 +518,6 @@ Ref：
           (if (looking-back "^~~~")
               (replace-match "#+end_src"))))))
 #+end_src
-
 
 
 - *Markdown to org-mode*:
