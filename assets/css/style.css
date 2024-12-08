@@ -33,6 +33,15 @@ a:hover {
     text-decoration: none;
 }
 
+p a {
+    border-bottom: 1px dotted #073642; /* 只给段落中的链接添加点虚线 */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+p a:hover {
+    border-bottom-color: #268bd2; /* 悬停时改变虚线颜色 */
+}
+
 blockquote {
     background-color: #eee8d5; /* Solarized Light base2 */
     border-left: 4px solid #93a1a1; /* Solarized Light base1 */
