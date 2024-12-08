@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sun, 08 Dec 2024 17:43:39 +0800</lastBuildDate>
+<lastBuildDate>Sun, 08 Dec 2024 22:23:05 +0800</lastBuildDate>
 <item>
   <title><![CDATA[AI 交互的隐性成本]]></title>
   <description><![CDATA[
@@ -12,15 +12,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7bfe9c6">AI 交互的隐性成本</a>
+<li><a href="#orgaacf944">AI 交互的隐性成本</a>
 <ul>
-<li><a href="#org88b55e4">Prompt 成本</a></li>
-<li><a href="#orga5f8676">试错成本</a></li>
-<li><a href="#org6768047">构建成本</a></li>
-<li><a href="#orgd513401">依赖成本</a></li>
+<li><a href="#org55fa903">Prompt 成本</a></li>
+<li><a href="#org7880255">试错成本</a></li>
+<li><a href="#org1875a73">构建成本</a></li>
+<li><a href="#org79bfe5a">依赖成本</a></li>
 </ul>
 </li>
-<li><a href="#org89b1693">技术革命</a></li>
+<li><a href="#org8e127c1">技术革命</a></li>
 </ul>
 </div>
 </nav>
@@ -31,13 +31,13 @@
 <p>
 如果把 AI 使用成本分成显性和隐性，对用户而言显性成本的包括：API 的充值，pro 会员的充值等等这些实际的消费。而隐性的成本很少有人提及，它们包括但不限于：学习使用的成本，依赖的成本，还有今天想说说的交互的成本。
 </p>
-<div id="outline-container-org7bfe9c6" class="outline-2">
-<h2 id="org7bfe9c6">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-org7bfe9c6">
+<div id="outline-container-orgaacf944" class="outline-2">
+<h2 id="orgaacf944">AI 交互的隐性成本</h2>
+<div class="outline-text-2" id="text-orgaacf944">
 </div>
-<div id="outline-container-org88b55e4" class="outline-3">
-<h3 id="org88b55e4">Prompt 成本</h3>
-<div class="outline-text-3" id="text-org88b55e4">
+<div id="outline-container-org55fa903" class="outline-3">
+<h3 id="org55fa903">Prompt 成本</h3>
+<div class="outline-text-3" id="text-org55fa903">
 <p>
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
 </p>
@@ -48,9 +48,9 @@
 </div>
 </div>
 
-<div id="outline-container-orga5f8676" class="outline-3">
-<h3 id="orga5f8676">试错成本</h3>
-<div class="outline-text-3" id="text-orga5f8676">
+<div id="outline-container-org7880255" class="outline-3">
+<h3 id="org7880255">试错成本</h3>
+<div class="outline-text-3" id="text-org7880255">
 <p>
 prompt 又直接影响沟通交互的成本。
 </p>
@@ -72,9 +72,9 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div id="outline-container-org6768047" class="outline-3">
-<h3 id="org6768047">构建成本</h3>
-<div class="outline-text-3" id="text-org6768047">
+<div id="outline-container-org1875a73" class="outline-3">
+<h3 id="org1875a73">构建成本</h3>
+<div class="outline-text-3" id="text-org1875a73">
 <p>
 因此我们自然会往下想到通过多个 AI 协作来提高成功率。
 </p>
@@ -89,23 +89,27 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-orgd513401" class="outline-3">
-<h3 id="orgd513401">依赖成本</h3>
-<div class="outline-text-3" id="text-orgd513401">
+<div id="outline-container-org79bfe5a" class="outline-3">
+<h3 id="org79bfe5a">依赖成本</h3>
+<div class="outline-text-3" id="text-org79bfe5a">
 <p>
 当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
 </p>
 
 <p>
-你会进入一个恶性循环，提升和 AI 交互的效率花费成本，而这个成本会影响解决问题本身的效率，依赖上之后，传统的技能熟练度下降，效率又更低了。
+你会进入一个恶性循环，在达到一定 AI 熟练度之前，上面提到的几点不完全的隐性成本，会随着对 AI 的使用而增加，导致解决问题本身的效率降低。依赖上之后，传统的技能熟练度下降，效率又更低了。如果不能越过这个阈值，那么 AI 的使用反而会带来副作用。
+</p>
+
+<p>
+和其他技术一样 AI 一定会让人更懒，但我们同样可以借助它让自己变得更聪明，而不是依赖上它从变懒到变笨。
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org89b1693" class="outline-2">
-<h2 id="org89b1693">技术革命</h2>
-<div class="outline-text-2" id="text-org89b1693">
+<div id="outline-container-org8e127c1" class="outline-2">
+<h2 id="org8e127c1">技术革命</h2>
+<div class="outline-text-2" id="text-org8e127c1">
 <p>
 利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能到来的 AI 革命。
 </p>
