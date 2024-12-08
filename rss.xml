@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sun, 08 Dec 2024 22:23:05 +0800</lastBuildDate>
+<lastBuildDate>Sun, 08 Dec 2024 22:37:21 +0800</lastBuildDate>
 <item>
   <title><![CDATA[AI 交互的隐性成本]]></title>
   <description><![CDATA[
@@ -12,15 +12,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaacf944">AI 交互的隐性成本</a>
+<li><a href="#org5966712">AI 交互的隐性成本</a>
 <ul>
-<li><a href="#org55fa903">Prompt 成本</a></li>
-<li><a href="#org7880255">试错成本</a></li>
-<li><a href="#org1875a73">构建成本</a></li>
-<li><a href="#org79bfe5a">依赖成本</a></li>
+<li><a href="#org68fe028">Prompt 成本</a></li>
+<li><a href="#orgbc8d1aa">试错成本</a></li>
+<li><a href="#org8b7d885">构建成本</a></li>
+<li><a href="#org8d3f344">依赖成本</a></li>
 </ul>
 </li>
-<li><a href="#org8e127c1">技术革命</a></li>
+<li><a href="#orgf5ad286">技术革命</a></li>
 </ul>
 </div>
 </nav>
@@ -31,13 +31,13 @@
 <p>
 如果把 AI 使用成本分成显性和隐性，对用户而言显性成本的包括：API 的充值，pro 会员的充值等等这些实际的消费。而隐性的成本很少有人提及，它们包括但不限于：学习使用的成本，依赖的成本，还有今天想说说的交互的成本。
 </p>
-<div id="outline-container-orgaacf944" class="outline-2">
-<h2 id="orgaacf944">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-orgaacf944">
+<div id="outline-container-org5966712" class="outline-2">
+<h2 id="org5966712">AI 交互的隐性成本</h2>
+<div class="outline-text-2" id="text-org5966712">
 </div>
-<div id="outline-container-org55fa903" class="outline-3">
-<h3 id="org55fa903">Prompt 成本</h3>
-<div class="outline-text-3" id="text-org55fa903">
+<div id="outline-container-org68fe028" class="outline-3">
+<h3 id="org68fe028">Prompt 成本</h3>
+<div class="outline-text-3" id="text-org68fe028">
 <p>
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
 </p>
@@ -48,9 +48,9 @@
 </div>
 </div>
 
-<div id="outline-container-org7880255" class="outline-3">
-<h3 id="org7880255">试错成本</h3>
-<div class="outline-text-3" id="text-org7880255">
+<div id="outline-container-orgbc8d1aa" class="outline-3">
+<h3 id="orgbc8d1aa">试错成本</h3>
+<div class="outline-text-3" id="text-orgbc8d1aa">
 <p>
 prompt 又直接影响沟通交互的成本。
 </p>
@@ -60,7 +60,7 @@ prompt 又直接影响沟通交互的成本。
 </p>
 
 <p>
-比如我想要查询王小波的生平信息。如果只是说“给我介绍一下王小波”，就过于宽泛。换成 “请告诉我关于王小波的主要作品和生活年代。” 效果就会好很多。
+比如我想要查询王小波的生平信息。如果只是说“给我介绍一下王小波”，就过于宽泛。换成 “请告诉我关于王小波的主要作品和生活年代的相关信息。” 效果就会好很多。
 </p>
 
 <p>
@@ -72,9 +72,9 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div id="outline-container-org1875a73" class="outline-3">
-<h3 id="org1875a73">构建成本</h3>
-<div class="outline-text-3" id="text-org1875a73">
+<div id="outline-container-org8b7d885" class="outline-3">
+<h3 id="org8b7d885">构建成本</h3>
+<div class="outline-text-3" id="text-org8b7d885">
 <p>
 因此我们自然会往下想到通过多个 AI 协作来提高成功率。
 </p>
@@ -89,9 +89,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org79bfe5a" class="outline-3">
-<h3 id="org79bfe5a">依赖成本</h3>
-<div class="outline-text-3" id="text-org79bfe5a">
+<div id="outline-container-org8d3f344" class="outline-3">
+<h3 id="org8d3f344">依赖成本</h3>
+<div class="outline-text-3" id="text-org8d3f344">
 <p>
 当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
 </p>
@@ -107,15 +107,15 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org8e127c1" class="outline-2">
-<h2 id="org8e127c1">技术革命</h2>
-<div class="outline-text-2" id="text-org8e127c1">
+<div id="outline-container-orgf5ad286" class="outline-2">
+<h2 id="orgf5ad286">技术革命</h2>
+<div class="outline-text-2" id="text-orgf5ad286">
 <p>
-利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能到来的 AI 革命。
+利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
 </p>
 
 <p>
-每一次技术的革新，科学的发展，都会提高生产力，提升效率，但这不等于是对个人的，相反技术的革命会增加个人的成本，个人要适应这些变化。
+每一次技术的革新，科学的发展，都会提高生产力，提升效率，但这不等于是对个人的，相反技术的革命会增加个人的成本，个人要适应这些变化，还有更多<a href="https://wiki.vandee.art/#%E6%8A%80%E6%9C%AF%E8%BF%9B%E6%AD%A5%E7%9A%84%E4%BB%A3%E4%BB%B7">技术进步的代价</a>。
 </p>
 
 <p>
@@ -123,7 +123,7 @@ prompt 又直接影响沟通交互的成本。
 </p>
 
 <p>
-这也是为什么，进大半年一直在折腾我的各种 PKM。用 AI 来优化信息获取、信息整理，帮助自己思考，我认为是一劳永逸的。学 AI 就是学一个新的语言，一个和代码、二进制沟通的语言，而这个语言迟早会和当初英文一样，编入义务教育的课本。
+这也是为什么，近大半年我一直在折腾我的各种 PKM。用 AI 来优化信息获取、信息整理，帮助自己思考，我认为是一劳永逸的。学 AI 就是学一个新的语言，一个和代码、二进制沟通的语言，而这个语言迟早会和当初英文一样，编入义务教育的课本。
 </p>
 
 <p>
