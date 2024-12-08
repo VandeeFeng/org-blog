@@ -56,15 +56,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5966712">AI 交互的隐性成本</a>
+<li><a href="#org4e8d069">AI 交互的隐性成本</a>
 <ul>
-<li><a href="#org68fe028">Prompt 成本</a></li>
-<li><a href="#orgbc8d1aa">试错成本</a></li>
-<li><a href="#org8b7d885">构建成本</a></li>
-<li><a href="#org8d3f344">依赖成本</a></li>
+<li><a href="#orga2e008f">Prompt 成本</a></li>
+<li><a href="#org9ff6369">试错成本</a></li>
+<li><a href="#org56ff1dc">构建成本</a></li>
+<li><a href="#org2362009">依赖成本</a></li>
 </ul>
 </li>
-<li><a href="#orgf5ad286">技术革命</a></li>
+<li><a href="#orgf5f6f3a">技术革命</a></li>
 </ul>
 </div>
 </nav>
@@ -75,13 +75,13 @@
 <p>
 如果把 AI 使用成本分成显性和隐性，对用户而言显性成本的包括：API 的充值，pro 会员的充值等等这些实际的消费。而隐性的成本很少有人提及，它们包括但不限于：学习使用的成本，依赖的成本，还有今天想说说的交互的成本。
 </p>
-<div id="outline-container-org5966712" class="outline-2">
-<h2 id="org5966712">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-org5966712">
+<div id="outline-container-org4e8d069" class="outline-2">
+<h2 id="org4e8d069">AI 交互的隐性成本</h2>
+<div class="outline-text-2" id="text-org4e8d069">
 </div>
-<div id="outline-container-org68fe028" class="outline-3">
-<h3 id="org68fe028">Prompt 成本</h3>
-<div class="outline-text-3" id="text-org68fe028">
+<div id="outline-container-orga2e008f" class="outline-3">
+<h3 id="orga2e008f">Prompt 成本</h3>
+<div class="outline-text-3" id="text-orga2e008f">
 <p>
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
 </p>
@@ -89,12 +89,16 @@
 <p>
 要想让 LLM 更精准的理解和处理我们的需求，就必须了解 prompt。简单来说，合适的 prompt 触发了 LLM 的关键字，它才能更精准的预测分析输出结果，而和 LLM 交互最合适的自然语言是英语。这也就是为什么，同样的意思，换一句话可能 LLM 生成的结果就会更好。对于不是英语母语的使用者来说，这就是双重成本。
 </p>
+
+<p>
+而且不同的 LLM 对于 prompt 语法的支持程度也不一样。Claude 对 XML 格式支持的比较好，而 GPT 对 JSON 格式支持的比较好，llama 则更适合用 markdown 语法来写。
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgbc8d1aa" class="outline-3">
-<h3 id="orgbc8d1aa">试错成本</h3>
-<div class="outline-text-3" id="text-orgbc8d1aa">
+<div id="outline-container-org9ff6369" class="outline-3">
+<h3 id="org9ff6369">试错成本</h3>
+<div class="outline-text-3" id="text-org9ff6369">
 <p>
 prompt 又直接影响沟通交互的成本。
 </p>
@@ -116,9 +120,9 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div id="outline-container-org8b7d885" class="outline-3">
-<h3 id="org8b7d885">构建成本</h3>
-<div class="outline-text-3" id="text-org8b7d885">
+<div id="outline-container-org56ff1dc" class="outline-3">
+<h3 id="org56ff1dc">构建成本</h3>
+<div class="outline-text-3" id="text-org56ff1dc">
 <p>
 因此我们自然会往下想到通过多个 AI 协作来提高成功率。
 </p>
@@ -133,9 +137,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org8d3f344" class="outline-3">
-<h3 id="org8d3f344">依赖成本</h3>
-<div class="outline-text-3" id="text-org8d3f344">
+<div id="outline-container-org2362009" class="outline-3">
+<h3 id="org2362009">依赖成本</h3>
+<div class="outline-text-3" id="text-org2362009">
 <p>
 当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
 </p>
@@ -151,9 +155,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-orgf5ad286" class="outline-2">
-<h2 id="orgf5ad286">技术革命</h2>
-<div class="outline-text-2" id="text-orgf5ad286">
+<div id="outline-container-orgf5f6f3a" class="outline-2">
+<h2 id="orgf5f6f3a">技术革命</h2>
+<div class="outline-text-2" id="text-orgf5f6f3a">
 <p>
 利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
 </p>
