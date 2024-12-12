@@ -19,7 +19,9 @@ https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/books.png
 
 Blog 共 13 篇，里面我觉得还不错的有：[[https://www.vandee.art/2024-05-22-org-pkm-manual.html][PKM（个人知识管理）构建手册 - Emacs]] 、 [[https://www.vandee.art/2024-05-05-the-value-of-art.html][也说说艺术的价值]] 、[[https://www.vandee.art/2024-11-21-recording-is-resistance.html][记录本身就是一种反抗 - gitmemo]] 、[[https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html][三颗大包菜]] 。
 
-总体来说，今年对 Emacs 更加精进了，PKM 也更加完善，得益于 cursor，构建了 [[https://github.com/VandeeFeng/gitmemos][GitMemo]] 。
+总体来说，今年对 Emacs 更加精进了，PKM 也更加完善，得益于 cursor，构建了 [[https://github.com/VandeeFeng/gitmemos][GitMemo]] 。又继续学习了 JavaScript、Rust、C、Python 等几种计算机语言。乐理基础也囫囵吞枣的又系统的看了一下，听了许多古典音乐，其中最喜欢的有 Vivaldi 的 The Four Seasons 四季。
+
+今年主要在内核的修炼，我感觉我和自然的交融更加融洽了。这应该得益于《周易》和古典乐。
 
 * 总结是在做什么？
 我们有时会在一个阶段快要结束的时候产生一种时间过的很快的感觉，这其实是因为重复性的事物在日常生活中占据的比例比较大，所以我们会觉得每天做了许多，但又好像什么都没做，在大脑里就没有留下什么，于是在回顾的时候就会感觉，怎么时间一下就过去了？
