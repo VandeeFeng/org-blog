@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Thu, 12 Dec 2024 15:08:08 +0800</lastBuildDate>
+<lastBuildDate>Thu, 12 Dec 2024 15:17:20 +0800</lastBuildDate>
 <item>
   <title><![CDATA[2024 - 需]]></title>
   <description><![CDATA[
@@ -12,8 +12,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org125bc4b">2024</a></li>
-<li><a href="#orgc61475e">总结是在做什么？</a></li>
+<li><a href="#orge1f4d40">2024</a></li>
+<li><a href="#org268ca8a">总结是在做什么？</a></li>
 </ul>
 </div>
 </nav>
@@ -29,9 +29,9 @@
 2024 年 12 月 2 日，牛津大学出版社宣布“脑腐”（brain rot）为 2024 年<a href="https://corp.oup.com/news/brain-rot-named-oxford-word-of-the-year-2024/">牛津年度词汇</a>，各大知名机构都会在年底公布它们今年的数据总结，政府同样会有经济总结、工作总结报告，虽然这些对外的属性较多，它们需要权衡各方面的利弊，公布一个对外的说法，但多少会反应出一些当年的趋势。不同立场的分析主体会带有主观偏向，但数据是实打实的。怎么判断形势、趋势？我觉得从这些总结报告入手，是个很好的方法，可以顺着找到相关的数据自己分析。
 </p>
 
-<div id="outline-container-org125bc4b" class="outline-2">
-<h2 id="org125bc4b">2024</h2>
-<div class="outline-text-2" id="text-org125bc4b">
+<div id="outline-container-orge1f4d40" class="outline-2">
+<h2 id="orge1f4d40">2024</h2>
+<div class="outline-text-2" id="text-orge1f4d40">
 <p>
 自己的总结当然向内的属性就要偏重一些了。也一样从数据出发来分析。
 </p>
@@ -41,17 +41,17 @@
 </p>
 
 
-<figure id="orgc835215">
+<figure id="org4c6be37">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/books.png" class="img" width="50%" height="50%">
 
 </figure>
 
 <p>
-Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> 、 <a href="https://www.vandee.art/2024-05-05-the-value-of-art.html">也说说艺术的价值</a> 、<a href="https://www.vandee.art/2024-11-21-recording-is-resistance.html">记录本身就是一种反抗 - gitmemo</a> 、<a href="https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html">三颗大包菜</a> 。
+Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> 、 <a href="https://www.vandee.art/2024-05-05-the-value-of-art.html">也说说艺术的价值</a> 、<a href="https://www.vandee.art/2024-07-30-the-imitation-game-of-art.html">艺术的模仿游戏</a> 、<a href="https://www.vandee.art/2024-11-21-recording-is-resistance.html">记录本身就是一种反抗 - gitmemo</a> 、<a href="https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html">三颗大包菜</a> 、<a href="https://www.vandee.art/2024-02-01-poor-sheep.html">羊好可怜</a>。
 </p>
 
 <p>
-总体来说，今年对 Emacs 更加精进了，PKM 也更加完善，已 Emacs 为主记录原始的笔记作为 PKM 基本库，迭代到 <a href="https://x.vandee.art/wiki">Vandee — Wiki</a> 精炼成原子笔记，<a href="https://x.vandee.art/memo">GitMemo</a> 带上社交属性来记录 Memo 并作为朋友圈替代，<a href="https://x.vandee.art/clip">Clip</a> 剪藏有记录价值的文章，<a href="https://x.vandee.art/blog">Blog</a> 作为写作的输出。这几个部署的分板块都迭代自 Emacs 原始的数据。
+总体来说，今年对 Emacs 更加精进了，从 DoomEmacs 转为自己配置 Emacs，PKM 也更加完善，Emacs 记录原始的笔记作为 PKM 基本库，迭代到 <a href="https://x.vandee.art/wiki">Vandee — Wiki</a> 精炼成原子笔记，<a href="https://x.vandee.art/memo">GitMemo</a> 带上社交属性来记录 Memo 并作为朋友圈替代，<a href="https://x.vandee.art/clip">Clip</a> 剪藏有记录价值的文章，<a href="https://x.vandee.art/blog">Blog</a> 作为写作的输出。这几个部署的分板块都迭代自 Emacs 原始的数据。
 </p>
 
 <p>
@@ -59,14 +59,14 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 </p>
 
 <p>
-今年主要在内核的修炼，我感觉我和自然的交融更加融洽了。这应该得益于《周易》和古典乐。
+今年主要在内核的修炼，我感觉我和自然的交融更加融洽了。这应该得益于《周易》和古典乐。摄影今年没有太多新的拍摄，原因就是要修炼内核，明年看看成效，希望能碰到好的题材。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgc61475e" class="outline-2">
-<h2 id="orgc61475e">总结是在做什么？</h2>
-<div class="outline-text-2" id="text-orgc61475e">
+<div id="outline-container-org268ca8a" class="outline-2">
+<h2 id="org268ca8a">总结是在做什么？</h2>
+<div class="outline-text-2" id="text-org268ca8a">
 <p>
 我们有时会在一个阶段快要结束的时候产生一种时间过的很快的感觉，这其实是因为重复性的事物在日常生活中占据的比例比较大，所以我们会觉得每天做了许多，但又好像什么都没做，在大脑里就没有留下什么，于是在回顾的时候就会感觉，怎么时间一下就过去了？
 </p>
