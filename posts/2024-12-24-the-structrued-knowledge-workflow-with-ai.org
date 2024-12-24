@@ -1,0 +1,86 @@
+#+title: 结构化知识工作流-with AI
+#+date: <2024-12-24 14:10>
+#+description: [[https://wiki.vandee.art/#%E6%8F%90%E5%8D%87%E5%BD%B1%E5%93%8D%E5%8A%9B][提升影响力]] ，做一个 [[https://wiki.vandee.art/#%E9%92%A5%E5%8C%99%E4%BA%BA(Key%20Man)][钥匙人(Key Man)]] ，每个人的价值都应该能在不同的体系里得到放大和体现，这样社会平均价值自然会得到提升。思考和写作是一个很好的起点，也是每个普通人下一秒就可以开始的事情。
+#+filetags: PKM
+
+今年花了很多时间在研究 LLLM 和知识库结合上，整理一下现在的流程，后面有更新了也都放在这里。
+
+每当我们习惯了一种模式之后，大脑就获得了这种习惯的松弛感，就好像出去吃饭的时候，到了一个熟悉的餐厅熟悉的环境，看到了熟悉的菜单，感觉很从容。我本能的会记住这种大脑的感觉，就好像闻到了一个气味，下一次再闻到它的时候，就很自然的会回忆起相关的细节。每当这个松弛感出现之后，我就意识到，是时候要更新了。
+
+因为，一个开了 20 年车的司机，很可能在技术上没有进步反而倒退了，在习惯和熟悉感之中，许多技能就会退化，更要命的是，它会释放一个错误的信号：这种建立在持续时间长短之上的自信和权威是我们经常会放大的。
+
+因此，我养成了一个习惯，也就是当松弛感出现之后，强迫大脑去习惯新的习惯。在这个过程当中，就好像带上了一个放大镜，那些在习惯之下拙劣的细节被放大。
+
+* Intro
+信息很容易被误认为是知识，我们每天会被动和主动的接受到许多信息，会自然的获得一种感觉：我今天又学到了，知道了很多新鲜的东西。但这不是知识，当信息被固定和[[https://wiki.vandee.art/#%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86][结构化]]之后，才可能被称作知识。
+
+在 AI 的帮助下，这个过程变得更系统也更便捷。学习不是一系列任务，更不只是一个阶段性的教育，而是生物进化过程当中一个必然会参与的活动。对于我来说，我很享受这个过程，学习就好像健身锻炼一样，再内啡肽和多巴胺的作用下，正反馈其实很容易建立。
+
+在《穷查理宝典》里我最大的收获就是 [[https://www.vandee.art/2023-12-06-learn-all-the-time.html][Learn All The Time]] 。
+
+* 信息处理
+信息处理部分的目标是：
+
+- 统一在一个地方阅读，现在是 Readwise 可能明年会自己搭建。
+- 渐进式阅读，每一次高亮标注重点之后，最终生成高度原子化的概念。
+- 通过 Emacs 的 agenda 和自制的回顾卡片，让知识流动起来，融入循环。
+
+最终在一次次的迭代之后，这些信息会被筛选成高度原子化的笔记，记录到 [[https://wiki.vandee.art/#%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86][Vandee — Wiki]] 。
+
+视频学习，现在基本全部都在 google 的 [[https://notebooklm.google.com/][NotebookLM]]，太方便了。
+
+基于这些就有许多有意思的项目可以做了，例如最近在折腾的，从数据库里检索一个星期之内的信息，做一个简报，用 GitHub action 实现自动化。
+** 被动信息
+现在我的被动信息获取主要来源于 RSS 订阅，今年开通了 Readwise 的订阅，并在 claude 的帮助下构建了一个信息固定的 workflow：[[https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html][数据库的搭建 - 流动知识检索]] 、[[https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html][用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索]] 。
+
+在 Readwise 里阅读 RSS 的推送，用 [[https://github.com/osmoscraft/osmosmemo][osmos::memo]] 书签插件剪藏网页文章，保存到 Readwise 阅读，并同步保存到 teable 的数据库。进一步通过 Github action 生成 [[https://clip.vandee.art/][Vandee's Clip]] 。
+
+通过渐进式阅读，在迭代高亮标注几次之后，最后在 Emacs 里通过 capture 固定到 ~clip.org~ ，作为剪藏的元数据，方便以后的工作流提取。
+** 主动信息
+目前会每天看一看这些网站：
+- [[https://zeli.app/zh][Zeli - 用中文阅读Hacker News和AI论文]]
+- [[https://newsnow.busiyi.world/c/focus][NewsNow]]
+- [[https://huggingface.co/papers][Daily Papers - Hugging Face]]
+- [[https://emacs-china.org/][Emacs China]]
+- [[https://trendshift.io/][Trendshift - Explore open-source repositories and find some insights]]
+
+还有一些自己关注大佬的博客和 GitHub 仓库。
+
+最近在听播客，这是我长时间纯文字阅读之后忽略的部分。现在播客的大环境挺好的，有许多高质量的资源。
+* 文章精读
+最近用 phidata 和 ollama 构建了一个简单的本地 [[https://memo.vandee.art/issue/26][RAG assistant]] ，可以直接输入文章 url，结合文章内容具体的提问，这样就可以同时对多个相关内容的文章进行系统的提问，效率提升了不少。
+
+这个过程当中，AI 会帮助我剔除我不关心的部分，快速的找到概念之间的联系，并发散思维，帮助我提出更好的问题。
+
+AI 善于回答问题，但它不善于提出问题。使用 AI 学习了很长时间之后，我觉得很重要的一点就是：让 AI 帮助自己提出问题。而这些，一个简单的 prompt 就可以解决。
+
+这一步的目标是：在知识之间、AI 之间创造 connection。如果只是机械的把 AI 当作一个阶段性的工具，那么它的价值是很有限的。更进一步，AI 完全可以是一个 24 小时全天在线的朋友。它可以帮助自己提出更好的问题，找到自己思维习惯的盲区，是知识、信息、思维的一个很好的连接点。
+
+* 笔记
+笔记部分是固定结构化知识最核心的一步，[[https://wiki.vandee.art/#%E6%89%BE%E5%88%B0%E7%9F%A5%E8%AF%86%E7%9A%84%E7%BC%9D%E9%9A%99][找到知识的缝隙]]。
+
+经过几个月迭代出了 [[https://www.vandee.art/2024-05-22-org-pkm-manual.html][PKM（个人知识管理）构建手册 - Emacs]] ，现在终于有了一个基于 Emacs 的比较满意的笔记流程。作为 PKM 的基础库，这里保存着最原始的笔记材料和历史记录。
+
+高度原子化的笔记输出到 [[https://wiki.vandee.art/#%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86][Vandee — Wiki]] ，在 Emacs 里用 bash 脚本记录到 tiddlywiki。
+
+在 Emacs 里用 [[https://github.com/karthink/gptel][gptel]] 可以很方便的和 AI 交互对话，直接在 org 文档里记录和 LLM 对话的内容。这个挺关键的，和 AI 对话的检索是个大问题。现在的 AI 平台很分散，各自的数据又都不能导出，这对于记录 AI 学习笔记来说，很麻烦。直接在 Emacs 里和 AI 交互就解决了这个痛点。
+
+下一步要构建数据库版本的笔记，和 Emacs 的工作流结合起来，[[https://memo.vandee.art/issue/26][在知识之间、AI 之间创造 connection]] 。
+
+supabase 最进又更新了 [[https://database.build/][Postgres Sandbox]] ,和我的思路不谋而合。
+
+* 输出
+[[https://wiki.vandee.art/#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%80%9D%E8%80%83%E8%80%8C%E4%B8%8D%E8%BE%93%E5%87%BA%EF%BC%8C%E4%BD%A0%E5%8F%AA%E6%98%AF%E4%BB%A5%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%9C%A8%E6%80%9D%E8%80%83][如果你思考而不输出，你只是以为自己在思考]] ，费曼学习法里说的太多了，study in public。
+
+作为结构化知识循环的最后一步，输出的过程当中，是对结构化知识的检验也是应用。更重要的是，一个信息如果不能融入一个系统或者环境，它的封闭性会削弱这个信息的价值。
+
+做笔记当然是为自己做的，但是它的价值是可以放大的。向往的探索和向内的探索同样重要，俗话说三人行必有我师，信息的披露和流动对于向内的探索是很有帮助的。
+
+现在只是把这些输出到 [[https://www.vandee.art/][Vandee's Blog]] 和 [[https://memo.vandee.art/][Git Memo]] ，并没有加入太多社交属性。可以被搜索引擎检索到对于我现在来说就挺足够了。
+
+- Blog: [[https://www.vandee.art/2024-10-24-my-first-org-blog.html][我的第一篇 org 博客]] ,博客现在也直接在 Emacs 里写作，很巴适。生成静态网页发布到 GitHub 通过 Vercel 部署，Cloudflare 加速和管理 DNS。
+- Memo: [[https://github.com/VandeeFeng/gitmemos][VandeeFeng/gitmemos: An alternative to Memos depending on github issues and supabase]] ,在 cursor 的协助下，糊了一个 gitmemos 用来当作朋友圈的替代,不知道是哪个好心人给了一个仅有的 star 🤣。这个项目主要是想增加一点社交属性，把一些小想法记录下来，通过卡片分享。[[https://github.com/VandeeFeng/gitmemo/issues/6][没有记录就没有发生，而记录本身已经是一种反抗]] ,有事没事记两笔。
+* 小结
+[[https://wiki.vandee.art/#%E6%8F%90%E5%8D%87%E5%BD%B1%E5%93%8D%E5%8A%9B][提升影响力]] ，做一个 [[https://wiki.vandee.art/#%E9%92%A5%E5%8C%99%E4%BA%BA(Key%20Man)][钥匙人(Key Man)]] ，每个人的价值都应该能在不同的体系里得到放大和体现，这样社会平均价值自然会得到提升。
+
+思考和写作是一个很好的起点，也是每个普通人下一秒就可以开始的事情。
