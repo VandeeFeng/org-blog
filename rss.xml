@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Tue, 24 Dec 2024 15:56:20 +0800</lastBuildDate>
+<lastBuildDate>Tue, 24 Dec 2024 16:04:59 +0800</lastBuildDate>
 <item>
   <title><![CDATA[结构化知识工作流-with AI]]></title>
   <description><![CDATA[
@@ -12,17 +12,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf98fc60">Intro</a></li>
-<li><a href="#org0ec5f12">信息处理</a>
+<li><a href="#orge1a443c">Intro</a></li>
+<li><a href="#org7ecc40b">信息处理</a>
 <ul>
-<li><a href="#orgf66dc30">被动信息</a></li>
-<li><a href="#org89a6cd6">主动信息</a></li>
+<li><a href="#org17e8917">被动信息</a></li>
+<li><a href="#org39f9653">主动信息</a></li>
 </ul>
 </li>
-<li><a href="#org785daf2">文章精读</a></li>
-<li><a href="#orgf8ee037">笔记</a></li>
-<li><a href="#orgdde2c11">输出</a></li>
-<li><a href="#orge33e9f7">小结</a></li>
+<li><a href="#orgc7a239a">文章精读</a></li>
+<li><a href="#orge19ca60">笔记</a></li>
+<li><a href="#orgab3504c">输出</a></li>
+<li><a href="#org78ee19b">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -42,9 +42,9 @@
 因此，我养成了一个习惯，也就是当松弛感出现之后，强迫大脑去习惯新的习惯。在这个过程当中，就好像带上了一个放大镜，那些在习惯之下拙劣的细节被放大。
 </p>
 
-<div id="outline-container-orgf98fc60" class="outline-2">
-<h2 id="orgf98fc60">Intro</h2>
-<div class="outline-text-2" id="text-orgf98fc60">
+<div id="outline-container-orge1a443c" class="outline-2">
+<h2 id="orge1a443c">Intro</h2>
+<div class="outline-text-2" id="text-orge1a443c">
 <p>
 信息很容易被误认为是知识，我们每天会被动和主动的接受到许多信息，会自然的获得一种感觉：我今天又学到了，知道了很多新鲜的东西。但这不是知识，当信息被固定和<a href="https://wiki.vandee.art/#%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86">结构化</a>之后，才可能被称作知识。
 </p>
@@ -59,9 +59,9 @@
 </div>
 </div>
 
-<div id="outline-container-org0ec5f12" class="outline-2">
-<h2 id="org0ec5f12">信息处理</h2>
-<div class="outline-text-2" id="text-org0ec5f12">
+<div id="outline-container-org7ecc40b" class="outline-2">
+<h2 id="org7ecc40b">信息处理</h2>
+<div class="outline-text-2" id="text-org7ecc40b">
 <p>
 信息处理部分的目标是：
 </p>
@@ -84,9 +84,9 @@
 基于这些就有许多有意思的项目可以做了，例如最近在折腾的，从数据库里检索一个星期之内的信息，做一个简报，用 GitHub action 实现自动化。
 </p>
 </div>
-<div id="outline-container-orgf66dc30" class="outline-3">
-<h3 id="orgf66dc30">被动信息</h3>
-<div class="outline-text-3" id="text-orgf66dc30">
+<div id="outline-container-org17e8917" class="outline-3">
+<h3 id="org17e8917">被动信息</h3>
+<div class="outline-text-3" id="text-org17e8917">
 <p>
 现在我的被动信息获取主要来源于 RSS 订阅，今年开通了 Readwise 的订阅，并在 claude 的帮助下构建了一个信息固定的 workflow：<a href="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">数据库的搭建 - 流动知识检索</a> 、<a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a> 。
 </p>
@@ -100,9 +100,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org89a6cd6" class="outline-3">
-<h3 id="org89a6cd6">主动信息</h3>
-<div class="outline-text-3" id="text-org89a6cd6">
+<div id="outline-container-org39f9653" class="outline-3">
+<h3 id="org39f9653">主动信息</h3>
+<div class="outline-text-3" id="text-org39f9653">
 <p>
 目前会每天看一看这些网站：
 </p>
@@ -124,9 +124,9 @@
 </div>
 </div>
 </div>
-<div id="outline-container-org785daf2" class="outline-2">
-<h2 id="org785daf2">文章精读</h2>
-<div class="outline-text-2" id="text-org785daf2">
+<div id="outline-container-orgc7a239a" class="outline-2">
+<h2 id="orgc7a239a">文章精读</h2>
+<div class="outline-text-2" id="text-orgc7a239a">
 <p>
 最近用 phidata 和 ollama 构建了一个简单的本地 <a href="https://memo.vandee.art/issue/26">RAG assistant</a> ，可以直接输入文章 url，结合文章内容具体的提问，这样就可以同时对多个相关内容的文章进行系统的提问，效率提升了不少。
 </p>
@@ -145,9 +145,9 @@ AI 善于回答问题，但它不善于提出问题。使用 AI 学习了很长�
 </div>
 </div>
 
-<div id="outline-container-orgf8ee037" class="outline-2">
-<h2 id="orgf8ee037">笔记</h2>
-<div class="outline-text-2" id="text-orgf8ee037">
+<div id="outline-container-orge19ca60" class="outline-2">
+<h2 id="orge19ca60">笔记</h2>
+<div class="outline-text-2" id="text-orge19ca60">
 <p>
 笔记部分是固定结构化知识最核心的一步，<a href="https://wiki.vandee.art/#%E6%89%BE%E5%88%B0%E7%9F%A5%E8%AF%86%E7%9A%84%E7%BC%9D%E9%9A%99">找到知识的缝隙</a>。
 </p>
@@ -174,9 +174,9 @@ supabase 最进又更新了 <a href="https://database.build/">Postgres Sandbox</
 </div>
 </div>
 
-<div id="outline-container-orgdde2c11" class="outline-2">
-<h2 id="orgdde2c11">输出</h2>
-<div class="outline-text-2" id="text-orgdde2c11">
+<div id="outline-container-orgab3504c" class="outline-2">
+<h2 id="orgab3504c">输出</h2>
+<div class="outline-text-2" id="text-orgab3504c">
 <p>
 <a href="https://wiki.vandee.art/#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%80%9D%E8%80%83%E8%80%8C%E4%B8%8D%E8%BE%93%E5%87%BA%EF%BC%8C%E4%BD%A0%E5%8F%AA%E6%98%AF%E4%BB%A5%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%9C%A8%E6%80%9D%E8%80%83">如果你思考而不输出，你只是以为自己在思考</a> ，费曼学习法里说的太多了，study in public。
 </p>
@@ -186,7 +186,7 @@ supabase 最进又更新了 <a href="https://database.build/">Postgres Sandbox</
 </p>
 
 <p>
-做笔记当然是为自己做的，但是它的价值是可以放大的。向往的探索和向内的探索同样重要，俗话说三人行必有我师，信息的披露和流动对于向内的探索是很有帮助的。
+做笔记当然是为自己做的，但是它的价值是可以放大的。向外的探索和向内的探索同样重要，俗话说三人行必有我师，信息的披露和流动对于向内的探索是很有帮助的。
 </p>
 
 <p>
@@ -199,9 +199,9 @@ supabase 最进又更新了 <a href="https://database.build/">Postgres Sandbox</
 </ul>
 </div>
 </div>
-<div id="outline-container-orge33e9f7" class="outline-2">
-<h2 id="orge33e9f7">小结</h2>
-<div class="outline-text-2" id="text-orge33e9f7">
+<div id="outline-container-org78ee19b" class="outline-2">
+<h2 id="org78ee19b">小结</h2>
+<div class="outline-text-2" id="text-org78ee19b">
 <p>
 <a href="https://wiki.vandee.art/#%E6%8F%90%E5%8D%87%E5%BD%B1%E5%93%8D%E5%8A%9B">提升影响力</a> ，做一个 <a href="https://wiki.vandee.art/#%E9%92%A5%E5%8C%99%E4%BA%BA(Key%20Man)">钥匙人(Key Man)</a> ，每个人的价值都应该能在不同的体系里得到放大和体现，这样社会平均价值自然会得到提升。
 </p>
