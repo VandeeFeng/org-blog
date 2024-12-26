@@ -466,7 +466,7 @@ tr:nth-child(even) {
   bottom: 5rem;
   right: 10rem; /* 使用视口宽度单位，5vw 表示屏幕宽度的 5% */
   z-index: 99;
-  background: #f8f9fa;  /* replacing $gray-100 */
+  /* background: #f8f9fa;  /* replacing $gray-100 */
   width: 4rem;
   height: 4rem;
   padding: 0.75rem;
@@ -479,9 +479,7 @@ tr:nth-child(even) {
   outline: 0;
 }
 
-.top-link:hover {
-  background: #ffffff;  /* replacing $white */
-}
+
 
 .top-link {
   font-size: 80%;
