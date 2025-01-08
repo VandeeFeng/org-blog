@@ -41,7 +41,8 @@
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
       <nav>
       <a href="https://www.vandee.art/">Home</a>
-      <a href="https://wiki.vandee.art">Wiki</a>
+      <a href="https://x.vandee.art/wiki">Wiki</a>
+      <a href="https://x.vandee.art/photo">Photo</a>
       <a href="archive.html">Archive</a>
       <a href="tags.html">Tags</a>
       <div id="search-container">
@@ -56,16 +57,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgba6cd83">GitHub 书签</a></li>
-<li><a href="#orga2e6a6d">从GitHub书签到页面</a></li>
+<li><a href="#org6dce79f">GitHub 书签</a></li>
+<li><a href="#org7c4d971">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgba6cd83" class="outline-2">
-<h2 id="orgba6cd83">GitHub 书签</h2>
-<div class="outline-text-2" id="text-orgba6cd83">
+
+
+
+<div id="outline-container-org6dce79f" class="outline-2">
+<h2 id="org6dce79f">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org6dce79f">
 <p>
-看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull&rsquo;s Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
+看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull's Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
 
 <p>
@@ -117,7 +121,7 @@ process_changes.py
 </p>
 
 
-<figure id="org824e6f6">
+<figure id="org99715ec">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -147,221 +151,222 @@ Github Actions里模型、总结的prompt、输出的格式和方式都可以根
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #51afef;">import</span> re
-<span style="color: #51afef;">from</span> typing <span style="color: #51afef;">import</span> List, Optional
-<span style="color: #51afef;">import</span> requests
-<span style="color: #51afef;">import</span> json
-<span style="color: #51afef;">from</span> datetime <span style="color: #51afef;">import</span> datetime
-<span style="color: #51afef;">from</span> pathlib <span style="color: #51afef;">import</span> Path
-<span style="color: #51afef;">from</span> dataclasses <span style="color: #51afef;">import</span> dataclass, asdict
-<span style="color: #51afef;">import</span> os
-<span style="color: #51afef;">import</span> logging
-<span style="color: #51afef;">import</span> time
-<span style="color: #51afef;">from</span> functools <span style="color: #51afef;">import</span> wraps
-<span style="color: #51afef;">from</span> urllib.parse <span style="color: #51afef;">import</span> quote
+<pre class="src src-python"><span style="color: #FF7B72;">import</span> re
+<span style="color: #FF7B72;">from</span> typing <span style="color: #FF7B72;">import</span> List, Optional
+<span style="color: #FF7B72;">import</span> requests
+<span style="color: #FF7B72;">import</span> json
+<span style="color: #FF7B72;">from</span> datetime <span style="color: #FF7B72;">import</span> datetime
+<span style="color: #FF7B72;">from</span> pathlib <span style="color: #FF7B72;">import</span> Path
+<span style="color: #FF7B72;">from</span> dataclasses <span style="color: #FF7B72;">import</span> dataclass, asdict
+<span style="color: #FF7B72;">import</span> os
+<span style="color: #FF7B72;">import</span> logging
+<span style="color: #FF7B72;">import</span> time
+<span style="color: #FF7B72;">from</span> functools <span style="color: #FF7B72;">import</span> wraps
+<span style="color: #FF7B72;">from</span> urllib.parse <span style="color: #FF7B72;">import</span> quote
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-- configurations begin --</span>
-<span style="color: #dcaeea;">BOOKMARK_COLLECTION_REPO_NAME</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"bookmark-collection"</span>
-<span style="color: #dcaeea;">BOOKMARK_SUMMARY_REPO_NAME</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"bookmark-summary"</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-- configurations end --</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">-- configurations begin --</span>
+<span style="color: #FFA657;">BOOKMARK_COLLECTION_REPO_NAME</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">"bookmark-collection"</span>
+<span style="color: #FFA657;">BOOKMARK_SUMMARY_REPO_NAME</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">"bookmark-summary"</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">-- configurations end --</span>
 
-logging.basicConfig(
+logging.basicConfig<span style="color: #8c8c8c;">(</span>
     level=logging.INFO,
-    <span style="color: #c678dd;">format</span>=<span style="color: #98be65;">'%(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(message)s'</span>,
-    datefmt=<span style="color: #98be65;">'%Y-%m-%d %H:%M:%S'</span>
-)
+    <span style="color: #79C0FF;">format</span>=<span style="color: #a7bca4;">'%(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(message)s'</span>,
+    datefmt=<span style="color: #a7bca4;">'%Y-%m-%d %H:%M:%S'</span>
+<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">log_execution_time</span>(func):
-    <span style="color: #ECBE7B;">@wraps</span>(func)
-    <span style="color: #51afef;">def</span> <span style="color: #c678dd;">wrapper</span>(*args, **kwargs):
-        logging.info(f<span style="color: #98be65;">'Entering </span>{func.<span style="color: #c678dd;">__name__</span>}<span style="color: #98be65;">'</span>)
-        <span style="color: #dcaeea;">start_time</span> = time.time()
-        <span style="color: #dcaeea;">result</span> = func(*args, **kwargs)
-        <span style="color: #dcaeea;">end_time</span> = time.time()
-        <span style="color: #dcaeea;">elapsed_time</span> = end_time - start_time
-        logging.info(f<span style="color: #98be65;">'Exiting </span>{func.<span style="color: #c678dd;">__name__</span>}<span style="color: #98be65;"> - Elapsed time: </span>{elapsed_time:.4f}<span style="color: #98be65;"> seconds'</span>)
-        <span style="color: #51afef;">return</span> result
-    <span style="color: #51afef;">return</span> wrapper
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">log_execution_time</span><span style="color: #8c8c8c;">(</span>func<span style="color: #8c8c8c;">)</span>:
+    <span style="color: #FF7B72; font-style: italic;">@wraps</span><span style="color: #8c8c8c;">(</span>func<span style="color: #8c8c8c;">)</span>
+    <span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">wrapper</span><span style="color: #8c8c8c;">(</span>*args, **kwargs<span style="color: #8c8c8c;">)</span>:
+        logging.info<span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">'Entering </span>{func.<span style="color: #79C0FF;">__name__</span>}<span style="color: #a7bca4;">'</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">start_time</span> = time.time<span style="color: #8c8c8c;">()</span>
+        <span style="color: #FFA657;">result</span> = func<span style="color: #8c8c8c;">(</span>*args, **kwargs<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">end_time</span> = time.time<span style="color: #8c8c8c;">()</span>
+        <span style="color: #FFA657;">elapsed_time</span> = end_time - start_time
+        logging.info<span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">'Exiting </span>{func.<span style="color: #79C0FF;">__name__</span>}<span style="color: #a7bca4;"> - Elapsed time: </span>{elapsed_time:.4f}<span style="color: #a7bca4;"> seconds'</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FF7B72;">return</span> result
+    <span style="color: #FF7B72;">return</span> wrapper
 
-<span style="color: #ECBE7B;">@dataclass</span>
-<span style="color: #51afef;">class</span> <span style="color: #ECBE7B;">SummarizedBookmark</span>:
-    year: <span style="color: #c678dd;">str</span>
-    month: <span style="color: #c678dd;">str</span>  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">yyyyMM</span>
-    title: <span style="color: #c678dd;">str</span>
-    url: <span style="color: #c678dd;">str</span>
-    timestamp: <span style="color: #c678dd;">int</span>  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">unix timestamp</span>
+<span style="color: #FF7B72; font-style: italic;">@dataclass</span>
+<span style="color: #FF7B72;">class</span> <span style="color: #FF7B72; font-style: italic;">SummarizedBookmark</span>:
+    year: <span style="color: #79C0FF;">str</span>
+    month: <span style="color: #79C0FF;">str</span>  <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">yyyyMM</span>
+    title: <span style="color: #79C0FF;">str</span>
+    url: <span style="color: #79C0FF;">str</span>
+    timestamp: <span style="color: #79C0FF;">int</span>  <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">unix timestamp</span>
 
-<span style="color: #dcaeea;">CURRENT_YEAR</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y'</span>)
-<span style="color: #dcaeea;">CURRENT_MONTH</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%m'</span>)
-<span style="color: #dcaeea;">CURRENT_DATE</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y-%m-%d'</span>)
-<span style="color: #dcaeea;">CURRENT_DATE_AND_TIME</span>: <span style="color: #c678dd;">str</span> = datetime.now().strftime(<span style="color: #98be65;">'%Y-%m-%d %H:%M:%S'</span>)
+<span style="color: #FFA657;">CURRENT_YEAR</span>: <span style="color: #79C0FF;">str</span> = datetime.now<span style="color: #8c8c8c;">()</span>.strftime<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'%Y'</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #FFA657;">CURRENT_MONTH</span>: <span style="color: #79C0FF;">str</span> = datetime.now<span style="color: #8c8c8c;">()</span>.strftime<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'%m'</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #FFA657;">CURRENT_DATE</span>: <span style="color: #79C0FF;">str</span> = datetime.now<span style="color: #8c8c8c;">()</span>.strftime<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'%Y-%m-%d'</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #FFA657;">CURRENT_DATE_AND_TIME</span>: <span style="color: #79C0FF;">str</span> = datetime.now<span style="color: #8c8c8c;">()</span>.strftime<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'%Y-%m-%d %H:%M:%S'</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #ECBE7B;">@log_execution_time</span>
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_text_content</span>(url: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #dcaeea;">jina_url</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"https://r.jina.ai/</span>{url}<span style="color: #98be65;">"</span>
-    <span style="color: #dcaeea;">response</span>: requests.Response = requests.get(jina_url)
-    <span style="color: #51afef;">return</span> response.text
+<span style="color: #FF7B72; font-style: italic;">@log_execution_time</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">get_text_content</span><span style="color: #8c8c8c;">(</span>url: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #FFA657;">jina_url</span>: <span style="color: #79C0FF;">str</span> = f<span style="color: #a7bca4;">"https://r.jina.ai/</span>{url}<span style="color: #a7bca4;">"</span>
+    <span style="color: #FFA657;">response</span>: requests.Response = requests.get<span style="color: #8c8c8c;">(</span>jina_url<span style="color: #8c8c8c;">)</span>
+    <span style="color: #FF7B72;">return</span> response.text
 
-<span style="color: #ECBE7B;">@log_execution_time</span>
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">call_openai_api</span>(prompt: <span style="color: #c678dd;">str</span>, content: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #dcaeea;">model</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'OPENAI_API_MODEL'</span>, <span style="color: #98be65;">'gpt-4o-mini'</span>)
-    <span style="color: #dcaeea;">headers</span>: <span style="color: #c678dd;">dict</span> = {
-        <span style="color: #98be65;">"Authorization"</span>: f<span style="color: #98be65;">"Bearer </span>{os.environ['OPENAI_API_KEY']}<span style="color: #98be65;">"</span>,
-        <span style="color: #98be65;">"Content-Type"</span>: <span style="color: #98be65;">"application/json"</span>
-    }
-    <span style="color: #dcaeea;">data</span>: <span style="color: #c678dd;">dict</span> = {
-        <span style="color: #98be65;">"model"</span>: model,
-        <span style="color: #98be65;">"messages"</span>: [
-            {<span style="color: #98be65;">"role"</span>: <span style="color: #98be65;">"system"</span>, <span style="color: #98be65;">"content"</span>: prompt},
-            {<span style="color: #98be65;">"role"</span>: <span style="color: #98be65;">"user"</span>, <span style="color: #98be65;">"content"</span>: content}
-        ]
-    }
-    <span style="color: #dcaeea;">api_endpoint</span>: <span style="color: #c678dd;">str</span> = os.environ.get(<span style="color: #98be65;">'OPENAI_API_ENDPOINT'</span>, <span style="color: #98be65;">'https://api.openai.com/v1/chat/completions'</span>)
-    <span style="color: #dcaeea;">response</span>: requests.Response = requests.post(api_endpoint, headers=headers, data=json.dumps(data))
-    <span style="color: #51afef;">return</span> response.json()[<span style="color: #98be65;">'choices'</span>][<span style="color: #da8548; font-weight: bold;">0</span>][<span style="color: #98be65;">'message'</span>][<span style="color: #98be65;">'content'</span>]
+<span style="color: #FF7B72; font-style: italic;">@log_execution_time</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">call_openai_api</span><span style="color: #8c8c8c;">(</span>prompt: <span style="color: #79C0FF;">str</span>, content: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #FFA657;">model</span>: <span style="color: #79C0FF;">str</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'OPENAI_API_MODEL'</span>, <span style="color: #a7bca4;">'gpt-4o-mini'</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">headers</span>: <span style="color: #79C0FF;">dict</span> = <span style="color: #8c8c8c;">{</span>
+        <span style="color: #a7bca4;">"Authorization"</span>: f<span style="color: #a7bca4;">"Bearer </span>{os.environ['OPENAI_API_KEY']}<span style="color: #a7bca4;">"</span>,
+        <span style="color: #a7bca4;">"Content-Type"</span>: <span style="color: #a7bca4;">"application/json"</span>
+    <span style="color: #8c8c8c;">}</span>
+    <span style="color: #FFA657;">data</span>: <span style="color: #79C0FF;">dict</span> = <span style="color: #8c8c8c;">{</span>
+        <span style="color: #a7bca4;">"model"</span>: model,
+        <span style="color: #a7bca4;">"messages"</span>: <span style="color: #93a8c6;">[</span>
+            <span style="color: #b0b1a3;">{</span><span style="color: #a7bca4;">"role"</span>: <span style="color: #a7bca4;">"system"</span>, <span style="color: #a7bca4;">"content"</span>: prompt<span style="color: #b0b1a3;">}</span>,
+            <span style="color: #b0b1a3;">{</span><span style="color: #a7bca4;">"role"</span>: <span style="color: #a7bca4;">"user"</span>, <span style="color: #a7bca4;">"content"</span>: content<span style="color: #b0b1a3;">}</span>
+        <span style="color: #93a8c6;">]</span>
+    <span style="color: #8c8c8c;">}</span>
+    <span style="color: #FFA657;">api_endpoint</span>: <span style="color: #79C0FF;">str</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'OPENAI_API_ENDPOINT'</span>, <span style="color: #a7bca4;">'https://api.openai.com/v1/chat/completions'</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">response</span>: requests.Response = requests.post<span style="color: #8c8c8c;">(</span>api_endpoint, headers=headers, data=json.dumps<span style="color: #93a8c6;">(</span>data<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #FF7B72;">return</span> response.json<span style="color: #8c8c8c;">()[</span><span style="color: #a7bca4;">'choices'</span><span style="color: #8c8c8c;">][</span>0<span style="color: #8c8c8c;">][</span><span style="color: #a7bca4;">'message'</span><span style="color: #8c8c8c;">][</span><span style="color: #a7bca4;">'content'</span><span style="color: #8c8c8c;">]</span>
 
-<span style="color: #ECBE7B;">@log_execution_time</span>
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">summarize_text</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #dcaeea;">prompt</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"""</span>
-<span style="color: #98be65;">&#35831;&#29992;markdown&#21015;&#34920;&#26684;&#24335;**&#35814;&#32454;**&#24635;&#32467;&#25105;&#21457;&#36865;&#32473;&#20320;&#30340;&#25991;&#26412;&#12290;&#20805;&#20998;&#21512;&#29702;&#20351;&#29992;&#32553;&#36827;&#21644;&#23376;&#21015;&#34920;&#65292;&#22914;&#26524;&#26377;&#38656;&#35201;&#21487;&#20197;&#20351;&#29992;&#22810;&#23618;&#23376;&#21015;&#34920;&#65292;&#25110;&#26159;&#22312;&#23376;&#21015;&#34920;&#20013;&#21253;&#21547;&#22810;&#20010;&#26465;&#30446;&#65288;3&#20010;&#25110;&#20197;&#19978;&#65289;&#12290;&#22312;&#27599;&#20010;&#24635;&#32467;&#39033;&#24320;&#22836;&#65292;&#29992;&#31616;&#30701;&#30340;&#35789;&#35821;&#25551;&#36848;&#35813;&#39033;&#12290;&#24573;&#30053;&#21644;&#25991;&#31456;&#20027;&#20307;&#26080;&#20851;&#30340;&#20869;&#23481;&#65288;&#22914;&#24191;&#21578;&#65289;&#12290;&#26080;&#35770;&#21407;&#25991;&#35821;&#35328;&#20026;&#20309;&#65292;&#24635;&#26159;&#20351;&#29992;&#20013;&#25991;&#36827;&#34892;&#24635;&#32467;&#12290;</span>
-<span style="color: #98be65;">"""</span>
-    <span style="color: #51afef;">return</span> call_openai_api(prompt, text)
+<span style="color: #FF7B72; font-style: italic;">@log_execution_time</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">summarize_text</span><span style="color: #8c8c8c;">(</span>text: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #FFA657;">prompt</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">"""</span>
+<span style="color: #a7bca4;">&#35831;&#29992;markdown&#21015;&#34920;&#26684;&#24335;**&#35814;&#32454;**&#24635;&#32467;&#25105;&#21457;&#36865;&#32473;&#20320;&#30340;&#25991;&#26412;&#12290;&#20805;&#20998;&#21512;&#29702;&#20351;&#29992;&#32553;&#36827;&#21644;&#23376;&#21015;&#34920;&#65292;&#22914;&#26524;&#26377;&#38656;&#35201;&#21487;&#20197;&#20351;&#29992;&#22810;&#23618;&#23376;&#21015;&#34920;&#65292;&#25110;&#26159;&#22312;&#23376;&#21015;&#34920;&#20013;&#21253;&#21547;&#22810;&#20010;&#26465;&#30446;&#65288;3&#20010;&#25110;&#20197;&#19978;&#65289;&#12290;&#22312;&#27599;&#20010;&#24635;&#32467;&#39033;&#24320;&#22836;&#65292;&#29992;&#31616;&#30701;&#30340;&#35789;&#35821;&#25551;&#36848;&#35813;&#39033;&#12290;&#24573;&#30053;&#21644;&#25991;&#31456;&#20027;&#20307;&#26080;&#20851;&#30340;&#20869;&#23481;&#65288;&#22914;&#24191;&#21578;&#65289;&#12290;&#26080;&#35770;&#21407;&#25991;&#35821;&#35328;&#20026;&#20309;&#65292;&#24635;&#26159;&#20351;&#29992;&#20013;&#25991;&#36827;&#34892;&#24635;&#32467;&#12290;</span>
+<span style="color: #a7bca4;">"""</span>
+    <span style="color: #FF7B72;">return</span> call_openai_api<span style="color: #8c8c8c;">(</span>prompt, text<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #ECBE7B;">@log_execution_time</span>
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">one_sentence_summary</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #dcaeea;">prompt</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"&#20197;&#19979;&#26159;&#23545;&#19968;&#31687;&#38271;&#25991;&#30340;&#21015;&#34920;&#24418;&#24335;&#24635;&#32467;&#12290;&#35831;&#22522;&#20110;&#27492;&#36755;&#20986;&#23545;&#35813;&#25991;&#31456;&#30340;&#31616;&#30701;&#24635;&#32467;&#65292;&#38271;&#24230;&#19981;&#36229;&#36807;100&#20010;&#23383;&#12290;&#24635;&#26159;&#20351;&#29992;&#31616;&#20307;&#20013;&#25991;&#36755;&#20986;&#12290;"</span>
-    <span style="color: #51afef;">return</span> call_openai_api(prompt, text)
+<span style="color: #FF7B72; font-style: italic;">@log_execution_time</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">one_sentence_summary</span><span style="color: #8c8c8c;">(</span>text: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #FFA657;">prompt</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">"&#20197;&#19979;&#26159;&#23545;&#19968;&#31687;&#38271;&#25991;&#30340;&#21015;&#34920;&#24418;&#24335;&#24635;&#32467;&#12290;&#35831;&#22522;&#20110;&#27492;&#36755;&#20986;&#23545;&#35813;&#25991;&#31456;&#30340;&#31616;&#30701;&#24635;&#32467;&#65292;&#38271;&#24230;&#19981;&#36229;&#36807;100&#20010;&#23383;&#12290;&#24635;&#26159;&#20351;&#29992;&#31616;&#20307;&#20013;&#25991;&#36755;&#20986;&#12290;"</span>
+    <span style="color: #FF7B72;">return</span> call_openai_api<span style="color: #8c8c8c;">(</span>prompt, text<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">slugify</span>(text: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #dcaeea;">invalid_fs_chars</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">'/</span><span style="color: #a9a1e1;">\\</span><span style="color: #98be65;">:*?"&lt;&gt;|'</span>
-    <span style="color: #51afef;">return</span> re.sub(r<span style="color: #98be65;">'['</span> + re.escape(invalid_fs_chars) + r<span style="color: #98be65;">'\s]+'</span>, <span style="color: #98be65;">'-'</span>, text.lower()).strip(<span style="color: #98be65;">'-'</span>)
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">slugify</span><span style="color: #8c8c8c;">(</span>text: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #FFA657;">invalid_fs_chars</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">'/</span><span style="font-style: italic;">\\</span><span style="color: #a7bca4;">:*?"&lt;&gt;|'</span>
+    <span style="color: #FF7B72;">return</span> re.sub<span style="color: #8c8c8c;">(</span>r<span style="color: #a7bca4;">'['</span> + re.escape<span style="color: #93a8c6;">(</span>invalid_fs_chars<span style="color: #93a8c6;">)</span> + r<span style="color: #a7bca4;">'\s]+'</span>, <span style="color: #a7bca4;">'-'</span>, text.lower<span style="color: #93a8c6;">()</span><span style="color: #8c8c8c;">)</span>.strip<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'-'</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_summary_file_path</span>(title: <span style="color: #c678dd;">str</span>, timestamp: <span style="color: #c678dd;">int</span>, year: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>, month: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>, in_readme_md: <span style="color: #c678dd;">bool</span> = <span style="color: #a9a1e1;">False</span>) -&gt; Path:
-    <span style="color: #dcaeea;">date_str</span> = datetime.fromtimestamp(timestamp).strftime(<span style="color: #98be65;">'%Y-%m-%d'</span>)
-    <span style="color: #dcaeea;">summary_filename</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"</span>{date_str}<span style="color: #98be65;">-</span>{slugify(title)}<span style="color: #98be65;">.md"</span>
-    <span style="color: #51afef;">if</span> year <span style="color: #51afef;">is</span> <span style="color: #a9a1e1;">None</span>:
-        <span style="color: #dcaeea;">year</span> = CURRENT_YEAR
-    <span style="color: #51afef;">if</span> month <span style="color: #51afef;">is</span> <span style="color: #a9a1e1;">None</span>:
-        <span style="color: #dcaeea;">month</span> = CURRENT_MONTH
-    <span style="color: #51afef;">if</span> in_readme_md:
-        <span style="color: #dcaeea;">root</span>: Path = Path(year, month)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
-    <span style="color: #51afef;">else</span>:
-        <span style="color: #dcaeea;">root</span>: Path = Path(BOOKMARK_SUMMARY_REPO_NAME, year, month)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
-    <span style="color: #51afef;">return</span> Path(root, summary_filename)
-
-
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">get_text_content_path</span>(title: <span style="color: #c678dd;">str</span>, in_summary_md: <span style="color: #c678dd;">bool</span> = <span style="color: #a9a1e1;">False</span>) -&gt; Path:
-    <span style="color: #dcaeea;">text_content_filename</span>: <span style="color: #c678dd;">str</span> = f<span style="color: #98be65;">"</span>{CURRENT_DATE}<span style="color: #98be65;">-</span>{slugify(title)}<span style="color: #98be65;">_raw.md"</span>
-    <span style="color: #dcaeea;">root</span>: Path = Path(BOOKMARK_SUMMARY_REPO_NAME, CURRENT_YEAR, CURRENT_MONTH)  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032;&#36335;&#24452;&#20026; YEAR/MONTH</span>
-    <span style="color: #51afef;">if</span> in_summary_md:
-        <span style="color: #dcaeea;">root</span> = Path(<span style="color: #98be65;">"."</span>)
-    <span style="color: #51afef;">return</span> Path(root, text_content_filename)
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">get_summary_file_path</span><span style="color: #8c8c8c;">(</span>title: <span style="color: #79C0FF;">str</span>, timestamp: <span style="color: #79C0FF;">int</span>, year: Optional<span style="color: #93a8c6;">[</span><span style="color: #79C0FF;">str</span><span style="color: #93a8c6;">]</span> = <span style="font-style: italic;">None</span>, month: Optional<span style="color: #93a8c6;">[</span><span style="color: #79C0FF;">str</span><span style="color: #93a8c6;">]</span> = <span style="font-style: italic;">None</span>, in_readme_md: <span style="color: #79C0FF;">bool</span> = <span style="font-style: italic;">False</span><span style="color: #8c8c8c;">)</span> -&gt; Path:
+    <span style="color: #FFA657;">date_str</span> = datetime.fromtimestamp<span style="color: #8c8c8c;">(</span>timestamp<span style="color: #8c8c8c;">)</span>.strftime<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">'%Y-%m-%d'</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">summary_filename</span>: <span style="color: #79C0FF;">str</span> = f<span style="color: #a7bca4;">"</span>{date_str}<span style="color: #a7bca4;">-</span>{slugify(title)}<span style="color: #a7bca4;">.md"</span>
+    <span style="color: #FF7B72;">if</span> year <span style="color: #FF7B72;">is</span> <span style="font-style: italic;">None</span>:
+        <span style="color: #FFA657;">year</span> = CURRENT_YEAR
+    <span style="color: #FF7B72;">if</span> month <span style="color: #FF7B72;">is</span> <span style="font-style: italic;">None</span>:
+        <span style="color: #FFA657;">month</span> = CURRENT_MONTH
+    <span style="color: #FF7B72;">if</span> in_readme_md:
+        <span style="color: #FFA657;">root</span>: Path = Path<span style="color: #8c8c8c;">(</span>year, month<span style="color: #8c8c8c;">)</span>  <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
+    <span style="color: #FF7B72;">else</span>:
+        <span style="color: #FFA657;">root</span>: Path = Path<span style="color: #8c8c8c;">(</span>BOOKMARK_SUMMARY_REPO_NAME, year, month<span style="color: #8c8c8c;">)</span>  <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#26356;&#26032;&#36335;&#24452;&#20026; year/month</span>
+    <span style="color: #FF7B72;">return</span> Path<span style="color: #8c8c8c;">(</span>root, summary_filename<span style="color: #8c8c8c;">)</span>
 
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">build_summary_file</span>(title: <span style="color: #c678dd;">str</span>, url: <span style="color: #c678dd;">str</span>, summary: <span style="color: #c678dd;">str</span>, one_sentence: <span style="color: #c678dd;">str</span>) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #51afef;">return</span> f<span style="color: #98be65;">"""# </span>{title}
-<span style="color: #98be65;">- URL: </span>{url}
-<span style="color: #98be65;">- Added At: </span>{CURRENT_DATE_AND_TIME}
-<span style="color: #98be65;">- [[</span>{get_text_content_path(<span style="color: #dcaeea;">title</span>, <span style="color: #dcaeea;">in_summary_md</span>=<span style="color: #a9a1e1;">True</span>][Link To Text]]<span style="color: #98be65;">})</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">get_text_content_path</span><span style="color: #8c8c8c;">(</span>title: <span style="color: #79C0FF;">str</span>, in_summary_md: <span style="color: #79C0FF;">bool</span> = <span style="font-style: italic;">False</span><span style="color: #8c8c8c;">)</span> -&gt; Path:
+    <span style="color: #FFA657;">text_content_filename</span>: <span style="color: #79C0FF;">str</span> = f<span style="color: #a7bca4;">"</span>{CURRENT_DATE}<span style="color: #a7bca4;">-</span>{slugify(title)}<span style="color: #a7bca4;">_raw.md"</span>
+    <span style="color: #FFA657;">root</span>: Path = Path<span style="color: #8c8c8c;">(</span>BOOKMARK_SUMMARY_REPO_NAME, CURRENT_YEAR, CURRENT_MONTH<span style="color: #8c8c8c;">)</span>  <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#26356;&#26032;&#36335;&#24452;&#20026; YEAR/MONTH</span>
+    <span style="color: #FF7B72;">if</span> in_summary_md:
+        <span style="color: #FFA657;">root</span> = Path<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"."</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #FF7B72;">return</span> Path<span style="color: #8c8c8c;">(</span>root, text_content_filename<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #98be65;">## TL;DR</span>
+
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">build_summary_file</span><span style="color: #8c8c8c;">(</span>title: <span style="color: #79C0FF;">str</span>, url: <span style="color: #79C0FF;">str</span>, summary: <span style="color: #79C0FF;">str</span>, one_sentence: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #FF7B72;">return</span> f<span style="color: #a7bca4;">"""# </span>{title}
+<span style="color: #a7bca4;">- URL: </span>{url}
+<span style="color: #a7bca4;">- Added At: </span>{CURRENT_DATE_AND_TIME}
+<span style="color: #a7bca4;">- [[</span>{get_text_content_path(<span style="color: #FFA657;">title</span>, <span style="color: #FFA657;">in_summary_md</span>=<span style="font-style: italic;">True</span>][Link To Text]]<span style="color: #a7bca4;">})</span>
+
+<span style="color: #a7bca4;">## TL;DR</span>
 {one_sentence}
 
-<span style="color: #98be65;">## Summary</span>
+<span style="color: #a7bca4;">## Summary</span>
 {summary}
-<span style="color: #98be65;">"""</span>
+<span style="color: #a7bca4;">"""</span>
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">build_summary_readme_md</span>(summarized_bookmarks: List[SummarizedBookmark]) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #dcaeea;">initial_prefix</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"""# Bookmark Summary</span>
-<span style="color: #98be65;">&#35835;&#21462; bookmark-collection &#20013;&#30340;&#20070;&#31614;&#65292;&#20351;&#29992; jina reader &#33719;&#21462;&#25991;&#26412;&#20869;&#23481;&#65292;&#28982;&#21518;&#20351;&#29992; LLM &#24635;&#32467;&#25991;&#26412;&#12290;&#35814;&#32454;&#23454;&#29616;&#35831;&#21442;&#35265; process_changes.py&#12290;&#38656;&#35201;&#21644; bookmark-collection &#20013;&#30340; Github Action &#19968;&#36215;&#20351;&#29992;&#12290;</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">build_summary_readme_md</span><span style="color: #8c8c8c;">(</span>summarized_bookmarks: List<span style="color: #93a8c6;">[</span>SummarizedBookmark<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #FFA657;">initial_prefix</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">"""# Bookmark Summary</span>
+<span style="color: #a7bca4;">&#35835;&#21462; bookmark-collection &#20013;&#30340;&#20070;&#31614;&#65292;&#20351;&#29992; jina reader &#33719;&#21462;&#25991;&#26412;&#20869;&#23481;&#65292;&#28982;&#21518;&#20351;&#29992; LLM &#24635;&#32467;&#25991;&#26412;&#12290;&#35814;&#32454;&#23454;&#29616;&#35831;&#21442;&#35265; process_changes.py&#12290;&#38656;&#35201;&#21644; bookmark-collection &#20013;&#30340; Github Action &#19968;&#36215;&#20351;&#29992;&#12290;</span>
 
-<span style="color: #98be65;">## Summarized Bookmarks</span>
-<span style="color: #98be65;">"""</span>
-    <span style="color: #dcaeea;">summary_list</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">""</span>
-    <span style="color: #dcaeea;">sorted_summarized_bookmarks</span> = <span style="color: #c678dd;">sorted</span>(summarized_bookmarks, key=<span style="color: #51afef;">lambda</span> bookmark: bookmark.timestamp, reverse=<span style="color: #a9a1e1;">True</span>)
-    <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> sorted_summarized_bookmarks:
-        <span style="color: #dcaeea;">summary_file_path</span> = get_summary_file_path(
+<span style="color: #a7bca4;">## Summarized Bookmarks</span>
+<span style="color: #a7bca4;">"""</span>
+    <span style="color: #FFA657;">summary_list</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">""</span>
+    <span style="color: #FFA657;">sorted_summarized_bookmarks</span> = <span style="color: #79C0FF;">sorted</span><span style="color: #8c8c8c;">(</span>summarized_bookmarks, key=<span style="color: #FF7B72;">lambda</span> bookmark: bookmark.timestamp, reverse=<span style="font-style: italic;">True</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #FF7B72;">for</span> bookmark <span style="color: #FF7B72;">in</span> sorted_summarized_bookmarks:
+        <span style="color: #FFA657;">summary_file_path</span> = get_summary_file_path<span style="color: #8c8c8c;">(</span>
             title=bookmark.title,
             timestamp=bookmark.timestamp,
             month=bookmark.month,
-            in_readme_md=<span style="color: #a9a1e1;">True</span>
-        )
-        <span style="color: #dcaeea;">summary_list</span> += f<span style="color: #98be65;">"- (</span>{datetime.fromtimestamp(bookmark.timestamp).strftime('%Y-%m-%d')}<span style="color: #98be65;">) [[</span>{summary_file_path}<span style="color: #98be65;">][</span>{bookmark.title}<span style="color: #98be65;">]]</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>
-    <span style="color: #51afef;">return</span> initial_prefix + summary_list
+            in_readme_md=<span style="font-style: italic;">True</span>
+        <span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">summary_list</span> += f<span style="color: #a7bca4;">"- (</span>{datetime.fromtimestamp(bookmark.timestamp).strftime('%Y-%m-%d')}<span style="color: #a7bca4;">) [[</span>{summary_file_path}<span style="color: #a7bca4;">][</span>{bookmark.title}<span style="color: #a7bca4;">]]</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span>
+    <span style="color: #FF7B72;">return</span> initial_prefix + summary_list
 
-<span style="color: #ECBE7B;">@log_execution_time</span>
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">process_bookmark_file</span>():
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21019;&#24314;&#36335;&#24452;&#20026; year/month &#30340;&#25991;&#20214;&#22841;</span>
-    Path(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/</span>{CURRENT_YEAR}<span style="color: #98be65;">/</span>{CURRENT_MONTH}<span style="color: #98be65;">'</span>).mkdir(parents=<span style="color: #a9a1e1;">True</span>, exist_ok=<span style="color: #a9a1e1;">True</span>)
+<span style="color: #FF7B72; font-style: italic;">@log_execution_time</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">process_bookmark_file</span><span style="color: #8c8c8c;">()</span>:
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#21019;&#24314;&#36335;&#24452;&#20026; year/month &#30340;&#25991;&#20214;&#22841;</span>
+    Path<span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #a7bca4;">/</span>{CURRENT_YEAR}<span style="color: #a7bca4;">/</span>{CURRENT_MONTH}<span style="color: #a7bca4;">'</span><span style="color: #8c8c8c;">)</span>.mkdir<span style="color: #8c8c8c;">(</span>parents=<span style="font-style: italic;">True</span>, exist_ok=<span style="font-style: italic;">True</span><span style="color: #8c8c8c;">)</span>
 
-    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_COLLECTION_REPO_NAME}<span style="color: #98be65;">/README.md'</span>, <span style="color: #98be65;">'r'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
-        <span style="color: #dcaeea;">bookmark_lines</span>: List[<span style="color: #c678dd;">str</span>] = f.readlines()
+    <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">'</span>{BOOKMARK_COLLECTION_REPO_NAME}<span style="color: #a7bca4;">/README.md'</span>, <span style="color: #a7bca4;">'r'</span>, encoding=<span style="color: #a7bca4;">'utf-8'</span><span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+        <span style="color: #FFA657;">bookmark_lines</span>: List<span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = f.readlines<span style="color: #8c8c8c;">()</span>
 
-    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/data.json'</span>, <span style="color: #98be65;">'r'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
-        <span style="color: #dcaeea;">summarized_bookmark_dicts</span> = json.load(f)
-        <span style="color: #dcaeea;">summarized_bookmarks</span> = [SummarizedBookmark(**bookmark) <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmark_dicts]
+    <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #a7bca4;">/data.json'</span>, <span style="color: #a7bca4;">'r'</span>, encoding=<span style="color: #a7bca4;">'utf-8'</span><span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+        <span style="color: #FFA657;">summarized_bookmark_dicts</span> = json.load<span style="color: #8c8c8c;">(</span>f<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">summarized_bookmarks</span> = <span style="color: #8c8c8c;">[</span>SummarizedBookmark<span style="color: #93a8c6;">(</span>**bookmark<span style="color: #93a8c6;">)</span> <span style="color: #FF7B72;">for</span> bookmark <span style="color: #FF7B72;">in</span> summarized_bookmark_dicts<span style="color: #8c8c8c;">]</span>
 
-    <span style="color: #dcaeea;">summarized_urls</span> = <span style="color: #c678dd;">set</span>([bookmark.url <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmarks])
+    <span style="color: #FFA657;">summarized_urls</span> = <span style="color: #79C0FF;">set</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">[</span>bookmark.url <span style="color: #FF7B72;">for</span> bookmark <span style="color: #FF7B72;">in</span> summarized_bookmarks<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>
 
-    <span style="color: #dcaeea;">title</span>: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>
-    <span style="color: #dcaeea;">url</span>: Optional[<span style="color: #c678dd;">str</span>] = <span style="color: #a9a1e1;">None</span>
-    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> bookmark_lines:
-        <span style="color: #51afef;">match</span>: re.Match = re.search(r<span style="color: #98be65;">'- \[(.*?)\]\((.*?)\)'</span>, line)
-        <span style="color: #51afef;">if</span> <span style="color: #51afef;">match</span> <span style="color: #51afef;">and</span> <span style="color: #51afef;">match</span>.group(<span style="color: #da8548; font-weight: bold;">2</span>) <span style="color: #51afef;">not</span> <span style="color: #51afef;">in</span> summarized_urls:
-            <span style="color: #dcaeea;">title</span>, <span style="color: #dcaeea;">url</span> = <span style="color: #51afef;">match</span>.groups()
-            <span style="color: #51afef;">break</span>
+    <span style="color: #FFA657;">title</span>: Optional<span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="font-style: italic;">None</span>
+    <span style="color: #FFA657;">url</span>: Optional<span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="font-style: italic;">None</span>
+    <span style="color: #FF7B72;">for</span> line <span style="color: #FF7B72;">in</span> bookmark_lines:
+        <span style="color: #FF7B72;">match</span>: re.Match = re.search<span style="color: #8c8c8c;">(</span>r<span style="color: #a7bca4;">'- \[(.*?)\]\((.*?)\)'</span>, line<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FF7B72;">if</span> <span style="color: #FF7B72;">match</span> <span style="color: #FF7B72;">and</span> <span style="color: #FF7B72;">match</span>.group<span style="color: #8c8c8c;">(</span>2<span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">not</span> <span style="color: #FF7B72;">in</span> summarized_urls:
+            <span style="color: #FFA657;">title</span>, <span style="color: #FFA657;">url</span> = <span style="color: #FF7B72;">match</span>.groups<span style="color: #8c8c8c;">()</span>
+            <span style="color: #FF7B72;">break</span>
 
-    <span style="color: #51afef;">if</span> title <span style="color: #51afef;">and</span> url:
-        <span style="color: #dcaeea;">text_content</span>: <span style="color: #c678dd;">str</span> = get_text_content(url)
-        <span style="color: #dcaeea;">summary</span>: <span style="color: #c678dd;">str</span> = summarize_text(text_content)
-        <span style="color: #dcaeea;">one_sentence</span>: <span style="color: #c678dd;">str</span> = one_sentence_summary(summary)
-        <span style="color: #dcaeea;">summary_file_content</span>: <span style="color: #c678dd;">str</span> = build_summary_file(title, url, summary, one_sentence)
-        <span style="color: #dcaeea;">timestamp</span> = <span style="color: #c678dd;">int</span>(datetime.now().timestamp())
+    <span style="color: #FF7B72;">if</span> title <span style="color: #FF7B72;">and</span> url:
+        <span style="color: #FFA657;">text_content</span>: <span style="color: #79C0FF;">str</span> = get_text_content<span style="color: #8c8c8c;">(</span>url<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">summary</span>: <span style="color: #79C0FF;">str</span> = summarize_text<span style="color: #8c8c8c;">(</span>text_content<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">one_sentence</span>: <span style="color: #79C0FF;">str</span> = one_sentence_summary<span style="color: #8c8c8c;">(</span>summary<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">summary_file_content</span>: <span style="color: #79C0FF;">str</span> = build_summary_file<span style="color: #8c8c8c;">(</span>title, url, summary, one_sentence<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">timestamp</span> = <span style="color: #79C0FF;">int</span><span style="color: #8c8c8c;">(</span>datetime.now<span style="color: #93a8c6;">()</span>.timestamp<span style="color: #93a8c6;">()</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20445;&#23384;&#21407;&#22987;&#25991;&#26412;&#20869;&#23481;</span>
-        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(get_text_content_path(title), <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
-            f.write(text_content)
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#20445;&#23384;&#21407;&#22987;&#25991;&#26412;&#20869;&#23481;</span>
+        <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>get_text_content_path<span style="color: #93a8c6;">(</span>title<span style="color: #93a8c6;">)</span>, <span style="color: #a7bca4;">'w'</span>, encoding=<span style="color: #a7bca4;">'utf-8'</span><span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+            f.write<span style="color: #8c8c8c;">(</span>text_content<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20445;&#23384;&#24635;&#32467;&#25991;&#20214;</span>
-        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(get_summary_file_path(title, timestamp), <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
-            f.write(summary_file_content)
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#20445;&#23384;&#24635;&#32467;&#25991;&#20214;</span>
+        <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>get_summary_file_path<span style="color: #93a8c6;">(</span>title, timestamp<span style="color: #93a8c6;">)</span>, <span style="color: #a7bca4;">'w'</span>, encoding=<span style="color: #a7bca4;">'utf-8'</span><span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+            f.write<span style="color: #8c8c8c;">(</span>summary_file_content<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#28155;&#21152;&#21040;&#24635;&#32467;&#20070;&#31614;&#21015;&#34920;</span>
-        summarized_bookmarks.append(SummarizedBookmark(
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#28155;&#21152;&#21040;&#24635;&#32467;&#20070;&#31614;&#21015;&#34920;</span>
+        summarized_bookmarks.append<span style="color: #8c8c8c;">(</span>SummarizedBookmark<span style="color: #93a8c6;">(</span>
             year=CURRENT_YEAR,
             month=CURRENT_MONTH,
             title=title,
             url=url,
             timestamp=timestamp
-        ))
+        <span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26356;&#26032; README &#21644;&#25968;&#25454;&#25991;&#20214;</span>
-        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/README.md'</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
-            f.write(build_summary_readme_md(summarized_bookmarks))
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#26356;&#26032; README &#21644;&#25968;&#25454;&#25991;&#20214;</span>
+        <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #a7bca4;">/README.md'</span>, <span style="color: #a7bca4;">'w'</span>, encoding=<span style="color: #a7bca4;">'utf-8'</span><span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+            f.write<span style="color: #8c8c8c;">(</span>build_summary_readme_md<span style="color: #93a8c6;">(</span>summarized_bookmarks<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-        <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(f<span style="color: #98be65;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #98be65;">/data.json'</span>, <span style="color: #98be65;">'w'</span>, encoding=<span style="color: #98be65;">'utf-8'</span>) <span style="color: #51afef;">as</span> f:
-            json.dump([asdict(bookmark) <span style="color: #51afef;">for</span> bookmark <span style="color: #51afef;">in</span> summarized_bookmarks], f, indent=<span style="color: #da8548; font-weight: bold;">2</span>, ensure_ascii=<span style="color: #a9a1e1;">False</span>)
+        <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">'</span>{BOOKMARK_SUMMARY_REPO_NAME}<span style="color: #a7bca4;">/data.json'</span>, <span style="color: #a7bca4;">'w'</span>, encoding=<span style="color: #a7bca4;">'utf-8'</span><span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+            json.dump<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">[</span>asdict<span style="color: #b0b1a3;">(</span>bookmark<span style="color: #b0b1a3;">)</span> <span style="color: #FF7B72;">for</span> bookmark <span style="color: #FF7B72;">in</span> summarized_bookmarks<span style="color: #93a8c6;">]</span>, f, indent=2, ensure_ascii=<span style="font-style: italic;">False</span><span style="color: #8c8c8c;">)</span>
 
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">main</span>():
-    process_bookmark_file()
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">main</span><span style="color: #8c8c8c;">()</span>:
+    process_bookmark_file<span style="color: #8c8c8c;">()</span>
 
-<span style="color: #51afef;">if</span> <span style="color: #c678dd;">__name__</span> == <span style="color: #98be65;">"__main__"</span>:
-    main()
+<span style="color: #FF7B72;">if</span> <span style="color: #79C0FF;">__name__</span> == <span style="color: #a7bca4;">"__main__"</span>:
+    main<span style="color: #8c8c8c;">()</span>
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga2e6a6d" class="outline-2">
-<h2 id="orga2e6a6d">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-orga2e6a6d">
+
+<div id="outline-container-org7c4d971" class="outline-2">
+<h2 id="org7c4d971">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org7c4d971">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="org87a3bf3">
+<figure id="org8de3aaf">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -371,7 +376,7 @@ logging.basicConfig(
 </p>
 
 <p>
-再次感谢 <a href="https://github.com/theowenyoung/clip">Owen&rsquo;s Clip</a> , <a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引</a>这两个项目的作者。
+再次感谢 <a href="https://github.com/theowenyoung/clip">Owen's Clip</a> , <a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引</a>这两个项目的作者。
 </p>
 </div>
 </div>

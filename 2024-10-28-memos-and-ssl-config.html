@@ -41,7 +41,8 @@
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
       <nav>
       <a href="https://www.vandee.art/">Home</a>
-      <a href="https://wiki.vandee.art">Wiki</a>
+      <a href="https://x.vandee.art/wiki">Wiki</a>
+      <a href="https://x.vandee.art/photo">Photo</a>
       <a href="archive.html">Archive</a>
       <a href="tags.html">Tags</a>
       <div id="search-container">
@@ -56,25 +57,26 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8325bde">起因</a></li>
-<li><a href="#org5d2ecd0">Memos</a></li>
-<li><a href="#org91e4734">SSL</a></li>
-<li><a href="#orgcfec1ff">Memos 自定义</a>
+<li><a href="#org76de30f">起因</a></li>
+<li><a href="#orge4e49ad">Memos</a></li>
+<li><a href="#org311c197">SSL</a></li>
+<li><a href="#org22d96af">Memos 自定义</a>
 <ul>
-<li><a href="#org1660512">自定义 css 和 JavaScript</a></li>
-<li><a href="#org9391806">Memos.top</a></li>
+<li><a href="#orgaa572dc">自定义 css 和 JavaScript</a></li>
+<li><a href="#org10b81a6">Memos.top</a></li>
 </ul>
 </li>
-<li><a href="#orgfa33058">小结</a></li>
+<li><a href="#org8f5d036">小结</a></li>
 </ul>
 </div>
 </nav>
 <p>
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
-<div id="outline-container-org8325bde" class="outline-2">
-<h2 id="org8325bde">起因</h2>
-<div class="outline-text-2" id="text-org8325bde">
+
+<div id="outline-container-org76de30f" class="outline-2">
+<h2 id="org76de30f">起因</h2>
+<div class="outline-text-2" id="text-org76de30f">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -92,9 +94,10 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org5d2ecd0" class="outline-2">
-<h2 id="org5d2ecd0">Memos</h2>
-<div class="outline-text-2" id="text-org5d2ecd0">
+
+<div id="outline-container-orge4e49ad" class="outline-2">
+<h2 id="orge4e49ad">Memos</h2>
+<div class="outline-text-2" id="text-orge4e49ad">
 <p>
 几个版本的主要特色：
 </p>
@@ -114,28 +117,28 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-yaml"><span style="color: #dcaeea;">version</span>: <span style="color: #98be65;">"3.0"</span>
-<span style="color: #dcaeea;">services</span>:
-  <span style="color: #dcaeea;">memos</span>:
-    <span style="color: #dcaeea;">image</span>: neosmemo/memos:0.18.0 <span style="color: #5B6268;">#</span><span style="color: #5B6268;">&#29256;&#26412; tag</span>
-    <span style="color: #dcaeea;">restart</span>: always
-    <span style="color: #dcaeea;">depends_on</span>:
+<pre class="src src-yaml"><span style="color: #FFA657;">version</span>: <span style="color: #a7bca4;">"3.0"</span>
+<span style="color: #FFA657;">services</span>:
+  <span style="color: #FFA657;">memos</span>:
+    <span style="color: #FFA657;">image</span>: neosmemo/memos:0.18.0 <span style="color: #787878; font-style: italic;">#</span><span style="color: #787878; font-style: italic;">&#29256;&#26412; tag</span>
+    <span style="color: #FFA657;">restart</span>: always
+    <span style="color: #FFA657;">depends_on</span>:
       - db
-    <span style="color: #dcaeea;">ports</span>:
+    <span style="color: #FFA657;">ports</span>:
       - 5230:5230
-    <span style="color: #dcaeea;">environment</span>:
+    <span style="color: #FFA657;">environment</span>:
       - MEMOS_DRIVER=postgres
       - MEMOS_DSN=user=memos password=secret dbname=memosdb host=db sslmode=disable
 
-  <span style="color: #dcaeea;">db</span>:
-    <span style="color: #dcaeea;">image</span>: postgres:16.1
-    <span style="color: #dcaeea;">restart</span>: unless-stopped
-    <span style="color: #dcaeea;">volumes</span>:
-      - <span style="color: #98be65;">"./database:/var/lib/postgresql/data/"</span>
-    <span style="color: #dcaeea;">environment</span>:
-      <span style="color: #dcaeea;">POSTGRES_USER</span>: memos
-      <span style="color: #dcaeea;">POSTGRES_PASSWORD</span>: secret
-      <span style="color: #dcaeea;">POSTGRES_DB</span>: memosdb
+  <span style="color: #FFA657;">db</span>:
+    <span style="color: #FFA657;">image</span>: postgres:16.1
+    <span style="color: #FFA657;">restart</span>: unless-stopped
+    <span style="color: #FFA657;">volumes</span>:
+      - <span style="color: #a7bca4;">"./database:/var/lib/postgresql/data/"</span>
+    <span style="color: #FFA657;">environment</span>:
+      <span style="color: #FFA657;">POSTGRES_USER</span>: memos
+      <span style="color: #FFA657;">POSTGRES_PASSWORD</span>: secret
+      <span style="color: #FFA657;">POSTGRES_DB</span>: memosdb
 
 </pre>
 </div>
@@ -148,46 +151,47 @@ ip + 5230 就可以访问了，到这里都很惬意，Nginx 的配置才是让�
 Nginx 命令：
 </p>
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #ECBE7B;">sudo</span> systemctl restart nginx <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20462;&#25913;&#20102;&#37197;&#32622;&#25991;&#20214;&#20043;&#21518;&#37325;&#21551;&#26381;&#21153;</span>
+<pre class="src src-bash">sudo systemctl restart nginx <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#20462;&#25913;&#20102;&#37197;&#32622;&#25991;&#20214;&#20043;&#21518;&#37325;&#21551;&#26381;&#21153;</span>
 
-<span style="color: #ECBE7B;">sudo</span> vim /etc/nginx/sites-available/conf_name  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;</span>
+sudo vim /etc/nginx/sites-available/conf_name  <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;</span>
 
-<span style="color: #ECBE7B;">sudo</span> <span style="color: #ECBE7B;">ln</span> -s /etc/nginx/sites-available/conf_name /etc/nginx/sites-enabled/ <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;&#21487;&#29992;</span>
+sudo ln -s /etc/nginx/sites-available/conf_name /etc/nginx/sites-enabled/ <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#35774;&#32622;&#37197;&#32622;&#25991;&#20214;&#21487;&#29992;</span>
 
-<span style="color: #ECBE7B;">sudo</span> <span style="color: #ECBE7B;">rm</span> /etc/nginx/sites-enabled/conf_name <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#31227;&#38500;&#37197;&#32622;</span>
+sudo rm /etc/nginx/sites-enabled/conf_name <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#31227;&#38500;&#37197;&#32622;</span>
 
-<span style="color: #ECBE7B;">sudo</span> nginx -t <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#26816;&#26597;&#37197;&#32622;&#26159;&#21542;&#26377;&#38382;&#39064;</span>
+sudo nginx -t <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#26816;&#26597;&#37197;&#32622;&#26159;&#21542;&#26377;&#38382;&#39064;</span>
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org91e4734" class="outline-2">
-<h2 id="org91e4734">SSL</h2>
-<div class="outline-text-2" id="text-org91e4734">
+
+<div id="outline-container-org311c197" class="outline-2">
+<h2 id="org311c197">SSL</h2>
+<div class="outline-text-2" id="text-org311c197">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
 
 <div class="org-src-container">
 <pre class="src src-bash">
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#38543;&#20415;&#21019;&#24314;&#19968;&#20010;&#30446;&#24405;</span>
-<span style="color: #ECBE7B;">mkdir</span> certd
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#36827;&#20837;&#30446;&#24405;</span>
-<span style="color: #ECBE7B;">cd</span> certd
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#19979;&#36733;docker-compose.yaml&#25991;&#20214;&#65292;&#25110;&#32773;&#25163;&#21160;&#19979;&#36733;&#25918;&#21040;certd&#30446;&#24405;&#19979;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#38543;&#20415;&#21019;&#24314;&#19968;&#20010;&#30446;&#24405;</span>
+mkdir certd
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#36827;&#20837;&#30446;&#24405;</span>
+<span style="color: #79C0FF;">cd</span> certd
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#19979;&#36733;docker-compose.yaml&#25991;&#20214;&#65292;&#25110;&#32773;&#25163;&#21160;&#19979;&#36733;&#25918;&#21040;certd&#30446;&#24405;&#19979;</span>
 wget https://gitee.com/certd/certd/raw/v2/docker/run/docker-compose.yaml
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21487;&#20197;&#26681;&#25454;&#38656;&#35201;&#20462;&#25913;&#37324;&#38754;&#30340;&#37197;&#32622;</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">1.&#20462;&#25913;&#38236;&#20687;&#29256;&#26412;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">2.&#37197;&#32622;&#25968;&#25454;&#20445;&#23384;&#36335;&#24452;&#12304;&#21487;&#36873;&#12305;</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">3.&#20462;&#25913;&#31471;&#21475;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
-vi docker-compose.yaml <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#12304;&#21487;&#36873;&#12305;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#21487;&#20197;&#26681;&#25454;&#38656;&#35201;&#20462;&#25913;&#37324;&#38754;&#30340;&#37197;&#32622;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">1.&#20462;&#25913;&#38236;&#20687;&#29256;&#26412;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">2.&#37197;&#32622;&#25968;&#25454;&#20445;&#23384;&#36335;&#24452;&#12304;&#21487;&#36873;&#12305;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">3.&#20462;&#25913;&#31471;&#21475;&#21495;&#12304;&#21487;&#36873;&#12305;</span>
+vi docker-compose.yaml <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#12304;&#21487;&#36873;&#12305;</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21551;&#21160;certd</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#21551;&#21160;certd</span>
 docker compose up -d
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#35775;&#38382;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#35775;&#38382;</span>
 http://your_server_ip:7001
 https://your_server_ip:7002
 &#40664;&#35748;&#36134;&#21495;&#23494;&#30721;&#65306;admin/123456
@@ -246,20 +250,20 @@ server {
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23433;&#35013;</span>
-<span style="color: #ECBE7B;">sudo</span> apt update
-<span style="color: #ECBE7B;">sudo</span> apt install certbot python3-certbot-nginx
+<pre class="src src-bash"><span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#23433;&#35013;</span>
+sudo apt update
+sudo apt install certbot python3-certbot-nginx
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#30003;&#35831;&#35777;&#20070;</span>
-<span style="color: #ECBE7B;">sudo</span> certbot --nginx -d app1.example.com -d app2.example.com
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#30003;&#35831;&#35777;&#20070;</span>
+sudo certbot --nginx -d app1.example.com -d app2.example.com
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">--nginx&#65306;&#20351;&#29992; Nginx &#25554;&#20214;&#65292;Certbot &#20250;&#33258;&#21160;&#20462;&#25913; Nginx &#37197;&#32622;&#12290;</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">-d&#65306;&#25351;&#23450;&#20320;&#35201;&#30003;&#35831;&#35777;&#20070;&#30340;&#22495;&#21517;&#65292;&#21487;&#20197;&#19968;&#27425;&#24615;&#20026;&#22810;&#20010;&#22495;&#21517;&#30003;&#35831;&#12290;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">--nginx&#65306;&#20351;&#29992; Nginx &#25554;&#20214;&#65292;Certbot &#20250;&#33258;&#21160;&#20462;&#25913; Nginx &#37197;&#32622;&#12290;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">-d&#65306;&#25351;&#23450;&#20320;&#35201;&#30003;&#35831;&#35777;&#20070;&#30340;&#22495;&#21517;&#65292;&#21487;&#20197;&#19968;&#27425;&#24615;&#20026;&#22810;&#20010;&#22495;&#21517;&#30003;&#35831;&#12290;</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Certbot &#20250;&#35810;&#38382;&#19968;&#20123;&#22522;&#26412;&#38382;&#39064;&#65306;&#36755;&#20837;&#30005;&#23376;&#37038;&#20214;&#22320;&#22336;&#65288;&#29992;&#20110;&#25509;&#25910;&#35777;&#20070;&#21040;&#26399;&#25552;&#37266;&#65289;&#12290;&#21516;&#24847;&#26381;&#21153;&#26465;&#27454;&#65288;&#36755;&#20837; A &#21516;&#24847;&#65289;&#12290;&#26159;&#21542;&#24895;&#24847; &#20849;&#20139;&#20320;&#30340;&#37038;&#31665; &#32473; EFF&#65288;&#33258;&#24895;&#65289;&#12290;&#35810;&#38382;&#20320;&#26159;&#21542;&#35201; &#23558; HTTP &#37325;&#23450;&#21521;&#20026; HTTPS&#65306;&#36873;&#25321; 2 &#23558;&#25152;&#26377; HTTP &#35831;&#27714;&#37325;&#23450;&#21521;&#20026; HTTPS&#65288;&#25512;&#33616;&#65289;&#12290;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">Certbot &#20250;&#35810;&#38382;&#19968;&#20123;&#22522;&#26412;&#38382;&#39064;&#65306;&#36755;&#20837;&#30005;&#23376;&#37038;&#20214;&#22320;&#22336;&#65288;&#29992;&#20110;&#25509;&#25910;&#35777;&#20070;&#21040;&#26399;&#25552;&#37266;&#65289;&#12290;&#21516;&#24847;&#26381;&#21153;&#26465;&#27454;&#65288;&#36755;&#20837; A &#21516;&#24847;&#65289;&#12290;&#26159;&#21542;&#24895;&#24847; &#20849;&#20139;&#20320;&#30340;&#37038;&#31665; &#32473; EFF&#65288;&#33258;&#24895;&#65289;&#12290;&#35810;&#38382;&#20320;&#26159;&#21542;&#35201; &#23558; HTTP &#37325;&#23450;&#21521;&#20026; HTTPS&#65306;&#36873;&#25321; 2 &#23558;&#25152;&#26377; HTTP &#35831;&#27714;&#37325;&#23450;&#21521;&#20026; HTTPS&#65288;&#25512;&#33616;&#65289;&#12290;</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#33258;&#21160;&#32493;&#31614;</span>
-<span style="color: #ECBE7B;">sudo</span> certbot renew --dry-run
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#33258;&#21160;&#32493;&#31614;</span>
+sudo certbot renew --dry-run
 </pre>
 </div>
 
@@ -268,13 +272,14 @@ server {
 </p>
 </div>
 </div>
-<div id="outline-container-orgcfec1ff" class="outline-2">
-<h2 id="orgcfec1ff">Memos 自定义</h2>
-<div class="outline-text-2" id="text-orgcfec1ff">
+
+<div id="outline-container-org22d96af" class="outline-2">
+<h2 id="org22d96af">Memos 自定义</h2>
+<div class="outline-text-2" id="text-org22d96af">
 </div>
-<div id="outline-container-org1660512" class="outline-3">
-<h3 id="org1660512">自定义 css 和 JavaScript</h3>
-<div class="outline-text-3" id="text-org1660512">
+<div id="outline-container-orgaa572dc" class="outline-3">
+<h3 id="orgaa572dc">自定义 css 和 JavaScript</h3>
+<div class="outline-text-3" id="text-orgaa572dc">
 <p>
 适用 0.20.X 以上版本
 </p>
@@ -295,9 +300,10 @@ server {
 </div>
 </div>
 </div>
-<div id="outline-container-org9391806" class="outline-3">
-<h3 id="org9391806">Memos.top</h3>
-<div class="outline-text-3" id="text-org9391806">
+
+<div id="outline-container-org10b81a6" class="outline-3">
+<h3 id="org10b81a6">Memos.top</h3>
+<div class="outline-text-3" id="text-org10b81a6">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -315,13 +321,13 @@ server {
 </p>
 
 
-<figure id="orgb10e98b">
+<figure id="org04e6820">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org44d6c05">
+<figure id="org4121485">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -332,9 +338,10 @@ Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa33058" class="outline-2">
-<h2 id="orgfa33058">小结</h2>
-<div class="outline-text-2" id="text-orgfa33058">
+
+<div id="outline-container-org8f5d036" class="outline-2">
+<h2 id="org8f5d036">小结</h2>
+<div class="outline-text-2" id="text-org8f5d036">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>

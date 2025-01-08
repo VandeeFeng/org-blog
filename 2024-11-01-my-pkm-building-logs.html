@@ -39,7 +39,8 @@
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
       <nav>
       <a href="https://www.vandee.art/">Home</a>
-      <a href="https://wiki.vandee.art">Wiki</a>
+      <a href="https://x.vandee.art/wiki">Wiki</a>
+      <a href="https://x.vandee.art/photo">Photo</a>
       <a href="archive.html">Archive</a>
       <a href="tags.html">Tags</a>
       <div id="search-container">
@@ -54,58 +55,60 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7f9da67">前言</a></li>
-<li><a href="#org03f2083">笔记和 PKM 的构建 Log</a>
+<li><a href="#org604d541">前言</a></li>
+<li><a href="#orgb352661">笔记和 PKM 的构建 Log</a>
 <ul>
-<li><a href="#org4b771fb">2022-07-20 开始系统的记笔记</a>
+<li><a href="#org8a634ba">2022-07-20 开始系统的记笔记</a>
 <ul>
-<li><a href="#org7588bb5">Add</a></li>
-<li><a href="#orge90a892">为什么要花这么多心思在记笔记？</a></li>
+<li><a href="#org8f1b71f">Add</a></li>
+<li><a href="#orgb6522a7">为什么要花这么多心思在记笔记？</a></li>
 </ul>
 </li>
-<li><a href="#org086dd25">2023-07-19 又一次知识管理逻辑的完善</a>
+<li><a href="#org2508464">2023-07-19 又一次知识管理逻辑的完善</a>
 <ul>
-<li><a href="#org25658a1">Add</a></li>
-<li><a href="#org3cae440">知识管理与记录</a></li>
-<li><a href="#org2272f21">重新折腾obsidian</a></li>
-<li><a href="#org5942f16">知识管理与文档记录的意义</a></li>
+<li><a href="#org2a66c24">Add</a></li>
+<li><a href="#org9c1544b">知识管理与记录</a></li>
+<li><a href="#org18ffef2">重新折腾obsidian</a></li>
+<li><a href="#orga249f72">知识管理与文档记录的意义</a></li>
 </ul>
 </li>
-<li><a href="#orgdf77fd0">2023-09-14 obsidian和logseq联用的PKM尝试</a>
+<li><a href="#org1af15dd">2023-09-14 obsidian和logseq联用的PKM尝试</a>
 <ul>
-<li><a href="#org63d354c">Add</a></li>
-<li><a href="#org3e9da55">Logseq</a></li>
-<li><a href="#org592697c">ob和Logseq的简单对比</a></li>
-<li><a href="#org2dca6b0">现在的选择</a></li>
-<li><a href="#org0797968">Reference</a></li>
+<li><a href="#org236ab84">Add</a></li>
+<li><a href="#orgcb5276b">Logseq</a></li>
+<li><a href="#org26e422c">ob和Logseq的简单对比</a></li>
+<li><a href="#orgdeac78c">现在的选择</a></li>
+<li><a href="#org273df95">Reference</a></li>
 </ul>
 </li>
-<li><a href="#org4690f82">2024-04-13 神的编辑器</a>
+<li><a href="#orgc2e1096">2024-04-13 神的编辑器</a>
 <ul>
-<li><a href="#org8bbd53a">Add</a></li>
-<li><a href="#org45b8ae2">做自己的笔记“软件”</a></li>
-<li><a href="#org870fe4a">Emacs</a></li>
+<li><a href="#orgb06b1c6">Add</a></li>
+<li><a href="#orga717843">做自己的笔记“软件”</a></li>
+<li><a href="#org883fab0">Emacs</a></li>
 </ul>
 </li>
-<li><a href="#org7dc6981">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
+<li><a href="#orgb9edbef">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
 <ul>
-<li><a href="#org7ac9965">Add</a></li>
-<li><a href="#org8eeb652">PKM去形式化</a></li>
-<li><a href="#org8ec207d">nb</a></li>
-<li><a href="#org19902dd">去形式化之后的PKM</a></li>
-<li><a href="#orgf017f7a">Logseq适配Quartz</a></li>
+<li><a href="#orge4c4549">Add</a></li>
+<li><a href="#org2f714a2">PKM去形式化</a></li>
+<li><a href="#org08584b6">nb</a></li>
+<li><a href="#orgdf6a1aa">去形式化之后的PKM</a></li>
+<li><a href="#org8b0d27b">Logseq适配Quartz</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org16d4e39">Emacs 阶段</a></li>
-<li><a href="#orgb5501d0">ChangeLog</a></li>
+<li><a href="#orgf7204ef">Emacs 阶段</a></li>
+<li><a href="#org1b5450d">ChangeLog</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org7f9da67" class="outline-2">
-<h2 id="org7f9da67">前言</h2>
-<div class="outline-text-2" id="text-org7f9da67">
+
+
+<div id="outline-container-org604d541" class="outline-2">
+<h2 id="org604d541">前言</h2>
+<div class="outline-text-2" id="text-org604d541">
 <p>
 最近开始 all in Emacs，用 org-mode 写作和生成静态博客页面，顺便对以前的写作再迭代整理一次。
 </p>
@@ -119,16 +122,18 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org03f2083" class="outline-2">
-<h2 id="org03f2083">笔记和 PKM 的构建 Log</h2>
-<div class="outline-text-2" id="text-org03f2083">
+
+
+<div id="outline-container-orgb352661" class="outline-2">
+<h2 id="orgb352661">笔记和 PKM 的构建 Log</h2>
+<div class="outline-text-2" id="text-orgb352661">
 <p>
 这部分是之前相关零散文章的整理， <code>Add</code> 是新增，其他部分是之前的原文（部分修改）。
 </p>
 </div>
-<div id="outline-container-org4b771fb" class="outline-3">
-<h3 id="org4b771fb">2022-07-20 开始系统的记笔记</h3>
-<div class="outline-text-3" id="text-org4b771fb">
+<div id="outline-container-org8a634ba" class="outline-3">
+<h3 id="org8a634ba">2022-07-20 开始系统的记笔记</h3>
+<div class="outline-text-3" id="text-org8a634ba">
 <p>
 Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
 </p>
@@ -141,17 +146,18 @@ Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
 Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么执着于markdown格式，因为它简单高效，门槛也低，在网络文本传输有天然的优势。这中间还要解决的一个问题就是本地图片上传。利用Typora和gitee图床就可以完美解决。obsidian配合icloud也可以多平台同步。
 </p>
 </div>
-<div id="outline-container-org7588bb5" class="outline-4">
-<h4 id="org7588bb5">Add</h4>
-<div class="outline-text-4" id="text-org7588bb5">
+<div id="outline-container-org8f1b71f" class="outline-4">
+<h4 id="org8f1b71f">Add</h4>
+<div class="outline-text-4" id="text-org8f1b71f">
 <p>
 最开始接触到做笔记这个概念是从 Notion 开始，那个时候 Notion 正火。随后由于网络问题转到了 markdown 和 obsidian，开始折腾本地笔记。
 </p>
 </div>
 </div>
-<div id="outline-container-orge90a892" class="outline-4">
-<h4 id="orge90a892">为什么要花这么多心思在记笔记？</h4>
-<div class="outline-text-4" id="text-orge90a892">
+
+<div id="outline-container-orgb6522a7" class="outline-4">
+<h4 id="orgb6522a7">为什么要花这么多心思在记笔记？</h4>
+<div class="outline-text-4" id="text-orgb6522a7">
 <p>
 也还是从疫情说起，疫情让协同办公变成刚需。团队协作当中，本地与网络文档同步直接影响工作的效率。而对于个人，记笔记也直接影响信息的处理效率。而信息的输入与存储直接影响了，我们对于外界的认知，对信息的接受与处理，在准确全面的认知之下，思维才有用武之地。
 </p>
@@ -174,9 +180,10 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 </div>
-<div id="outline-container-org086dd25" class="outline-3">
-<h3 id="org086dd25">2023-07-19 又一次知识管理逻辑的完善</h3>
-<div class="outline-text-3" id="text-org086dd25">
+
+<div id="outline-container-org2508464" class="outline-3">
+<h3 id="org2508464">2023-07-19 又一次知识管理逻辑的完善</h3>
+<div class="outline-text-3" id="text-org2508464">
 <p>
 最近刷到了这个文章<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>，重新思考了一下知识管理的逻辑。
 </p>
@@ -185,17 +192,17 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 距离上一次更新正好一年。在当时的方案中，由于还不能实现科学上网自由，obsidian的插件许多都没有，也没想着太折腾，notion的剪藏与数据库实在是方便。但是对于文档记录，本地储存才是一劳永逸的，notion的网络又还是时好时坏。还是决定再折腾一下。
 </p>
 </div>
-<div id="outline-container-org25658a1" class="outline-4">
-<h4 id="org25658a1">Add</h4>
-<div class="outline-text-4" id="text-org25658a1">
+<div id="outline-container-org2a66c24" class="outline-4">
+<h4 id="org2a66c24">Add</h4>
+<div class="outline-text-4" id="text-org2a66c24">
 <p>
 现在互联网已经被 AI 内容污染的不成样了。那个时候开始意识到历史和记录的意义了。
 </p>
 </div>
 </div>
-<div id="outline-container-org3cae440" class="outline-4">
-<h4 id="org3cae440">知识管理与记录</h4>
-<div class="outline-text-4" id="text-org3cae440">
+<div id="outline-container-org9c1544b" class="outline-4">
+<h4 id="org9c1544b">知识管理与记录</h4>
+<div class="outline-text-4" id="text-org9c1544b">
 <p>
 <a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>里提到
 </p>
@@ -235,9 +242,10 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </p>
 </div>
 </div>
-<div id="outline-container-org2272f21" class="outline-4">
-<h4 id="org2272f21">重新折腾obsidian</h4>
-<div class="outline-text-4" id="text-org2272f21">
+
+<div id="outline-container-org18ffef2" class="outline-4">
+<h4 id="org18ffef2">重新折腾obsidian</h4>
+<div class="outline-text-4" id="text-org18ffef2">
 <p>
 正好前段时间Anytype的内测通过了，体验了一下，copy了一下它的设计理念， <b>决定以object-tag-type-relation的逻辑来整理信息，统一对于信息处理，思维上的内在逻辑分类，以及文档管理、记录、输出的外在分类。</b>
 </p>
@@ -276,7 +284,7 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </p>
 
 
-<figure id="org4aa23b5">
+<figure id="orgb6e428e">
 <img src="https://s2.loli.net/2023/07/19/EeMl1FW29UHJONI.jpg" class="img" width="50%" height="50%">
 
 </figure>
@@ -290,9 +298,10 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </p>
 </div>
 </div>
-<div id="outline-container-org5942f16" class="outline-4">
-<h4 id="org5942f16">知识管理与文档记录的意义</h4>
-<div class="outline-text-4" id="text-org5942f16">
+
+<div id="outline-container-orga249f72" class="outline-4">
+<h4 id="orga249f72">知识管理与文档记录的意义</h4>
+<div class="outline-text-4" id="text-orga249f72">
 <p>
 <a href="https://www.bilibili.com/video/BV14Y4y1n7YQ/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">【苏星河】全网都在吹的飞书，到底是个什么软件？_哔哩哔哩_bilibili</a>这个视频的最后说的很有道理：
 </p>
@@ -349,9 +358,10 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 </div>
-<div id="outline-container-orgdf77fd0" class="outline-3">
-<h3 id="orgdf77fd0">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
-<div class="outline-text-3" id="text-orgdf77fd0">
+
+<div id="outline-container-org1af15dd" class="outline-3">
+<h3 id="org1af15dd">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
+<div class="outline-text-3" id="text-org1af15dd">
 <p>
 距上一次折腾，不知不觉已经两个月了。在“深入”使用obsidian(后面简称ob)这两个月期间，一个之前暂时搁置的问题逐渐浮现出来：那就是数据储存形式。
 </p>
@@ -368,17 +378,18 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 没有最好的笔记软件，适合自己的才是最好的。
 </p>
 </div>
-<div id="outline-container-org63d354c" class="outline-4">
-<h4 id="org63d354c">Add</h4>
-<div class="outline-text-4" id="text-org63d354c">
+<div id="outline-container-org236ab84" class="outline-4">
+<h4 id="org236ab84">Add</h4>
+<div class="outline-text-4" id="text-org236ab84">
 <p>
 这个时候开始意识到数据的重要性了，以前的纸质记录、现在的电子记录，都是数据。现在的社会是信息和数据的社会，在 AI 介入之后，更是如此。没有最好的笔记软件，只有最适合自己的笔记软件，这句话一直说到现在。Logseq 是一个很好的笔记软件设计，但现在回过头来看，它从设计底层强制性的使用 markdown 语法里的列表格式来实现的块并不是那么容易让所有人接受，只要导入了其他 markdown 文档，就会强制性的加上列表格式。也是从 Logseq 开始，我第一次接触到了 Lisp 语言这个概念。
 </p>
 </div>
 </div>
-<div id="outline-container-org3e9da55" class="outline-4">
-<h4 id="org3e9da55">Logseq</h4>
-<div class="outline-text-4" id="text-org3e9da55">
+
+<div id="outline-container-orgcb5276b" class="outline-4">
+<h4 id="orgcb5276b">Logseq</h4>
+<div class="outline-text-4" id="text-orgcb5276b">
 <p>
 第一次打开Logseq就被UI的设计吸引，这是一种美学上的天然的吸引。和第一次打开Typora的感觉很像。
 </p>
@@ -423,9 +434,10 @@ Logseq的开发者<a href="https://twitter.com/tiensonqin">秦天生</a>也说�
 </p>
 </div>
 </div>
-<div id="outline-container-org592697c" class="outline-4">
-<h4 id="org592697c">ob和Logseq的简单对比</h4>
-<div class="outline-text-4" id="text-org592697c">
+
+<div id="outline-container-org26e422c" class="outline-4">
+<h4 id="org26e422c">ob和Logseq的简单对比</h4>
+<div class="outline-text-4" id="text-org26e422c">
 <p>
 我认为obsidian的生命力来源于社区和插件，与其说用ob不如说是再用它的插件，ob开放了插件API，让爱好者自由发挥。
 </p>
@@ -473,9 +485,10 @@ Logseq：
 </p>
 </div>
 </div>
-<div id="outline-container-org2dca6b0" class="outline-4">
-<h4 id="org2dca6b0">现在的选择</h4>
-<div class="outline-text-4" id="text-org2dca6b0">
+
+<div id="outline-container-orgdeac78c" class="outline-4">
+<h4 id="orgdeac78c">现在的选择</h4>
+<div class="outline-text-4" id="text-orgdeac78c">
 <p>
 <b>做电子笔记，实际上是在做数据储存和数据处理。</b>
 </p>
@@ -518,9 +531,10 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </p>
 </div>
 </div>
-<div id="outline-container-org0797968" class="outline-4">
-<h4 id="org0797968">Reference</h4>
-<div class="outline-text-4" id="text-org0797968">
+
+<div id="outline-container-org273df95" class="outline-4">
+<h4 id="org273df95">Reference</h4>
+<div class="outline-text-4" id="text-org273df95">
 <ul class="org-ul">
 <li><a href="https://sspai.com/post/82793">Obsidian技巧：通过多个标签快速定位文件(by TagFolder) - 少数派 (sspai.com)</a></li>
 <li><a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a></li>
@@ -535,21 +549,22 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </div>
 </div>
 </div>
-<div id="outline-container-org4690f82" class="outline-3">
-<h3 id="org4690f82">2024-04-13 神的编辑器</h3>
-<div class="outline-text-3" id="text-org4690f82">
+
+<div id="outline-container-orgc2e1096" class="outline-3">
+<h3 id="orgc2e1096">2024-04-13 神的编辑器</h3>
+<div class="outline-text-3" id="text-orgc2e1096">
 </div>
-<div id="outline-container-org8bbd53a" class="outline-4">
-<h4 id="org8bbd53a">Add</h4>
-<div class="outline-text-4" id="text-org8bbd53a">
+<div id="outline-container-orgb06b1c6" class="outline-4">
+<h4 id="orgb06b1c6">Add</h4>
+<div class="outline-text-4" id="text-orgb06b1c6">
 <p>
 开始正式使用 Emacs 了，脱离笔记软件，将做笔记这个事从使用工具记录变成了思维概念上的一种习惯，而不是一个行为。
 </p>
 </div>
 </div>
-<div id="outline-container-org45b8ae2" class="outline-4">
-<h4 id="org45b8ae2">做自己的笔记“软件”</h4>
-<div class="outline-text-4" id="text-org45b8ae2">
+<div id="outline-container-orga717843" class="outline-4">
+<h4 id="orga717843">做自己的笔记“软件”</h4>
+<div class="outline-text-4" id="text-orga717843">
 <p>
 在订阅里看到推荐的这篇文章  <a href="https://wiki.heptabase.com/the-roadmap?lang=zh-Hant">My Vision - The Roadmap | Heptabase Public Wiki</a>，大概讲了一下Heptabase 下一步的Roadmap，还有一些笔记理念上的东西。Heptabase 有所耳闻，因为订阅的价格一直没有去尝试。
 如同这个文章里说的：
@@ -593,9 +608,9 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </p>
 </div>
 </div>
-<div id="outline-container-org870fe4a" class="outline-4">
-<h4 id="org870fe4a">Emacs</h4>
-<div class="outline-text-4" id="text-org870fe4a">
+<div id="outline-container-org883fab0" class="outline-4">
+<h4 id="org883fab0">Emacs</h4>
+<div class="outline-text-4" id="text-org883fab0">
 <p>
 回归数据本身，那第一件事就是找到笔和纸，也就是编辑器。
 </p>
@@ -617,7 +632,7 @@ doomemacs的界面更符合我的审美，插件管理起来也挺方便，就�
 </p>
 
 
-<figure id="orgc2580e8">
+<figure id="org9618397">
 <img src="https://s2.loli.net/2024/04/08/7suBLpiKVqDz25a.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -661,13 +676,14 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </div>
 </div>
 </div>
-<div id="outline-container-org7dc6981" class="outline-3">
-<h3 id="org7dc6981">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
-<div class="outline-text-3" id="text-org7dc6981">
+
+<div id="outline-container-orgb9edbef" class="outline-3">
+<h3 id="orgb9edbef">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
+<div class="outline-text-3" id="text-orgb9edbef">
 </div>
-<div id="outline-container-org7ac9965" class="outline-4">
-<h4 id="org7ac9965">Add</h4>
-<div class="outline-text-4" id="text-org7ac9965">
+<div id="outline-container-orge4c4549" class="outline-4">
+<h4 id="orge4c4549">Add</h4>
+<div class="outline-text-4" id="text-orge4c4549">
 <p>
 从这里开始梳理出了自己 PKM 的原则。也从 nb 了解到了 CLI 笔记工具，开始琢磨用 bash 脚本做笔记了。
 </p>
@@ -677,9 +693,9 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </p>
 </div>
 </div>
-<div id="outline-container-org8eeb652" class="outline-4">
-<h4 id="org8eeb652">PKM去形式化</h4>
-<div class="outline-text-4" id="text-org8eeb652">
+<div id="outline-container-org2f714a2" class="outline-4">
+<h4 id="org2f714a2">PKM去形式化</h4>
+<div class="outline-text-4" id="text-org2f714a2">
 <p>
 书接上回，现在的PKM第一原则是：数据的去形式化和通用性。只基于md文档的通用基础语法，其他功能以不污染文档内容的方式来实现。
 </p>
@@ -693,9 +709,10 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </p>
 </div>
 </div>
-<div id="outline-container-org8ec207d" class="outline-4">
-<h4 id="org8ec207d">nb</h4>
-<div class="outline-text-4" id="text-org8ec207d">
+
+<div id="outline-container-org08584b6" class="outline-4">
+<h4 id="org08584b6">nb</h4>
+<div class="outline-text-4" id="text-org08584b6">
 <p>
 我愿称其为最强CLI笔记工具！完美匹配我现在的所有需求，设计思路也和我不谋而合，还支持用Emacs做编辑器。虽然Emacs也可以通过自定义函数和插件来复现这些功能，但既然有现成的，就先copy吧🤣。
 </p>
@@ -705,7 +722,7 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </p>
 
 
-<figure id="org8f453ac">
+<figure id="orgac27b51">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-05-13_09-54-33.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -715,15 +732,16 @@ macOS /Homebrew安装， <code>brew install xwmx/taps/nb</code> 。nb也提供�
 </p>
 </div>
 </div>
-<div id="outline-container-org19902dd" class="outline-4">
-<h4 id="org19902dd">去形式化之后的PKM</h4>
-<div class="outline-text-4" id="text-org19902dd">
+
+<div id="outline-container-orgdf6a1aa" class="outline-4">
+<h4 id="orgdf6a1aa">去形式化之后的PKM</h4>
+<div class="outline-text-4" id="text-orgdf6a1aa">
 <p>
 bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 </p>
 
 
-<figure id="org0c9393d">
+<figure id="org79bba3a">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nbnb.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -769,9 +787,9 @@ bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 </p>
 </div>
 </div>
-<div id="outline-container-orgf017f7a" class="outline-4">
-<h4 id="orgf017f7a">Logseq适配Quartz</h4>
-<div class="outline-text-4" id="text-orgf017f7a">
+<div id="outline-container-org8b0d27b" class="outline-4">
+<h4 id="org8b0d27b">Logseq适配Quartz</h4>
+<div class="outline-text-4" id="text-org8b0d27b">
 <p>
 这次在logseq格式转化的时候，几个问题小折腾了一会。
 </p>
@@ -781,161 +799,161 @@ bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python"><span style="color: #5B6268;"># </span><span style="color: #5B6268;">-*- coding = utf-8 -*-</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@Project : Logseq&#26631;&#39064;&#20248;&#21270;</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@File : Logseq&#26684;&#24335;&#20248;&#21270;.py</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@time : 2024/05/11</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@Author : Vandee</span>
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">@Description &#65306;&#36866;&#21512;yaml&#20026;Logseq&#30340;::&#26679;&#24335;</span>
+<pre class="src src-python"><span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">-*- coding = utf-8 -*-</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">@Project : Logseq&#26631;&#39064;&#20248;&#21270;</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">@File : Logseq&#26684;&#24335;&#20248;&#21270;.py</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">@time : 2024/05/11</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">@Author : Vandee</span>
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">@Description &#65306;&#36866;&#21512;yaml&#20026;Logseq&#30340;::&#26679;&#24335;</span>
 
-<span style="color: #51afef;">import</span> re
-<span style="color: #51afef;">import</span> os
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">Frontmatter consts for start and end of Frontmatter YAML heading in Markdown</span>
-<span style="color: #dcaeea;">FRONTMATTER_START_STR</span> = <span style="color: #98be65;">"---</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>
-<span style="color: #dcaeea;">FRONTMATTER_END_STR</span> = <span style="color: #98be65;">"---</span><span style="color: #a9a1e1;">\n\n</span><span style="color: #98be65;">"</span>
-<span style="color: #dcaeea;">FRONTMATTER_PARAM_NAME_REGEXP</span>: <span style="color: #c678dd;">str</span> = r<span style="color: #98be65;">"[A-Za-z0-9-_.]+::\s"</span>
-<span style="color: #dcaeea;">LOGSEQ_LIST_REGEXP</span>: <span style="color: #c678dd;">str</span> = r<span style="color: #98be65;">"^[\s\t]*- "</span>
-
-
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">load_logseq_sanitized</span>(file_path: <span style="color: #c678dd;">str</span>, encoding: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">"utf-8"</span>) -&gt; <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>]:
-
-    <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(file_path, <span style="color: #98be65;">"r"</span>, encoding=encoding) <span style="color: #51afef;">as</span> f:
-        <span style="color: #dcaeea;">lines</span>: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>] = f.readlines()
-
-    <span style="color: #dcaeea;">return_lines</span>: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>] = []
-    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> lines:
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">we skip empty lines</span>
-        <span style="color: #51afef;">if</span> line <span style="color: #51afef;">in</span> (<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"- </span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"-</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"- </span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>):
-            <span style="color: #51afef;">continue</span>
-
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">we remove "- " or "  " from the beginning of line as</span>
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">it's Logseq specific "everyghing is a list" approach</span>
-        <span style="color: #51afef;">if</span> line.startswith((<span style="color: #98be65;">"- "</span>, <span style="color: #98be65;">"  "</span>)):
-            <span style="color: #dcaeea;">line</span> = line[<span style="color: #da8548; font-weight: bold;">2</span>:]
-
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">we remove first occurance of tab character ("\\t") from a line as</span>
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">it's indicating list item</span>
-        <span style="color: #51afef;">if</span> line.startswith(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>):
-            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">""</span>, <span style="color: #da8548; font-weight: bold;">1</span>)
-
-        return_lines.append(line)
-
-    <span style="color: #51afef;">return</span> return_lines
+<span style="color: #FF7B72;">import</span> re
+<span style="color: #FF7B72;">import</span> os
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">Frontmatter consts for start and end of Frontmatter YAML heading in Markdown</span>
+<span style="color: #FFA657;">FRONTMATTER_START_STR</span> = <span style="color: #a7bca4;">"---</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span>
+<span style="color: #FFA657;">FRONTMATTER_END_STR</span> = <span style="color: #a7bca4;">"---</span><span style="font-style: italic;">\n\n</span><span style="color: #a7bca4;">"</span>
+<span style="color: #FFA657;">FRONTMATTER_PARAM_NAME_REGEXP</span>: <span style="color: #79C0FF;">str</span> = r<span style="color: #a7bca4;">"[A-Za-z0-9-_.]+::\s"</span>
+<span style="color: #FFA657;">LOGSEQ_LIST_REGEXP</span>: <span style="color: #79C0FF;">str</span> = r<span style="color: #a7bca4;">"^[\s\t]*- "</span>
 
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">logseq2markdown</span>(logseq_lines: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>]) -&gt; <span style="color: #c678dd;">str</span>:
-    <span style="color: #83898d;">"""Goes through list of Logseq sanitized lines (provided by `load_logseq_sanitized()`) and</span>
-<span style="color: #83898d;">    translates them to proper Markdown and Frontmatter.</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">load_logseq_sanitized</span><span style="color: #8c8c8c;">(</span>file_path: <span style="color: #79C0FF;">str</span>, encoding: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">"utf-8"</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span>:
 
-<span style="color: #83898d;">    Args:</span>
-<span style="color: #83898d;">        logseq_lines (list[str]): List of sanitized lines from Logseq file loader</span>
+    <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>file_path, <span style="color: #a7bca4;">"r"</span>, encoding=encoding<span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+        <span style="color: #FFA657;">lines</span>: <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = f.readlines<span style="color: #8c8c8c;">()</span>
 
-<span style="color: #83898d;">    Returns:</span>
-<span style="color: #83898d;">        str: String containing Frontmatter header in YML format followed by proper Markdown.</span>
-<span style="color: #83898d;">    """</span>
-    <span style="color: #dcaeea;">mk_content</span>: <span style="color: #c678dd;">list</span>[<span style="color: #c678dd;">str</span>] = []
+    <span style="color: #FFA657;">return_lines</span>: <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="color: #8c8c8c;">[]</span>
+    <span style="color: #FF7B72;">for</span> line <span style="color: #FF7B72;">in</span> lines:
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">we skip empty lines</span>
+        <span style="color: #FF7B72;">if</span> line <span style="color: #FF7B72;">in</span> <span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span>, <span style="color: #a7bca4;">"- </span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span>, <span style="color: #a7bca4;">"-</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span>, <span style="color: #a7bca4;">"- </span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span><span style="color: #8c8c8c;">)</span>:
+            <span style="color: #FF7B72;">continue</span>
 
-    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">Using dict here as we don't want to have duplicate parameter names in Frontmatter</span>
-    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">(each should have unique indentifier).</span>
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">we remove "- " or "  " from the beginning of line as</span>
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">it's Logseq specific "everyghing is a list" approach</span>
+        <span style="color: #FF7B72;">if</span> line.startswith<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">(</span><span style="color: #a7bca4;">"- "</span>, <span style="color: #a7bca4;">"  "</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>:
+            <span style="color: #FFA657;">line</span> = line<span style="color: #8c8c8c;">[</span>2:<span style="color: #8c8c8c;">]</span>
 
-    <span style="color: #dcaeea;">mk_frontmatter</span>: <span style="color: #c678dd;">dict</span>[<span style="color: #c678dd;">str</span>, <span style="color: #c678dd;">str</span>] = {}
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">we remove first occurance of tab character ("\\t") from a line as</span>
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">it's indicating list item</span>
+        <span style="color: #FF7B72;">if</span> line.startswith<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\t</span><span style="color: #a7bca4;">"</span><span style="color: #8c8c8c;">)</span>:
+            <span style="color: #FFA657;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\t</span><span style="color: #a7bca4;">"</span>, <span style="color: #a7bca4;">""</span>, 1<span style="color: #8c8c8c;">)</span>
 
-    <span style="color: #dcaeea;">param_regex</span> = re.<span style="color: #c678dd;">compile</span>(FRONTMATTER_PARAM_NAME_REGEXP)
-    <span style="color: #dcaeea;">logseq_list_regexp</span> = re.<span style="color: #c678dd;">compile</span>(LOGSEQ_LIST_REGEXP)
+        return_lines.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
 
-    <span style="color: #51afef;">for</span> line <span style="color: #51afef;">in</span> logseq_lines:
-        <span style="color: #dcaeea;">params_result</span> = param_regex.findall(line)
-        <span style="color: #dcaeea;">logseq_list_result</span> = logseq_list_regexp.findall(line)
+    <span style="color: #FF7B72;">return</span> return_lines
 
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line containts "logseq.order-list-type:: number" it should be</span>
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">numbered list and this line should be ommited</span>
-        <span style="color: #51afef;">if</span> -<span style="color: #da8548; font-weight: bold;">1</span> != line.find(<span style="color: #98be65;">"logseq.order-list-type:: number"</span>):
-            <span style="color: #dcaeea;">line</span> = mk_content.pop()
-            <span style="color: #dcaeea;">line</span> = line.lstrip(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>)
-            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"- "</span>, <span style="color: #98be65;">"1. "</span>, <span style="color: #da8548; font-weight: bold;">1</span>)
-            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"    "</span>)
-            mk_content.append(line)
 
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line containts "logseq.order-list-type:: bulllet" it should be</span>
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">bullet point list and this line should be ommited</span>
-        <span style="color: #51afef;">elif</span> -<span style="color: #da8548; font-weight: bold;">1</span> != line.find(<span style="color: #98be65;">"logseq.order-list-type:: bullet"</span>):
-            <span style="color: #dcaeea;">line</span> = mk_content.pop()
-            <span style="color: #dcaeea;">line</span> = line.lstrip(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>)
-            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"- "</span>, <span style="color: #98be65;">"* "</span>, <span style="color: #da8548; font-weight: bold;">1</span>)
-            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"    "</span>)
-            mk_content.append(line)
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">logseq2markdown</span><span style="color: #8c8c8c;">(</span>logseq_lines: <span style="color: #79C0FF;">list</span><span style="color: #93a8c6;">[</span><span style="color: #79C0FF;">str</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+    <span style="color: #787878; font-style: italic;">"""Goes through list of Logseq sanitized lines (provided by `load_logseq_sanitized()`) and</span>
+<span style="color: #787878; font-style: italic;">    translates them to proper Markdown and Frontmatter.</span>
 
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line is proper unordered list we parse it as such</span>
-        <span style="color: #51afef;">elif</span> logseq_list_result:
-            <span style="color: #dcaeea;">line</span> = line.lstrip(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>)
-            <span style="color: #dcaeea;">line</span> = line.replace(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\t</span><span style="color: #98be65;">"</span>, <span style="color: #98be65;">"    "</span>)
-            mk_content.append(line)
+<span style="color: #787878; font-style: italic;">    Args:</span>
+<span style="color: #787878; font-style: italic;">        logseq_lines (list[str]): List of sanitized lines from Logseq file loader</span>
 
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line starts with "# " (meaning h1 in html) we parse it as Frontmatter "title:" param</span>
-        <span style="color: #51afef;">elif</span> line.startswith(<span style="color: #98be65;">"# "</span>):
-            <span style="color: #dcaeea;">mk_frontmatter</span>[<span style="color: #98be65;">"title"</span>] = <span style="color: #98be65;">'"'</span> + line[<span style="color: #da8548; font-weight: bold;">2</span>:].strip() + <span style="color: #98be65;">'"'</span>
+<span style="color: #787878; font-style: italic;">    Returns:</span>
+<span style="color: #787878; font-style: italic;">        str: String containing Frontmatter header in YML format followed by proper Markdown.</span>
+<span style="color: #787878; font-style: italic;">    """</span>
+    <span style="color: #FFA657;">mk_content</span>: <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="color: #8c8c8c;">[]</span>
 
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">if line doesn't have any Logseq-specific parameters like numbered or bullet list in it</span>
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">and has Frontmatter param format we add it to Frontmatter header</span>
-        <span style="color: #51afef;">elif</span> params_result:
-            mk_frontmatter[params_result[<span style="color: #da8548; font-weight: bold;">0</span>][<span style="color: #da8548; font-weight: bold;">0</span>:-<span style="color: #da8548; font-weight: bold;">3</span>]] = line[<span style="color: #c678dd;">len</span>(params_result[<span style="color: #da8548; font-weight: bold;">0</span>]) :]
+    <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">Using dict here as we don't want to have duplicate parameter names in Frontmatter</span>
+    <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">(each should have unique indentifier).</span>
 
-        <span style="color: #5B6268;"># </span><span style="color: #5B6268;">otherwise we add it to content as any other Markdown element</span>
-        <span style="color: #51afef;">else</span>:
-            mk_content.append(<span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span> + line)
+    <span style="color: #FFA657;">mk_frontmatter</span>: <span style="color: #79C0FF;">dict</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span>, <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="color: #8c8c8c;">{}</span>
 
-    <span style="color: #dcaeea;">return_string</span>: <span style="color: #c678dd;">str</span> = <span style="color: #98be65;">""</span>
-    <span style="color: #51afef;">if</span> mk_frontmatter:
-        <span style="color: #dcaeea;">return_string</span> = (
+    <span style="color: #FFA657;">param_regex</span> = re.<span style="color: #79C0FF;">compile</span><span style="color: #8c8c8c;">(</span>FRONTMATTER_PARAM_NAME_REGEXP<span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">logseq_list_regexp</span> = re.<span style="color: #79C0FF;">compile</span><span style="color: #8c8c8c;">(</span>LOGSEQ_LIST_REGEXP<span style="color: #8c8c8c;">)</span>
+
+    <span style="color: #FF7B72;">for</span> line <span style="color: #FF7B72;">in</span> logseq_lines:
+        <span style="color: #FFA657;">params_result</span> = param_regex.findall<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">logseq_list_result</span> = logseq_list_regexp.findall<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">if line containts "logseq.order-list-type:: number" it should be</span>
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">numbered list and this line should be ommited</span>
+        <span style="color: #FF7B72;">if</span> -1 != line.find<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"logseq.order-list-type:: number"</span><span style="color: #8c8c8c;">)</span>:
+            <span style="color: #FFA657;">line</span> = mk_content.pop<span style="color: #8c8c8c;">()</span>
+            <span style="color: #FFA657;">line</span> = line.lstrip<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"- "</span>, <span style="color: #a7bca4;">"1. "</span>, 1<span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\t</span><span style="color: #a7bca4;">"</span>, <span style="color: #a7bca4;">"    "</span><span style="color: #8c8c8c;">)</span>
+            mk_content.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">if line containts "logseq.order-list-type:: bulllet" it should be</span>
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">bullet point list and this line should be ommited</span>
+        <span style="color: #FF7B72;">elif</span> -1 != line.find<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"logseq.order-list-type:: bullet"</span><span style="color: #8c8c8c;">)</span>:
+            <span style="color: #FFA657;">line</span> = mk_content.pop<span style="color: #8c8c8c;">()</span>
+            <span style="color: #FFA657;">line</span> = line.lstrip<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"- "</span>, <span style="color: #a7bca4;">"* "</span>, 1<span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\t</span><span style="color: #a7bca4;">"</span>, <span style="color: #a7bca4;">"    "</span><span style="color: #8c8c8c;">)</span>
+            mk_content.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">if line is proper unordered list we parse it as such</span>
+        <span style="color: #FF7B72;">elif</span> logseq_list_result:
+            <span style="color: #FFA657;">line</span> = line.lstrip<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\t</span><span style="color: #a7bca4;">"</span>, <span style="color: #a7bca4;">"    "</span><span style="color: #8c8c8c;">)</span>
+            mk_content.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">if line starts with "# " (meaning h1 in html) we parse it as Frontmatter "title:" param</span>
+        <span style="color: #FF7B72;">elif</span> line.startswith<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"# "</span><span style="color: #8c8c8c;">)</span>:
+            <span style="color: #FFA657;">mk_frontmatter</span><span style="color: #8c8c8c;">[</span><span style="color: #a7bca4;">"title"</span><span style="color: #8c8c8c;">]</span> = <span style="color: #a7bca4;">'"'</span> + line<span style="color: #8c8c8c;">[</span>2:<span style="color: #8c8c8c;">]</span>.strip<span style="color: #8c8c8c;">()</span> + <span style="color: #a7bca4;">'"'</span>
+
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">if line doesn't have any Logseq-specific parameters like numbered or bullet list in it</span>
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">and has Frontmatter param format we add it to Frontmatter header</span>
+        <span style="color: #FF7B72;">elif</span> params_result:
+            mk_frontmatter<span style="color: #8c8c8c;">[</span>params_result<span style="color: #93a8c6;">[</span>0<span style="color: #93a8c6;">][</span>0:-3<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span> = line<span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">len</span><span style="color: #93a8c6;">(</span>params_result<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">)</span> :<span style="color: #8c8c8c;">]</span>
+
+        <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">otherwise we add it to content as any other Markdown element</span>
+        <span style="color: #FF7B72;">else</span>:
+            mk_content.append<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span> + line<span style="color: #8c8c8c;">)</span>
+
+    <span style="color: #FFA657;">return_string</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #a7bca4;">""</span>
+    <span style="color: #FF7B72;">if</span> mk_frontmatter:
+        <span style="color: #FFA657;">return_string</span> = <span style="color: #8c8c8c;">(</span>
             FRONTMATTER_START_STR
-            + <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>.join(
-                [
-                    f<span style="color: #98be65;">"</span>{fm_item[0]}<span style="color: #98be65;">: </span>{fm_item[1].strip()}<span style="color: #98be65;">"</span>
-                    <span style="color: #51afef;">for</span> fm_item <span style="color: #51afef;">in</span> <span style="color: #c678dd;">list</span>(mk_frontmatter.items())
-                ]
-            )
-            + <span style="color: #98be65;">"</span><span style="color: #a9a1e1;">\n</span><span style="color: #98be65;">"</span>
+            + <span style="color: #a7bca4;">"</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span>.join<span style="color: #93a8c6;">(</span>
+                <span style="color: #b0b1a3;">[</span>
+                    f<span style="color: #a7bca4;">"</span>{fm_item[0]}<span style="color: #a7bca4;">: </span>{fm_item[1].strip()}<span style="color: #a7bca4;">"</span>
+                    <span style="color: #FF7B72;">for</span> fm_item <span style="color: #FF7B72;">in</span> <span style="color: #79C0FF;">list</span><span style="color: #97b098;">(</span>mk_frontmatter.items<span style="color: #aebed8;">()</span><span style="color: #97b098;">)</span>
+                <span style="color: #b0b1a3;">]</span>
+            <span style="color: #93a8c6;">)</span>
+            + <span style="color: #a7bca4;">"</span><span style="font-style: italic;">\n</span><span style="color: #a7bca4;">"</span>
             + FRONTMATTER_END_STR
-        )
+        <span style="color: #8c8c8c;">)</span>
 
-    <span style="color: #51afef;">return</span> return_string + <span style="color: #98be65;">""</span>.join(mk_content)
+    <span style="color: #FF7B72;">return</span> return_string + <span style="color: #a7bca4;">""</span>.join<span style="color: #8c8c8c;">(</span>mk_content<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #51afef;">def</span> <span style="color: #c678dd;">process_folder</span>(input_folder: <span style="color: #c678dd;">str</span>, output_folder: <span style="color: #c678dd;">str</span>):
-    <span style="color: #83898d;">"""&#22788;&#29702;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#25991;&#20214;&#65292;&#24182;&#23558;&#32467;&#26524;&#23548;&#20986;&#21040;&#36755;&#20986;&#25991;&#20214;&#22841;&#12290;</span>
+<span style="color: #FF7B72;">def</span> <span style="color: #D2A8FF;">process_folder</span><span style="color: #8c8c8c;">(</span>input_folder: <span style="color: #79C0FF;">str</span>, output_folder: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span>:
+    <span style="color: #787878; font-style: italic;">"""&#22788;&#29702;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#25991;&#20214;&#65292;&#24182;&#23558;&#32467;&#26524;&#23548;&#20986;&#21040;&#36755;&#20986;&#25991;&#20214;&#22841;&#12290;</span>
 
-<span style="color: #83898d;">    Args:</span>
-<span style="color: #83898d;">        input_folder (str): &#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;</span>
-<span style="color: #83898d;">        output_folder (str): &#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;</span>
-<span style="color: #83898d;">    """</span>
-    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#30830;&#20445;&#36755;&#20986;&#25991;&#20214;&#22841;&#23384;&#22312;&#65292;&#22914;&#26524;&#19981;&#23384;&#22312;&#21017;&#21019;&#24314;</span>
-    <span style="color: #51afef;">if</span> <span style="color: #51afef;">not</span> os.path.exists(output_folder):
-        os.makedirs(output_folder)
+<span style="color: #787878; font-style: italic;">    Args:</span>
+<span style="color: #787878; font-style: italic;">        input_folder (str): &#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;</span>
+<span style="color: #787878; font-style: italic;">        output_folder (str): &#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;</span>
+<span style="color: #787878; font-style: italic;">    """</span>
+    <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#30830;&#20445;&#36755;&#20986;&#25991;&#20214;&#22841;&#23384;&#22312;&#65292;&#22914;&#26524;&#19981;&#23384;&#22312;&#21017;&#21019;&#24314;</span>
+    <span style="color: #FF7B72;">if</span> <span style="color: #FF7B72;">not</span> os.path.exists<span style="color: #8c8c8c;">(</span>output_folder<span style="color: #8c8c8c;">)</span>:
+        os.makedirs<span style="color: #8c8c8c;">(</span>output_folder<span style="color: #8c8c8c;">)</span>
 
-    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#36941;&#21382;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#27599;&#20010;&#25991;&#20214;</span>
-    <span style="color: #51afef;">for</span> file_name <span style="color: #51afef;">in</span> os.listdir(input_folder):
-        <span style="color: #51afef;">if</span> file_name.endswith(<span style="color: #98be65;">".md"</span>):  <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20165;&#22788;&#29702;&#20197; .md &#32467;&#23614;&#30340;&#25991;&#20214;</span>
-            <span style="color: #dcaeea;">input_file_path</span> = os.path.join(input_folder, file_name)
-            <span style="color: #dcaeea;">output_file_path</span> = os.path.join(output_folder, file_name)
+    <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#36941;&#21382;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#27599;&#20010;&#25991;&#20214;</span>
+    <span style="color: #FF7B72;">for</span> file_name <span style="color: #FF7B72;">in</span> os.listdir<span style="color: #8c8c8c;">(</span>input_folder<span style="color: #8c8c8c;">)</span>:
+        <span style="color: #FF7B72;">if</span> file_name.endswith<span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">".md"</span><span style="color: #8c8c8c;">)</span>:  <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#20165;&#22788;&#29702;&#20197; .md &#32467;&#23614;&#30340;&#25991;&#20214;</span>
+            <span style="color: #FFA657;">input_file_path</span> = os.path.join<span style="color: #8c8c8c;">(</span>input_folder, file_name<span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">output_file_path</span> = os.path.join<span style="color: #8c8c8c;">(</span>output_folder, file_name<span style="color: #8c8c8c;">)</span>
 
-            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#21152;&#36733;&#12289;&#22788;&#29702;&#21644;&#23548;&#20986;&#25991;&#20214;</span>
-            <span style="color: #dcaeea;">logseq_lines</span> = load_logseq_sanitized(file_path=input_file_path)
-            <span style="color: #dcaeea;">markdown_content</span> = logseq2markdown(logseq_lines)
+            <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#21152;&#36733;&#12289;&#22788;&#29702;&#21644;&#23548;&#20986;&#25991;&#20214;</span>
+            <span style="color: #FFA657;">logseq_lines</span> = load_logseq_sanitized<span style="color: #8c8c8c;">(</span>file_path=input_file_path<span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">markdown_content</span> = logseq2markdown<span style="color: #8c8c8c;">(</span>logseq_lines<span style="color: #8c8c8c;">)</span>
 
-            <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#23558;&#36716;&#25442;&#21518;&#30340;&#20869;&#23481;&#20889;&#20837;&#21040;&#36755;&#20986;&#25991;&#20214;&#20013;</span>
-            <span style="color: #51afef;">with</span> <span style="color: #c678dd;">open</span>(output_file_path, <span style="color: #98be65;">"w"</span>, encoding=<span style="color: #98be65;">"utf-8"</span>) <span style="color: #51afef;">as</span> f:
-                f.write(markdown_content)
+            <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#23558;&#36716;&#25442;&#21518;&#30340;&#20869;&#23481;&#20889;&#20837;&#21040;&#36755;&#20986;&#25991;&#20214;&#20013;</span>
+            <span style="color: #FF7B72;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>output_file_path, <span style="color: #a7bca4;">"w"</span>, encoding=<span style="color: #a7bca4;">"utf-8"</span><span style="color: #8c8c8c;">)</span> <span style="color: #FF7B72;">as</span> f:
+                f.write<span style="color: #8c8c8c;">(</span>markdown_content<span style="color: #8c8c8c;">)</span>
 
-            <span style="color: #c678dd;">print</span>(f<span style="color: #98be65;">"&#25991;&#20214; '</span>{file_name}<span style="color: #98be65;">' &#24050;&#22788;&#29702;&#24182;&#23548;&#20986;&#21040; '</span>{output_folder}<span style="color: #98be65;">'"</span>)
+            <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #a7bca4;">"&#25991;&#20214; '</span>{file_name}<span style="color: #a7bca4;">' &#24050;&#22788;&#29702;&#24182;&#23548;&#20986;&#21040; '</span>{output_folder}<span style="color: #a7bca4;">'"</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#20027;&#31243;&#24207;&#20013;&#20351;&#29992;&#21629;&#20196;&#34892;&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
-<span style="color: #51afef;">if</span> <span style="color: #c678dd;">__name__</span> == <span style="color: #98be65;">"__main__"</span>:
-    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
-    <span style="color: #dcaeea;">input_folder</span> = <span style="color: #c678dd;">input</span>(<span style="color: #98be65;">"&#35831;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span>)
+<span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#20027;&#31243;&#24207;&#20013;&#20351;&#29992;&#21629;&#20196;&#34892;&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
+<span style="color: #FF7B72;">if</span> <span style="color: #79C0FF;">__name__</span> == <span style="color: #a7bca4;">"__main__"</span>:
+    <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
+    <span style="color: #FFA657;">input_folder</span> = <span style="color: #79C0FF;">input</span><span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"&#35831;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span><span style="color: #8c8c8c;">)</span>
 
-    <span style="color: #5B6268;"># </span><span style="color: #5B6268;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
-    <span style="color: #dcaeea;">output_folder</span> = <span style="color: #c678dd;">input</span>(<span style="color: #98be65;">"&#35831;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span>)
+    <span style="color: #787878; font-style: italic;"># </span><span style="color: #787878; font-style: italic;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;</span>
+    <span style="color: #FFA657;">output_folder</span> = <span style="color: #79C0FF;">input</span><span style="color: #8c8c8c;">(</span><span style="color: #a7bca4;">"&#35831;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span><span style="color: #8c8c8c;">)</span>
 
-    process_folder(input_folder, output_folder)
+    process_folder<span style="color: #8c8c8c;">(</span>input_folder, output_folder<span style="color: #8c8c8c;">)</span>
 
 </pre>
 </div>
@@ -951,9 +969,9 @@ yaml区域的逻辑可以再用yaml库优化，后面再完善这个格式化脚
 </div>
 </div>
 </div>
-<div id="outline-container-org16d4e39" class="outline-2">
-<h2 id="org16d4e39">Emacs 阶段</h2>
-<div class="outline-text-2" id="text-org16d4e39">
+<div id="outline-container-orgf7204ef" class="outline-2">
+<h2 id="orgf7204ef">Emacs 阶段</h2>
+<div class="outline-text-2" id="text-orgf7204ef">
 <p>
 中间使用了 2 个月的 Nvim，还是放不下 Emacs。随后遇到了 <a href="https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html">Tiddlywiki</a> ,然后就到了现在重度使用 Emacs 了：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ， <a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a>。
 </p>
@@ -971,8 +989,8 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </p>
 </div>
 </div>
-<div id="outline-container-orgb5501d0" class="outline-2">
-<h2 id="orgb5501d0">ChangeLog</h2>
+<div id="outline-container-org1b5450d" class="outline-2">
+<h2 id="org1b5450d">ChangeLog</h2>
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-blog.html">Blog</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
