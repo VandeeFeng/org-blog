@@ -37,7 +37,7 @@
 
 导出历史对话就可以进一步整合，这个功能在许多大型 RAG 项目里就是不给。
 * 零散的概念
-平常一些概念上的学习，之前是在 OpenWeb UI 里，现在基本都在 Emacs 里用 gtpel 了，全部都汇总在一个 org 文档里。
+平常一些概念上的学习，之前是在 OpenWeb UI 里，现在基本都在 Emacs 里用 gptel 了，全部都汇总在一个 org 文档里。
 
 #+attr_html: :alt :class img :width 50% :height 50%
 https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif
