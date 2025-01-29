@@ -12,14 +12,6 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
 日常的搜集第一次整理之后有了工具汇总表格版：[[https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view][tools]] ，这里做第二次筛选。
 
 ** My Favorites
-- *Claude Enginner*
-
-  Claude Engineer 是一个交互式命令行界面（CLI），利用 Anthropic 的 Claude-3.5-Sonnet 模型的强大功能来协助完成软件开发任务。该工具将大型语言模型的功能与实用的文件系统操作和网络搜索功能相结合。
-
-  最近Claude的artifacts大火了一把。OpenAI明显后劲不足了。
-
-  Source: https://github.com/Doriandarko/claude-engineer
-
 - *RIME*
 
   输入法就是笔。
@@ -28,32 +20,16 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
 
   以前输入法就各种偷偷记录用户输入习惯，现在各个输入法又还要内置AI再记录一遍。本地配置、不需要联网的输入法是我的刚需，更何况，rime还可以自挂词库。
 
-- *OpenSearch GPT*
-
-  A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for *you*.
-
-  开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
-
-  我试着在Cloudflare上部署了一下，完全可行。这是每个人都可以定制的属于自己的搜索引擎。
-
-  Url: https://opensearch-ai.pages.dev/
-
-  GitHub: https://github.com/supermemoryai/opensearch-ai
-
 - *Napkin*
 
   一个可以根据文字内容生成关系图的在线笔记编辑工具，目前还在beta测试阶段可以免费体验PRO的内容，生产力提高不是一点点。生成的关系图可以再详细编辑标题，图标等等，支持导出为PNG、SVG、PDF。
 
   Url：https://www.napkin.ai/
+- Witsy
 
-- *Zen*
+  这就是目前我用过最好的 LLM PC 客户端。
 
-  基于Firefox的开源浏览器，作者特别强调了隐私保护。compact模式下，可以隐藏地址栏和边栏，视觉体验和Arc就一样了。但是操作逻辑还是很不一样，Arc的space确实好用，把搜藏夹转到了侧边栏，迷你搜索栏这个设计真的天才，在交互上Arc确实可以说颠覆了传统浏览器的使用习惯。
-
-  让我决定用下去是因为，他们现在的更新真的很勤，前一天Mac快捷键的问题，第二天就修复了，做开源是需要热情的。Firefox一直是我的主力浏览器，但这几年的发展很有问题，期待Zen。
-
-  Url: https://github.com/zen-browser/desktop
-
+  Url: https://github.com/nbonamy/witsy
 - *PixPin*
 
   Mac的终于出来了。这是我用过最好用的截图软件了。
@@ -61,6 +37,57 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
   PixPin的名字来源于“Pixel Pin”，简单来说是一个截图、贴图的工具，但是PixPin以截图和贴图两大功能为核心做了大量的优化功能，目标是提升用户在工作时的工作效率，无论用户使用电脑做何种工作，都可以使用PixPin提高工作效率。
 
   Url: https://pixpinapp.com/
+
+** Search
+- *Gemini-Search*
+
+  Perplexity style AI Search engine clone built with Gemini 2.0 Flash and Grounding
+
+  https://github.com/ammaarreshi/Gemini-Search
+- *OpenSearch GPT*
+
+  A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for *you*.
+
+  开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
+
+  Url: https://opensearch-ai.pages.dev/
+
+  GitHub: https://github.com/supermemoryai/opensearch-ai
+
+  Twitter: https://x.com/DhravyaShah/status/1818469911490162784
+
+  https://github.com/Dhravya/cloudflare-saas-stack  这是作者的之前的Cloudflare全栈方案。
+
+- *Perplexica*
+
+  GitHub: https://github.com/ItzCrazyKns/Perplexica
+
+  perplexity的开源平替，GitHub 11.4K Star。可docker部署，支持ollama本地模型。由于它的网络搜索依赖于SearXNG，等于还附送了一个SearXNG的本地实例。
+
+- *Grep*
+
+  一个快速从GitHub仓库查找内容的网站，支持正则，可以直接搜索代码内容
+
+  Url: https://grep.app/
+
+- *devv.ai*
+
+  程序员搜索利器
+
+  https://devv.ai/zh
+
+- *mwmbl*
+
+  一个可以由用户提供爬取源的开源搜索引擎，github 文档里还介绍了其他许多优秀的搜索引擎
+  https://mwmbl.org/
+
+  GitHub: https://github.com/mwmbl/mwmbl
+
+- *SearchGPT*
+
+  OpenAI推出的搜索。
+
+  https://openai.com/index/searchgpt-prototype/
 
 ** 论文
 
@@ -83,30 +110,6 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
 - Intro: 一个非常好用的AI论文阅读工具：TXYZ
 
   Source:  https://www.txyz.ai/
-
-** AI
-
-- *Dify*
-
-  Dify是一个开源LLM应用程序开发平台。 Dify 的直观界面结合了 AI 工作流程、RAG 管道、代理功能、模型管理、可观察性功能等，让您快速从原型转向生产。
-
-  GitHub: https://github.com/langgenius/dify
-
-  [[https://dify101.com/][Dify 101: Comprehensive Guide to Mastering Dify.ai | AI Application Development Tutorial]]
-
-  https://dify.ai/
-
-- [[https://fireworks.ai/][Fireworks - Fastest Inference for Generative AI]]
-
-- [[https://www.together.ai/][Together AI]]
-
-- [[https://console.groq.com/playground][Playground - GroqCloud]]
-
-- [[https://aistudio.google.com/app/prompts/new_chat][Google AI Studio]]
-
-  Gemini 1.5 Flash免费套餐包含： 每分钟15次请求（RPM）每分钟100万个Token（TPM）每天1,500次Token（RPD） 免费上下文缓存服务，每小时最多可存储100万个Token 免费微调
-
-
 
 ** LLM Web Chat
 
@@ -158,92 +161,19 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
 
   GitHub: https://github.com/open-webui/open-webui
 
-
-
-** Search
-
-- **OpenSearch GPT**
-
-  A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for *you*.
-
-  开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
-
-  Url: https://opensearch-ai.pages.dev/
-
-  GitHub: https://github.com/supermemoryai/opensearch-ai
-
-  Twitter: https://x.com/DhravyaShah/status/1818469911490162784
-
-  https://github.com/Dhravya/cloudflare-saas-stack  这是作者的之前的Cloudflare全栈方案。
-
-- **Perplexica**
-
-  GitHub: https://github.com/ItzCrazyKns/Perplexica
-
-  perplexity的开源平替，GitHub 11.4K Star。可docker部署，支持ollama本地模型。由于它的网络搜索依赖于SearXNG，等于还附送了一个SearXNG的本地实例。
-
-- **Grep**
-
-  一个快速从GitHub仓库查找内容的网站，支持正则，可以直接搜索代码内容
-
-  Url: https://grep.app/
-
-- **秘塔 AI 搜索**
-
-  秘塔 AI 搜索是一个基于大模型的新一代智能搜索引擎。它通过理解用户意图，提供无广告、高质量的搜索结果，让用户快速直达所需信息。秘塔 AI 搜索具有语义理解能力强、支持多轮对话式搜索、支持语音输入等优点。
-
-  国内信息的搜索它挺强。
-
-  https://metaso.cn/
-
-- *Felo AI Search*
-
-  Felo AI Search 是一款由日本公司 Sparticle 开发的新一代智能搜索引擎，旨在打破语言障碍，为用户提供轻松获取全球信息的途径，特别适合需要详细和全面答案的研究人员和学习者，以及希望快速掌握实时新闻和权威信息的用户。
-
-  最近一直在体验，信息源很丰富。
-
-  https://felo.ai/search
-
-- *devv.ai*
-
-  程序员搜索利器
-
-  https://devv.ai/zh
-
-- *mwmbl*
-
-  一个可以由用户提供爬取源的开源搜索引擎，github 文档里还介绍了其他许多优秀的搜索引擎
-  https://mwmbl.org/
-
-  GitHub: https://github.com/mwmbl/mwmbl
-
-- *SearchGPT*
-
-  OpenAI推出的搜索。
-
-  https://openai.com/index/searchgpt-prototype/
-
 ** Others
 
 另见：表格版 [[https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view][tools]]
 
 - Intro: 一个电子书翻译工具，7K star.利用大语言模型（如 ChatGPT、Claude 等）对文件和图书进行多语言翻译的制作，支持的格式有 epub、txt 以及 srt 等。最近，作者将之前吴恩达老师开源的翻译工作流整合到项目中，使得翻译的效果更加好。
 
-  Source: https://github.com/yihong0618/bilingual_book_maker?tab=readme-ov-file
+  Source: https://github.com/yihong0618/bilingual_book_maker
 
 - GitHub 上一个开源的终端 AI 助手 AI Shell。
 
   在终端命令行界面（CLI）上，可通过自然语言转换为对应执行的 Shell 命令，类似于 GitHub Copilot X CLI。
 
   GitHub：https://github.com/BuilderIO/ai-shell
-
-- 一款Python下的网络爬虫与浏览器自动化库：Crawlee-Python，快速构建爬虫的工具
-
-  Crawlee可以从网站下载HTML、PDF、JPG、PNG及其他格式的文件，与 BeautifulSoup、Playwright 及原生 HTTP 兼容
-
-  支持有头和无头模式，具有代理轮换功能，支持自动并行抓取、错误自动重试和会话管理等功能
-
-  https://github.com/apify/crawlee-python?tab=readme-ov-file
 
 - Intro: GitHub 上一套基于 Cloudflare 的全栈 SaaS 开发模板 cloudflare-saas-stack。利用该模板，可以快速在 Cloudflare 上构建并部署全栈应用，包括数据库、认证、样式、存储等功能。
 

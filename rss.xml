@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Mon, 20 Jan 2025 18:33:12 +0800</lastBuildDate>
+<lastBuildDate>Wed, 29 Jan 2025 17:25:52 +0800</lastBuildDate>
 <item>
   <title><![CDATA[碎片知识学习 - with AI]]></title>
   <description><![CDATA[
@@ -5553,601 +5553,472 @@ The most interesting part is: you get to define your own dimensions.
 <item>
   <title><![CDATA[实用小玩意收集]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org929fef0">My Favorites</a></li>
-<li><a href="#org57e5662">论文</a></li>
-<li><a href="#org8a2e741">AI</a></li>
-<li><a href="#org39b9e97">LLM Web Chat</a></li>
-<li><a href="#orgb18e68c">Search</a></li>
-<li><a href="#orgb410076">Others</a>
-<ul>
-<li><a href="#orgb2914ba">PDF相关</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
-<p>
-汇总一些实用的工具、软件、网站，长期更新。
-</p>
-
-<p>
-阮一峰的GitHub weekly issues： <a href="https://github.com/ruanyf/weekly/issues">https://github.com/ruanyf/weekly/issues</a> ，可以找到许多有意思的东西。
-</p>
-
-<p>
-llama-index 的GitHub，里面有详细的具体代码和案例，太值得学习了: <a href="https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks">https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks</a>
-</p>
-
-<p>
-日常的搜集第一次整理之后有了工具汇总表格版：<a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a> ，这里做第二次筛选。
-</p>
-
-<div id="outline-container-org929fef0" class="outline-2">
-<h2 id="org929fef0">My Favorites</h2>
-<div class="outline-text-2" id="text-org929fef0">
-<ul class="org-ul">
-<li><p>
-<b>Claude Enginner</b>
-</p>
-
-<p>
-Claude Engineer 是一个交互式命令行界面（CLI），利用 Anthropic 的 Claude-3.5-Sonnet 模型的强大功能来协助完成软件开发任务。该工具将大型语言模型的功能与实用的文件系统操作和网络搜索功能相结合。
-</p>
-
-<p>
-最近Claude的artifacts大火了一把。OpenAI明显后劲不足了。
-</p>
-
-<p>
-Source: <a href="https://github.com/Doriandarko/claude-engineer">https://github.com/Doriandarko/claude-engineer</a>
-</p></li>
-
-<li><p>
-<b>RIME</b>
-</p>
-
-<p>
-输入法就是笔。
-</p>
-
-<p>
-<a href="https://rime.im/">RIME | 中州韻輸入法引擎</a>，配合 <a href="https://github.com/iDvel/rime-ice">iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库</a>，多平台多端同步。已经使用了几年，非常巴适，手机端也可以同步配置。
-</p>
-
-<p>
-以前输入法就各种偷偷记录用户输入习惯，现在各个输入法又还要内置AI再记录一遍。本地配置、不需要联网的输入法是我的刚需，更何况，rime还可以自挂词库。
-</p></li>
-
-<li><p>
-<b>OpenSearch GPT</b>
-</p>
-
-<p>
-A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for <b>you</b>.
-</p>
-
-<p>
-开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
-</p>
-
-<p>
-我试着在Cloudflare上部署了一下，完全可行。这是每个人都可以定制的属于自己的搜索引擎。
-</p>
-
-<p>
-Url: <a href="https://opensearch-ai.pages.dev/">https://opensearch-ai.pages.dev/</a>
-</p>
-
-<p>
-GitHub: <a href="https://github.com/supermemoryai/opensearch-ai">https://github.com/supermemoryai/opensearch-ai</a>
-</p></li>
-
-<li><p>
-<b>Napkin</b>
-</p>
-
-<p>
-一个可以根据文字内容生成关系图的在线笔记编辑工具，目前还在beta测试阶段可以免费体验PRO的内容，生产力提高不是一点点。生成的关系图可以再详细编辑标题，图标等等，支持导出为PNG、SVG、PDF。
-</p>
-
-<p>
-Url：<a href="https://www.napkin.ai/">https://www.napkin.ai/</a>
-</p></li>
-
-<li><p>
-<b>Zen</b>
-</p>
-
-<p>
-基于Firefox的开源浏览器，作者特别强调了隐私保护。compact模式下，可以隐藏地址栏和边栏，视觉体验和Arc就一样了。但是操作逻辑还是很不一样，Arc的space确实好用，把搜藏夹转到了侧边栏，迷你搜索栏这个设计真的天才，在交互上Arc确实可以说颠覆了传统浏览器的使用习惯。
-</p>
-
-<p>
-让我决定用下去是因为，他们现在的更新真的很勤，前一天Mac快捷键的问题，第二天就修复了，做开源是需要热情的。Firefox一直是我的主力浏览器，但这几年的发展很有问题，期待Zen。
-</p>
-
-<p>
-Url: <a href="https://github.com/zen-browser/desktop">https://github.com/zen-browser/desktop</a>
-</p></li>
-
-<li><p>
-<b>PixPin</b>
-</p>
-
-<p>
-Mac的终于出来了。这是我用过最好用的截图软件了。
-</p>
-
-<p>
-PixPin的名字来源于“Pixel Pin”，简单来说是一个截图、贴图的工具，但是PixPin以截图和贴图两大功能为核心做了大量的优化功能，目标是提升用户在工作时的工作效率，无论用户使用电脑做何种工作，都可以使用PixPin提高工作效率。
-</p>
-
-<p>
-Url: <a href="https://pixpinapp.com/">https://pixpinapp.com/</a>
-</p></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org57e5662" class="outline-2">
-<h2 id="org57e5662">论文</h2>
-<div class="outline-text-2" id="text-org57e5662">
-<ul class="org-ul">
-<li><p>
-alphaxiv：斯坦福大学的学生做的一个论文讨论平台。可以理解为基于arXiv论文的Twitter，可以对论文评论，讨论。
-</p>
-
-<p>
-If you find a paper on arXiv that you’d like to discuss, simply replace arxiv.org with alphaxiv.org in the URL.
-</p>
-
-<p>
-Url：<a href="https://www.alphaxiv.org/">https://www.alphaxiv.org/</a>
-</p></li>
-
-<li><a href="https://www.aminer.cn/">AI论文检索平台 aminer</a></li>
-
-<li><p>
-<a href="https://paperswithcode.com/">paper with code</a>
-</p>
-
-<p>
-这是一个论文和对应工程实现（含代码、数据集、测试方法等）的索引工具。下次你看到别人推荐优质论文时，可以直接用它去找代码实现
-</p></li>
-
-<li><a href="https://www.connectedpapers.com/">Connected Papers | Find and explore academic papers</a></li>
-
-<li><a href="https://briefgpt.xyz/">BriefGPT - AI 论文速递</a>  一个中文论文推送网站，还可以</li>
-
-<li><p>
-Intro: 一个非常好用的AI论文阅读工具：TXYZ
-</p>
-
-<p>
-Source:  <a href="https://www.txyz.ai/">https://www.txyz.ai/</a>
-</p></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-org8a2e741" class="outline-2">
-<h2 id="org8a2e741">AI</h2>
-<div class="outline-text-2" id="text-org8a2e741">
-<ul class="org-ul">
-<li><p>
-<b>Dify</b>
-</p>
-
-<p>
-Dify是一个开源LLM应用程序开发平台。 Dify 的直观界面结合了 AI 工作流程、RAG 管道、代理功能、模型管理、可观察性功能等，让您快速从原型转向生产。
-</p>
-
-<p>
-GitHub: <a href="https://github.com/langgenius/dify">https://github.com/langgenius/dify</a>
-</p>
-
-<p>
-<a href="https://dify101.com/">Dify 101: Comprehensive Guide to Mastering Dify.ai | AI Application Development Tutorial</a>
-</p>
-
-<p>
-<a href="https://dify.ai/">https://dify.ai/</a>
-</p></li>
-
-<li><a href="https://fireworks.ai/">Fireworks - Fastest Inference for Generative AI</a></li>
-
-<li><a href="https://www.together.ai/">Together AI</a></li>
-
-<li><a href="https://console.groq.com/playground">Playground - GroqCloud</a></li>
-
-<li><p>
-<a href="https://aistudio.google.com/app/prompts/new_chat">Google AI Studio</a>
-</p>
-
-<p>
-Gemini 1.5 Flash免费套餐包含： 每分钟15次请求（RPM）每分钟100万个Token（TPM）每天1,500次Token（RPD） 免费上下文缓存服务，每小时最多可存储100万个Token 免费微调
-</p></li>
-</ul>
-</div>
-</div>
-
-
-
-<div id="outline-container-org39b9e97" class="outline-2">
-<h2 id="org39b9e97">LLM Web Chat</h2>
-<div class="outline-text-2" id="text-org39b9e97">
-<ul class="org-ul">
-<li><p>
-<b>DuckDuckGo AI Chat</b>
-</p>
-
-<p>
-DuckDuckGo推出的AI聊天网页。已更新GPT-4o。
-</p>
-
-<p>
-<a href="https://duckduckgo.com/?q=DuckDuckGo&amp;ia=chat&amp;atb=v409-1">https://duckduckgo.com/?q=DuckDuckGo&amp;ia=chat&amp;atb=v409-1</a>
-</p></li>
-
-<li><p>
-<b>HuggingChat</b>
-</p>
-
-<p>
-HuggingFace推出的AI聊天网页，支持最新的Llama 3.1-405B。
-</p>
-
-<p>
-<a href="https://huggingface.co/chat/">https://huggingface.co/chat/</a>
-</p></li>
-
-<li><p>
-<b>POE</b>
-</p>
-
-<p>
-一个聚合LLM聊天网站，可选择的模型很多，Flux也有。
-</p>
-
-<p>
-<a href="https://poe.com/">https://poe.com/</a>
-</p></li>
-
-<li><p>
-<b>delve</b>
-</p>
-
-<p>
-一个可以根据回答内容递进搜索的AI聊天网页。
-</p>
-
-<p>
-<a href="https://delve.a9.io/">https://delve.a9.io/</a>
-</p></li>
-
-<li><p>
-<b>WinGPT</b>
-</p>
-
-<p>
-一个仿window风格的AI聊天网页，免费GPT-4o。
-</p>
-
-<p>
-<a href="https://wingpt.vercel.app/">https://wingpt.vercel.app/</a>
-</p></li>
-
-<li><p>
-<b>ChatGPT-Next-Web</b>
-</p>
-
-<p>
-很早一批开始做GPT生意的了，他们这还可以买KEY。
-</p>
-
-<p>
-A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。
-</p>
-
-<p>
-在 1 分钟内使用 Vercel **免费一键部署**个人的GPT聊天实例。
-</p>
-
-<p>
-GitHub: <a href="https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web">https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web</a>
-</p></li>
-
-<li><p>
-<b>Open WebUI</b>
-</p>
-
-<p>
-Open WebUI 是一个可扩展、功能丰富且用户友好的自托管 WebUI，旨在完全离线操作。它支持各种 LLM 运行程序，包括 Ollama 和 OpenAI 兼容的 API。
-</p>
-
-<p>
-docker轻松部署。
-</p>
-
-<p>
-GitHub: <a href="https://github.com/open-webui/open-webui">https://github.com/open-webui/open-webui</a>
-</p></li>
-</ul>
-</div>
-</div>
-
-
-
-<div id="outline-container-orgb18e68c" class="outline-2">
-<h2 id="orgb18e68c">Search</h2>
-<div class="outline-text-2" id="text-orgb18e68c">
-<ul class="org-ul">
-<li><p>
-<b><b>OpenSearch GPT</b></b>
-</p>
-
-<p>
-A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for <b>you</b>.
-</p>
-
-<p>
-开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
-</p>
-
-<p>
-Url: <a href="https://opensearch-ai.pages.dev/">https://opensearch-ai.pages.dev/</a>
-</p>
-
-<p>
-GitHub: <a href="https://github.com/supermemoryai/opensearch-ai">https://github.com/supermemoryai/opensearch-ai</a>
-</p>
-
-<p>
-Twitter: <a href="https://x.com/DhravyaShah/status/1818469911490162784">https://x.com/DhravyaShah/status/1818469911490162784</a>
-</p>
-
-<p>
-<a href="https://github.com/Dhravya/cloudflare-saas-stack">https://github.com/Dhravya/cloudflare-saas-stack</a>  这是作者的之前的Cloudflare全栈方案。
-</p></li>
-
-<li><p>
-<b><b>Perplexica</b></b>
-</p>
-
-<p>
-GitHub: <a href="https://github.com/ItzCrazyKns/Perplexica">https://github.com/ItzCrazyKns/Perplexica</a>
-</p>
-
-<p>
-perplexity的开源平替，GitHub 11.4K Star。可docker部署，支持ollama本地模型。由于它的网络搜索依赖于SearXNG，等于还附送了一个SearXNG的本地实例。
-</p></li>
-
-<li><p>
-<b><b>Grep</b></b>
-</p>
-
-<p>
-一个快速从GitHub仓库查找内容的网站，支持正则，可以直接搜索代码内容
-</p>
-
-<p>
-Url: <a href="https://grep.app/">https://grep.app/</a>
-</p></li>
-
-<li><p>
-<b><b>秘塔 AI 搜索</b></b>
-</p>
-
-<p>
-秘塔 AI 搜索是一个基于大模型的新一代智能搜索引擎。它通过理解用户意图，提供无广告、高质量的搜索结果，让用户快速直达所需信息。秘塔 AI 搜索具有语义理解能力强、支持多轮对话式搜索、支持语音输入等优点。
-</p>
-
-<p>
-国内信息的搜索它挺强。
-</p>
-
-<p>
-<a href="https://metaso.cn/">https://metaso.cn/</a>
-</p></li>
-
-<li><p>
-<b>Felo AI Search</b>
-</p>
-
-<p>
-Felo AI Search 是一款由日本公司 Sparticle 开发的新一代智能搜索引擎，旨在打破语言障碍，为用户提供轻松获取全球信息的途径，特别适合需要详细和全面答案的研究人员和学习者，以及希望快速掌握实时新闻和权威信息的用户。
-</p>
-
-<p>
-最近一直在体验，信息源很丰富。
-</p>
-
-<p>
-<a href="https://felo.ai/search">https://felo.ai/search</a>
-</p></li>
-
-<li><p>
-<b>devv.ai</b>
-</p>
-
-<p>
-程序员搜索利器
-</p>
-
-<p>
-<a href="https://devv.ai/zh">https://devv.ai/zh</a>
-</p></li>
-
-<li><p>
-<b>mwmbl</b>
-</p>
-
-<p>
-一个可以由用户提供爬取源的开源搜索引擎，github 文档里还介绍了其他许多优秀的搜索引擎
-<a href="https://mwmbl.org/">https://mwmbl.org/</a>
-</p>
-
-<p>
-GitHub: <a href="https://github.com/mwmbl/mwmbl">https://github.com/mwmbl/mwmbl</a>
-</p></li>
-
-<li><p>
-<b>SearchGPT</b>
-</p>
-
-<p>
-OpenAI推出的搜索。
-</p>
-
-<p>
-<a href="https://openai.com/index/searchgpt-prototype/">https://openai.com/index/searchgpt-prototype/</a>
-</p></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgb410076" class="outline-2">
-<h2 id="orgb410076">Others</h2>
-<div class="outline-text-2" id="text-orgb410076">
-<p>
-另见：表格版 <a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a>
-</p>
-
-<ul class="org-ul">
-<li><p>
-Intro: 一个电子书翻译工具，7K star.利用大语言模型（如 ChatGPT、Claude 等）对文件和图书进行多语言翻译的制作，支持的格式有 epub、txt 以及 srt 等。最近，作者将之前吴恩达老师开源的翻译工作流整合到项目中，使得翻译的效果更加好。
-</p>
-
-<p>
-Source: <a href="https://github.com/yihong0618/bilingual_book_maker?tab=readme-ov-file">https://github.com/yihong0618/bilingual_book_maker?tab=readme-ov-file</a>
-</p></li>
-
-<li><p>
-GitHub 上一个开源的终端 AI 助手 AI Shell。
-</p>
-
-<p>
-在终端命令行界面（CLI）上，可通过自然语言转换为对应执行的 Shell 命令，类似于 GitHub Copilot X CLI。
-</p>
-
-<p>
-GitHub：<a href="https://github.com/BuilderIO/ai-shell">https://github.com/BuilderIO/ai-shell</a>
-</p></li>
-
-<li><p>
-一款Python下的网络爬虫与浏览器自动化库：Crawlee-Python，快速构建爬虫的工具
-</p>
-
-<p>
-Crawlee可以从网站下载HTML、PDF、JPG、PNG及其他格式的文件，与 BeautifulSoup、Playwright 及原生 HTTP 兼容
-</p>
-
-<p>
-支持有头和无头模式，具有代理轮换功能，支持自动并行抓取、错误自动重试和会话管理等功能
-</p>
-
-<p>
-<a href="https://github.com/apify/crawlee-python?tab=readme-ov-file">https://github.com/apify/crawlee-python?tab=readme-ov-file</a>
-</p></li>
-
-<li><p>
-Intro: GitHub 上一套基于 Cloudflare 的全栈 SaaS 开发模板 cloudflare-saas-stack。利用该模板，可以快速在 Cloudflare 上构建并部署全栈应用，包括数据库、认证、样式、存储等功能。
-</p>
-
-<p>
-很香！
-</p>
-
-<p>
-Source: <a href="https://github.com/supermemoryai/supermemory">https://github.com/supermemoryai/supermemory</a>
-</p></li>
-
-<li><p>
-Stirling-PDF
-</p>
-
-<p>
-一个本地的处理 PDF 的工具，界面是 Web UI，可以支持 Docker 部署。
-</p>
-
-<p>
-各种主要的 PDF 操作都可以支持。比如拆分、合并、转换格式、重新排列、添加图片、旋转、压缩等等。这个本地托管的网络应用最初完全由 ChatGPT 制作，后来逐渐发展，增加了许多功能，以满足你对 PDF 的各种需求。
-</p>
-
-<p>
-Stirling PDF 不会对外发送任何数据以进行记录或跟踪。
-</p>
-
-<p>
-所有的文件和 PDF 要么只在客户端处理，要么只在服务器内存中暂存，用于执行任务，或者仅在执行任务时保存在临时文件中。一旦用户下载了文件，那些文件就会从服务器上删除。
-</p>
-
-<p>
-<a href="https://github.com/Stirling-Tools/Stirling-PDF">https://github.com/Stirling-Tools/Stirling-PDF</a>
-</p></li>
-
-<li><p>
-部署deeplx到cloudflare，比部署到docker方便
-</p>
-
-<p>
-<a href="https://github.com/ifyour/deeplx-for-cloudflare">https://github.com/ifyour/deeplx-for-cloudflare</a>
-</p></li>
-
-<li><p>
-吴恩达老师开源了一套 AI Agent 翻译工作流 Translation Agent。经他们的测试，该工作流翻译质量甚至可以媲美领先的商业翻译工具
-</p>
-
-<p>
-GitHub: <a href="https://github.com/andrewyng/translation-agent">https://github.com/andrewyng/translation-agent</a>
-</p></li>
-
-<li><p>
-功能颇为强大的 GPT 学术优化开源项目 GPT Academic，目前 60.2k Star！
-</p>
-
-<p>
-GitHub: <a href="https://github.com/binary-husky/gpt_academic">https://github.com/binary-husky/gpt_academic</a>
-</p></li>
-
-<li><p>
-Intro: 开源离线Notion,支持本地LLM，JavaScript自定义功能
-</p>
-
-<p>
-Source: <a href="https://github.com/mayneyao/eidos">https://github.com/mayneyao/eidos</a>  、 <a href="https://eidos.space">https://eidos.space</a>
-</p></li>
-</ul>
-</div>
-
-<div id="outline-container-orgb2914ba" class="outline-3">
-<h3 id="orgb2914ba">PDF相关</h3>
-<div class="outline-text-3" id="text-orgb2914ba">
-<p>
-PDF转Markdown 方案
-</p>
-
-<ol class="org-ol">
-<li>document-convert（开源）：<a href="https://github.com/multimodal-art-projection/MAP-NEO/tree/main/Matrix/document-convert">https://github.com/multimodal-art-projection/MAP-NEO/tree/main/Matrix/document-convert</a></li>
-<li>Ragflow（开源）：<a href="https://github.com/infiniflow/ragflow">https://github.com/infiniflow/ragflow</a></li>
-<li>gptpdf（开源）：<a href="https://github.com/CosmosShadow/gptpdf">https://github.com/CosmosShadow/gptpdf</a></li>
-<li>百度云Textmind（闭源）：<a href="https://cloud.baidu.com/product/textmind.html">https://cloud.baidu.com/product/textmind.html</a></li>
-<li>doc2x（闭源）：<a href="https://doc2x.noedgeai.com/">https://doc2x.noedgeai.com</a></li>
-<li>腾讯云文档解析（闭源）：<a href="https://cloud.tencent.com/document/product/1759/107504">https://cloud.tencent.com/document/product/1759/107504</a></li>
-<li>marker（开源）：<a href="https://github.com/VikParuchuri/marker">https://github.com/VikParuchuri/marker</a></li>
-<li>PDF-Extract-Kit（开源）：<a href="https://github.com/opendatalab/PDF-Extract-Kit">https://github.com/opendatalab/PDF-Extract-Kit</a></li>
-<li>zerox（开源）：<a href="https://github.com/getomni-ai/zerox">https://github.com/getomni-ai/zerox</a></li>
-<li>OminiParse（开源）：<a href="https://github.com/adithya-s-k/omniparse">https://github.com/adithya-s-k/omniparse</a></li>
-<li>MinerU（开源）：<a href="https://github.com/opendatalab/MinerU">https://github.com/opendatalab/MinerU</a></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-tool.html">Tool</a> <a href="https://www.vandee.art/tag-useful.html">Useful</a> </div>]]></description>
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#orge7bd21c">My Favorites</a></li>
+            <li><a href="#orgd4d2276">Search</a></li>
+            <li><a href="#orgb33c175">论文</a></li>
+            <li><a href="#org8b2cd02">LLM Web Chat</a></li>
+            <li><a href="#orge49c39f">Others</a>
+              <ul>
+                <li><a href="#orge4f483d">PDF相关</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <p>
+        汇总一些实用的工具、软件、网站，长期更新。
+      </p>
+
+      <p>
+        阮一峰的GitHub weekly issues： <a href="https://github.com/ruanyf/weekly/issues">https://github.com/ruanyf/weekly/issues</a> ，可以找到许多有意思的东西。
+      </p>
+
+      <p>
+        llama-index 的GitHub，里面有详细的具体代码和案例，太值得学习了: <a href="https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks">https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks</a>
+      </p>
+
+      <p>
+        日常的搜集第一次整理之后有了工具汇总表格版：<a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a> ，这里做第二次筛选。
+      </p>
+
+      <div id="outline-container-orge7bd21c" class="outline-2">
+        <h2 id="orge7bd21c">My Favorites</h2>
+        <div class="outline-text-2" id="text-orge7bd21c">
+          <ul class="org-ul">
+            <li><p>
+                <b>RIME</b>
+              </p>
+
+              <p>
+                输入法就是笔。
+              </p>
+
+              <p>
+                <a href="https://rime.im/">RIME | 中州韻輸入法引擎</a>，配合 <a href="https://github.com/iDvel/rime-ice">iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库</a>，多平台多端同步。已经使用了几年，非常巴适，手机端也可以同步配置。
+              </p>
+
+              <p>
+                以前输入法就各种偷偷记录用户输入习惯，现在各个输入法又还要内置AI再记录一遍。本地配置、不需要联网的输入法是我的刚需，更何况，rime还可以自挂词库。
+            </p></li>
+
+            <li><p>
+                <b>Napkin</b>
+              </p>
+
+              <p>
+                一个可以根据文字内容生成关系图的在线笔记编辑工具，目前还在beta测试阶段可以免费体验PRO的内容，生产力提高不是一点点。生成的关系图可以再详细编辑标题，图标等等，支持导出为PNG、SVG、PDF。
+              </p>
+
+              <p>
+                Url：<a href="https://www.napkin.ai/">https://www.napkin.ai/</a>
+            </p></li>
+            <li><p>
+                Witsy
+              </p>
+
+              <p>
+                这就是目前我用过最好的 LLM PC 客户端。
+              </p>
+
+              <p>
+                Url: <a href="https://github.com/nbonamy/witsy">https://github.com/nbonamy/witsy</a>
+            </p></li>
+            <li><p>
+                <b>PixPin</b>
+              </p>
+
+              <p>
+                Mac的终于出来了。这是我用过最好用的截图软件了。
+              </p>
+
+              <p>
+                PixPin的名字来源于“Pixel Pin”，简单来说是一个截图、贴图的工具，但是PixPin以截图和贴图两大功能为核心做了大量的优化功能，目标是提升用户在工作时的工作效率，无论用户使用电脑做何种工作，都可以使用PixPin提高工作效率。
+              </p>
+
+              <p>
+                Url: <a href="https://pixpinapp.com/">https://pixpinapp.com/</a>
+            </p></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="outline-container-orgd4d2276" class="outline-2">
+        <h2 id="orgd4d2276">Search</h2>
+        <div class="outline-text-2" id="text-orgd4d2276">
+          <ul class="org-ul">
+            <li><p>
+                <b>Gemini-Search</b>
+              </p>
+
+              <p>
+                Perplexity style AI Search engine clone built with Gemini 2.0 Flash and Grounding
+              </p>
+
+              <p>
+                <a href="https://github.com/ammaarreshi/Gemini-Search">https://github.com/ammaarreshi/Gemini-Search</a>
+            </p></li>
+            <li><p>
+                <b>OpenSearch GPT</b>
+              </p>
+
+              <p>
+                A personalised AI search engine that learns about you and your interests as you browse the web.It's like a perplexity / searchGPT clone, but for <b>you</b>.
+              </p>
+
+              <p>
+                开源AI 搜索引擎，使用了mem0来存储记忆。部署在Cloudflare上，作者仅用了一天制作完成。
+              </p>
+
+              <p>
+                Url: <a href="https://opensearch-ai.pages.dev/">https://opensearch-ai.pages.dev/</a>
+              </p>
+
+              <p>
+                GitHub: <a href="https://github.com/supermemoryai/opensearch-ai">https://github.com/supermemoryai/opensearch-ai</a>
+              </p>
+
+              <p>
+                Twitter: <a href="https://x.com/DhravyaShah/status/1818469911490162784">https://x.com/DhravyaShah/status/1818469911490162784</a>
+              </p>
+
+              <p>
+                <a href="https://github.com/Dhravya/cloudflare-saas-stack">https://github.com/Dhravya/cloudflare-saas-stack</a>  这是作者的之前的Cloudflare全栈方案。
+            </p></li>
+
+            <li><p>
+                <b>Perplexica</b>
+              </p>
+
+              <p>
+                GitHub: <a href="https://github.com/ItzCrazyKns/Perplexica">https://github.com/ItzCrazyKns/Perplexica</a>
+              </p>
+
+              <p>
+                perplexity的开源平替，GitHub 11.4K Star。可docker部署，支持ollama本地模型。由于它的网络搜索依赖于SearXNG，等于还附送了一个SearXNG的本地实例。
+            </p></li>
+
+            <li><p>
+                <b>Grep</b>
+              </p>
+
+              <p>
+                一个快速从GitHub仓库查找内容的网站，支持正则，可以直接搜索代码内容
+              </p>
+
+              <p>
+                Url: <a href="https://grep.app/">https://grep.app/</a>
+            </p></li>
+
+            <li><p>
+                <b>devv.ai</b>
+              </p>
+
+              <p>
+                程序员搜索利器
+              </p>
+
+              <p>
+                <a href="https://devv.ai/zh">https://devv.ai/zh</a>
+            </p></li>
+
+            <li><p>
+                <b>mwmbl</b>
+              </p>
+
+              <p>
+                一个可以由用户提供爬取源的开源搜索引擎，github 文档里还介绍了其他许多优秀的搜索引擎
+                <a href="https://mwmbl.org/">https://mwmbl.org/</a>
+              </p>
+
+              <p>
+                GitHub: <a href="https://github.com/mwmbl/mwmbl">https://github.com/mwmbl/mwmbl</a>
+            </p></li>
+
+            <li><p>
+                <b>SearchGPT</b>
+              </p>
+
+              <p>
+                OpenAI推出的搜索。
+              </p>
+
+              <p>
+                <a href="https://openai.com/index/searchgpt-prototype/">https://openai.com/index/searchgpt-prototype/</a>
+            </p></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="outline-container-orgb33c175" class="outline-2">
+        <h2 id="orgb33c175">论文</h2>
+        <div class="outline-text-2" id="text-orgb33c175">
+          <ul class="org-ul">
+            <li><p>
+                alphaxiv：斯坦福大学的学生做的一个论文讨论平台。可以理解为基于arXiv论文的Twitter，可以对论文评论，讨论。
+              </p>
+
+              <p>
+                If you find a paper on arXiv that you’d like to discuss, simply replace arxiv.org with alphaxiv.org in the URL.
+              </p>
+
+              <p>
+                Url：<a href="https://www.alphaxiv.org/">https://www.alphaxiv.org/</a>
+            </p></li>
+
+            <li><a href="https://www.aminer.cn/">AI论文检索平台 aminer</a></li>
+
+            <li><p>
+                <a href="https://paperswithcode.com/">paper with code</a>
+              </p>
+
+              <p>
+                这是一个论文和对应工程实现（含代码、数据集、测试方法等）的索引工具。下次你看到别人推荐优质论文时，可以直接用它去找代码实现
+            </p></li>
+
+            <li><a href="https://www.connectedpapers.com/">Connected Papers | Find and explore academic papers</a></li>
+
+            <li><a href="https://briefgpt.xyz/">BriefGPT - AI 论文速递</a>  一个中文论文推送网站，还可以</li>
+
+            <li><p>
+                Intro: 一个非常好用的AI论文阅读工具：TXYZ
+              </p>
+
+              <p>
+                Source:  <a href="https://www.txyz.ai/">https://www.txyz.ai/</a>
+            </p></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="outline-container-org8b2cd02" class="outline-2">
+        <h2 id="org8b2cd02">LLM Web Chat</h2>
+        <div class="outline-text-2" id="text-org8b2cd02">
+          <ul class="org-ul">
+            <li><p>
+                <b>DuckDuckGo AI Chat</b>
+              </p>
+
+              <p>
+                DuckDuckGo推出的AI聊天网页。已更新GPT-4o。
+              </p>
+
+              <p>
+                <a href="https://duckduckgo.com/?q=DuckDuckGo&amp;ia=chat&amp;atb=v409-1">https://duckduckgo.com/?q=DuckDuckGo&amp;ia=chat&amp;atb=v409-1</a>
+            </p></li>
+
+            <li><p>
+                <b>HuggingChat</b>
+              </p>
+
+              <p>
+                HuggingFace推出的AI聊天网页，支持最新的Llama 3.1-405B。
+              </p>
+
+              <p>
+                <a href="https://huggingface.co/chat/">https://huggingface.co/chat/</a>
+            </p></li>
+
+            <li><p>
+                <b>POE</b>
+              </p>
+
+              <p>
+                一个聚合LLM聊天网站，可选择的模型很多，Flux也有。
+              </p>
+
+              <p>
+                <a href="https://poe.com/">https://poe.com/</a>
+            </p></li>
+
+            <li><p>
+                <b>delve</b>
+              </p>
+
+              <p>
+                一个可以根据回答内容递进搜索的AI聊天网页。
+              </p>
+
+              <p>
+                <a href="https://delve.a9.io/">https://delve.a9.io/</a>
+            </p></li>
+
+            <li><p>
+                <b>WinGPT</b>
+              </p>
+
+              <p>
+                一个仿window风格的AI聊天网页，免费GPT-4o。
+              </p>
+
+              <p>
+                <a href="https://wingpt.vercel.app/">https://wingpt.vercel.app/</a>
+            </p></li>
+
+            <li><p>
+                <b>ChatGPT-Next-Web</b>
+              </p>
+
+              <p>
+                很早一批开始做GPT生意的了，他们这还可以买KEY。
+              </p>
+
+              <p>
+                A cross-platform ChatGPT/Gemini UI (Web / PWA / Linux / Win / MacOS). 一键拥有你自己的跨平台 ChatGPT/Gemini 应用。
+              </p>
+
+              <p>
+                在 1 分钟内使用 Vercel **免费一键部署**个人的GPT聊天实例。
+              </p>
+
+              <p>
+                GitHub: <a href="https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web">https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web</a>
+            </p></li>
+
+            <li><p>
+                <b>Open WebUI</b>
+              </p>
+
+              <p>
+                Open WebUI 是一个可扩展、功能丰富且用户友好的自托管 WebUI，旨在完全离线操作。它支持各种 LLM 运行程序，包括 Ollama 和 OpenAI 兼容的 API。
+              </p>
+
+              <p>
+                docker轻松部署。
+              </p>
+
+              <p>
+                GitHub: <a href="https://github.com/open-webui/open-webui">https://github.com/open-webui/open-webui</a>
+            </p></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="outline-container-orge49c39f" class="outline-2">
+        <h2 id="orge49c39f">Others</h2>
+        <div class="outline-text-2" id="text-orge49c39f">
+          <p>
+            另见：表格版 <a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a>
+          </p>
+
+          <ul class="org-ul">
+            <li><p>
+                Intro: 一个电子书翻译工具，7K star.利用大语言模型（如 ChatGPT、Claude 等）对文件和图书进行多语言翻译的制作，支持的格式有 epub、txt 以及 srt 等。最近，作者将之前吴恩达老师开源的翻译工作流整合到项目中，使得翻译的效果更加好。
+              </p>
+
+              <p>
+                Source: <a href="https://github.com/yihong0618/bilingual_book_maker">https://github.com/yihong0618/bilingual_book_maker</a>
+            </p></li>
+
+            <li><p>
+                GitHub 上一个开源的终端 AI 助手 AI Shell。
+              </p>
+
+              <p>
+                在终端命令行界面（CLI）上，可通过自然语言转换为对应执行的 Shell 命令，类似于 GitHub Copilot X CLI。
+              </p>
+
+              <p>
+                GitHub：<a href="https://github.com/BuilderIO/ai-shell">https://github.com/BuilderIO/ai-shell</a>
+            </p></li>
+
+            <li><p>
+                Intro: GitHub 上一套基于 Cloudflare 的全栈 SaaS 开发模板 cloudflare-saas-stack。利用该模板，可以快速在 Cloudflare 上构建并部署全栈应用，包括数据库、认证、样式、存储等功能。
+              </p>
+
+              <p>
+                很香！
+              </p>
+
+              <p>
+                Source: <a href="https://github.com/supermemoryai/supermemory">https://github.com/supermemoryai/supermemory</a>
+            </p></li>
+
+            <li><p>
+                Stirling-PDF
+              </p>
+
+              <p>
+                一个本地的处理 PDF 的工具，界面是 Web UI，可以支持 Docker 部署。
+              </p>
+
+              <p>
+                各种主要的 PDF 操作都可以支持。比如拆分、合并、转换格式、重新排列、添加图片、旋转、压缩等等。这个本地托管的网络应用最初完全由 ChatGPT 制作，后来逐渐发展，增加了许多功能，以满足你对 PDF 的各种需求。
+              </p>
+
+              <p>
+                Stirling PDF 不会对外发送任何数据以进行记录或跟踪。
+              </p>
+
+              <p>
+                所有的文件和 PDF 要么只在客户端处理，要么只在服务器内存中暂存，用于执行任务，或者仅在执行任务时保存在临时文件中。一旦用户下载了文件，那些文件就会从服务器上删除。
+              </p>
+
+              <p>
+                <a href="https://github.com/Stirling-Tools/Stirling-PDF">https://github.com/Stirling-Tools/Stirling-PDF</a>
+            </p></li>
+
+            <li><p>
+                部署deeplx到cloudflare，比部署到docker方便
+              </p>
+
+              <p>
+                <a href="https://github.com/ifyour/deeplx-for-cloudflare">https://github.com/ifyour/deeplx-for-cloudflare</a>
+            </p></li>
+
+            <li><p>
+                吴恩达老师开源了一套 AI Agent 翻译工作流 Translation Agent。经他们的测试，该工作流翻译质量甚至可以媲美领先的商业翻译工具
+              </p>
+
+              <p>
+                GitHub: <a href="https://github.com/andrewyng/translation-agent">https://github.com/andrewyng/translation-agent</a>
+            </p></li>
+
+            <li><p>
+                功能颇为强大的 GPT 学术优化开源项目 GPT Academic，目前 60.2k Star！
+              </p>
+
+              <p>
+                GitHub: <a href="https://github.com/binary-husky/gpt_academic">https://github.com/binary-husky/gpt_academic</a>
+            </p></li>
+
+            <li><p>
+                Intro: 开源离线Notion,支持本地LLM，JavaScript自定义功能
+              </p>
+
+              <p>
+                Source: <a href="https://github.com/mayneyao/eidos">https://github.com/mayneyao/eidos</a>  、 <a href="https://eidos.space">https://eidos.space</a>
+            </p></li>
+          </ul>
+        </div>
+
+        <div id="outline-container-orge4f483d" class="outline-3">
+          <h3 id="orge4f483d">PDF相关</h3>
+          <div class="outline-text-3" id="text-orge4f483d">
+            <p>
+              PDF转Markdown 方案
+            </p>
+
+            <ol class="org-ol">
+              <li>document-convert（开源）：<a href="https://github.com/multimodal-art-projection/MAP-NEO/tree/main/Matrix/document-convert">https://github.com/multimodal-art-projection/MAP-NEO/tree/main/Matrix/document-convert</a></li>
+              <li>Ragflow（开源）：<a href="https://github.com/infiniflow/ragflow">https://github.com/infiniflow/ragflow</a></li>
+              <li>gptpdf（开源）：<a href="https://github.com/CosmosShadow/gptpdf">https://github.com/CosmosShadow/gptpdf</a></li>
+              <li>百度云Textmind（闭源）：<a href="https://cloud.baidu.com/product/textmind.html">https://cloud.baidu.com/product/textmind.html</a></li>
+              <li>doc2x（闭源）：<a href="https://doc2x.noedgeai.com/">https://doc2x.noedgeai.com</a></li>
+              <li>腾讯云文档解析（闭源）：<a href="https://cloud.tencent.com/document/product/1759/107504">https://cloud.tencent.com/document/product/1759/107504</a></li>
+              <li>marker（开源）：<a href="https://github.com/VikParuchuri/marker">https://github.com/VikParuchuri/marker</a></li>
+              <li>PDF-Extract-Kit（开源）：<a href="https://github.com/opendatalab/PDF-Extract-Kit">https://github.com/opendatalab/PDF-Extract-Kit</a></li>
+              <li>zerox（开源）：<a href="https://github.com/getomni-ai/zerox">https://github.com/getomni-ai/zerox</a></li>
+              <li>OminiParse（开源）：<a href="https://github.com/adithya-s-k/omniparse">https://github.com/adithya-s-k/omniparse</a></li>
+              <li>MinerU（开源）：<a href="https://github.com/opendatalab/MinerU">https://github.com/opendatalab/MinerU</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-tool.html">Tool</a> <a href="https://www.vandee.art/tag-useful.html">Useful</a> </div>]]></description>
   <category><![CDATA[Tool]]></category>
   <category><![CDATA[Useful]]></category>
   <link>https://www.vandee.art/2024-07-26-useful-tools-recommended.html</link>
