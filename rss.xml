@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Mon, 03 Feb 2025 15:12:44 +0800</lastBuildDate>
+<lastBuildDate>Mon, 03 Feb 2025 15:20:58 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Emacs is all you need]]></title>
   <description><![CDATA[
@@ -12,26 +12,26 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org3cd5470">TL;DR</a></li>
-            <li><a href="#org79ede4d">前言</a></li>
-            <li><a href="#orgc30f17e">热情的扩散</a></li>
-            <li><a href="#org4e42fd9">AI StartKit</a></li>
+            <li><a href="#org1d1f3eb">TL;DR</a></li>
+            <li><a href="#orgd05eb8c">前言</a></li>
+            <li><a href="#org3d1cc92">热情的扩散</a></li>
+            <li><a href="#orgab1e22f">AI StartKit</a></li>
           </ul>
         </div>
       </nav>
 
-      <div id="outline-container-org3cd5470" class="outline-2">
-        <h2 id="org3cd5470">TL;DR</h2>
-        <div class="outline-text-2" id="text-org3cd5470">
+      <div id="outline-container-org1d1f3eb" class="outline-2">
+        <h2 id="org1d1f3eb">TL;DR</h2>
+        <div class="outline-text-2" id="text-org1d1f3eb">
           <p>
             Emacs is all you need
           </p>
         </div>
       </div>
 
-      <div id="outline-container-org79ede4d" class="outline-2">
-        <h2 id="org79ede4d">前言</h2>
-        <div class="outline-text-2" id="text-org79ede4d">
+      <div id="outline-container-orgd05eb8c" class="outline-2">
+        <h2 id="orgd05eb8c">前言</h2>
+        <div class="outline-text-2" id="text-orgd05eb8c">
           <p>
             这几年最正确的决定就是入手了现在这台 Macbook M1 max。如果说当时我就遇见到了现在它能够给我带来的改变，你肯定不信，但事实就是如此。
           </p>
@@ -50,9 +50,9 @@
         </div>
       </div>
 
-      <div id="outline-container-orgc30f17e" class="outline-2">
-        <h2 id="orgc30f17e">热情的扩散</h2>
-        <div class="outline-text-2" id="text-orgc30f17e">
+      <div id="outline-container-org3d1cc92" class="outline-2">
+        <h2 id="org3d1cc92">热情的扩散</h2>
+        <div class="outline-text-2" id="text-org3d1cc92">
           <p>
             不知道从什么时候开始，在 Emacs 里敲键盘这件事本身就会让我觉得很有意思。
           </p>
@@ -75,9 +75,9 @@
         </div>
       </div>
 
-      <div id="outline-container-org4e42fd9" class="outline-2">
-        <h2 id="org4e42fd9">AI StartKit</h2>
-        <div class="outline-text-2" id="text-org4e42fd9">
+      <div id="outline-container-orgab1e22f" class="outline-2">
+        <h2 id="orgab1e22f">AI StartKit</h2>
+        <div class="outline-text-2" id="text-orgab1e22f">
           <p>
             从 OpenAI 到现在的 2025 年，其实许多人都还没有真正接触到 AI，大部分人只是接触到了 AI 化的产品，例如 ChatGPT 的 APP，更有一部分根本对 AI 就没太大兴趣。在我的概念里，调用过 LLM 的 API 才可能叫接触过 AI 了。
           </p>
@@ -111,7 +111,7 @@
           </p>
 
           <p>
-            也并不是只有 Emacs 才是适合 AI 行业外的 AI StartKit，但是能够像 Emacs 一样技能充当向导，又能构建出自己的工具的，真没有几个。
+            也并不是只有 Emacs 才是适合 AI 行业外的 AI StartKit，但是能够像 Emacs 一样既能充当向导，又能构建出自己的工具的，真没有几个。
           </p>
 
           <p>
