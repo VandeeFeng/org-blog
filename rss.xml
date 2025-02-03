@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Mon, 03 Feb 2025 14:47:34 +0800</lastBuildDate>
+<lastBuildDate>Mon, 03 Feb 2025 15:12:44 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Emacs is all you need]]></title>
   <description><![CDATA[
@@ -12,26 +12,26 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org1baf725">TL;DR</a></li>
-            <li><a href="#orgbb6d58a">前言</a></li>
-            <li><a href="#org0e00739">热情的扩散</a></li>
-            <li><a href="#orgbbce706">AI StartKit</a></li>
+            <li><a href="#org3cd5470">TL;DR</a></li>
+            <li><a href="#org79ede4d">前言</a></li>
+            <li><a href="#orgc30f17e">热情的扩散</a></li>
+            <li><a href="#org4e42fd9">AI StartKit</a></li>
           </ul>
         </div>
       </nav>
 
-      <div id="outline-container-org1baf725" class="outline-2">
-        <h2 id="org1baf725">TL;DR</h2>
-        <div class="outline-text-2" id="text-org1baf725">
+      <div id="outline-container-org3cd5470" class="outline-2">
+        <h2 id="org3cd5470">TL;DR</h2>
+        <div class="outline-text-2" id="text-org3cd5470">
           <p>
             Emacs is all you need
           </p>
         </div>
       </div>
 
-      <div id="outline-container-orgbb6d58a" class="outline-2">
-        <h2 id="orgbb6d58a">前言</h2>
-        <div class="outline-text-2" id="text-orgbb6d58a">
+      <div id="outline-container-org79ede4d" class="outline-2">
+        <h2 id="org79ede4d">前言</h2>
+        <div class="outline-text-2" id="text-org79ede4d">
           <p>
             这几年最正确的决定就是入手了现在这台 Macbook M1 max。如果说当时我就遇见到了现在它能够给我带来的改变，你肯定不信，但事实就是如此。
           </p>
@@ -50,9 +50,9 @@
         </div>
       </div>
 
-      <div id="outline-container-org0e00739" class="outline-2">
-        <h2 id="org0e00739">热情的扩散</h2>
-        <div class="outline-text-2" id="text-org0e00739">
+      <div id="outline-container-orgc30f17e" class="outline-2">
+        <h2 id="orgc30f17e">热情的扩散</h2>
+        <div class="outline-text-2" id="text-orgc30f17e">
           <p>
             不知道从什么时候开始，在 Emacs 里敲键盘这件事本身就会让我觉得很有意思。
           </p>
@@ -75,9 +75,9 @@
         </div>
       </div>
 
-      <div id="outline-container-orgbbce706" class="outline-2">
-        <h2 id="orgbbce706">AI StartKit</h2>
-        <div class="outline-text-2" id="text-orgbbce706">
+      <div id="outline-container-org4e42fd9" class="outline-2">
+        <h2 id="org4e42fd9">AI StartKit</h2>
+        <div class="outline-text-2" id="text-org4e42fd9">
           <p>
             从 OpenAI 到现在的 2025 年，其实许多人都还没有真正接触到 AI，大部分人只是接触到了 AI 化的产品，例如 ChatGPT 的 APP，更有一部分根本对 AI 就没太大兴趣。在我的概念里，调用过 LLM 的 API 才可能叫接触过 AI 了。
           </p>
@@ -95,7 +95,7 @@
           </p>
 
           <p>
-            在咸鱼上已经有本地部署 DeepSeek 的教程在卖了，很难想象几行代码就可以卖 20 块，而且销量还不错。这不是信息差带来的消费，这只是懒。这个 20 块，5 年之后可能就是你会消费的 20 万。AI 说简单点就是一个巨大的 ZIP，玩 AI 只是需要一个打开这个 ZIP 的工具而已。
+            在咸鱼上已经有本地部署 DeepSeek 的教程在卖了，很难想象几行代码就可以卖 20 块，而且销量还不错。这不是信息差带来的消费，这只是懒。这个 20 块，5 年之后可能就是你会消费的 20 万。LLM 大语言模型 说简单点就是一个巨大的 ZIP，玩 LLM 只是需要一个打开这个 ZIP 的工具而已。
           </p>
 
           <p>
