@@ -4,131 +4,267 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Wed, 29 Jan 2025 17:25:52 +0800</lastBuildDate>
+<lastBuildDate>Mon, 03 Feb 2025 14:47:34 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[Emacs is all you need]]></title>
+  <description><![CDATA[
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#org1baf725">TL;DR</a></li>
+            <li><a href="#orgbb6d58a">前言</a></li>
+            <li><a href="#org0e00739">热情的扩散</a></li>
+            <li><a href="#orgbbce706">AI StartKit</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="outline-container-org1baf725" class="outline-2">
+        <h2 id="org1baf725">TL;DR</h2>
+        <div class="outline-text-2" id="text-org1baf725">
+          <p>
+            Emacs is all you need
+          </p>
+        </div>
+      </div>
+
+      <div id="outline-container-orgbb6d58a" class="outline-2">
+        <h2 id="orgbb6d58a">前言</h2>
+        <div class="outline-text-2" id="text-orgbb6d58a">
+          <p>
+            这几年最正确的决定就是入手了现在这台 Macbook M1 max。如果说当时我就遇见到了现在它能够给我带来的改变，你肯定不信，但事实就是如此。
+          </p>
+
+          <p>
+            其实当初是为了摄影才考虑的，原来的老台式在一次渲染延时摄影的时候，苦苦等待了 3 小时之后，结果死机了，这仅仅只是一个 1 分钟的延时。综合考虑到还需要一台接近 Linux 体验的的系统开始学习编程，还想玩玩本地模型，于是直接上了顶配，而价格是当时 Macbook M3 max 的一半。
+          </p>
+
+          <p>
+            如果没有这台 Macbook 就不会这么愉快的用上 Emacs ，也就不会有现在的整个 PKM 体系，也不会有 <a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ,也不会有现在部署的几个个人网站，也不会有现在突飞猛进的学习效率：<a href="https://www.vandee.art/2025-01-20-fragmented-knowledge-learning-with-ai.html">碎片知识学习 - with AI</a>，我可能还在继续用 Logseq。大的变数就是从这些看似不起眼的小决定开始萌芽。
+          </p>
+
+          <p>
+            关于 Emacs 部分今天不准备多说什么，而是想先聊聊 <a href="https://github.com/VandeeFeng/gitmemo/issues/34">热情的扩散</a> 。
+          </p>
+        </div>
+      </div>
+
+      <div id="outline-container-org0e00739" class="outline-2">
+        <h2 id="org0e00739">热情的扩散</h2>
+        <div class="outline-text-2" id="text-org0e00739">
+          <p>
+            不知道从什么时候开始，在 Emacs 里敲键盘这件事本身就会让我觉得很有意思。
+          </p>
+
+          <p>
+            相似的，我其实不喜欢读论文，但用自己构建的工具来学论文，就变得有意思了。我也很懒，平常不太爱出远门，但是带上相机，我就有了去很多地方的兴趣。
+          </p>
+
+          <p>
+            这应该就是热情的扩散。
+          </p>
+
+          <p>
+            当在一个领域或者某个阶段当中，不可避免的需要面对枯燥乏味或是很难推进的事物，附加上各种鸡汤式的理由来强行说服自己不会是我的做法，依靠奖励来推动行动也不可取，强迫自己对一个东西发展出兴趣更没有必要。
+          </p>
+
+          <p>
+            Embark on something with passion and interest，在自己感兴趣的事物的基础上发展、扩散到更多的领域。这应该是一种更正面的，克服枯燥、懒惰的方法。
+          </p>
+        </div>
+      </div>
+
+      <div id="outline-container-orgbbce706" class="outline-2">
+        <h2 id="orgbbce706">AI StartKit</h2>
+        <div class="outline-text-2" id="text-orgbbce706">
+          <p>
+            从 OpenAI 到现在的 2025 年，其实许多人都还没有真正接触到 AI，大部分人只是接触到了 AI 化的产品，例如 ChatGPT 的 APP，更有一部分根本对 AI 就没太大兴趣。在我的概念里，调用过 LLM 的 API 才可能叫接触过 AI 了。
+          </p>
+
+          <p>
+            我不是 AI 的布道者，更没有相关利益捆绑，也丝毫不想鼓吹 AI。但技术变革就是在彻底改变生活的时候才会被称作变革，在这之前的过程往往会被忽略，就像互联网一样。
+          </p>
+
+          <p>
+            可以毫不关心，只是等待生活被 AI 新技术彻底改变的时候，继续享受新的生活，也可以在被它彻底改变之前，不让它改变自己。我不喜欢被动的接受，仅此而已。
+          </p>
+
+          <p>
+            对于后者，Emacs 就是最好的 startkit。它可以解决从 0 到 1 的问题，解决一个问题最难部分的就是开始。
+          </p>
+
+          <p>
+            在咸鱼上已经有本地部署 DeepSeek 的教程在卖了，很难想象几行代码就可以卖 20 块，而且销量还不错。这不是信息差带来的消费，这只是懒。这个 20 块，5 年之后可能就是你会消费的 20 万。AI 说简单点就是一个巨大的 ZIP，玩 AI 只是需要一个打开这个 ZIP 的工具而已。
+          </p>
+
+          <p>
+            So, All you need is Emacs.
+          </p>
+
+          <p>
+            从 Emacs 开始，自然就会掌握编程的基础概念，Emacs 提供了高度可自定义的代码编辑器、自带终端、更直接的 compile，也就是和 AI 开始真正接触的入口，当然 Emacs 远不止如此。感兴趣的可以看这个：<a href="https://www.youtube.com/watch?v=81MdyDYqB-A">Configuring Emacs on My New Laptop - YouTube</a>
+          </p>
+
+          <p>
+            和 Cursor 这种 AI 代码编辑器相比，Emacs 当然没有那么开箱即用，但捷径往往是远路。
+          </p>
+
+          <p>
+            也并不是只有 Emacs 才是适合 AI 行业外的 AI StartKit，但是能够像 Emacs 一样技能充当向导，又能构建出自己的工具的，真没有几个。
+          </p>
+
+          <p>
+            就像我刚开始使用 Emacs 的时候看到的一篇文章说的那样：Emacs 已经改变了我的生活。
+          </p>
+
+          <p>
+            更准确的说，应该是持续学习，让我不那么容易被改变。
+          </p>
+
+          <p>
+            最后，这篇文章就是在 Emacs 的 org-mode 里，直接和 DeepSeek-R1 自动补全协同生成的。这不比咸鱼的 20 块消费玩的开心多了？
+          </p>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
+  <category><![CDATA[Ramble]]></category>
+  <link>https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html</link>
+  <guid>https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html</guid>
+  <pubDate>Mon, 03 Feb 2025 13:10:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[碎片知识学习 - with AI]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orga71f9f0">前言</a></li>
-<li><a href="#orgba105d7">PDF 阅读</a></li>
-<li><a href="#org340b98b">网页阅读</a></li>
-<li><a href="#org75b4e51">零散的概念</a></li>
-<li><a href="#org0d90a06">其他工具</a></li>
-</ul>
-</div>
-</nav>
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#org372a2ee">前言</a></li>
+            <li><a href="#org657ff0e">PDF 阅读</a></li>
+            <li><a href="#org35a1256">网页阅读</a></li>
+            <li><a href="#org229c263">零散的概念</a></li>
+            <li><a href="#org04a7b9d">搜索</a></li>
+            <li><a href="#org9805a7c">其他工具</a></li>
+          </ul>
+        </div>
+      </nav>
 
-<div id="outline-container-orga71f9f0" class="outline-2">
-<h2 id="orga71f9f0">前言</h2>
-<div class="outline-text-2" id="text-orga71f9f0">
-<p>
-对于是否要拥抱 AI，在程序员里大致可以分为两派：一部分是坚决不用，一类是已经将 AI 融入了自己的工作流程。后面就简称为革新派和精英派。
-</p>
+      <div id="outline-container-org372a2ee" class="outline-2">
+        <h2 id="org372a2ee">前言</h2>
+        <div class="outline-text-2" id="text-org372a2ee">
+          <p>
+            对于是否要拥抱 AI，在程序员里大致可以分为两派：一部分是坚决不用，一类是已经将 AI 融入了自己的工作流程。后面就简称为革新派和精英派。
+          </p>
 
-<ul class="org-ul">
-<li>精英派不用 AI 来写代码的原因也简单充分，AI 写出来的代码就是垃圾，我可以自己写的更好为什么要让 AI 来破坏我的优美的代码？</li>
+          <ul class="org-ul">
+            <li>精英派不用 AI 来写代码的原因也简单充分，AI 写出来的代码就是垃圾，我可以自己写的更好为什么要让 AI 来破坏我的优美的代码？</li>
 
-<li>革新派的观点也很简单，借助 AI 可以简化许多复杂的流程，例如自动补全、自动修正、自动测试、自动修复、自动提交等等。类似 Cursor 的 AI 代码编辑器，完全可以说改变了代码工作的方式。</li>
-</ul>
+            <li>革新派的观点也很简单，借助 AI 可以简化许多复杂的流程，例如自动补全、自动修正、自动测试、自动修复、自动提交等等。类似 Cursor 的 AI 代码编辑器，完全可以说改变了代码工作的方式。</li>
+          </ul>
 
-<p>
-我是一个行业外的人，自然不需要有太多立场，不需要站队。也没有什么压力，必须要跟上行业的大趋势，保住工作。因此我对于 AI 的出发点是优化信息处理、优化学习流程。并且，对于编程和 AI，我本身也挺有兴趣。我和 AI 相关的博客文章也都不是什么技术文章，更多的是一个行业外的人的记录和分享。
-</p>
+          <p>
+            我是一个行业外的人，自然不需要有太多立场，不需要站队。也没有什么压力，必须要跟上行业的大趋势，保住工作。因此我对于 AI 的出发点是优化信息处理、优化学习流程。并且，对于编程和 AI，我本身也挺有兴趣。我和 AI 相关的博客文章也都不是什么技术文章，更多的是一个行业外的人的记录和分享。
+          </p>
 
-<p>
-对于行业外的人，大致可以分为几种：一起吹泡泡吃行业红利的，和我类似关注 AI 在知识上的应用的，借助 AI 开始独立开发的。现在借助各种 AI 代码工具，行业外的人确实可以很快做出一些 MVP，或者一些小工具，大语言模型打破了自然语言编程的壁垒。我这半年也借助 AI 实现了许多以前想做但做不出来的小项目。
-</p>
+          <p>
+            对于行业外的人，大致可以分为几种：一起吹泡泡吃行业红利的，和我类似关注 AI 在知识上的应用的，借助 AI 开始独立开发的。现在借助各种 AI 代码工具，行业外的人确实可以很快做出一些 MVP，或者一些小工具，大语言模型打破了自然语言编程的壁垒。我这半年也借助 AI 实现了许多以前想做但做不出来的小项目。
+          </p>
 
-<p>
-2024 的小泡泡是 RAG 、prompt 和 AI 逻辑推理，半年不到就冒出来不少于 5 种 RAG 类型，各种神级优化 prompt，现在回过头来看呢，真正落地到实际项目的没有多少。
-</p>
+          <p>
+            2024 的小泡泡是 RAG 、prompt 和 AI 逻辑推理，半年不到就冒出来不少于 5 种 RAG 类型，各种神级优化 prompt，现在回过头来看呢，真正落地到实际项目的没有多少。
+          </p>
 
-<p>
-2025 AI 的新泡泡是 Agents，其实也就是换了一种说法。让 AI 根据特定的 prompt 可以调用 tools，定义不同的 Agent 类，来分析完成不同的任务。LangChain、OpenAI、Gemini 都推出了各自的 Agents 框架，之前基于老框架的代码就全部都得更新才能正常运行，因为底层的函数调用都更改了。小业务、小项目只能被大趋势牵着走，牵一发动全身。
-</p>
+          <p>
+            2025 AI 的新泡泡是 Agents，其实也就是换了一种说法。让 AI 根据特定的 prompt 可以调用 tools，定义不同的 Agent 类，来分析完成不同的任务。LangChain、OpenAI、Gemini 都推出了各自的 Agents 框架，之前基于老框架的代码就全部都得更新才能正常运行，因为底层的函数调用都更改了。小业务、小项目只能被大趋势牵着走，牵一发动全身。
+          </p>
 
-<p>
-我想表达的是，这些 AI 的隐性成本是我这类行业外的人不需要支付的。
-</p>
+          <p>
+            我想表达的是，这些 AI 的隐性成本是我这类行业外的人不需要支付的。
+          </p>
 
-<p>
-查理芒格说过，最大的投资永远是自己。不管是 AI 行业内的还是行业外的，核心始终都应该在提升自己上，过度的追赶趋势，在泡泡破了的时候就得不偿失了。这也是我始终没有太深入的研究 Dify、Coze 这类中间类型的 AI 工具的原因。掌握更多底层的知识和逻辑是更重要的。
-</p>
+          <p>
+            查理芒格说过，最大的投资永远是自己。不管是 AI 行业内的还是行业外的，核心始终都应该在提升自己上，过度的追赶趋势，在泡泡破了的时候就得不偿失了。这也是我始终没有太深入的研究 Dify、Coze 这类中间类型的 AI 工具的原因。掌握更多底层的知识和逻辑是更重要的。
+          </p>
 
-<p>
-后面是最近关于 PDF 和网页阅读的一些方法。日常需要 AI 来帮助的主要也是这两类。
-</p>
-</div>
-</div>
+          <p>
+            后面是最近关于 PDF 和网页阅读的一些方法。日常需要 AI 来帮助的主要也是这两类。
+          </p>
+        </div>
+      </div>
 
-<div id="outline-container-orgba105d7" class="outline-2">
-<h2 id="orgba105d7">PDF 阅读</h2>
-<div class="outline-text-2" id="text-orgba105d7">
-<p>
-<a href="https://github.com/echohive42/AI-reads-books-page-by-page">GitHub - echohive42/AI-reads-books-page-by-page</a> 这个项目前段时间上了 GitHub Trends，项目逻辑很值得学习，立马 fork 自定义了一下：<a href="https://github.com/VandeeFeng/ReadPDFpbp">https://github.com/VandeeFeng/ReadPDFpbp</a> 。主要增加了 ollama 和 OpenRouter 模型的调用，还有一些自定义的参数，可以直接在 CLI 里调用。行业标准害人啊，cookbook 里都默认使用 OpenAI 和 Claude 的 API。
-</p>
+      <div id="outline-container-org657ff0e" class="outline-2">
+        <h2 id="org657ff0e">PDF 阅读</h2>
+        <div class="outline-text-2" id="text-org657ff0e">
+          <p>
+            <a href="https://github.com/echohive42/AI-reads-books-page-by-page">GitHub - echohive42/AI-reads-books-page-by-page</a> 这个项目前段时间上了 GitHub Trends，项目逻辑很值得学习，立马 fork 自定义了一下：<a href="https://github.com/VandeeFeng/ReadPDFpbp">https://github.com/VandeeFeng/ReadPDFpbp</a> 。主要增加了 ollama 和 OpenRouter 模型的调用，还有一些自定义的参数，可以直接在 CLI 里调用。行业标准害人啊，cookbook 里都默认使用 OpenAI 和 Claude 的 API。
+          </p>
 
-<p>
-这个项目可以逐页阅读 PDF，生成知识要点，并根据页面分段总结。一个 50 页以上的 PDF，自己看就有点吃力了。NotebookLM 虽然很好用，但是超过了 80 页左右的 PDF，我实际用下来也不是很准确。
-</p>
+          <p>
+            这个项目可以逐页阅读 PDF，生成知识要点，并根据页面分段总结。一个 50 页以上的 PDF，自己看就有点吃力了。NotebookLM 虽然很好用，但是超过了 80 页左右的 PDF，我实际用下来也不是很准确。
+          </p>
 
-<p>
-这个项目可以逐页阅读总结出关键的概念和知识点，然后再找到相关页面精读。另外一个优势就是本地模型是免费的，几个 200 页的 PDF 用 OpenAI 可能几刀就没了。
-</p>
-</div>
-</div>
-<div id="outline-container-org340b98b" class="outline-2">
-<h2 id="org340b98b">网页阅读</h2>
-<div class="outline-text-2" id="text-org340b98b">
-<p>
-<a href="https://github.com/vandeefeng/gitmemo/issues/26">在知识之间、AI 之间创造 connection</a> 这里是有关用 phidata 构建 Agent 来同时分析 2 个以上网页文章的内容。
-</p>
+          <p>
+            这个项目可以逐页阅读总结出关键的概念和知识点，然后再找到相关页面精读。另外一个优势就是本地模型是免费的，几个 200 页的 PDF 用 OpenAI 可能几刀就没了。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org35a1256" class="outline-2">
+        <h2 id="org35a1256">网页阅读</h2>
+        <div class="outline-text-2" id="text-org35a1256">
+          <p>
+            <a href="https://github.com/vandeefeng/gitmemo/issues/26">在知识之间、AI 之间创造 connection</a> 这里是有关用 phidata 构建 Agent 来同时分析 2 个以上网页文章的内容。
+          </p>
 
-<p>
-解决了同时在几个主题相似的网页文章里快速找到关键信息的问题，效率提升不少。相关的项目很多，自己折腾了一下，主要是增加了导出的功能，这个对于我来说很重要。
-</p>
+          <p>
+            解决了同时在几个主题相似的网页文章里快速找到关键信息的问题，效率提升不少。相关的项目很多，自己折腾了一下，主要是增加了导出的功能，这个对于我来说很重要。
+          </p>
 
-<p>
-导出历史对话就可以进一步整合，这个功能在许多大型 RAG 项目里就是不给。
-</p>
-</div>
-</div>
-<div id="outline-container-org75b4e51" class="outline-2">
-<h2 id="org75b4e51">零散的概念</h2>
-<div class="outline-text-2" id="text-org75b4e51">
-<p>
-平常一些概念上的学习，之前是在 OpenWeb UI 里，现在基本都在 Emacs 里用 gptel 了，全部都汇总在一个 org 文档里。
-</p>
-
-
-<figure id="org858516d">
-<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
-
-</figure>
-</div>
-</div>
+          <p>
+            导出历史对话就可以进一步整合，这个功能在许多大型 RAG 项目里就是不给。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org229c263" class="outline-2">
+        <h2 id="org229c263">零散的概念</h2>
+        <div class="outline-text-2" id="text-org229c263">
+          <p>
+            平常一些概念上的学习，之前是在 OpenWeb UI 里，现在基本都在 Emacs 里用 gptel 了，全部都汇总在一个 org 文档里。
+          </p>
 
 
-<div id="outline-container-org0d90a06" class="outline-2">
-<h2 id="org0d90a06">其他工具</h2>
-<div class="outline-text-2" id="text-org0d90a06">
-<p>
-另外要强烈安利 <a href="https://github.com/nbonamy/witsy">Witsy</a> 这个项目，不多介绍了，它就是我到目前为止用过最好用的 LLM 客户端。
-</p>
+          <figure id="org0fcde79">
+            <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
 
-<p>
-Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也是完全没有问题的。该白嫖的行业红利还是要嫖的。
-</p>
+          </figure>
+        </div>
+      </div>
 
-<p>
-当然我的最爱还是 Emacs。
-</p>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
+      <div id="outline-container-org04a7b9d" class="outline-2">
+        <h2 id="org04a7b9d">搜索</h2>
+        <div class="outline-text-2" id="text-org04a7b9d">
+          <p>
+            一般的搜索直接用 DuckDuckGo 。再就是自己改了一下的 <a href="https://github.com/VandeeFeng/Gemini-Search">Gemini-Search</a> ，部署到 docker 调用 Gemini 的 API 实现类似 Perplexity 的体验。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org9805a7c" class="outline-2">
+        <h2 id="org9805a7c">其他工具</h2>
+        <div class="outline-text-2" id="text-org9805a7c">
+          <p>
+            另外要强烈安利 <a href="https://github.com/nbonamy/witsy">Witsy</a> 这个项目，不多介绍了，它就是我到目前为止用过最好用的 LLM 客户端。
+          </p>
+
+          <p>
+            Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也是完全没有问题的。该白嫖的行业红利还是要嫖的。
+          </p>
+
+          <p>
+            当然我的最爱还是 Emacs。
+          </p>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
   <link>https://www.vandee.art/2025-01-20-fragmented-knowledge-learning-with-ai.html</link>
   <guid>https://www.vandee.art/2025-01-20-fragmented-knowledge-learning-with-ai.html</guid>

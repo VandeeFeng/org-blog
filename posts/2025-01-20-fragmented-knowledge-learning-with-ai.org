@@ -42,7 +42,8 @@
 #+attr_html: :alt :class img :width 50% :height 50%
 https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif
 
-
+* 搜索
+一般的搜索直接用 DuckDuckGo 。再就是自己改了一下的 [[https://github.com/VandeeFeng/Gemini-Search][Gemini-Search]] ，部署到 docker 调用 Gemini 的 API 实现类似 Perplexity 的体验。
 * 其他工具
 另外要强烈安利 [[https://github.com/nbonamy/witsy][Witsy]] 这个项目，不多介绍了，它就是我到目前为止用过最好用的 LLM 客户端。
 
