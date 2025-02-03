@@ -43,7 +43,7 @@ So, All you need is Emacs.
 
 和 Cursor 这种 AI 代码编辑器相比，Emacs 当然没有那么开箱即用，但捷径往往是远路。
 
-也并不是只有 Emacs 才是适合 AI 行业外的 AI StartKit，但是能够像 Emacs 一样技能充当向导，又能构建出自己的工具的，真没有几个。
+也并不是只有 Emacs 才是适合 AI 行业外的 AI StartKit，但是能够像 Emacs 一样既能充当向导，又能构建出自己的工具的，真没有几个。
 
 就像我刚开始使用 Emacs 的时候看到的一篇文章说的那样：Emacs 已经改变了我的生活。
 
