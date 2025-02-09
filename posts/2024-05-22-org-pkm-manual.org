@@ -1151,7 +1151,12 @@ This project serves as a functional RAG UI for both end users who want to do QA 
   - A framework for building your own RAG-based document QA pipeline.
   - Customize and see your RAG pipeline in action with the provided UI (built with [[https://github.com/gradio-app/gradio][Gradio]]).
   - If you use Gradio for development, check out our theme here: [[https://github.com/lone17/kotaemon-gradio-theme][kotaemon-gradio-theme]].
+*** Chipper
+Github: https://github.com/TilmanGriesel/chipper
 
+其实很早就关注了这个项目，但是一直没有尝试。这个项目基于 Elasticsearch 来实现文档搜索和 RAG。LLM 的提供支持 ollama 和 huggingface。提供脚本一键 docker 部署很方便。
+
+我看重的功能是：它可以提供一个 ollama 的代理。也就是使用这个项目的 ollama 代理之后，就可以直接调用项目的文档 RAG 了，而这个项目管理文档 RAG 很方便。这样就可以把它当作是一个文档搜索引擎了。
 * ChangeLog
 
 - 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如[[https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el][dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs]]这是一个把org-roam和Logseq联用的el。
@@ -1165,6 +1170,7 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 - 2024-10-13: 增加了 Aider (一个CLI AI编程助手)在 Emacs 里的安装。最近开源的从代码到部署的 [[https://github.com/stackblitz/bolt.new][bolt.new]]  也很强，还有 Pythagora 的 [[https://github.com/Pythagora-io/gpt-pilot][gpt-pilot]]， AI 辅助编程的项目越来越多了，感谢 cursor 带来了这么多的竞争者。
 - 2024-10-24: 将 MD 文档转换成 org 文档的校对，删除了部分不必要的介绍。
 - 2024-11-12: 从 DoomEmacs 转向原生 Emacs 自己[[https://github.com/VandeeFeng/emacs.d][配置]]。
+- 2025-02-09: 增加 chipper。
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。

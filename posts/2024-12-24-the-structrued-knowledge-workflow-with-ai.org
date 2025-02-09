@@ -69,6 +69,13 @@ AI 善于回答问题，但它不善于提出问题。使用 AI 学习了很长�
 
 supabase 最进又更新了 [[https://database.build/][Postgres Sandbox]] ,和我的思路不谋而合。
 
+** Chipper
+Github: https://github.com/TilmanGriesel/chipper
+
+其实很早就关注了这个项目，但是一直没有尝试。这个项目基于 Elasticsearch 来实现文档搜索和 RAG。LLM 的提供支持 ollama 和 huggingface。提供脚本一键 docker 部署很方便。
+
+我看重的功能是：它可以提供一个 ollama 的代理。也就是使用这个项目的 ollama 代理之后，就可以直接调用项目的文档 RAG 了，而这个项目管理文档 RAG 很方便。这样就可以把它当作是一个文档搜索引擎了。
+
 * 输出
 [[https://wiki.vandee.art/#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%80%9D%E8%80%83%E8%80%8C%E4%B8%8D%E8%BE%93%E5%87%BA%EF%BC%8C%E4%BD%A0%E5%8F%AA%E6%98%AF%E4%BB%A5%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%9C%A8%E6%80%9D%E8%80%83][如果你思考而不输出，你只是以为自己在思考]] ，费曼学习法里说的太多了，study in public。
 
