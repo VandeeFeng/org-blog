@@ -18,7 +18,7 @@
 
 Transformer Neural Net 3D visualizer: https://bbycroft.net/llm ,这个网站用 3D 模型详细的展示了 transformer 架构的原理和过程。
 
-用 AK 大佬的话来说，LLM 就是一个巨大的 ZIP，它汇聚了特定时间点互联网上所有的相对优质的知识和资源。这来源于在 pre-training 预训练过程中的数据集。之后的 post-training 不会改变 LLM 的基础知识（RAG 算是额外知识）。
+用 AK 大佬的话来说，LLM 就是一个巨大的 ZIP，它汇聚了特定时间点互联网上海量的相对优质的知识和资源。这来源于在 pre-training 预训练过程中的数据集。之后的 post-training 不会改变 LLM 的基础知识（RAG 算是额外知识）。
 
 本质上，LLM 就是在特定数据集的基础上，通过 transformer 架构神经网络来通过输入预测下一个词（现阶段流行的的大语言模型基本是基于 transformer 架构）。至于 transformer 架构是什么，可以简单理解为一个编码器和一个解码器。所有输入 LLM 的内容，最终会被 LLM 理解为一个个的 token, https://tiktokenizer.vercel.app/ 这个网站可以详细的看到输入的内容对于 LLM 来说是什么。
 
@@ -48,7 +48,9 @@ Transformer Neural Net 3D visualizer: https://bbycroft.net/llm ,这个网站用 
 
 因此抛开 LLM 背后复杂的实现，在实际应用上，完全可以把它当作是自己的一个朋友、老师、私人助手。
 
-我们不必要再去搜索许多专业的知识，因为在预训练的时候，LLM 这个 ZIP 里已经记录了，在预测的时候，它会优先从“记忆” 中回答，这也是容易产生幻觉的原因。当 LLM 在回答自己知识库之外的问题时，因为是预测的最可能的回答，它就会开始胡编乱造，也就是 hallucination。更何况，现在的 LLM 基于 Agent，可以调用 tool 来实现联网的搜索，让回答更加准确。
+我们不必再去搜索许多专业的知识，因为在预训练的时候，LLM 这个 ZIP 里已经记录了，在预测的时候，它会优先从“记忆” 中回答，这也是容易产生幻觉的原因。当 LLM 在回答自己知识库之外的问题时，因为是预测的最可能的回答，它就会开始胡编乱造，也就是 hallucination。
+
+针对知识库之外的回答，现在的 LLM 基于 Agent，可以调用 tool 来实现联网的搜索，让回答更加准确。还有 RAG（Retrieval-Augmented Generation 检索增强生成）来 embed（嵌入）特定的文档和知识库。
 
 因此，在学习方面应用 LLM 就变成了，用特定的语句（prompt），去检索 LLM 的知识库，用特定的方式和这个朋友来互动。也难怪 OpenAI 会下那么大的力气在 AI 教育上，有了这个知识库，某种程度上，就有了一个 24 小时在线的老师。
 
