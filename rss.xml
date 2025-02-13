@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Thu, 13 Feb 2025 14:59:25 +0800</lastBuildDate>
+<lastBuildDate>Thu, 13 Feb 2025 15:05:09 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Emacs is all you need]]></title>
   <description><![CDATA[
@@ -5714,14 +5714,14 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#orgb2d17df">My Favorites</a></li>
-            <li><a href="#orgc36da10">Mac</a></li>
-            <li><a href="#orgae92f61">Search</a></li>
-            <li><a href="#orge46c68e">论文</a></li>
-            <li><a href="#org13829f3">LLM Web Chat</a></li>
-            <li><a href="#orgab89e90">Others</a>
+            <li><a href="#org15a2b89">My Favorites</a></li>
+            <li><a href="#orgb53deca">Mac</a></li>
+            <li><a href="#org0f27041">Search</a></li>
+            <li><a href="#orga5674a2">论文</a></li>
+            <li><a href="#org12a6128">LLM Web Chat</a></li>
+            <li><a href="#org28d5fa0">Others</a>
               <ul>
-                <li><a href="#org55e4629">PDF相关</a></li>
+                <li><a href="#org90b6815">PDF相关</a></li>
               </ul>
             </li>
           </ul>
@@ -5739,9 +5739,9 @@
         日常的搜集第一次整理之后有了工具汇总表格版：<a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a> ，这里做第二次筛选。
       </p>
 
-      <div id="outline-container-orgb2d17df" class="outline-2">
-        <h2 id="orgb2d17df">My Favorites</h2>
-        <div class="outline-text-2" id="text-orgb2d17df">
+      <div id="outline-container-org15a2b89" class="outline-2">
+        <h2 id="org15a2b89">My Favorites</h2>
+        <div class="outline-text-2" id="text-org15a2b89">
           <ul class="org-ul">
             <li><p>
                 <b>Vimium</b>
@@ -5788,27 +5788,12 @@
               <p>
                 Url: <a href="https://github.com/nbonamy/witsy">https://github.com/nbonamy/witsy</a>
             </p></li>
-            <li><p>
-                <b>PixPin</b>
-              </p>
-
-              <p>
-                Mac的终于出来了。这是我用过最好用的截图软件了。
-              </p>
-
-              <p>
-                PixPin的名字来源于“Pixel Pin”，简单来说是一个截图、贴图的工具，但是PixPin以截图和贴图两大功能为核心做了大量的优化功能，目标是提升用户在工作时的工作效率，无论用户使用电脑做何种工作，都可以使用PixPin提高工作效率。
-              </p>
-
-              <p>
-                Url: <a href="https://pixpinapp.com/">https://pixpinapp.com/</a>
-            </p></li>
           </ul>
         </div>
       </div>
-      <div id="outline-container-orgc36da10" class="outline-2">
-        <h2 id="orgc36da10">Mac</h2>
-        <div class="outline-text-2" id="text-orgc36da10">
+      <div id="outline-container-orgb53deca" class="outline-2">
+        <h2 id="orgb53deca">Mac</h2>
+        <div class="outline-text-2" id="text-orgb53deca">
           <ul class="org-ul">
             <li><p>
                 FlashSpace: FlashSpace is a blazingly fast virtual workspace manager for macOS
@@ -5839,12 +5824,23 @@
               <p>
                 轻量的软件卸载工具。
             </p></li>
+            <li><p>
+                <b>PixPin</b>
+              </p>
+
+              <p>
+                Mac的终于出来了。这是我用过最好用的截图软件了。
+              </p>
+
+              <p>
+                Url: <a href="https://pixpinapp.com/">https://pixpinapp.com/</a>
+            </p></li>
           </ul>
         </div>
       </div>
-      <div id="outline-container-orgae92f61" class="outline-2">
-        <h2 id="orgae92f61">Search</h2>
-        <div class="outline-text-2" id="text-orgae92f61">
+      <div id="outline-container-org0f27041" class="outline-2">
+        <h2 id="org0f27041">Search</h2>
+        <div class="outline-text-2" id="text-org0f27041">
           <ul class="org-ul">
             <li><p>
                 <b>Gemini-Search</b>
@@ -5949,9 +5945,9 @@
         </div>
       </div>
 
-      <div id="outline-container-orge46c68e" class="outline-2">
-        <h2 id="orge46c68e">论文</h2>
-        <div class="outline-text-2" id="text-orge46c68e">
+      <div id="outline-container-orga5674a2" class="outline-2">
+        <h2 id="orga5674a2">论文</h2>
+        <div class="outline-text-2" id="text-orga5674a2">
           <ul class="org-ul">
             <li><p>
                 alphaxiv：斯坦福大学的学生做的一个论文讨论平台。可以理解为基于arXiv论文的Twitter，可以对论文评论，讨论。
@@ -5990,9 +5986,9 @@
         </div>
       </div>
 
-      <div id="outline-container-org13829f3" class="outline-2">
-        <h2 id="org13829f3">LLM Web Chat</h2>
-        <div class="outline-text-2" id="text-org13829f3">
+      <div id="outline-container-org12a6128" class="outline-2">
+        <h2 id="org12a6128">LLM Web Chat</h2>
+        <div class="outline-text-2" id="text-org12a6128">
           <ul class="org-ul">
             <li><p>
                 <b>DuckDuckGo AI Chat</b>
@@ -6093,9 +6089,9 @@
         </div>
       </div>
 
-      <div id="outline-container-orgab89e90" class="outline-2">
-        <h2 id="orgab89e90">Others</h2>
-        <div class="outline-text-2" id="text-orgab89e90">
+      <div id="outline-container-org28d5fa0" class="outline-2">
+        <h2 id="org28d5fa0">Others</h2>
+        <div class="outline-text-2" id="text-org28d5fa0">
           <p>
             另见：表格版 <a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a>
           </p>
@@ -6171,9 +6167,9 @@
           </ul>
         </div>
 
-        <div id="outline-container-org55e4629" class="outline-3">
-          <h3 id="org55e4629">PDF相关</h3>
-          <div class="outline-text-3" id="text-org55e4629">
+        <div id="outline-container-org90b6815" class="outline-3">
+          <h3 id="org90b6815">PDF相关</h3>
+          <div class="outline-text-3" id="text-org90b6815">
             <p>
               PDF转Markdown 方案
             </p>
