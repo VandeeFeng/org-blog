@@ -40,8 +40,9 @@ Transformer Neural Net 3D visualizer: https://bbycroft.net/llm ,这个网站用 
 
   https://github.com/karminski/one-small-step
 * 或许可以这样看待大语言模型
-** 知识库 ZIP
 这部分是我自己的理解，仅仅仅供参考。
+
+** 知识库 ZIP
 
 我一直是这么看待大语言模型的，它就是一个巨大的知识库，通过特定的 prompt，就可以拟人化的和这个知识库互动。
 
