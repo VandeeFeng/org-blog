@@ -1072,6 +1072,7 @@ python -m pip install -U aider-chat
 
 Ref：[[https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15][抛砖引玉: 介绍命令行AI编程工具aider以及emacs集成aider.el - Emacs-general - Emacs China]]
 
+又有一个大佬制作了 [[https://github.com/MatthewZMD/aidermacs][aidermacs]] ,功能更加全面。
 *** gptel
 
 [[https://github.com/karthink/gptel][gptel: A simple LLM client for Emacs]] 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
@@ -1171,6 +1172,7 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2024-10-24: 将 MD 文档转换成 org 文档的校对，删除了部分不必要的介绍。
 - 2024-11-12: 从 DoomEmacs 转向原生 Emacs 自己[[https://github.com/VandeeFeng/emacs.d][配置]]。
 - 2025-02-09: 增加 chipper。
+- 2025-02-13：增加 aidermacs.
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
