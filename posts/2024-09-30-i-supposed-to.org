@@ -1,7 +1,7 @@
 #+title: 本来
 #+date: <2024-09-30 19:13>
 #+description: 我知道，这次我又会是局外人了。
-#+filetags: Essay,局外人
+#+filetags: Essay 局外人
 
 和往常一样，我下了地铁来吃这里的牛肉面。和往常一样，还是很多人排队。
 
