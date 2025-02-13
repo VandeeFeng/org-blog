@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sun, 09 Feb 2025 13:38:07 +0800</lastBuildDate>
+<lastBuildDate>Thu, 13 Feb 2025 14:59:25 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Emacs is all you need]]></title>
   <description><![CDATA[
@@ -5714,13 +5714,14 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#orgb3b8ff5">My Favorites</a></li>
-            <li><a href="#org7769d9b">Search</a></li>
-            <li><a href="#org0739685">论文</a></li>
-            <li><a href="#orge7e330d">LLM Web Chat</a></li>
-            <li><a href="#org4406457">Others</a>
+            <li><a href="#orgb2d17df">My Favorites</a></li>
+            <li><a href="#orgc36da10">Mac</a></li>
+            <li><a href="#orgae92f61">Search</a></li>
+            <li><a href="#orge46c68e">论文</a></li>
+            <li><a href="#org13829f3">LLM Web Chat</a></li>
+            <li><a href="#orgab89e90">Others</a>
               <ul>
-                <li><a href="#org8c0a6a9">PDF相关</a></li>
+                <li><a href="#org55e4629">PDF相关</a></li>
               </ul>
             </li>
           </ul>
@@ -5735,17 +5736,20 @@
       </p>
 
       <p>
-        llama-index 的GitHub，里面有详细的具体代码和案例，太值得学习了: <a href="https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks">https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks</a>
-      </p>
-
-      <p>
         日常的搜集第一次整理之后有了工具汇总表格版：<a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a> ，这里做第二次筛选。
       </p>
 
-      <div id="outline-container-orgb3b8ff5" class="outline-2">
-        <h2 id="orgb3b8ff5">My Favorites</h2>
-        <div class="outline-text-2" id="text-orgb3b8ff5">
+      <div id="outline-container-orgb2d17df" class="outline-2">
+        <h2 id="orgb2d17df">My Favorites</h2>
+        <div class="outline-text-2" id="text-orgb2d17df">
           <ul class="org-ul">
+            <li><p>
+                <b>Vimium</b>
+              </p>
+
+              <p>
+                浏览器插件，可以用 Vim 模式来操作浏览器。最喜欢它的快速打开地址栏功能，兼并自定义搜索。在 Firefox 里，自定义了垂直标签栏，再加上这个，还要什么 Arc？
+            </p></li>
             <li><p>
                 <b>RIME</b>
               </p>
@@ -5774,7 +5778,7 @@
                 Url：<a href="https://www.napkin.ai/">https://www.napkin.ai/</a>
             </p></li>
             <li><p>
-                Witsy
+                <b>Witsy</b>
               </p>
 
               <p>
@@ -5802,10 +5806,45 @@
           </ul>
         </div>
       </div>
+      <div id="outline-container-orgc36da10" class="outline-2">
+        <h2 id="orgc36da10">Mac</h2>
+        <div class="outline-text-2" id="text-orgc36da10">
+          <ul class="org-ul">
+            <li><p>
+                FlashSpace: FlashSpace is a blazingly fast virtual workspace manager for macOS
+              </p>
 
-      <div id="outline-container-org7769d9b" class="outline-2">
-        <h2 id="org7769d9b">Search</h2>
-        <div class="outline-text-2" id="text-org7769d9b">
+              <p>
+                Github: <a href="https://github.com/wojciech-kulik/FlashSpace">https://github.com/wojciech-kulik/FlashSpace</a>
+              </p>
+
+              <p>
+                一个简单易用的管理工作区的项目，自定义快捷键就可以切换不同的工作区。平常把 Emacs 和浏览器单独放一个，终端单独放一个。
+            </p></li>
+            <li><p>
+                Maccy：简单易用的剪切板管理工具
+              </p>
+
+              <p>
+                GitHub：<a href="https://github.com/p0deje/Maccy">https://github.com/p0deje/Maccy</a>
+            </p></li>
+            <li><p>
+                Pearcleaner: A free, source-available and fair-code licensed mac app cleaner
+              </p>
+
+              <p>
+                Github: <a href="https://github.com/alienator88/Pearcleaner">https://github.com/alienator88/Pearcleaner</a>
+              </p>
+
+              <p>
+                轻量的软件卸载工具。
+            </p></li>
+          </ul>
+        </div>
+      </div>
+      <div id="outline-container-orgae92f61" class="outline-2">
+        <h2 id="orgae92f61">Search</h2>
+        <div class="outline-text-2" id="text-orgae92f61">
           <ul class="org-ul">
             <li><p>
                 <b>Gemini-Search</b>
@@ -5910,9 +5949,9 @@
         </div>
       </div>
 
-      <div id="outline-container-org0739685" class="outline-2">
-        <h2 id="org0739685">论文</h2>
-        <div class="outline-text-2" id="text-org0739685">
+      <div id="outline-container-orge46c68e" class="outline-2">
+        <h2 id="orge46c68e">论文</h2>
+        <div class="outline-text-2" id="text-orge46c68e">
           <ul class="org-ul">
             <li><p>
                 alphaxiv：斯坦福大学的学生做的一个论文讨论平台。可以理解为基于arXiv论文的Twitter，可以对论文评论，讨论。
@@ -5951,9 +5990,9 @@
         </div>
       </div>
 
-      <div id="outline-container-orge7e330d" class="outline-2">
-        <h2 id="orge7e330d">LLM Web Chat</h2>
-        <div class="outline-text-2" id="text-orge7e330d">
+      <div id="outline-container-org13829f3" class="outline-2">
+        <h2 id="org13829f3">LLM Web Chat</h2>
+        <div class="outline-text-2" id="text-org13829f3">
           <ul class="org-ul">
             <li><p>
                 <b>DuckDuckGo AI Chat</b>
@@ -6054,9 +6093,9 @@
         </div>
       </div>
 
-      <div id="outline-container-org4406457" class="outline-2">
-        <h2 id="org4406457">Others</h2>
-        <div class="outline-text-2" id="text-org4406457">
+      <div id="outline-container-orgab89e90" class="outline-2">
+        <h2 id="orgab89e90">Others</h2>
+        <div class="outline-text-2" id="text-orgab89e90">
           <p>
             另见：表格版 <a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a>
           </p>
@@ -6080,18 +6119,6 @@
 
               <p>
                 GitHub：<a href="https://github.com/BuilderIO/ai-shell">https://github.com/BuilderIO/ai-shell</a>
-            </p></li>
-
-            <li><p>
-                Intro: GitHub 上一套基于 Cloudflare 的全栈 SaaS 开发模板 cloudflare-saas-stack。利用该模板，可以快速在 Cloudflare 上构建并部署全栈应用，包括数据库、认证、样式、存储等功能。
-              </p>
-
-              <p>
-                很香！
-              </p>
-
-              <p>
-                Source: <a href="https://github.com/supermemoryai/supermemory">https://github.com/supermemoryai/supermemory</a>
             </p></li>
 
             <li><p>
@@ -6127,14 +6154,6 @@
             </p></li>
 
             <li><p>
-                吴恩达老师开源了一套 AI Agent 翻译工作流 Translation Agent。经他们的测试，该工作流翻译质量甚至可以媲美领先的商业翻译工具
-              </p>
-
-              <p>
-                GitHub: <a href="https://github.com/andrewyng/translation-agent">https://github.com/andrewyng/translation-agent</a>
-            </p></li>
-
-            <li><p>
                 功能颇为强大的 GPT 学术优化开源项目 GPT Academic，目前 60.2k Star！
               </p>
 
@@ -6152,9 +6171,9 @@
           </ul>
         </div>
 
-        <div id="outline-container-org8c0a6a9" class="outline-3">
-          <h3 id="org8c0a6a9">PDF相关</h3>
-          <div class="outline-text-3" id="text-org8c0a6a9">
+        <div id="outline-container-org55e4629" class="outline-3">
+          <h3 id="org55e4629">PDF相关</h3>
+          <div class="outline-text-3" id="text-org55e4629">
             <p>
               PDF转Markdown 方案
             </p>

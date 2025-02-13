@@ -7,11 +7,12 @@
 
 阮一峰的GitHub weekly issues： https://github.com/ruanyf/weekly/issues ，可以找到许多有意思的东西。
 
-llama-index 的GitHub，里面有详细的具体代码和案例，太值得学习了: https://github.com/run-llama/llama_index/tree/main/docs/docs/examples/cookbooks
-
 日常的搜集第一次整理之后有了工具汇总表格版：[[https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view][tools]] ，这里做第二次筛选。
 
 ** My Favorites
+- *Vimium*
+
+  浏览器插件，可以用 Vim 模式来操作浏览器。最喜欢它的快速打开地址栏功能，兼并自定义搜索。在 Firefox 里，自定义了垂直标签栏，再加上这个，还要什么 Arc？
 - *RIME*
 
   输入法就是笔。
@@ -25,7 +26,7 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
   一个可以根据文字内容生成关系图的在线笔记编辑工具，目前还在beta测试阶段可以免费体验PRO的内容，生产力提高不是一点点。生成的关系图可以再详细编辑标题，图标等等，支持导出为PNG、SVG、PDF。
 
   Url：https://www.napkin.ai/
-- Witsy
+- *Witsy*
 
   这就是目前我用过最好的 LLM PC 客户端。
 
@@ -37,7 +38,20 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
   PixPin的名字来源于“Pixel Pin”，简单来说是一个截图、贴图的工具，但是PixPin以截图和贴图两大功能为核心做了大量的优化功能，目标是提升用户在工作时的工作效率，无论用户使用电脑做何种工作，都可以使用PixPin提高工作效率。
 
   Url: https://pixpinapp.com/
+** Mac
+- FlashSpace: FlashSpace is a blazingly fast virtual workspace manager for macOS
 
+  Github: https://github.com/wojciech-kulik/FlashSpace
+
+  一个简单易用的管理工作区的项目，自定义快捷键就可以切换不同的工作区。平常把 Emacs 和浏览器单独放一个，终端单独放一个。
+- Maccy：简单易用的剪切板管理工具
+
+  GitHub：https://github.com/p0deje/Maccy
+- Pearcleaner: A free, source-available and fair-code licensed mac app cleaner
+
+  Github: https://github.com/alienator88/Pearcleaner
+
+  轻量的软件卸载工具。
 ** Search
 - *Gemini-Search*
 
@@ -175,12 +189,6 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
 
   GitHub：https://github.com/BuilderIO/ai-shell
 
-- Intro: GitHub 上一套基于 Cloudflare 的全栈 SaaS 开发模板 cloudflare-saas-stack。利用该模板，可以快速在 Cloudflare 上构建并部署全栈应用，包括数据库、认证、样式、存储等功能。
-
-  很香！
-
-  Source: https://github.com/supermemoryai/supermemory
-
 - Stirling-PDF
 
   一个本地的处理 PDF 的工具，界面是 Web UI，可以支持 Docker 部署。
@@ -196,10 +204,6 @@ llama-index 的GitHub，里面有详细的具体代码和案例，太值得学�
 - 部署deeplx到cloudflare，比部署到docker方便
 
   https://github.com/ifyour/deeplx-for-cloudflare
-
-- 吴恩达老师开源了一套 AI Agent 翻译工作流 Translation Agent。经他们的测试，该工作流翻译质量甚至可以媲美领先的商业翻译工具
-
-  GitHub: https://github.com/andrewyng/translation-agent
 
 - 功能颇为强大的 GPT 学术优化开源项目 GPT Academic，目前 60.2k Star！
 
