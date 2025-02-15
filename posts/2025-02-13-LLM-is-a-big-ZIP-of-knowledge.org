@@ -31,7 +31,7 @@ Transformer Neural Net 3D visualizer: https://bbycroft.net/llm ,这个网站用 
 更多的关于 LLM 的基础知识，在 GitHub 上随便搜搜就有大量的合集。
 
 推荐几个：
-- [[id:3b9da3be-6fe2-496f-8563-6ecdbe36a672][Transformer模型图解-知乎]]，这篇文章很通俗详细的介绍了，transormer架构的原理。
+- [[https://zhuanlan.zhihu.com/p/338817680][Transformer模型图解-知乎]]，这篇文章很通俗详细的介绍了，transormer架构的原理。
 - 李沐深度学习经典、新论文逐段精读 ：https://github.com/mli/paper-reading
 - [[https://www.youtube.com/watch?v=9-Jl0dxWQs8][How might LLMs store facts | Chapter 7, Deep Learning - YouTube]] 3Blue1Brown 讲解 LLM 原理的视频，很优秀
 - [[https://llmbook-zh.github.io/][大语言模型 | LLMBook-zh]]
