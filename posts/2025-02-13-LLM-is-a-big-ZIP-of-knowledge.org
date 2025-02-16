@@ -36,6 +36,7 @@ Transformer Neural Net 3D visualizer: https://bbycroft.net/llm ,这个网站用 
 - [[https://www.youtube.com/watch?v=9-Jl0dxWQs8][How might LLMs store facts | Chapter 7, Deep Learning - YouTube]] 3Blue1Brown 讲解 LLM 原理的视频，很优秀
 - [[https://llmbook-zh.github.io/][大语言模型 | LLMBook-zh]]
 - [[https://github.com/HandsOnLLM/Hands-On-Large-Language-Models][Hands-On-Large-Language-Models]]
+- [[https://github.com/rasbt/LLMs-from-scratch][GitHub - rasbt/LLMs-from-scratch]]
 - 这是一个简单的技术科普教程项目，主要聚焦于解释一些有趣的，前沿的技术概念和原理。每篇文章都力求在 5 分钟内阅读完成。
 
   https://github.com/karminski/one-small-step
