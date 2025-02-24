@@ -996,8 +996,8 @@ Open WebUI 在2024-10-06的版本中[[https://github.com/open-webui/open-webui/r
 
 - Docker compose: https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml
 
-  #+begin_src yaml
-services:
+  #+begin_src ymal
+  services:
     ollama:
       volumes:
         - ollama:/root/.ollama
@@ -1031,6 +1031,7 @@ services:
   volumes:
     ollama: {}
     open-webui: {}
+
   #+end_src
 
 - [[https://docs.openwebui.com/getting-started/updating][ Updating | Open WebUI]]
@@ -1100,7 +1101,7 @@ Ref: https://github.com/karthink/gptel?tab=readme-ov-file#include-more-context-w
 
 
 #+begin_src emacs-lisp
-;;基本配置
+;; 基本配置
 (use-package! gptel
  :config
  (setq! gptel-api-key "your key"))
