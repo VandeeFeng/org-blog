@@ -161,20 +161,20 @@ Emacs，org-roam，模板创建Daily和note：
 
 **** Org-tag
 
-org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的*标签的统一性*，大小写或者单复数不统一会很麻烦。
+org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的 *标签的统一性* ，大小写或者单复数不统一会很麻烦。
 
 在org的任意标题之后加上 ~:TAG1::TAG2:~ 就打上了标签。
 
-*进阶用法*如下：
+*进阶用法* 如下：
 
 在Org Mode中，你可以通过按下快捷键来为项目或任务添加预定义的标签。以下是具体的步骤：
 
 1. 光标定位：将光标移动到你想要添加标签的项目或任务上。
 2. *添加标签：按下快捷键 ~C-c C-q~ ，org-set-tags-command，这将打开标签过滤器。可以直接在标题的最后输入标签。在输入冒号后，M-TAG* 提供了标签的自动补全和选择功能。
-3. 使用快捷键：在标签过滤器中，输入你为标签分配的字符常量作为快捷键。例如，如果你为 ~@work~ 标签分配了字符 ~w~，那么在标签过滤器中输入 ~w~。
+3. 使用快捷键：在标签过滤器中，输入你为标签分配的字符常量作为快捷键。例如，如果你为 ~@work~ 标签分配了字符 ~w~ ，那么在标签过滤器中输入 ~w~ 。
 4. 确认添加：按下 ~Enter~ 键，这将为项目或任务添加相应的标签。
 
-默认情况下，org 模式使用标准的 minibuffer 来输入标签 。然而，emacs 还提供了另外一种叫做 *fast tag selection* 的快速标签选择方式。在这种方式下可以仅用一个键来完成标签的选择和反选。要想使用这种方式，首先要为常使用的标签分配一个唯一字符。这个字符可以在 '.*emacs*' 中通过配置 *org-tag-alist* 来设置。比如，需要在很多文件中为很多项添加 '*:home:*' 标签。在这种情况下，可以这样设置：
+默认情况下，org 模式使用标准的 minibuffer 来输入标签 。然而，emacs 还提供了另外一种叫做 *fast tag selection* 的快速标签选择方式。在这种方式下可以仅用一个键来完成标签的选择和反选。要想使用这种方式，首先要为常使用的标签分配一个唯一字符。这个字符可以通过配置 *org-tag-alist* 来设置。比如，需要在很多文件中为很多项添加 '*:home:*' 标签。在这种情况下，可以这样设置：
 
 #+begin_src
 (setq org-tag-alist '(("@work" . ?w) ("@home" . ? h ) ("@laptop" . ?l)))
@@ -313,19 +313,19 @@ Ref：
 
 一定要在最开始先设置好org的默认笔记目录： ~(setq org-directory "~/your/path/org/")~
 
-需要注意的是：对于Doom-Emacs，需要在~(after！org)~里写上关于org的配置来覆盖Doom-Emacs的默认配置。
+需要注意的是：对于Doom-Emacs，需要在 ~(after！org)~ 里写上关于org的配置来覆盖Doom-Emacs的默认配置。
 
 如果常规的org-capture参数不足以满足你的需求，这个函数可能对你有帮助：
 
 #+begin_src
-  ;; org-capture支持自定义函数，通过function来执行
-  (defun my-org-goto-last-todo-headline ()
+;; org-capture支持自定义函数，通过function来执行
+(defun my-org-goto-last-todo-headline ()
     "Move point to the last headline in file matching \"* Notes\"."
     (end-of-buffer)
     (re-search-backward "\\* TODOs"))
-  (add-to-list 'org-capture-templates
-               '("t" "Task" entry (file+function "~/Vandee/pkm/org/Journal.org"
-                                                 my-org-goto-last-todo-headline)
+(add-to-list 'org-capture-templates
+            '("t" "Task" entry (file+function "~/Vandee/pkm/org/Journal.org"
+                                                my-org-goto-last-todo-headline)
 #+end_src
 
 
@@ -399,15 +399,15 @@ Ref：
 
 也不是必须，只需要解决双链的查看就可以了。
 
-org-roam也有它的capture，可以直接生成org笔记。而org-roam的「 node-insert 」可以快速在文档里直接插入新的笔记。与常规的org-mode~.org~文件不同的是，它可以通过带id的node「 节点 」链接来实现org-mode里的双链功能。每一个org-roam笔记都有唯一的id。
+org-roam也有它的capture，可以直接生成org笔记。而org-roam的「 node-insert 」可以快速在文档里直接插入新的笔记。与常规的org-mode ~.org~ 文件不同的是，它可以通过带id的node「 节点 」链接来实现org-mode里的双链功能。每一个org-roam笔记都有唯一的id。
 
-其他属性和使用基本与org-mode一致，也是生成~.org~文件。同样也需要配置org-roam的capture-templates。原来用org-roam创建Journal日志文件，现在已经用org-capture替代。
+其他属性和使用基本与org-mode一致，也是生成 ~.org~ 文件。同样也需要配置org-roam的capture-templates。原来用org-roam创建Journal日志文件，现在已经用org-capture替代。
 
-org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大纲结构视图，对于我来说用起来很亲切。如果你觉得org-mode可读性不强，那么org-roam-ui一定会让你喜欢。org-roam-ui是在浏览器里通过~org-roam-protocol~访问，需要在配置加上~(require 'org-roam-protocol)~。
+org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大纲结构视图，对于我来说用起来很亲切。如果你觉得org-mode可读性不强，那么org-roam-ui一定会让你喜欢。org-roam-ui是在浏览器里通过 ~org-roam-protocol~ 访问，需要在配置加上 ~(require 'org-roam-protocol)~ 。
 
 同样也需要在最开始设置好org-roam笔记的文件夹： ~(setq org-roam-directory "~/your/roam/directory/")~
 
-有一个坑，org-roam会自动生成一个~.orgids~文件来记录生成的每个org-roam笔记的id，如果不设置会在系统根目录下自动生成。加上 ~(org-id-locations-file "~/your/path/to/.orgids"~)即可。在一开始我一度认为我的电脑是不是哪里出了问题🤣，这个文件冷不丁的就冒出来了，删了重启又有了。官方文档和各大论坛里都没有这个设置，困扰了我很久，还是GPT帮我解决了。
+有一个坑，org-roam会自动生成一个 ~.orgids~ 文件来记录生成的每个org-roam笔记的id，如果不设置会在系统根目录下自动生成。加上 ~(org-id-locations-file "~/your/path/to/.orgids"~)即可。在一开始我一度认为我的电脑是不是哪里出了问题🤣，这个文件冷不丁的就冒出来了，删了重启又有了。官方文档和各大论坛里都没有这个设置，困扰了我很久，还是GPT帮我解决了。
 
 下面是模板和相关配置：
 
@@ -567,8 +567,8 @@ function doExport() {
 
 #+begin_src emacs-lisp
 (org-link-set-parameters "zotero" :follow
-                         (lambda (zpath)
-                           (browse-url
+                        (lambda (zpath)
+                        (browse-url
                             ;; we get the "zotero:"-less url, so we put it back.
                             (format "zotero:%s" zpath))))
 #+end_src
@@ -587,7 +587,7 @@ Ref：
 - [[https://github.com/coldnew/pangu-spacing][coldnew/pangu-spacing：emacs minor-mode用于在中文/日文/韩文和英文字符之间添加空格]]
 - [[https://remacs.fun/posts/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%97%B6%E4%BB%A3%E6%88%91%E4%BB%AC%E6%80%8E%E4%B9%88%E7%8E%A9emacs1.-%E4%B8%AD%E8%8B%B1%E6%96%87%E8%BE%93%E5%85%A5%E6%97%B6%E7%9A%84%E7%A9%BA%E6%A0%BC/][大模型时代我们怎么玩Emacs：1. 中英文输入时的空格 | remacs的世界]] 比pangu实用。
 
-#+begin_src
+#+begin_src emacs-lisp
 ;; 设置标题大小
 (after! org
   (custom-set-faces!
@@ -647,7 +647,7 @@ Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading�
 
 **** 网页摘录和after-reading
 
-利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
+利用org-capture，做剪藏和摘录很方便。现在保存在 ~clip.org~ 文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif]]
@@ -656,7 +656,7 @@ Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading�
 
 下面的代码保存到书签，单击书签就可以了：
 
-#+begin_src
+#+begin_src javascript
 javascript:(function(){var e=document.body;const n=document.head.appendChild(document.createElement("style"));n.textContent=".mainonly { outline: 2px solid red; }";const t=CSS.supports("selector(:has(*))");function o(n){n instanceof HTMLElement&&(e.classList.remove("mainonly"),(e=n).classList.add("mainonly"))}function s(e){o(e.target)}function a(o){if(o.preventDefault(),t)n.textContent=":not(:has(.mainonly), .mainonly, .mainonly *) { display: none; }";else{n.textContent=":not(.mainonly *, .mainonly-ancestor) { display: none; }";var s=e;do{s.classList.add("mainonly-ancestor")}while(s=s.parentElement)}l()}function i(n){n.preventDefault(),n.deltaY<0?o(e.parentElement):o(e.firstElementChild)}function l(){document.removeEventListener("mouseover",s),document.removeEventListener("click",a),document.removeEventListener("wheel",i)}document.addEventListener("mouseover",s),document.addEventListener("click",a),document.addEventListener("wheel",i,{passive:!1}),document.addEventListener("keydown",(function o(s){if("Escape"===s.key&&(n.remove(),document.removeEventListener("keydown",o),l(),e?.classList.remove("mainonly"),!t))for(const e of document.getElementsByClassName("mainonly-ancestor"))e.classList.remove("mainonly-ancestor")}))}())
 #+end_src
 
@@ -698,7 +698,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 **** 输入法设置
 
-由于使用了evil，如果使用系统的输入法，每次在~:w~保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
+由于使用了evil，如果使用系统的输入法，每次在 ~:w~ 保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 
 ***** SIS
 
@@ -706,7 +706,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 之前在配置SIS的时候，可能是mac系统的问题，安装macism之后，Emacs一直弹窗辅助功能设置，最近突然好了。SIS比pyim方便，不需要再内置输入法，可以直接用系统的输入法。
 
-#+begin_src
+#+begin_src emacs-lisp
 (use-package sis
   ;; :hook
   ;; enable the /context/ and /inline region/ mode for specific buffers
@@ -743,13 +743,13 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 [[https://github.com/tumashu/pyim][pyim]] 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 
-可能是由于我用Homebrew安装的Emacs-plus，再加上使用的doomemacs，emacs报错：编译时无法找到 ~emacs-module.h~ ，一直无法在Emacs里加载 [[https://github.com/DogLooksGood/emacs-rime][emacs-rime]] 。Emacs-rime的[[https://github.com/DogLooksGood/emacs-rime/blob/master/INSTALLATION.org#%E7%BC%96%E8%AF%91%E6%97%B6%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0-emacs-moduleh-][文档]]里写加上~(rime-emacs-module-header-root "~/emacs/include")~，我试了所有的Emacs可能的路径都不行。我在Linux-Ubuntu虚拟机里，没有任何问题。
+可能是由于我用Homebrew安装的Emacs-plus，再加上使用的doomemacs，emacs报错：编译时无法找到 ~emacs-module.h~ ，一直无法在Emacs里加载 [[https://github.com/DogLooksGood/emacs-rime][emacs-rime]] 。Emacs-rime的[[https://github.com/DogLooksGood/emacs-rime/blob/master/INSTALLATION.org#%E7%BC%96%E8%AF%91%E6%97%B6%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0-emacs-moduleh-][文档]]里写加上 ~(rime-emacs-module-header-root "~/emacs/include")~ ，我试了所有的Emacs可能的路径都不行。我在Linux-Ubuntu虚拟机里，没有任何问题。
 
 这个输入法是Emacs里内置的，如果没有指定内置的输入法，会使用系统自带的。把内置的输入法设置好，同时也解决了中英混合输入的问题，在写代码的时候，来回切换输入法太磨叽了。
 
 不知道是什么没设置好，每次新打开一个buffer都需要重新激活pyim，暂时先加了一个org-mode的hook，在org-mode里自动激活pyim。
 
-#+begin_src
+#+begin_src emacs-lisp
 (add-hook 'org-mode-hook
           (lambda ()
             (toggle-input-method)
@@ -760,7 +760,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 *pyim 设置* ：
 
-#+begin_src
+#+begin_src emacs-lisp
 ;;输入法 https://github.com/tumashu/pyim
 (global-set-key (kbd "C-\\") 'toggle-input-method)
 (use-package pyim
@@ -1064,7 +1064,7 @@ python -m pip install -U aider-chat
 
 另外在package.el里的安装：
 
-#+begin_src
+#+begin_src emacs-lisp
 (package! aider
   :recipe (:host github :repo "tninja/aider.el" :files ("aider.el")))
 #+end_src
@@ -1133,7 +1133,7 @@ Ref: https://github.com/karthink/gptel?tab=readme-ov-file#include-more-context-w
 #+end_src
 
 
-*** *Kotaemon*
+*** Kotaemon
 
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 
