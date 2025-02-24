@@ -211,7 +211,7 @@ org 也允许多个分组。当光标在这些行上的时候，不要忘了按 
 
 如果要在 *org-tags-alist* 中设置排它的标签组，必需要用 *:startgroup* 和 *:endgroup* 标签对，而不是用大括号。类似的，可以用 *:newline* 来声明一个新行。上面的例子也可以用下面的方式进行设置：
 
-#+begin_src
+#+BEGIN_SRC emacs-lisp
 (setq org-tag-alist '((:startgroup . nil)
                       ("@work" . ?w) ("@home" . ?h)
                       ("@tennisclub" . ?t)
@@ -234,7 +234,7 @@ Ref:
 
 需要注意的是：在最开始设置好org-agenda要包括的文件或文件夹
 
-#+begin_src
+#+begin_src emacs-lisp
 ;; 单独的文件
 (setq org-agenda-files '("~/your/path/to/1.org" "~/your/path/to/2.org"))
 ;; 文件夹
@@ -317,7 +317,7 @@ Ref：
 
 如果常规的org-capture参数不足以满足你的需求，这个函数可能对你有帮助：
 
-#+begin_src
+#+begin_src emacs-lisp
 ;; org-capture支持自定义函数，通过function来执行
 (defun my-org-goto-last-todo-headline ()
     "Move point to the last headline in file matching \"* Notes\"."
@@ -332,7 +332,7 @@ Ref：
 
 下面是org-capture的模板和相关配置：
 
-#+begin_src
+#+begin_src emacs-lisp
 (after! org
   ;; (server-start)
   ;; (require 'org-protocol)
@@ -411,7 +411,7 @@ org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大
 
 下面是模板和相关配置：
 
-#+begin_src
+#+begin_src emacs-lisp
 ;; (setq org-roam-dailies-directory "~/Vandee/pkm/Journals/")
 (setq org-export-with-toc nil) ;;禁止生成toc
 (use-package org-roam
@@ -454,7 +454,7 @@ org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大
 
 *org-roam-capture模板分组*
 
-#+begin_src
+#+begin_src emacs-lisp
 ;; org-roam-capture模板分组
 (setq org-roam-capture-templates
       '(
@@ -489,7 +489,7 @@ Ref：
 
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些[[https://orgmode.org/zh-CN/tools.html][工具]] 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 
-#+begin_src
+#+begin_src emacs-lisp
 ;; 当前buffer下，替换markdown的链接和标题格式到org-mode的格式，排除图片的转换、替换代码块格式。
 (defun my-markdown-to-org ()
   (interactive)
@@ -615,8 +615,6 @@ Ref：
 (add-hook 'org-mode-hook
           '(lambda ()
              (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
-
-
 #+end_src
 
 **** Org-protocol
