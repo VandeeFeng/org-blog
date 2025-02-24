@@ -812,8 +812,8 @@ Ref：
 ***** RIME
 
 #+attr_html: :alt :class img :width 50% :height 50%
-[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-07-03%2018.58.44.png
-]]
+https://pic.vandee.art/images/rime.png
+
 如果说PKM是纸，那么输入法就是笔。
 
 再次强烈推荐 [[https://rime.im/][RIME | 中州韻輸入法引擎]]，配合 [[https://github.com/iDvel/rime-ice][iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库]]，多平台多端同步。已经使用了几年，非常巴适，手机端也可以同步配置。
