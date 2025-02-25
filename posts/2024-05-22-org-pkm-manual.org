@@ -286,15 +286,16 @@ Ref:
    | C-S-return | 在当前列表项的内容后面建立一个同级列表项，标记为 "[ ]" | 无列表项时不创建 |
    | M-S-return | 在当前列表项后建立一个同级列表项，标记为 "[ ]"       |               |
 
-   使用~shift+← →方向键~也可以快速更改TODO的状态。
+   使用 ~shift+← →方向键~ 也可以快速更改TODO的状态。
 
  - TODO sequence
    #+begin_src emacs-lisp
- (setq org-todo-keywords
-          '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d@)")))
-    (setq org-log-done 'time) ;; 每次当你将一个项从 TODO (not-done) 状态变成任意的 DONE 状态时，那么，它就会自动在标题的下面插入一行下面的内容：CLOSED: [timestamp]
-   #+end_src
 
+   (setq org-todo-keywords
+         '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d@)")))
+   (setq org-log-done 'time) ;; 每次当你将一个项从 TODO (not-done) 状态变成任意的 DONE 状态时，那么，它就会自动在标题的下面插入一行下面的内容：CLOSED: [timestamp]
+
+  #+end_src
 
 Ref：
 
@@ -554,12 +555,12 @@ Ref：[[https://orgmode.org/manual/Exporting.html][Exporting (The Org Manual)]]�
 }
 
 function doExport() {
-	var item;
-	while(item = Zotero.nextItem()) {
-		Zotero.write("zotero://select/items/");
-		var library_id = item.libraryID ? item.libraryID : 0;
-		Zotero.write(library_id+"_"+item.key);
-	}
+        var item;
+        while(item = Zotero.nextItem()) {
+                Zotero.write("zotero://select/items/");
+                var library_id = item.libraryID ? item.libraryID : 0;
+                Zotero.write(library_id+"_"+item.key);
+        }
 }
 #+end_src
 
