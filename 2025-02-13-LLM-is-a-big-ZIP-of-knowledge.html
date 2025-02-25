@@ -1,267 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="是人类的想象能力让我们点燃了第一个知识的火把，在大自然严酷的生存法则里进化生存了下来，也是想象让我们不断走出柏拉图之穴探求知识和真理，也是想象让我们在苦难和痛苦中保持着乐观和希望。正是想象，让人类能够创造出属于我们自己的历史，把一个个幻想变成现实。">
-    <link rel="alternate"
-          type="application/rss+xml"
-          href="https://www.vandee.art/rss.xml"
-          title="RSS feed for https://www.vandee.art/">
-    <title>或许可以这样看待大语言模型</title>
-    <meta property="og:title" content="或许可以这样看待大语言模型">
-    <meta property="og:type" content="article" />
-    <meta property="og:description" content="是人类的想象能力让我们点燃了第一个知识的火把，在大自然严酷的生存法则里进化生存了下来，也是想象让我们不断走出柏拉图之穴探求知识和真理，也是想象让我们在苦难和痛苦中保持着乐观和希望。正是想象，让人类能够创造出属于我们自己的历史，把一个个幻想变成现实。">
-    <meta property="og:url" content="https://www.vandee.art/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html">
-    <meta name="author" content="Vandee">
-    <meta name="referrer" content="no-referrer">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="是人类的想象能力让我们点燃了第一个知识的火把，在大自然严酷的生存法则里进化生存了下来，也是想象让我们不断走出柏拉图之穴探求知识和真理，也是想象让我们在苦难和痛苦中保持着乐观和希望。正是想象，让人类能够创造出属于我们自己的历史，把一个个幻想变成现实。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/rss.xml"
+      title="RSS feed for https://www.vandee.art/">
+<title>或许可以这样看待大语言模型</title>
+<meta property="og:title" content="或许可以这样看待大语言模型">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="是人类的想象能力让我们点燃了第一个知识的火把，在大自然严酷的生存法则里进化生存了下来，也是想象让我们不断走出柏拉图之穴探求知识和真理，也是想象让我们在苦难和痛苦中保持着乐观和希望。正是想象，让人类能够创造出属于我们自己的历史，把一个个幻想变成现实。">
+<meta property="og:url" content="https://www.vandee.art/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="no-referrer">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
-    <link rel="stylesheet"
-          href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet"
-          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
 
-    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
-    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
-    <script defer>
-      document.addEventListener("DOMContentLoaded", function () {
-        pangu.spacingPage();
-      });
-    </script>
+       <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
 
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/copyCode.js" defer></script>
-    <script src="assets/js/search.js" defer></script></head>
-  <body>
-    <div id="preamble" class="status">
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
       <header>
-        <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-        <nav>
-          <a href="https://www.vandee.art/">Home</a>
-          <a href="https://x.vandee.art/wiki">Wiki</a>
-          <a href="https://x.vandee.art/photo">Photo</a>
-          <a href="archive.html">Archive</a>
-          <a href="tags.html">Tags</a>
-          <div id="search-container">
-            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-            <i class="fas fa-search search-icon"></i>
-          </div>
-        </nav>
-    </header></div>
-    <div id="content">
-      <div class="post-date">13 Feb 2025</div><h1 class="post-title"><a href="https://www.vandee.art/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html">或许可以这样看待大语言模型</a></h1>
-      <nav id="table-of-contents" role="doc-toc">
-        <h2>Table of Contents</h2>
-        <div id="text-table-of-contents" role="doc-toc">
-          <ul>
-            <li><a href="#orga9a791a">大语言模型是什么</a></li>
-            <li><a href="#org3bf0a62">或许可以这样看待大语言模型</a>
-              <ul>
-                <li><a href="#org8f1ffee">知识库 ZIP</a></li>
-                <li><a href="#orgb6e85e4">自然语言编程</a></li>
-              </ul>
-            </li>
-            <li><a href="#org94200ae">小结</a></li>
-          </ul>
-        </div>
+      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
+      <nav>
+      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://x.vandee.art/wiki">Wiki</a>
+      <a href="https://x.vandee.art/photo">Photo</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
       </nav>
-      <p>
-        最近被 DeepSeek 刷屏了，我其实是有点烦的。这种过度的宣传，不可避免的会蒙蔽少部分看热闹的人，但这就是热度本身。
-      </p>
+      </header></div>
+<div id="content">
+<div class="post-date">13 Feb 2025</div><h1 class="post-title"><a href="https://www.vandee.art/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html">或许可以这样看待大语言模型</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org2cb54c6">大语言模型是什么</a></li>
+<li><a href="#org33f1f8b">或许可以这样看待大语言模型</a>
+<ul>
+<li><a href="#org5ecdc51">知识库 ZIP</a></li>
+<li><a href="#orgf09976e">自然语言编程</a></li>
+</ul>
+</li>
+<li><a href="#org870ac7f">小结</a></li>
+</ul>
+</div>
+</nav>
+<p>
+最近被 DeepSeek 刷屏了，我其实是有点烦的。这种过度的宣传，不可避免的会蒙蔽少部分看热闹的人，但这就是热度本身。
+</p>
 
-      <p>
-        本来是不太想写今天的内容的，但想着或许我这两年自学 AI 的经验可以帮助到哪些和我开始一样对 AI 感兴趣的人。正是因为我是一个 AI 行业的局外人，所以才能有不一样的视角。前几天的 <a href="https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html">Emacs is all you need</a> ，也完全是因为看到咸鱼上有人在炒作 DeepSeek 才写的。今天的也是类似，或许可以分享一些真正有用的东西。
-      </p>
+<p>
+本来是不太想写今天的内容的，但想着或许我这两年自学 AI 的经验可以帮助到哪些和我开始一样对 AI 感兴趣的人。正是因为我是一个 AI 行业的局外人，所以才能有不一样的视角。前几天的 <a href="https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html">Emacs is all you need</a> ，也完全是因为看到咸鱼上有人在炒作 DeepSeek 才写的。今天的也是类似，或许可以分享一些真正有用的东西。
+</p>
 
-      <p>
-        我没有 AI 方面的专业背景，因此也不会涉及到专业的术语，只是一些学习的路径和思路，仅供参考。如果这些内容帮助到了你，我会很开心。
-      </p>
+<p>
+我没有 AI 方面的专业背景，因此也不会涉及到专业的术语，只是一些学习的路径和思路，仅供参考。如果这些内容帮助到了你，我会很开心。
+</p>
 
-      <div id="outline-container-orga9a791a" class="outline-2">
-        <h2 id="orga9a791a">大语言模型是什么</h2>
-        <div class="outline-text-2" id="text-orga9a791a">
-          <p>
-            看完 Andrej Karpathy 大佬的这两个视频：
-          </p>
+<div id="outline-container-org2cb54c6" class="outline-2">
+<h2 id="org2cb54c6">大语言模型是什么</h2>
+<div class="outline-text-2" id="text-org2cb54c6">
+<p>
+看完 Andrej Karpathy 大佬的这两个视频：
+</p>
 
-          <p>
-            <a href="https://www.youtube.com/watch?v=zjkBMFhNj_g&amp;t=1218s">{1hr Talk} Intro to Large Language Models - YouTube</a> , <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI&amp;t=7959s">Deep Dive into LLMs like ChatGPT - YouTube</a>
-          </p>
+<p>
+<a href="https://www.youtube.com/watch?v=zjkBMFhNj_g&amp;t=1218s">{1hr Talk} Intro to Large Language Models - YouTube</a> , <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI&amp;t=7959s">Deep Dive into LLMs like ChatGPT - YouTube</a>
+</p>
 
-          <p>
-            基本上就对大语言模型 LLM 有了宏观上的概念了。
-          </p>
+<p>
+基本上就对大语言模型 LLM 有了宏观上的概念了。
+</p>
 
-          <p>
-            Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https://bbycroft.net/llm</a> ,这个网站用 3D 模型详细的展示了 transformer 架构的原理和过程。
-          </p>
+<p>
+Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https://bbycroft.net/llm</a> ,这个网站用 3D 模型详细的展示了 transformer 架构的原理和过程。
+</p>
 
-          <p>
-            用 AK 大佬的话来说，LLM 就是一个巨大的 ZIP，它汇聚了特定时间点互联网上海量的相对优质的知识和资源。这来源于在 pre-training 预训练过程中的数据集。之后的 post-training 不会改变 LLM 的基础知识（RAG 算是额外知识）。
-          </p>
+<p>
+用 AK 大佬的话来说，LLM 就是一个巨大的 ZIP，它汇聚了特定时间点互联网上海量的相对优质的知识和资源。这来源于在 pre-training 预训练过程中的数据集。之后的 post-training 不会改变 LLM 的基础知识（RAG 算是额外知识）。
+</p>
 
-          <p>
-            本质上，LLM 就是在特定数据集的基础上，通过 transformer 架构神经网络来通过输入预测下一个词（现阶段流行的的大语言模型基本是基于 transformer 架构）。至于 transformer 架构是什么，可以简单理解为一个编码器和一个解码器。所有输入 LLM 的内容，最终会被 LLM 理解为一个个的 token, <a href="https://tiktokenizer.vercel.app/">https://tiktokenizer.vercel.app/</a> 这个网站可以详细的看到输入的内容对于 LLM 来说是什么。
-          </p>
+<p>
+本质上，LLM 就是在特定数据集的基础上，通过 transformer 架构神经网络来通过输入预测下一个词（现阶段流行的的大语言模型基本是基于 transformer 架构）。至于 transformer 架构是什么，可以简单理解为一个编码器和一个解码器。所有输入 LLM 的内容，最终会被 LLM 理解为一个个的 token, <a href="https://tiktokenizer.vercel.app/">https://tiktokenizer.vercel.app/</a> 这个网站可以详细的看到输入的内容对于 LLM 来说是什么。
+</p>
 
-          <p>
-            简单来说就是，一个个的 token 组成 sequence ，LLM 根据输入的内容，预测最可能的输出。平常计费的时候，消耗了多少多少 token ,也就是它。这就是发生在 LLM 对话框后面的简单过程。
-          </p>
+<p>
+简单来说就是，一个个的 token 组成 sequence ，LLM 根据输入的内容，预测最可能的输出。平常计费的时候，消耗了多少多少 token ,也就是它。这就是发生在 LLM 对话框后面的简单过程。
+</p>
 
-          <p>
-            上面的概念都来自与 AK 的视频，不是我自己的理解。
-          </p>
+<p>
+上面的概念都来自与 AK 的视频，不是我自己的理解。
+</p>
 
-          <p>
-            当然 LLM 背后的技术肯定比上面说的复杂，但实现的逻辑其实没那么难理解。
-          </p>
+<p>
+当然 LLM 背后的技术肯定比上面说的复杂，但实现的逻辑其实没那么难理解。
+</p>
 
-          <p>
-            更多的关于 LLM 的基础知识，在 GitHub 上随便搜搜就有大量的合集。
-          </p>
+<p>
+更多的关于 LLM 的基础知识，在 GitHub 上随便搜搜就有大量的合集。
+</p>
 
-          <p>
-            推荐几个：
-          </p>
-          <ul class="org-ul">
-            <li><a href="https://zhuanlan.zhihu.com/p/338817680">Transformer模型图解-知乎</a>，这篇文章很通俗详细的介绍了，transormer架构的原理。</li>
-            <li>李沐深度学习经典、新论文逐段精读 ：<a href="https://github.com/mli/paper-reading">https://github.com/mli/paper-reading</a></li>
-            <li><a href="https://www.youtube.com/watch?v=9-Jl0dxWQs8">How might LLMs store facts | Chapter 7, Deep Learning - YouTube</a> 3Blue1Brown 讲解 LLM 原理的视频，很优秀</li>
-            <li><a href="https://llmbook-zh.github.io/">大语言模型 | LLMBook-zh</a></li>
-            <li><a href="https://github.com/HandsOnLLM/Hands-On-Large-Language-Models">Hands-On-Large-Language-Models</a></li>
-            <li><a href="https://github.com/rasbt/LLMs-from-scratch">GitHub - rasbt/LLMs-from-scratch</a></li>
-            <li><p>
-                这是一个简单的技术科普教程项目，主要聚焦于解释一些有趣的，前沿的技术概念和原理。每篇文章都力求在 5 分钟内阅读完成。
-              </p>
+<p>
+推荐几个：
+</p>
+<ul class="org-ul">
+<li><a href="https://zhuanlan.zhihu.com/p/338817680">Transformer模型图解-知乎</a>，这篇文章很通俗详细的介绍了，transormer架构的原理。</li>
+<li>李沐深度学习经典、新论文逐段精读 ：<a href="https://github.com/mli/paper-reading">https://github.com/mli/paper-reading</a></li>
+<li><a href="https://www.youtube.com/watch?v=9-Jl0dxWQs8">How might LLMs store facts | Chapter 7, Deep Learning - YouTube</a> 3Blue1Brown 讲解 LLM 原理的视频，很优秀</li>
+<li><a href="https://llmbook-zh.github.io/">大语言模型 | LLMBook-zh</a></li>
+<li><a href="https://github.com/HandsOnLLM/Hands-On-Large-Language-Models">Hands-On-Large-Language-Models</a></li>
+<li><a href="https://github.com/rasbt/LLMs-from-scratch">GitHub - rasbt/LLMs-from-scratch</a></li>
+<li><p>
+这是一个简单的技术科普教程项目，主要聚焦于解释一些有趣的，前沿的技术概念和原理。每篇文章都力求在 5 分钟内阅读完成。
+</p>
 
-              <p>
-                <a href="https://github.com/karminski/one-small-step">https://github.com/karminski/one-small-step</a>
-            </p></li>
-          </ul>
-        </div>
-      </div>
-      <div id="outline-container-org3bf0a62" class="outline-2">
-        <h2 id="org3bf0a62">或许可以这样看待大语言模型</h2>
-        <div class="outline-text-2" id="text-org3bf0a62">
-          <p>
-            这部分是我自己的理解，仅仅仅供参考。
-          </p>
-        </div>
+<p>
+<a href="https://github.com/karminski/one-small-step">https://github.com/karminski/one-small-step</a>
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org33f1f8b" class="outline-2">
+<h2 id="org33f1f8b">或许可以这样看待大语言模型</h2>
+<div class="outline-text-2" id="text-org33f1f8b">
+<p>
+这部分是我自己的理解，仅仅仅供参考。
+</p>
+</div>
 
-        <div id="outline-container-org8f1ffee" class="outline-3">
-          <h3 id="org8f1ffee">知识库 ZIP</h3>
-          <div class="outline-text-3" id="text-org8f1ffee">
-            <p>
-              我一直是这么看待大语言模型的，它就是一个巨大的知识库，通过特定的 prompt，就可以拟人化的和这个知识库互动。
-            </p>
+<div id="outline-container-org5ecdc51" class="outline-3">
+<h3 id="org5ecdc51">知识库 ZIP</h3>
+<div class="outline-text-3" id="text-org5ecdc51">
+<p>
+我一直是这么看待大语言模型的，它就是一个巨大的知识库，通过特定的 prompt，就可以拟人化的和这个知识库互动。
+</p>
 
-            <p>
-              因此抛开 LLM 背后复杂的实现，在实际应用上，完全可以把它当作是自己的一个朋友、老师、私人助手。
-            </p>
+<p>
+因此抛开 LLM 背后复杂的实现，在实际应用上，完全可以把它当作是自己的一个朋友、老师、私人助手。
+</p>
 
-            <p>
-              我们不必再去搜索许多专业的知识，因为在预训练的时候，LLM 这个 ZIP 里已经记录了，在预测的时候，它会优先从“记忆” 中回答，这也是容易产生幻觉的原因。当 LLM 在回答自己知识库之外的问题时，因为是预测的最可能的回答，它就会开始胡编乱造，也就是 hallucination。
-            </p>
+<p>
+我们不必再去搜索许多专业的知识，因为在预训练的时候，LLM 这个 ZIP 里已经记录了，在预测的时候，它会优先从“记忆” 中回答，这也是容易产生幻觉的原因。当 LLM 在回答自己知识库之外的问题时，因为是预测的最可能的回答，它就会开始胡编乱造，也就是 hallucination。
+</p>
 
-            <p>
-              针对知识库之外的回答，现在的 LLM 基于 Agent，可以调用 tool 来实现联网的搜索，让回答更加准确。还有 RAG（Retrieval-Augmented Generation 检索增强生成）来 embed（嵌入）特定的文档和知识库。
-            </p>
+<p>
+针对知识库之外的回答，现在的 LLM 基于 Agent，可以调用 tool 来实现联网的搜索，让回答更加准确。还有 RAG（Retrieval-Augmented Generation 检索增强生成）来 embed（嵌入）特定的文档和知识库。
+</p>
 
-            <p>
-              因此，在学习方面应用 LLM 就变成了，用特定的语句（prompt），去检索 LLM 的知识库，用特定的方式和这个朋友来互动。也难怪 OpenAI 会下那么大的力气在 AI 教育上，有了这个知识库，某种程度上，就有了一个 24 小时在线的老师。
-            </p>
+<p>
+因此，在学习方面应用 LLM 就变成了，用特定的语句（prompt），去检索 LLM 的知识库，用特定的方式和这个朋友来互动。也难怪 OpenAI 会下那么大的力气在 AI 教育上，有了这个知识库，某种程度上，就有了一个 24 小时在线的老师。
+</p>
 
-            <p>
-              这和看书其实没太大差别，只是从用手去翻书变成了用 prompt 检索问答。
-            </p>
-          </div>
-        </div>
-        <div id="outline-container-orgb6e85e4" class="outline-3">
-          <h3 id="orgb6e85e4">自然语言编程</h3>
-          <div class="outline-text-3" id="text-orgb6e85e4">
-            <p>
-              要说 LLM 在最开始对那个行业的冲击最大，那一定是程序员。简单来说，现在不必要必须掌握编程语言，在 LLM 的帮助下，就可以用自然语言进行编程。
-            </p>
+<p>
+这和看书其实没太大差别，只是从用手去翻书变成了用 prompt 检索问答。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf09976e" class="outline-3">
+<h3 id="orgf09976e">自然语言编程</h3>
+<div class="outline-text-3" id="text-orgf09976e">
+<p>
+要说 LLM 在最开始对那个行业的冲击最大，那一定是程序员。简单来说，现在不必要必须掌握编程语言，在 LLM 的帮助下，就可以用自然语言进行编程。
+</p>
 
-            <p>
-              因此，我也一直把 LLM 看作是一个新的编程语言。
-            </p>
+<p>
+因此，我也一直把 LLM 看作是一个新的编程语言。
+</p>
 
-            <p>
-              对于普通人来说，编程可以解决什么问题呢？
-            </p>
+<p>
+对于普通人来说，编程可以解决什么问题呢？
+</p>
 
-            <p>
-              如果说,编程的本质是将人类解决问题的思维（算法）转化为计算机可以执行的指令,赋予机器理解并执行复杂任务的能力,那么，LLM 极大的降低了这个过程的门槛。
-            </p>
+<p>
+如果说,编程的本质是将人类解决问题的思维（算法）转化为计算机可以执行的指令,赋予机器理解并执行复杂任务的能力,那么，LLM 极大的降低了这个过程的门槛。
+</p>
 
-            <p>
-              我们现在的生活已经离不开互联网，更加离不开依附在互联网上的各种软件和服务，而这些都离不开计算机编程。
-            </p>
+<p>
+我们现在的生活已经离不开互联网，更加离不开依附在互联网上的各种软件和服务，而这些都离不开计算机编程。
+</p>
 
-            <p>
-              在 iPhone 上通过快捷指令截图识别内容、四象限日程提醒、新闻聚合筛选自己感兴趣的内容等等这些自定义的功能，在 LLM 的帮助下，普通人一个星期就可以开发出一个简单的 MVP( Minimum Viable Product 最小可行产品 ) 了。对于没有编程经验的人来说，LLM 大大降低了 MVP 开发的技术门槛和时间成本。
-            </p>
+<p>
+在 iPhone 上通过快捷指令截图识别内容、四象限日程提醒、新闻聚合筛选自己感兴趣的内容等等这些自定义的功能，在 LLM 的帮助下，普通人一个星期就可以开发出一个简单的 MVP( Minimum Viable Product 最小可行产品 ) 了。对于没有编程经验的人来说，LLM 大大降低了 MVP 开发的技术门槛和时间成本。
+</p>
 
-            <p>
-              简单说就是，原本需要付费才能有的服务，现在自己动动手就可以平替了。
-            </p>
-          </div>
-        </div>
-      </div>
+<p>
+简单说就是，原本需要付费才能有的服务，现在自己动动手就可以平替了。
+</p>
+</div>
+</div>
+</div>
 
-      <div id="outline-container-org94200ae" class="outline-2">
-        <h2 id="org94200ae">小结</h2>
-        <div class="outline-text-2" id="text-org94200ae">
-          <p>
-            LLM 拓宽了想象力的边界，这是我对 LLM 最简单的理解。
-          </p>
+<div id="outline-container-org870ac7f" class="outline-2">
+<h2 id="org870ac7f">小结</h2>
+<div class="outline-text-2" id="text-org870ac7f">
+<p>
+LLM 拓宽了想象力的边界，这是我对 LLM 最简单的理解。
+</p>
 
-          <p>
-            纵观人类历史的推动和发展，最离不开的就是想象力：从哥白尼的日心说，到爱因斯坦的相对论；从莱特兄弟的飞机到 spaceX；从图灵的图灵机，再到现在的大语言模型。
-          </p>
+<p>
+纵观人类历史的推动和发展，最离不开的就是想象力：从哥白尼的日心说，到爱因斯坦的相对论；从莱特兄弟的飞机到 spaceX；从图灵的图灵机，再到现在的大语言模型。
+</p>
 
-          <p>
-            是人类的想象能力让我们点燃了第一个知识的火把，在大自然严酷的生存法则里进化生存了下来，也是想象让我们不断走出柏拉图之穴探求知识和真理，也是想象让我们在苦难和痛苦中保持着乐观和希望。正是想象，让人类能够创造出属于我们自己的历史，把一个个幻想变成现实。
-          </p>
+<p>
+是人类的想象能力让我们点燃了第一个知识的火把，在大自然严酷的生存法则里进化生存了下来，也是想象让我们不断走出柏拉图之穴探求知识和真理，也是想象让我们在苦难和痛苦中保持着乐观和希望。正是想象，让人类能够创造出属于我们自己的历史，把一个个幻想变成现实。
+</p>
 
-          <p>
-            LLM 是技术和工具, 决定上限的，始终是我们自身的思维能力。就像武林高手，即使手持柳枝也能削铁如泥。
-          </p>
+<p>
+LLM 是技术和工具, 决定上限的，始终是我们自身的思维能力。就像武林高手，即使手持柳枝也能削铁如泥。
+</p>
 
-          <p>
-            Imagine and creating！对我来说，这是世界上最好玩的事情了。
-          </p>
-        </div>
-      </div>
-      <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-llm.html">LLM</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div></div>
-    <div id="postamble" class="status"><div id="search-results"></div>
+<p>
+Imagine and creating！对我来说，这是世界上最好玩的事情了。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-llm.html">LLM</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>
-          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
-        </p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-        <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
       </a>
 
       <script>
         var mybutton = document.getElementById('top-link');
         window.onscroll = function () {
-          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = 'visible';
-            mybutton.style.opacity = '1';
-          } else {
-            mybutton.style.visibility = 'hidden';
-            mybutton.style.opacity = '0';
-          }
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
         };
-    </script></div>
-  </body>
+      </script></div>
+</body>
 </html>
