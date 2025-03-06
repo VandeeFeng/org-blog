@@ -39,8 +39,8 @@
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
       <nav>
       <a href="https://www.vandee.art/">Home</a>
-      <a href="https://x.vandee.art/wiki">Wiki</a>
-      <a href="https://x.vandee.art/photo">Photo</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
       <a href="tags.html">Tags</a>
       <div id="search-container">
@@ -55,16 +55,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org529b3f5">结合之前的 bookmark-collection</a>
+<li><a href="#orgd3d04f7">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#org6da562f">python</a></li>
-<li><a href="#org3472cd9">workflow</a></li>
+<li><a href="#org8db2f12">python</a></li>
+<li><a href="#org93efaa2">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orgb7f6a06">Readwise highlights</a>
+<li><a href="#orgb5c49e6">Readwise highlights</a>
 <ul>
-<li><a href="#org844d247">python</a></li>
-<li><a href="#org4116087">workflow</a></li>
+<li><a href="#org910c220">python</a></li>
+<li><a href="#org2e084c4">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -74,9 +74,9 @@
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
 
-<div id="outline-container-org529b3f5" class="outline-2">
-<h2 id="org529b3f5">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org529b3f5">
+<div id="outline-container-orgd3d04f7" class="outline-2">
+<h2 id="orgd3d04f7">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orgd3d04f7">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -93,9 +93,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org6da562f" class="outline-3">
-<h3 id="org6da562f">python</h3>
-<div class="outline-text-3" id="text-org6da562f">
+<div id="outline-container-org8db2f12" class="outline-3">
+<h3 id="org8db2f12">python</h3>
+<div class="outline-text-3" id="text-org8db2f12">
 <div class="org-src-container">
 <pre class="src src-python">import os
 import re
@@ -191,9 +191,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org3472cd9" class="outline-3">
-<h3 id="org3472cd9">workflow</h3>
-<div class="outline-text-3" id="text-org3472cd9">
+<div id="outline-container-org93efaa2" class="outline-3">
+<h3 id="org93efaa2">workflow</h3>
+<div class="outline-text-3" id="text-org93efaa2">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Save Bookmark to Readwise
@@ -234,17 +234,17 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-orgb7f6a06" class="outline-2">
-<h2 id="orgb7f6a06">Readwise highlights</h2>
-<div class="outline-text-2" id="text-orgb7f6a06">
+<div id="outline-container-orgb5c49e6" class="outline-2">
+<h2 id="orgb5c49e6">Readwise highlights</h2>
+<div class="outline-text-2" id="text-orgb5c49e6">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
 
-<div id="outline-container-org844d247" class="outline-3">
-<h3 id="org844d247">python</h3>
-<div class="outline-text-3" id="text-org844d247">
+<div id="outline-container-org910c220" class="outline-3">
+<h3 id="org910c220">python</h3>
+<div class="outline-text-3" id="text-org910c220">
 <div class="org-src-container">
 <pre class="src src-python">
 import requests
@@ -468,9 +468,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org4116087" class="outline-3">
-<h3 id="org4116087">workflow</h3>
-<div class="outline-text-3" id="text-org4116087">
+<div id="outline-container-org2e084c4" class="outline-3">
+<h3 id="org2e084c4">workflow</h3>
+<div class="outline-text-3" id="text-org2e084c4">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Sync Readwise Articles
