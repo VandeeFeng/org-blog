@@ -44,9 +44,40 @@ https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif
 
 * 搜索
 一般的搜索直接用 DuckDuckGo 。再就是自己改了一下的 [[https://github.com/VandeeFeng/Gemini-Search][Gemini-Search]] ，部署到 docker 调用 Gemini 的 API 实现类似 Perplexity 的体验。
+
+** 2025-03-08 added
+最近各种 Deep Research 和 Deep Search 大大提升了用 AI 搜索的效率。OpenAI 和 Grok 的深度搜索效果都挺不错的。Deep Research 使用了半个多月，对我来说它最大的作用是针对一定的领域、topic，开拓思路，快速的找到这些问题领域的框架和索引。
+
+强烈推荐下面几个可以自己折腾的：
+
+- node-DeepResearch: 可以自己部署，支持Gemini (latest gemini-2.0-flash) / OpenAI / LocalLLM 做推理模型，用 Jina Reader 搜索和处理网页内容。在需要获取全面但简洁的信息的时候，效果还挺不错的。
+
+  README 的说明也挺有道理：
+
+  #+BEGIN_QUOTE
+  与 OpenAI/Gemini/Perplexity 的“深度研究”不同，我们仅专注于通过我们的迭代过程找到正确的答案。我们不为长篇幅文章进行优化，那是一个完全不同的问题——因此，如果您需要从深度搜索中获得快速、简洁的答案，那么您来对地方了。如果您正在寻找像 OpenAI/Gemini/Perplexity 那样的 AI 生成的长篇报告，那么这不适合您。
+  #+END_QUOTE
+
+  Github: https://github.com/jina-ai/node-DeepResearch/
+
+  Websites: https://search.jina.ai
+
+- deep-research-web-ui: 这个项目是 https://github.com/dzhng/deep-research 的可视化版本，并做了一些改进。联网搜索服务：Tavily (每月 1000 次免费搜索), Firecrawl（支持自部署），支持 OpenAI compatible, SiliconFlow, DeepSeek, OpenRouter, Ollama 。
+
+  Github: https://github.com/AnotiaWang/deep-research-web-ui
+
+- Storm：An LLM-powered knowledge curation system that researches a topic and generates a full-length report with citations.
+
+  STORM 是一个大型语言模型系统，能够根据互联网搜索从零开始撰写类似维基百科的文章。Co-STORM 进一步增强了其功能，使人类能够与大型语言模型系统协作，以支持更符合需求和偏好的信息搜索和知识策划。
+
+  GitHub：https://github.com/stanford-oval/storm
+
+  Websites：https://storm.genie.stanford.edu/
 * 其他工具
 另外要强烈安利 [[https://github.com/nbonamy/witsy][Witsy]] 这个项目，不多介绍了，它就是我到目前为止用过最好用的 LLM 客户端。
 
-Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也是完全没有问题的。该白嫖的行业红利还是要嫖的。
+Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也是完全没有问题的。还可以和 obsidian 这样的知识库 RAG 联动。
+
+该白嫖的行业红利还是要嫖的。
 
 当然我的最爱还是 Emacs。
