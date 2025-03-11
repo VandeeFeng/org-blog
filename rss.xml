@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sat, 08 Mar 2025 19:11:36 +0800</lastBuildDate>
+<lastBuildDate>Tue, 11 Mar 2025 18:25:03 +0800</lastBuildDate>
 <item>
   <title><![CDATA[或许可以这样看待大语言模型]]></title>
   <description><![CDATA[
@@ -12,14 +12,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5dd5c4a">大语言模型是什么</a></li>
-<li><a href="#org43ace5e">或许可以这样看待大语言模型</a>
+<li><a href="#org5e4d9bc">大语言模型是什么</a></li>
+<li><a href="#org48843d0">或许可以这样看待大语言模型</a>
 <ul>
-<li><a href="#org872ee61">知识库 ZIP</a></li>
-<li><a href="#orga34f069">自然语言编程</a></li>
+<li><a href="#org78ee0f2">知识库 ZIP</a></li>
+<li><a href="#orgeb7ab4a">自然语言编程</a></li>
 </ul>
 </li>
-<li><a href="#orgc3a5b5e">小结</a></li>
+<li><a href="#org8f9805c">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -35,9 +35,9 @@
 我没有 AI 方面的专业背景，因此也不会涉及到专业的术语，只是一些学习的路径和思路，仅供参考。如果这些内容帮助到了你，我会很开心。
 </p>
 
-<div id="outline-container-org5dd5c4a" class="outline-2">
-<h2 id="org5dd5c4a">大语言模型是什么</h2>
-<div class="outline-text-2" id="text-org5dd5c4a">
+<div id="outline-container-org5e4d9bc" class="outline-2">
+<h2 id="org5e4d9bc">大语言模型是什么</h2>
+<div class="outline-text-2" id="text-org5e4d9bc">
 <p>
 看完 Andrej Karpathy 大佬的这两个视频：
 </p>
@@ -83,8 +83,8 @@ Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https:/
 </p>
 <ul class="org-ul">
 <li><a href="https://zhuanlan.zhihu.com/p/338817680">Transformer模型图解-知乎</a>，这篇文章很通俗详细的介绍了，transormer架构的原理。</li>
+<li>3Blue1Brown 讲解 LLM 原理的视频，很优秀： <a href="https://www.bilibili.com/video/BV1TZ421j7Ke">【官方双语】直观解释注意力机制，Transformer的核心</a> , <a href="https://www.bilibili.com/video/BV13z421U7cs/">【官方双语】GPT是什么？直观解释Transformer</a> ， <a href="https://www.bilibili.com/video/BV1xmA2eMEFF/">【官方双语】大语言模型的简要解释</a> ，<a href="https://www.youtube.com/watch?v=9-Jl0dxWQs8">How might LLMs store facts | Chapter 7, Deep Learning - YouTube</a></li>
 <li>李沐深度学习经典、新论文逐段精读 ：<a href="https://github.com/mli/paper-reading">https://github.com/mli/paper-reading</a></li>
-<li><a href="https://www.youtube.com/watch?v=9-Jl0dxWQs8">How might LLMs store facts | Chapter 7, Deep Learning - YouTube</a> 3Blue1Brown 讲解 LLM 原理的视频，很优秀</li>
 <li><a href="https://llmbook-zh.github.io/">大语言模型 | LLMBook-zh</a></li>
 <li><a href="https://github.com/HandsOnLLM/Hands-On-Large-Language-Models">Hands-On-Large-Language-Models</a></li>
 <li><a href="https://github.com/rasbt/LLMs-from-scratch">GitHub - rasbt/LLMs-from-scratch</a></li>
@@ -98,17 +98,17 @@ Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https:/
 </ul>
 </div>
 </div>
-<div id="outline-container-org43ace5e" class="outline-2">
-<h2 id="org43ace5e">或许可以这样看待大语言模型</h2>
-<div class="outline-text-2" id="text-org43ace5e">
+<div id="outline-container-org48843d0" class="outline-2">
+<h2 id="org48843d0">或许可以这样看待大语言模型</h2>
+<div class="outline-text-2" id="text-org48843d0">
 <p>
 这部分是我自己的理解，仅仅仅供参考。
 </p>
 </div>
 
-<div id="outline-container-org872ee61" class="outline-3">
-<h3 id="org872ee61">知识库 ZIP</h3>
-<div class="outline-text-3" id="text-org872ee61">
+<div id="outline-container-org78ee0f2" class="outline-3">
+<h3 id="org78ee0f2">知识库 ZIP</h3>
+<div class="outline-text-3" id="text-org78ee0f2">
 <p>
 我一直是这么看待大语言模型的，它就是一个巨大的知识库，通过特定的 prompt，就可以拟人化的和这个知识库互动。
 </p>
@@ -134,9 +134,9 @@ Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https:/
 </p>
 </div>
 </div>
-<div id="outline-container-orga34f069" class="outline-3">
-<h3 id="orga34f069">自然语言编程</h3>
-<div class="outline-text-3" id="text-orga34f069">
+<div id="outline-container-orgeb7ab4a" class="outline-3">
+<h3 id="orgeb7ab4a">自然语言编程</h3>
+<div class="outline-text-3" id="text-orgeb7ab4a">
 <p>
 要说 LLM 在最开始对那个行业的冲击最大，那一定是程序员。简单来说，现在不必要必须掌握编程语言，在 LLM 的帮助下，就可以用自然语言进行编程。
 </p>
@@ -168,9 +168,9 @@ Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https:/
 </div>
 </div>
 
-<div id="outline-container-orgc3a5b5e" class="outline-2">
-<h2 id="orgc3a5b5e">小结</h2>
-<div class="outline-text-2" id="text-orgc3a5b5e">
+<div id="outline-container-org8f9805c" class="outline-2">
+<h2 id="org8f9805c">小结</h2>
+<div class="outline-text-2" id="text-org8f9805c">
 <p>
 LLM 拓宽了想象力的边界，这是我对 LLM 最简单的理解。
 </p>
