@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Tue, 11 Mar 2025 18:25:03 +0800</lastBuildDate>
+<lastBuildDate>Sat, 15 Mar 2025 09:16:03 +0800</lastBuildDate>
 <item>
   <title><![CDATA[或许可以这样看待大语言模型]]></title>
   <description><![CDATA[
@@ -870,15 +870,15 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org927d162">AI 交互的隐性成本</a>
+<li><a href="#orga10a293">AI 交互的隐性成本</a>
 <ul>
-<li><a href="#orgf5d2f07">Prompt 成本</a></li>
-<li><a href="#org30c07db">试错成本</a></li>
-<li><a href="#orgca939e5">构建成本</a></li>
-<li><a href="#org17742e3">依赖成本</a></li>
+<li><a href="#orgb2f1ce9">Prompt 成本</a></li>
+<li><a href="#orgdb5a5f0">试错成本</a></li>
+<li><a href="#org06f6778">构建成本</a></li>
+<li><a href="#org97014b8">依赖成本</a></li>
 </ul>
 </li>
-<li><a href="#orga6834fe">技术革命</a></li>
+<li><a href="#org206cab9">技术革命</a></li>
 </ul>
 </div>
 </nav>
@@ -889,13 +889,18 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 <p>
 如果把 AI 使用成本分成显性和隐性，对用户而言显性成本的包括：API 的充值，pro 会员的充值等等这些实际的消费。而隐性的成本很少有人提及，它们包括但不限于：学习使用的成本，依赖的成本，还有今天想说说的交互的成本。
 </p>
-<div id="outline-container-org927d162" class="outline-2">
-<h2 id="org927d162">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-org927d162">
+
+<p>
+<a href="https://www.lesswrong.com/posts/tqmQTezvXGFmfSe7f/how-much-are-llms-actually-boosting-real-world-programmer">How Much Are LLMs Actually Boosting Real-World Programmer Productivity? — LessWrong</a> 这篇文章也提及到了这个问题
+</p>
+
+<div id="outline-container-orga10a293" class="outline-2">
+<h2 id="orga10a293">AI 交互的隐性成本</h2>
+<div class="outline-text-2" id="text-orga10a293">
 </div>
-<div id="outline-container-orgf5d2f07" class="outline-3">
-<h3 id="orgf5d2f07">Prompt 成本</h3>
-<div class="outline-text-3" id="text-orgf5d2f07">
+<div id="outline-container-orgb2f1ce9" class="outline-3">
+<h3 id="orgb2f1ce9">Prompt 成本</h3>
+<div class="outline-text-3" id="text-orgb2f1ce9">
 <p>
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
 </p>
@@ -910,9 +915,9 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 </div>
 </div>
 
-<div id="outline-container-org30c07db" class="outline-3">
-<h3 id="org30c07db">试错成本</h3>
-<div class="outline-text-3" id="text-org30c07db">
+<div id="outline-container-orgdb5a5f0" class="outline-3">
+<h3 id="orgdb5a5f0">试错成本</h3>
+<div class="outline-text-3" id="text-orgdb5a5f0">
 <p>
 prompt 又直接影响沟通交互的成本。
 </p>
@@ -934,9 +939,9 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div id="outline-container-orgca939e5" class="outline-3">
-<h3 id="orgca939e5">构建成本</h3>
-<div class="outline-text-3" id="text-orgca939e5">
+<div id="outline-container-org06f6778" class="outline-3">
+<h3 id="org06f6778">构建成本</h3>
+<div class="outline-text-3" id="text-org06f6778">
 <p>
 因此我们自然会往下想到通过多个 AI 协作来提高成功率。
 </p>
@@ -951,9 +956,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org17742e3" class="outline-3">
-<h3 id="org17742e3">依赖成本</h3>
-<div class="outline-text-3" id="text-org17742e3">
+<div id="outline-container-org97014b8" class="outline-3">
+<h3 id="org97014b8">依赖成本</h3>
+<div class="outline-text-3" id="text-org97014b8">
 <p>
 当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
 </p>
@@ -969,9 +974,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-orga6834fe" class="outline-2">
-<h2 id="orga6834fe">技术革命</h2>
-<div class="outline-text-2" id="text-orga6834fe">
+<div id="outline-container-org206cab9" class="outline-2">
+<h2 id="org206cab9">技术革命</h2>
+<div class="outline-text-2" id="text-org206cab9">
 <p>
 利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
 </p>
@@ -10501,6 +10506,173 @@ Morpheus:
   <link>https://www.vandee.art/2023-02-23-blue-or-red.html</link>
   <guid>https://www.vandee.art/2023-02-23-blue-or-red.html</guid>
   <pubDate>Thu, 23 Feb 2023 17:40:00 +0800</pubDate>
+</item>
+<item>
+  <title><![CDATA[我为什么喜欢摄影]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org22d9ba3">关于时间</a></li>
+<li><a href="#org0174ecf">过去和未来</a></li>
+<li><a href="#org462d374">拿起相机</a></li>
+<li><a href="#orge58ead8">光影</a></li>
+</ul>
+</div>
+</nav>
+
+
+<div id="outline-container-org22d9ba3" class="outline-2">
+<h2 id="org22d9ba3">关于时间</h2>
+<div class="outline-text-2" id="text-org22d9ba3">
+<p>
+这是一个亘古不变，困扰着人类永恒的话题，和爱情一样。
+</p>
+
+<p>
+如此神秘，又让人捉摸不透。只知道，自己会永远深陷其中，却又无法得出它的法则，摸不透它的脾气。
+</p>
+
+<p>
+物理学上时间的定义：（copy度娘）
+“时间（Time）是物质的永恒运动、变化的持续性、顺序性的表现，包含时刻和时段两个概念。时间是人类用以描述物质运动过程或事件发生过程的一个参数，确定时间，是靠不受外界影响的物质周期变化的规律。以地球自转为基础的时间计量系统称为世界时系统。时、日、月、年、世纪的时间计量属天文学中的历法范畴。时间是物理学中的七个基本物理量之一，符号为t。在国际单位制（SI）中，时间的基本单位是秒，符号为s‘’
+</p>
+
+<p>
+这样描述，难免会显得冷血严肃。
+</p>
+
+<p>
+但事实就是如此，我更喜欢说的简单些：时间是我们存在的一种最简单直接的证明。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org0174ecf" class="outline-2">
+<h2 id="org0174ecf">过去和未来</h2>
+<div class="outline-text-2" id="text-org0174ecf">
+<p>
+对于美好的事物，人们总会怀念。对于美好的时光，人们总想留住。
+</p>
+
+<p>
+总觉得它们流逝的太快，时间过得太匆忙，想尽办法试图去放慢它。
+</p>
+
+<p>
+但时间就是如此的无情，一分就是一分，一秒就是一秒，毫不留情的规整的逝去着。
+</p>
+
+<p>
+当有一天你开始明白：
+</p>
+
+<p>
+过去早已不单单是过去，你为之奋斗者的现在也可能不会变成将来。
+</p>
+
+<p>
+于是，现在正在进行中的分秒，你更倾向于它变成了过去，
+</p>
+
+<p>
+还是说和我现在一样，觉得它一步步的影响着、决定着未来。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org462d374" class="outline-2">
+<h2 id="org462d374">拿起相机</h2>
+<div class="outline-text-2" id="text-org462d374">
+<p>
+于是，某一天，我拿起了相机。
+</p>
+
+<p>
+拍下了我的第一张照片，然后第二张、第三张，
+</p>
+
+<p>
+直到这一张和下一张。
+</p>
+
+<p>
+想去定格那些美好的瞬间，
+</p>
+
+<p>
+将过去的记忆随着时间沉淀，
+</p>
+
+<p>
+延续着那时它们的感觉和滋味。
+</p>
+
+<p>
+似乎那些美好从来没有停止过，
+</p>
+
+<p>
+以它们自己的时间线，依然保持着绝对的生命力，
+</p>
+
+<p>
+舞动着，舞出一条条绝美的生命线。
+</p>
+
+<p>
+不知何时，就又会和现在偶然的相遇。
+</p>
+
+<p>
+纷繁的色彩，明暗错落的光影，几何交错的空间，
+</p>
+
+<p>
+一瞬之间，变幻出无限可能。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge58ead8" class="outline-2">
+<h2 id="orge58ead8">光影</h2>
+<div class="outline-text-2" id="text-orge58ead8">
+<p>
+光影之下，阴阳之中。
+</p>
+
+<p>
+黑白之间，世间百态。
+</p>
+
+<p>
+光是狡猾的时间披上的七彩外衣，
+</p>
+
+<p>
+影是人们内心映射的五味杂陈。
+</p>
+
+<p>
+摄影是关乎光的艺术，
+</p>
+
+<p>
+而光是时间的代言。
+</p>
+
+<p>
+我们的故事，就这样流动在光影之中。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-art.html">Art</a> </div>]]></description>
+  <category><![CDATA[Art]]></category>
+  <link>https://www.vandee.art/2022-07-11-the-reason-why-i-love-photography.html</link>
+  <guid>https://www.vandee.art/2022-07-11-the-reason-why-i-love-photography.html</guid>
+  <pubDate>Mon, 11 Jul 2022 09:12:00 +0800</pubDate>
 </item>
 </channel>
 </rss>

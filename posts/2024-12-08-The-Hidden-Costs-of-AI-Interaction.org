@@ -6,6 +6,9 @@
 从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。AI 真的直接提升了我们的效率，节约了成本么？
 
 如果把 AI 使用成本分成显性和隐性，对用户而言显性成本的包括：API 的充值，pro 会员的充值等等这些实际的消费。而隐性的成本很少有人提及，它们包括但不限于：学习使用的成本，依赖的成本，还有今天想说说的交互的成本。
+
+[[https://www.lesswrong.com/posts/tqmQTezvXGFmfSe7f/how-much-are-llms-actually-boosting-real-world-programmer][How Much Are LLMs Actually Boosting Real-World Programmer Productivity? — LessWrong]] 这篇文章也提及到了这个问题
+
 * AI 交互的隐性成本
 ** Prompt 成本
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
