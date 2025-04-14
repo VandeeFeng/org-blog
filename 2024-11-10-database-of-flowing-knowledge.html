@@ -11,7 +11,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">
 <meta name="author" content="Vandee">
-       <meta name="referrer" content="no-referrer">
+       <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
        <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
@@ -55,30 +55,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc5764db">同步保存到 Readwise</a>
+<li><a href="#org721015f">同步保存到 Readwise</a>
 <ul>
-<li><a href="#orga2c6022">python</a></li>
-<li><a href="#orgd417015">workflow</a></li>
+<li><a href="#org37f0a9e">python</a></li>
+<li><a href="#org5f8ca1d">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org95dc63b">Teable</a>
+<li><a href="#orgf54c32f">Teable</a>
 <ul>
-<li><a href="#org2bbde37">Python</a></li>
-<li><a href="#orgf707817">workflow</a></li>
-<li><a href="#orgdc28ee0">bash</a></li>
+<li><a href="#org45c0a0b">Python</a></li>
+<li><a href="#org82dec88">workflow</a></li>
+<li><a href="#org9510199">bash</a></li>
 </ul>
 </li>
-<li><a href="#org4a733da">PocketBase</a>
+<li><a href="#orgdc3464b">PocketBase</a>
 <ul>
-<li><a href="#org595cf9a">docker 部署到 VPS</a></li>
-<li><a href="#orgb032d1a">Python</a></li>
-<li><a href="#org13020dd">workflow</a></li>
+<li><a href="#org4b52bce">docker 部署到 VPS</a></li>
+<li><a href="#org306bcb8">Python</a></li>
+<li><a href="#orge7cb707">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org6e82250">Readwise highlights</a>
+<li><a href="#org45e134a">Readwise highlights</a>
 <ul>
-<li><a href="#orgd5912d5">python</a></li>
-<li><a href="#orga2515e0">workflow</a></li>
+<li><a href="#org864c60f">python</a></li>
+<li><a href="#org6857c44">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -104,9 +104,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 主要思路：利用 GitHub 为中转站， <code>osmos::memos</code> 插件保存文章，同步保存到 Readwise 进行阅读和高亮，再同步保存到 pocketbase 或 teable 做数据库处理。现在暂时选择了 teable 的方案。
 </p>
 
-<div id="outline-container-orgc5764db" class="outline-2">
-<h2 id="orgc5764db">同步保存到 Readwise</h2>
-<div class="outline-text-2" id="text-orgc5764db">
+<div id="outline-container-org721015f" class="outline-2">
+<h2 id="org721015f">同步保存到 Readwise</h2>
+<div class="outline-text-2" id="text-org721015f">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -123,9 +123,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-orga2c6022" class="outline-3">
-<h3 id="orga2c6022">python</h3>
-<div class="outline-text-3" id="text-orga2c6022">
+<div id="outline-container-org37f0a9e" class="outline-3">
+<h3 id="org37f0a9e">python</h3>
+<div class="outline-text-3" id="text-org37f0a9e">
 <div class="org-src-container">
 <pre class="src src-python">import os
 import re
@@ -221,9 +221,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orgd417015" class="outline-3">
-<h3 id="orgd417015">workflow</h3>
-<div class="outline-text-3" id="text-orgd417015">
+<div id="outline-container-org5f8ca1d" class="outline-3">
+<h3 id="org5f8ca1d">workflow</h3>
+<div class="outline-text-3" id="text-org5f8ca1d">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Save Bookmark to Readwise
@@ -264,9 +264,9 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-org95dc63b" class="outline-2">
-<h2 id="org95dc63b">Teable</h2>
-<div class="outline-text-2" id="text-org95dc63b">
+<div id="outline-container-orgf54c32f" class="outline-2">
+<h2 id="orgf54c32f">Teable</h2>
+<div class="outline-text-2" id="text-orgf54c32f">
 <p>
 在 bookmark-collection 仓库增加两个 secret： <code>TEABLE_TABLE_ID</code> ， <code>TEABLE_TOKEN</code> 。
 </p>
@@ -275,9 +275,9 @@ jobs:
 <code>TEABLE_TABLE_ID</code> 就是要写入表格的 ID，在地址栏的 <code>&amp;tableId=</code> 后面就是 ID 了。 <code>TEABLE_TOKEN</code> 就是 API 。
 </p>
 </div>
-<div id="outline-container-org2bbde37" class="outline-3">
-<h3 id="org2bbde37">Python</h3>
-<div class="outline-text-3" id="text-org2bbde37">
+<div id="outline-container-org45c0a0b" class="outline-3">
+<h3 id="org45c0a0b">Python</h3>
+<div class="outline-text-3" id="text-org45c0a0b">
 <p>
 在 bookmark-summary 里修改 py 脚本：
 </p>
@@ -586,9 +586,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orgf707817" class="outline-3">
-<h3 id="orgf707817">workflow</h3>
-<div class="outline-text-3" id="text-orgf707817">
+<div id="outline-container-org82dec88" class="outline-3">
+<h3 id="org82dec88">workflow</h3>
+<div class="outline-text-3" id="text-org82dec88">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -650,9 +650,9 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-orgdc28ee0" class="outline-3">
-<h3 id="orgdc28ee0">bash</h3>
-<div class="outline-text-3" id="text-orgdc28ee0">
+<div id="outline-container-org9510199" class="outline-3">
+<h3 id="org9510199">bash</h3>
+<div class="outline-text-3" id="text-org9510199">
 <p>
 顺便把 websites 也用 bash 脚本保存在 teable 里了，之前一直用 org-capture，现在太多了不好检索。让 Claude 把之前的列表转换为了 csv 导入到了 teable。
 </p>
@@ -701,9 +701,9 @@ done</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org4a733da" class="outline-2">
-<h2 id="org4a733da">PocketBase</h2>
-<div class="outline-text-2" id="text-org4a733da">
+<div id="outline-container-orgdc3464b" class="outline-2">
+<h2 id="orgdc3464b">PocketBase</h2>
+<div class="outline-text-2" id="text-orgdc3464b">
 <p>
 需要在仓库的 secret 里增加 <code>POCKETBASE_TOKEN</code> 、 <code>POCKETBASE_API</code> 两个secert，填入自己的 pocketbase API 地址和请求头。
 </p>
@@ -736,9 +736,9 @@ second_response = requests.post(
 </div>
 </div>
 
-<div id="outline-container-org595cf9a" class="outline-3">
-<h3 id="org595cf9a">docker 部署到 VPS</h3>
-<div class="outline-text-3" id="text-org595cf9a">
+<div id="outline-container-org4b52bce" class="outline-3">
+<h3 id="org4b52bce">docker 部署到 VPS</h3>
+<div class="outline-text-3" id="text-org4b52bce">
 <div class="org-src-container">
 <pre class="src src-yaml">
 version: "3.7"
@@ -759,9 +759,9 @@ services:
 </div>
 </div>
 </div>
-<div id="outline-container-orgb032d1a" class="outline-3">
-<h3 id="orgb032d1a">Python</h3>
-<div class="outline-text-3" id="text-orgb032d1a">
+<div id="outline-container-org306bcb8" class="outline-3">
+<h3 id="org306bcb8">Python</h3>
+<div class="outline-text-3" id="text-org306bcb8">
 <p>
 修改 bookmark-collection 仓库的 py 脚本：
 </p>
@@ -879,9 +879,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org13020dd" class="outline-3">
-<h3 id="org13020dd">workflow</h3>
-<div class="outline-text-3" id="text-org13020dd">
+<div id="outline-container-orge7cb707" class="outline-3">
+<h3 id="orge7cb707">workflow</h3>
+<div class="outline-text-3" id="text-orge7cb707">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -927,9 +927,9 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-org6e82250" class="outline-2">
-<h2 id="org6e82250">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org6e82250">
+<div id="outline-container-org45e134a" class="outline-2">
+<h2 id="org45e134a">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org45e134a">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
@@ -938,9 +938,9 @@ jobs:
 后面可以直接把 highlights 导入到 pocketbase。
 </p>
 </div>
-<div id="outline-container-orgd5912d5" class="outline-3">
-<h3 id="orgd5912d5">python</h3>
-<div class="outline-text-3" id="text-orgd5912d5">
+<div id="outline-container-org864c60f" class="outline-3">
+<h3 id="org864c60f">python</h3>
+<div class="outline-text-3" id="text-org864c60f">
 <div class="org-src-container">
 <pre class="src src-python">
 import requests
@@ -1164,9 +1164,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orga2515e0" class="outline-3">
-<h3 id="orga2515e0">workflow</h3>
-<div class="outline-text-3" id="text-orga2515e0">
+<div id="outline-container-org6857c44" class="outline-3">
+<h3 id="org6857c44">workflow</h3>
+<div class="outline-text-3" id="text-org6857c44">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Sync Readwise Articles

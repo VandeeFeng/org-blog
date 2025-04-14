@@ -13,7 +13,7 @@
 <meta property="og:description" content="记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。">
 <meta property="og:url" content="https://www.vandee.art/2024-10-28-memos-and-ssl-config.html">
 <meta name="author" content="Vandee">
-       <meta name="referrer" content="no-referrer">
+       <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
        <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
@@ -57,16 +57,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbd0aaf8">起因</a></li>
-<li><a href="#org13ffbdc">Memos</a></li>
-<li><a href="#org5f47328">SSL</a></li>
-<li><a href="#orgadfdf72">Memos 自定义</a>
+<li><a href="#orgf2dc7a4">起因</a></li>
+<li><a href="#orgcbc9650">Memos</a></li>
+<li><a href="#org9ceb4c8">SSL</a></li>
+<li><a href="#orgb653495">Memos 自定义</a>
 <ul>
-<li><a href="#org0d8b66b">自定义 css 和 JavaScript</a></li>
-<li><a href="#orgceca6e2">Memos.top</a></li>
+<li><a href="#org420d6af">自定义 css 和 JavaScript</a></li>
+<li><a href="#orgd17a2a1">Memos.top</a></li>
 </ul>
 </li>
-<li><a href="#org08ba55b">小结</a></li>
+<li><a href="#org358568a">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -74,9 +74,9 @@
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
 
-<div id="outline-container-orgbd0aaf8" class="outline-2">
-<h2 id="orgbd0aaf8">起因</h2>
-<div class="outline-text-2" id="text-orgbd0aaf8">
+<div id="outline-container-orgf2dc7a4" class="outline-2">
+<h2 id="orgf2dc7a4">起因</h2>
+<div class="outline-text-2" id="text-orgf2dc7a4">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -95,9 +95,9 @@
 </div>
 </div>
 
-<div id="outline-container-org13ffbdc" class="outline-2">
-<h2 id="org13ffbdc">Memos</h2>
-<div class="outline-text-2" id="text-org13ffbdc">
+<div id="outline-container-orgcbc9650" class="outline-2">
+<h2 id="orgcbc9650">Memos</h2>
+<div class="outline-text-2" id="text-orgcbc9650">
 <p>
 几个版本的主要特色：
 </p>
@@ -157,9 +157,9 @@ sudo nginx -t # 检查配置是否有问题</pre>
 </div>
 </div>
 
-<div id="outline-container-org5f47328" class="outline-2">
-<h2 id="org5f47328">SSL</h2>
-<div class="outline-text-2" id="text-org5f47328">
+<div id="outline-container-org9ceb4c8" class="outline-2">
+<h2 id="org9ceb4c8">SSL</h2>
+<div class="outline-text-2" id="text-org9ceb4c8">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
@@ -246,13 +246,13 @@ sudo certbot renew --dry-run</pre>
 </div>
 </div>
 
-<div id="outline-container-orgadfdf72" class="outline-2">
-<h2 id="orgadfdf72">Memos 自定义</h2>
-<div class="outline-text-2" id="text-orgadfdf72">
+<div id="outline-container-orgb653495" class="outline-2">
+<h2 id="orgb653495">Memos 自定义</h2>
+<div class="outline-text-2" id="text-orgb653495">
 </div>
-<div id="outline-container-org0d8b66b" class="outline-3">
-<h3 id="org0d8b66b">自定义 css 和 JavaScript</h3>
-<div class="outline-text-3" id="text-org0d8b66b">
+<div id="outline-container-org420d6af" class="outline-3">
+<h3 id="org420d6af">自定义 css 和 JavaScript</h3>
+<div class="outline-text-3" id="text-org420d6af">
 <p>
 适用 0.20.X 以上版本
 </p>
@@ -271,9 +271,9 @@ sudo certbot renew --dry-run</pre>
 </div>
 </div>
 
-<div id="outline-container-orgceca6e2" class="outline-3">
-<h3 id="orgceca6e2">Memos.top</h3>
-<div class="outline-text-3" id="text-orgceca6e2">
+<div id="outline-container-orgd17a2a1" class="outline-3">
+<h3 id="orgd17a2a1">Memos.top</h3>
+<div class="outline-text-3" id="text-orgd17a2a1">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -291,13 +291,13 @@ sudo certbot renew --dry-run</pre>
 </p>
 
 
-<figure id="org0d7af6c">
+<figure id="org6ce6eb0">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org1eabac3">
+<figure id="org2d85272">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -309,9 +309,9 @@ Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top
 </div>
 </div>
 
-<div id="outline-container-org08ba55b" class="outline-2">
-<h2 id="org08ba55b">小结</h2>
-<div class="outline-text-2" id="text-org08ba55b">
+<div id="outline-container-org358568a" class="outline-2">
+<h2 id="org358568a">小结</h2>
+<div class="outline-text-2" id="text-org358568a">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>
