@@ -34,11 +34,13 @@
 
        <script src="assets/js/app.js" defer></script>
        <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
        <script src="assets/js/search.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
       <a href="https://www.vandee.art/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
@@ -57,15 +59,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgad87b46">TiddlyWiki</a>
+<li><a href="#org596a7ea">TiddlyWiki</a>
 <ul>
-<li><a href="#orgdcbd37a">简介</a></li>
-<li><a href="#orgcd8a7d8">10分钟部署一个Wiki笔记本</a></li>
-<li><a href="#orgbee0d9f">功能特性</a></li>
+<li><a href="#orge0d022f">简介</a></li>
+<li><a href="#org06b6273">10分钟部署一个Wiki笔记本</a></li>
+<li><a href="#org147958d">功能特性</a></li>
 </ul>
 </li>
-<li><a href="#org9f37aae">Teable</a></li>
-<li><a href="#orgea9f493">小结</a></li>
+<li><a href="#org6abb8df">Teable</a></li>
+<li><a href="#org991c03f">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -106,9 +108,9 @@ pre-training预训练，fine-turing微调，到现在的热门赛道RAG，都需
 在搜索结构化数据和PostgreSQL的时候，了解到了TiddlyWiki和Teable。
 </p>
 
-<div id="outline-container-orgad87b46" class="outline-2">
-<h2 id="orgad87b46">TiddlyWiki</h2>
-<div class="outline-text-2" id="text-orgad87b46">
+<div id="outline-container-org596a7ea" class="outline-2">
+<h2 id="org596a7ea">TiddlyWiki</h2>
+<div class="outline-text-2" id="text-org596a7ea">
 <p>
 这纯属是一个意外惊喜。一直想做一个类似Andy的<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子笔记</a>页面，非常简洁，又很还原纸张翻页的感觉。没想到在TiddlyWiki里实现了。
 </p>
@@ -118,9 +120,9 @@ pre-training预训练，fine-turing微调，到现在的热门赛道RAG，都需
 </p>
 </div>
 
-<div id="outline-container-orgdcbd37a" class="outline-3">
-<h3 id="orgdcbd37a">简介</h3>
-<div class="outline-text-3" id="text-orgdcbd37a">
+<div id="outline-container-orge0d022f" class="outline-3">
+<h3 id="orge0d022f">简介</h3>
+<div class="outline-text-3" id="text-orge0d022f">
 <p>
 TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方的host服务、第三方的发行版等等。
 </p>
@@ -135,9 +137,9 @@ TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方�
 </div>
 </div>
 
-<div id="outline-container-orgcd8a7d8" class="outline-3">
-<h3 id="orgcd8a7d8">10分钟部署一个Wiki笔记本</h3>
-<div class="outline-text-3" id="text-orgcd8a7d8">
+<div id="outline-container-org06b6273" class="outline-3">
+<h3 id="org06b6273">10分钟部署一个Wiki笔记本</h3>
+<div class="outline-text-3" id="text-org06b6273">
 <p>
 <b>GitHub:</b>
 </p>
@@ -174,9 +176,9 @@ TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方�
 </div>
 </div>
 
-<div id="outline-container-orgbee0d9f" class="outline-3">
-<h3 id="orgbee0d9f">功能特性</h3>
-<div class="outline-text-3" id="text-orgbee0d9f">
+<div id="outline-container-org147958d" class="outline-3">
+<h3 id="org147958d">功能特性</h3>
+<div class="outline-text-3" id="text-org147958d">
 <p>
 TiddlyWiki有许多主题模板和插件。文件支持TiddlyWiki格式、JavaScript等等默认格式，装了插件之后就可以支持Markdown了。
 </p>
@@ -200,9 +202,9 @@ TiddlyWiki有许多主题模板和插件。文件支持TiddlyWiki格式、JavaSc
 </div>
 </div>
 
-<div id="outline-container-org9f37aae" class="outline-2">
-<h2 id="org9f37aae">Teable</h2>
-<div class="outline-text-2" id="text-org9f37aae">
+<div id="outline-container-org6abb8df" class="outline-2">
+<h2 id="org6abb8df">Teable</h2>
+<div class="outline-text-2" id="text-org6abb8df">
 <p>
 GitHub：<a href="https://github.com/teableio/teable">https://github.com/teableio/teable</a>
 </p>
@@ -233,9 +235,9 @@ Teable是一个开源的GoogleSheets、Airtable，并且提供了PostgreSQL集�
 </div>
 </div>
 
-<div id="outline-container-orgea9f493" class="outline-2">
-<h2 id="orgea9f493">小结</h2>
-<div class="outline-text-2" id="text-orgea9f493">
+<div id="outline-container-org991c03f" class="outline-2">
+<h2 id="org991c03f">小结</h2>
+<div class="outline-text-2" id="text-org991c03f">
 <p>
 我一直没有依赖太多的手段或方法来从形式上实现笔记之间的链接，这是我迭代到现在最核心的笔记原则。就像开头说的Andy的<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子笔记</a>一样，简洁、高效的笔记记录和阅读体验始终是我追求的第一位。
 </p>

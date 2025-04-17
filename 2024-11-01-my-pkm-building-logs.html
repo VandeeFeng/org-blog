@@ -32,11 +32,13 @@
 
        <script src="assets/js/app.js" defer></script>
        <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
        <script src="assets/js/search.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
       <a href="https://www.vandee.art/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
@@ -55,60 +57,60 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4fb1581">前言</a></li>
-<li><a href="#orgac70304">笔记和 PKM 的构建 Log</a>
+<li><a href="#org122a423">前言</a></li>
+<li><a href="#org7a091b9">笔记和 PKM 的构建 Log</a>
 <ul>
-<li><a href="#org6831a77">2022-07-20 开始系统的记笔记</a>
+<li><a href="#org214e9ca">2022-07-20 开始系统的记笔记</a>
 <ul>
-<li><a href="#org00c78b6">Add</a></li>
-<li><a href="#org70845aa">为什么要花这么多心思在记笔记？</a></li>
+<li><a href="#org57bfd5f">Add</a></li>
+<li><a href="#org07b417c">为什么要花这么多心思在记笔记？</a></li>
 </ul>
 </li>
-<li><a href="#org5b4d85e">2023-07-19 又一次知识管理逻辑的完善</a>
+<li><a href="#org15fe60f">2023-07-19 又一次知识管理逻辑的完善</a>
 <ul>
-<li><a href="#orgdfaf645">Add</a></li>
-<li><a href="#org39388bf">知识管理与记录</a></li>
-<li><a href="#org12ffce4">重新折腾obsidian</a></li>
-<li><a href="#orgfcd07d6">知识管理与文档记录的意义</a></li>
+<li><a href="#orgcdb9783">Add</a></li>
+<li><a href="#org14e48c8">知识管理与记录</a></li>
+<li><a href="#org3d1413a">重新折腾obsidian</a></li>
+<li><a href="#org0fadc16">知识管理与文档记录的意义</a></li>
 </ul>
 </li>
-<li><a href="#orgc0d1bac">2023-09-14 obsidian和logseq联用的PKM尝试</a>
+<li><a href="#org021cbc0">2023-09-14 obsidian和logseq联用的PKM尝试</a>
 <ul>
-<li><a href="#orgfe6ed9a">Add</a></li>
-<li><a href="#org950ca02">Logseq</a></li>
-<li><a href="#org0729204">ob和Logseq的简单对比</a></li>
-<li><a href="#org65c7f6a">现在的选择</a></li>
-<li><a href="#orgff0ae5b">Reference</a></li>
+<li><a href="#orgc824e6f">Add</a></li>
+<li><a href="#orge4b3d02">Logseq</a></li>
+<li><a href="#org8bda4be">ob和Logseq的简单对比</a></li>
+<li><a href="#orgfce825d">现在的选择</a></li>
+<li><a href="#org01eb88e">Reference</a></li>
 </ul>
 </li>
-<li><a href="#org4d2075d">2024-04-13 神的编辑器</a>
+<li><a href="#orgb44c140">2024-04-13 神的编辑器</a>
 <ul>
-<li><a href="#org5daef2f">Add</a></li>
-<li><a href="#org4780576">做自己的笔记“软件”</a></li>
-<li><a href="#orgca15d73">Emacs</a></li>
+<li><a href="#org13431b1">Add</a></li>
+<li><a href="#orgc1a542e">做自己的笔记“软件”</a></li>
+<li><a href="#orga7b6ad5">Emacs</a></li>
 </ul>
 </li>
-<li><a href="#org1f2982d">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
+<li><a href="#orga5be5bf">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
 <ul>
-<li><a href="#org72e6a3f">Add</a></li>
-<li><a href="#orgeee5f37">PKM去形式化</a></li>
-<li><a href="#org94e2966">nb</a></li>
-<li><a href="#orgb05d888">去形式化之后的PKM</a></li>
-<li><a href="#orgef5799d">Logseq适配Quartz</a></li>
+<li><a href="#org0abca1b">Add</a></li>
+<li><a href="#org2f655c9">PKM去形式化</a></li>
+<li><a href="#orgc0e0f3a">nb</a></li>
+<li><a href="#orga9dffcf">去形式化之后的PKM</a></li>
+<li><a href="#org5aaf9e8">Logseq适配Quartz</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0a09b8f">Emacs 阶段</a></li>
-<li><a href="#orga11418c">ChangeLog</a></li>
+<li><a href="#orgb5fb0ce">Emacs 阶段</a></li>
+<li><a href="#org587a8c8">ChangeLog</a></li>
 </ul>
 </div>
 </nav>
 
 
-<div id="outline-container-org4fb1581" class="outline-2">
-<h2 id="org4fb1581">前言</h2>
-<div class="outline-text-2" id="text-org4fb1581">
+<div id="outline-container-org122a423" class="outline-2">
+<h2 id="org122a423">前言</h2>
+<div class="outline-text-2" id="text-org122a423">
 <p>
 最近开始 all in Emacs，用 org-mode 写作和生成静态博客页面，顺便对以前的写作再迭代整理一次。
 </p>
@@ -124,16 +126,16 @@
 </div>
 
 
-<div id="outline-container-orgac70304" class="outline-2">
-<h2 id="orgac70304">笔记和 PKM 的构建 Log</h2>
-<div class="outline-text-2" id="text-orgac70304">
+<div id="outline-container-org7a091b9" class="outline-2">
+<h2 id="org7a091b9">笔记和 PKM 的构建 Log</h2>
+<div class="outline-text-2" id="text-org7a091b9">
 <p>
 这部分是之前相关零散文章的整理， <code>Add</code> 是新增，其他部分是之前的原文（部分修改）。
 </p>
 </div>
-<div id="outline-container-org6831a77" class="outline-3">
-<h3 id="org6831a77">2022-07-20 开始系统的记笔记</h3>
-<div class="outline-text-3" id="text-org6831a77">
+<div id="outline-container-org214e9ca" class="outline-3">
+<h3 id="org214e9ca">2022-07-20 开始系统的记笔记</h3>
+<div class="outline-text-3" id="text-org214e9ca">
 <p>
 Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
 </p>
@@ -146,18 +148,18 @@ Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
 Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么执着于markdown格式，因为它简单高效，门槛也低，在网络文本传输有天然的优势。这中间还要解决的一个问题就是本地图片上传。利用Typora和gitee图床就可以完美解决。obsidian配合icloud也可以多平台同步。
 </p>
 </div>
-<div id="outline-container-org00c78b6" class="outline-4">
-<h4 id="org00c78b6">Add</h4>
-<div class="outline-text-4" id="text-org00c78b6">
+<div id="outline-container-org57bfd5f" class="outline-4">
+<h4 id="org57bfd5f">Add</h4>
+<div class="outline-text-4" id="text-org57bfd5f">
 <p>
 最开始接触到做笔记这个概念是从 Notion 开始，那个时候 Notion 正火。随后由于网络问题转到了 markdown 和 obsidian，开始折腾本地笔记。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org70845aa" class="outline-4">
-<h4 id="org70845aa">为什么要花这么多心思在记笔记？</h4>
-<div class="outline-text-4" id="text-org70845aa">
+<div id="outline-container-org07b417c" class="outline-4">
+<h4 id="org07b417c">为什么要花这么多心思在记笔记？</h4>
+<div class="outline-text-4" id="text-org07b417c">
 <p>
 也还是从疫情说起，疫情让协同办公变成刚需。团队协作当中，本地与网络文档同步直接影响工作的效率。而对于个人，记笔记也直接影响信息的处理效率。而信息的输入与存储直接影响了，我们对于外界的认知，对信息的接受与处理，在准确全面的认知之下，思维才有用武之地。
 </p>
@@ -181,9 +183,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-org5b4d85e" class="outline-3">
-<h3 id="org5b4d85e">2023-07-19 又一次知识管理逻辑的完善</h3>
-<div class="outline-text-3" id="text-org5b4d85e">
+<div id="outline-container-org15fe60f" class="outline-3">
+<h3 id="org15fe60f">2023-07-19 又一次知识管理逻辑的完善</h3>
+<div class="outline-text-3" id="text-org15fe60f">
 <p>
 最近刷到了这个文章<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>，重新思考了一下知识管理的逻辑。
 </p>
@@ -192,17 +194,17 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 距离上一次更新正好一年。在当时的方案中，由于还不能实现科学上网自由，obsidian的插件许多都没有，也没想着太折腾，notion的剪藏与数据库实在是方便。但是对于文档记录，本地储存才是一劳永逸的，notion的网络又还是时好时坏。还是决定再折腾一下。
 </p>
 </div>
-<div id="outline-container-orgdfaf645" class="outline-4">
-<h4 id="orgdfaf645">Add</h4>
-<div class="outline-text-4" id="text-orgdfaf645">
+<div id="outline-container-orgcdb9783" class="outline-4">
+<h4 id="orgcdb9783">Add</h4>
+<div class="outline-text-4" id="text-orgcdb9783">
 <p>
 现在互联网已经被 AI 内容污染的不成样了。那个时候开始意识到历史和记录的意义了。
 </p>
 </div>
 </div>
-<div id="outline-container-org39388bf" class="outline-4">
-<h4 id="org39388bf">知识管理与记录</h4>
-<div class="outline-text-4" id="text-org39388bf">
+<div id="outline-container-org14e48c8" class="outline-4">
+<h4 id="org14e48c8">知识管理与记录</h4>
+<div class="outline-text-4" id="text-org14e48c8">
 <p>
 <a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>里提到
 </p>
@@ -243,9 +245,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-org12ffce4" class="outline-4">
-<h4 id="org12ffce4">重新折腾obsidian</h4>
-<div class="outline-text-4" id="text-org12ffce4">
+<div id="outline-container-org3d1413a" class="outline-4">
+<h4 id="org3d1413a">重新折腾obsidian</h4>
+<div class="outline-text-4" id="text-org3d1413a">
 <p>
 正好前段时间Anytype的内测通过了，体验了一下，copy了一下它的设计理念， <b>决定以object-tag-type-relation的逻辑来整理信息，统一对于信息处理，思维上的内在逻辑分类，以及文档管理、记录、输出的外在分类。</b>
 </p>
@@ -284,7 +286,7 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </p>
 
 
-<figure id="org9e10be4">
+<figure id="org343241f">
 <img src="https://s2.loli.net/2023/07/19/EeMl1FW29UHJONI.jpg" class="img" width="50%" height="50%">
 
 </figure>
@@ -299,9 +301,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-orgfcd07d6" class="outline-4">
-<h4 id="orgfcd07d6">知识管理与文档记录的意义</h4>
-<div class="outline-text-4" id="text-orgfcd07d6">
+<div id="outline-container-org0fadc16" class="outline-4">
+<h4 id="org0fadc16">知识管理与文档记录的意义</h4>
+<div class="outline-text-4" id="text-org0fadc16">
 <p>
 <a href="https://www.bilibili.com/video/BV14Y4y1n7YQ/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">【苏星河】全网都在吹的飞书，到底是个什么软件？_哔哩哔哩_bilibili</a>这个视频的最后说的很有道理：
 </p>
@@ -359,9 +361,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-orgc0d1bac" class="outline-3">
-<h3 id="orgc0d1bac">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
-<div class="outline-text-3" id="text-orgc0d1bac">
+<div id="outline-container-org021cbc0" class="outline-3">
+<h3 id="org021cbc0">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
+<div class="outline-text-3" id="text-org021cbc0">
 <p>
 距上一次折腾，不知不觉已经两个月了。在“深入”使用obsidian(后面简称ob)这两个月期间，一个之前暂时搁置的问题逐渐浮现出来：那就是数据储存形式。
 </p>
@@ -378,18 +380,18 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 没有最好的笔记软件，适合自己的才是最好的。
 </p>
 </div>
-<div id="outline-container-orgfe6ed9a" class="outline-4">
-<h4 id="orgfe6ed9a">Add</h4>
-<div class="outline-text-4" id="text-orgfe6ed9a">
+<div id="outline-container-orgc824e6f" class="outline-4">
+<h4 id="orgc824e6f">Add</h4>
+<div class="outline-text-4" id="text-orgc824e6f">
 <p>
 这个时候开始意识到数据的重要性了，以前的纸质记录、现在的电子记录，都是数据。现在的社会是信息和数据的社会，在 AI 介入之后，更是如此。没有最好的笔记软件，只有最适合自己的笔记软件，这句话一直说到现在。Logseq 是一个很好的笔记软件设计，但现在回过头来看，它从设计底层强制性的使用 markdown 语法里的列表格式来实现的块并不是那么容易让所有人接受，只要导入了其他 markdown 文档，就会强制性的加上列表格式。也是从 Logseq 开始，我第一次接触到了 Lisp 语言这个概念。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org950ca02" class="outline-4">
-<h4 id="org950ca02">Logseq</h4>
-<div class="outline-text-4" id="text-org950ca02">
+<div id="outline-container-orge4b3d02" class="outline-4">
+<h4 id="orge4b3d02">Logseq</h4>
+<div class="outline-text-4" id="text-orge4b3d02">
 <p>
 第一次打开Logseq就被UI的设计吸引，这是一种美学上的天然的吸引。和第一次打开Typora的感觉很像。
 </p>
@@ -435,9 +437,9 @@ Logseq的开发者<a href="https://twitter.com/tiensonqin">秦天生</a>也说�
 </div>
 </div>
 
-<div id="outline-container-org0729204" class="outline-4">
-<h4 id="org0729204">ob和Logseq的简单对比</h4>
-<div class="outline-text-4" id="text-org0729204">
+<div id="outline-container-org8bda4be" class="outline-4">
+<h4 id="org8bda4be">ob和Logseq的简单对比</h4>
+<div class="outline-text-4" id="text-org8bda4be">
 <p>
 我认为obsidian的生命力来源于社区和插件，与其说用ob不如说是再用它的插件，ob开放了插件API，让爱好者自由发挥。
 </p>
@@ -486,9 +488,9 @@ Logseq：
 </div>
 </div>
 
-<div id="outline-container-org65c7f6a" class="outline-4">
-<h4 id="org65c7f6a">现在的选择</h4>
-<div class="outline-text-4" id="text-org65c7f6a">
+<div id="outline-container-orgfce825d" class="outline-4">
+<h4 id="orgfce825d">现在的选择</h4>
+<div class="outline-text-4" id="text-orgfce825d">
 <p>
 <b>做电子笔记，实际上是在做数据储存和数据处理。</b>
 </p>
@@ -532,9 +534,9 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </div>
 </div>
 
-<div id="outline-container-orgff0ae5b" class="outline-4">
-<h4 id="orgff0ae5b">Reference</h4>
-<div class="outline-text-4" id="text-orgff0ae5b">
+<div id="outline-container-org01eb88e" class="outline-4">
+<h4 id="org01eb88e">Reference</h4>
+<div class="outline-text-4" id="text-org01eb88e">
 <ul class="org-ul">
 <li><a href="https://sspai.com/post/82793">Obsidian技巧：通过多个标签快速定位文件(by TagFolder) - 少数派 (sspai.com)</a></li>
 <li><a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a></li>
@@ -550,21 +552,21 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </div>
 </div>
 
-<div id="outline-container-org4d2075d" class="outline-3">
-<h3 id="org4d2075d">2024-04-13 神的编辑器</h3>
-<div class="outline-text-3" id="text-org4d2075d">
+<div id="outline-container-orgb44c140" class="outline-3">
+<h3 id="orgb44c140">2024-04-13 神的编辑器</h3>
+<div class="outline-text-3" id="text-orgb44c140">
 </div>
-<div id="outline-container-org5daef2f" class="outline-4">
-<h4 id="org5daef2f">Add</h4>
-<div class="outline-text-4" id="text-org5daef2f">
+<div id="outline-container-org13431b1" class="outline-4">
+<h4 id="org13431b1">Add</h4>
+<div class="outline-text-4" id="text-org13431b1">
 <p>
 开始正式使用 Emacs 了，脱离笔记软件，将做笔记这个事从使用工具记录变成了思维概念上的一种习惯，而不是一个行为。
 </p>
 </div>
 </div>
-<div id="outline-container-org4780576" class="outline-4">
-<h4 id="org4780576">做自己的笔记“软件”</h4>
-<div class="outline-text-4" id="text-org4780576">
+<div id="outline-container-orgc1a542e" class="outline-4">
+<h4 id="orgc1a542e">做自己的笔记“软件”</h4>
+<div class="outline-text-4" id="text-orgc1a542e">
 <p>
 在订阅里看到推荐的这篇文章  <a href="https://wiki.heptabase.com/the-roadmap?lang=zh-Hant">My Vision - The Roadmap | Heptabase Public Wiki</a>，大概讲了一下Heptabase 下一步的Roadmap，还有一些笔记理念上的东西。Heptabase 有所耳闻，因为订阅的价格一直没有去尝试。
 如同这个文章里说的：
@@ -608,9 +610,9 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </p>
 </div>
 </div>
-<div id="outline-container-orgca15d73" class="outline-4">
-<h4 id="orgca15d73">Emacs</h4>
-<div class="outline-text-4" id="text-orgca15d73">
+<div id="outline-container-orga7b6ad5" class="outline-4">
+<h4 id="orga7b6ad5">Emacs</h4>
+<div class="outline-text-4" id="text-orga7b6ad5">
 <p>
 回归数据本身，那第一件事就是找到笔和纸，也就是编辑器。
 </p>
@@ -632,7 +634,7 @@ doomemacs的界面更符合我的审美，插件管理起来也挺方便，就�
 </p>
 
 
-<figure id="org6774ebc">
+<figure id="org39895ec">
 <img src="https://s2.loli.net/2024/04/08/7suBLpiKVqDz25a.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -677,13 +679,13 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </div>
 </div>
 
-<div id="outline-container-org1f2982d" class="outline-3">
-<h3 id="org1f2982d">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
-<div class="outline-text-3" id="text-org1f2982d">
+<div id="outline-container-orga5be5bf" class="outline-3">
+<h3 id="orga5be5bf">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
+<div class="outline-text-3" id="text-orga5be5bf">
 </div>
-<div id="outline-container-org72e6a3f" class="outline-4">
-<h4 id="org72e6a3f">Add</h4>
-<div class="outline-text-4" id="text-org72e6a3f">
+<div id="outline-container-org0abca1b" class="outline-4">
+<h4 id="org0abca1b">Add</h4>
+<div class="outline-text-4" id="text-org0abca1b">
 <p>
 从这里开始梳理出了自己 PKM 的原则。也从 nb 了解到了 CLI 笔记工具，开始琢磨用 bash 脚本做笔记了。
 </p>
@@ -693,9 +695,9 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </p>
 </div>
 </div>
-<div id="outline-container-orgeee5f37" class="outline-4">
-<h4 id="orgeee5f37">PKM去形式化</h4>
-<div class="outline-text-4" id="text-orgeee5f37">
+<div id="outline-container-org2f655c9" class="outline-4">
+<h4 id="org2f655c9">PKM去形式化</h4>
+<div class="outline-text-4" id="text-org2f655c9">
 <p>
 书接上回，现在的PKM第一原则是：数据的去形式化和通用性。只基于md文档的通用基础语法，其他功能以不污染文档内容的方式来实现。
 </p>
@@ -710,9 +712,9 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </div>
 </div>
 
-<div id="outline-container-org94e2966" class="outline-4">
-<h4 id="org94e2966">nb</h4>
-<div class="outline-text-4" id="text-org94e2966">
+<div id="outline-container-orgc0e0f3a" class="outline-4">
+<h4 id="orgc0e0f3a">nb</h4>
+<div class="outline-text-4" id="text-orgc0e0f3a">
 <p>
 我愿称其为最强CLI笔记工具！完美匹配我现在的所有需求，设计思路也和我不谋而合，还支持用Emacs做编辑器。虽然Emacs也可以通过自定义函数和插件来复现这些功能，但既然有现成的，就先copy吧🤣。
 </p>
@@ -722,7 +724,7 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </p>
 
 
-<figure id="org5f0dfaf">
+<figure id="org9a5f744">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-05-13_09-54-33.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -733,15 +735,15 @@ macOS /Homebrew安装， <code>brew install xwmx/taps/nb</code> 。nb也提供�
 </div>
 </div>
 
-<div id="outline-container-orgb05d888" class="outline-4">
-<h4 id="orgb05d888">去形式化之后的PKM</h4>
-<div class="outline-text-4" id="text-orgb05d888">
+<div id="outline-container-orga9dffcf" class="outline-4">
+<h4 id="orga9dffcf">去形式化之后的PKM</h4>
+<div class="outline-text-4" id="text-orga9dffcf">
 <p>
 bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 </p>
 
 
-<figure id="org9a6817c">
+<figure id="org0841f0d">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nbnb.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -787,9 +789,9 @@ bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 </p>
 </div>
 </div>
-<div id="outline-container-orgef5799d" class="outline-4">
-<h4 id="orgef5799d">Logseq适配Quartz</h4>
-<div class="outline-text-4" id="text-orgef5799d">
+<div id="outline-container-org5aaf9e8" class="outline-4">
+<h4 id="org5aaf9e8">Logseq适配Quartz</h4>
+<div class="outline-text-4" id="text-org5aaf9e8">
 <p>
 这次在logseq格式转化的时候，几个问题小折腾了一会。
 </p>
@@ -933,9 +935,9 @@ yaml区域的逻辑可以再用yaml库优化，后面再完善这个格式化脚
 </div>
 </div>
 </div>
-<div id="outline-container-org0a09b8f" class="outline-2">
-<h2 id="org0a09b8f">Emacs 阶段</h2>
-<div class="outline-text-2" id="text-org0a09b8f">
+<div id="outline-container-orgb5fb0ce" class="outline-2">
+<h2 id="orgb5fb0ce">Emacs 阶段</h2>
+<div class="outline-text-2" id="text-orgb5fb0ce">
 <p>
 中间使用了 2 个月的 Nvim，还是放不下 Emacs。随后遇到了 <a href="https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html">Tiddlywiki</a> ,然后就到了现在重度使用 Emacs 了：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ， <a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a>。
 </p>
@@ -953,8 +955,8 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </p>
 </div>
 </div>
-<div id="outline-container-orga11418c" class="outline-2">
-<h2 id="orga11418c">ChangeLog</h2>
+<div id="outline-container-org587a8c8" class="outline-2">
+<h2 id="org587a8c8">ChangeLog</h2>
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-blog.html">Blog</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>

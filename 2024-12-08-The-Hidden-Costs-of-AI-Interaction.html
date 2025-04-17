@@ -34,11 +34,13 @@
 
        <script src="assets/js/app.js" defer></script>
        <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
        <script src="assets/js/search.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
       <a href="https://www.vandee.art/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
@@ -57,15 +59,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5b2736e">AI 交互的隐性成本</a>
+<li><a href="#org09f2405">AI 交互的隐性成本</a>
 <ul>
-<li><a href="#orgc67b9c2">Prompt 成本</a></li>
-<li><a href="#orgbc73603">试错成本</a></li>
-<li><a href="#org0adefa9">构建成本</a></li>
-<li><a href="#orgabe25bf">依赖成本</a></li>
+<li><a href="#orgf312bab">Prompt 成本</a></li>
+<li><a href="#orgb175aac">试错成本</a></li>
+<li><a href="#org60ec53b">构建成本</a></li>
+<li><a href="#org5a077b4">依赖成本</a></li>
 </ul>
 </li>
-<li><a href="#org313fd0e">技术革命</a></li>
+<li><a href="#org043a213">技术革命</a></li>
 </ul>
 </div>
 </nav>
@@ -81,13 +83,13 @@
 <a href="https://www.lesswrong.com/posts/tqmQTezvXGFmfSe7f/how-much-are-llms-actually-boosting-real-world-programmer">How Much Are LLMs Actually Boosting Real-World Programmer Productivity? — LessWrong</a> 这篇文章也提及到了这个问题
 </p>
 
-<div id="outline-container-org5b2736e" class="outline-2">
-<h2 id="org5b2736e">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-org5b2736e">
+<div id="outline-container-org09f2405" class="outline-2">
+<h2 id="org09f2405">AI 交互的隐性成本</h2>
+<div class="outline-text-2" id="text-org09f2405">
 </div>
-<div id="outline-container-orgc67b9c2" class="outline-3">
-<h3 id="orgc67b9c2">Prompt 成本</h3>
-<div class="outline-text-3" id="text-orgc67b9c2">
+<div id="outline-container-orgf312bab" class="outline-3">
+<h3 id="orgf312bab">Prompt 成本</h3>
+<div class="outline-text-3" id="text-orgf312bab">
 <p>
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
 </p>
@@ -102,9 +104,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgbc73603" class="outline-3">
-<h3 id="orgbc73603">试错成本</h3>
-<div class="outline-text-3" id="text-orgbc73603">
+<div id="outline-container-orgb175aac" class="outline-3">
+<h3 id="orgb175aac">试错成本</h3>
+<div class="outline-text-3" id="text-orgb175aac">
 <p>
 prompt 又直接影响沟通交互的成本。
 </p>
@@ -126,9 +128,9 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div id="outline-container-org0adefa9" class="outline-3">
-<h3 id="org0adefa9">构建成本</h3>
-<div class="outline-text-3" id="text-org0adefa9">
+<div id="outline-container-org60ec53b" class="outline-3">
+<h3 id="org60ec53b">构建成本</h3>
+<div class="outline-text-3" id="text-org60ec53b">
 <p>
 因此我们自然会往下想到通过多个 AI 协作来提高成功率。
 </p>
@@ -143,9 +145,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-orgabe25bf" class="outline-3">
-<h3 id="orgabe25bf">依赖成本</h3>
-<div class="outline-text-3" id="text-orgabe25bf">
+<div id="outline-container-org5a077b4" class="outline-3">
+<h3 id="org5a077b4">依赖成本</h3>
+<div class="outline-text-3" id="text-org5a077b4">
 <p>
 当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
 </p>
@@ -161,9 +163,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org313fd0e" class="outline-2">
-<h2 id="org313fd0e">技术革命</h2>
-<div class="outline-text-2" id="text-org313fd0e">
+<div id="outline-container-org043a213" class="outline-2">
+<h2 id="org043a213">技术革命</h2>
+<div class="outline-text-2" id="text-org043a213">
 <p>
 利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
 </p>

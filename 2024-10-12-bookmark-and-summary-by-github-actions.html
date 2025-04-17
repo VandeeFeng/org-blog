@@ -34,11 +34,13 @@
 
        <script src="assets/js/app.js" defer></script>
        <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
        <script src="assets/js/search.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
       <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
       <a href="https://www.vandee.art/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
@@ -57,17 +59,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4783292">GitHub 书签</a></li>
-<li><a href="#org367cf39">从GitHub书签到页面</a></li>
+<li><a href="#org445fba3">GitHub 书签</a></li>
+<li><a href="#org2b3f027">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
 
 
 
-<div id="outline-container-org4783292" class="outline-2">
-<h2 id="org4783292">GitHub 书签</h2>
-<div class="outline-text-2" id="text-org4783292">
+<div id="outline-container-org445fba3" class="outline-2">
+<h2 id="org445fba3">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org445fba3">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull's Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -121,7 +123,7 @@ process_changes.py
 </p>
 
 
-<figure id="org470b2c3">
+<figure id="org1ba09b7">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -323,15 +325,15 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org367cf39" class="outline-2">
-<h2 id="org367cf39">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org367cf39">
+<div id="outline-container-org2b3f027" class="outline-2">
+<h2 id="org2b3f027">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org2b3f027">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="orgf4b8bd2">
+<figure id="orgc094eb1">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
