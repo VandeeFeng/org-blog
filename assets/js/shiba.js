@@ -139,18 +139,21 @@ class ShibaAnimator {
         if (this.direction === newDirection || this.isPlayingWithBall) return;
         
         this.direction = newDirection;
-        // Stop for a moment and turn around
         const currentAnimation = this.currentAnimation;
+        
+        // Completely stop movement and animation
+        this.isAnimating = false;
         this.stop();
         
-        // Wait a bit, then turn and continue
         setTimeout(() => {
             this.shibaElement.style.transform = `scaleX(${this.direction})`;
             setTimeout(() => {
-                if (this.isAnimating) return; // Don't restart if already running
-                this.isAnimating = true;
-                this.setAnimation(currentAnimation);
-                this.move();
+                // Only restart if we're not in a stopped state
+                if (!this.isDragging && !this.isPlayingWithBall) {
+                    this.isAnimating = true;
+                    this.setAnimation(currentAnimation);
+                    this.move();
+                }
             }, 300);
         }, 200);
     }
@@ -158,9 +161,9 @@ class ShibaAnimator {
     async move() {
         if (!this.isAnimating || this.isDragging || this.isPlayingWithBall) return;
 
-        // Only update position for movement animations
+        // Only update position for movement animations AND when actively animating
         const isMovementAnimation = ['walk', 'walkFast', 'run'].includes(this.currentAnimation);
-        if (isMovementAnimation) {
+        if (isMovementAnimation && this.isAnimating) {
             const speed = ANIMATION_SPEEDS[this.currentAnimation] * this.direction;
             this.position += speed;
             this.updatePosition();
