@@ -12,7 +12,7 @@ const ANIMATION_DURATIONS = {
     idle: 5000,
     walk: 3000,
     walkFast: 2500,
-    run: 2000,
+    run: 3000,
     lie: 8000,
     swipe: 8000,
     withBall: 3000
@@ -140,6 +140,8 @@ class ShibaAnimator {
         
         this.direction = newDirection;
         const currentAnimation = this.currentAnimation;
+        const lastChangeTime = this.lastAnimationChange; // Store the last change time
+        const timeElapsedInAnimation = Date.now() - lastChangeTime; // Calculate time spent in current animation
         
         // Completely stop movement and animation
         this.isAnimating = false;
@@ -152,6 +154,8 @@ class ShibaAnimator {
                 if (!this.isDragging && !this.isPlayingWithBall) {
                     this.isAnimating = true;
                     this.setAnimation(currentAnimation);
+                    // Set lastAnimationChange to account for the time already spent in animation
+                    this.lastAnimationChange = Date.now() - timeElapsedInAnimation;
                     this.move();
                 }
             }, 300);
