@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sat, 26 Apr 2025 13:40:37 +0800</lastBuildDate>
+<lastBuildDate>Sat, 26 Apr 2025 17:11:39 +0800</lastBuildDate>
 <item>
   <title><![CDATA[The Real Way to Engage with AI Agent]]></title>
   <description><![CDATA[
@@ -12,17 +12,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf5e0606">Intro</a></li>
-<li><a href="#org03a358e">Emacs</a></li>
-<li><a href="#orgaf89400">Nvim</a></li>
-<li><a href="#org46d26c2">小结</a></li>
+<li><a href="#orgeb05a51">Intro</a></li>
+<li><a href="#orgccd3d0e">Emacs</a></li>
+<li><a href="#org1b1bfe8">Nvim</a></li>
+<li><a href="#org16fcd36">小结</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgf5e0606" class="outline-2">
-<h2 id="orgf5e0606">Intro</h2>
-<div class="outline-text-2" id="text-orgf5e0606">
+<div id="outline-container-orgeb05a51" class="outline-2">
+<h2 id="orgeb05a51">Intro</h2>
+<div class="outline-text-2" id="text-orgeb05a51">
 <p>
 OpenAI 最近计划花 30 亿美元<a href="https://www.bloomberg.com/news/articles/2025-04-16/openai-said-to-be-in-talks-to-buy-windsurf-for-about-3-billion">收购 windsurf</a> ，字节也在今年终于发布了 <a href="https://www.trae.ai/">Trae</a> ，这两个都是和 <a href="https://www.cursor.com">Cursor</a> 一样的 AI IDE（集成开发环境Integrated Development Environment）。也是今年模型即产品开始这个概念开始推行，Google 和 OpenAI 从年初到现在陆续放出了很多新的模型。但大模型这玩意太烧钱了，通过推出新模型已经调动不起消费者的热情了，IDE 成了新的赛道。
 </p>
@@ -40,7 +40,7 @@ Cursor 让 <a href="https://en.wikipedia.org/wiki/Vibe_coding">vibe coding</a> �
 </p>
 
 <p>
-现在有很多 AI 套壳产品，比较流行的有 <a href="https://chatwise.app/">ChatWise</a> , <a href="https://cherry-ai.com/">Cherry Studio</a> ，<a href="https://refly.ai/">Refly</a> ，但我还是更喜欢 Emacs 和 Nvim。我一直不太喜欢用过渡态的产品，两头都顾不上。其次，这会有 API 和这些 app 订阅的两次消费。对于中间态的我，也没有很多可以进一步提升效率的功能。
+现在有很多 AI 套壳产品，比较流行的有 <a href="https://chatwise.app/">ChatWise</a> , <a href="https://cherry-ai.com/">Cherry Studio</a> ，<a href="https://refly.ai/">Refly</a> ，但我还是更喜欢 Emacs 和 Nvim。我一直不太喜欢用过渡态的产品，两头都顾不上。它们也没有提供多少可以进一步提升我效率的功能。
 </p>
 
 <p>
@@ -48,17 +48,14 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </p>
 
 <p>
-现在推出的很多 agent 概念产品，我认为都还只是过渡。不如直接上手 Emacs 和 Nvim，它们是可以更直接触及底层的 IDE，也是开始接触 agent 更合适的入口。
+现在推出的很多 agent 概念产品，我认为都还在过渡期。不如直接上手 Emacs 和 Nvim，它们是可以更直接触及底层的 IDE，也是开始接触 agent 更合适的入口。
 </p>
+</div>
+</div>
 
-<p>
-与其用这些 agent 产品分析什么是 agent，不如用 Emacs 或者 Nvim 上手配置一次。
-</p>
-</div>
-</div>
-<div id="outline-container-org03a358e" class="outline-2">
-<h2 id="org03a358e">Emacs</h2>
-<div class="outline-text-2" id="text-org03a358e">
+<div id="outline-container-orgccd3d0e" class="outline-2">
+<h2 id="orgccd3d0e">Emacs</h2>
+<div class="outline-text-2" id="text-orgccd3d0e">
 <p>
 我现在日常用的比较多的就是：<a href="https://github.com/MatthewZMD/aidermacs">aidermacs</a> , <a href="https://github.com/karthink/gptel">gptel</a> , <a href="https://github.com/milanglacier/minuet-ai.el">minuet-ai.el</a> 。
 </p>
@@ -70,24 +67,30 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 <p>
 具体的使用情况在之前的博客里有，就不重复了。
 </p>
+
+
+<figure id="orgad9de90">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
+
+</figure>
 </div>
 </div>
 
-<div id="outline-container-orgaf89400" class="outline-2">
-<h2 id="orgaf89400">Nvim</h2>
-<div class="outline-text-2" id="text-orgaf89400">
+<div id="outline-container-org1b1bfe8" class="outline-2">
+<h2 id="org1b1bfe8">Nvim</h2>
+<div class="outline-text-2" id="text-org1b1bfe8">
 <p>
 <a href="https://github.com/yetone/avante.nvim/">yetone/avante.nvim</a> 是一个 Nvim 插件，可以在 Nvim 里获得类似 cursor 的体验。
 </p>
 
 
-<figure id="orgb744ee1">
+<figure id="org883f325">
 <img src="https://pic.vandee.art/images/nvim.gif" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="orga495198">
+<figure id="orgaceb3ac">
 <img src="https://pic.vandee.art/images/nvim-code.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -95,9 +98,9 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </div>
 
 
-<div id="outline-container-org46d26c2" class="outline-2">
-<h2 id="org46d26c2">小结</h2>
-<div class="outline-text-2" id="text-org46d26c2">
+<div id="outline-container-org16fcd36" class="outline-2">
+<h2 id="org16fcd36">小结</h2>
+<div class="outline-text-2" id="text-org16fcd36">
 <p>
 我的体验下来，极致的 vibe coding 首选还是 cursor。其他同类产品替代不了 cursor 的还是它的 tab 补全和模型调教。它的 tab 就真的像有读心术一样，很准确的知道我下一步想做什么。当然还有它的各种免费破解（支持正版！）
 </p>

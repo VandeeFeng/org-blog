@@ -12,13 +12,12 @@ OpenAI 的这个 30 亿的收购最起码证明了 AI IDE 的重要性。如果�
 
 Cursor 让 [[https://en.wikipedia.org/wiki/Vibe_coding][vibe coding]] 这个概念流行起来，这个概念又推动了 IDE 的竞争和发展。在以前 IDE 就是给开发者写代码用的，但是现在有了大语言模型，IDE 可以直接和 LLM 交互，再加上 RAG、MCP，IDE 其实就是一个 “agent” 的操作台了，也就是 agent 的 agent。通过 [[https://modelcontextprotocol.io/introduction][MCP]](Model Context Protocol) ，IDE 的功能被无限放大。我虽然一直不喜欢 MCP，但它确实又推动了 AI 行业。
 
-现在有很多 AI 套壳产品，比较流行的有 [[https://chatwise.app/][ChatWise]] , [[https://cherry-ai.com/][Cherry Studio]] ，[[https://refly.ai/][Refly]] ，但我还是更喜欢 Emacs 和 Nvim。我一直不太喜欢用过渡态的产品，两头都顾不上。其次，这会有 API 和这些 app 订阅的两次消费。对于中间态的我，也没有很多可以进一步提升效率的功能。
+现在有很多 AI 套壳产品，比较流行的有 [[https://chatwise.app/][ChatWise]] , [[https://cherry-ai.com/][Cherry Studio]] ，[[https://refly.ai/][Refly]] ，但我还是更喜欢 Emacs 和 Nvim。我一直不太喜欢用过渡态的产品，两头都顾不上。它们也没有提供多少可以进一步提升我效率的功能。
 
 AI 迭代的太快了，后面还会出现更多未完成的中间态概念，少数完全由这些概念堆砌起来的热度产品除了会浪费金钱，更主要的是会浪费时间。
 
-现在推出的很多 agent 概念产品，我认为都还只是过渡。不如直接上手 Emacs 和 Nvim，它们是可以更直接触及底层的 IDE，也是开始接触 agent 更合适的入口。
+现在推出的很多 agent 概念产品，我认为都还在过渡期。不如直接上手 Emacs 和 Nvim，它们是可以更直接触及底层的 IDE，也是开始接触 agent 更合适的入口。
 
-与其用这些 agent 产品分析什么是 agent，不如用 Emacs 或者 Nvim 上手配置一次。
 * Emacs
 
 我现在日常用的比较多的就是：[[https://github.com/MatthewZMD/aidermacs][aidermacs]] , [[https://github.com/karthink/gptel][gptel]] , [[https://github.com/milanglacier/minuet-ai.el][minuet-ai.el]] 。
@@ -26,6 +25,9 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 它们基本覆盖了我 90% 的使用需求了。代码补全，项目架构分析，片段问答，都和 Emacs 结合的很舒服。
 
 具体的使用情况在之前的博客里有，就不重复了。
+
+#+attr_html: :alt :class img :width 50% :height 50%
+https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif
 
 * Nvim
 
