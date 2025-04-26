@@ -1,0 +1,48 @@
+#+title: The Real Way to Engage with AI Agent
+#+date: <2025-04-26 11:59>
+#+description: 如果只把 IDE 当作 IDE，那也太看不起 OpenAI 的 30 亿了。
+#+filetags: Ramble
+
+* Intro
+OpenAI 最近计划花 30 亿美元[[https://www.bloomberg.com/news/articles/2025-04-16/openai-said-to-be-in-talks-to-buy-windsurf-for-about-3-billion][收购 windsurf]] ，字节也在今年终于发布了 [[https://www.trae.ai/][Trae]] ，这两个都是和 [[https://www.cursor.com][Cursor]] 一样的 AI IDE（集成开发环境Integrated Development Environment）。也是今年模型即产品开始这个概念开始推行，Google 和 OpenAI 从年初到现在陆续放出了很多新的模型。但大模型这玩意太烧钱了，通过推出新模型已经调动不起消费者的热情了，IDE 成了新的赛道。
+
+OpenAI 的这个 30 亿的收购最起码证明了 AI IDE 的重要性。如果说各种 chat app 是定位普通用户的简单易用的产品，那么 IDE 就是面向开发者的产品。开发者才是使用 API 的大头，那么多模型的 API，怎么让开发者更愿意用自己的呢，最直接的思路就是和 IDE 绑定了吧，就像 Cursor 从推出就默认使用 Claude 一样。
+
+那么，对于普通用户和开发者之间的群体呢，比如说我，就是想更深入的玩玩，IED 也是一个很好的入口。
+
+Cursor 让 [[https://en.wikipedia.org/wiki/Vibe_coding][vibe coding]] 这个概念流行起来，这个概念又推动了 IDE 的竞争和发展。在以前 IDE 就是给开发者写代码用的，但是现在有了大语言模型，IDE 可以直接和 LLM 交互，再加上 RAG、MCP，IDE 其实就是一个 “agent” 的操作台了，也就是 agent 的 agent。通过 [[https://modelcontextprotocol.io/introduction][MCP]](Model Context Protocol) ，IDE 的功能被无限放大。我虽然一直不喜欢 MCP，但它确实又推动了 AI 行业。
+
+现在有很多 AI 套壳产品，比较流行的有 [[https://chatwise.app/][ChatWise]] , [[https://cherry-ai.com/][Cherry Studio]] ，[[https://refly.ai/][Refly]] ，但我还是更喜欢 Emacs 和 Nvim。我一直不太喜欢用过渡态的产品，两头都顾不上。其次，这会有 API 和这些 app 订阅的两次消费。对于中间态的我，也没有很多可以进一步提升效率的功能。
+
+AI 迭代的太快了，后面还会出现更多未完成的中间态概念，少数完全由这些概念堆砌起来的热度产品除了会浪费金钱，更主要的是会浪费时间。
+
+现在推出的很多 agent 概念产品，我认为都还只是过渡。不如直接上手 Emacs 和 Nvim，它们是可以更直接触及底层的 IDE，也是开始接触 agent 更合适的入口。
+
+与其用这些 agent 产品分析什么是 agent，不如用 Emacs 或者 Nvim 上手配置一次。
+* Emacs
+
+我现在日常用的比较多的就是：[[https://github.com/MatthewZMD/aidermacs][aidermacs]] , [[https://github.com/karthink/gptel][gptel]] , [[https://github.com/milanglacier/minuet-ai.el][minuet-ai.el]] 。
+
+它们基本覆盖了我 90% 的使用需求了。代码补全，项目架构分析，片段问答，都和 Emacs 结合的很舒服。
+
+具体的使用情况在之前的博客里有，就不重复了。
+
+* Nvim
+
+[[https://github.com/yetone/avante.nvim/][yetone/avante.nvim]] 是一个 Nvim 插件，可以在 Nvim 里获得类似 cursor 的体验。
+
+#+attr_html: :alt :class img :width 50% :height 50%
+https://pic.vandee.art/images/nvim.gif
+
+#+attr_html: :alt :class img :width 50% :height 50%
+https://pic.vandee.art/images/nvim-code.gif
+
+
+* 小结
+我的体验下来，极致的 vibe coding 首选还是 cursor。其他同类产品替代不了 cursor 的还是它的 tab 补全和模型调教。它的 tab 就真的像有读心术一样，很准确的知道我下一步想做什么。当然还有它的各种免费破解（支持正版！）
+
+AI 套壳产品里的功能，在 IDE 里 90% 都可以实现。如果只把 IDE 当作 IDE，那也太看不起 OpenAI 的 30 亿了。
+
+未来学家托夫勒的《未来的冲击》里提出了一个观点：人类社会将变快。我们生活的根本特征，不再是持久，[[https://www.ruanyifeng.com/blog/2025/04/weekly-issue-346.html][而是短暂]]。
+
+vibe coding 是趋势，我们以后会用上越来越多品质不那么高，甚至是一次性的即抛产品，但我觉得品质反而会更成为核心的竞争力。
