@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sat, 26 Apr 2025 17:11:39 +0800</lastBuildDate>
+<lastBuildDate>Mon, 05 May 2025 11:30:23 +0800</lastBuildDate>
 <item>
   <title><![CDATA[The Real Way to Engage with AI Agent]]></title>
   <description><![CDATA[
@@ -808,21 +808,21 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdc0db27">Intro</a></li>
-<li><a href="#org4a3d43b">信息处理</a>
+<li><a href="#org1bcd178">Intro</a></li>
+<li><a href="#org2bcbe73">信息处理</a>
 <ul>
-<li><a href="#orgae93dbc">被动信息</a></li>
-<li><a href="#org3c6b9fa">主动信息</a></li>
+<li><a href="#org99fbd47">被动信息</a></li>
+<li><a href="#orgb466928">主动信息</a></li>
 </ul>
 </li>
-<li><a href="#orga576509">文章精读</a></li>
-<li><a href="#org4c91921">笔记</a>
+<li><a href="#org97131e0">文章精读</a></li>
+<li><a href="#org68bd59d">笔记</a>
 <ul>
-<li><a href="#org89c36fe">Chipper</a></li>
+<li><a href="#orgf4c20d8">Chipper</a></li>
 </ul>
 </li>
-<li><a href="#orgca079f3">输出</a></li>
-<li><a href="#org7273bd0">小结</a></li>
+<li><a href="#org657e12f">输出</a></li>
+<li><a href="#org2613499">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -842,9 +842,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 因此，我养成了一个习惯，也就是当松弛感出现之后，强迫大脑去习惯新的习惯。在这个过程当中，就好像带上了一个放大镜，那些在习惯之下拙劣的细节被放大。
 </p>
 
-<div id="outline-container-orgdc0db27" class="outline-2">
-<h2 id="orgdc0db27">Intro</h2>
-<div class="outline-text-2" id="text-orgdc0db27">
+<div id="outline-container-org1bcd178" class="outline-2">
+<h2 id="org1bcd178">Intro</h2>
+<div class="outline-text-2" id="text-org1bcd178">
 <p>
 信息很容易被误认为是知识，我们每天会被动和主动的接受到许多信息，会自然的获得一种感觉：我今天又学到了，知道了很多新鲜的东西。但这不是知识，当信息被固定和<a href="https://wiki.vandee.art/#%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86">结构化</a>之后，才可能被称作知识。
 </p>
@@ -859,9 +859,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 </div>
 </div>
 
-<div id="outline-container-org4a3d43b" class="outline-2">
-<h2 id="org4a3d43b">信息处理</h2>
-<div class="outline-text-2" id="text-org4a3d43b">
+<div id="outline-container-org2bcbe73" class="outline-2">
+<h2 id="org2bcbe73">信息处理</h2>
+<div class="outline-text-2" id="text-org2bcbe73">
 <p>
 信息处理部分的目标是：
 </p>
@@ -884,9 +884,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 基于这些就有许多有意思的项目可以做了，例如最近在折腾的，从数据库里检索一个星期之内的信息，做一个简报，用 GitHub action 实现自动化。
 </p>
 </div>
-<div id="outline-container-orgae93dbc" class="outline-3">
-<h3 id="orgae93dbc">被动信息</h3>
-<div class="outline-text-3" id="text-orgae93dbc">
+<div id="outline-container-org99fbd47" class="outline-3">
+<h3 id="org99fbd47">被动信息</h3>
+<div class="outline-text-3" id="text-org99fbd47">
 <p>
 现在我的被动信息获取主要来源于 RSS 订阅，今年开通了 Readwise 的订阅，并在 claude 的帮助下构建了一个信息固定的 workflow：<a href="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">数据库的搭建 - 流动知识检索</a> 、<a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a> 。
 </p>
@@ -898,11 +898,15 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 <p>
 通过渐进式阅读，在迭代高亮标注几次之后，最后在 Emacs 里通过 capture 固定到 <code>clip.org</code> ，作为剪藏的元数据，方便以后的工作流提取。
 </p>
+
+<p>
+在一个开源项目的基础上，修改了一下，搞了一个信息聚合的：<a href="https://github.com/VandeeFeng/wisecrawl/">VandeeFeng/wisecrawl</a> 。ReadWise 今年就不打算用了，全部接入数据库。RSS 阅读器现在使用的是 <a href="https://github.com/electh/nextflux">electh/nextflux</a> 和 <a href="https://github.com/miniflux/v2">miniflux</a> &#x2013;2025-05-05
+</p>
 </div>
 </div>
-<div id="outline-container-org3c6b9fa" class="outline-3">
-<h3 id="org3c6b9fa">主动信息</h3>
-<div class="outline-text-3" id="text-org3c6b9fa">
+<div id="outline-container-orgb466928" class="outline-3">
+<h3 id="orgb466928">主动信息</h3>
+<div class="outline-text-3" id="text-orgb466928">
 <p>
 目前会每天看一看这些网站：
 </p>
@@ -912,6 +916,8 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 <li><a href="https://huggingface.co/papers">Daily Papers - Hugging Face</a></li>
 <li><a href="https://emacs-china.org/">Emacs China</a></li>
 <li><a href="https://trendshift.io/">Trendshift - Explore open-source repositories and find some insights</a></li>
+<li><a href="https://hellogithub.com/en">Interesting open-source community - HelloGitHub</a></li>
+<li><a href="https://linux.do/">LINUX DO - 新的理想型社区</a></li>
 </ul>
 
 <p>
@@ -924,9 +930,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 </div>
 </div>
 </div>
-<div id="outline-container-orga576509" class="outline-2">
-<h2 id="orga576509">文章精读</h2>
-<div class="outline-text-2" id="text-orga576509">
+<div id="outline-container-org97131e0" class="outline-2">
+<h2 id="org97131e0">文章精读</h2>
+<div class="outline-text-2" id="text-org97131e0">
 <p>
 最近用 phidata 和 ollama 构建了一个简单的本地 <a href="https://memo.vandee.art/issue/26">RAG assistant</a> ，可以直接输入文章 url，结合文章内容具体的提问，这样就可以同时对多个相关内容的文章进行系统的提问，效率提升了不少。
 </p>
@@ -945,9 +951,9 @@ AI 善于回答问题，但它不善于提出问题。使用 AI 学习了很长�
 </div>
 </div>
 
-<div id="outline-container-org4c91921" class="outline-2">
-<h2 id="org4c91921">笔记</h2>
-<div class="outline-text-2" id="text-org4c91921">
+<div id="outline-container-org68bd59d" class="outline-2">
+<h2 id="org68bd59d">笔记</h2>
+<div class="outline-text-2" id="text-org68bd59d">
 <p>
 笔记部分是固定结构化知识最核心的一步，<a href="https://wiki.vandee.art/#%E6%89%BE%E5%88%B0%E7%9F%A5%E8%AF%86%E7%9A%84%E7%BC%9D%E9%9A%99">找到知识的缝隙</a>。
 </p>
@@ -973,9 +979,9 @@ supabase 最进又更新了 <a href="https://database.build/">Postgres Sandbox</
 </p>
 </div>
 
-<div id="outline-container-org89c36fe" class="outline-3">
-<h3 id="org89c36fe">Chipper</h3>
-<div class="outline-text-3" id="text-org89c36fe">
+<div id="outline-container-orgf4c20d8" class="outline-3">
+<h3 id="orgf4c20d8">Chipper</h3>
+<div class="outline-text-3" id="text-orgf4c20d8">
 <p>
 Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/TilmanGriesel/chipper</a>
 </p>
@@ -991,9 +997,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </div>
 </div>
 
-<div id="outline-container-orgca079f3" class="outline-2">
-<h2 id="orgca079f3">输出</h2>
-<div class="outline-text-2" id="text-orgca079f3">
+<div id="outline-container-org657e12f" class="outline-2">
+<h2 id="org657e12f">输出</h2>
+<div class="outline-text-2" id="text-org657e12f">
 <p>
 <a href="https://wiki.vandee.art/#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%80%9D%E8%80%83%E8%80%8C%E4%B8%8D%E8%BE%93%E5%87%BA%EF%BC%8C%E4%BD%A0%E5%8F%AA%E6%98%AF%E4%BB%A5%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%9C%A8%E6%80%9D%E8%80%83">如果你思考而不输出，你只是以为自己在思考</a> ，费曼学习法里说的太多了，study in public。
 </p>
@@ -1016,9 +1022,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </ul>
 </div>
 </div>
-<div id="outline-container-org7273bd0" class="outline-2">
-<h2 id="org7273bd0">小结</h2>
-<div class="outline-text-2" id="text-org7273bd0">
+<div id="outline-container-org2613499" class="outline-2">
+<h2 id="org2613499">小结</h2>
+<div class="outline-text-2" id="text-org2613499">
 <p>
 <a href="https://wiki.vandee.art/#%E6%8F%90%E5%8D%87%E5%BD%B1%E5%93%8D%E5%8A%9B">提升影响力</a> ，做一个 <a href="https://wiki.vandee.art/#%E9%92%A5%E5%8C%99%E4%BA%BA(Key%20Man)">钥匙人(Key Man)</a> ，每个人的价值都应该能在不同的体系里得到放大和体现，这样社会平均价值自然会得到提升。
 </p>

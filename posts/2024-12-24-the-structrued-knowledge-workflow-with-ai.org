@@ -36,6 +36,8 @@
 在 Readwise 里阅读 RSS 的推送，用 [[https://github.com/osmoscraft/osmosmemo][osmos::memo]] 书签插件剪藏网页文章，保存到 Readwise 阅读，并同步保存到 teable 的数据库。进一步通过 Github action 生成 [[https://clip.vandee.art/][Vandee's Clip]] 。
 
 通过渐进式阅读，在迭代高亮标注几次之后，最后在 Emacs 里通过 capture 固定到 ~clip.org~ ，作为剪藏的元数据，方便以后的工作流提取。
+
+在一个开源项目的基础上，修改了一下，搞了一个信息聚合的：[[https://github.com/VandeeFeng/wisecrawl/][VandeeFeng/wisecrawl]] 。ReadWise 今年就不打算用了，全部接入数据库。RSS 阅读器现在使用的是 [[https://github.com/electh/nextflux][electh/nextflux]] 和 [[https://github.com/miniflux/v2][miniflux]] --2025-05-05
 ** 主动信息
 目前会每天看一看这些网站：
 - [[https://zeli.app/zh][Zeli - 用中文阅读Hacker News和AI论文]]
@@ -43,6 +45,8 @@
 - [[https://huggingface.co/papers][Daily Papers - Hugging Face]]
 - [[https://emacs-china.org/][Emacs China]]
 - [[https://trendshift.io/][Trendshift - Explore open-source repositories and find some insights]]
+- [[https://hellogithub.com/en][Interesting open-source community - HelloGitHub]]
+- [[https://linux.do/][LINUX DO - 新的理想型社区]]
 
 还有一些自己关注大佬的博客和 GitHub 仓库。
 
