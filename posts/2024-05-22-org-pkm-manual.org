@@ -916,6 +916,10 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 - Emacs里的其他笔记相关使用包
 
+  [[https://github.com/yibie/org-supertag][yibie/org-supertag: Make tag system great again, based on org-mode.]]
+
+  [[https://github.com/meedstrom/org-node][meedstrom/org-node: A notetaking system like Roam using Emacs Org-mode]]
+
   [[https://github.com/jrblevin/deft][jrblevin/deft: Deft for Emacs]]
 
   [[https://github.com/caiorss/org-wiki][caiorss/org-wiki: Wiki for Emacs org-mode built on top of Emacs org-mode.]]
@@ -1173,6 +1177,7 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2024-11-12: 从 DoomEmacs 转向原生 Emacs 自己[[https://github.com/VandeeFeng/emacs.d][配置]]。
 - 2025-02-09: 增加 chipper。
 - 2025-02-13：增加 aidermacs.
+- 2025-05-11: 增加 org-supertag, org-node.
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
