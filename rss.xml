@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/</link>
-<lastBuildDate>Sat, 17 May 2025 13:13:56 +0800</lastBuildDate>
+<lastBuildDate>Sat, 17 May 2025 14:52:34 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Prompt: Another Key to the Compressed World]]></title>
   <description><![CDATA[
@@ -12,16 +12,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1b33366">Intro</a></li>
-<li><a href="#org8673f3f">Keyword 关键字</a></li>
-<li><a href="#orgcbcea84">小结</a></li>
+<li><a href="#org0582c9a">Intro</a></li>
+<li><a href="#org911b261">Keyword 关键字</a></li>
+<li><a href="#org998a0fb">小结</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org1b33366" class="outline-2">
-<h2 id="org1b33366">Intro</h2>
-<div class="outline-text-2" id="text-org1b33366">
+<div id="outline-container-org0582c9a" class="outline-2">
+<h2 id="org0582c9a">Intro</h2>
+<div class="outline-text-2" id="text-org0582c9a">
 <blockquote>
 <p>
 未来能第一个说出来这些「Magic Words」的人，就率先打开了一个新的参数空间。
@@ -41,7 +41,7 @@ LLM 迭代很快，但不管技术怎么迭代，prompt 作为输入的窗口是
 </p>
 
 <p>
-对于普通人来说，我觉得 prompt 是最直接，也最容易掌握的了。
+对于普通人来说，我觉得 prompt 是最直接，也最容易上手的了。
 </p>
 
 <p>
@@ -49,11 +49,7 @@ Prompt <a href="https://zh.wikipedia.org/wiki/%E6%8F%90%E7%A4%BA%E5%B7%A5%E7%A8%
 </p>
 
 <p>
-LLM 是一个概率计算器，它需要通过输入来计算出可能性最大的输出。对不同模型的底层原理越是了解，就越能通过 prompt 发挥出模型的效果。
-</p>
-
-<p>
-但对于普通人来说，这个学习成本太大了。
+LLM 是一个概率计算器，它需要通过输入来计算出可能性最大的输出。对不同模型的底层原理越是了解，就越能通过 prompt 发挥出模型的效果。但对于普通人来说，这个学习成本太大了。
 </p>
 
 <p>
@@ -70,9 +66,9 @@ Chain of Thought (CoT) (思维链提示)，Tree of Thoughts (ToT) (思维树提�
 </div>
 </div>
 
-<div id="outline-container-org8673f3f" class="outline-2">
-<h2 id="org8673f3f">Keyword 关键字</h2>
-<div class="outline-text-2" id="text-org8673f3f">
+<div id="outline-container-org911b261" class="outline-2">
+<h2 id="org911b261">Keyword 关键字</h2>
+<div class="outline-text-2" id="text-org911b261">
 <p>
 AI 善于回答问题，但不善于提出问题。如何提出更好的问题，才使用 AI 工具的关键。
 </p>
@@ -111,7 +107,7 @@ LLM 就是一个概率计算器，我一直以来的用法也就是：让 LLM �
 </p>
 
 <p>
-我们在思考的时候，那个小灯泡亮起来的时候，也就是大脑的神经突触连接了，LLM 的底层原理也是模拟大脑。
+当我们在思考过程中那个小灯泡亮起来的时候，也就是大脑的神经突触连接了，LLM 的底层原理也是模拟大脑。
 </p>
 
 <p>
@@ -135,14 +131,14 @@ LLM 是数据的压缩，它就是一个巨大的 ZIP，prompt 就是解压的�
 </p>
 
 <p>
-我最近正在折腾树莓派，闲鱼上一个也就 500。接入我的 PKM 数据库，连上 LLM，一个简易的个人小助手 JARVIS 就搞定了。视觉识别，语音对话都很好实现。
+我最近在折腾树莓派，闲鱼上一个也就 500。接入我的 PKM 数据库，连上 LLM，一个简易的个人小助手 JARVIS 就搞定了。视觉识别，语音对话都很好实现。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgcbcea84" class="outline-2">
-<h2 id="orgcbcea84">小结</h2>
-<div class="outline-text-2" id="text-orgcbcea84">
+<div id="outline-container-org998a0fb" class="outline-2">
+<h2 id="org998a0fb">小结</h2>
+<div class="outline-text-2" id="text-org998a0fb">
 <p>
 每一次新的技术出现一定会让我们变懒，这也是技术的初衷，让生活变得便利。
 </p>
