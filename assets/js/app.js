@@ -22,50 +22,44 @@ document.addEventListener('DOMContentLoaded', function() {
       return href ? href.substring(1) : null;
   }).filter(id => id); // 过滤掉 null 值
 
-  // 使用更精确的选择器来获取内容区域内的 h2 和 h3 标题
-  const headers = document.querySelectorAll('#content h2:not(.post-title):not(.tags-title), #content h3');
+  // 使用更精确的选择器来获取内容区域内的 h2、h3 和 h4 标题
+  const headers = document.querySelectorAll('#content h2:not(.post-title):not(.tags-title), #content h3, #content h4');
   
   headers.forEach(header => {
-      // 检查标题是否有 ID
       const headerId = header.id;
       if (!headerId) {
           console.log('Header without ID:', header.textContent);
-          return; // 跳过没有 ID 的标题
+          return;
       }
 
-      // 检查这个 ID 是否在目录中存在
       if (tocIds.includes(headerId)) {
-          console.log('Processing header:', headerId);
-          
-          // 保存原始标题的 margin
           const computedStyle = window.getComputedStyle(header);
           const marginTop = computedStyle.marginTop;
           const marginBottom = computedStyle.marginBottom;
           
-          // 创建包装器
           const wrapper = document.createElement('div');
           wrapper.className = 'heading-wrapper';
-          
-          // 应用原始标题的 margin 到包装器
           wrapper.style.marginTop = marginTop;
           wrapper.style.marginBottom = marginBottom;
+          wrapper.style.background = '#fdf6e3';
+          wrapper.style.position = 'sticky';
+          wrapper.style.top = '0';
+          wrapper.style.zIndex = '100';
+          wrapper.style.padding = '0.2em 0';
           
-          // 创建锚点链接
           const anchor = document.createElement('a');
           anchor.className = 'heading-anchor';
           anchor.href = `#${headerId}`;
           anchor.textContent = '#';
           anchor.setAttribute('aria-label', `Link to ${header.textContent}`);
           
-          // 将标题包装在 wrapper 中
           header.parentNode.insertBefore(wrapper, header);
           wrapper.appendChild(header);
           wrapper.appendChild(anchor);
           
-          // 重置标题的 margin（因为现在由 wrapper 控制）
           header.style.margin = '0';
+          header.style.padding = '0';
           
-          // 点击锚点链接时更新 URL
           anchor.addEventListener('click', function(e) {
               e.preventDefault();
               window.location.hash = headerId;
