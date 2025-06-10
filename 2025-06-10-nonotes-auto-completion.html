@@ -59,17 +59,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org43d97a9">TL;DR</a></li>
-<li><a href="#orga0eb2ea">知识的流动性</a></li>
-<li><a href="#org880d876">知识库自动补全</a></li>
-<li><a href="#orga73e117">NoNotes</a></li>
+<li><a href="#orgf10bce8">TL;DR</a></li>
+<li><a href="#org45433fc">知识的流动性</a></li>
+<li><a href="#orgb4f6899">自动补全 VS RAG</a></li>
+<li><a href="#org584cde0">NoNotes</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org43d97a9" class="outline-2">
-<h2 id="org43d97a9">TL;DR</h2>
-<div class="outline-text-2" id="text-org43d97a9">
+<div id="outline-container-orgf10bce8" class="outline-2">
+<h2 id="orgf10bce8">TL;DR</h2>
+<div class="outline-text-2" id="text-orgf10bce8">
 <p>
 NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
 </p>
@@ -81,9 +81,9 @@ NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个�
 </div>
 
 
-<div id="outline-container-orga0eb2ea" class="outline-2">
-<h2 id="orga0eb2ea">知识的流动性</h2>
-<div class="outline-text-2" id="text-orga0eb2ea">
+<div id="outline-container-org45433fc" class="outline-2">
+<h2 id="org45433fc">知识的流动性</h2>
+<div class="outline-text-2" id="text-org45433fc">
 <p>
 在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
 </p>
@@ -129,19 +129,31 @@ Steve Jobs on why thinking without doing is incomplete:
 </div>
 
 
-<div id="outline-container-org880d876" class="outline-2">
-<h2 id="org880d876">知识库自动补全</h2>
-<div class="outline-text-2" id="text-org880d876">
+<div id="outline-container-orgb4f6899" class="outline-2">
+<h2 id="orgb4f6899">自动补全 VS RAG</h2>
+<div class="outline-text-2" id="text-orgb4f6899">
 <p>
 大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
 </p>
 
 <p>
-NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的不同是，它的重点不在 generation，而是联想和检索。RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Context Protocol) 也是一样，它们都是通过给 LLM 提供额外的数据接口来增加 LLM 的能力，让它能够更准确的生成内容。
+NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的不同是，它的重点不在 generation，而是联想和检索。
 </p>
 
 <p>
-我一直不太想过多的依赖一种工具来管理知识，即使 LLM 再强大，这点也不会变。Google 的 NotebookLM 已经做到了知识库形态很完整的实现，可以直接和大量的数据对话，类似的大小型知识库 RAG 项目也非常多非常成熟，但是这种层面的知识交互，并不能很好的实现我想把知识流动起来的根本原则。我也不太想通过 LLM 的生成来管理、生成笔记，这样总感觉不是自己的。还是一个字一个字的敲，更自在。
+RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Context Protocol) 也是一样，它们都是通过给 LLM 提供额外的数据接口来增加 LLM 的能力，让它能够更准确的生成内容。
+</p>
+
+<p>
+我一直不太想过多的依赖一种工具来管理知识，即使 LLM 再强大，这点也不会变。Google 的 NotebookLM 已经做到了知识库形态很完整的实现，可以直接和大量的数据对话，类似的大小型知识库 RAG 项目也非常多非常成熟，但是这种层面的知识交互，并不能很好的实现我想把知识流动起来的根本原则。
+</p>
+
+<p>
+它们的重点都是在生成，这也就意味着，很难通过这种和知识的交互直接返还我想查找到的原文内容（特定的 prompt 还是可以实现，但这又增加了学习和使用的成本）。而 NoNotes 通过检索自动补全的是我相关的笔记原文，这就可以在一定程度上保证，我的思考和学习是原汁原味的。再一个 RAG 的生成的速度是很难保证实时补全的。
+</p>
+
+<p>
+我也不太想通过 LLM 的生成来管理、生成笔记，这样总感觉不是自己的，也很难在学习的过程里进入心流和深度思考。还是一个字一个字的敲，更自在。
 </p>
 
 <p>
@@ -150,9 +162,9 @@ NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的�
 </div>
 </div>
 
-<div id="outline-container-orga73e117" class="outline-2">
-<h2 id="orga73e117">NoNotes</h2>
-<div class="outline-text-2" id="text-orga73e117">
+<div id="outline-container-org584cde0" class="outline-2">
+<h2 id="org584cde0">NoNotes</h2>
+<div class="outline-text-2" id="text-org584cde0">
 <p>
 无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
 </p>
@@ -166,11 +178,21 @@ NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的�
 </p>
 
 <p>
+NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时只能处理 Markdown、PDF、txt 文本。
+</p>
+
+
+<figure id="org3964746">
+<img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
 现在做了两个 API，一个是向量相似性检索的，一个是 RAG 的。效果如下：
 </p>
 
 
-<figure id="orgca1d326">
+<figure id="orga4af480">
 <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
 
 </figure>
