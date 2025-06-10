@@ -59,17 +59,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org19ab5b0">TL;DR</a></li>
-<li><a href="#org968fc4e">知识的流动性</a></li>
-<li><a href="#orged3280c">知识库自动补全</a></li>
-<li><a href="#orgc7b2f6a">NoNotes</a></li>
+<li><a href="#org43d97a9">TL;DR</a></li>
+<li><a href="#orga0eb2ea">知识的流动性</a></li>
+<li><a href="#org880d876">知识库自动补全</a></li>
+<li><a href="#orga73e117">NoNotes</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org19ab5b0" class="outline-2">
-<h2 id="org19ab5b0">TL;DR</h2>
-<div class="outline-text-2" id="text-org19ab5b0">
+<div id="outline-container-org43d97a9" class="outline-2">
+<h2 id="org43d97a9">TL;DR</h2>
+<div class="outline-text-2" id="text-org43d97a9">
 <p>
 NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
 </p>
@@ -81,9 +81,9 @@ NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个�
 </div>
 
 
-<div id="outline-container-org968fc4e" class="outline-2">
-<h2 id="org968fc4e">知识的流动性</h2>
-<div class="outline-text-2" id="text-org968fc4e">
+<div id="outline-container-orga0eb2ea" class="outline-2">
+<h2 id="orga0eb2ea">知识的流动性</h2>
+<div class="outline-text-2" id="text-orga0eb2ea">
 <p>
 在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
 </p>
@@ -129,9 +129,9 @@ Steve Jobs on why thinking without doing is incomplete:
 </div>
 
 
-<div id="outline-container-orged3280c" class="outline-2">
-<h2 id="orged3280c">知识库自动补全</h2>
-<div class="outline-text-2" id="text-orged3280c">
+<div id="outline-container-org880d876" class="outline-2">
+<h2 id="org880d876">知识库自动补全</h2>
+<div class="outline-text-2" id="text-org880d876">
 <p>
 大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
 </p>
@@ -150,9 +150,9 @@ NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的�
 </div>
 </div>
 
-<div id="outline-container-orgc7b2f6a" class="outline-2">
-<h2 id="orgc7b2f6a">NoNotes</h2>
-<div class="outline-text-2" id="text-orgc7b2f6a">
+<div id="outline-container-orga73e117" class="outline-2">
+<h2 id="orga73e117">NoNotes</h2>
+<div class="outline-text-2" id="text-orga73e117">
 <p>
 无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
 </p>
@@ -170,7 +170,7 @@ NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的�
 </p>
 
 
-<figure id="org8a5e1b6">
+<figure id="orgca1d326">
 <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -184,7 +184,7 @@ NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的�
 </p>
 
 <p>
-我觉得面对 LLM 和以后 AI 技术的发展，把非结构化数据向量化，是一个很好的实践，如果你也和我一样对知识管理，做笔记有许多自己的需求，应该尽快做好准备了，提供一个属于自己的可用的知识接口。
+我觉得面对 LLM 和以后 AI 技术的发展，把非结构化数据向量化，是一个很好的实践，提供一个属于自己的可用的知识接口。
 </p>
 </div>
 </div>
