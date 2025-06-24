@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="热情的扩散">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/rss.xml"
+      title="RSS feed for https://www.vandee.art/">
+<title>Emacs is all you need</title>
+<meta property="og:title" content="Emacs is all you need">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="热情的扩散">
+<meta property="og:url" content="https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+
+       <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">03 Feb 2025</div><h1 class="post-title"><a href="https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html">Emacs is all you need</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0681349">TL;DR</a></li>
+<li><a href="#org46c04a1">前言</a></li>
+<li><a href="#orgdeacdca">热情的扩散</a></li>
+<li><a href="#org5ac5667">AI StartKit</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-org0681349" class="outline-2">
+<h2 id="org0681349">TL;DR</h2>
+<div class="outline-text-2" id="text-org0681349">
+<p>
+Emacs is all you need
+</p>
+</div>
+</div>
+
+<div id="outline-container-org46c04a1" class="outline-2">
+<h2 id="org46c04a1">前言</h2>
+<div class="outline-text-2" id="text-org46c04a1">
+<p>
+这几年最正确的决定就是入手了现在这台 Macbook M1 max。如果说当时我就遇见到了现在它能够给我带来的改变，你肯定不信，但事实就是如此。
+</p>
+
+<p>
+其实当初是为了摄影才考虑的，原来的老台式在一次渲染延时摄影的时候，苦苦等待了 3 小时之后，结果死机了，这仅仅只是一个 1 分钟的延时。综合考虑到还需要一台接近 Linux 体验的的系统开始学习编程，还想玩玩本地模型，于是直接上了顶配，而价格是当时 Macbook M3 max 的一半。
+</p>
+
+<p>
+如果没有这台 Macbook 就不会这么愉快的用上 Emacs ，也就不会有现在的整个 PKM 体系，也不会有 <a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ,也不会有现在部署的几个个人网站，也不会有现在突飞猛进的学习效率：<a href="https://www.vandee.art/2025-01-20-fragmented-knowledge-learning-with-ai.html">碎片知识学习 - with AI</a>，我可能还在继续用 Logseq。大的变数就是从这些看似不起眼的小决定开始萌芽。
+</p>
+
+<p>
+关于 Emacs 部分今天不准备多说什么，而是想先聊聊 <a href="https://github.com/VandeeFeng/gitmemo/issues/34">热情的扩散</a> 。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdeacdca" class="outline-2">
+<h2 id="orgdeacdca">热情的扩散</h2>
+<div class="outline-text-2" id="text-orgdeacdca">
+<p>
+不知道从什么时候开始，在 Emacs 里敲键盘这件事本身就会让我觉得很有意思。
+</p>
+
+<p>
+相似的，我其实不喜欢读论文，但用自己构建的工具来学论文，就变得有意思了。我也很懒，平常不太爱出远门，但是带上相机，我就有了去很多地方的兴趣。
+</p>
+
+<p>
+这应该就是热情的扩散。
+</p>
+
+<p>
+当在一个领域或者某个阶段当中，不可避免的需要面对枯燥乏味或是很难推进的事物，附加上各种鸡汤式的理由来强行说服自己不会是我的做法，依靠奖励来推动行动也不可取，强迫自己对一个东西发展出兴趣更没有必要。
+</p>
+
+<p>
+Embark on something with passion and interest，在自己感兴趣的事物的基础上发展、扩散到更多的领域。这应该是一种更正面的，克服枯燥、懒惰的方法。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5ac5667" class="outline-2">
+<h2 id="org5ac5667">AI StartKit</h2>
+<div class="outline-text-2" id="text-org5ac5667">
+<p>
+从 OpenAI 到现在的 2025 年，其实许多人都还没有真正接触到 AI，大部分人只是接触到了 AI 化的产品，例如 ChatGPT 的 APP，更有一部分根本对 AI 就没太大兴趣。在我的概念里，调用过 LLM 的 API 才可能叫接触过 AI 了。
+</p>
+
+<p>
+我不是 AI 的布道者，更没有相关利益捆绑，也丝毫不想鼓吹 AI。但技术变革就是在彻底改变生活的时候才会被称作变革，在这之前的过程往往会被忽略，就像互联网一样。
+</p>
+
+<p>
+可以毫不关心，只是等待生活被 AI 新技术彻底改变的时候，继续享受新的生活，也可以在被它彻底改变之前，不让它改变自己。我不喜欢被动的接受，仅此而已。
+</p>
+
+<p>
+对于后者，Emacs 就是最好的 startkit。它可以解决从 0 到 1 的问题，解决一个问题最难部分的就是开始。
+</p>
+
+<p>
+在咸鱼上已经有本地部署 DeepSeek 的教程在卖了，很难想象几行代码就可以卖 20 块，而且销量还不错。这不是信息差带来的消费，这只是懒。这个 20 块，5 年之后可能就是你会消费的 20 万。LLM 大语言模型 说简单点就是一个巨大的 ZIP，玩 LLM 只是需要一个打开这个 ZIP 的工具而已。
+</p>
+
+<p>
+So, All you need is Emacs.
+</p>
+
+<p>
+从 Emacs 开始，自然就会掌握编程的基础概念，Emacs 提供了高度可自定义的代码编辑器、自带终端、更直接的 compile，也就是和 AI 开始真正接触的入口，当然 Emacs 远不止如此。感兴趣的可以看这个：<a href="https://www.youtube.com/watch?v=81MdyDYqB-A">Configuring Emacs on My New Laptop - YouTube</a>
+</p>
+
+<p>
+和 Cursor 这种 AI 代码编辑器相比，Emacs 当然没有那么开箱即用，但捷径往往是远路。
+</p>
+
+<p>
+也并不是只有 Emacs 才是适合 AI 行业外的 AI StartKit，但是能够像 Emacs 一样既能充当向导，又能构建出自己的工具的，真没有几个。
+</p>
+
+<p>
+就像我刚开始使用 Emacs 的时候看到的一篇文章说的那样：Emacs 已经改变了我的生活。
+</p>
+
+<p>
+更准确的说，应该是持续学习，让我不那么容易被改变。
+</p>
+
+<p>
+最后，这篇文章就是在 Emacs 的 org-mode 里，直接和 DeepSeek-R1 自动补全协同生成的。这不比咸鱼的 20 块消费玩的开心多了？
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>
