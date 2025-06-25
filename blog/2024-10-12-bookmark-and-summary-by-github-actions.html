@@ -5,23 +5,23 @@
 <meta name="description" content="大致流程是：通过osmos::memo书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.vandee.art/rss.xml"
-      title="RSS feed for https://www.vandee.art/">
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
 <title>用 GitHub 仓库做书签和 AI 摘要-流动知识检索</title>
 <meta property="og:title" content="用 GitHub 仓库做书签和 AI 摘要-流动知识检索">
 <meta property="og:type" content="article" />
 <meta property="og:description" content="大致流程是：通过osmos::memo书签插件，将网页文章的链接以MD格式保存到GitHub仓库，然后利用GitHub Actions读取这些链接用LLM做总结并保存到另一个bookmark-summary仓库。">
-<meta property="og:url" content="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">
+<meta property="og:url" content="https://www.vandee.art/blog/2024-10-12-bookmark-and-summary-by-github-actions.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -39,10 +39,10 @@
 <body>
 <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="../assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
-      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
@@ -54,22 +54,22 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">12 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要-流动知识检索</a></h1>
+<div class="post-date">12 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要-流动知识检索</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdc3d0fe">GitHub 书签</a></li>
-<li><a href="#org5fe54cb">从GitHub书签到页面</a></li>
+<li><a href="#org0a39137">GitHub 书签</a></li>
+<li><a href="#org56d21c0">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
 
 
 
-<div id="outline-container-orgdc3d0fe" class="outline-2">
-<h2 id="orgdc3d0fe">GitHub 书签</h2>
-<div class="outline-text-2" id="text-orgdc3d0fe">
+<div id="outline-container-org0a39137" class="outline-2">
+<h2 id="org0a39137">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org0a39137">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull's Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -123,7 +123,7 @@ process_changes.py
 </p>
 
 
-<figure id="org6cd0445">
+<figure id="org2ddca95">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -325,15 +325,15 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org5fe54cb" class="outline-2">
-<h2 id="org5fe54cb">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org5fe54cb">
+<div id="outline-container-org56d21c0" class="outline-2">
+<h2 id="org56d21c0">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org56d21c0">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="orgdaf856b">
+<figure id="org78d348d">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -347,7 +347,7 @@ if __name__ == "__main__":
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-github.html">Github</a> <a href="https://www.vandee.art/blog/tag-python.html">Python</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

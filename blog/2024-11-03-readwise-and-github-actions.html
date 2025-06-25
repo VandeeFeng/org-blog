@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.vandee.art/rss.xml"
-      title="RSS feed for https://www.vandee.art/">
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
 <title>Readwise 和 GitHub Actions 联用 - 流动知识检索</title>
 <meta property="og:title" content="Readwise 和 GitHub Actions 联用 - 流动知识检索">
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.vandee.art/2024-11-03-readwise-and-github-actions.html">
+<meta property="og:url" content="https://www.vandee.art/blog/2024-11-03-readwise-and-github-actions.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -37,10 +37,10 @@
 <body>
 <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="../assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
-      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
@@ -52,21 +52,21 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">03 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-11-03-readwise-and-github-actions.html">Readwise 和 GitHub Actions 联用 - 流动知识检索</a></h1>
+<div class="post-date">03 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-11-03-readwise-and-github-actions.html">Readwise 和 GitHub Actions 联用 - 流动知识检索</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4bbcd60">结合之前的 bookmark-collection</a>
+<li><a href="#orgdbe5a56">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#org2cb81e3">python</a></li>
-<li><a href="#orgbb295fc">workflow</a></li>
+<li><a href="#org023ae73">python</a></li>
+<li><a href="#org2e0d772">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org8705120">Readwise highlights</a>
+<li><a href="#org74a7563">Readwise highlights</a>
 <ul>
-<li><a href="#orgc67a77e">python</a></li>
-<li><a href="#org994b9a5">workflow</a></li>
+<li><a href="#org03036ba">python</a></li>
+<li><a href="#org86dc87b">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -76,9 +76,9 @@
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
 
-<div id="outline-container-org4bbcd60" class="outline-2">
-<h2 id="org4bbcd60">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org4bbcd60">
+<div id="outline-container-orgdbe5a56" class="outline-2">
+<h2 id="orgdbe5a56">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orgdbe5a56">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -95,9 +95,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org2cb81e3" class="outline-3">
-<h3 id="org2cb81e3">python</h3>
-<div class="outline-text-3" id="text-org2cb81e3">
+<div id="outline-container-org023ae73" class="outline-3">
+<h3 id="org023ae73">python</h3>
+<div class="outline-text-3" id="text-org023ae73">
 <div class="org-src-container">
 <pre class="src src-python">import os
 import re
@@ -193,9 +193,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orgbb295fc" class="outline-3">
-<h3 id="orgbb295fc">workflow</h3>
-<div class="outline-text-3" id="text-orgbb295fc">
+<div id="outline-container-org2e0d772" class="outline-3">
+<h3 id="org2e0d772">workflow</h3>
+<div class="outline-text-3" id="text-org2e0d772">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Save Bookmark to Readwise
@@ -236,17 +236,17 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-org8705120" class="outline-2">
-<h2 id="org8705120">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org8705120">
+<div id="outline-container-org74a7563" class="outline-2">
+<h2 id="org74a7563">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org74a7563">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
 
-<div id="outline-container-orgc67a77e" class="outline-3">
-<h3 id="orgc67a77e">python</h3>
-<div class="outline-text-3" id="text-orgc67a77e">
+<div id="outline-container-org03036ba" class="outline-3">
+<h3 id="org03036ba">python</h3>
+<div class="outline-text-3" id="text-org03036ba">
 <div class="org-src-container">
 <pre class="src src-python">
 import requests
@@ -470,9 +470,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org994b9a5" class="outline-3">
-<h3 id="org994b9a5">workflow</h3>
-<div class="outline-text-3" id="text-org994b9a5">
+<div id="outline-container-org86dc87b" class="outline-3">
+<h3 id="org86dc87b">workflow</h3>
+<div class="outline-text-3" id="text-org86dc87b">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Sync Readwise Articles
@@ -549,7 +549,7 @@ jobs:
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-github.html">Github</a> <a href="https://www.vandee.art/blog/tag-python.html">Python</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

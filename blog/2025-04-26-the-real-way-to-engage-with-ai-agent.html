@@ -5,23 +5,23 @@
 <meta name="description" content="如果只把 IDE 当作 IDE，那也太看不起 OpenAI 的 30 亿了。">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.vandee.art/rss.xml"
-      title="RSS feed for https://www.vandee.art/">
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
 <title>The Real Way to Engage with AI Agent</title>
 <meta property="og:title" content="The Real Way to Engage with AI Agent">
 <meta property="og:type" content="article" />
 <meta property="og:description" content="如果只把 IDE 当作 IDE，那也太看不起 OpenAI 的 30 亿了。">
-<meta property="og:url" content="https://www.vandee.art/2025-04-26-the-real-way-to-engage-with-ai-agent.html">
+<meta property="og:url" content="https://www.vandee.art/blog/2025-04-26-the-real-way-to-engage-with-ai-agent.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -39,10 +39,10 @@
 <body>
 <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="../assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
-      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
@@ -54,22 +54,22 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">26 Apr 2025</div><h1 class="post-title"><a href="https://www.vandee.art/2025-04-26-the-real-way-to-engage-with-ai-agent.html">The Real Way to Engage with AI Agent</a></h1>
+<div class="post-date">26 Apr 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-04-26-the-real-way-to-engage-with-ai-agent.html">The Real Way to Engage with AI Agent</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org818ff44">Intro</a></li>
-<li><a href="#org4ffc80a">Emacs</a></li>
-<li><a href="#org7588237">Nvim</a></li>
-<li><a href="#orgdf7d988">小结</a></li>
+<li><a href="#org3e61fe5">Intro</a></li>
+<li><a href="#orgc9e499c">Emacs</a></li>
+<li><a href="#org6eca361">Nvim</a></li>
+<li><a href="#org8c67f6d">小结</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org818ff44" class="outline-2">
-<h2 id="org818ff44">Intro</h2>
-<div class="outline-text-2" id="text-org818ff44">
+<div id="outline-container-org3e61fe5" class="outline-2">
+<h2 id="org3e61fe5">Intro</h2>
+<div class="outline-text-2" id="text-org3e61fe5">
 <p>
 OpenAI 最近计划花 30 亿美元<a href="https://www.bloomberg.com/news/articles/2025-04-16/openai-said-to-be-in-talks-to-buy-windsurf-for-about-3-billion">收购 windsurf</a> ，字节也在今年终于发布了 <a href="https://www.trae.ai/">Trae</a> ，这两个都是和 <a href="https://www.cursor.com">Cursor</a> 一样的 AI IDE（集成开发环境Integrated Development Environment）。也是今年模型即产品开始这个概念开始推行，Google 和 OpenAI 从年初到现在陆续放出了很多新的模型。但大模型这玩意太烧钱了，通过推出新模型已经调动不起消费者的热情了，IDE 成了新的赛道。
 </p>
@@ -100,9 +100,9 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </div>
 </div>
 
-<div id="outline-container-org4ffc80a" class="outline-2">
-<h2 id="org4ffc80a">Emacs</h2>
-<div class="outline-text-2" id="text-org4ffc80a">
+<div id="outline-container-orgc9e499c" class="outline-2">
+<h2 id="orgc9e499c">Emacs</h2>
+<div class="outline-text-2" id="text-orgc9e499c">
 <p>
 我现在日常用的比较多的就是：<a href="https://github.com/MatthewZMD/aidermacs">aidermacs</a> , <a href="https://github.com/karthink/gptel">gptel</a> , <a href="https://github.com/milanglacier/minuet-ai.el">minuet-ai.el</a> 。
 </p>
@@ -116,28 +116,28 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </p>
 
 
-<figure id="org6de8921">
+<figure id="orga433094">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org7588237" class="outline-2">
-<h2 id="org7588237">Nvim</h2>
-<div class="outline-text-2" id="text-org7588237">
+<div id="outline-container-org6eca361" class="outline-2">
+<h2 id="org6eca361">Nvim</h2>
+<div class="outline-text-2" id="text-org6eca361">
 <p>
 <a href="https://github.com/yetone/avante.nvim/">yetone/avante.nvim</a> 是一个 Nvim 插件，可以在 Nvim 里获得类似 cursor 的体验。
 </p>
 
 
-<figure id="orgb26aff5">
+<figure id="org2538647">
 <img src="https://pic.vandee.art/images/nvim.gif" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="orgd114f2d">
+<figure id="org5aa5264">
 <img src="https://pic.vandee.art/images/nvim-code.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -145,9 +145,9 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </div>
 
 
-<div id="outline-container-orgdf7d988" class="outline-2">
-<h2 id="orgdf7d988">小结</h2>
-<div class="outline-text-2" id="text-orgdf7d988">
+<div id="outline-container-org8c67f6d" class="outline-2">
+<h2 id="org8c67f6d">小结</h2>
+<div class="outline-text-2" id="text-org8c67f6d">
 <p>
 我的体验下来，极致的 vibe coding 首选还是 cursor。其他同类产品替代不了 cursor 的还是它的 tab 补全和模型调教。它的 tab 就真的像有读心术一样，很准确的知道我下一步想做什么。当然还有它的各种免费破解（支持正版！）
 </p>
@@ -165,7 +165,7 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.vandee.art/rss.xml"
-      title="RSS feed for https://www.vandee.art/">
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
 <title>数据库的搭建 - 流动知识检索</title>
 <meta property="og:title" content="数据库的搭建 - 流动知识检索">
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">
+<meta property="og:url" content="https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -37,10 +37,10 @@
 <body>
 <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="../assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
-      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
@@ -52,35 +52,35 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">10 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">数据库的搭建 - 流动知识检索</a></h1>
+<div class="post-date">10 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html">数据库的搭建 - 流动知识检索</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9a622ac">同步保存到 Readwise</a>
+<li><a href="#org130fde3">同步保存到 Readwise</a>
 <ul>
-<li><a href="#org14a29b3">python</a></li>
-<li><a href="#org3e42627">workflow</a></li>
+<li><a href="#orgcc06b16">python</a></li>
+<li><a href="#orgc865089">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org6c02b39">Teable</a>
+<li><a href="#orged47a0d">Teable</a>
 <ul>
-<li><a href="#orgff0a3bc">Python</a></li>
-<li><a href="#org1b5ae5b">workflow</a></li>
-<li><a href="#org4a05140">bash</a></li>
+<li><a href="#org234ae42">Python</a></li>
+<li><a href="#orgedcce6a">workflow</a></li>
+<li><a href="#org1ea639b">bash</a></li>
 </ul>
 </li>
-<li><a href="#orgaf935f5">PocketBase</a>
+<li><a href="#org44f3307">PocketBase</a>
 <ul>
-<li><a href="#org9e38515">docker 部署到 VPS</a></li>
-<li><a href="#org630d89e">Python</a></li>
-<li><a href="#orgd16eb3e">workflow</a></li>
+<li><a href="#org89d15dd">docker 部署到 VPS</a></li>
+<li><a href="#org8a9bac6">Python</a></li>
+<li><a href="#org948bf13">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org180f036">Readwise highlights</a>
+<li><a href="#orgd8f61e2">Readwise highlights</a>
 <ul>
-<li><a href="#orgbcf4327">python</a></li>
-<li><a href="#org0e4f96d">workflow</a></li>
+<li><a href="#org2dd0225">python</a></li>
+<li><a href="#orgdb61aaa">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -106,9 +106,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 主要思路：利用 GitHub 为中转站， <code>osmos::memos</code> 插件保存文章，同步保存到 Readwise 进行阅读和高亮，再同步保存到 pocketbase 或 teable 做数据库处理。现在暂时选择了 teable 的方案。
 </p>
 
-<div id="outline-container-org9a622ac" class="outline-2">
-<h2 id="org9a622ac">同步保存到 Readwise</h2>
-<div class="outline-text-2" id="text-org9a622ac">
+<div id="outline-container-org130fde3" class="outline-2">
+<h2 id="org130fde3">同步保存到 Readwise</h2>
+<div class="outline-text-2" id="text-org130fde3">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -125,9 +125,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org14a29b3" class="outline-3">
-<h3 id="org14a29b3">python</h3>
-<div class="outline-text-3" id="text-org14a29b3">
+<div id="outline-container-orgcc06b16" class="outline-3">
+<h3 id="orgcc06b16">python</h3>
+<div class="outline-text-3" id="text-orgcc06b16">
 <div class="org-src-container">
 <pre class="src src-python">import os
 import re
@@ -223,9 +223,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org3e42627" class="outline-3">
-<h3 id="org3e42627">workflow</h3>
-<div class="outline-text-3" id="text-org3e42627">
+<div id="outline-container-orgc865089" class="outline-3">
+<h3 id="orgc865089">workflow</h3>
+<div class="outline-text-3" id="text-orgc865089">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Save Bookmark to Readwise
@@ -266,9 +266,9 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-org6c02b39" class="outline-2">
-<h2 id="org6c02b39">Teable</h2>
-<div class="outline-text-2" id="text-org6c02b39">
+<div id="outline-container-orged47a0d" class="outline-2">
+<h2 id="orged47a0d">Teable</h2>
+<div class="outline-text-2" id="text-orged47a0d">
 <p>
 在 bookmark-collection 仓库增加两个 secret： <code>TEABLE_TABLE_ID</code> ， <code>TEABLE_TOKEN</code> 。
 </p>
@@ -277,9 +277,9 @@ jobs:
 <code>TEABLE_TABLE_ID</code> 就是要写入表格的 ID，在地址栏的 <code>&amp;tableId=</code> 后面就是 ID 了。 <code>TEABLE_TOKEN</code> 就是 API 。
 </p>
 </div>
-<div id="outline-container-orgff0a3bc" class="outline-3">
-<h3 id="orgff0a3bc">Python</h3>
-<div class="outline-text-3" id="text-orgff0a3bc">
+<div id="outline-container-org234ae42" class="outline-3">
+<h3 id="org234ae42">Python</h3>
+<div class="outline-text-3" id="text-org234ae42">
 <p>
 在 bookmark-summary 里修改 py 脚本：
 </p>
@@ -588,9 +588,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org1b5ae5b" class="outline-3">
-<h3 id="org1b5ae5b">workflow</h3>
-<div class="outline-text-3" id="text-org1b5ae5b">
+<div id="outline-container-orgedcce6a" class="outline-3">
+<h3 id="orgedcce6a">workflow</h3>
+<div class="outline-text-3" id="text-orgedcce6a">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -652,9 +652,9 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-org4a05140" class="outline-3">
-<h3 id="org4a05140">bash</h3>
-<div class="outline-text-3" id="text-org4a05140">
+<div id="outline-container-org1ea639b" class="outline-3">
+<h3 id="org1ea639b">bash</h3>
+<div class="outline-text-3" id="text-org1ea639b">
 <p>
 顺便把 websites 也用 bash 脚本保存在 teable 里了，之前一直用 org-capture，现在太多了不好检索。让 Claude 把之前的列表转换为了 csv 导入到了 teable。
 </p>
@@ -703,9 +703,9 @@ done</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgaf935f5" class="outline-2">
-<h2 id="orgaf935f5">PocketBase</h2>
-<div class="outline-text-2" id="text-orgaf935f5">
+<div id="outline-container-org44f3307" class="outline-2">
+<h2 id="org44f3307">PocketBase</h2>
+<div class="outline-text-2" id="text-org44f3307">
 <p>
 需要在仓库的 secret 里增加 <code>POCKETBASE_TOKEN</code> 、 <code>POCKETBASE_API</code> 两个secert，填入自己的 pocketbase API 地址和请求头。
 </p>
@@ -738,9 +738,9 @@ second_response = requests.post(
 </div>
 </div>
 
-<div id="outline-container-org9e38515" class="outline-3">
-<h3 id="org9e38515">docker 部署到 VPS</h3>
-<div class="outline-text-3" id="text-org9e38515">
+<div id="outline-container-org89d15dd" class="outline-3">
+<h3 id="org89d15dd">docker 部署到 VPS</h3>
+<div class="outline-text-3" id="text-org89d15dd">
 <div class="org-src-container">
 <pre class="src src-yaml">
 version: "3.7"
@@ -761,9 +761,9 @@ services:
 </div>
 </div>
 </div>
-<div id="outline-container-org630d89e" class="outline-3">
-<h3 id="org630d89e">Python</h3>
-<div class="outline-text-3" id="text-org630d89e">
+<div id="outline-container-org8a9bac6" class="outline-3">
+<h3 id="org8a9bac6">Python</h3>
+<div class="outline-text-3" id="text-org8a9bac6">
 <p>
 修改 bookmark-collection 仓库的 py 脚本：
 </p>
@@ -881,9 +881,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orgd16eb3e" class="outline-3">
-<h3 id="orgd16eb3e">workflow</h3>
-<div class="outline-text-3" id="text-orgd16eb3e">
+<div id="outline-container-org948bf13" class="outline-3">
+<h3 id="org948bf13">workflow</h3>
+<div class="outline-text-3" id="text-org948bf13">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -929,9 +929,9 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-org180f036" class="outline-2">
-<h2 id="org180f036">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org180f036">
+<div id="outline-container-orgd8f61e2" class="outline-2">
+<h2 id="orgd8f61e2">Readwise highlights</h2>
+<div class="outline-text-2" id="text-orgd8f61e2">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
@@ -940,9 +940,9 @@ jobs:
 后面可以直接把 highlights 导入到 pocketbase。
 </p>
 </div>
-<div id="outline-container-orgbcf4327" class="outline-3">
-<h3 id="orgbcf4327">python</h3>
-<div class="outline-text-3" id="text-orgbcf4327">
+<div id="outline-container-org2dd0225" class="outline-3">
+<h3 id="org2dd0225">python</h3>
+<div class="outline-text-3" id="text-org2dd0225">
 <div class="org-src-container">
 <pre class="src src-python">
 import requests
@@ -1166,9 +1166,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org0e4f96d" class="outline-3">
-<h3 id="org0e4f96d">workflow</h3>
-<div class="outline-text-3" id="text-org0e4f96d">
+<div id="outline-container-orgdb61aaa" class="outline-3">
+<h3 id="orgdb61aaa">workflow</h3>
+<div class="outline-text-3" id="text-orgdb61aaa">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Sync Readwise Articles
@@ -1245,7 +1245,7 @@ jobs:
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-github.html">Github</a> <a href="https://www.vandee.art/tag-python.html">Python</a> <a href="https://www.vandee.art/tag-database.html">Database</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-github.html">Github</a> <a href="https://www.vandee.art/blog/tag-python.html">Python</a> <a href="https://www.vandee.art/blog/tag-database.html">Database</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

@@ -5,23 +5,23 @@
 <meta name="description" content="从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.vandee.art/rss.xml"
-      title="RSS feed for https://www.vandee.art/">
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
 <title>AI 交互的隐性成本</title>
 <meta property="og:title" content="AI 交互的隐性成本">
 <meta property="og:type" content="article" />
 <meta property="og:description" content="从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。">
-<meta property="og:url" content="https://www.vandee.art/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">
+<meta property="og:url" content="https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -39,10 +39,10 @@
 <body>
 <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="../assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
-      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
@@ -54,20 +54,20 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">08 Dec 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">AI 交互的隐性成本</a></h1>
+<div class="post-date">08 Dec 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">AI 交互的隐性成本</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4a1c539">AI 交互的隐性成本</a>
+<li><a href="#org52d115e">AI 交互的隐性成本</a>
 <ul>
-<li><a href="#org53b3555">Prompt 成本</a></li>
-<li><a href="#org54caf38">试错成本</a></li>
-<li><a href="#org2d8f57c">构建成本</a></li>
-<li><a href="#org5af068f">依赖成本</a></li>
+<li><a href="#orge71d71b">Prompt 成本</a></li>
+<li><a href="#org9bf91ad">试错成本</a></li>
+<li><a href="#org1507ad4">构建成本</a></li>
+<li><a href="#orgfa37b38">依赖成本</a></li>
 </ul>
 </li>
-<li><a href="#org70fcdf7">技术革命</a></li>
+<li><a href="#org504d4de">技术革命</a></li>
 </ul>
 </div>
 </nav>
@@ -83,13 +83,13 @@
 <a href="https://www.lesswrong.com/posts/tqmQTezvXGFmfSe7f/how-much-are-llms-actually-boosting-real-world-programmer">How Much Are LLMs Actually Boosting Real-World Programmer Productivity? — LessWrong</a> 这篇文章也提及到了这个问题
 </p>
 
-<div id="outline-container-org4a1c539" class="outline-2">
-<h2 id="org4a1c539">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-org4a1c539">
+<div id="outline-container-org52d115e" class="outline-2">
+<h2 id="org52d115e">AI 交互的隐性成本</h2>
+<div class="outline-text-2" id="text-org52d115e">
 </div>
-<div id="outline-container-org53b3555" class="outline-3">
-<h3 id="org53b3555">Prompt 成本</h3>
-<div class="outline-text-3" id="text-org53b3555">
+<div id="outline-container-orge71d71b" class="outline-3">
+<h3 id="orge71d71b">Prompt 成本</h3>
+<div class="outline-text-3" id="text-orge71d71b">
 <p>
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
 </p>
@@ -104,9 +104,9 @@
 </div>
 </div>
 
-<div id="outline-container-org54caf38" class="outline-3">
-<h3 id="org54caf38">试错成本</h3>
-<div class="outline-text-3" id="text-org54caf38">
+<div id="outline-container-org9bf91ad" class="outline-3">
+<h3 id="org9bf91ad">试错成本</h3>
+<div class="outline-text-3" id="text-org9bf91ad">
 <p>
 prompt 又直接影响沟通交互的成本。
 </p>
@@ -128,9 +128,9 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div id="outline-container-org2d8f57c" class="outline-3">
-<h3 id="org2d8f57c">构建成本</h3>
-<div class="outline-text-3" id="text-org2d8f57c">
+<div id="outline-container-org1507ad4" class="outline-3">
+<h3 id="org1507ad4">构建成本</h3>
+<div class="outline-text-3" id="text-org1507ad4">
 <p>
 因此我们自然会往下想到通过多个 AI 协作来提高成功率。
 </p>
@@ -145,9 +145,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org5af068f" class="outline-3">
-<h3 id="org5af068f">依赖成本</h3>
-<div class="outline-text-3" id="text-org5af068f">
+<div id="outline-container-orgfa37b38" class="outline-3">
+<h3 id="orgfa37b38">依赖成本</h3>
+<div class="outline-text-3" id="text-orgfa37b38">
 <p>
 当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
 </p>
@@ -163,9 +163,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org70fcdf7" class="outline-2">
-<h2 id="org70fcdf7">技术革命</h2>
-<div class="outline-text-2" id="text-org70fcdf7">
+<div id="outline-container-org504d4de" class="outline-2">
+<h2 id="org504d4de">技术革命</h2>
+<div class="outline-text-2" id="text-org504d4de">
 <p>
 利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
 </p>
@@ -191,7 +191,7 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

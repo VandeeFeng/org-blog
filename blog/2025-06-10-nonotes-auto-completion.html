@@ -5,23 +5,23 @@
 <meta name="description" content="知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 [[https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1][最好的投资永远是你自己]] 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.vandee.art/rss.xml"
-      title="RSS feed for https://www.vandee.art/">
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
 <title>从有形到无形 - NoNotes，知识库自动补全</title>
 <meta property="og:title" content="从有形到无形 - NoNotes，知识库自动补全">
 <meta property="og:type" content="article" />
 <meta property="og:description" content="知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 [[https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1][最好的投资永远是你自己]] 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。">
-<meta property="og:url" content="https://www.vandee.art/2025-06-10-nonotes-auto-completion.html">
+<meta property="og:url" content="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -39,10 +39,10 @@
 <body>
 <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="../assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
-      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
@@ -54,22 +54,22 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">10 Jun 2025</div><h1 class="post-title"><a href="https://www.vandee.art/2025-06-10-nonotes-auto-completion.html">从有形到无形 - NoNotes，知识库自动补全</a></h1>
+<div class="post-date">10 Jun 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">从有形到无形 - NoNotes，知识库自动补全</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2c89f4a">TL;DR</a></li>
-<li><a href="#orgaf43c69">知识的流动性</a></li>
-<li><a href="#org599837c">自动补全 VS RAG</a></li>
-<li><a href="#org33cdeb2">NoNotes</a></li>
+<li><a href="#org08743fb">TL;DR</a></li>
+<li><a href="#org75c095b">知识的流动性</a></li>
+<li><a href="#org5de6c48">自动补全 VS RAG</a></li>
+<li><a href="#orgb04afdc">NoNotes</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org2c89f4a" class="outline-2">
-<h2 id="org2c89f4a">TL;DR</h2>
-<div class="outline-text-2" id="text-org2c89f4a">
+<div id="outline-container-org08743fb" class="outline-2">
+<h2 id="org08743fb">TL;DR</h2>
+<div class="outline-text-2" id="text-org08743fb">
 <p>
 NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
 </p>
@@ -81,9 +81,9 @@ NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个�
 </div>
 
 
-<div id="outline-container-orgaf43c69" class="outline-2">
-<h2 id="orgaf43c69">知识的流动性</h2>
-<div class="outline-text-2" id="text-orgaf43c69">
+<div id="outline-container-org75c095b" class="outline-2">
+<h2 id="org75c095b">知识的流动性</h2>
+<div class="outline-text-2" id="text-org75c095b">
 <p>
 在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
 </p>
@@ -129,9 +129,9 @@ Steve Jobs on why thinking without doing is incomplete:
 </div>
 
 
-<div id="outline-container-org599837c" class="outline-2">
-<h2 id="org599837c">自动补全 VS RAG</h2>
-<div class="outline-text-2" id="text-org599837c">
+<div id="outline-container-org5de6c48" class="outline-2">
+<h2 id="org5de6c48">自动补全 VS RAG</h2>
+<div class="outline-text-2" id="text-org5de6c48">
 <p>
 大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
 </p>
@@ -162,9 +162,9 @@ RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Con
 </div>
 </div>
 
-<div id="outline-container-org33cdeb2" class="outline-2">
-<h2 id="org33cdeb2">NoNotes</h2>
-<div class="outline-text-2" id="text-org33cdeb2">
+<div id="outline-container-orgb04afdc" class="outline-2">
+<h2 id="orgb04afdc">NoNotes</h2>
+<div class="outline-text-2" id="text-orgb04afdc">
 <p>
 无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
 </p>
@@ -182,7 +182,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="org92fefcb">
+<figure id="orgc7d97ea">
 <img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -192,7 +192,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="org46b2f1d">
+<figure id="orga922d86">
 <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -210,7 +210,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

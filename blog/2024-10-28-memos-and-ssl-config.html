@@ -5,23 +5,23 @@
 <meta name="description" content="记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。">
 <link rel="alternate"
       type="application/rss+xml"
-      href="https://www.vandee.art/rss.xml"
-      title="RSS feed for https://www.vandee.art/">
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
 <title>还是入坑了 Memos</title>
 <meta property="og:title" content="还是入坑了 Memos">
 <meta property="og:type" content="article" />
 <meta property="og:description" content="记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。">
-<meta property="og:url" content="https://www.vandee.art/2024-10-28-memos-and-ssl-config.html">
+<meta property="og:url" content="https://www.vandee.art/blog/2024-10-28-memos-and-ssl-config.html">
 <meta name="author" content="Vandee">
        <meta name="referrer" content="origin-when-cross-origin">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
@@ -39,10 +39,10 @@
 <body>
 <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="../assets/shiba_gif/shiba_idle_8fps.gif">
       <nav>
-      <a href="https://www.vandee.art/">Home</a>
+      <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
       <a href="archive.html">Archive</a>
@@ -54,21 +54,21 @@
       </nav>
       </header></div>
 <div id="content">
-<div class="post-date">28 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/2024-10-28-memos-and-ssl-config.html">还是入坑了 Memos</a></h1>
+<div class="post-date">28 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-10-28-memos-and-ssl-config.html">还是入坑了 Memos</a></h1>
 <nav id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3c4d151">起因</a></li>
-<li><a href="#org506a6f1">Memos</a></li>
-<li><a href="#org6d53c5c">SSL</a></li>
-<li><a href="#orgf61a9f5">Memos 自定义</a>
+<li><a href="#org9bf78d4">起因</a></li>
+<li><a href="#orgfc7b0c9">Memos</a></li>
+<li><a href="#org4e4e2ef">SSL</a></li>
+<li><a href="#org2de34cb">Memos 自定义</a>
 <ul>
-<li><a href="#orgae89cc4">自定义 css 和 JavaScript</a></li>
-<li><a href="#orgdd7f9fd">Memos.top</a></li>
+<li><a href="#org8382344">自定义 css 和 JavaScript</a></li>
+<li><a href="#orgebbe603">Memos.top</a></li>
 </ul>
 </li>
-<li><a href="#orgc671c90">小结</a></li>
+<li><a href="#org0f01106">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -76,9 +76,9 @@
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
 
-<div id="outline-container-org3c4d151" class="outline-2">
-<h2 id="org3c4d151">起因</h2>
-<div class="outline-text-2" id="text-org3c4d151">
+<div id="outline-container-org9bf78d4" class="outline-2">
+<h2 id="org9bf78d4">起因</h2>
+<div class="outline-text-2" id="text-org9bf78d4">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -97,9 +97,9 @@
 </div>
 </div>
 
-<div id="outline-container-org506a6f1" class="outline-2">
-<h2 id="org506a6f1">Memos</h2>
-<div class="outline-text-2" id="text-org506a6f1">
+<div id="outline-container-orgfc7b0c9" class="outline-2">
+<h2 id="orgfc7b0c9">Memos</h2>
+<div class="outline-text-2" id="text-orgfc7b0c9">
 <p>
 几个版本的主要特色：
 </p>
@@ -159,9 +159,9 @@ sudo nginx -t # 检查配置是否有问题</pre>
 </div>
 </div>
 
-<div id="outline-container-org6d53c5c" class="outline-2">
-<h2 id="org6d53c5c">SSL</h2>
-<div class="outline-text-2" id="text-org6d53c5c">
+<div id="outline-container-org4e4e2ef" class="outline-2">
+<h2 id="org4e4e2ef">SSL</h2>
+<div class="outline-text-2" id="text-org4e4e2ef">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
@@ -248,13 +248,13 @@ sudo certbot renew --dry-run</pre>
 </div>
 </div>
 
-<div id="outline-container-orgf61a9f5" class="outline-2">
-<h2 id="orgf61a9f5">Memos 自定义</h2>
-<div class="outline-text-2" id="text-orgf61a9f5">
+<div id="outline-container-org2de34cb" class="outline-2">
+<h2 id="org2de34cb">Memos 自定义</h2>
+<div class="outline-text-2" id="text-org2de34cb">
 </div>
-<div id="outline-container-orgae89cc4" class="outline-3">
-<h3 id="orgae89cc4">自定义 css 和 JavaScript</h3>
-<div class="outline-text-3" id="text-orgae89cc4">
+<div id="outline-container-org8382344" class="outline-3">
+<h3 id="org8382344">自定义 css 和 JavaScript</h3>
+<div class="outline-text-3" id="text-org8382344">
 <p>
 适用 0.20.X 以上版本
 </p>
@@ -273,9 +273,9 @@ sudo certbot renew --dry-run</pre>
 </div>
 </div>
 
-<div id="outline-container-orgdd7f9fd" class="outline-3">
-<h3 id="orgdd7f9fd">Memos.top</h3>
-<div class="outline-text-3" id="text-orgdd7f9fd">
+<div id="outline-container-orgebbe603" class="outline-3">
+<h3 id="orgebbe603">Memos.top</h3>
+<div class="outline-text-3" id="text-orgebbe603">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -293,13 +293,13 @@ sudo certbot renew --dry-run</pre>
 </p>
 
 
-<figure id="orgc7201ed">
+<figure id="org16ca5f0">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="orge9dc90e">
+<figure id="org6aad9f2">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -311,9 +311,9 @@ Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top
 </div>
 </div>
 
-<div id="outline-container-orgc671c90" class="outline-2">
-<h2 id="orgc671c90">小结</h2>
-<div class="outline-text-2" id="text-orgc671c90">
+<div id="outline-container-org0f01106" class="outline-2">
+<h2 id="org0f01106">小结</h2>
+<div class="outline-text-2" id="text-org0f01106">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>
@@ -341,7 +341,7 @@ Source：  <a href="https://mp.weixin.qq.com/s/1Lz276s_RjdaSN3NXOIuHw">模仿、
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-vps.html">VPS</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-vps.html">VPS</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>
