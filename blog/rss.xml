@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Wed, 25 Jun 2025 13:31:10 +0800</lastBuildDate>
+<lastBuildDate>Wed, 25 Jun 2025 14:17:45 +0800</lastBuildDate>
 <item>
   <title><![CDATA[从有形到无形 - NoNotes，知识库自动补全]]></title>
   <description><![CDATA[
@@ -12,17 +12,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org08743fb">TL;DR</a></li>
-<li><a href="#org75c095b">知识的流动性</a></li>
-<li><a href="#org5de6c48">自动补全 VS RAG</a></li>
-<li><a href="#orgb04afdc">NoNotes</a></li>
+<li><a href="#org0814a55">TL;DR</a></li>
+<li><a href="#orgac7cd68">知识的流动性</a></li>
+<li><a href="#org9453def">自动补全 VS RAG</a></li>
+<li><a href="#org6968e43">NoNotes</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org08743fb" class="outline-2">
-<h2 id="org08743fb">TL;DR</h2>
-<div class="outline-text-2" id="text-org08743fb">
+<div id="outline-container-org0814a55" class="outline-2">
+<h2 id="org0814a55">TL;DR</h2>
+<div class="outline-text-2" id="text-org0814a55">
 <p>
 NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
 </p>
@@ -34,9 +34,9 @@ NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个�
 </div>
 
 
-<div id="outline-container-org75c095b" class="outline-2">
-<h2 id="org75c095b">知识的流动性</h2>
-<div class="outline-text-2" id="text-org75c095b">
+<div id="outline-container-orgac7cd68" class="outline-2">
+<h2 id="orgac7cd68">知识的流动性</h2>
+<div class="outline-text-2" id="text-orgac7cd68">
 <p>
 在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
 </p>
@@ -82,9 +82,9 @@ Steve Jobs on why thinking without doing is incomplete:
 </div>
 
 
-<div id="outline-container-org5de6c48" class="outline-2">
-<h2 id="org5de6c48">自动补全 VS RAG</h2>
-<div class="outline-text-2" id="text-org5de6c48">
+<div id="outline-container-org9453def" class="outline-2">
+<h2 id="org9453def">自动补全 VS RAG</h2>
+<div class="outline-text-2" id="text-org9453def">
 <p>
 大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
 </p>
@@ -115,9 +115,9 @@ RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Con
 </div>
 </div>
 
-<div id="outline-container-orgb04afdc" class="outline-2">
-<h2 id="orgb04afdc">NoNotes</h2>
-<div class="outline-text-2" id="text-orgb04afdc">
+<div id="outline-container-org6968e43" class="outline-2">
+<h2 id="org6968e43">NoNotes</h2>
+<div class="outline-text-2" id="text-org6968e43">
 <p>
 无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
 </p>
@@ -135,7 +135,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="orgc7d97ea">
+<figure id="org033d6f2">
 <img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -145,7 +145,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="orga922d86">
+<figure id="org8ef561c">
 <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -178,10 +178,10 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0dac107">从检索到生成</a></li>
-<li><a href="#org046917c">RSS 订阅</a></li>
-<li><a href="#orgca3ed7c">数据向量化</a></li>
-<li><a href="#orgde0ae69">小结</a></li>
+<li><a href="#orgea997f3">从检索到生成</a></li>
+<li><a href="#org4c246b7">RSS 订阅</a></li>
+<li><a href="#org435fd5e">数据向量化</a></li>
+<li><a href="#org875198c">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -197,9 +197,9 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 从这次的 Google I／O 结合最近在看的 <a href="https://book.douban.com/subject/35440637/">互联网口述历史第1辑·英雄创世记</a> ，AI 对互联网内容和信息将带来的变革是颠覆性的。
 </p>
 
-<div id="outline-container-org0dac107" class="outline-2">
-<h2 id="org0dac107">从检索到生成</h2>
-<div class="outline-text-2" id="text-org0dac107">
+<div id="outline-container-orgea997f3" class="outline-2">
+<h2 id="orgea997f3">从检索到生成</h2>
+<div class="outline-text-2" id="text-orgea997f3">
 <p>
 传统互联网上的搜索正在逐步从检索转变为生成。
 </p>
@@ -238,9 +238,9 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </div>
 </div>
 
-<div id="outline-container-org046917c" class="outline-2">
-<h2 id="org046917c">RSS 订阅</h2>
-<div class="outline-text-2" id="text-org046917c">
+<div id="outline-container-org4c246b7" class="outline-2">
+<h2 id="org4c246b7">RSS 订阅</h2>
+<div class="outline-text-2" id="text-org4c246b7">
 <p>
 <a href="https://github.com/glidea/zenfeed/">https://github.com/glidea/zenfeed/</a> ,最近看到的这个 GitHub 项目解决了我的大问题。它直接把 RSS 源内容的向量化，而不是像我之前用完整的 RSS 内容做 RAG。
 </p>
@@ -275,9 +275,9 @@ RSS 是我面对算法、信息茧房等问题坚持下来的信息获取习惯�
 </div>
 </div>
 
-<div id="outline-container-orgca3ed7c" class="outline-2">
-<h2 id="orgca3ed7c">数据向量化</h2>
-<div class="outline-text-2" id="text-orgca3ed7c">
+<div id="outline-container-org435fd5e" class="outline-2">
+<h2 id="org435fd5e">数据向量化</h2>
+<div class="outline-text-2" id="text-org435fd5e">
 <p>
 虽然 AI 技术带来的很多变化我都不喜欢，但再不情愿也没用。拒绝 AI 的这次技术浪潮在将来会带来的变革，就好像在说我今天就是不用互联网。当更多的基础设施和服务都像 Google 这次接入 AI 之后，就算不直接使用也会间接使用到。
 </p>
@@ -301,9 +301,9 @@ RSS 是我面对算法、信息茧房等问题坚持下来的信息获取习惯�
 </div>
 
 
-<div id="outline-container-orgde0ae69" class="outline-2">
-<h2 id="orgde0ae69">小结</h2>
-<div class="outline-text-2" id="text-orgde0ae69">
+<div id="outline-container-org875198c" class="outline-2">
+<h2 id="org875198c">小结</h2>
+<div class="outline-text-2" id="text-org875198c">
 <p>
 未来的互联网正在逐步变成一个个 token，GitHub 已经被 <a href="https://deepwiki.com/">DeepWiki</a> 变成 token 了，其他的还会远么？
 </p>
@@ -322,16 +322,16 @@ RSS 是我面对算法、信息茧房等问题坚持下来的信息获取习惯�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfd7ed48">Intro</a></li>
-<li><a href="#org2fa85cd">Keyword 关键字</a></li>
-<li><a href="#orgd6f0c73">小结</a></li>
+<li><a href="#orgcc18560">Intro</a></li>
+<li><a href="#org6bd7823">Keyword 关键字</a></li>
+<li><a href="#org6f0c3ab">小结</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgfd7ed48" class="outline-2">
-<h2 id="orgfd7ed48">Intro</h2>
-<div class="outline-text-2" id="text-orgfd7ed48">
+<div id="outline-container-orgcc18560" class="outline-2">
+<h2 id="orgcc18560">Intro</h2>
+<div class="outline-text-2" id="text-orgcc18560">
 <blockquote>
 <p>
 未来能第一个说出来这些「Magic Words」的人，就率先打开了一个新的参数空间。
@@ -376,9 +376,9 @@ Chain of Thought (CoT) (思维链提示)，Tree of Thoughts (ToT) (思维树提�
 </div>
 </div>
 
-<div id="outline-container-org2fa85cd" class="outline-2">
-<h2 id="org2fa85cd">Keyword 关键字</h2>
-<div class="outline-text-2" id="text-org2fa85cd">
+<div id="outline-container-org6bd7823" class="outline-2">
+<h2 id="org6bd7823">Keyword 关键字</h2>
+<div class="outline-text-2" id="text-org6bd7823">
 <p>
 AI 善于回答问题，但不善于提出问题。如何提出更好的问题，才使用 AI 工具的关键。
 </p>
@@ -446,9 +446,9 @@ LLM 是数据的压缩，它就是一个巨大的 ZIP，prompt 就是解压的�
 </div>
 </div>
 
-<div id="outline-container-orgd6f0c73" class="outline-2">
-<h2 id="orgd6f0c73">小结</h2>
-<div class="outline-text-2" id="text-orgd6f0c73">
+<div id="outline-container-org6f0c3ab" class="outline-2">
+<h2 id="org6f0c3ab">小结</h2>
+<div class="outline-text-2" id="text-org6f0c3ab">
 <p>
 每一次新的技术出现一定会让我们变懒，这也是技术的初衷，让生活变得便利。
 </p>
@@ -479,17 +479,17 @@ LLM 只是一个工具，指望它能让自己干出什么原本就不可能的�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3e61fe5">Intro</a></li>
-<li><a href="#orgc9e499c">Emacs</a></li>
-<li><a href="#org6eca361">Nvim</a></li>
-<li><a href="#org8c67f6d">小结</a></li>
+<li><a href="#org86229e0">Intro</a></li>
+<li><a href="#org3a2ddf9">Emacs</a></li>
+<li><a href="#org96ffa50">Nvim</a></li>
+<li><a href="#org8a9d914">小结</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org3e61fe5" class="outline-2">
-<h2 id="org3e61fe5">Intro</h2>
-<div class="outline-text-2" id="text-org3e61fe5">
+<div id="outline-container-org86229e0" class="outline-2">
+<h2 id="org86229e0">Intro</h2>
+<div class="outline-text-2" id="text-org86229e0">
 <p>
 OpenAI 最近计划花 30 亿美元<a href="https://www.bloomberg.com/news/articles/2025-04-16/openai-said-to-be-in-talks-to-buy-windsurf-for-about-3-billion">收购 windsurf</a> ，字节也在今年终于发布了 <a href="https://www.trae.ai/">Trae</a> ，这两个都是和 <a href="https://www.cursor.com">Cursor</a> 一样的 AI IDE（集成开发环境Integrated Development Environment）。也是今年模型即产品开始这个概念开始推行，Google 和 OpenAI 从年初到现在陆续放出了很多新的模型。但大模型这玩意太烧钱了，通过推出新模型已经调动不起消费者的热情了，IDE 成了新的赛道。
 </p>
@@ -520,9 +520,9 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </div>
 </div>
 
-<div id="outline-container-orgc9e499c" class="outline-2">
-<h2 id="orgc9e499c">Emacs</h2>
-<div class="outline-text-2" id="text-orgc9e499c">
+<div id="outline-container-org3a2ddf9" class="outline-2">
+<h2 id="org3a2ddf9">Emacs</h2>
+<div class="outline-text-2" id="text-org3a2ddf9">
 <p>
 我现在日常用的比较多的就是：<a href="https://github.com/MatthewZMD/aidermacs">aidermacs</a> , <a href="https://github.com/karthink/gptel">gptel</a> , <a href="https://github.com/milanglacier/minuet-ai.el">minuet-ai.el</a> 。
 </p>
@@ -536,28 +536,28 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </p>
 
 
-<figure id="orga433094">
+<figure id="orgcefd433">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org6eca361" class="outline-2">
-<h2 id="org6eca361">Nvim</h2>
-<div class="outline-text-2" id="text-org6eca361">
+<div id="outline-container-org96ffa50" class="outline-2">
+<h2 id="org96ffa50">Nvim</h2>
+<div class="outline-text-2" id="text-org96ffa50">
 <p>
 <a href="https://github.com/yetone/avante.nvim/">yetone/avante.nvim</a> 是一个 Nvim 插件，可以在 Nvim 里获得类似 cursor 的体验。
 </p>
 
 
-<figure id="org2538647">
+<figure id="org9209d54">
 <img src="https://pic.vandee.art/images/nvim.gif" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="org5aa5264">
+<figure id="org772d15e">
 <img src="https://pic.vandee.art/images/nvim-code.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -565,9 +565,9 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </div>
 
 
-<div id="outline-container-org8c67f6d" class="outline-2">
-<h2 id="org8c67f6d">小结</h2>
-<div class="outline-text-2" id="text-org8c67f6d">
+<div id="outline-container-org8a9d914" class="outline-2">
+<h2 id="org8a9d914">小结</h2>
+<div class="outline-text-2" id="text-org8a9d914">
 <p>
 我的体验下来，极致的 vibe coding 首选还是 cursor。其他同类产品替代不了 cursor 的还是它的 tab 补全和模型调教。它的 tab 就真的像有读心术一样，很准确的知道我下一步想做什么。当然还有它的各种免费破解（支持正版！）
 </p>
@@ -598,9 +598,9 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org22a5320">AI 举着喇叭</a></li>
-<li><a href="#org8358b57">The Passing Future</a></li>
-<li><a href="#org31313fa">2025-04-20 added</a></li>
+<li><a href="#org537299e">AI 举着喇叭</a></li>
+<li><a href="#org6ed1462">The Passing Future</a></li>
+<li><a href="#org27273c3">2025-04-20 added</a></li>
 </ul>
 </div>
 </nav>
@@ -617,7 +617,7 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 </p>
 
 
-<figure id="org6ba311c">
+<figure id="org86383a9">
 <img src="https://pic.vandee.art/images/task.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -626,9 +626,9 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 现在每周 AI 都会自动根据我记录的这些思考帮我提出几个需要接着深入思考的问题，这些良性的多巴胺就像一根根柴火，让我思考的大脑一直烧的旺旺的。
 </p>
 
-<div id="outline-container-org22a5320" class="outline-2">
-<h2 id="org22a5320">AI 举着喇叭</h2>
-<div class="outline-text-2" id="text-org22a5320">
+<div id="outline-container-org537299e" class="outline-2">
+<h2 id="org537299e">AI 举着喇叭</h2>
+<div class="outline-text-2" id="text-org537299e">
 <p>
 一个事物价值的大小，受到系统识别的影响。许多很好的事物，由于我没有相关的识别，它们对我来说就不会那么重要。
 </p>
@@ -651,9 +651,9 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 </div>
 </div>
 
-<div id="outline-container-org8358b57" class="outline-2">
-<h2 id="org8358b57">The Passing Future</h2>
-<div class="outline-text-2" id="text-org8358b57">
+<div id="outline-container-org6ed1462" class="outline-2">
+<h2 id="org6ed1462">The Passing Future</h2>
+<div class="outline-text-2" id="text-org6ed1462">
 <p>
 这两年我一直在做各种记录，PKM 是对知识的记录，摄影是对感受的记录，博客是对思考的记录。
 </p>
@@ -696,9 +696,9 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 </div>
 </div>
 
-<div id="outline-container-org31313fa" class="outline-2">
-<h2 id="org31313fa">2025-04-20 added</h2>
-<div class="outline-text-2" id="text-org31313fa">
+<div id="outline-container-org27273c3" class="outline-2">
+<h2 id="org27273c3">2025-04-20 added</h2>
+<div class="outline-text-2" id="text-org27273c3">
 <p>
 几天之后看到这个：<a href="https://mp.weixin.qq.com/s/i5FFQTWbcp7zCMf8EUTUzQ">分享一个对我帮助很大的思维方式</a>
 </p>
@@ -747,14 +747,14 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org396c00b">大语言模型是什么</a></li>
-<li><a href="#orgb4b744b">或许可以这样看待大语言模型</a>
+<li><a href="#org337af81">大语言模型是什么</a></li>
+<li><a href="#org54fc495">或许可以这样看待大语言模型</a>
 <ul>
-<li><a href="#org47a28c1">知识库 ZIP</a></li>
-<li><a href="#orgd120820">自然语言编程</a></li>
+<li><a href="#org28377c0">知识库 ZIP</a></li>
+<li><a href="#orgfe6cc9c">自然语言编程</a></li>
 </ul>
 </li>
-<li><a href="#orgea4185c">小结</a></li>
+<li><a href="#org7e64dde">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -770,9 +770,9 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 我没有 AI 方面的专业背景，因此也不会涉及到专业的术语，只是一些学习的路径和思路，仅供参考。如果这些内容帮助到了你，我会很开心。
 </p>
 
-<div id="outline-container-org396c00b" class="outline-2">
-<h2 id="org396c00b">大语言模型是什么</h2>
-<div class="outline-text-2" id="text-org396c00b">
+<div id="outline-container-org337af81" class="outline-2">
+<h2 id="org337af81">大语言模型是什么</h2>
+<div class="outline-text-2" id="text-org337af81">
 <p>
 看完 Andrej Karpathy 大佬的这两个视频：
 </p>
@@ -833,17 +833,17 @@ Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https:/
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb4b744b" class="outline-2">
-<h2 id="orgb4b744b">或许可以这样看待大语言模型</h2>
-<div class="outline-text-2" id="text-orgb4b744b">
+<div id="outline-container-org54fc495" class="outline-2">
+<h2 id="org54fc495">或许可以这样看待大语言模型</h2>
+<div class="outline-text-2" id="text-org54fc495">
 <p>
 这部分是我自己的理解，仅仅仅供参考。
 </p>
 </div>
 
-<div id="outline-container-org47a28c1" class="outline-3">
-<h3 id="org47a28c1">知识库 ZIP</h3>
-<div class="outline-text-3" id="text-org47a28c1">
+<div id="outline-container-org28377c0" class="outline-3">
+<h3 id="org28377c0">知识库 ZIP</h3>
+<div class="outline-text-3" id="text-org28377c0">
 <p>
 我一直是这么看待大语言模型的，它就是一个巨大的知识库，通过特定的 prompt，就可以拟人化的和这个知识库互动。
 </p>
@@ -869,9 +869,9 @@ Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https:/
 </p>
 </div>
 </div>
-<div id="outline-container-orgd120820" class="outline-3">
-<h3 id="orgd120820">自然语言编程</h3>
-<div class="outline-text-3" id="text-orgd120820">
+<div id="outline-container-orgfe6cc9c" class="outline-3">
+<h3 id="orgfe6cc9c">自然语言编程</h3>
+<div class="outline-text-3" id="text-orgfe6cc9c">
 <p>
 要说 LLM 在最开始对那个行业的冲击最大，那一定是程序员。简单来说，现在不必要必须掌握编程语言，在 LLM 的帮助下，就可以用自然语言进行编程。
 </p>
@@ -903,9 +903,9 @@ Transformer Neural Net 3D visualizer: <a href="https://bbycroft.net/llm">https:/
 </div>
 </div>
 
-<div id="outline-container-orgea4185c" class="outline-2">
-<h2 id="orgea4185c">小结</h2>
-<div class="outline-text-2" id="text-orgea4185c">
+<div id="outline-container-org7e64dde" class="outline-2">
+<h2 id="org7e64dde">小结</h2>
+<div class="outline-text-2" id="text-org7e64dde">
 <p>
 LLM 拓宽了想象力的边界，这是我对 LLM 最简单的理解。
 </p>
@@ -941,26 +941,26 @@ Imagine and creating！对我来说，这是世界上最好玩的事情了。
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2b91de2">TL;DR</a></li>
-<li><a href="#org5525705">前言</a></li>
-<li><a href="#orgd981abc">热情的扩散</a></li>
-<li><a href="#org95a6c7c">AI StartKit</a></li>
+<li><a href="#org04192c0">TL;DR</a></li>
+<li><a href="#org3db4cec">前言</a></li>
+<li><a href="#org3b31143">热情的扩散</a></li>
+<li><a href="#org687c37a">AI StartKit</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org2b91de2" class="outline-2">
-<h2 id="org2b91de2">TL;DR</h2>
-<div class="outline-text-2" id="text-org2b91de2">
+<div id="outline-container-org04192c0" class="outline-2">
+<h2 id="org04192c0">TL;DR</h2>
+<div class="outline-text-2" id="text-org04192c0">
 <p>
 Emacs is all you need
 </p>
 </div>
 </div>
 
-<div id="outline-container-org5525705" class="outline-2">
-<h2 id="org5525705">前言</h2>
-<div class="outline-text-2" id="text-org5525705">
+<div id="outline-container-org3db4cec" class="outline-2">
+<h2 id="org3db4cec">前言</h2>
+<div class="outline-text-2" id="text-org3db4cec">
 <p>
 这几年最正确的决定就是入手了现在这台 Macbook M1 max。如果说当时我就遇见到了现在它能够给我带来的改变，你肯定不信，但事实就是如此。
 </p>
@@ -979,9 +979,9 @@ Emacs is all you need
 </div>
 </div>
 
-<div id="outline-container-orgd981abc" class="outline-2">
-<h2 id="orgd981abc">热情的扩散</h2>
-<div class="outline-text-2" id="text-orgd981abc">
+<div id="outline-container-org3b31143" class="outline-2">
+<h2 id="org3b31143">热情的扩散</h2>
+<div class="outline-text-2" id="text-org3b31143">
 <p>
 不知道从什么时候开始，在 Emacs 里敲键盘这件事本身就会让我觉得很有意思。
 </p>
@@ -1004,9 +1004,9 @@ Embark on something with passion and interest，在自己感兴趣的事物的�
 </div>
 </div>
 
-<div id="outline-container-org95a6c7c" class="outline-2">
-<h2 id="org95a6c7c">AI StartKit</h2>
-<div class="outline-text-2" id="text-org95a6c7c">
+<div id="outline-container-org687c37a" class="outline-2">
+<h2 id="org687c37a">AI StartKit</h2>
+<div class="outline-text-2" id="text-org687c37a">
 <p>
 从 OpenAI 到现在的 2025 年，其实许多人都还没有真正接触到 AI，大部分人只是接触到了 AI 化的产品，例如 ChatGPT 的 APP，更有一部分根本对 AI 就没太大兴趣。在我的概念里，调用过 LLM 的 API 才可能叫接触过 AI 了。
 </p>
@@ -1069,23 +1069,23 @@ So, All you need is Emacs.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8423f3f">前言</a></li>
-<li><a href="#orgf0e87e8">PDF 阅读</a></li>
-<li><a href="#org341222c">网页阅读</a></li>
-<li><a href="#org34e5192">零散的概念</a></li>
-<li><a href="#org328c6bb">搜索</a>
+<li><a href="#orgce0979e">前言</a></li>
+<li><a href="#org5dcae8e">PDF 阅读</a></li>
+<li><a href="#orgffca139">网页阅读</a></li>
+<li><a href="#orgd73fc04">零散的概念</a></li>
+<li><a href="#org8d2af94">搜索</a>
 <ul>
-<li><a href="#org8f21aed">2025-03-08 added</a></li>
+<li><a href="#orgf0363a8">2025-03-08 added</a></li>
 </ul>
 </li>
-<li><a href="#org9ec8faf">其他工具</a></li>
+<li><a href="#org7ed196d">其他工具</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org8423f3f" class="outline-2">
-<h2 id="org8423f3f">前言</h2>
-<div class="outline-text-2" id="text-org8423f3f">
+<div id="outline-container-orgce0979e" class="outline-2">
+<h2 id="orgce0979e">前言</h2>
+<div class="outline-text-2" id="text-orgce0979e">
 <p>
 对于是否要拥抱 AI，在程序员里大致可以分为两派：一部分是坚决不用，一类是已经将 AI 融入了自己的工作流程。后面就简称为革新派和精英派。
 </p>
@@ -1126,9 +1126,9 @@ So, All you need is Emacs.
 </div>
 </div>
 
-<div id="outline-container-orgf0e87e8" class="outline-2">
-<h2 id="orgf0e87e8">PDF 阅读</h2>
-<div class="outline-text-2" id="text-orgf0e87e8">
+<div id="outline-container-org5dcae8e" class="outline-2">
+<h2 id="org5dcae8e">PDF 阅读</h2>
+<div class="outline-text-2" id="text-org5dcae8e">
 <p>
 <a href="https://github.com/echohive42/AI-reads-books-page-by-page">GitHub - echohive42/AI-reads-books-page-by-page</a> 这个项目前段时间上了 GitHub Trends，项目逻辑很值得学习，立马 fork 自定义了一下：<a href="https://github.com/VandeeFeng/ReadPDFpbp">https://github.com/VandeeFeng/ReadPDFpbp</a> 。主要增加了 ollama 和 OpenRouter 模型的调用，还有一些自定义的参数，可以直接在 CLI 里调用。行业标准害人啊，cookbook 里都默认使用 OpenAI 和 Claude 的 API。
 </p>
@@ -1142,9 +1142,9 @@ So, All you need is Emacs.
 </p>
 </div>
 </div>
-<div id="outline-container-org341222c" class="outline-2">
-<h2 id="org341222c">网页阅读</h2>
-<div class="outline-text-2" id="text-org341222c">
+<div id="outline-container-orgffca139" class="outline-2">
+<h2 id="orgffca139">网页阅读</h2>
+<div class="outline-text-2" id="text-orgffca139">
 <p>
 <a href="https://github.com/vandeefeng/gitmemo/issues/26">在知识之间、AI 之间创造 connection</a> 这里是有关用 phidata 构建 Agent 来同时分析 2 个以上网页文章的内容。
 </p>
@@ -1158,32 +1158,32 @@ So, All you need is Emacs.
 </p>
 </div>
 </div>
-<div id="outline-container-org34e5192" class="outline-2">
-<h2 id="org34e5192">零散的概念</h2>
-<div class="outline-text-2" id="text-org34e5192">
+<div id="outline-container-orgd73fc04" class="outline-2">
+<h2 id="orgd73fc04">零散的概念</h2>
+<div class="outline-text-2" id="text-orgd73fc04">
 <p>
 平常一些概念上的学习，之前是在 OpenWeb UI 里，现在基本都在 Emacs 里用 gptel 了，全部都汇总在一个 org 文档里。
 </p>
 
 
-<figure id="orgedf1a04">
+<figure id="org9f8e11d">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org328c6bb" class="outline-2">
-<h2 id="org328c6bb">搜索</h2>
-<div class="outline-text-2" id="text-org328c6bb">
+<div id="outline-container-org8d2af94" class="outline-2">
+<h2 id="org8d2af94">搜索</h2>
+<div class="outline-text-2" id="text-org8d2af94">
 <p>
 一般的搜索直接用 DuckDuckGo 。再就是自己改了一下的 <a href="https://github.com/VandeeFeng/Gemini-Search">Gemini-Search</a> ，部署到 docker 调用 Gemini 的 API 实现类似 Perplexity 的体验。
 </p>
 </div>
 
-<div id="outline-container-org8f21aed" class="outline-3">
-<h3 id="org8f21aed">2025-03-08 added</h3>
-<div class="outline-text-3" id="text-org8f21aed">
+<div id="outline-container-orgf0363a8" class="outline-3">
+<h3 id="orgf0363a8">2025-03-08 added</h3>
+<div class="outline-text-3" id="text-orgf0363a8">
 <p>
 最近各种 Deep Research 和 Deep Search 大大提升了用 AI 搜索的效率。OpenAI 和 Grok 的深度搜索效果都挺不错的。Deep Research 使用了半个多月，对我来说它最大的作用是针对一定的领域、topic，开拓思路，快速的找到这些问题领域的框架和索引。
 </p>
@@ -1242,9 +1242,9 @@ Websites：<a href="https://storm.genie.stanford.edu/">https://storm.genie.stanf
 </div>
 </div>
 </div>
-<div id="outline-container-org9ec8faf" class="outline-2">
-<h2 id="org9ec8faf">其他工具</h2>
-<div class="outline-text-2" id="text-org9ec8faf">
+<div id="outline-container-org7ed196d" class="outline-2">
+<h2 id="org7ed196d">其他工具</h2>
+<div class="outline-text-2" id="text-org7ed196d">
 <p>
 另外要强烈安利 <a href="https://github.com/nbonamy/witsy">Witsy</a> 这个项目，不多介绍了，它就是我到目前为止用过最好用的 LLM 客户端。
 </p>
@@ -1275,21 +1275,21 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb27a505">Intro</a></li>
-<li><a href="#orga372a5e">信息处理</a>
+<li><a href="#org7734903">Intro</a></li>
+<li><a href="#org3bab4b3">信息处理</a>
 <ul>
-<li><a href="#org3fc6e08">被动信息</a></li>
-<li><a href="#org16eeae3">主动信息</a></li>
+<li><a href="#org4c6957b">被动信息</a></li>
+<li><a href="#orgc32256f">主动信息</a></li>
 </ul>
 </li>
-<li><a href="#org89e09e2">文章精读</a></li>
-<li><a href="#org58196a4">笔记</a>
+<li><a href="#orgd987701">文章精读</a></li>
+<li><a href="#orgc4b6659">笔记</a>
 <ul>
-<li><a href="#orge799ac1">Chipper</a></li>
+<li><a href="#org5d1d4b7">Chipper</a></li>
 </ul>
 </li>
-<li><a href="#org78e4d0a">输出</a></li>
-<li><a href="#org0bd939a">小结</a></li>
+<li><a href="#org3b01967">输出</a></li>
+<li><a href="#orgfe39f3d">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -1309,9 +1309,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 因此，我养成了一个习惯，也就是当松弛感出现之后，强迫大脑去习惯新的习惯。在这个过程当中，就好像带上了一个放大镜，那些在习惯之下拙劣的细节被放大。
 </p>
 
-<div id="outline-container-orgb27a505" class="outline-2">
-<h2 id="orgb27a505">Intro</h2>
-<div class="outline-text-2" id="text-orgb27a505">
+<div id="outline-container-org7734903" class="outline-2">
+<h2 id="org7734903">Intro</h2>
+<div class="outline-text-2" id="text-org7734903">
 <p>
 信息很容易被误认为是知识，我们每天会被动和主动的接受到许多信息，会自然的获得一种感觉：我今天又学到了，知道了很多新鲜的东西。但这不是知识，当信息被固定和<a href="https://wiki.vandee.art/#%E6%9B%B4%E5%A4%9A%E7%9A%84%E7%BB%93%E6%9E%84%E5%8C%96%E7%9F%A5%E8%AF%86">结构化</a>之后，才可能被称作知识。
 </p>
@@ -1326,9 +1326,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 </div>
 </div>
 
-<div id="outline-container-orga372a5e" class="outline-2">
-<h2 id="orga372a5e">信息处理</h2>
-<div class="outline-text-2" id="text-orga372a5e">
+<div id="outline-container-org3bab4b3" class="outline-2">
+<h2 id="org3bab4b3">信息处理</h2>
+<div class="outline-text-2" id="text-org3bab4b3">
 <p>
 信息处理部分的目标是：
 </p>
@@ -1351,9 +1351,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 基于这些就有许多有意思的项目可以做了，例如最近在折腾的，从数据库里检索一个星期之内的信息，做一个简报，用 GitHub action 实现自动化。
 </p>
 </div>
-<div id="outline-container-org3fc6e08" class="outline-3">
-<h3 id="org3fc6e08">被动信息</h3>
-<div class="outline-text-3" id="text-org3fc6e08">
+<div id="outline-container-org4c6957b" class="outline-3">
+<h3 id="org4c6957b">被动信息</h3>
+<div class="outline-text-3" id="text-org4c6957b">
 <p>
 现在我的被动信息获取主要来源于 RSS 订阅，今年开通了 Readwise 的订阅，并在 claude 的帮助下构建了一个信息固定的 workflow：<a href="https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html">数据库的搭建 - 流动知识检索</a> 、<a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a> 。
 </p>
@@ -1371,9 +1371,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 </p>
 </div>
 </div>
-<div id="outline-container-org16eeae3" class="outline-3">
-<h3 id="org16eeae3">主动信息</h3>
-<div class="outline-text-3" id="text-org16eeae3">
+<div id="outline-container-orgc32256f" class="outline-3">
+<h3 id="orgc32256f">主动信息</h3>
+<div class="outline-text-3" id="text-orgc32256f">
 <p>
 目前会每天看一看这些网站：
 </p>
@@ -1397,9 +1397,9 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 </div>
 </div>
 </div>
-<div id="outline-container-org89e09e2" class="outline-2">
-<h2 id="org89e09e2">文章精读</h2>
-<div class="outline-text-2" id="text-org89e09e2">
+<div id="outline-container-orgd987701" class="outline-2">
+<h2 id="orgd987701">文章精读</h2>
+<div class="outline-text-2" id="text-orgd987701">
 <p>
 最近用 phidata 和 ollama 构建了一个简单的本地 <a href="https://memo.vandee.art/issue/26">RAG assistant</a> ，可以直接输入文章 url，结合文章内容具体的提问，这样就可以同时对多个相关内容的文章进行系统的提问，效率提升了不少。
 </p>
@@ -1418,9 +1418,9 @@ AI 善于回答问题，但它不善于提出问题。使用 AI 学习了很长�
 </div>
 </div>
 
-<div id="outline-container-org58196a4" class="outline-2">
-<h2 id="org58196a4">笔记</h2>
-<div class="outline-text-2" id="text-org58196a4">
+<div id="outline-container-orgc4b6659" class="outline-2">
+<h2 id="orgc4b6659">笔记</h2>
+<div class="outline-text-2" id="text-orgc4b6659">
 <p>
 笔记部分是固定结构化知识最核心的一步，<a href="https://wiki.vandee.art/#%E6%89%BE%E5%88%B0%E7%9F%A5%E8%AF%86%E7%9A%84%E7%BC%9D%E9%9A%99">找到知识的缝隙</a>。
 </p>
@@ -1446,9 +1446,9 @@ supabase 最进又更新了 <a href="https://database.build/">Postgres Sandbox</
 </p>
 </div>
 
-<div id="outline-container-orge799ac1" class="outline-3">
-<h3 id="orge799ac1">Chipper</h3>
-<div class="outline-text-3" id="text-orge799ac1">
+<div id="outline-container-org5d1d4b7" class="outline-3">
+<h3 id="org5d1d4b7">Chipper</h3>
+<div class="outline-text-3" id="text-org5d1d4b7">
 <p>
 Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/TilmanGriesel/chipper</a>
 </p>
@@ -1464,9 +1464,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </div>
 </div>
 
-<div id="outline-container-org78e4d0a" class="outline-2">
-<h2 id="org78e4d0a">输出</h2>
-<div class="outline-text-2" id="text-org78e4d0a">
+<div id="outline-container-org3b01967" class="outline-2">
+<h2 id="org3b01967">输出</h2>
+<div class="outline-text-2" id="text-org3b01967">
 <p>
 <a href="https://wiki.vandee.art/#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%80%9D%E8%80%83%E8%80%8C%E4%B8%8D%E8%BE%93%E5%87%BA%EF%BC%8C%E4%BD%A0%E5%8F%AA%E6%98%AF%E4%BB%A5%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%9C%A8%E6%80%9D%E8%80%83">如果你思考而不输出，你只是以为自己在思考</a> ，费曼学习法里说的太多了，study in public。
 </p>
@@ -1489,9 +1489,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </ul>
 </div>
 </div>
-<div id="outline-container-org0bd939a" class="outline-2">
-<h2 id="org0bd939a">小结</h2>
-<div class="outline-text-2" id="text-org0bd939a">
+<div id="outline-container-orgfe39f3d" class="outline-2">
+<h2 id="orgfe39f3d">小结</h2>
+<div class="outline-text-2" id="text-orgfe39f3d">
 <p>
 <a href="https://wiki.vandee.art/#%E6%8F%90%E5%8D%87%E5%BD%B1%E5%93%8D%E5%8A%9B">提升影响力</a> ，做一个 <a href="https://wiki.vandee.art/#%E9%92%A5%E5%8C%99%E4%BA%BA(Key%20Man)">钥匙人(Key Man)</a> ，每个人的价值都应该能在不同的体系里得到放大和体现，这样社会平均价值自然会得到提升。
 </p>
@@ -1514,8 +1514,8 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1452306">2024</a></li>
-<li><a href="#org9f9bfc4">总结是在做什么？</a></li>
+<li><a href="#orga2a1137">2024</a></li>
+<li><a href="#org9736023">总结是在做什么？</a></li>
 </ul>
 </div>
 </nav>
@@ -1531,9 +1531,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 2024 年 12 月 2 日，牛津大学出版社宣布“脑腐”（brain rot）为 2024 年<a href="https://corp.oup.com/news/brain-rot-named-oxford-word-of-the-year-2024/">牛津年度词汇</a>，各大知名机构都会在年底公布它们今年的数据总结，政府同样会有经济总结、工作总结报告，虽然这些对外的属性较多，它们需要权衡各方面的利弊，公布一个对外的说法，但多少会反应出一些当年的趋势。不同立场的分析主体会带有主观偏向，但数据是实打实的。怎么判断形势、趋势？我觉得从这些总结报告入手，是个很好的方法，可以顺着找到相关的数据自己分析。
 </p>
 
-<div id="outline-container-org1452306" class="outline-2">
-<h2 id="org1452306">2024</h2>
-<div class="outline-text-2" id="text-org1452306">
+<div id="outline-container-orga2a1137" class="outline-2">
+<h2 id="orga2a1137">2024</h2>
+<div class="outline-text-2" id="text-orga2a1137">
 <p>
 自己的总结当然向内的属性就要偏重一些了。也一样从数据出发来分析。
 </p>
@@ -1543,7 +1543,7 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </p>
 
 
-<figure id="org922bdc1">
+<figure id="orgd9f4d1f">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/books.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -1566,9 +1566,9 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 </div>
 </div>
 
-<div id="outline-container-org9f9bfc4" class="outline-2">
-<h2 id="org9f9bfc4">总结是在做什么？</h2>
-<div class="outline-text-2" id="text-org9f9bfc4">
+<div id="outline-container-org9736023" class="outline-2">
+<h2 id="org9736023">总结是在做什么？</h2>
+<div class="outline-text-2" id="text-org9736023">
 <p>
 我们有时会在一个阶段快要结束的时候产生一种时间过的很快的感觉，这其实是因为重复性的事物在日常生活中占据的比例比较大，所以我们会觉得每天做了许多，但又好像什么都没做，在大脑里就没有留下什么，于是在回顾的时候就会感觉，怎么时间一下就过去了？
 </p>
@@ -1611,15 +1611,15 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org52d115e">AI 交互的隐性成本</a>
+<li><a href="#org5c831f8">AI 交互的隐性成本</a>
 <ul>
-<li><a href="#orge71d71b">Prompt 成本</a></li>
-<li><a href="#org9bf91ad">试错成本</a></li>
-<li><a href="#org1507ad4">构建成本</a></li>
-<li><a href="#orgfa37b38">依赖成本</a></li>
+<li><a href="#org47df0bc">Prompt 成本</a></li>
+<li><a href="#orge381c5e">试错成本</a></li>
+<li><a href="#org0ed9477">构建成本</a></li>
+<li><a href="#org7431317">依赖成本</a></li>
 </ul>
 </li>
-<li><a href="#org504d4de">技术革命</a></li>
+<li><a href="#org73592f6">技术革命</a></li>
 </ul>
 </div>
 </nav>
@@ -1635,13 +1635,13 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 <a href="https://www.lesswrong.com/posts/tqmQTezvXGFmfSe7f/how-much-are-llms-actually-boosting-real-world-programmer">How Much Are LLMs Actually Boosting Real-World Programmer Productivity? — LessWrong</a> 这篇文章也提及到了这个问题
 </p>
 
-<div id="outline-container-org52d115e" class="outline-2">
-<h2 id="org52d115e">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-org52d115e">
+<div id="outline-container-org5c831f8" class="outline-2">
+<h2 id="org5c831f8">AI 交互的隐性成本</h2>
+<div class="outline-text-2" id="text-org5c831f8">
 </div>
-<div id="outline-container-orge71d71b" class="outline-3">
-<h3 id="orge71d71b">Prompt 成本</h3>
-<div class="outline-text-3" id="text-orge71d71b">
+<div id="outline-container-org47df0bc" class="outline-3">
+<h3 id="org47df0bc">Prompt 成本</h3>
+<div class="outline-text-3" id="text-org47df0bc">
 <p>
 与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
 </p>
@@ -1656,9 +1656,9 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 </div>
 </div>
 
-<div id="outline-container-org9bf91ad" class="outline-3">
-<h3 id="org9bf91ad">试错成本</h3>
-<div class="outline-text-3" id="text-org9bf91ad">
+<div id="outline-container-orge381c5e" class="outline-3">
+<h3 id="orge381c5e">试错成本</h3>
+<div class="outline-text-3" id="text-orge381c5e">
 <p>
 prompt 又直接影响沟通交互的成本。
 </p>
@@ -1680,9 +1680,9 @@ prompt 又直接影响沟通交互的成本。
 </p>
 </div>
 </div>
-<div id="outline-container-org1507ad4" class="outline-3">
-<h3 id="org1507ad4">构建成本</h3>
-<div class="outline-text-3" id="text-org1507ad4">
+<div id="outline-container-org0ed9477" class="outline-3">
+<h3 id="org0ed9477">构建成本</h3>
+<div class="outline-text-3" id="text-org0ed9477">
 <p>
 因此我们自然会往下想到通过多个 AI 协作来提高成功率。
 </p>
@@ -1697,9 +1697,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-orgfa37b38" class="outline-3">
-<h3 id="orgfa37b38">依赖成本</h3>
-<div class="outline-text-3" id="text-orgfa37b38">
+<div id="outline-container-org7431317" class="outline-3">
+<h3 id="org7431317">依赖成本</h3>
+<div class="outline-text-3" id="text-org7431317">
 <p>
 当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
 </p>
@@ -1715,9 +1715,9 @@ prompt 又直接影响沟通交互的成本。
 </div>
 </div>
 
-<div id="outline-container-org504d4de" class="outline-2">
-<h2 id="org504d4de">技术革命</h2>
-<div class="outline-text-2" id="text-org504d4de">
+<div id="outline-container-org73592f6" class="outline-2">
+<h2 id="org73592f6">技术革命</h2>
+<div class="outline-text-2" id="text-org73592f6">
 <p>
 利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
 </p>
@@ -1756,8 +1756,8 @@ prompt 又直接影响沟通交互的成本。
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgae47519">Gitmemo</a></li>
-<li><a href="#org4481df8">记录与反抗</a></li>
+<li><a href="#org1070ca2">Gitmemo</a></li>
+<li><a href="#orgc123c39">记录与反抗</a></li>
 </ul>
 </div>
 </nav>
@@ -1787,9 +1787,9 @@ GitHub 已经成为互联网最重要的基础设施之一，有太多人，太�
 </p>
 </blockquote>
 
-<div id="outline-container-orgae47519" class="outline-2">
-<h2 id="orgae47519">Gitmemo</h2>
-<div class="outline-text-2" id="text-orgae47519">
+<div id="outline-container-org1070ca2" class="outline-2">
+<h2 id="org1070ca2">Gitmemo</h2>
+<div class="outline-text-2" id="text-org1070ca2">
 <p>
 简单记录一下过程。
 </p>
@@ -1820,9 +1820,9 @@ GitHub issue 提供 tag 的功能，自带 markdown 编辑器和预览，也可�
 </div>
 </div>
 
-<div id="outline-container-org4481df8" class="outline-2">
-<h2 id="org4481df8">记录与反抗</h2>
-<div class="outline-text-2" id="text-org4481df8">
+<div id="outline-container-orgc123c39" class="outline-2">
+<h2 id="orgc123c39">记录与反抗</h2>
+<div class="outline-text-2" id="text-orgc123c39">
 <p>
 <a href="https://wiki.vandee.art/#%E6%B2%A1%E6%9C%89%E8%AE%B0%E5%BD%95%E5%B0%B1%E6%B2%A1%E6%9C%89%E5%8F%91%E7%94%9F%EF%BC%8C%E8%80%8C%E8%AE%B0%E5%BD%95%E6%9C%AC%E8%BA%AB%E5%B7%B2%E7%BB%8F%E6%98%AF%E4%B8%80%E7%A7%8D%E5%8F%8D%E6%8A%97">没有记录就没有发生，而记录本身已经是一种反抗</a> ，都说历史是属于胜利者的，但那些被历史掩埋的气味和色彩永远都会存在。
 </p>
@@ -1861,30 +1861,30 @@ GitHub issue 提供 tag 的功能，自带 markdown 编辑器和预览，也可�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org130fde3">同步保存到 Readwise</a>
+<li><a href="#org6f222bc">同步保存到 Readwise</a>
 <ul>
-<li><a href="#orgcc06b16">python</a></li>
-<li><a href="#orgc865089">workflow</a></li>
+<li><a href="#orge0e7577">python</a></li>
+<li><a href="#orgf26bfff">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orged47a0d">Teable</a>
+<li><a href="#org60653fd">Teable</a>
 <ul>
-<li><a href="#org234ae42">Python</a></li>
-<li><a href="#orgedcce6a">workflow</a></li>
-<li><a href="#org1ea639b">bash</a></li>
+<li><a href="#orgf16ce1e">Python</a></li>
+<li><a href="#orge7505ef">workflow</a></li>
+<li><a href="#org73b6317">bash</a></li>
 </ul>
 </li>
-<li><a href="#org44f3307">PocketBase</a>
+<li><a href="#orgea935b9">PocketBase</a>
 <ul>
-<li><a href="#org89d15dd">docker 部署到 VPS</a></li>
-<li><a href="#org8a9bac6">Python</a></li>
-<li><a href="#org948bf13">workflow</a></li>
+<li><a href="#orge3f6d70">docker 部署到 VPS</a></li>
+<li><a href="#orge8090ce">Python</a></li>
+<li><a href="#org4e26f11">workflow</a></li>
 </ul>
 </li>
-<li><a href="#orgd8f61e2">Readwise highlights</a>
+<li><a href="#org4f3200c">Readwise highlights</a>
 <ul>
-<li><a href="#org2dd0225">python</a></li>
-<li><a href="#orgdb61aaa">workflow</a></li>
+<li><a href="#org31278fd">python</a></li>
+<li><a href="#orge718b9c">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -1910,9 +1910,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 主要思路：利用 GitHub 为中转站， <code>osmos::memos</code> 插件保存文章，同步保存到 Readwise 进行阅读和高亮，再同步保存到 pocketbase 或 teable 做数据库处理。现在暂时选择了 teable 的方案。
 </p>
 
-<div id="outline-container-org130fde3" class="outline-2">
-<h2 id="org130fde3">同步保存到 Readwise</h2>
-<div class="outline-text-2" id="text-org130fde3">
+<div id="outline-container-org6f222bc" class="outline-2">
+<h2 id="org6f222bc">同步保存到 Readwise</h2>
+<div class="outline-text-2" id="text-org6f222bc">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -1929,9 +1929,9 @@ teable 则更偏向于可视化表格，不太适合长文内容的保存。由�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-orgcc06b16" class="outline-3">
-<h3 id="orgcc06b16">python</h3>
-<div class="outline-text-3" id="text-orgcc06b16">
+<div id="outline-container-orge0e7577" class="outline-3">
+<h3 id="orge0e7577">python</h3>
+<div class="outline-text-3" id="text-orge0e7577">
 <div class="org-src-container">
 <pre class="src src-python">import os
 import re
@@ -2027,9 +2027,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orgc865089" class="outline-3">
-<h3 id="orgc865089">workflow</h3>
-<div class="outline-text-3" id="text-orgc865089">
+<div id="outline-container-orgf26bfff" class="outline-3">
+<h3 id="orgf26bfff">workflow</h3>
+<div class="outline-text-3" id="text-orgf26bfff">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Save Bookmark to Readwise
@@ -2070,9 +2070,9 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-orged47a0d" class="outline-2">
-<h2 id="orged47a0d">Teable</h2>
-<div class="outline-text-2" id="text-orged47a0d">
+<div id="outline-container-org60653fd" class="outline-2">
+<h2 id="org60653fd">Teable</h2>
+<div class="outline-text-2" id="text-org60653fd">
 <p>
 在 bookmark-collection 仓库增加两个 secret： <code>TEABLE_TABLE_ID</code> ， <code>TEABLE_TOKEN</code> 。
 </p>
@@ -2081,9 +2081,9 @@ jobs:
 <code>TEABLE_TABLE_ID</code> 就是要写入表格的 ID，在地址栏的 <code>&amp;tableId=</code> 后面就是 ID 了。 <code>TEABLE_TOKEN</code> 就是 API 。
 </p>
 </div>
-<div id="outline-container-org234ae42" class="outline-3">
-<h3 id="org234ae42">Python</h3>
-<div class="outline-text-3" id="text-org234ae42">
+<div id="outline-container-orgf16ce1e" class="outline-3">
+<h3 id="orgf16ce1e">Python</h3>
+<div class="outline-text-3" id="text-orgf16ce1e">
 <p>
 在 bookmark-summary 里修改 py 脚本：
 </p>
@@ -2392,9 +2392,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orgedcce6a" class="outline-3">
-<h3 id="orgedcce6a">workflow</h3>
-<div class="outline-text-3" id="text-orgedcce6a">
+<div id="outline-container-orge7505ef" class="outline-3">
+<h3 id="orge7505ef">workflow</h3>
+<div class="outline-text-3" id="text-orge7505ef">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -2456,9 +2456,9 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-org1ea639b" class="outline-3">
-<h3 id="org1ea639b">bash</h3>
-<div class="outline-text-3" id="text-org1ea639b">
+<div id="outline-container-org73b6317" class="outline-3">
+<h3 id="org73b6317">bash</h3>
+<div class="outline-text-3" id="text-org73b6317">
 <p>
 顺便把 websites 也用 bash 脚本保存在 teable 里了，之前一直用 org-capture，现在太多了不好检索。让 Claude 把之前的列表转换为了 csv 导入到了 teable。
 </p>
@@ -2507,9 +2507,9 @@ done</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org44f3307" class="outline-2">
-<h2 id="org44f3307">PocketBase</h2>
-<div class="outline-text-2" id="text-org44f3307">
+<div id="outline-container-orgea935b9" class="outline-2">
+<h2 id="orgea935b9">PocketBase</h2>
+<div class="outline-text-2" id="text-orgea935b9">
 <p>
 需要在仓库的 secret 里增加 <code>POCKETBASE_TOKEN</code> 、 <code>POCKETBASE_API</code> 两个secert，填入自己的 pocketbase API 地址和请求头。
 </p>
@@ -2542,9 +2542,9 @@ second_response = requests.post(
 </div>
 </div>
 
-<div id="outline-container-org89d15dd" class="outline-3">
-<h3 id="org89d15dd">docker 部署到 VPS</h3>
-<div class="outline-text-3" id="text-org89d15dd">
+<div id="outline-container-orge3f6d70" class="outline-3">
+<h3 id="orge3f6d70">docker 部署到 VPS</h3>
+<div class="outline-text-3" id="text-orge3f6d70">
 <div class="org-src-container">
 <pre class="src src-yaml">
 version: "3.7"
@@ -2565,9 +2565,9 @@ services:
 </div>
 </div>
 </div>
-<div id="outline-container-org8a9bac6" class="outline-3">
-<h3 id="org8a9bac6">Python</h3>
-<div class="outline-text-3" id="text-org8a9bac6">
+<div id="outline-container-orge8090ce" class="outline-3">
+<h3 id="orge8090ce">Python</h3>
+<div class="outline-text-3" id="text-orge8090ce">
 <p>
 修改 bookmark-collection 仓库的 py 脚本：
 </p>
@@ -2685,9 +2685,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org948bf13" class="outline-3">
-<h3 id="org948bf13">workflow</h3>
-<div class="outline-text-3" id="text-org948bf13">
+<div id="outline-container-org4e26f11" class="outline-3">
+<h3 id="org4e26f11">workflow</h3>
+<div class="outline-text-3" id="text-org4e26f11">
 <p>
 修改 bookmark-collection 仓库的 yaml：
 </p>
@@ -2733,9 +2733,9 @@ jobs:
 </div>
 </div>
 
-<div id="outline-container-orgd8f61e2" class="outline-2">
-<h2 id="orgd8f61e2">Readwise highlights</h2>
-<div class="outline-text-2" id="text-orgd8f61e2">
+<div id="outline-container-org4f3200c" class="outline-2">
+<h2 id="org4f3200c">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org4f3200c">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
@@ -2744,9 +2744,9 @@ jobs:
 后面可以直接把 highlights 导入到 pocketbase。
 </p>
 </div>
-<div id="outline-container-org2dd0225" class="outline-3">
-<h3 id="org2dd0225">python</h3>
-<div class="outline-text-3" id="text-org2dd0225">
+<div id="outline-container-org31278fd" class="outline-3">
+<h3 id="org31278fd">python</h3>
+<div class="outline-text-3" id="text-org31278fd">
 <div class="org-src-container">
 <pre class="src src-python">
 import requests
@@ -2970,9 +2970,9 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-orgdb61aaa" class="outline-3">
-<h3 id="orgdb61aaa">workflow</h3>
-<div class="outline-text-3" id="text-orgdb61aaa">
+<div id="outline-container-orge718b9c" class="outline-3">
+<h3 id="orge718b9c">workflow</h3>
+<div class="outline-text-3" id="text-orge718b9c">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Sync Readwise Articles
@@ -3065,60 +3065,60 @@ jobs:
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdab291a">前言</a></li>
-<li><a href="#org42083f0">笔记和 PKM 的构建 Log</a>
+<li><a href="#org6349526">前言</a></li>
+<li><a href="#org283caef">笔记和 PKM 的构建 Log</a>
 <ul>
-<li><a href="#org1d7d30c">2022-07-20 开始系统的记笔记</a>
+<li><a href="#orgfdfffba">2022-07-20 开始系统的记笔记</a>
 <ul>
-<li><a href="#org4609680">Add</a></li>
-<li><a href="#org4a1bb31">为什么要花这么多心思在记笔记？</a></li>
+<li><a href="#org369bfef">Add</a></li>
+<li><a href="#orgfe55ecc">为什么要花这么多心思在记笔记？</a></li>
 </ul>
 </li>
-<li><a href="#orgd62cf82">2023-07-19 又一次知识管理逻辑的完善</a>
+<li><a href="#orgbb84c75">2023-07-19 又一次知识管理逻辑的完善</a>
 <ul>
-<li><a href="#orgcfd8981">Add</a></li>
-<li><a href="#org2c03842">知识管理与记录</a></li>
-<li><a href="#org87d58e3">重新折腾obsidian</a></li>
-<li><a href="#org338ee54">知识管理与文档记录的意义</a></li>
+<li><a href="#orgda8a5a4">Add</a></li>
+<li><a href="#org4794243">知识管理与记录</a></li>
+<li><a href="#orgbc49acd">重新折腾obsidian</a></li>
+<li><a href="#orgd429309">知识管理与文档记录的意义</a></li>
 </ul>
 </li>
-<li><a href="#orgcf1fcc6">2023-09-14 obsidian和logseq联用的PKM尝试</a>
+<li><a href="#orge25ca7c">2023-09-14 obsidian和logseq联用的PKM尝试</a>
 <ul>
-<li><a href="#orgced4b6d">Add</a></li>
-<li><a href="#orgd936fb1">Logseq</a></li>
-<li><a href="#org729a362">ob和Logseq的简单对比</a></li>
-<li><a href="#orga5a6e19">现在的选择</a></li>
-<li><a href="#orge328f55">Reference</a></li>
+<li><a href="#org5227f00">Add</a></li>
+<li><a href="#org2dc91da">Logseq</a></li>
+<li><a href="#orga40a603">ob和Logseq的简单对比</a></li>
+<li><a href="#orgf83449b">现在的选择</a></li>
+<li><a href="#org8bc6daa">Reference</a></li>
 </ul>
 </li>
-<li><a href="#org2761877">2024-04-13 神的编辑器</a>
+<li><a href="#org554e0a3">2024-04-13 神的编辑器</a>
 <ul>
-<li><a href="#org5ad67ab">Add</a></li>
-<li><a href="#orge81727e">做自己的笔记“软件”</a></li>
-<li><a href="#org8ebcdce">Emacs</a></li>
+<li><a href="#org2b8ec47">Add</a></li>
+<li><a href="#org6750ba9">做自己的笔记“软件”</a></li>
+<li><a href="#org338d2f0">Emacs</a></li>
 </ul>
 </li>
-<li><a href="#org3c07001">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
+<li><a href="#org1b8891a">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
 <ul>
-<li><a href="#org4dd0bb5">Add</a></li>
-<li><a href="#orgb46439f">PKM去形式化</a></li>
-<li><a href="#orgd575c5c">nb</a></li>
-<li><a href="#org7877191">去形式化之后的PKM</a></li>
-<li><a href="#org12b2a40">Logseq适配Quartz</a></li>
+<li><a href="#org2ce078a">Add</a></li>
+<li><a href="#orgb8f798d">PKM去形式化</a></li>
+<li><a href="#orgb16c356">nb</a></li>
+<li><a href="#orgfc65f9b">去形式化之后的PKM</a></li>
+<li><a href="#orgee02fbe">Logseq适配Quartz</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org15c1a1d">Emacs 阶段</a></li>
-<li><a href="#org1541a4f">ChangeLog</a></li>
+<li><a href="#orga818162">Emacs 阶段</a></li>
+<li><a href="#org7ec89a3">ChangeLog</a></li>
 </ul>
 </div>
 </nav>
 
 
-<div id="outline-container-orgdab291a" class="outline-2">
-<h2 id="orgdab291a">前言</h2>
-<div class="outline-text-2" id="text-orgdab291a">
+<div id="outline-container-org6349526" class="outline-2">
+<h2 id="org6349526">前言</h2>
+<div class="outline-text-2" id="text-org6349526">
 <p>
 最近开始 all in Emacs，用 org-mode 写作和生成静态博客页面，顺便对以前的写作再迭代整理一次。
 </p>
@@ -3134,16 +3134,16 @@ jobs:
 </div>
 
 
-<div id="outline-container-org42083f0" class="outline-2">
-<h2 id="org42083f0">笔记和 PKM 的构建 Log</h2>
-<div class="outline-text-2" id="text-org42083f0">
+<div id="outline-container-org283caef" class="outline-2">
+<h2 id="org283caef">笔记和 PKM 的构建 Log</h2>
+<div class="outline-text-2" id="text-org283caef">
 <p>
 这部分是之前相关零散文章的整理， <code>Add</code> 是新增，其他部分是之前的原文（部分修改）。
 </p>
 </div>
-<div id="outline-container-org1d7d30c" class="outline-3">
-<h3 id="org1d7d30c">2022-07-20 开始系统的记笔记</h3>
-<div class="outline-text-3" id="text-org1d7d30c">
+<div id="outline-container-orgfdfffba" class="outline-3">
+<h3 id="orgfdfffba">2022-07-20 开始系统的记笔记</h3>
+<div class="outline-text-3" id="text-orgfdfffba">
 <p>
 Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
 </p>
@@ -3156,18 +3156,18 @@ Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
 Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么执着于markdown格式，因为它简单高效，门槛也低，在网络文本传输有天然的优势。这中间还要解决的一个问题就是本地图片上传。利用Typora和gitee图床就可以完美解决。obsidian配合icloud也可以多平台同步。
 </p>
 </div>
-<div id="outline-container-org4609680" class="outline-4">
-<h4 id="org4609680">Add</h4>
-<div class="outline-text-4" id="text-org4609680">
+<div id="outline-container-org369bfef" class="outline-4">
+<h4 id="org369bfef">Add</h4>
+<div class="outline-text-4" id="text-org369bfef">
 <p>
 最开始接触到做笔记这个概念是从 Notion 开始，那个时候 Notion 正火。随后由于网络问题转到了 markdown 和 obsidian，开始折腾本地笔记。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org4a1bb31" class="outline-4">
-<h4 id="org4a1bb31">为什么要花这么多心思在记笔记？</h4>
-<div class="outline-text-4" id="text-org4a1bb31">
+<div id="outline-container-orgfe55ecc" class="outline-4">
+<h4 id="orgfe55ecc">为什么要花这么多心思在记笔记？</h4>
+<div class="outline-text-4" id="text-orgfe55ecc">
 <p>
 也还是从疫情说起，疫情让协同办公变成刚需。团队协作当中，本地与网络文档同步直接影响工作的效率。而对于个人，记笔记也直接影响信息的处理效率。而信息的输入与存储直接影响了，我们对于外界的认知，对信息的接受与处理，在准确全面的认知之下，思维才有用武之地。
 </p>
@@ -3191,9 +3191,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-orgd62cf82" class="outline-3">
-<h3 id="orgd62cf82">2023-07-19 又一次知识管理逻辑的完善</h3>
-<div class="outline-text-3" id="text-orgd62cf82">
+<div id="outline-container-orgbb84c75" class="outline-3">
+<h3 id="orgbb84c75">2023-07-19 又一次知识管理逻辑的完善</h3>
+<div class="outline-text-3" id="text-orgbb84c75">
 <p>
 最近刷到了这个文章<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>，重新思考了一下知识管理的逻辑。
 </p>
@@ -3202,17 +3202,17 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 距离上一次更新正好一年。在当时的方案中，由于还不能实现科学上网自由，obsidian的插件许多都没有，也没想着太折腾，notion的剪藏与数据库实在是方便。但是对于文档记录，本地储存才是一劳永逸的，notion的网络又还是时好时坏。还是决定再折腾一下。
 </p>
 </div>
-<div id="outline-container-orgcfd8981" class="outline-4">
-<h4 id="orgcfd8981">Add</h4>
-<div class="outline-text-4" id="text-orgcfd8981">
+<div id="outline-container-orgda8a5a4" class="outline-4">
+<h4 id="orgda8a5a4">Add</h4>
+<div class="outline-text-4" id="text-orgda8a5a4">
 <p>
 现在互联网已经被 AI 内容污染的不成样了。那个时候开始意识到历史和记录的意义了。
 </p>
 </div>
 </div>
-<div id="outline-container-org2c03842" class="outline-4">
-<h4 id="org2c03842">知识管理与记录</h4>
-<div class="outline-text-4" id="text-org2c03842">
+<div id="outline-container-org4794243" class="outline-4">
+<h4 id="org4794243">知识管理与记录</h4>
+<div class="outline-text-4" id="text-org4794243">
 <p>
 <a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>里提到
 </p>
@@ -3253,9 +3253,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-org87d58e3" class="outline-4">
-<h4 id="org87d58e3">重新折腾obsidian</h4>
-<div class="outline-text-4" id="text-org87d58e3">
+<div id="outline-container-orgbc49acd" class="outline-4">
+<h4 id="orgbc49acd">重新折腾obsidian</h4>
+<div class="outline-text-4" id="text-orgbc49acd">
 <p>
 正好前段时间Anytype的内测通过了，体验了一下，copy了一下它的设计理念， <b>决定以object-tag-type-relation的逻辑来整理信息，统一对于信息处理，思维上的内在逻辑分类，以及文档管理、记录、输出的外在分类。</b>
 </p>
@@ -3294,7 +3294,7 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </p>
 
 
-<figure id="org4bd6412">
+<figure id="org47b2e91">
 <img src="https://s2.loli.net/2023/07/19/EeMl1FW29UHJONI.jpg" class="img" width="50%" height="50%">
 
 </figure>
@@ -3309,9 +3309,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-org338ee54" class="outline-4">
-<h4 id="org338ee54">知识管理与文档记录的意义</h4>
-<div class="outline-text-4" id="text-org338ee54">
+<div id="outline-container-orgd429309" class="outline-4">
+<h4 id="orgd429309">知识管理与文档记录的意义</h4>
+<div class="outline-text-4" id="text-orgd429309">
 <p>
 <a href="https://www.bilibili.com/video/BV14Y4y1n7YQ/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">【苏星河】全网都在吹的飞书，到底是个什么软件？_哔哩哔哩_bilibili</a>这个视频的最后说的很有道理：
 </p>
@@ -3369,9 +3369,9 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 </div>
 </div>
 
-<div id="outline-container-orgcf1fcc6" class="outline-3">
-<h3 id="orgcf1fcc6">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
-<div class="outline-text-3" id="text-orgcf1fcc6">
+<div id="outline-container-orge25ca7c" class="outline-3">
+<h3 id="orge25ca7c">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
+<div class="outline-text-3" id="text-orge25ca7c">
 <p>
 距上一次折腾，不知不觉已经两个月了。在“深入”使用obsidian(后面简称ob)这两个月期间，一个之前暂时搁置的问题逐渐浮现出来：那就是数据储存形式。
 </p>
@@ -3388,18 +3388,18 @@ Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么
 没有最好的笔记软件，适合自己的才是最好的。
 </p>
 </div>
-<div id="outline-container-orgced4b6d" class="outline-4">
-<h4 id="orgced4b6d">Add</h4>
-<div class="outline-text-4" id="text-orgced4b6d">
+<div id="outline-container-org5227f00" class="outline-4">
+<h4 id="org5227f00">Add</h4>
+<div class="outline-text-4" id="text-org5227f00">
 <p>
 这个时候开始意识到数据的重要性了，以前的纸质记录、现在的电子记录，都是数据。现在的社会是信息和数据的社会，在 AI 介入之后，更是如此。没有最好的笔记软件，只有最适合自己的笔记软件，这句话一直说到现在。Logseq 是一个很好的笔记软件设计，但现在回过头来看，它从设计底层强制性的使用 markdown 语法里的列表格式来实现的块并不是那么容易让所有人接受，只要导入了其他 markdown 文档，就会强制性的加上列表格式。也是从 Logseq 开始，我第一次接触到了 Lisp 语言这个概念。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgd936fb1" class="outline-4">
-<h4 id="orgd936fb1">Logseq</h4>
-<div class="outline-text-4" id="text-orgd936fb1">
+<div id="outline-container-org2dc91da" class="outline-4">
+<h4 id="org2dc91da">Logseq</h4>
+<div class="outline-text-4" id="text-org2dc91da">
 <p>
 第一次打开Logseq就被UI的设计吸引，这是一种美学上的天然的吸引。和第一次打开Typora的感觉很像。
 </p>
@@ -3445,9 +3445,9 @@ Logseq的开发者<a href="https://twitter.com/tiensonqin">秦天生</a>也说�
 </div>
 </div>
 
-<div id="outline-container-org729a362" class="outline-4">
-<h4 id="org729a362">ob和Logseq的简单对比</h4>
-<div class="outline-text-4" id="text-org729a362">
+<div id="outline-container-orga40a603" class="outline-4">
+<h4 id="orga40a603">ob和Logseq的简单对比</h4>
+<div class="outline-text-4" id="text-orga40a603">
 <p>
 我认为obsidian的生命力来源于社区和插件，与其说用ob不如说是再用它的插件，ob开放了插件API，让爱好者自由发挥。
 </p>
@@ -3496,9 +3496,9 @@ Logseq：
 </div>
 </div>
 
-<div id="outline-container-orga5a6e19" class="outline-4">
-<h4 id="orga5a6e19">现在的选择</h4>
-<div class="outline-text-4" id="text-orga5a6e19">
+<div id="outline-container-orgf83449b" class="outline-4">
+<h4 id="orgf83449b">现在的选择</h4>
+<div class="outline-text-4" id="text-orgf83449b">
 <p>
 <b>做电子笔记，实际上是在做数据储存和数据处理。</b>
 </p>
@@ -3542,9 +3542,9 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </div>
 </div>
 
-<div id="outline-container-orge328f55" class="outline-4">
-<h4 id="orge328f55">Reference</h4>
-<div class="outline-text-4" id="text-orge328f55">
+<div id="outline-container-org8bc6daa" class="outline-4">
+<h4 id="org8bc6daa">Reference</h4>
+<div class="outline-text-4" id="text-org8bc6daa">
 <ul class="org-ul">
 <li><a href="https://sspai.com/post/82793">Obsidian技巧：通过多个标签快速定位文件(by TagFolder) - 少数派 (sspai.com)</a></li>
 <li><a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a></li>
@@ -3560,21 +3560,21 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </div>
 </div>
 
-<div id="outline-container-org2761877" class="outline-3">
-<h3 id="org2761877">2024-04-13 神的编辑器</h3>
-<div class="outline-text-3" id="text-org2761877">
+<div id="outline-container-org554e0a3" class="outline-3">
+<h3 id="org554e0a3">2024-04-13 神的编辑器</h3>
+<div class="outline-text-3" id="text-org554e0a3">
 </div>
-<div id="outline-container-org5ad67ab" class="outline-4">
-<h4 id="org5ad67ab">Add</h4>
-<div class="outline-text-4" id="text-org5ad67ab">
+<div id="outline-container-org2b8ec47" class="outline-4">
+<h4 id="org2b8ec47">Add</h4>
+<div class="outline-text-4" id="text-org2b8ec47">
 <p>
 开始正式使用 Emacs 了，脱离笔记软件，将做笔记这个事从使用工具记录变成了思维概念上的一种习惯，而不是一个行为。
 </p>
 </div>
 </div>
-<div id="outline-container-orge81727e" class="outline-4">
-<h4 id="orge81727e">做自己的笔记“软件”</h4>
-<div class="outline-text-4" id="text-orge81727e">
+<div id="outline-container-org6750ba9" class="outline-4">
+<h4 id="org6750ba9">做自己的笔记“软件”</h4>
+<div class="outline-text-4" id="text-org6750ba9">
 <p>
 在订阅里看到推荐的这篇文章  <a href="https://wiki.heptabase.com/the-roadmap?lang=zh-Hant">My Vision - The Roadmap | Heptabase Public Wiki</a>，大概讲了一下Heptabase 下一步的Roadmap，还有一些笔记理念上的东西。Heptabase 有所耳闻，因为订阅的价格一直没有去尝试。
 如同这个文章里说的：
@@ -3618,9 +3618,9 @@ Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
 </p>
 </div>
 </div>
-<div id="outline-container-org8ebcdce" class="outline-4">
-<h4 id="org8ebcdce">Emacs</h4>
-<div class="outline-text-4" id="text-org8ebcdce">
+<div id="outline-container-org338d2f0" class="outline-4">
+<h4 id="org338d2f0">Emacs</h4>
+<div class="outline-text-4" id="text-org338d2f0">
 <p>
 回归数据本身，那第一件事就是找到笔和纸，也就是编辑器。
 </p>
@@ -3642,7 +3642,7 @@ doomemacs的界面更符合我的审美，插件管理起来也挺方便，就�
 </p>
 
 
-<figure id="org8ca30f3">
+<figure id="orgc319047">
 <img src="https://s2.loli.net/2024/04/08/7suBLpiKVqDz25a.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -3687,13 +3687,13 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </div>
 </div>
 
-<div id="outline-container-org3c07001" class="outline-3">
-<h3 id="org3c07001">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
-<div class="outline-text-3" id="text-org3c07001">
+<div id="outline-container-org1b8891a" class="outline-3">
+<h3 id="org1b8891a">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
+<div class="outline-text-3" id="text-org1b8891a">
 </div>
-<div id="outline-container-org4dd0bb5" class="outline-4">
-<h4 id="org4dd0bb5">Add</h4>
-<div class="outline-text-4" id="text-org4dd0bb5">
+<div id="outline-container-org2ce078a" class="outline-4">
+<h4 id="org2ce078a">Add</h4>
+<div class="outline-text-4" id="text-org2ce078a">
 <p>
 从这里开始梳理出了自己 PKM 的原则。也从 nb 了解到了 CLI 笔记工具，开始琢磨用 bash 脚本做笔记了。
 </p>
@@ -3703,9 +3703,9 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </p>
 </div>
 </div>
-<div id="outline-container-orgb46439f" class="outline-4">
-<h4 id="orgb46439f">PKM去形式化</h4>
-<div class="outline-text-4" id="text-orgb46439f">
+<div id="outline-container-orgb8f798d" class="outline-4">
+<h4 id="orgb8f798d">PKM去形式化</h4>
+<div class="outline-text-4" id="text-orgb8f798d">
 <p>
 书接上回，现在的PKM第一原则是：数据的去形式化和通用性。只基于md文档的通用基础语法，其他功能以不污染文档内容的方式来实现。
 </p>
@@ -3720,9 +3720,9 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </div>
 </div>
 
-<div id="outline-container-orgd575c5c" class="outline-4">
-<h4 id="orgd575c5c">nb</h4>
-<div class="outline-text-4" id="text-orgd575c5c">
+<div id="outline-container-orgb16c356" class="outline-4">
+<h4 id="orgb16c356">nb</h4>
+<div class="outline-text-4" id="text-orgb16c356">
 <p>
 我愿称其为最强CLI笔记工具！完美匹配我现在的所有需求，设计思路也和我不谋而合，还支持用Emacs做编辑器。虽然Emacs也可以通过自定义函数和插件来复现这些功能，但既然有现成的，就先copy吧🤣。
 </p>
@@ -3732,7 +3732,7 @@ AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各�
 </p>
 
 
-<figure id="orge1115d2">
+<figure id="org34f3aa0">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-05-13_09-54-33.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -3743,15 +3743,15 @@ macOS /Homebrew安装， <code>brew install xwmx/taps/nb</code> 。nb也提供�
 </div>
 </div>
 
-<div id="outline-container-org7877191" class="outline-4">
-<h4 id="org7877191">去形式化之后的PKM</h4>
-<div class="outline-text-4" id="text-org7877191">
+<div id="outline-container-orgfc65f9b" class="outline-4">
+<h4 id="orgfc65f9b">去形式化之后的PKM</h4>
+<div class="outline-text-4" id="text-orgfc65f9b">
 <p>
 bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 </p>
 
 
-<figure id="org4f06742">
+<figure id="orgdd4e23d">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nbnb.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -3797,9 +3797,9 @@ bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
 </p>
 </div>
 </div>
-<div id="outline-container-org12b2a40" class="outline-4">
-<h4 id="org12b2a40">Logseq适配Quartz</h4>
-<div class="outline-text-4" id="text-org12b2a40">
+<div id="outline-container-orgee02fbe" class="outline-4">
+<h4 id="orgee02fbe">Logseq适配Quartz</h4>
+<div class="outline-text-4" id="text-orgee02fbe">
 <p>
 这次在logseq格式转化的时候，几个问题小折腾了一会。
 </p>
@@ -3943,9 +3943,9 @@ yaml区域的逻辑可以再用yaml库优化，后面再完善这个格式化脚
 </div>
 </div>
 </div>
-<div id="outline-container-org15c1a1d" class="outline-2">
-<h2 id="org15c1a1d">Emacs 阶段</h2>
-<div class="outline-text-2" id="text-org15c1a1d">
+<div id="outline-container-orga818162" class="outline-2">
+<h2 id="orga818162">Emacs 阶段</h2>
+<div class="outline-text-2" id="text-orga818162">
 <p>
 中间使用了 2 个月的 Nvim，还是放不下 Emacs。随后遇到了 <a href="https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html">Tiddlywiki</a> ,然后就到了现在重度使用 Emacs 了：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ， <a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a>。
 </p>
@@ -3963,8 +3963,8 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </p>
 </div>
 </div>
-<div id="outline-container-org1541a4f" class="outline-2">
-<h2 id="org1541a4f">ChangeLog</h2>
+<div id="outline-container-org7ec89a3" class="outline-2">
+<h2 id="org7ec89a3">ChangeLog</h2>
 </div>
 <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-blog.html">Blog</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
@@ -3980,16 +3980,16 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9bf78d4">起因</a></li>
-<li><a href="#orgfc7b0c9">Memos</a></li>
-<li><a href="#org4e4e2ef">SSL</a></li>
-<li><a href="#org2de34cb">Memos 自定义</a>
+<li><a href="#orge46d1e1">起因</a></li>
+<li><a href="#orga43f1bc">Memos</a></li>
+<li><a href="#org5147193">SSL</a></li>
+<li><a href="#orge4d0cf8">Memos 自定义</a>
 <ul>
-<li><a href="#org8382344">自定义 css 和 JavaScript</a></li>
-<li><a href="#orgebbe603">Memos.top</a></li>
+<li><a href="#org139a8ed">自定义 css 和 JavaScript</a></li>
+<li><a href="#org1ad1390">Memos.top</a></li>
 </ul>
 </li>
-<li><a href="#org0f01106">小结</a></li>
+<li><a href="#orgb921fed">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -3997,9 +3997,9 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
 
-<div id="outline-container-org9bf78d4" class="outline-2">
-<h2 id="org9bf78d4">起因</h2>
-<div class="outline-text-2" id="text-org9bf78d4">
+<div id="outline-container-orge46d1e1" class="outline-2">
+<h2 id="orge46d1e1">起因</h2>
+<div class="outline-text-2" id="text-orge46d1e1">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -4018,9 +4018,9 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </div>
 </div>
 
-<div id="outline-container-orgfc7b0c9" class="outline-2">
-<h2 id="orgfc7b0c9">Memos</h2>
-<div class="outline-text-2" id="text-orgfc7b0c9">
+<div id="outline-container-orga43f1bc" class="outline-2">
+<h2 id="orga43f1bc">Memos</h2>
+<div class="outline-text-2" id="text-orga43f1bc">
 <p>
 几个版本的主要特色：
 </p>
@@ -4080,9 +4080,9 @@ sudo nginx -t # 检查配置是否有问题</pre>
 </div>
 </div>
 
-<div id="outline-container-org4e4e2ef" class="outline-2">
-<h2 id="org4e4e2ef">SSL</h2>
-<div class="outline-text-2" id="text-org4e4e2ef">
+<div id="outline-container-org5147193" class="outline-2">
+<h2 id="org5147193">SSL</h2>
+<div class="outline-text-2" id="text-org5147193">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
@@ -4169,13 +4169,13 @@ sudo certbot renew --dry-run</pre>
 </div>
 </div>
 
-<div id="outline-container-org2de34cb" class="outline-2">
-<h2 id="org2de34cb">Memos 自定义</h2>
-<div class="outline-text-2" id="text-org2de34cb">
+<div id="outline-container-orge4d0cf8" class="outline-2">
+<h2 id="orge4d0cf8">Memos 自定义</h2>
+<div class="outline-text-2" id="text-orge4d0cf8">
 </div>
-<div id="outline-container-org8382344" class="outline-3">
-<h3 id="org8382344">自定义 css 和 JavaScript</h3>
-<div class="outline-text-3" id="text-org8382344">
+<div id="outline-container-org139a8ed" class="outline-3">
+<h3 id="org139a8ed">自定义 css 和 JavaScript</h3>
+<div class="outline-text-3" id="text-org139a8ed">
 <p>
 适用 0.20.X 以上版本
 </p>
@@ -4194,9 +4194,9 @@ sudo certbot renew --dry-run</pre>
 </div>
 </div>
 
-<div id="outline-container-orgebbe603" class="outline-3">
-<h3 id="orgebbe603">Memos.top</h3>
-<div class="outline-text-3" id="text-orgebbe603">
+<div id="outline-container-org1ad1390" class="outline-3">
+<h3 id="org1ad1390">Memos.top</h3>
+<div class="outline-text-3" id="text-org1ad1390">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -4214,13 +4214,13 @@ sudo certbot renew --dry-run</pre>
 </p>
 
 
-<figure id="org16ca5f0">
+<figure id="org48bb459">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org6aad9f2">
+<figure id="org831a1f6">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -4232,9 +4232,9 @@ Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top
 </div>
 </div>
 
-<div id="outline-container-org0f01106" class="outline-2">
-<h2 id="org0f01106">小结</h2>
-<div class="outline-text-2" id="text-org0f01106">
+<div id="outline-container-orgb921fed" class="outline-2">
+<h2 id="orgb921fed">小结</h2>
+<div class="outline-text-2" id="text-orgb921fed">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>
@@ -4273,9 +4273,9 @@ Source：  <a href="https://mp.weixin.qq.com/s/1Lz276s_RjdaSN3NXOIuHw">模仿、
   <title><![CDATA[我的第一篇 org 博客]]></title>
   <description><![CDATA[
 
-<div id="outline-container-org16106d7" class="outline-2">
-<h2 id="org16106d7">一</h2>
-<div class="outline-text-2" id="text-org16106d7">
+<div id="outline-container-orgd31cb0f" class="outline-2">
+<h2 id="orgd31cb0f">一</h2>
+<div class="outline-text-2" id="text-orgd31cb0f">
 <p>
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 </p>
@@ -4301,16 +4301,16 @@ Source：  <a href="https://mp.weixin.qq.com/s/1Lz276s_RjdaSN3NXOIuHw">模仿、
 </p>
 
 
-<figure id="org73f85ba">
+<figure id="org1eb4d91">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png" alt="org-blog" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org335ad49" class="outline-2">
-<h2 id="org335ad49">二</h2>
-<div class="outline-text-2" id="text-org335ad49">
+<div id="outline-container-org15b4447" class="outline-2">
+<h2 id="org15b4447">二</h2>
+<div class="outline-text-2" id="text-org15b4447">
 <p>
 无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 </p>
@@ -4414,17 +4414,17 @@ Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.w
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0a39137">GitHub 书签</a></li>
-<li><a href="#org56d21c0">从GitHub书签到页面</a></li>
+<li><a href="#org5d1b8b5">GitHub 书签</a></li>
+<li><a href="#orge78407c">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
 
 
 
-<div id="outline-container-org0a39137" class="outline-2">
-<h2 id="org0a39137">GitHub 书签</h2>
-<div class="outline-text-2" id="text-org0a39137">
+<div id="outline-container-org5d1b8b5" class="outline-2">
+<h2 id="org5d1b8b5">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org5d1b8b5">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull's Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -4478,7 +4478,7 @@ process_changes.py
 </p>
 
 
-<figure id="org2ddca95">
+<figure id="orgbadf199">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -4680,15 +4680,15 @@ if __name__ == "__main__":
 </div>
 </div>
 
-<div id="outline-container-org56d21c0" class="outline-2">
-<h2 id="org56d21c0">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org56d21c0">
+<div id="outline-container-orge78407c" class="outline-2">
+<h2 id="orge78407c">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-orge78407c">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="org78d348d">
+<figure id="orgb7c1cee">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -4782,15 +4782,15 @@ if __name__ == "__main__":
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org093d257">TiddlyWiki</a>
+<li><a href="#orgd22b898">TiddlyWiki</a>
 <ul>
-<li><a href="#orga08901f">简介</a></li>
-<li><a href="#orge31a2e2">10分钟部署一个Wiki笔记本</a></li>
-<li><a href="#org544b535">功能特性</a></li>
+<li><a href="#orga49d3a9">简介</a></li>
+<li><a href="#org177b357">10分钟部署一个Wiki笔记本</a></li>
+<li><a href="#org0d1f477">功能特性</a></li>
 </ul>
 </li>
-<li><a href="#org40cbb69">Teable</a></li>
-<li><a href="#org3e3f5c3">小结</a></li>
+<li><a href="#orgaa835be">Teable</a></li>
+<li><a href="#org9ac66e6">小结</a></li>
 </ul>
 </div>
 </nav>
@@ -4831,9 +4831,9 @@ pre-training预训练，fine-turing微调，到现在的热门赛道RAG，都需
 在搜索结构化数据和PostgreSQL的时候，了解到了TiddlyWiki和Teable。
 </p>
 
-<div id="outline-container-org093d257" class="outline-2">
-<h2 id="org093d257">TiddlyWiki</h2>
-<div class="outline-text-2" id="text-org093d257">
+<div id="outline-container-orgd22b898" class="outline-2">
+<h2 id="orgd22b898">TiddlyWiki</h2>
+<div class="outline-text-2" id="text-orgd22b898">
 <p>
 这纯属是一个意外惊喜。一直想做一个类似Andy的<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子笔记</a>页面，非常简洁，又很还原纸张翻页的感觉。没想到在TiddlyWiki里实现了。
 </p>
@@ -4843,9 +4843,9 @@ pre-training预训练，fine-turing微调，到现在的热门赛道RAG，都需
 </p>
 </div>
 
-<div id="outline-container-orga08901f" class="outline-3">
-<h3 id="orga08901f">简介</h3>
-<div class="outline-text-3" id="text-orga08901f">
+<div id="outline-container-orga49d3a9" class="outline-3">
+<h3 id="orga49d3a9">简介</h3>
+<div class="outline-text-3" id="text-orga49d3a9">
 <p>
 TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方的host服务、第三方的发行版等等。
 </p>
@@ -4860,9 +4860,9 @@ TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方�
 </div>
 </div>
 
-<div id="outline-container-orge31a2e2" class="outline-3">
-<h3 id="orge31a2e2">10分钟部署一个Wiki笔记本</h3>
-<div class="outline-text-3" id="text-orge31a2e2">
+<div id="outline-container-org177b357" class="outline-3">
+<h3 id="org177b357">10分钟部署一个Wiki笔记本</h3>
+<div class="outline-text-3" id="text-org177b357">
 <p>
 <b>GitHub:</b>
 </p>
@@ -4899,9 +4899,9 @@ TiddlyWiki是一个基于JavaScript的Wiki，目前有桌面客户端、官方�
 </div>
 </div>
 
-<div id="outline-container-org544b535" class="outline-3">
-<h3 id="org544b535">功能特性</h3>
-<div class="outline-text-3" id="text-org544b535">
+<div id="outline-container-org0d1f477" class="outline-3">
+<h3 id="org0d1f477">功能特性</h3>
+<div class="outline-text-3" id="text-org0d1f477">
 <p>
 TiddlyWiki有许多主题模板和插件。文件支持TiddlyWiki格式、JavaScript等等默认格式，装了插件之后就可以支持Markdown了。
 </p>
@@ -4925,9 +4925,9 @@ TiddlyWiki有许多主题模板和插件。文件支持TiddlyWiki格式、JavaSc
 </div>
 </div>
 
-<div id="outline-container-org40cbb69" class="outline-2">
-<h2 id="org40cbb69">Teable</h2>
-<div class="outline-text-2" id="text-org40cbb69">
+<div id="outline-container-orgaa835be" class="outline-2">
+<h2 id="orgaa835be">Teable</h2>
+<div class="outline-text-2" id="text-orgaa835be">
 <p>
 GitHub：<a href="https://github.com/teableio/teable">https://github.com/teableio/teable</a>
 </p>
@@ -4958,9 +4958,9 @@ Teable是一个开源的GoogleSheets、Airtable，并且提供了PostgreSQL集�
 </div>
 </div>
 
-<div id="outline-container-org3e3f5c3" class="outline-2">
-<h2 id="org3e3f5c3">小结</h2>
-<div class="outline-text-2" id="text-org3e3f5c3">
+<div id="outline-container-org9ac66e6" class="outline-2">
+<h2 id="org9ac66e6">小结</h2>
+<div class="outline-text-2" id="text-org9ac66e6">
 <p>
 我一直没有依赖太多的手段或方法来从形式上实现笔记之间的链接，这是我迭代到现在最核心的笔记原则。就像开头说的Andy的<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子笔记</a>一样，简洁、高效的笔记记录和阅读体验始终是我追求的第一位。
 </p>
@@ -4995,33 +4995,33 @@ Markdown一定是做笔记适用性最强的格式，但在数据层面一定不
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0db2536">Intro</a></li>
-<li><a href="#org116afd2">Manual</a>
+<li><a href="#orgc6c6e2a">Intro</a></li>
+<li><a href="#orgfae7fa4">Manual</a>
 <ul>
-<li><a href="#org03a6c78">Prerequisites</a></li>
-<li><a href="#orgb3d8ded">PKM</a>
+<li><a href="#org4206e6b">Prerequisites</a></li>
+<li><a href="#org639d0c2">PKM</a>
 <ul>
-<li><a href="#org95b341c">Principles</a></li>
-<li><a href="#org93f579f">Methods</a></li>
+<li><a href="#org18a40b8">Principles</a></li>
+<li><a href="#orgd86ab37">Methods</a></li>
 </ul>
 </li>
-<li><a href="#orgfa2ebed">PKM with LLM</a>
+<li><a href="#org69ed28d">PKM with LLM</a>
 <ul>
-<li><a href="#org1a63a2c">Ollama</a></li>
-<li><a href="#org790e1e2">Open WebUI</a></li>
-<li><a href="#org0336f4e"><b>Kotaemon</b></a></li>
+<li><a href="#org2295acd">Ollama</a></li>
+<li><a href="#org18166c5">Open WebUI</a></li>
+<li><a href="#org1c0b432"><b>Kotaemon</b></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org3d7f0d2">Thanks</a></li>
+<li><a href="#org0d1c427">Thanks</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org0db2536" class="outline-2">
-<h2 id="org0db2536">Intro</h2>
-<div class="outline-text-2" id="text-org0db2536">
+<div id="outline-container-orgc6c6e2a" class="outline-2">
+<h2 id="orgc6c6e2a">Intro</h2>
+<div class="outline-text-2" id="text-orgc6c6e2a">
 <p>
 在之前的使用 nb 的时候已经在琢磨使用bash脚本来做笔记的框架。期间因为没有找到有效的处理双链和反链的方法，无意间了解到了Emacs里的org-roam可以提供反链，正好又在学习代码的初期急需一个编辑器，于是在Emacs还是Nvim之间选择了Emacs。
 </p>
@@ -5079,7 +5079,7 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </p>
 
 
-<figure id="orgf2bc6ca">
+<figure id="org65c34f6">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nvimdash.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -5087,9 +5087,9 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </div>
 
 
-<div id="outline-container-org116afd2" class="outline-2">
-<h2 id="org116afd2">Manual</h2>
-<div class="outline-text-2" id="text-org116afd2">
+<div id="outline-container-orgfae7fa4" class="outline-2">
+<h2 id="orgfae7fa4">Manual</h2>
+<div class="outline-text-2" id="text-orgfae7fa4">
 <p>
 这是一个以 <a href="https://neovim.io/">Neovim</a> 为基础编辑器、文件管理的Markdown本地笔记PKM。
 </p>
@@ -5105,9 +5105,9 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </ul>
 </div>
 
-<div id="outline-container-org03a6c78" class="outline-3">
-<h3 id="org03a6c78">Prerequisites</h3>
-<div class="outline-text-3" id="text-org03a6c78">
+<div id="outline-container-org4206e6b" class="outline-3">
+<h3 id="org4206e6b">Prerequisites</h3>
+<div class="outline-text-3" id="text-org4206e6b">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://neovim.io/">Neovim</a>，<a href="https://github.com/LazyVim/LazyVim">LazyVim</a>，<a href="https://github.com/vimwiki/vimwiki">Vimwiki</a>，<a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a>，<a href="https://sw.kovidgoyal.net/kitty/">kitty</a> 或其他terminal。
 </p>
@@ -5136,9 +5136,9 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://n
 </p>
 </div>
 </div>
-<div id="outline-container-orgb3d8ded" class="outline-3">
-<h3 id="orgb3d8ded">PKM</h3>
-<div class="outline-text-3" id="text-orgb3d8ded">
+<div id="outline-container-org639d0c2" class="outline-3">
+<h3 id="org639d0c2">PKM</h3>
+<div class="outline-text-3" id="text-org639d0c2">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -5152,7 +5152,7 @@ Journals用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="orgf19baff">
+<figure id="orgaa63cde">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/jounalbash.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -5186,9 +5186,9 @@ Stay foolish，stay simple。
 </p>
 </div>
 
-<div id="outline-container-org95b341c" class="outline-4">
-<h4 id="org95b341c">Principles</h4>
-<div class="outline-text-4" id="text-org95b341c">
+<div id="outline-container-org18a40b8" class="outline-4">
+<h4 id="org18a40b8">Principles</h4>
+<div class="outline-text-4" id="text-org18a40b8">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -5203,9 +5203,9 @@ Stay foolish，stay simple。
 </p>
 </div>
 </div>
-<div id="outline-container-org93f579f" class="outline-4">
-<h4 id="org93f579f">Methods</h4>
-<div class="outline-text-4" id="text-org93f579f">
+<div id="outline-container-orgd86ab37" class="outline-4">
+<h4 id="orgd86ab37">Methods</h4>
+<div class="outline-text-4" id="text-orgd86ab37">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -5235,8 +5235,8 @@ Stay foolish，stay simple。
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgc855afa"></a>Vimwiki<br>
-<div class="outline-text-5" id="text-orgc855afa">
+<li><a id="orgef258c3"></a>Vimwiki<br>
+<div class="outline-text-5" id="text-orgef258c3">
 <p>
 Vimwiki提供了类似于org-roam的insert功能，选中文字直接Enter即可在配置的笔记目录下生成笔记。当然也可以 <code>/path/notes</code> 的形式在相对路径的文件夹里生成对应文件。
 </p>
@@ -5283,22 +5283,22 @@ vim.g.vimwiki_list = {
 </div>
 </li>
 
-<li><a id="org1d058fe"></a>Bash - MD capture<br>
-<div class="outline-text-5" id="text-org1d058fe">
+<li><a id="org96c1919"></a>Bash - MD capture<br>
+<div class="outline-text-5" id="text-org96c1919">
 <p>
 我现在自用的bash脚本包括导航脚本和特定笔记脚本两种，根据这两个模板常用的笔记需求基本可以满足。基本复现org-capture里自定义模板、特定位置写入内容、指定文件生成位置。
 </p>
 
 
-<figure id="orgc3d552e">
+<figure id="org3922b49">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/mdnotesbash.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 
 <ul class="org-ul">
-<li><a id="org260d72c"></a>使用Bash脚本步骤<br>
-<div class="outline-text-6" id="text-org260d72c">
+<li><a id="orgf846231"></a>使用Bash脚本步骤<br>
+<div class="outline-text-6" id="text-orgf846231">
 <ul class="org-ul">
 <li>添加脚本文件夹环境全局访问： <code>.bash_profile</code>  or  <code>.bashrc</code> 文件里写入 <code>export PATH="~/path/my_scripts:$PATH"</code></li>
 
@@ -5311,8 +5311,8 @@ vim.g.vimwiki_list = {
 </ul>
 </div>
 </li>
-<li><a id="orga22e43e"></a>脚本模板参考<br>
-<div class="outline-text-6" id="text-orga22e43e">
+<li><a id="org43f9738"></a>脚本模板参考<br>
+<div class="outline-text-6" id="text-org43f9738">
 <ul class="org-ul">
 <li><p>
 导航脚本，选择创建笔记的类型：
@@ -5504,10 +5504,10 @@ open -a "typora" "$fullPath"</pre>
 </li>
 
 
-<li><a id="org4c501a7"></a>ToggleTerm<br>
-<div class="outline-text-5" id="text-org4c501a7">
+<li><a id="orgfa2ba9e"></a>ToggleTerm<br>
+<div class="outline-text-5" id="text-orgfa2ba9e">
 
-<figure id="org2f7f26a">
+<figure id="orge26f18e">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/bash-quote.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -5578,10 +5578,10 @@ open -a "typora" "$fullPath"</pre>
 </div>
 </li>
 
-<li><a id="org5835dac"></a>中英输入法问题<br>
+<li><a id="orga70fc04"></a>中英输入法问题<br>
 <ul class="org-ul">
-<li><a id="org33206b0"></a>im-select-nvim<br>
-<div class="outline-text-6" id="text-org33206b0">
+<li><a id="org5146fbb"></a>im-select-nvim<br>
+<div class="outline-text-6" id="text-org5146fbb">
 <p>
 <a href="https://github.com/keaising/im-select.nvim">keaising/im-select.nvim</a> 这个插件可以在Nvim里让nomal模式下自动切换成英文输入，在insert模式下自动切换回中文输入。刚需。
 </p>
@@ -5657,8 +5657,8 @@ Ref:
 </div>
 </li>
 
-<li><a id="org1822177"></a>RIME<br>
-<div class="outline-text-6" id="text-org1822177">
+<li><a id="org90c8253"></a>RIME<br>
+<div class="outline-text-6" id="text-org90c8253">
 <p>
 如果说PKM是纸，那么输入法就是笔。
 </p>
@@ -5747,8 +5747,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full</pre>
 </ul>
 </li>
 
-<li><a id="orgb5e12ca"></a>MarkdownPreview<br>
-<div class="outline-text-5" id="text-orgb5e12ca">
+<li><a id="org20cdb8d"></a>MarkdownPreview<br>
+<div class="outline-text-5" id="text-org20cdb8d">
 <p>
 <a href="https://github.com/iamcco/markdown-preview.nvim">iamcco/markdown-preview.nvim</a>提供实时的markdown预览，对于经常写md的不是那么必须，拿不准的可以预览看看的整体效果。输入 <code>:MarkdownPreview</code> 就会在浏览器里打开预览。
 </p>
@@ -5825,8 +5825,8 @@ Replace Firefox with Google\ Chrome or Brave\ Browser if you prefer. They all re
 </div>
 </li>
 
-<li><a id="orgeec4f2b"></a>网页摘录和after-reading<br>
-<div class="outline-text-5" id="text-orgeec4f2b">
+<li><a id="org04d5ddf"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-org04d5ddf">
 <p>
 利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 </p>
@@ -5865,8 +5865,8 @@ after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a
 </div>
 
 <ul class="org-ul">
-<li><a id="orge08a33c"></a>tools<br>
-<div class="outline-text-6" id="text-orge08a33c">
+<li><a id="orgf23f62c"></a>tools<br>
+<div class="outline-text-6" id="text-orgf23f62c">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -5916,9 +5916,9 @@ Reader does two things:
 </div>
 </div>
 
-<div id="outline-container-orgfa2ebed" class="outline-3">
-<h3 id="orgfa2ebed">PKM with LLM</h3>
-<div class="outline-text-3" id="text-orgfa2ebed">
+<div id="outline-container-org69ed28d" class="outline-3">
+<h3 id="org69ed28d">PKM with LLM</h3>
+<div class="outline-text-3" id="text-org69ed28d">
 <p>
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
 </p>
@@ -5940,9 +5940,9 @@ Reader does two things:
 </p>
 </div>
 
-<div id="outline-container-org1a63a2c" class="outline-4">
-<h4 id="org1a63a2c">Ollama</h4>
-<div class="outline-text-4" id="text-org1a63a2c">
+<div id="outline-container-org2295acd" class="outline-4">
+<h4 id="org2295acd">Ollama</h4>
+<div class="outline-text-4" id="text-org2295acd">
 <p>
 <a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 </p>
@@ -5966,9 +5966,9 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 </div>
 
 
-<div id="outline-container-org790e1e2" class="outline-4">
-<h4 id="org790e1e2">Open WebUI</h4>
-<div class="outline-text-4" id="text-org790e1e2">
+<div id="outline-container-org18166c5" class="outline-4">
+<h4 id="org18166c5">Open WebUI</h4>
+<div class="outline-text-4" id="text-org18166c5">
 <p>
 <a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 </p>
@@ -6049,9 +6049,9 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 </div>
 
 
-<div id="outline-container-org0336f4e" class="outline-4">
-<h4 id="org0336f4e"><b>Kotaemon</b></h4>
-<div class="outline-text-4" id="text-org0336f4e">
+<div id="outline-container-org1c0b432" class="outline-4">
+<h4 id="org1c0b432"><b>Kotaemon</b></h4>
+<div class="outline-text-4" id="text-org1c0b432">
 <p>
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 </p>
@@ -6091,9 +6091,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </div>
 </div>
 
-<div id="outline-container-org3d7f0d2" class="outline-2">
-<h2 id="org3d7f0d2">Thanks</h2>
-<div class="outline-text-2" id="text-org3d7f0d2">
+<div id="outline-container-org0d1c427" class="outline-2">
+<h2 id="org0d1c427">Thanks</h2>
+<div class="outline-text-2" id="text-org0d1c427">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>
@@ -6124,18 +6124,18 @@ Imagining and creating！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0231329">模仿、游戏、亵渎</a></li>
-<li><a href="#org2ae5e8d">艺术和模仿</a></li>
-<li><a href="#org5a222d1">创造力与记忆力</a></li>
-<li><a href="#org7735b14">模仿游戏</a></li>
+<li><a href="#org16d3a44">模仿、游戏、亵渎</a></li>
+<li><a href="#orgf9fe83e">艺术和模仿</a></li>
+<li><a href="#org2c5a443">创造力与记忆力</a></li>
+<li><a href="#orgf0f4be5">模仿游戏</a></li>
 </ul>
 </div>
 </nav>
 
 
-<div id="outline-container-org0231329" class="outline-2">
-<h2 id="org0231329">模仿、游戏、亵渎</h2>
-<div class="outline-text-2" id="text-org0231329">
+<div id="outline-container-org16d3a44" class="outline-2">
+<h2 id="org16d3a44">模仿、游戏、亵渎</h2>
+<div class="outline-text-2" id="text-org16d3a44">
 <p>
 <a href="https://mp.weixin.qq.com/s/1Lz276s_RjdaSN3NXOIuHw">模仿、游戏和亵渎</a>，RSS推送了这个订阅。如果你也喜欢思考，那么大概率你也会爱上这篇文章里提出的思考。
 </p>
@@ -6192,9 +6192,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-org2ae5e8d" class="outline-2">
-<h2 id="org2ae5e8d">艺术和模仿</h2>
-<div class="outline-text-2" id="text-org2ae5e8d">
+<div id="outline-container-orgf9fe83e" class="outline-2">
+<h2 id="orgf9fe83e">艺术和模仿</h2>
+<div class="outline-text-2" id="text-orgf9fe83e">
 <p>
 《艺术的故事》和《现代艺术150年》这两本书从历史的角度，阐述了一个让我担忧的结论：艺术本身可能并不存在，存在的只是艺术品。
 </p>
@@ -6255,9 +6255,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-org5a222d1" class="outline-2">
-<h2 id="org5a222d1">创造力与记忆力</h2>
-<div class="outline-text-2" id="text-org5a222d1">
+<div id="outline-container-org2c5a443" class="outline-2">
+<h2 id="org2c5a443">创造力与记忆力</h2>
+<div class="outline-text-2" id="text-org2c5a443">
 <p>
 <a href="https://shwin.co/blog/creativity-fundamentally-comes-from-memorization">创造力从根本上来自记忆 &#x2014; Creativity Fundamentally Comes From Memorization</a>，正好看到这篇推送，和前几天的post主题挺契合，几个观点挺有意思：
 </p>
@@ -6352,9 +6352,9 @@ Another strategy that works well in both humor and famous EDM drops is "violatin
 
 
 
-<div id="outline-container-org7735b14" class="outline-2">
-<h2 id="org7735b14">模仿游戏</h2>
-<div class="outline-text-2" id="text-org7735b14">
+<div id="outline-container-orgf0f4be5" class="outline-2">
+<h2 id="orgf0f4be5">模仿游戏</h2>
+<div class="outline-text-2" id="text-orgf0f4be5">
 <p>
 <a href="https://movie.douban.com/subject/10463953/">模仿游戏</a>是我很喜欢的一部电影，讲的是图灵（本尼迪克特·康伯巴奇 Benedict Cumberbatch 饰）制作密码破译机的故事。电影的名字和今天讨论的模仿游戏完全是一个巧合。只是在重复敲打模仿、游戏时，这个电影一直在我的脑子里窜来窜去，干脆把你放出来好了。黑客帝国也放出来好了，<a href="https://www.vandee.art/2023-02-23-blue-or-red.html">蓝色药丸还是红色药丸？</a> 🤣。
 </p>
@@ -6409,14 +6409,14 @@ The most interesting part is: you get to define your own dimensions.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2ee0e39">My Favorites</a></li>
-<li><a href="#org023c561">Mac</a></li>
-<li><a href="#org24df899">Search</a></li>
-<li><a href="#orga871199">论文</a></li>
-<li><a href="#orgbdf8ad1">LLM Web Chat</a></li>
-<li><a href="#org55cb8a4">Others</a>
+<li><a href="#orgea3a8fc">My Favorites</a></li>
+<li><a href="#org0a57fa5">Mac</a></li>
+<li><a href="#orgc5f4b9e">Search</a></li>
+<li><a href="#org7a2a228">论文</a></li>
+<li><a href="#orgfe2bdb2">LLM Web Chat</a></li>
+<li><a href="#orge358033">Others</a>
 <ul>
-<li><a href="#org652e724">PDF相关</a></li>
+<li><a href="#orgdadceb6">PDF相关</a></li>
 </ul>
 </li>
 </ul>
@@ -6434,9 +6434,9 @@ The most interesting part is: you get to define your own dimensions.
 日常的搜集第一次整理之后有了工具汇总表格版：<a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a> ，这里做第二次筛选。
 </p>
 
-<div id="outline-container-org2ee0e39" class="outline-2">
-<h2 id="org2ee0e39">My Favorites</h2>
-<div class="outline-text-2" id="text-org2ee0e39">
+<div id="outline-container-orgea3a8fc" class="outline-2">
+<h2 id="orgea3a8fc">My Favorites</h2>
+<div class="outline-text-2" id="text-orgea3a8fc">
 <ul class="org-ul">
 <li><p>
 <b>Vimium</b>
@@ -6486,9 +6486,9 @@ Url: <a href="https://github.com/nbonamy/witsy">https://github.com/nbonamy/witsy
 </ul>
 </div>
 </div>
-<div id="outline-container-org023c561" class="outline-2">
-<h2 id="org023c561">Mac</h2>
-<div class="outline-text-2" id="text-org023c561">
+<div id="outline-container-org0a57fa5" class="outline-2">
+<h2 id="org0a57fa5">Mac</h2>
+<div class="outline-text-2" id="text-org0a57fa5">
 <ul class="org-ul">
 <li><p>
 FlashSpace: FlashSpace is a blazingly fast virtual workspace manager for macOS
@@ -6533,9 +6533,9 @@ Url: <a href="https://pixpinapp.com/">https://pixpinapp.com/</a>
 </ul>
 </div>
 </div>
-<div id="outline-container-org24df899" class="outline-2">
-<h2 id="org24df899">Search</h2>
-<div class="outline-text-2" id="text-org24df899">
+<div id="outline-container-orgc5f4b9e" class="outline-2">
+<h2 id="orgc5f4b9e">Search</h2>
+<div class="outline-text-2" id="text-orgc5f4b9e">
 <ul class="org-ul">
 <li><p>
 <b>Gemini-Search</b>
@@ -6640,9 +6640,9 @@ OpenAI推出的搜索。
 </div>
 </div>
 
-<div id="outline-container-orga871199" class="outline-2">
-<h2 id="orga871199">论文</h2>
-<div class="outline-text-2" id="text-orga871199">
+<div id="outline-container-org7a2a228" class="outline-2">
+<h2 id="org7a2a228">论文</h2>
+<div class="outline-text-2" id="text-org7a2a228">
 <ul class="org-ul">
 <li><p>
 alphaxiv：斯坦福大学的学生做的一个论文讨论平台。可以理解为基于arXiv论文的Twitter，可以对论文评论，讨论。
@@ -6681,9 +6681,9 @@ Source:  <a href="https://www.txyz.ai/">https://www.txyz.ai/</a>
 </div>
 </div>
 
-<div id="outline-container-orgbdf8ad1" class="outline-2">
-<h2 id="orgbdf8ad1">LLM Web Chat</h2>
-<div class="outline-text-2" id="text-orgbdf8ad1">
+<div id="outline-container-orgfe2bdb2" class="outline-2">
+<h2 id="orgfe2bdb2">LLM Web Chat</h2>
+<div class="outline-text-2" id="text-orgfe2bdb2">
 <ul class="org-ul">
 <li><p>
 <b>DuckDuckGo AI Chat</b>
@@ -6784,9 +6784,9 @@ GitHub: <a href="https://github.com/open-webui/open-webui">https://github.com/op
 </div>
 </div>
 
-<div id="outline-container-org55cb8a4" class="outline-2">
-<h2 id="org55cb8a4">Others</h2>
-<div class="outline-text-2" id="text-org55cb8a4">
+<div id="outline-container-orge358033" class="outline-2">
+<h2 id="orge358033">Others</h2>
+<div class="outline-text-2" id="text-orge358033">
 <p>
 另见：表格版 <a href="https://app.teable.io/share/shrlzO2q7vyCEJYvXqa/view">tools</a>
 </p>
@@ -6862,9 +6862,9 @@ Source: <a href="https://github.com/mayneyao/eidos">https://github.com/mayneyao/
 </ul>
 </div>
 
-<div id="outline-container-org652e724" class="outline-3">
-<h3 id="org652e724">PDF相关</h3>
-<div class="outline-text-3" id="text-org652e724">
+<div id="outline-container-orgdadceb6" class="outline-3">
+<h3 id="orgdadceb6">PDF相关</h3>
+<div class="outline-text-3" id="text-orgdadceb6">
 <p>
 PDF转Markdown 方案
 </p>
@@ -6899,38 +6899,38 @@ PDF转Markdown 方案
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb54d5ab">Intro</a></li>
-<li><a href="#org4f7abe8">Manual</a>
+<li><a href="#org048f18b">Intro</a></li>
+<li><a href="#org0abea03">Manual</a>
 <ul>
-<li><a href="#org12996e2">Prerequisites</a></li>
-<li><a href="#org71ffd7f">PKM</a>
+<li><a href="#orgb68724b">Prerequisites</a></li>
+<li><a href="#org7383123">PKM</a>
 <ul>
-<li><a href="#org9313f26">Principles</a></li>
-<li><a href="#org7e1028f">Methods</a></li>
+<li><a href="#org59a862b">Principles</a></li>
+<li><a href="#org3c0885d">Methods</a></li>
 </ul>
 </li>
-<li><a href="#orgfaa6e11">PKM with LLM</a>
+<li><a href="#orgdc7e60c">PKM with LLM</a>
 <ul>
-<li><a href="#orgc3ea0ef">Ollama</a></li>
-<li><a href="#org2ddfa3c">Open WebUI</a></li>
-<li><a href="#orgebee052">Aider</a></li>
-<li><a href="#orga8f120d">gptel</a></li>
-<li><a href="#org73cc480">Kotaemon</a></li>
-<li><a href="#orgeb0dc89">Chipper</a></li>
+<li><a href="#org7126f81">Ollama</a></li>
+<li><a href="#org6787ad7">Open WebUI</a></li>
+<li><a href="#orgc99ae6a">Aider</a></li>
+<li><a href="#org999fa18">gptel</a></li>
+<li><a href="#org71b9a2a">Kotaemon</a></li>
+<li><a href="#org483bdd6">Chipper</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0348279">ChangeLog</a></li>
-<li><a href="#org6c802ae">Thanks</a></li>
+<li><a href="#org57e9e92">ChangeLog</a></li>
+<li><a href="#org2175a13">Thanks</a></li>
 </ul>
 </div>
 </nav>
 
 
-<div id="outline-container-orgb54d5ab" class="outline-2">
-<h2 id="orgb54d5ab">Intro</h2>
-<div class="outline-text-2" id="text-orgb54d5ab">
+<div id="outline-container-org048f18b" class="outline-2">
+<h2 id="org048f18b">Intro</h2>
+<div class="outline-text-2" id="text-org048f18b">
 <blockquote>
 <p>
 For me, taking notes helps make sure that I’m really thinking hard about what’s in there. If I disagree with the book, sometimes it takes a long time to read the books because I’m writing so much in the margin. <a href="https://youtu.be/eTFy8RnUkoU?t=11">Bill Gates</a>
@@ -6971,9 +6971,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 </div>
 </div>
 
-<div id="outline-container-org4f7abe8" class="outline-2">
-<h2 id="org4f7abe8">Manual</h2>
-<div class="outline-text-2" id="text-org4f7abe8">
+<div id="outline-container-org0abea03" class="outline-2">
+<h2 id="org0abea03">Manual</h2>
+<div class="outline-text-2" id="text-org0abea03">
 <p>
 这是一个以 <a href="https://zh.wikipedia.org/wiki/Emacs">Emacs</a> 为基础编辑器、文件管理的Org-mode本地笔记PKM。
 </p>
@@ -6993,9 +6993,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 </ul>
 </div>
 
-<div id="outline-container-org12996e2" class="outline-3">
-<h3 id="org12996e2">Prerequisites</h3>
-<div class="outline-text-3" id="text-org12996e2">
+<div id="outline-container-orgb68724b" class="outline-3">
+<h3 id="orgb68724b">Prerequisites</h3>
+<div class="outline-text-3" id="text-orgb68724b">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>，<a href="https://github.com/doomemacs/doomemacs">doomemacs</a>，<a href="https://orgmode.org/">Org mode for GNU Emacs</a>，<a href="https://www.orgroam.com/">Org-roam</a>。
 </p>
@@ -7059,16 +7059,16 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://w
 </p>
 
 
-<figure id="orgac6d836">
+<figure id="org0426741">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/new-emacs3.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org71ffd7f" class="outline-3">
-<h3 id="org71ffd7f">PKM</h3>
-<div class="outline-text-3" id="text-org71ffd7f">
+<div id="outline-container-org7383123" class="outline-3">
+<h3 id="org7383123">PKM</h3>
+<div class="outline-text-3" id="text-org7383123">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -7086,7 +7086,7 @@ Januarys用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="orgb022451">
+<figure id="org8bbe960">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -7120,9 +7120,9 @@ Stay foolish，stay simple。
 </p>
 </div>
 
-<div id="outline-container-org9313f26" class="outline-4">
-<h4 id="org9313f26">Principles</h4>
-<div class="outline-text-4" id="text-org9313f26">
+<div id="outline-container-org59a862b" class="outline-4">
+<h4 id="org59a862b">Principles</h4>
+<div class="outline-text-4" id="text-org59a862b">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -7162,9 +7162,9 @@ Stay foolish，stay simple。
 </div>
 
 
-<div id="outline-container-org7e1028f" class="outline-4">
-<h4 id="org7e1028f">Methods</h4>
-<div class="outline-text-4" id="text-org7e1028f">
+<div id="outline-container-org3c0885d" class="outline-4">
+<h4 id="org3c0885d">Methods</h4>
+<div class="outline-text-4" id="text-org3c0885d">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -7199,15 +7199,15 @@ Emacs，org-roam，模板创建Daily和note：
 </p>
 
 
-<figure id="orgfb1ea77">
+<figure id="org52836d0">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 
 <ul class="org-ul">
-<li><a id="org5bed3d0"></a>Org-tag<br>
-<div class="outline-text-5" id="text-org5bed3d0">
+<li><a id="org3e70fff"></a>Org-tag<br>
+<div class="outline-text-5" id="text-org3e70fff">
 <p>
 org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的 <b>标签的统一性</b> ，大小写或者单复数不统一会很麻烦。
 </p>
@@ -7305,8 +7305,8 @@ Ref:
 </div>
 </li>
 
-<li><a id="orgc600587"></a>Org-agenda<br>
-<div class="outline-text-5" id="text-orgc600587">
+<li><a id="orga304690"></a>Org-agenda<br>
+<div class="outline-text-5" id="text-orga304690">
 <p>
 最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用 <code>#TODO</code> 来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 </p>
@@ -7333,15 +7333,15 @@ Ref:
 这是现在的样子：
 </p>
 
-<figure id="orgc080260">
+<figure id="orgc860ab2">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-06-15%2011.28.09.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </li>
 
-<li><a id="org6d1eddc"></a>TODOs<br>
-<div class="outline-text-5" id="text-org6d1eddc">
+<li><a id="org0d5146b"></a>TODOs<br>
+<div class="outline-text-5" id="text-org0d5146b">
 <ul class="org-ul">
 <li><p>
 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入 <code>[/]</code> 或者 <code>[%]</code> 。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
@@ -7451,8 +7451,8 @@ Ref：
 </div>
 </li>
 
-<li><a id="orgbd2f216"></a>Org-capture<br>
-<div class="outline-text-5" id="text-orgbd2f216">
+<li><a id="org9f563c9"></a>Org-capture<br>
+<div class="outline-text-5" id="text-org9f563c9">
 <p>
 <a href="https://orgmode.org/manual/Capture.html">Org-capture</a> 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 </p>
@@ -7550,14 +7550,14 @@ Ref：
 </div>
 </li>
 
-<li><a id="org3001a68"></a>Org-roam<br>
-<div class="outline-text-5" id="text-org3001a68">
+<li><a id="orgd80f36a"></a>Org-roam<br>
+<div class="outline-text-5" id="text-orgd80f36a">
 <p>
 <a href="https://www.orgroam.com/">Org-roam</a> 是Emacs的一个包，也是org-mode 的扩展，可以简单的实现双链，通过org-roam-ui直观的预览。
 </p>
 
 
-<figure id="orgb79075c">
+<figure id="org7c8babc">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam-ui-2024-05-22%2013.31.40.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -7670,8 +7670,8 @@ Ref：
 </div>
 </li>
 
-<li><a id="org630db75"></a>Org-export<br>
-<div class="outline-text-5" id="text-org630db75">
+<li><a id="org41dd454"></a>Org-export<br>
+<div class="outline-text-5" id="text-org41dd454">
 <p>
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些<a href="https://orgmode.org/zh-CN/tools.html">工具</a> 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 </p>
@@ -7731,8 +7731,8 @@ Ref：<a href="https://orgmode.org/manual/Exporting.html">Exporting (The Org Man
 </div>
 </li>
 
-<li><a id="orgdbbe799"></a>Org with Zotero<br>
-<div class="outline-text-5" id="text-orgdbbe799">
+<li><a id="org17b15d6"></a>Org with Zotero<br>
+<div class="outline-text-5" id="text-org17b15d6">
 <p>
 书和论文的PDF文件，我现在全部放在<a href="https://www.zotero.org/">Zotero</a>。快速复制单个笔记到org-mode也挺简单：
 </p>
@@ -7792,8 +7792,8 @@ Ref：
 </div>
 </li>
 
-<li><a id="org47c352d"></a>Org-mode美化<br>
-<div class="outline-text-5" id="text-org47c352d">
+<li><a id="org323b4c6"></a>Org-mode美化<br>
+<div class="outline-text-5" id="text-org323b4c6">
 <p>
 我觉得原生的就挺好看，可读性也还好。
 </p>
@@ -7833,8 +7833,8 @@ Ref：
 </div>
 </li>
 
-<li><a id="org0f44ecd"></a>Org-protocol<br>
-<div class="outline-text-5" id="text-org0f44ecd">
+<li><a id="org87a9ff4"></a>Org-protocol<br>
+<div class="outline-text-5" id="text-org87a9ff4">
 <p>
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 </p>
@@ -7887,14 +7887,14 @@ Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的appl
 </div>
 </li>
 
-<li><a id="orgd290184"></a>网页摘录和after-reading<br>
-<div class="outline-text-5" id="text-orgd290184">
+<li><a id="org0a2514d"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-org0a2514d">
 <p>
 利用org-capture，做剪藏和摘录很方便。现在保存在 <code>clip.org</code> 文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 </p>
 
 
-<figure id="org93b77fa">
+<figure id="org3b889fb">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -7933,8 +7933,8 @@ after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a
 </div>
 
 <ul class="org-ul">
-<li><a id="orgf2c22e8"></a>tools<br>
-<div class="outline-text-6" id="text-orgf2c22e8">
+<li><a id="org7d40ed4"></a>tools<br>
+<div class="outline-text-6" id="text-org7d40ed4">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -7981,16 +7981,16 @@ Reader does two things:
 </ul>
 </li>
 
-<li><a id="org707b8e6"></a>输入法设置<br>
-<div class="outline-text-5" id="text-org707b8e6">
+<li><a id="org262945d"></a>输入法设置<br>
+<div class="outline-text-5" id="text-org262945d">
 <p>
 由于使用了evil，如果使用系统的输入法，每次在 <code>:w</code> 保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 </p>
 </div>
 
 <ul class="org-ul">
-<li><a id="org2effbe9"></a>SIS<br>
-<div class="outline-text-6" id="text-org2effbe9">
+<li><a id="org95f64bf"></a>SIS<br>
+<div class="outline-text-6" id="text-org95f64bf">
 <p>
 <a href="https://github.com/laishulu/emacs-smart-input-source">emacs-smart-input-source</a> 是一个可以自动切换输入法的Emacs包。
 </p>
@@ -8029,8 +8029,8 @@ Reader does two things:
 
 
 
-<li><a id="org591997f"></a>pyim<br>
-<div class="outline-text-6" id="text-org591997f">
+<li><a id="org50ce71c"></a>pyim<br>
+<div class="outline-text-6" id="text-org50ce71c">
 <p>
 <a href="https://github.com/tumashu/pyim">pyim</a> 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 </p>
@@ -8109,10 +8109,10 @@ Ref：
 </div>
 </li>
 
-<li><a id="org619283d"></a>RIME<br>
-<div class="outline-text-6" id="text-org619283d">
+<li><a id="orgb172eca"></a>RIME<br>
+<div class="outline-text-6" id="text-orgb172eca">
 
-<figure id="orgc1c357e">
+<figure id="org2bfc259">
 <img src="https://pic.vandee.art/images/rime.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -8205,8 +8205,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full</pre>
 </ul>
 </li>
 
-<li><a id="org4ab5aaf"></a>Others<br>
-<div class="outline-text-5" id="text-org4ab5aaf">
+<li><a id="orgdaee0b0"></a>Others<br>
+<div class="outline-text-5" id="text-orgdaee0b0">
 <ul class="org-ul">
 <li><a href="https://github.com/lijigang/100-questions-about-orgmode">lijigang/100-questions-about-orgmode: It's all about <b>orgmode</b> !</a></li>
 
@@ -8286,9 +8286,9 @@ Emacs里的其他笔记相关使用包
 
 
 
-<div id="outline-container-orgfaa6e11" class="outline-3">
-<h3 id="orgfaa6e11">PKM with LLM</h3>
-<div class="outline-text-3" id="text-orgfaa6e11">
+<div id="outline-container-orgdc7e60c" class="outline-3">
+<h3 id="orgdc7e60c">PKM with LLM</h3>
+<div class="outline-text-3" id="text-orgdc7e60c">
 <p>
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
 </p>
@@ -8310,7 +8310,7 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="orga80a30f">
+<figure id="org3399d31">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -8320,15 +8320,15 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="orgb7778ad">
+<figure id="orga8d2562">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 
-<div id="outline-container-orgc3ea0ef" class="outline-4">
-<h4 id="orgc3ea0ef">Ollama</h4>
-<div class="outline-text-4" id="text-orgc3ea0ef">
+<div id="outline-container-org7126f81" class="outline-4">
+<h4 id="org7126f81">Ollama</h4>
+<div class="outline-text-4" id="text-org7126f81">
 <p>
 <a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 </p>
@@ -8352,9 +8352,9 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 </div>
 
 
-<div id="outline-container-org2ddfa3c" class="outline-4">
-<h4 id="org2ddfa3c">Open WebUI</h4>
-<div class="outline-text-4" id="text-org2ddfa3c">
+<div id="outline-container-org6787ad7" class="outline-4">
+<h4 id="org6787ad7">Open WebUI</h4>
+<div class="outline-text-4" id="text-org6787ad7">
 <p>
 <a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 </p>
@@ -8368,13 +8368,13 @@ Open WebUI 在2024-10-06的版本中<a href="https://github.com/open-webui/open-
 </p>
 
 
-<figure id="orga609ed6">
+<figure id="orgba2ffb7">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-03.png" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="orgc8fb2a8">
+<figure id="org3c95a6a">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-41.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -8446,9 +8446,9 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 </div>
 </div>
 
-<div id="outline-container-orgebee052" class="outline-4">
-<h4 id="orgebee052">Aider</h4>
-<div class="outline-text-4" id="text-orgebee052">
+<div id="outline-container-orgc99ae6a" class="outline-4">
+<h4 id="orgc99ae6a">Aider</h4>
+<div class="outline-text-4" id="text-orgc99ae6a">
 <p>
 <a href="https://github.com/Aider-AI/aider">Aider</a> 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个<a href="https://github.com/tninja/aider.el">aider.el</a>。
 </p>
@@ -8501,15 +8501,15 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 </div>
 </div>
-<div id="outline-container-orga8f120d" class="outline-4">
-<h4 id="orga8f120d">gptel</h4>
-<div class="outline-text-4" id="text-orga8f120d">
+<div id="outline-container-org999fa18" class="outline-4">
+<h4 id="org999fa18">gptel</h4>
+<div class="outline-text-4" id="text-org999fa18">
 <p>
 <a href="https://github.com/karthink/gptel">gptel: A simple LLM client for Emacs</a> 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 </p>
 
 
-<figure id="org48e3947">
+<figure id="org25735e0">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/ollama-emacs.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -8519,7 +8519,7 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 
 
-<figure id="orgf1f41df">
+<figure id="org2b417ff">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/gptel-summary.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -8597,9 +8597,9 @@ Ref: <a href="https://github.com/karthink/gptel?tab=readme-ov-file#include-more-
 </div>
 
 
-<div id="outline-container-org73cc480" class="outline-4">
-<h4 id="org73cc480">Kotaemon</h4>
-<div class="outline-text-4" id="text-org73cc480">
+<div id="outline-container-org71b9a2a" class="outline-4">
+<h4 id="org71b9a2a">Kotaemon</h4>
+<div class="outline-text-4" id="text-org71b9a2a">
 <p>
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 </p>
@@ -8636,9 +8636,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </ul>
 </div>
 </div>
-<div id="outline-container-orgeb0dc89" class="outline-4">
-<h4 id="orgeb0dc89">Chipper</h4>
-<div class="outline-text-4" id="text-orgeb0dc89">
+<div id="outline-container-org483bdd6" class="outline-4">
+<h4 id="org483bdd6">Chipper</h4>
+<div class="outline-text-4" id="text-org483bdd6">
 <p>
 Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/TilmanGriesel/chipper</a>
 </p>
@@ -8654,9 +8654,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </div>
 </div>
 </div>
-<div id="outline-container-org0348279" class="outline-2">
-<h2 id="org0348279">ChangeLog</h2>
-<div class="outline-text-2" id="text-org0348279">
+<div id="outline-container-org57e9e92" class="outline-2">
+<h2 id="org57e9e92">ChangeLog</h2>
+<div class="outline-text-2" id="text-org57e9e92">
 <ul class="org-ul">
 <li><p>
 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如<a href="https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el">dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs</a>这是一个把org-roam和Logseq联用的el。
@@ -8683,9 +8683,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </ul>
 </div>
 </div>
-<div id="outline-container-org6c802ae" class="outline-2">
-<h2 id="org6c802ae">Thanks</h2>
-<div class="outline-text-2" id="text-org6c802ae">
+<div id="outline-container-org2175a13" class="outline-2">
+<h2 id="org2175a13">Thanks</h2>
+<div class="outline-text-2" id="text-org2175a13">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>
@@ -8717,17 +8717,17 @@ Imagining and creating！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org53bd761">《现代艺术150年》</a></li>
-<li><a href="#orgada8cdf">艺术简史</a></li>
-<li><a href="#orge6ce786">艺术的价值</a></li>
+<li><a href="#org47de083">《现代艺术150年》</a></li>
+<li><a href="#org665efde">艺术简史</a></li>
+<li><a href="#org19863ba">艺术的价值</a></li>
 </ul>
 </div>
 </nav>
 
 
-<div id="outline-container-org53bd761" class="outline-2">
-<h2 id="org53bd761">《现代艺术150年》</h2>
-<div class="outline-text-2" id="text-org53bd761">
+<div id="outline-container-org47de083" class="outline-2">
+<h2 id="org47de083">《现代艺术150年》</h2>
+<div class="outline-text-2" id="text-org47de083">
 <p>
 <a href="https://www.bilibili.com/video/BV1ax4y1z7Tr/">拍卖网站上盲买了一幅毕加索，只为告诉你什么叫做艺术之殇</a> ，刷到了这个视频。
 </p>
@@ -8767,9 +8767,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-orgada8cdf" class="outline-2">
-<h2 id="orgada8cdf">艺术简史</h2>
-<div class="outline-text-2" id="text-orgada8cdf">
+<div id="outline-container-org665efde" class="outline-2">
+<h2 id="org665efde">艺术简史</h2>
+<div class="outline-text-2" id="text-org665efde">
 <p>
 我不是什么艺术科班学生，也没有特别出众的艺术特长，更没有什么实际的艺术运作经历，只是一个艺术爱好者，平常拍拍照、唱唱歌、录录音（写谱还在学，AI赶紧出个自动写谱的！），纯粹是瞎聊。有一个概念是<a href="https://wangyurui.com/posts/si-wei-mo-xing-04-si-xiang-shi-yan-5744df28">思想实验</a>，我就勉强把自己的瞎想往上面靠了。在想象力方面，我还是对自己有信心的。
 </p>
@@ -8836,9 +8836,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-orge6ce786" class="outline-2">
-<h2 id="orge6ce786">艺术的价值</h2>
-<div class="outline-text-2" id="text-orge6ce786">
+<div id="outline-container-org19863ba" class="outline-2">
+<h2 id="org19863ba">艺术的价值</h2>
+<div class="outline-text-2" id="text-org19863ba">
 <p>
 确实，到了现在，如同开始提到的那个视频里所说，销售高端艺术和销售高端房产，在本质上其实是一样的，决定一栋房子价值的是地段地段地段，而决定一件艺术品价值的是出处出处出处。资本也在很大程度上影响着艺术。
 </p>
@@ -8890,20 +8890,20 @@ Imagining and creating！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge6552ec">书的香味</a></li>
-<li><a href="#orgc873bd4">三颗大包菜的分量</a></li>
+<li><a href="#org0fe3b8a">书的香味</a></li>
+<li><a href="#org7a64052">三颗大包菜的分量</a></li>
 </ul>
 </div>
 </nav>
 
-<figure id="org314bfb6">
+<figure id="org74ba8ec">
 <img src="https://s2.loli.net/2024/03/15/bUw5MqRz639pIHs.jpg" class="img ：height 50%" width="50%">
 
 </figure>
 
-<div id="outline-container-orge6552ec" class="outline-2">
-<h2 id="orge6552ec">书的香味</h2>
-<div class="outline-text-2" id="text-orge6552ec">
+<div id="outline-container-org0fe3b8a" class="outline-2">
+<h2 id="org0fe3b8a">书的香味</h2>
+<div class="outline-text-2" id="text-org0fe3b8a">
 <p>
 好几天没吃有机娃娃菜了，思来想去，还是它在一大堆乱七八糟的食物中脱引而出。买完菜回来路上，看到一个摆着许多书的大摊子，支棱起来的简陋的棚子上面挂着一个牌子，醒目的写着：全场图书，买二本送三本。
 </p>
@@ -8918,9 +8918,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-orgc873bd4" class="outline-2">
-<h2 id="orgc873bd4">三颗大包菜的分量</h2>
-<div class="outline-text-2" id="text-orgc873bd4">
+<div id="outline-container-org7a64052" class="outline-2">
+<h2 id="org7a64052">三颗大包菜的分量</h2>
+<div class="outline-text-2" id="text-org7a64052">
 <p>
 买了时代三部曲和其他几本看过的觉得不错的就走了，一共140元。
 </p>
@@ -8967,7 +8967,7 @@ Imagining and creating！
 </p>
 
 
-<figure id="org5e12ca4">
+<figure id="orgbd32bfa">
 <img src="https://s2.loli.net/2024/03/15/yIuJ2pEOVnZ1MA7.jpg" class="img ：height 50%" width="50%">
 
 </figure>
@@ -8986,10 +8986,10 @@ Imagining and creating！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfe0d36d">摇树枝的猴子</a></li>
-<li><a href="#org453f55c">开源的知识</a></li>
-<li><a href="#org35a4af7">幸福</a></li>
-<li><a href="#orgdf4eb5f">跬步与千里</a></li>
+<li><a href="#orgd684e06">摇树枝的猴子</a></li>
+<li><a href="#org98cb766">开源的知识</a></li>
+<li><a href="#orgc094730">幸福</a></li>
+<li><a href="#orgb818a0c">跬步与千里</a></li>
 </ul>
 </div>
 </nav>
@@ -8998,15 +8998,15 @@ Imagining and creating！
 </p>
 
 
-<figure id="orga5ad1cb">
+<figure id="org73a266f">
 <img src="https://s2.loli.net/2024/03/03/GVe18fzdCjXF5Ra.jpg" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<div id="outline-container-orgfe0d36d" class="outline-2">
-<h2 id="orgfe0d36d">摇树枝的猴子</h2>
-<div class="outline-text-2" id="text-orgfe0d36d">
+<div id="outline-container-orgd684e06" class="outline-2">
+<h2 id="orgd684e06">摇树枝的猴子</h2>
+<div class="outline-text-2" id="text-orgd684e06">
 <blockquote>
 <p>
 这场访谈聊开后，许志远在猝不及防的问宁浩，你最大的弱点是什么呢？
@@ -9082,9 +9082,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-org453f55c" class="outline-2">
-<h2 id="org453f55c">开源的知识</h2>
-<div class="outline-text-2" id="text-org453f55c">
+<div id="outline-container-org98cb766" class="outline-2">
+<h2 id="org98cb766">开源的知识</h2>
+<div class="outline-text-2" id="text-org98cb766">
 <blockquote>
 <p>
 这几天被收藏最多的链接之一，一定有这个飞书文档。
@@ -9143,9 +9143,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-org35a4af7" class="outline-2">
-<h2 id="org35a4af7">幸福</h2>
-<div class="outline-text-2" id="text-org35a4af7">
+<div id="outline-container-orgc094730" class="outline-2">
+<h2 id="orgc094730">幸福</h2>
+<div class="outline-text-2" id="text-orgc094730">
 <p>
 <a href="https://1q43.blog/post/5322">幸福的积分 – 虹线</a>，这篇文章很长，我也没有读完，但很有价值。<a href="https://mp.weixin.qq.com/s/COs1bul0aCiMFAw4OT9q6Q">中国可能在经历一波“文艺复兴”</a>，九边最近也发了一篇。
 </p>
@@ -9169,9 +9169,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-orgdf4eb5f" class="outline-2">
-<h2 id="orgdf4eb5f">跬步与千里</h2>
-<div class="outline-text-2" id="text-orgdf4eb5f">
+<div id="outline-container-orgb818a0c" class="outline-2">
+<h2 id="orgb818a0c">跬步与千里</h2>
+<div class="outline-text-2" id="text-orgb818a0c">
 <blockquote>
 <p>
 说起来，这是我的问题。我活在一个巨大的错觉里。我曾经以为大家达成了很多基本共识，但并没有。我曾经以为很多常识性的观念只有历史价值，但也不是。就像王小波的杂文，我一度觉得写得很有趣，但是内容都是老生常谈而已。我这么想也并非没有理由。当时整个社会对王小波的杂文都是一边倒地赞赏，但并没引发太大的争论。四平八稳的常识能引发什么争论呢？
@@ -9213,9 +9213,9 @@ Imagining and creating！
 
 
 
-<div id="outline-container-orgcfe5476" class="outline-2">
-<h2 id="orgcfe5476">羊好可怜</h2>
-<div class="outline-text-2" id="text-orgcfe5476">
+<div id="outline-container-org2fe9557" class="outline-2">
+<h2 id="org2fe9557">羊好可怜</h2>
+<div class="outline-text-2" id="text-org2fe9557">
 <p>
 最近爱上了家附近的一家羊肉粉，很还原贵阳的风味。羊肉片的薄厚适中，量也不多不少，粉快见底了，肉也差不多吃完，辣椒面更是香而不呛喉。这种凝结于劳动实践中的精确剂量，比任何公式都要准确，随手一抓每次我吃来都刚刚好。虽然这样同样我也是被“算计者”，却全然没有被大数据计算的那种厌烦感。
 </p>
@@ -9234,9 +9234,9 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-org685d31c" class="outline-2">
-<h2 id="org685d31c">困扰</h2>
-<div class="outline-text-2" id="text-org685d31c">
+<div id="outline-container-org5663f69" class="outline-2">
+<h2 id="org5663f69">困扰</h2>
+<div class="outline-text-2" id="text-org5663f69">
 <p>
 路上无数个关于善恶、佛教信仰、素食环保的问题相互纠结，后悔没仔细听听女孩妈妈是怎么回答的，这样我可能可以知道一个正确的答案或者排除一个错误的。不想清楚这个问题到不是很困扰我想以后小孩教育的事，最要紧的是这会直接影响我下一次吃粉的体验。我知道下一次我再吃的时候，一定又会再想这个问题。
 </p>
@@ -9276,16 +9276,16 @@ Imagining and creating！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgde13dbe">宇宙探索编辑部</a></li>
-<li><a href="#org71bccf8">胡萝卜和驴</a></li>
-<li><a href="#org7417375">壁垒</a></li>
+<li><a href="#org598c15e">宇宙探索编辑部</a></li>
+<li><a href="#org1dd87ef">胡萝卜和驴</a></li>
+<li><a href="#orgd572565">壁垒</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgde13dbe" class="outline-2">
-<h2 id="orgde13dbe">宇宙探索编辑部</h2>
-<div class="outline-text-2" id="text-orgde13dbe">
+<div id="outline-container-org598c15e" class="outline-2">
+<h2 id="org598c15e">宇宙探索编辑部</h2>
+<div class="outline-text-2" id="text-org598c15e">
 <p>
 很久之前就想看<a href="https://movie.douban.com/subject/34941536/">宇宙探索编辑部 (2021)</a>，郭帆监制，还出镜客串了一下。
 </p>
@@ -9314,15 +9314,15 @@ Imagining and creating！
 </div>
 </div>
 
-<div id="outline-container-org71bccf8" class="outline-2">
-<h2 id="org71bccf8">胡萝卜和驴</h2>
-<div class="outline-text-2" id="text-org71bccf8">
+<div id="outline-container-org1dd87ef" class="outline-2">
+<h2 id="org1dd87ef">胡萝卜和驴</h2>
+<div class="outline-text-2" id="text-org1dd87ef">
 <p>
 电影里最荒诞的一幕，我认为也是叙事高潮的地方，就是唐志军居然真的顺着孙一通与外星人沟通的线索，碰到了村子不见的驴，骑了上去。不得不佩服编剧和导演的艺术表现能力，不夸张的说，电影里的这种故事我梦里做过的，要比它精彩的多，但我拍不出来，也写不好。最近正在研究一个新项目：墨菲斯·弗洛伊德·周公，通过文字描述和相关图片来生成动画视频，打通梦境与现实。
 </p>
 
 
-<figure id="orgc800f87">
+<figure id="orga65ab2f">
 <img src="https://s2.loli.net/2024/01/27/XnfVJ5E3CNrdtwB.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -9366,19 +9366,19 @@ Imagining and creating！
 </p>
 
 
-<figure id="org08229a0">
+<figure id="orgfabd629">
 <img src="https://s2.loli.net/2024/01/27/yOVdxNqnatRzfAg.png" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="orgec5db23">
+<figure id="org55046f1">
 <img src="https://s2.loli.net/2024/01/27/rtZOS27XyWiJUCw.png" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="org32f4248">
+<figure id="org70cc2cb">
 <img src="https://s2.loli.net/2024/01/27/UfQkK8jMs4gFLqm.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -9396,22 +9396,22 @@ Imagining and creating！
 </p>
 
 
-<figure id="org285b2b6">
+<figure id="orgb31afcb">
 <img src="https://s2.loli.net/2024/01/27/ruyODfnC7hWtvgT.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
 
-<div id="outline-container-org7417375" class="outline-2">
-<h2 id="org7417375">壁垒</h2>
-<div class="outline-text-2" id="text-org7417375">
+<div id="outline-container-orgd572565" class="outline-2">
+<h2 id="orgd572565">壁垒</h2>
+<div class="outline-text-2" id="text-orgd572565">
 <p>
 唐志军这个人物在电影中，是一个连暖气片钱都快交不起的“失败者”，执着于寻找外星人，他说：当人类得知有外星人存在的时候，之前所有人与人之间的纷争、隔阂都会消失（一起对抗外星人文明），所以让人类文明进化的唯一方法，就是找到外星人。
 </p>
 
 
-<figure id="org70534aa">
+<figure id="org08dc544">
 <img src="https://s2.loli.net/2024/01/27/orqm528LDWMxvAu.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -9552,15 +9552,15 @@ People don’t know what they want.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2894f1b">尝试维持两种相反的想法</a>
+<li><a href="#orgcf72bb3">尝试维持两种相反的想法</a>
 <ul>
-<li><a href="#org35d5580">太极张三丰</a></li>
-<li><a href="#orgd35c3fb">从事物之间的联系出发</a></li>
+<li><a href="#orga71ed25">太极张三丰</a></li>
+<li><a href="#orge95bf05">从事物之间的联系出发</a></li>
 </ul>
 </li>
-<li><a href="#orgdea4c04">认知盈余</a></li>
-<li><a href="#orgddde268">Learn，learn，and learn</a></li>
-<li><a href="#org8335c4d">Reference</a></li>
+<li><a href="#org65b4664">认知盈余</a></li>
+<li><a href="#orge31abe2">Learn，learn，and learn</a></li>
+<li><a href="#orgaa19556">Reference</a></li>
 </ul>
 </div>
 </nav>
@@ -9568,9 +9568,9 @@ People don’t know what they want.
 
 
 
-<div id="outline-container-org2894f1b" class="outline-2">
-<h2 id="org2894f1b">尝试维持两种相反的想法</h2>
-<div class="outline-text-2" id="text-org2894f1b">
+<div id="outline-container-orgcf72bb3" class="outline-2">
+<h2 id="orgcf72bb3">尝试维持两种相反的想法</h2>
+<div class="outline-text-2" id="text-orgcf72bb3">
 <p>
 作家<a href="https://en.wikipedia.org/wiki/F._Scott_Fitzgerald">F·斯科特·菲茨杰拉德</a>（F. Scott Fitzgerald,小说《了不起的盖茨比》作者）谈什么是聪明的头脑：
 </p>
@@ -9593,9 +9593,9 @@ Source: <a href="https://click.convertkit-mail4.com/k0u7xn6xqnf6hdz6pdeu9h8w8p57
 </p>
 </div>
 
-<div id="outline-container-org35d5580" class="outline-3">
-<h3 id="org35d5580">太极张三丰</h3>
-<div class="outline-text-3" id="text-org35d5580">
+<div id="outline-container-orga71ed25" class="outline-3">
+<h3 id="orga71ed25">太极张三丰</h3>
+<div class="outline-text-3" id="text-orga71ed25">
 <p>
 这既是一种包容的人生态度，更是让思维保持活跃和客观的修行的一种实际方法。这当然不是说，要精神分裂，每时每刻都和相反的想法做斗争，而是共存。**让事物的本质从不同角度，同时呈现在思维当中，这绝对可以说是一种修行**。就像张三丰悟出的太极，它无形又包容万千变化，这是自我与万物的变化保持的微妙平衡，是自我与外界对话，信息交换的微妙平衡。这真是人类与自然最完美的关系的一种了。
 </p>
@@ -9642,9 +9642,9 @@ Source: <a href="https://click.convertkit-mail4.com/k0u7xn6xqnf6hdz6pdeu9h8w8p57
 </div>
 </div>
 
-<div id="outline-container-orgd35c3fb" class="outline-3">
-<h3 id="orgd35c3fb">从事物之间的联系出发</h3>
-<div class="outline-text-3" id="text-orgd35c3fb">
+<div id="outline-container-orge95bf05" class="outline-3">
+<h3 id="orge95bf05">从事物之间的联系出发</h3>
+<div class="outline-text-3" id="text-orge95bf05">
 <p>
 扯远了一点，回到开头说的太极的修行。
 </p>
@@ -9742,9 +9742,9 @@ Source: <a href="https://click.convertkit-mail4.com/k0u7xn6xqnf6hdz6pdeu9h8w8p57
 </div>
 
 
-<div id="outline-container-orgdea4c04" class="outline-2">
-<h2 id="orgdea4c04">认知盈余</h2>
-<div class="outline-text-2" id="text-orgdea4c04">
+<div id="outline-container-org65b4664" class="outline-2">
+<h2 id="org65b4664">认知盈余</h2>
+<div class="outline-text-2" id="text-org65b4664">
 <p>
 在<a href="https://wangyurui.com/posts/leng-jing-tong-xun-no-103-clay-shirky-a45f1c03">棱镜通讯 No . 103 Clay Shirky - 太隐</a>这篇推送里，看到了“认知盈余”这个概念，挺有意思。
 </p>
@@ -9854,9 +9854,9 @@ After a certain point, wealth and power cease to be the taut  constraints on one
 </div>
 </div>
 
-<div id="outline-container-orgddde268" class="outline-2">
-<h2 id="orgddde268">Learn，learn，and learn</h2>
-<div class="outline-text-2" id="text-orgddde268">
+<div id="outline-container-orge31abe2" class="outline-2">
+<h2 id="orge31abe2">Learn，learn，and learn</h2>
+<div class="outline-text-2" id="text-orge31abe2">
 <p>
 最近都在说查理·芒格的格言和它的故事。与其说芒格爱读书，不如说是爱学习和思考。
 </p>
@@ -9963,9 +9963,9 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 </div>
 </div>
 
-<div id="outline-container-org8335c4d" class="outline-2">
-<h2 id="org8335c4d">Reference</h2>
-<div class="outline-text-2" id="text-org8335c4d">
+<div id="outline-container-orgaa19556" class="outline-2">
+<h2 id="orgaa19556">Reference</h2>
+<div class="outline-text-2" id="text-orgaa19556">
 <ul class="org-ul">
 <li><a href="https://book.douban.com/subject/33424487/">时间的秩序</a></li>
 <li><a href="https://wangyurui.com/posts/leng-jing-tong-xun-no-103-clay-shirky-a45f1c03">棱镜通讯 No . 103 Clay Shirky - 太隐</a></li>
@@ -9988,18 +9988,18 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org88a3f14">都是因为无聊</a></li>
-<li><a href="#org45dab41">《瓦尔登湖》梭罗</a></li>
-<li><a href="#orge8560f5">《人生的智慧》叔本华</a></li>
-<li><a href="#orge7af36b">真正的自由，是与孤独共舞</a></li>
-<li><a href="#orgcf2d99e">也正是因为无聊</a></li>
+<li><a href="#org29feccf">都是因为无聊</a></li>
+<li><a href="#org4e4f56a">《瓦尔登湖》梭罗</a></li>
+<li><a href="#orgfb2d902">《人生的智慧》叔本华</a></li>
+<li><a href="#orgb4fa69b">真正的自由，是与孤独共舞</a></li>
+<li><a href="#org7009b2d">也正是因为无聊</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org88a3f14" class="outline-2">
-<h2 id="org88a3f14">都是因为无聊</h2>
-<div class="outline-text-2" id="text-org88a3f14">
+<div id="outline-container-org29feccf" class="outline-2">
+<h2 id="org29feccf">都是因为无聊</h2>
+<div class="outline-text-2" id="text-org29feccf">
 <p>
 在罗翔老师这个视频的最后<a href="https://www.bilibili.com/video/BV1584y1v7AH/">【罗翔】“网课爆破”犯了什么法？</a>
 </p>
@@ -10032,9 +10032,9 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 </div>
 </div>
 
-<div id="outline-container-org45dab41" class="outline-2">
-<h2 id="org45dab41">《瓦尔登湖》梭罗</h2>
-<div class="outline-text-2" id="text-org45dab41">
+<div id="outline-container-org4e4f56a" class="outline-2">
+<h2 id="org4e4f56a">《瓦尔登湖》梭罗</h2>
+<div class="outline-text-2" id="text-org4e4f56a">
 <p>
 梭罗的这个小说其实说的是关于自然的事，是一个崇尚自然、崇尚自由之人所向往的精神生活，以及对当时时代背景下（那时美国正处于农业时代向工业时代转型的初级阶段，伴随着资本主义工业化的进程，在经济突飞猛进的势头下，也伴随着对财富和金钱的欲望于追逐。）一种生活方式的思考与追逐。
 </p>
@@ -10099,9 +10099,9 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 </div>
 </div>
 
-<div id="outline-container-orge8560f5" class="outline-2">
-<h2 id="orge8560f5">《人生的智慧》叔本华</h2>
-<div class="outline-text-2" id="text-orge8560f5">
+<div id="outline-container-orgfb2d902" class="outline-2">
+<h2 id="orgfb2d902">《人生的智慧》叔本华</h2>
+<div class="outline-text-2" id="text-orgfb2d902">
 <p>
 在《人生的智慧》中的第7章，章节的名字就是：痛苦和无聊。
 </p>
@@ -10154,9 +10154,9 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 </div>
 </div>
 
-<div id="outline-container-orge7af36b" class="outline-2">
-<h2 id="orge7af36b">真正的自由，是与孤独共舞</h2>
-<div class="outline-text-2" id="text-orge7af36b">
+<div id="outline-container-orgb4fa69b" class="outline-2">
+<h2 id="orgb4fa69b">真正的自由，是与孤独共舞</h2>
+<div class="outline-text-2" id="text-orgb4fa69b">
 <blockquote>
 <p>
 社会就像一团熊熊燃烧的烈火——聪明人因懂得与之保持适当的距离而能够借其取暖；傻瓜则不是因为离得太近被火灼伤，就是因为抱怨火的灼热而躲得远远的，以致只能孤零零地忍受严寒的折磨。
@@ -10182,9 +10182,9 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 </div>
 
 
-<div id="outline-container-orgcf2d99e" class="outline-2">
-<h2 id="orgcf2d99e">也正是因为无聊</h2>
-<div class="outline-text-2" id="text-orgcf2d99e">
+<div id="outline-container-org7009b2d" class="outline-2">
+<h2 id="org7009b2d">也正是因为无聊</h2>
+<div class="outline-text-2" id="text-org7009b2d">
 <p>
 但无聊同样也是想象力的来源，人类进步的来源。
 </p>
@@ -10233,17 +10233,17 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcbc7d1d">薛定谔的富有</a></li>
-<li><a href="#orgf634511">提升自己是最大的储蓄</a></li>
-<li><a href="#org65c57dd">Reference</a></li>
+<li><a href="#org00ab3fb">薛定谔的富有</a></li>
+<li><a href="#org9e3c2da">提升自己是最大的储蓄</a></li>
+<li><a href="#orgc728951">Reference</a></li>
 </ul>
 </div>
 </nav>
 
 
-<div id="outline-container-orgcbc7d1d" class="outline-2">
-<h2 id="orgcbc7d1d">薛定谔的富有</h2>
-<div class="outline-text-2" id="text-orgcbc7d1d">
+<div id="outline-container-org00ab3fb" class="outline-2">
+<h2 id="org00ab3fb">薛定谔的富有</h2>
+<div class="outline-text-2" id="text-org00ab3fb">
 <p>
 做梦中彩票这种事，我天天也在想，正好这两天看到了这些，挺有共鸣。<a href="https://letters.geekplux.com/51/?ref=geekplux-lab-newsletter">为什么要慢慢变富</a>、<a href="https://www.bilibili.com/video/BV14c411u7S4/">【绝对珍藏】桥水创始人瑞·达利欧讲解 '不断变化的世界秩序'动画完整版 40分钟【中英精校】_哔哩哔哩_bilibili</a>
 </p>
@@ -10309,9 +10309,9 @@ fortune 有幸运也有财富的意思，实际上这两个词也基本划等号
 </div>
 </div>
 
-<div id="outline-container-orgf634511" class="outline-2">
-<h2 id="orgf634511">提升自己是最大的储蓄</h2>
-<div class="outline-text-2" id="text-orgf634511">
+<div id="outline-container-org9e3c2da" class="outline-2">
+<h2 id="org9e3c2da">提升自己是最大的储蓄</h2>
+<div class="outline-text-2" id="text-org9e3c2da">
 <p>
 <b>很大程度上，变富实际上是认知在增长</b> ，也许等我们认知水平到了一定程度，财富自然而然就来了。
 </p>
@@ -10347,9 +10347,9 @@ fortune 有幸运也有财富的意思，实际上这两个词也基本划等号
 </div>
 
 
-<div id="outline-container-org65c57dd" class="outline-2">
-<h2 id="org65c57dd">Reference</h2>
-<div class="outline-text-2" id="text-org65c57dd">
+<div id="outline-container-orgc728951" class="outline-2">
+<h2 id="orgc728951">Reference</h2>
+<div class="outline-text-2" id="text-orgc728951">
 <ul class="org-ul">
 <li><a href="https://letters.geekplux.com/51/?ref=geekplux-lab-newsletter">为什么要慢慢变富</a></li>
 <li><a href="https://www.bilibili.com/video/BV14c411u7S4/">【绝对珍藏】桥水创始人瑞·达利欧讲解 '不断变化的世界秩序'动画完整版 40分钟【中英精校】_哔哩哔哩_bilibili</a></li>
@@ -10372,9 +10372,9 @@ fortune 有幸运也有财富的意思，实际上这两个词也基本划等号
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org67ed374">再聊“读书无用”</a></li>
-<li><a href="#org1328a32">扁平化信息or立体化信息</a></li>
-<li><a href="#org921f2dc">最后</a></li>
+<li><a href="#org27267bb">再聊“读书无用”</a></li>
+<li><a href="#org54aac70">扁平化信息or立体化信息</a></li>
+<li><a href="#orgd45b1d0">最后</a></li>
 </ul>
 </div>
 </nav>
@@ -10390,9 +10390,9 @@ fortune 有幸运也有财富的意思，实际上这两个词也基本划等号
 近一年，基本没有过多的主动视频信息的摄入，感觉也还挺不错，有种吃完大荤，涮点青菜的感觉，很清爽。
 </p>
 
-<div id="outline-container-org67ed374" class="outline-2">
-<h2 id="org67ed374">再聊“读书无用”</h2>
-<div class="outline-text-2" id="text-org67ed374">
+<div id="outline-container-org27267bb" class="outline-2">
+<h2 id="org27267bb">再聊“读书无用”</h2>
+<div class="outline-text-2" id="text-org27267bb">
 <p>
 Andy 的 <a href="https://andymatuschak.org/books/">Why books donʼt work   Andy Matuschak</a> (就是 <a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">Evergreen notes should be atomic</a> 那个 Andy)，大致讲了这么个事：
 </p>
@@ -10447,9 +10447,9 @@ Source: <a href="https://geekplux.com/newsletters/41">为什么读书无用 -#41
 </div>
 
 
-<div id="outline-container-org1328a32" class="outline-2">
-<h2 id="org1328a32">扁平化信息or立体化信息</h2>
-<div class="outline-text-2" id="text-org1328a32">
+<div id="outline-container-org54aac70" class="outline-2">
+<h2 id="org54aac70">扁平化信息or立体化信息</h2>
+<div class="outline-text-2" id="text-org54aac70">
 <p>
 先简单把文字信息定义为扁平化信息，视频、音频等信息定义为立体化信息。
 </p>
@@ -10510,9 +10510,9 @@ Source: <a href="https://geekplux.com/newsletters/41">为什么读书无用 -#41
 </div>
 </div>
 
-<div id="outline-container-org921f2dc" class="outline-2">
-<h2 id="org921f2dc">最后</h2>
-<div class="outline-text-2" id="text-org921f2dc">
+<div id="outline-container-orgd45b1d0" class="outline-2">
+<h2 id="orgd45b1d0">最后</h2>
+<div class="outline-text-2" id="text-orgd45b1d0">
 <blockquote>
 <p>
 For me, taking notes helps make sure that I’m really thinking hard about what’s in there. If I disagree with the book, sometimes it takes a long time to read the books because I’m writing so much in the margin.
@@ -10555,9 +10555,9 @@ Source: <a href="https://lopespm.com/notes/2023/07/02/writing-as-a-form-of-think
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9ede019">一</a></li>
-<li><a href="#orgab90bc4">二</a></li>
-<li><a href="#org42f8b98">三</a></li>
+<li><a href="#org5c842c7">一</a></li>
+<li><a href="#org905a69d">二</a></li>
+<li><a href="#org12c3e05">三</a></li>
 </ul>
 </div>
 </nav>
@@ -10591,9 +10591,9 @@ Source: <a href="https://lopespm.com/notes/2023/07/02/writing-as-a-form-of-think
 突然一瞬间，这束夹杂着思绪信息的光束，碰到了一个实体，迸发出了一个新的思考，也就是今天想整理出来的东西。
 </p>
 
-<div id="outline-container-org9ede019" class="outline-2">
-<h2 id="org9ede019">一</h2>
-<div class="outline-text-2" id="text-org9ede019">
+<div id="outline-container-org5c842c7" class="outline-2">
+<h2 id="org5c842c7">一</h2>
+<div class="outline-text-2" id="text-org5c842c7">
 <p>
 对于世界是什么，这个问题，或者说<a href="https://zhuanlan.zhihu.com/p/377161628">形而上学</a>问题，
 </p>
@@ -10670,9 +10670,9 @@ Source: <a href="https://lopespm.com/notes/2023/07/02/writing-as-a-form-of-think
 </div>
 </div>
 
-<div id="outline-container-orgab90bc4" class="outline-2">
-<h2 id="orgab90bc4">二</h2>
-<div class="outline-text-2" id="text-orgab90bc4">
+<div id="outline-container-org905a69d" class="outline-2">
+<h2 id="org905a69d">二</h2>
+<div class="outline-text-2" id="text-org905a69d">
 <p>
 因此不如类比计算机编程语言来思考下去。
 </p>
@@ -10715,9 +10715,9 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 </div>
 </div>
 
-<div id="outline-container-org42f8b98" class="outline-2">
-<h2 id="org42f8b98">三</h2>
-<div class="outline-text-2" id="text-org42f8b98">
+<div id="outline-container-org12c3e05" class="outline-2">
+<h2 id="org12c3e05">三</h2>
+<div class="outline-text-2" id="text-org12c3e05">
 <p>
 想到这里，其实已经豁然开朗了。又让我想到了黑客帝国。
 </p>
@@ -10781,16 +10781,16 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdf7e205">Perfect is shit</a></li>
-<li><a href="#orge2955f3">热爱</a></li>
-<li><a href="#org4339aa4">结尾</a></li>
+<li><a href="#org2193a6d">Perfect is shit</a></li>
+<li><a href="#org9bb1a2c">热爱</a></li>
+<li><a href="#org30e55b7">结尾</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-orgdf7e205" class="outline-2">
-<h2 id="orgdf7e205">Perfect is shit</h2>
-<div class="outline-text-2" id="text-orgdf7e205">
+<div id="outline-container-org2193a6d" class="outline-2">
+<h2 id="org2193a6d">Perfect is shit</h2>
+<div class="outline-text-2" id="text-org2193a6d">
 <p>
 打开电脑，也许是桌面正好循环到了影魔（Dota游戏中的一个人物），突然很想再看一遍这个视频：懂的都懂， <a href="https://www.bilibili.com/video/BV1dx411p7Fc/">DotA - Perfect Is Shit 720P</a>
 </p>
@@ -10833,9 +10833,9 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 </div>
 </div>
 
-<div id="outline-container-orge2955f3" class="outline-2">
-<h2 id="orge2955f3">热爱</h2>
-<div class="outline-text-2" id="text-orge2955f3">
+<div id="outline-container-org9bb1a2c" class="outline-2">
+<h2 id="org9bb1a2c">热爱</h2>
+<div class="outline-text-2" id="text-org9bb1a2c">
 <p>
 现在回想起来，第一次让我切身感受到这个词含义的时刻，绝对是第一次看到梵高故事的时候，特别是，他割耳朵的时候，还有在烈日下画画画到昏睡过去的时候。
 </p>
@@ -10849,13 +10849,13 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 </p>
 
 
-<figure id="org4839118">
+<figure id="orgd886863">
 <img src="https://s2.loli.net/2023/06/23/loEuqw6iRvPmT71.jpg" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="org99e6c44">
+<figure id="orgb0afe9f">
 <img src="https://s2.loli.net/2023/06/23/47J8EFcKfVM5xow.jpg" class="img" width="50%" height="50%">
 
 </figure>
@@ -10893,19 +10893,19 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 </p>
 
 
-<figure id="org35e2aaf">
+<figure id="org97bd4ed">
 <img src="https://s2.loli.net/2023/06/23/LKWYAeOtv5jyuxX.jpg" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="org5b2d6ff">
+<figure id="org410d785">
 <img src="https://s2.loli.net/2023/06/23/EyH2oDYunrGVM7m.jpg" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="org3f696d8">
+<figure id="orgfff1064">
 <img src="https://s2.loli.net/2023/06/23/IAwVZYjS5Nfu2vR.jpg" class="img" width="50%" height="50%">
 
 </figure>
@@ -10932,9 +10932,9 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 </div>
 </div>
 
-<div id="outline-container-org4339aa4" class="outline-2">
-<h2 id="org4339aa4">结尾</h2>
-<div class="outline-text-2" id="text-org4339aa4">
+<div id="outline-container-org30e55b7" class="outline-2">
+<h2 id="org30e55b7">结尾</h2>
+<div class="outline-text-2" id="text-org30e55b7">
 <p>
 想不到什么好的结尾，但是没有又好像差点什么，就放首歌吧。
 </p>
@@ -10958,34 +10958,34 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org26ede4a">虚拟摄影和艺术</a>
+<li><a href="#orga81c690">虚拟摄影和艺术</a>
 <ul>
-<li><a href="#orgfe49ae2">摄影概念的内涵与外延</a></li>
+<li><a href="#org0f2f263">摄影概念的内涵与外延</a></li>
 </ul>
 </li>
-<li><a href="#orgf66a944">黑客帝国</a></li>
-<li><a href="#orge1b4851">什么是虚拟？什么才是现实？</a></li>
+<li><a href="#org465a65a">黑客帝国</a></li>
+<li><a href="#org750684e">什么是虚拟？什么才是现实？</a></li>
 </ul>
 </div>
 </nav>
 
 
 
-<div id="outline-container-org26ede4a" class="outline-2">
-<h2 id="org26ede4a">虚拟摄影和艺术</h2>
-<div class="outline-text-2" id="text-org26ede4a">
+<div id="outline-container-orga81c690" class="outline-2">
+<h2 id="orga81c690">虚拟摄影和艺术</h2>
+<div class="outline-text-2" id="text-orga81c690">
 <p>
 最近还是入坑了switch，玩了一下塞尔达，在爬山开图的时候，看到了许多绝美的风光，就习惯性的来了两张。
 </p>
 
 
-<figure id="orgb6baefa">
+<figure id="orgd42772e">
 <img src="https://s2.loli.net/2023/02/23/mZQ4kRHxwVliBYr.jpg" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org3a44e00">
+<figure id="org56e0340">
 <img src="https://s2.loli.net/2023/02/23/TvK1DtIBQuFicpw.jpg" class="img" width="60%" height="60%">
 
 </figure>
@@ -11005,9 +11005,9 @@ PS等各种后期视频、图片软件，也都加入了AI处理的功能。技�
 </p>
 </div>
 
-<div id="outline-container-orgfe49ae2" class="outline-3">
-<h3 id="orgfe49ae2">摄影概念的内涵与外延</h3>
-<div class="outline-text-3" id="text-orgfe49ae2">
+<div id="outline-container-org0f2f263" class="outline-3">
+<h3 id="org0f2f263">摄影概念的内涵与外延</h3>
+<div class="outline-text-3" id="text-org0f2f263">
 <p>
 数码摄影的作品载体（不冲印的前提下）简而言之就是：图片格式。JPG,PNG,GIF,RAW。这么看，摄影作品和游戏摄影、AI做图（虚拟摄影）本质上区别不是很大。
 </p>
@@ -11105,9 +11105,9 @@ PS等各种后期视频、图片软件，也都加入了AI处理的功能。技�
 </div>
 </div>
 
-<div id="outline-container-orgf66a944" class="outline-2">
-<h2 id="orgf66a944">黑客帝国</h2>
-<div class="outline-text-2" id="text-orgf66a944">
+<div id="outline-container-org465a65a" class="outline-2">
+<h2 id="org465a65a">黑客帝国</h2>
+<div class="outline-text-2" id="text-org465a65a">
 <p>
 接着艺术的表现形式这条线往下说。摄影当然只是艺术表现形式里很小的一个了，也是很年轻的一个。
 </p>
@@ -11129,7 +11129,7 @@ PS等各种后期视频、图片软件，也都加入了AI处理的功能。技�
 </p>
 
 
-<figure id="org8fe0c24">
+<figure id="orgfa6af82">
 <img src="https://s2.loli.net/2023/02/23/D2786pQHgAqERVX.jpg" class="img" width="60%" height="60%">
 
 </figure>
@@ -11174,9 +11174,9 @@ Morpheus:
 </div>
 </div>
 
-<div id="outline-container-orge1b4851" class="outline-2">
-<h2 id="orge1b4851">什么是虚拟？什么才是现实？</h2>
-<div class="outline-text-2" id="text-orge1b4851">
+<div id="outline-container-org750684e" class="outline-2">
+<h2 id="org750684e">什么是虚拟？什么才是现实？</h2>
+<div class="outline-text-2" id="text-org750684e">
 <p>
 我们有句老话，眼见为实，耳听为虚，现在眼见真的不一定是实了。关于物质决定意识还是意识决定物质这个问题上，我是坚定的唯物主义者。
 </p>
@@ -11268,18 +11268,18 @@ Morpheus:
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc7ae2d0">关于时间</a></li>
-<li><a href="#org4eb7b49">过去和未来</a></li>
-<li><a href="#org90cb668">拿起相机</a></li>
-<li><a href="#org038acb8">光影</a></li>
+<li><a href="#orgbcf4807">关于时间</a></li>
+<li><a href="#orgd77198f">过去和未来</a></li>
+<li><a href="#orgd1477bc">拿起相机</a></li>
+<li><a href="#org3b0a3ad">光影</a></li>
 </ul>
 </div>
 </nav>
 
 
-<div id="outline-container-orgc7ae2d0" class="outline-2">
-<h2 id="orgc7ae2d0">关于时间</h2>
-<div class="outline-text-2" id="text-orgc7ae2d0">
+<div id="outline-container-orgbcf4807" class="outline-2">
+<h2 id="orgbcf4807">关于时间</h2>
+<div class="outline-text-2" id="text-orgbcf4807">
 <p>
 这是一个亘古不变，困扰着人类永恒的话题，和爱情一样。
 </p>
@@ -11304,9 +11304,9 @@ Morpheus:
 </div>
 
 
-<div id="outline-container-org4eb7b49" class="outline-2">
-<h2 id="org4eb7b49">过去和未来</h2>
-<div class="outline-text-2" id="text-org4eb7b49">
+<div id="outline-container-orgd77198f" class="outline-2">
+<h2 id="orgd77198f">过去和未来</h2>
+<div class="outline-text-2" id="text-orgd77198f">
 <p>
 对于美好的事物，人们总会怀念。对于美好的时光，人们总想留住。
 </p>
@@ -11337,9 +11337,9 @@ Morpheus:
 </div>
 </div>
 
-<div id="outline-container-org90cb668" class="outline-2">
-<h2 id="org90cb668">拿起相机</h2>
-<div class="outline-text-2" id="text-org90cb668">
+<div id="outline-container-orgd1477bc" class="outline-2">
+<h2 id="orgd1477bc">拿起相机</h2>
+<div class="outline-text-2" id="text-orgd1477bc">
 <p>
 于是，某一天，我拿起了相机。
 </p>
@@ -11390,9 +11390,9 @@ Morpheus:
 </div>
 </div>
 
-<div id="outline-container-org038acb8" class="outline-2">
-<h2 id="org038acb8">光影</h2>
-<div class="outline-text-2" id="text-org038acb8">
+<div id="outline-container-org3b0a3ad" class="outline-2">
+<h2 id="org3b0a3ad">光影</h2>
+<div class="outline-text-2" id="text-org3b0a3ad">
 <p>
 光影之下，阴阳之中。
 </p>
