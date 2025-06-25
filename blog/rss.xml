@@ -3,8 +3,8 @@
 <channel>
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
-<link>https://www.vandee.art/</link>
-<lastBuildDate>Tue, 24 Jun 2025 23:59:15 +0800</lastBuildDate>
+<link>https://www.vandee.art/blog</link>
+<lastBuildDate>Wed, 25 Jun 2025 10:51:34 +0800</lastBuildDate>
 <item>
   <title><![CDATA[从有形到无形 - NoNotes，知识库自动补全]]></title>
   <description><![CDATA[
@@ -167,8 +167,8 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
   <category><![CDATA[Emacs]]></category>
   <category><![CDATA[PKM]]></category>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2025-06-10-nonotes-auto-completion.html</link>
-  <guid>https://www.vandee.art/2025-06-10-nonotes-auto-completion.html</guid>
+  <link>https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html</link>
+  <guid>https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html</guid>
   <pubDate>Tue, 10 Jun 2025 10:25:00 +0800</pubDate>
 </item>
 <item>
@@ -311,8 +311,8 @@ RSS 是我面对算法、信息茧房等问题坚持下来的信息获取习惯�
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2025-05-23-information-vectorization.html</link>
-  <guid>https://www.vandee.art/2025-05-23-information-vectorization.html</guid>
+  <link>https://www.vandee.art/blog/2025-05-23-information-vectorization.html</link>
+  <guid>https://www.vandee.art/blog/2025-05-23-information-vectorization.html</guid>
   <pubDate>Fri, 23 May 2025 19:51:00 +0800</pubDate>
 </item>
 <item>
@@ -468,8 +468,8 @@ LLM 只是一个工具，指望它能让自己干出什么原本就不可能的�
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2025-05-17-prompt:-another-key-to-the-compressed-world.html</link>
-  <guid>https://www.vandee.art/2025-05-17-prompt:-another-key-to-the-compressed-world.html</guid>
+  <link>https://www.vandee.art/blog/2025-05-17-prompt:-another-key-to-the-compressed-world.html</link>
+  <guid>https://www.vandee.art/blog/2025-05-17-prompt:-another-key-to-the-compressed-world.html</guid>
   <pubDate>Sat, 17 May 2025 11:28:00 +0800</pubDate>
 </item>
 <item>
@@ -587,8 +587,8 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2025-04-26-the-real-way-to-engage-with-ai-agent.html</link>
-  <guid>https://www.vandee.art/2025-04-26-the-real-way-to-engage-with-ai-agent.html</guid>
+  <link>https://www.vandee.art/blog/2025-04-26-the-real-way-to-engage-with-ai-agent.html</link>
+  <guid>https://www.vandee.art/blog/2025-04-26-the-real-way-to-engage-with-ai-agent.html</guid>
   <pubDate>Sat, 26 Apr 2025 11:59:00 +0800</pubDate>
 </item>
 <item>
@@ -736,8 +736,8 @@ vibe coding 是趋势，我们以后会用上越来越多品质不那么高，�
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2025-04-14-the-passing-future.html</link>
-  <guid>https://www.vandee.art/2025-04-14-the-passing-future.html</guid>
+  <link>https://www.vandee.art/blog/2025-04-14-the-passing-future.html</link>
+  <guid>https://www.vandee.art/blog/2025-04-14-the-passing-future.html</guid>
   <pubDate>Mon, 14 Apr 2025 10:41:00 +0800</pubDate>
 </item>
 <item>
@@ -930,8 +930,8 @@ Imagine and creating！对我来说，这是世界上最好玩的事情了。
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-llm.html">LLM</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[LLM]]></category>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html</link>
-  <guid>https://www.vandee.art/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html</guid>
+  <link>https://www.vandee.art/blog/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html</link>
+  <guid>https://www.vandee.art/blog/2025-02-13-LLM-is-a-big-ZIP-of-knowledge.html</guid>
   <pubDate>Thu, 13 Feb 2025 15:14:00 +0800</pubDate>
 </item>
 <item>
@@ -1058,8 +1058,8 @@ So, All you need is Emacs.
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html</link>
-  <guid>https://www.vandee.art/2025-02-03-emacs-is-all-you-need.html</guid>
+  <link>https://www.vandee.art/blog/2025-02-03-emacs-is-all-you-need.html</link>
+  <guid>https://www.vandee.art/blog/2025-02-03-emacs-is-all-you-need.html</guid>
   <pubDate>Mon, 03 Feb 2025 13:10:00 +0800</pubDate>
 </item>
 <item>
@@ -1264,8 +1264,8 @@ Cursor、VSCode、Windsurf 等编辑器，不写代码，纯粹拿来学习也�
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
-  <link>https://www.vandee.art/2025-01-20-fragmented-knowledge-learning-with-ai.html</link>
-  <guid>https://www.vandee.art/2025-01-20-fragmented-knowledge-learning-with-ai.html</guid>
+  <link>https://www.vandee.art/blog/2025-01-20-fragmented-knowledge-learning-with-ai.html</link>
+  <guid>https://www.vandee.art/blog/2025-01-20-fragmented-knowledge-learning-with-ai.html</guid>
   <pubDate>Mon, 20 Jan 2025 16:48:00 +0800</pubDate>
 </item>
 <item>
@@ -1503,8 +1503,8 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
-  <link>https://www.vandee.art/2024-12-24-the-structrued-knowledge-workflow-with-ai.html</link>
-  <guid>https://www.vandee.art/2024-12-24-the-structrued-knowledge-workflow-with-ai.html</guid>
+  <link>https://www.vandee.art/blog/2024-12-24-the-structrued-knowledge-workflow-with-ai.html</link>
+  <guid>https://www.vandee.art/blog/2024-12-24-the-structrued-knowledge-workflow-with-ai.html</guid>
   <pubDate>Tue, 24 Dec 2024 14:10:00 +0800</pubDate>
 </item>
 <item>
@@ -1600,8 +1600,8 @@ Blog 共 13 篇，里面我觉得还不错的有：<a href="https://www.vandee.a
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2024-12-12-the-summary-of-2024.html</link>
-  <guid>https://www.vandee.art/2024-12-12-the-summary-of-2024.html</guid>
+  <link>https://www.vandee.art/blog/2024-12-12-the-summary-of-2024.html</link>
+  <guid>https://www.vandee.art/blog/2024-12-12-the-summary-of-2024.html</guid>
   <pubDate>Thu, 12 Dec 2024 13:34:00 +0800</pubDate>
 </item>
 <item>
@@ -1745,8 +1745,8 @@ prompt 又直接影响沟通交互的成本。
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html</link>
-  <guid>https://www.vandee.art/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html</guid>
+  <link>https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html</link>
+  <guid>https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html</guid>
   <pubDate>Sun, 08 Dec 2024 16:18:00 +0800</pubDate>
 </item>
 <item>
@@ -1850,8 +1850,8 @@ GitHub issue 提供 tag 的功能，自带 markdown 编辑器和预览，也可�
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2024-11-21-recording-is-resistance.html</link>
-  <guid>https://www.vandee.art/2024-11-21-recording-is-resistance.html</guid>
+  <link>https://www.vandee.art/blog/2024-11-21-recording-is-resistance.html</link>
+  <guid>https://www.vandee.art/blog/2024-11-21-recording-is-resistance.html</guid>
   <pubDate>Thu, 21 Nov 2024 19:04:00 +0800</pubDate>
 </item>
 <item>
@@ -3054,8 +3054,8 @@ jobs:
   <category><![CDATA[Github]]></category>
   <category><![CDATA[Python]]></category>
   <category><![CDATA[Database]]></category>
-  <link>https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html</link>
-  <guid>https://www.vandee.art/2024-11-10-database-of-flowing-knowledge.html</guid>
+  <link>https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html</link>
+  <guid>https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html</guid>
   <pubDate>Sun, 10 Nov 2024 18:36:00 +0800</pubDate>
 </item>
 <item>
@@ -3969,8 +3969,8 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-blog.html">Blog</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
   <category><![CDATA[Blog]]></category>
-  <link>https://www.vandee.art/2024-11-01-my-pkm-building-logs.html</link>
-  <guid>https://www.vandee.art/2024-11-01-my-pkm-building-logs.html</guid>
+  <link>https://www.vandee.art/blog/2024-11-01-my-pkm-building-logs.html</link>
+  <guid>https://www.vandee.art/blog/2024-11-01-my-pkm-building-logs.html</guid>
   <pubDate>Fri, 01 Nov 2024 12:45:00 +0800</pubDate>
 </item>
 <item>
@@ -4265,8 +4265,8 @@ Source：  <a href="https://mp.weixin.qq.com/s/1Lz276s_RjdaSN3NXOIuHw">模仿、
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-vps.html">VPS</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[VPS]]></category>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2024-10-28-memos-and-ssl-config.html</link>
-  <guid>https://www.vandee.art/2024-10-28-memos-and-ssl-config.html</guid>
+  <link>https://www.vandee.art/blog/2024-10-28-memos-and-ssl-config.html</link>
+  <guid>https://www.vandee.art/blog/2024-10-28-memos-and-ssl-config.html</guid>
   <pubDate>Mon, 28 Oct 2024 02:39:00 +0800</pubDate>
 </item>
 <item>
@@ -4403,8 +4403,8 @@ Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.w
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-blog.html">Blog</a> </div>]]></description>
   <category><![CDATA[Blog]]></category>
-  <link>https://www.vandee.art/2024-10-24-my-first-org-blog.html</link>
-  <guid>https://www.vandee.art/2024-10-24-my-first-org-blog.html</guid>
+  <link>https://www.vandee.art/blog/2024-10-24-my-first-org-blog.html</link>
+  <guid>https://www.vandee.art/blog/2024-10-24-my-first-org-blog.html</guid>
   <pubDate>Thu, 24 Oct 2024 15:04:00 +0800</pubDate>
 </item>
 <item>
@@ -4706,8 +4706,8 @@ if __name__ == "__main__":
   <category><![CDATA[PKM]]></category>
   <category><![CDATA[Github]]></category>
   <category><![CDATA[Python]]></category>
-  <link>https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html</link>
-  <guid>https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html</guid>
+  <link>https://www.vandee.art/blog/2024-10-12-bookmark-and-summary-by-github-actions.html</link>
+  <guid>https://www.vandee.art/blog/2024-10-12-bookmark-and-summary-by-github-actions.html</guid>
   <pubDate>Sat, 12 Oct 2024 21:08:00 +0800</pubDate>
 </item>
 <item>
@@ -4771,8 +4771,8 @@ if __name__ == "__main__":
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> <a href="https://www.vandee.art/tag-局外人.html">局外人</a> </div>]]></description>
   <category><![CDATA[Essay]]></category>
   <category><![CDATA[局外人]]></category>
-  <link>https://www.vandee.art/2024-09-30-i-supposed-to.html</link>
-  <guid>https://www.vandee.art/2024-09-30-i-supposed-to.html</guid>
+  <link>https://www.vandee.art/blog/2024-09-30-i-supposed-to.html</link>
+  <guid>https://www.vandee.art/blog/2024-09-30-i-supposed-to.html</guid>
   <pubDate>Mon, 30 Sep 2024 19:13:00 +0800</pubDate>
 </item>
 <item>
@@ -4984,8 +4984,8 @@ Markdown一定是做笔记适用性最强的格式，但在数据层面一定不
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
-  <link>https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html</link>
-  <guid>https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html</guid>
+  <link>https://www.vandee.art/blog/2024-08-10-thinking-about-structured-data-in-notes.html</link>
+  <guid>https://www.vandee.art/blog/2024-08-10-thinking-about-structured-data-in-notes.html</guid>
   <pubDate>Sat, 10 Aug 2024 16:31:00 +0800</pubDate>
 </item>
 <item>
@@ -6113,8 +6113,8 @@ Imagining and creating！
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
-  <link>https://www.vandee.art/2024-08-02-nvim-pkm-manual.html</link>
-  <guid>https://www.vandee.art/2024-08-02-nvim-pkm-manual.html</guid>
+  <link>https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html</link>
+  <guid>https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html</guid>
   <pubDate>Fri, 02 Aug 2024 14:30:00 +0800</pubDate>
 </item>
 <item>
@@ -6398,8 +6398,8 @@ The most interesting part is: you get to define your own dimensions.
   <category><![CDATA[Ramble]]></category>
   <category><![CDATA[Essay]]></category>
   <category><![CDATA[Art]]></category>
-  <link>https://www.vandee.art/2024-07-30-the-imitation-game-of-art.html</link>
-  <guid>https://www.vandee.art/2024-07-30-the-imitation-game-of-art.html</guid>
+  <link>https://www.vandee.art/blog/2024-07-30-the-imitation-game-of-art.html</link>
+  <guid>https://www.vandee.art/blog/2024-07-30-the-imitation-game-of-art.html</guid>
   <pubDate>Tue, 30 Jul 2024 21:15:00 +0800</pubDate>
 </item>
 <item>
@@ -6888,8 +6888,8 @@ PDF转Markdown 方案
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-tool.html">Tool</a> <a href="https://www.vandee.art/tag-useful.html">Useful</a> </div>]]></description>
   <category><![CDATA[Tool]]></category>
   <category><![CDATA[Useful]]></category>
-  <link>https://www.vandee.art/2024-07-26-useful-tools-recommended.html</link>
-  <guid>https://www.vandee.art/2024-07-26-useful-tools-recommended.html</guid>
+  <link>https://www.vandee.art/blog/2024-07-26-useful-tools-recommended.html</link>
+  <guid>https://www.vandee.art/blog/2024-07-26-useful-tools-recommended.html</guid>
   <pubDate>Fri, 26 Jul 2024 13:42:00 +0800</pubDate>
 </item>
 <item>
@@ -8706,8 +8706,8 @@ Imagining and creating！
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/tag-emacs.html">Emacs</a> </div>]]></description>
   <category><![CDATA[PKM]]></category>
   <category><![CDATA[Emacs]]></category>
-  <link>https://www.vandee.art/2024-05-22-org-pkm-manual.html</link>
-  <guid>https://www.vandee.art/2024-05-22-org-pkm-manual.html</guid>
+  <link>https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html</link>
+  <guid>https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html</guid>
   <pubDate>Wed, 22 May 2024 19:47:00 +0800</pubDate>
 </item>
 <item>
@@ -8879,8 +8879,8 @@ Imagining and creating！
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-art.html">Art</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Art]]></category>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2024-05-05-the-value-of-art.html</link>
-  <guid>https://www.vandee.art/2024-05-05-the-value-of-art.html</guid>
+  <link>https://www.vandee.art/blog/2024-05-05-the-value-of-art.html</link>
+  <guid>https://www.vandee.art/blog/2024-05-05-the-value-of-art.html</guid>
   <pubDate>Sun, 05 May 2024 21:29:00 +0800</pubDate>
 </item>
 <item>
@@ -8975,8 +8975,8 @@ Imagining and creating！
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> </div>]]></description>
   <category><![CDATA[Essay]]></category>
-  <link>https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html</link>
-  <guid>https://www.vandee.art/2024-03-15-the-weight-of-three-cabbages.html</guid>
+  <link>https://www.vandee.art/blog/2024-03-15-the-weight-of-three-cabbages.html</link>
+  <guid>https://www.vandee.art/blog/2024-03-15-the-weight-of-three-cabbages.html</guid>
   <pubDate>Fri, 15 Mar 2024 14:26:00 +0800</pubDate>
 </item>
 <item>
@@ -9203,8 +9203,8 @@ Imagining and creating！
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> <a href="https://www.vandee.art/tag-thinking.html">Thinking</a> </div>]]></description>
   <category><![CDATA[Ramble]]></category>
   <category><![CDATA[Thinking]]></category>
-  <link>https://www.vandee.art/2024-03-03-a-Monkey-shaking-the-branch.html</link>
-  <guid>https://www.vandee.art/2024-03-03-a-Monkey-shaking-the-branch.html</guid>
+  <link>https://www.vandee.art/blog/2024-03-03-a-Monkey-shaking-the-branch.html</link>
+  <guid>https://www.vandee.art/blog/2024-03-03-a-Monkey-shaking-the-branch.html</guid>
   <pubDate>Sun, 03 Mar 2024 14:41:00 +0800</pubDate>
 </item>
 <item>
@@ -9265,8 +9265,8 @@ Imagining and creating！
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> <a href="https://www.vandee.art/tag-局外人.html">局外人</a> </div>]]></description>
   <category><![CDATA[Essay]]></category>
   <category><![CDATA[局外人]]></category>
-  <link>https://www.vandee.art/2024-02-01-poor-sheep.html</link>
-  <guid>https://www.vandee.art/2024-02-01-poor-sheep.html</guid>
+  <link>https://www.vandee.art/blog/2024-02-01-poor-sheep.html</link>
+  <guid>https://www.vandee.art/blog/2024-02-01-poor-sheep.html</guid>
   <pubDate>Thu, 01 Feb 2024 14:52:00 +0800</pubDate>
 </item>
 <item>
@@ -9541,8 +9541,8 @@ People don’t know what they want.
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> <a href="https://www.vandee.art/tag-thinking.html">Thinking</a> </div>]]></description>
   <category><![CDATA[Essay]]></category>
   <category><![CDATA[Thinking]]></category>
-  <link>https://www.vandee.art/2024-01-27-carrot-and-donkey.html</link>
-  <guid>https://www.vandee.art/2024-01-27-carrot-and-donkey.html</guid>
+  <link>https://www.vandee.art/blog/2024-01-27-carrot-and-donkey.html</link>
+  <guid>https://www.vandee.art/blog/2024-01-27-carrot-and-donkey.html</guid>
   <pubDate>Sat, 27 Jan 2024 14:35:00 +0800</pubDate>
 </item>
 <item>
@@ -9977,8 +9977,8 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
 </div>
 </div>
 <div class="taglist"></div>]]></description>
-  <link>https://www.vandee.art/2023-12-06-learn-all-the-time.html</link>
-  <guid>https://www.vandee.art/2023-12-06-learn-all-the-time.html</guid>
+  <link>https://www.vandee.art/blog/2023-12-06-learn-all-the-time.html</link>
+  <guid>https://www.vandee.art/blog/2023-12-06-learn-all-the-time.html</guid>
   <pubDate>Wed, 06 Dec 2023 21:33:00 +0800</pubDate>
 </item>
 <item>
@@ -10222,8 +10222,8 @@ The Overton Window is the knot in the narrative tug-of-war. The teams pulling on
   <category><![CDATA[Philosophy]]></category>
   <category><![CDATA[Ramble]]></category>
   <category><![CDATA[Readings]]></category>
-  <link>https://www.vandee.art/2023-11-24-something-about-boring.html</link>
-  <guid>https://www.vandee.art/2023-11-24-something-about-boring.html</guid>
+  <link>https://www.vandee.art/blog/2023-11-24-something-about-boring.html</link>
+  <guid>https://www.vandee.art/blog/2023-11-24-something-about-boring.html</guid>
   <pubDate>Fri, 24 Nov 2023 17:23:00 +0800</pubDate>
 </item>
 <item>
@@ -10361,8 +10361,8 @@ fortune 有幸运也有财富的意思，实际上这两个词也基本划等号
   <category><![CDATA[Thinking]]></category>
   <category><![CDATA[Essay]]></category>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2023-11-20-get-rich-slow.html</link>
-  <guid>https://www.vandee.art/2023-11-20-get-rich-slow.html</guid>
+  <link>https://www.vandee.art/blog/2023-11-20-get-rich-slow.html</link>
+  <guid>https://www.vandee.art/blog/2023-11-20-get-rich-slow.html</guid>
   <pubDate>Mon, 20 Nov 2023 14:54:00 +0800</pubDate>
 </item>
 <item>
@@ -10544,8 +10544,8 @@ Source: <a href="https://lopespm.com/notes/2023/07/02/writing-as-a-form-of-think
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-thinking.html">Thinking</a> </div>]]></description>
   <category><![CDATA[Thinking]]></category>
-  <link>https://www.vandee.art/2023-09-18-read-or-listen.html</link>
-  <guid>https://www.vandee.art/2023-09-18-read-or-listen.html</guid>
+  <link>https://www.vandee.art/blog/2023-09-18-read-or-listen.html</link>
+  <guid>https://www.vandee.art/blog/2023-09-18-read-or-listen.html</guid>
   <pubDate>Mon, 18 Sep 2023 17:58:00 +0800</pubDate>
 </item>
 <item>
@@ -10770,8 +10770,8 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> <a href="https://www.vandee.art/tag-philosophy.html">Philosophy</a> </div>]]></description>
   <category><![CDATA[Essay]]></category>
   <category><![CDATA[Philosophy]]></category>
-  <link>https://www.vandee.art/2023-08-22-a-castle-in-the-air.html</link>
-  <guid>https://www.vandee.art/2023-08-22-a-castle-in-the-air.html</guid>
+  <link>https://www.vandee.art/blog/2023-08-22-a-castle-in-the-air.html</link>
+  <guid>https://www.vandee.art/blog/2023-08-22-a-castle-in-the-air.html</guid>
   <pubDate>Tue, 22 Aug 2023 14:48:00 +0800</pubDate>
 </item>
 <item>
@@ -10947,8 +10947,8 @@ Add：在这里有我更多的思考：<a href="https://wiki.vandee.art/#On%20th
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-essay.html">Essay</a> <a href="https://www.vandee.art/tag-ramble.html">Ramble</a> </div>]]></description>
   <category><![CDATA[Essay]]></category>
   <category><![CDATA[Ramble]]></category>
-  <link>https://www.vandee.art/2023-06-23-perfect-is-shit.html</link>
-  <guid>https://www.vandee.art/2023-06-23-perfect-is-shit.html</guid>
+  <link>https://www.vandee.art/blog/2023-06-23-perfect-is-shit.html</link>
+  <guid>https://www.vandee.art/blog/2023-06-23-perfect-is-shit.html</guid>
   <pubDate>Fri, 23 Jun 2023 15:03:00 +0800</pubDate>
 </item>
 <item>
@@ -11257,8 +11257,8 @@ Morpheus:
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-philosophy.html">Philosophy</a> <a href="https://www.vandee.art/tag-art.html">Art</a> </div>]]></description>
   <category><![CDATA[Philosophy]]></category>
   <category><![CDATA[Art]]></category>
-  <link>https://www.vandee.art/2023-02-23-blue-or-red.html</link>
-  <guid>https://www.vandee.art/2023-02-23-blue-or-red.html</guid>
+  <link>https://www.vandee.art/blog/2023-02-23-blue-or-red.html</link>
+  <guid>https://www.vandee.art/blog/2023-02-23-blue-or-red.html</guid>
   <pubDate>Thu, 23 Feb 2023 17:40:00 +0800</pubDate>
 </item>
 <item>
@@ -11424,8 +11424,8 @@ Morpheus:
 </div>
 <div class="taglist"><a href="https://www.vandee.art/tags.html">Tags</a>: <a href="https://www.vandee.art/tag-art.html">Art</a> </div>]]></description>
   <category><![CDATA[Art]]></category>
-  <link>https://www.vandee.art/2022-07-11-the-reason-why-i-love-photography.html</link>
-  <guid>https://www.vandee.art/2022-07-11-the-reason-why-i-love-photography.html</guid>
+  <link>https://www.vandee.art/blog/2022-07-11-the-reason-why-i-love-photography.html</link>
+  <guid>https://www.vandee.art/blog/2022-07-11-the-reason-why-i-love-photography.html</guid>
   <pubDate>Mon, 11 Jul 2022 09:12:00 +0800</pubDate>
 </item>
 </channel>

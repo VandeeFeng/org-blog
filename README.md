@@ -6,4 +6,6 @@ Thanks to  https://github.com/chenyo-17/org-static-blog , i decided to write my 
 
 Stay foolish , Stay simple.
 
-The shiba gif is from https://github.com/tonybaloney/vscode-pets
+The Shiba GIF is sourced from https://github.com/tonybaloney/vscode-pets 
+
+The homepage design is inspired by https://github.com/SimonAKing/HomePage
