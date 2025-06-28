@@ -391,9 +391,29 @@ Ref：
 - [[https://www.zmonster.me/2018/02/28/org-mode-capture.html][强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster's Blog]]
 - [[https://orgmode.org/manual/Capture.html][Capture (The Org Manual)]]
 
+**** denote
+2025-06-28 added
+
+其实在选择 org-roam 的时候也考虑过 denote，但是当时久仰 roam 的大名，对 org-roam 的好感多一些。
+
+在长时间使用 org-roam 之后，其实很多它的功能我都没有使用到，除了核心的双链之外许多都可以直接用 org-capture 实现。org-roam-ui 我用到的次数也是非常少，也已经很久没有更新了。随着对编程的学习，笔记的 web ui 现在也可以自己写了。
+
+denote 最吸引我的一点是它的作者对于记笔记的理解，在这个 [[https://www.youtube.com/watch?v=mLzFJcLpDFI][介绍视频]] 里，展示了 denote 最核心的功能。其中有一个是批量查询相关笔记并导入链接，这个太方便了。虽然在 org-roam 里肯定也可以实现，但是在 denote 里，是开箱即用的。denote 的 backlink 的实现也更简洁，不像 org-roam 依赖数据库和节点 ID。
+
+其次是 denote 默认的文件命名方式：时间戳（identifier） + 文件名（title） + Keywords（tags），这样命名的好处是，可以直接 grep 或者正则检索 tags 和笔记，不需要额外的设置，这个思路是通用的。
+
+denote 还提供三种格式：org，md，txt。对于使用 Emacs，但是不喜欢 org 的来说，也很方便。
+
+总之 denote 的设计更加简洁，依赖更少，自定义起来更方便，现在从 org-roam 转到 denote 了。
+
+Ref:
+- https://protesilaos.com/emacs/denote
+- https://github.com/protesilaos/denote
+- https://www.youtube.com/watch?v=mLzFJcLpDFI
+
 **** Org-roam
 
-[[https://www.orgroam.com/][Org-roam]] 是Emacs的一个包，也是org-mode 的扩展，可以简单的实现双链，通过org-roam-ui直观的预览。
+[[https://www.orgroam.com/][Org-roam]] 是 Emacs的一个包，可以简单的实现双链，通过org-roam-ui直观的预览。
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam-ui-2024-05-22%2013.31.40.png]]
@@ -404,7 +424,7 @@ org-roam也有它的capture，可以直接生成org笔记。而org-roam的「 no
 
 其他属性和使用基本与org-mode一致，也是生成 ~.org~ 文件。同样也需要配置org-roam的capture-templates。原来用org-roam创建Journal日志文件，现在已经用org-capture替代。
 
-org-roam-ui也有和Logseq一样的网点图谱「 Graph View 」，也提供大纲结构视图，对于我来说用起来很亲切。如果你觉得org-mode可读性不强，那么org-roam-ui一定会让你喜欢。org-roam-ui是在浏览器里通过 ~org-roam-protocol~ 访问，需要在配置加上 ~(require 'org-roam-protocol)~ 。
+org-roam-ui 也有和 Logseq一样的网点图谱「 Graph View 」，也提供大纲结构视图，对于我来说用起来很亲切。如果你觉得org-mode可读性不强，那么org-roam-ui一定会让你喜欢。org-roam-ui是在浏览器里通过 ~org-roam-protocol~ 访问，需要在配置加上 ~(require 'org-roam-protocol)~ 。
 
 同样也需要在最开始设置好org-roam笔记的文件夹： ~(setq org-roam-directory "~/your/roam/directory/")~
 
@@ -936,8 +956,6 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 - [[https://mischavandenburg.com/zet/neovim-zettelkasten/][我的 Neovim Zettelkasten：我如何使用 Vim 和 Bash 在 Markdown 中做笔记 |米沙·范登伯格]] 很强，之前用bash来生成md笔记的思路一下子扩展了。使用CLI来做笔记是一个很终极的方案。
 
-
-
 ** PKM with LLM
 
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
@@ -1135,7 +1153,11 @@ Ref: https://github.com/karthink/gptel?tab=readme-ov-file#include-more-context-w
   :models '("mistral:latest"))          ;List of models
 #+end_src
 
+gptel 现在支持自己设计 tool，也支持 MCP 了。
 
+tool 和 function calling 的设置可以参考：https://github.com/karthink/gptel/issues/514
+
+MCP 需要安装 [[https://github.com/lizqwerscott/mcp.el][lizqwerscott/mcp.el: An Mcp client inside Emacs]] 。但是 mcp.el Need Emacs 30 or higher version。
 *** Kotaemon
 
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
@@ -1178,12 +1200,13 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2025-02-09: 增加 chipper。
 - 2025-02-13：增加 aidermacs.
 - 2025-05-11: 增加 org-supertag, org-node.
+- 2025-06-28: 增加 denote。
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 
-另见：[[https://www.vandee.art/2024-08-02-nvim-pkm-manual.html][PKM（个人知识管理）构建手册 - Nvim]]
+另见：[[https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html][PKM（个人知识管理）构建手册 - Nvim]]
 
-这里是我日常使用的实用小工具： [[https://www.vandee.art/2024-07-26-useful-tools-recommended.html][实用小玩意收集]]
+这里是我日常使用的实用小工具： [[https://www.vandee.art/blog/2024-07-26-useful-tools-recommended.html][实用小玩意收集]]
 
 Imagining and creating！
