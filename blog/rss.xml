@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Mon, 30 Jun 2025 19:43:04 +0800</lastBuildDate>
+<lastBuildDate>Mon, 30 Jun 2025 19:46:15 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Vibe Coding Tips]]></title>
   <description><![CDATA[
@@ -12,22 +12,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org32344d9">TL;DR</a></li>
-<li><a href="#org71b2ee0">General Tips</a></li>
-<li><a href="#orgbe15a46">Container</a>
+<li><a href="#org7d4c6f5">TL;DR</a></li>
+<li><a href="#org1b81e45">General Tips</a></li>
+<li><a href="#orgf1277b3">Container</a>
 <ul>
-<li><a href="#orgd531903">Coding Assistant Container</a></li>
-<li><a href="#orgc4d03dc">MCP Container</a></li>
+<li><a href="#orge41d94a">Coding Assistant Container</a></li>
+<li><a href="#org3750ca9">MCP Container</a></li>
 </ul>
 </li>
-<li><a href="#org96b5169">CLI AI Coding Tools</a></li>
+<li><a href="#org1a7d4c6">CLI AI Coding Tools</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org32344d9" class="outline-2">
-<h2 id="org32344d9">TL;DR</h2>
-<div class="outline-text-2" id="text-org32344d9">
+<div id="outline-container-org7d4c6f5" class="outline-2">
+<h2 id="org7d4c6f5">TL;DR</h2>
+<div class="outline-text-2" id="text-org7d4c6f5">
 <p>
 各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
 </p>
@@ -42,9 +42,9 @@
 </div>
 </div>
 
-<div id="outline-container-org71b2ee0" class="outline-2">
-<h2 id="org71b2ee0">General Tips</h2>
-<div class="outline-text-2" id="text-org71b2ee0">
+<div id="outline-container-org1b81e45" class="outline-2">
+<h2 id="org1b81e45">General Tips</h2>
+<div class="outline-text-2" id="text-org1b81e45">
 <p>
 由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
 </p>
@@ -71,13 +71,13 @@ OpenAI 的 codex, Gemini CLI 相继开源，背后的核心实现会越来越清
 </div>
 </div>
 
-<div id="outline-container-orgbe15a46" class="outline-2">
-<h2 id="orgbe15a46">Container</h2>
-<div class="outline-text-2" id="text-orgbe15a46">
+<div id="outline-container-orgf1277b3" class="outline-2">
+<h2 id="orgf1277b3">Container</h2>
+<div class="outline-text-2" id="text-orgf1277b3">
 </div>
-<div id="outline-container-orgd531903" class="outline-3">
-<h3 id="orgd531903">Coding Assistant Container</h3>
-<div class="outline-text-3" id="text-orgd531903">
+<div id="outline-container-orge41d94a" class="outline-3">
+<h3 id="orge41d94a">Coding Assistant Container</h3>
+<div class="outline-text-3" id="text-orge41d94a">
 <p>
 参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
 </p>
@@ -178,9 +178,9 @@ alias geminix='docker run -it --rm \
 </div>
 </div>
 
-<div id="outline-container-orgc4d03dc" class="outline-3">
-<h3 id="orgc4d03dc">MCP Container</h3>
-<div class="outline-text-3" id="text-orgc4d03dc">
+<div id="outline-container-org3750ca9" class="outline-3">
+<h3 id="org3750ca9">MCP Container</h3>
+<div class="outline-text-3" id="text-org3750ca9">
 <p>
 MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
 </p>
@@ -204,9 +204,9 @@ MCP Container 相关的项目也挺多，我用的是: <a href="https://github.c
 </div>
 </div>
 
-<div id="outline-container-org96b5169" class="outline-2">
-<h2 id="org96b5169">CLI AI Coding Tools</h2>
-<div class="outline-text-2" id="text-org96b5169">
+<div id="outline-container-org1a7d4c6" class="outline-2">
+<h2 id="org1a7d4c6">CLI AI Coding Tools</h2>
+<div class="outline-text-2" id="text-org1a7d4c6">
 <p>
 整理了一些现在 star 比较多的 CLI AI Coding 项目：
 </p>
@@ -244,11 +244,16 @@ Open Codex CLI: 一个大佬 fork 了 OpenAI 最近出的 CLI 工具，支持了
 <a href="https://github.com/ymichael/open-codex">https://github.com/ymichael/open-codex</a>
 </p></li>
 
-<li>codex: Lightweight coding agent that runs in your terminal
-<a href="https://github.com/openai/codex">https://github.com/openai/codex</a></li>
+<li><p>
+codex: Lightweight coding agent that runs in your terminal
+</p>
+
+<p>
+<a href="https://github.com/openai/codex">https://github.com/openai/codex</a>
+</p></li>
 
 <li><p>
-OpenCode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+opeancode: AI coding agent, built for the terminal.
 </p>
 
 <p>

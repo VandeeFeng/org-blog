@@ -156,9 +156,10 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
   https://github.com/ymichael/open-codex
 
 - codex: Lightweight coding agent that runs in your terminal
+
   https://github.com/openai/codex
 
-- OpenCode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+- opeancode: AI coding agent, built for the terminal.
 
   https://github.com/sst/opencode
 
