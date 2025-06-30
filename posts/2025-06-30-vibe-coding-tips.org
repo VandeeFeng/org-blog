@@ -140,25 +140,32 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
 整理了一些现在 star 比较多的 CLI AI Coding 项目：
 
 - CCSeva: A beautiful macOS menu bar app for tracking your Claude Code usage in real-time. Monitor token consumption, costs, and usage patterns with an elegant interface.
+
   https://github.com/Iamshankhadeep/ccseva
 
 - SuperClaude: this lightweight framework turns claude code into a complete dev partner
+
   https://github.com/NomenAK/SuperClaude
 
 - claudia: Claude code GUI
+
   https://github.com/getAsterisk/claudia
 
 - Open Codex CLI: 一个大佬 fork 了 OpenAI 最近出的 CLI 工具，支持了更多的模型。
+
   https://github.com/ymichael/open-codex
 
 - codex: Lightweight coding agent that runs in your terminal
   https://github.com/openai/codex
 
 - OpenCode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+
   https://github.com/sst/opencode
 
 - opencode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+
   https://github.com/opencode-ai/opencode
 
 - Claude Squad: Claude Squad is a terminal app that manages multiple Claude Code, Codex (and other local agents including Aider) in separate workspaces, allowing you to work on multiple tasks simultaneously.
+
   https://github.com/smtg-ai/claude-squad

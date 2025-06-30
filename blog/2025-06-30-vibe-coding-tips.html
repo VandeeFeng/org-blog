@@ -59,22 +59,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9eac8fe">TL;DR</a></li>
-<li><a href="#orgd2c6f57">General Tips</a></li>
-<li><a href="#orge691ea0">Container</a>
+<li><a href="#org9307fe7">TL;DR</a></li>
+<li><a href="#org416c894">General Tips</a></li>
+<li><a href="#org38c5063">Container</a>
 <ul>
-<li><a href="#orgdd1c3cf">Coding Assistant Container</a></li>
-<li><a href="#orgd67d628">MCP Container</a></li>
+<li><a href="#orgc5cd4e5">Coding Assistant Container</a></li>
+<li><a href="#orgf97ba40">MCP Container</a></li>
 </ul>
 </li>
-<li><a href="#orge90be01">CLI AI Coding Tools</a></li>
+<li><a href="#orgc2e84a2">CLI AI Coding Tools</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org9eac8fe" class="outline-2">
-<h2 id="org9eac8fe">TL;DR</h2>
-<div class="outline-text-2" id="text-org9eac8fe">
+<div id="outline-container-org9307fe7" class="outline-2">
+<h2 id="org9307fe7">TL;DR</h2>
+<div class="outline-text-2" id="text-org9307fe7">
 <p>
 各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
 </p>
@@ -89,9 +89,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgd2c6f57" class="outline-2">
-<h2 id="orgd2c6f57">General Tips</h2>
-<div class="outline-text-2" id="text-orgd2c6f57">
+<div id="outline-container-org416c894" class="outline-2">
+<h2 id="org416c894">General Tips</h2>
+<div class="outline-text-2" id="text-org416c894">
 <p>
 由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
 </p>
@@ -118,13 +118,13 @@
 </div>
 </div>
 
-<div id="outline-container-orge691ea0" class="outline-2">
-<h2 id="orge691ea0">Container</h2>
-<div class="outline-text-2" id="text-orge691ea0">
+<div id="outline-container-org38c5063" class="outline-2">
+<h2 id="org38c5063">Container</h2>
+<div class="outline-text-2" id="text-org38c5063">
 </div>
-<div id="outline-container-orgdd1c3cf" class="outline-3">
-<h3 id="orgdd1c3cf">Coding Assistant Container</h3>
-<div class="outline-text-3" id="text-orgdd1c3cf">
+<div id="outline-container-orgc5cd4e5" class="outline-3">
+<h3 id="orgc5cd4e5">Coding Assistant Container</h3>
+<div class="outline-text-3" id="text-orgc5cd4e5">
 <p>
 参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
 </p>
@@ -225,9 +225,9 @@ alias geminix='docker run -it --rm \
 </div>
 </div>
 
-<div id="outline-container-orgd67d628" class="outline-3">
-<h3 id="orgd67d628">MCP Container</h3>
-<div class="outline-text-3" id="text-orgd67d628">
+<div id="outline-container-orgf97ba40" class="outline-3">
+<h3 id="orgf97ba40">MCP Container</h3>
+<div class="outline-text-3" id="text-orgf97ba40">
 <p>
 MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
 </p>
@@ -251,37 +251,72 @@ MCP Container 相关的项目也挺多，我用的是: <a href="https://github.c
 </div>
 </div>
 
-<div id="outline-container-orge90be01" class="outline-2">
-<h2 id="orge90be01">CLI AI Coding Tools</h2>
-<div class="outline-text-2" id="text-orge90be01">
+<div id="outline-container-orgc2e84a2" class="outline-2">
+<h2 id="orgc2e84a2">CLI AI Coding Tools</h2>
+<div class="outline-text-2" id="text-orgc2e84a2">
 <p>
 整理了一些现在 star 比较多的 CLI AI Coding 项目：
 </p>
 
 <ul class="org-ul">
-<li>CCSeva: A beautiful macOS menu bar app for tracking your Claude Code usage in real-time. Monitor token consumption, costs, and usage patterns with an elegant interface.
-<a href="https://github.com/Iamshankhadeep/ccseva">https://github.com/Iamshankhadeep/ccseva</a></li>
+<li><p>
+CCSeva: A beautiful macOS menu bar app for tracking your Claude Code usage in real-time. Monitor token consumption, costs, and usage patterns with an elegant interface.
+</p>
 
-<li>SuperClaude: this lightweight framework turns claude code into a complete dev partner
-<a href="https://github.com/NomenAK/SuperClaude">https://github.com/NomenAK/SuperClaude</a></li>
+<p>
+<a href="https://github.com/Iamshankhadeep/ccseva">https://github.com/Iamshankhadeep/ccseva</a>
+</p></li>
 
-<li>claudia: Claude code GUI
-<a href="https://github.com/getAsterisk/claudia">https://github.com/getAsterisk/claudia</a></li>
+<li><p>
+SuperClaude: this lightweight framework turns claude code into a complete dev partner
+</p>
 
-<li>Open Codex CLI: 一个大佬 fork 了 OpenAI 最近出的 CLI 工具，支持了更多的模型。
-<a href="https://github.com/ymichael/open-codex">https://github.com/ymichael/open-codex</a></li>
+<p>
+<a href="https://github.com/NomenAK/SuperClaude">https://github.com/NomenAK/SuperClaude</a>
+</p></li>
+
+<li><p>
+claudia: Claude code GUI
+</p>
+
+<p>
+<a href="https://github.com/getAsterisk/claudia">https://github.com/getAsterisk/claudia</a>
+</p></li>
+
+<li><p>
+Open Codex CLI: 一个大佬 fork 了 OpenAI 最近出的 CLI 工具，支持了更多的模型。
+</p>
+
+<p>
+<a href="https://github.com/ymichael/open-codex">https://github.com/ymichael/open-codex</a>
+</p></li>
 
 <li>codex: Lightweight coding agent that runs in your terminal
 <a href="https://github.com/openai/codex">https://github.com/openai/codex</a></li>
 
-<li>OpenCode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
-<a href="https://github.com/sst/opencode">https://github.com/sst/opencode</a></li>
+<li><p>
+OpenCode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+</p>
 
-<li>opencode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
-<a href="https://github.com/opencode-ai/opencode">https://github.com/opencode-ai/opencode</a></li>
+<p>
+<a href="https://github.com/sst/opencode">https://github.com/sst/opencode</a>
+</p></li>
 
-<li>Claude Squad: Claude Squad is a terminal app that manages multiple Claude Code, Codex (and other local agents including Aider) in separate workspaces, allowing you to work on multiple tasks simultaneously.
-<a href="https://github.com/smtg-ai/claude-squad">https://github.com/smtg-ai/claude-squad</a></li>
+<li><p>
+opencode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+</p>
+
+<p>
+<a href="https://github.com/opencode-ai/opencode">https://github.com/opencode-ai/opencode</a>
+</p></li>
+
+<li><p>
+Claude Squad: Claude Squad is a terminal app that manages multiple Claude Code, Codex (and other local agents including Aider) in separate workspaces, allowing you to work on multiple tasks simultaneously.
+</p>
+
+<p>
+<a href="https://github.com/smtg-ai/claude-squad">https://github.com/smtg-ai/claude-squad</a>
+</p></li>
 </ul>
 </div>
 </div>
