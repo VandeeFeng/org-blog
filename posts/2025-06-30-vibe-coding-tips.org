@@ -1,0 +1,164 @@
+#+title: Vibe Coding Tips
+#+date: <2025-06-30 17:27>
+#+description: Vibe Coding 工具本身不是那么关键，之前 Cursor 对 Claude 优化的 prompt 和方法，以及现在 Claude code 的底层的优化才是 vibe coding 这个阶段更值得学习的。
+#+filetags: Coding
+
+* TL;DR
+各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
+
+持续记录一下 vibe coding 的相关 tips。
+
+[[https://memo.vandee.art/issue/62][Vibe Coding Timeline #62 - Git Memo]]
+
+* General Tips
+由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
+
+事实证明当时的判断是正确的，没有把时间和经历过多的用在学习 cursor 这个工具上面。现在 cursor 被 Claude code 抄家背刺了，变笨了许多。现在风向又铺天盖地的倒向了 Claude code。
+
+现在的 Vibe Coding 也是一样，以后还会出现更智能的 vibe 工具和形态，AI 的迭代实在太快了。
+
+这些工具本身不是那么关键，之前 Cursor 对 Claude 优化的 prompt 和方法，以及现在 Claude code 的底层的优化才是 vibe coding 这个阶段更值得学习的。
+
+随着 Gemini CLI ，OpenAI 的 codex 相继开源，背后的核心实现会越来越清晰。
+
+最近一直在看三巨头的代码库，还有这个 https://github.com/sst/opencode ，让 Gemini CLI 分析 Gemini CLI 也是挺有趣。
+
+* Container
+** Coding Assistant Container
+
+参考 [[https://xuanwo.io/2025/03-how-i-vibe-coding/][How I Vibe Coding?]] 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
+
+Claude 4 的编程效果现在普遍认为是最好的，但是 Claude 的封控太严格了，我也没那么大编程的需求，封一次号就又要折腾。
+
+Gemini Pro 的 API 现在也免费了，每天有 1000 次请求，对我来说足够了。Gemini 的超长 context window 对分析和学习项目帮助很大。但 Gemini 免费的代价就是共享对话的数据。
+
+以 Gemini CLI 为例，执行 ~docker build -t YOUR-IMAGE-NAME .~ build image。
+
+#+begin_src
+FROM ubuntu:latest
+
+# Update system and install base dependencies
+RUN apt-get update && apt-get upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    build-essential \
+    git \
+    curl \
+    wget \
+    vim \
+    neovim \
+    sudo \
+    openssh-client \
+    ca-certificates \
+    gnupg
+
+# Install development tools
+RUN apt-get install -y \
+    python3 \
+    python3-pip \
+    jq \
+    tmux \
+    htop \
+    tree \
+    unzip \
+    protobuf-compiler \
+    zip
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    npm install -g pnpm yarn
+
+
+# Install ripgrep and fd-find
+RUN apt-get update && \
+    apt-get install -y ripgrep fd-find
+
+
+# Create a regular user
+RUN useradd -m -G sudo -s /bin/bash user && \
+    echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# Switch to user for installations
+USER user
+WORKDIR /home/user
+
+# Switch back to root for cleanup
+USER root
+
+# Clean apt cache
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Switch back to user
+USER user
+
+# Install Gemini CLI globally (user has npm permissions via sudo)
+RUN sudo npm install -g @google/gemini-cli
+
+# Set working directory
+WORKDIR /workspace
+
+# Set shell to bash and ensure .bashrc is loaded
+SHELL ["/bin/bash", "-c"]
+RUN echo '[ -f ~/.bashrc ] && source ~/.bashrc' >> ~/.bash_profile
+
+CMD ["/bin/bash", "-l", "-c", "gemini"]
+#+end_src
+
+以 bash 为例，在 ~/.bashrc~ 里添加：
+
+#+begin_src bash
+
+# geminix
+alias geminix='docker run -it --rm \
+  -v $(pwd):/workspace \
+  -v ~/.bashrc:/home/user/.bashrc \
+  -v ~/.config/gh:/home/user/.config/gh \
+  YOUR-IMAGE-NAME'
+
+#+end_src
+
+~-v $(pwd):/workspace \~ 会把当前目录挂载到 docker 的 volume。可以根据需求挂载更多的目录。
+
+这样就实现了在 docker 隔离环境里使用 Gemini CLI 或其他 AI 工具，vibe coding 指定的项目。
+
+如果在 macOS，用 OrbStack 就更方便了，它可以直接共享本机和 container 的数据。
+
+** MCP Container
+
+MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
+
+MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark/mcp-proxy
+
+[[https://miantiao.me/posts/guide-to-running-mcp-server-in-a-sandbox/][在 Docker 沙箱中运行 MCP Server | 面条实验室]] 作者还写了一个教程。
+
+我已经把我常用的几个 MCP 都部署好了。
+
+用的最多的就是 sequential-thinking ，Exa search。
+
+* CLI AI Coding Tools
+整理了一些现在 star 比较多的 CLI AI Coding 项目：
+
+- CCSeva: A beautiful macOS menu bar app for tracking your Claude Code usage in real-time. Monitor token consumption, costs, and usage patterns with an elegant interface.
+  https://github.com/Iamshankhadeep/ccseva
+
+- SuperClaude: this lightweight framework turns claude code into a complete dev partner
+  https://github.com/NomenAK/SuperClaude
+
+- claudia: Claude code GUI
+  https://github.com/getAsterisk/claudia
+
+- Open Codex CLI: 一个大佬 fork 了 OpenAI 最近出的 CLI 工具，支持了更多的模型。
+  https://github.com/ymichael/open-codex
+
+- codex: Lightweight coding agent that runs in your terminal
+  https://github.com/openai/codex
+
+- OpenCode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+  https://github.com/sst/opencode
+
+- opencode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+  https://github.com/opencode-ai/opencode
+
+- Claude Squad: Claude Squad is a terminal app that manages multiple Claude Code, Codex (and other local agents including Aider) in separate workspaces, allowing you to work on multiple tasks simultaneously.
+  https://github.com/smtg-ai/claude-squad
