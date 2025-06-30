@@ -159,7 +159,7 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
 
   https://github.com/openai/codex
 
-- opeancode: AI coding agent, built for the terminal.
+- opencode: AI coding agent, built for the terminal.
 
   https://github.com/sst/opencode
 
