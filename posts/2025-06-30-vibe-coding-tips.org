@@ -23,6 +23,12 @@ OpenAI 的 codex, Gemini CLI 相继开源，背后的核心实现会越来越清
 
 最近一直在看三巨头的代码库，还有这个 https://github.com/sst/opencode ，让 Gemini CLI 分析 Gemini CLI 也是挺有趣。
 
+这些 CLI 代码工具不一定要拿来写代码，就像 cursor 可以和 obsidian 的库结合做笔记一样。
+
+~gemini -p "<prompt>"~ 直接调用 Gemini CLI 完全可以当作一个终端的 AI 小助手了。也可以结合其他工作流，充分利用 Gemini 超长的上下文提供 context 给其他 LLM。
+
+很久之前的这个 [[https://github.com/OpenInterpreter/open-interpreter][OpenInterpreter/open-interpreter]] 项目能做的事，现在用 CLI 代码工具也可以轻松实现了。 [[https://github.com/warpdotdev/Warp][warpdotdev/Warp]] AI 终端的很多功能现在也可以使用 Gemini CLI 等工具实现了。
+
 * Container
 ** Coding Assistant Container
 
