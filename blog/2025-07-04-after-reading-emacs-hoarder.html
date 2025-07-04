@@ -57,17 +57,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org197ebdd">TL;DR</a></li>
-<li><a href="#orge1c4a22">Hoarder</a></li>
-<li><a href="#org83205f6">Emacs-Hoarder</a></li>
-<li><a href="#orgd1e1dc3">Obsidian-Web-Clipper</a></li>
+<li><a href="#org4cc94d2">TL;DR</a></li>
+<li><a href="#orgf76150e">Hoarder</a></li>
+<li><a href="#org75b9504">Emacs-Hoarder</a></li>
+<li><a href="#orge48276b">Obsidian-Web-Clipper</a></li>
 </ul>
 </div>
 </nav>
 
-<div id="outline-container-org197ebdd" class="outline-2">
-<h2 id="org197ebdd">TL;DR</h2>
-<div class="outline-text-2" id="text-org197ebdd">
+<div id="outline-container-org4cc94d2" class="outline-2">
+<h2 id="org4cc94d2">TL;DR</h2>
+<div class="outline-text-2" id="text-org4cc94d2">
 <p>
 从 Omnivore 到 <a href="https://github.com/VandeeFeng/bookmark-summary%20">Clip</a> ,再到 ReadWise，一直没有找到一个符合自己需求和习惯的稍后阅读 + 高亮剪藏方案。再持续观察和试用 <a href="https://github.com/hoarder-app/hoarder/">Hoarder</a> 之后，最终决定就是它了。
 </p>
@@ -78,9 +78,9 @@
 </div>
 </div>
 
-<div id="outline-container-orge1c4a22" class="outline-2">
-<h2 id="orge1c4a22">Hoarder</h2>
-<div class="outline-text-2" id="text-orge1c4a22">
+<div id="outline-container-orgf76150e" class="outline-2">
+<h2 id="orgf76150e">Hoarder</h2>
+<div class="outline-text-2" id="text-orgf76150e">
 <p>
 <a href="https://github.com/karakeep-app/karakeep">Karakeep</a> （原 Hoarder），作者的解释是：
 </p>
@@ -155,9 +155,9 @@ AI 速读没得灵魂，渐进式阅读，高亮剪藏更容易进入心流，�
 </div>
 </div>
 
-<div id="outline-container-org83205f6" class="outline-2">
-<h2 id="org83205f6">Emacs-Hoarder</h2>
-<div class="outline-text-2" id="text-org83205f6">
+<div id="outline-container-org75b9504" class="outline-2">
+<h2 id="org75b9504">Emacs-Hoarder</h2>
+<div class="outline-text-2" id="text-org75b9504">
 <p>
 写了一个小工具在 Emacs 里同步 Hoarder 的高亮。正好把 Gemini CLI 拉出来练练，Lisp 的括号真是 LLM 杀手。在重构代码的途中，每次都不能正确的处理括号，Claude、GPT 也是一样。
 </p>
@@ -172,9 +172,9 @@ Hoarder 有 MCP 可以检索笔记、添加笔记，所以其他功能就不重�
 </div>
 </div>
 
-<div id="outline-container-orgd1e1dc3" class="outline-2">
-<h2 id="orgd1e1dc3">Obsidian-Web-Clipper</h2>
-<div class="outline-text-2" id="text-orgd1e1dc3">
+<div id="outline-container-orge48276b" class="outline-2">
+<h2 id="orge48276b">Obsidian-Web-Clipper</h2>
+<div class="outline-text-2" id="text-orge48276b">
 <p>
 用 Obsidian-Web-Clipper 已经很长时间了，这就是目前为止我用过最好的网页剪藏工具。
 </p>
@@ -201,7 +201,7 @@ Obsidian-Web-Clipper 提供了相当多的变量和语法，可以发挥想象�
 </p>
 
 <p>
-例如我现在用在 Emacs 里的剪藏模板：
+例如这个用在 Emacs 里的 org 格式剪藏模板：
 </p>
 
 <div class="org-src-container">
@@ -212,75 +212,9 @@ source: {{url}}
 {{content}}</pre>
 </div>
 
-
 <p>
-下面这个模板可以生成一个美观的 html 网页：
+也可以直接生成 org 文件，甚至美观的 HTML 网页或者 SVG 小卡片方便社交网络分享。
 </p>
-
-<div class="org-src-container">
-<pre class="src src-html"><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}}</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Fira Mono', monospace;
-      background-color: #111;
-      background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(to right, #000 1px, transparent 1px);
-      background-size: 20px 20px;
-      color: #83F6BE;
-    }
-    h1 {
-      color: #4BA57F;
-    }
-    h2 {
-      color: #83F6BE;
-      text-shadow: 0 0 10px rgba(131, 246, 190, 0.4),
-                   0 0 20px rgba(131, 246, 190, 0.2);
-      letter-spacing: 0.5px;
-    }
-    .glow-box {
-      background-color: #111;
-      border: 1px solid #153324;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      transform: translateY(0);
-      transition: all 0.3s ease-in-out;
-    }
-    .glow-box:hover {
-      box-shadow: 0 0 15px rgba(31, 110, 76, 0.6);
-      transform: translateY(-2px);
-    }
-    code {
-      color: #83F6BE;
-    }
-  </style>
-</head>
-<body class="p-10">
-  <main class="max-w-4xl mx-auto">
-    <h1 class="text-5xl font-bold text-center mb-4">{{title}} - {{site}}</h1>
-    <p class="text-center mb-10">{{description}}</p>
-    <section>
-      <h2 class="text-3xl font-bold flex items-center gap-2">
-       {{title}}
-      </h2>
-      <div class="glow-box mt-6 whitespace-pre-line">
-        <p class="mb-4">
-          {{content}}
-        </p>
-        <p>
-          From {{url}}
-        </p>
-      </div>
-    </section>
-  </main>
-</body>
-</html></pre>
-</div>
 </div>
 </div>
 <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div></div>
