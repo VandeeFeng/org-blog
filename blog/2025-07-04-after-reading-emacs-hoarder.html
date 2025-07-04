@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>稍后阅读新方案 Emacs-Hoarder</title>
+<meta property="og:title" content="稍后阅读新方案 Emacs-Hoarder">
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+       <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">04 Jul 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">稍后阅读新方案 Emacs-Hoarder</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org197ebdd">TL;DR</a></li>
+<li><a href="#orge1c4a22">Hoarder</a></li>
+<li><a href="#org83205f6">Emacs-Hoarder</a></li>
+<li><a href="#orgd1e1dc3">Obsidian-Web-Clipper</a></li>
+</ul>
+</div>
+</nav>
+
+<div id="outline-container-org197ebdd" class="outline-2">
+<h2 id="org197ebdd">TL;DR</h2>
+<div class="outline-text-2" id="text-org197ebdd">
+<p>
+从 Omnivore 到 <a href="https://github.com/VandeeFeng/bookmark-summary%20">Clip</a> ,再到 ReadWise，一直没有找到一个符合自己需求和习惯的稍后阅读 + 高亮剪藏方案。再持续观察和试用 <a href="https://github.com/hoarder-app/hoarder/">Hoarder</a> 之后，最终决定就是它了。
+</p>
+
+<p>
+因此之前的 clip 就正式 <a href="https://memo.vandee.art/issue/63">停用</a> 了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge1c4a22" class="outline-2">
+<h2 id="orge1c4a22">Hoarder</h2>
+<div class="outline-text-2" id="text-orge1c4a22">
+<p>
+<a href="https://github.com/karakeep-app/karakeep">Karakeep</a> （原 Hoarder），作者的解释是：
+</p>
+
+<blockquote>
+<p>
+The name Karakeep is inspired by the Arabic word "كراكيب" (karakeeb), a colloquial term commonly used to refer to miscellaneous clutter, odds and ends, or items that may seem disorganized but often hold personal value or hidden usefulness. It evokes the image of a messy drawer or forgotten box, full of stuff you can't quite throw away—because somehow, it matters (or more likely, because you're a hoarder!).
+</p>
+
+<p>
+Karakeep 这个名称的灵感来源于阿拉伯词语 “كراكيب” (karakeeb)，这是一个口语化术语，通常用来指代杂物、零碎物品，或者看起来杂乱无章但往往具有个人价值或隐藏用处的物品。它唤起了一个凌乱的抽屉或被遗忘的箱子的形象，里面塞满了你无法完全扔掉的东西——因为不知怎的，它很重要（或者更可能是，因为你是个囤积者！）。
+</p>
+</blockquote>
+
+<p>
+我还是习惯叫 Hoarder，后面也都用这个。
+</p>
+
+<p>
+Hoarder 可以看作是一个精简版的 ReadWise，支持 RSS feed，书签导入，URL 导入，高亮笔记，webhook，还有简明的 API 文档。有移动端客户端，浏览器插件，支持 sefl-hosting。
+</p>
+
+<p>
+结合 LLM 的功能是生成 tags 书签，生成 summary 总结，可以不使用。也支持 MCP。
+</p>
+
+<p>
+除了这些之外，再没有其他臃肿的功能了。关注了这么久，这个项目的开发方向一直很稳定，没有加入杂七杂八的噱头功能。
+</p>
+
+<p>
+部署也很方便（没有服务器就本地跑）：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash">mkdir karakeep-app
+wget https://raw.githubusercontent.com/karakeep-app/karakeep/main/docker/docker-compose.yml
+# .env
+KARAKEEP_VERSION=release
+NEXTAUTH_SECRET=super_random_string
+MEILI_MASTER_KEY=another_random_string
+NEXTAUTH_URL=http://localhost:3000</pre>
+</div>
+
+<p>
+它没有深度绑定 AI 反而是我现在决定长期使用它的原因了。
+</p>
+
+<p>
+ReadWise 用了快一年了，实际的使用当中，ReadWise 的 AI 功能基本没怎么用，前几个月出来的可以根据 highlight 提问对话还是挺好用。
+</p>
+
+<p>
+而且现在 PKM 里绝大部分的内容都已经接入了 <a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">Nonotes</a> 做向量相似检索和补全。
+</p>
+
+<p>
+我现在需要的是一个多端同步，支持稍后阅读，RSS 订阅，高亮笔记的中转站，Hoarder 的功能正好很契合。尝试过自己搭，但是真的很麻烦，还是用现成的吧。
+</p>
+
+<p>
+AI 速读没得灵魂，渐进式阅读，高亮剪藏更容易进入心流，引发深度思考。
+</p>
+
+<p>
+它的缺点嘛，就是 UI 太丑了，而且移动端和浏览器插件的功能很简陋。
+</p>
+
+<p>
+准备基于 Obsidian-Web-Clipper 自己做一个导入到 Hoarder 的插件。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org83205f6" class="outline-2">
+<h2 id="org83205f6">Emacs-Hoarder</h2>
+<div class="outline-text-2" id="text-org83205f6">
+<p>
+写了一个小工具在 Emacs 里同步 Hoarder 的高亮。正好把 Gemini CLI 拉出来练练，Lisp 的括号真是 LLM 杀手。在重构代码的途中，每次都不能正确的处理括号，Claude、GPT 也是一样。
+</p>
+
+<p>
+Github: <a href="https://github.com/VandeeFeng/Emacs-Hoarder">https://github.com/VandeeFeng/Emacs-Hoarder</a>
+</p>
+
+<p>
+Hoarder 有 MCP 可以检索笔记、添加笔记，所以其他功能就不重复做了。后面想到什么方便的功能再慢慢加。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd1e1dc3" class="outline-2">
+<h2 id="orgd1e1dc3">Obsidian-Web-Clipper</h2>
+<div class="outline-text-2" id="text-orgd1e1dc3">
+<p>
+用 Obsidian-Web-Clipper 已经很长时间了，这就是目前为止我用过最好的网页剪藏工具。
+</p>
+
+<p>
+Github：<a href="https://github.com/obsidianmd/obsidian-clipper">https://github.com/obsidianmd/obsidian-clipper</a>
+</p>
+
+<p>
+几个亮点：
+</p>
+<ul class="org-ul">
+<li>可以自定义剪藏的模板</li>
+<li>可以结合 LLM 自定义 prompt 进一步优化剪藏的内容</li>
+<li>内置了一个阅读器视图</li>
+</ul>
+
+<p>
+Obsidian-Web-Clipper 提供了相当多的变量和语法，可以发挥想象设计出很多有意思的模板。具体可以查看 <a href="https://help.obsidian.md/web-clipper">帮助文档</a> 。
+</p>
+
+<p>
+就算不使用 obsidian，它也可以很好的融合到其他的工作流当中。
+</p>
+
+<p>
+例如我现在用在 Emacs 里的剪藏模板：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">
+**{{title}}
+<{{date|date:"YYYY-MM-DD ddd HH:mm"}}>
+source: {{url}}
+{{content}}</pre>
+</div>
+
+
+<p>
+下面这个模板可以生成一个美观的 html 网页：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html"><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Fira Mono', monospace;
+      background-color: #111;
+      background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(to right, #000 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #83F6BE;
+    }
+    h1 {
+      color: #4BA57F;
+    }
+    h2 {
+      color: #83F6BE;
+      text-shadow: 0 0 10px rgba(131, 246, 190, 0.4),
+                   0 0 20px rgba(131, 246, 190, 0.2);
+      letter-spacing: 0.5px;
+    }
+    .glow-box {
+      background-color: #111;
+      border: 1px solid #153324;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      transform: translateY(0);
+      transition: all 0.3s ease-in-out;
+    }
+    .glow-box:hover {
+      box-shadow: 0 0 15px rgba(31, 110, 76, 0.6);
+      transform: translateY(-2px);
+    }
+    code {
+      color: #83F6BE;
+    }
+  </style>
+</head>
+<body class="p-10">
+  <main class="max-w-4xl mx-auto">
+    <h1 class="text-5xl font-bold text-center mb-4">{{title}} - {{site}}</h1>
+    <p class="text-center mb-10">{{description}}</p>
+    <section>
+      <h2 class="text-3xl font-bold flex items-center gap-2">
+       {{title}}
+      </h2>
+      <div class="glow-box mt-6 whitespace-pre-line">
+        <p class="mb-4">
+          {{content}}
+        </p>
+        <p>
+          From {{url}}
+        </p>
+      </div>
+    </section>
+  </main>
+</body>
+</html></pre>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>
