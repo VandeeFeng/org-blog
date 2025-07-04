@@ -54,7 +54,7 @@ AI 速读没得灵魂，渐进式阅读，高亮剪藏更容易进入心流，�
 准备基于 Obsidian-Web-Clipper 自己做一个导入到 Hoarder 的插件。
 
 * Emacs-Hoarder
-写了一个小工具在 Emacs 里同步 Hoarder 的高亮。正好把 Gemini CLI 拉出来练练，Lisp 的括号真是 LLM 杀手。在重构代码的途中，每次都不能正确的处理括号，Claude、GPT 也是一样。
+写了一个小工具在 Emacs 里同步 Hoarder 的高亮。正好把 Gemini CLI 拉出来练练，Lisp 的括号真是 LLM 杀手。在重构代码的时候，每次都不能正确的处理括号，Claude、GPT 也是一样。
 
 Github: https://github.com/VandeeFeng/Emacs-Hoarder
 
