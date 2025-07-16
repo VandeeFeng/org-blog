@@ -59,30 +59,30 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#orgfdd5d10">TL;DR</a></li>
-            <li><a href="#orga268606">“不可避免的 AI”</a></li>
-            <li><a href="#orgb243d39">Arch Linux 配置记录</a>
+            <li><a href="#org183e383">TL;DR</a></li>
+            <li><a href="#org4761ba1">“不可避免的 AI”</a></li>
+            <li><a href="#orgc63e529">Arch Linux 配置记录</a>
               <ul>
-                <li><a href="#orgfdf5683">脚本</a></li>
-                <li><a href="#org4d943c5">dotfiles</a></li>
-                <li><a href="#org7d3b489">桌面环境和窗口管理</a></li>
-                <li><a href="#org93654e8">Tips</a></li>
+                <li><a href="#orgbf36d05">脚本</a></li>
+                <li><a href="#org7ecc1a6">dotfiles</a></li>
+                <li><a href="#org4573c4e">桌面环境和窗口管理</a></li>
+                <li><a href="#orgef8bdb6">Tips</a></li>
               </ul>
             </li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-orgfdd5d10" class="outline-2">
-        <h2 id="orgfdd5d10">TL;DR</h2>
-        <div class="outline-text-2" id="text-orgfdd5d10">
+      <div id="outline-container-org183e383" class="outline-2">
+        <h2 id="org183e383">TL;DR</h2>
+        <div class="outline-text-2" id="text-org183e383">
           <p>
             Linux 就是我从现在开始会一直使用下去的操作系统。它的太多设计理念和我不谋而合，Linus 有太多理念和我不谋而合。
           </p>
         </div>
       </div>
-      <div id="outline-container-orga268606" class="outline-2">
-        <h2 id="orga268606">“不可避免的 AI”</h2>
-        <div class="outline-text-2" id="text-orga268606">
+      <div id="outline-container-org4761ba1" class="outline-2">
+        <h2 id="org4761ba1">“不可避免的 AI”</h2>
+        <div class="outline-text-2" id="text-org4761ba1">
           <p>
             从接触到个人电脑 PC 这个概念开始，就一直用的 Windows，直到很晚才开始使用 Mac，最初的原因也只是需要处理摄影的照片，Mac 的 M 芯片在刚出来的时候就是王炸。
           </p>
@@ -146,125 +146,143 @@
           </p>
 
           <p>
-            在 Linux 里一切感觉都那么自由，这种体验实在太好了。
+            Linux 这种自由的感觉很舒服。
           </p>
         </div>
       </div>
-      <div id="outline-container-orgb243d39" class="outline-2">
-        <h2 id="orgb243d39">Arch Linux 配置记录</h2>
-        <div class="outline-text-2" id="text-orgb243d39">
+      <div id="outline-container-orgc63e529" class="outline-2">
+        <h2 id="orgc63e529">Arch Linux 配置记录</h2>
+        <div class="outline-text-2" id="text-orgc63e529">
           <p>
             简单记录一下从 Mac 迁移到 Arch Linux 的配置。
           </p>
         </div>
-        <div id="outline-container-orgfdf5683" class="outline-3">
-          <h3 id="orgfdf5683">脚本</h3>
-          <div class="outline-text-3" id="text-orgfdf5683">
+        <div id="outline-container-orgbf36d05" class="outline-3">
+          <h3 id="orgbf36d05">脚本</h3>
+          <div class="outline-text-3" id="text-orgbf36d05">
             <p>
               让 LLM 随便弄了一个 Linux 的初始化脚本，安装一些我需要的软件和配置。
             </p>
 
             <div class="org-src-container">
               <pre class="src src-bash">
-                #!/bin/bash
-                # Exit immediately if a command exits with a non-zero status.
-                set -e
-                # Check if the script is run as root
-                if [ "$(id -u)" -ne 0 ]; then
-                echo "This script must be run as root" >&2
-                exit 1
-                fi
-                # --- Package Lists ---
-                BASE_PACKAGES="git curl neovim emacs vim feh mpv docker opensnitch"
-                FCITX5_PACKAGES_ARCH="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
-                FCITX5_PACKAGES_UBUNTU="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-config-qt"
-                FCITX5_PACKAGES_FEDORA="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
-                FCITX5_PACKAGES_SUSE="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
-                # Function to install packages on Arch Linux
-                install_arch() {
-                echo "Updating system..."
+                <span style="color: #787878;">#</span><span style="color: #787878;">!/bin/bash
+                </span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Exit immediately if a command exits with a non-zero status.
+                </span><span style="color: #79C0FF;">set</span> -e
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Check if the script is run as root
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">id -u</span><span style="color: #A1D08E;">)"</span> -ne 0 <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"This script must be run as root"</span> &gt;&amp;2
+                <span style="color: #FFA657;">exit</span> 1
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">--- Package Lists ---
+                </span><span style="color: #f4f4ff;">BASE_PACKAGES</span>=<span style="color: #A1D08E;">"git curl neovim emacs vim feh mpv docker opensnitch"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_ARCH</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_UBUNTU</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-config-qt"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_FEDORA</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_SUSE</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Arch Linux
+                </span><span style="color: #96a6c8;">install_arch</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Updating system..."</span>
                 pacman -Syu --noconfirm --needed
-                echo "Installing packages for Arch..."
-                for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_ARCH base-devel; do
-                pacman -S --noconfirm --needed "$pkg" || echo "Skipping '$pkg': not found or error."
-                done
-                }
-                # Function to install packages on Ubuntu/Debian
-                install_ubuntu() {
-                echo "Updating system..."
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Arch..."</span>
+                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_ARCH</span> base-devel; <span style="color: #FFA657;">do</span>
+                pacman -S --noconfirm --needed <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
+                <span style="color: #FFA657;">done</span>
+                <span style="color: #8c8c8c;">}</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Ubuntu/Debian
+                </span><span style="color: #96a6c8;">install_ubuntu</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Updating system..."</span>
                 apt-get update
-                echo "Installing packages for Debian/Ubuntu..."
-                apt-get install -y --ignore-missing $BASE_PACKAGES $FCITX5_PACKAGES_UBUNTU docker.io build-essential
-                }
-                # Function to install packages on Fedora
-                install_fedora() {
-                echo "Installing packages for Fedora..."
-                for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_FEDORA; do
-                dnf -y install "$pkg" || echo "Skipping '$pkg': not found or error."
-                done
-                echo "Installing development tools for Fedora..."
-                dnf -y groupinstall "C Development Tools and Libraries" || echo "Skipping 'C Development Tools and Libraries' group: not found or error."
-                }
-                # Function to install packages on OpenSUSE
-                install_opensuse() {
-                echo "Installing packages for OpenSUSE..."
-                for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_SUSE; do
-                zypper install -y "$pkg" || echo "Skipping '$pkg': not found or error."
-                done
-                echo "Installing development tools for OpenSUSE..."
-                zypper install -y -t pattern devel_basis || echo "Skipping 'devel_basis' pattern: not found or error."
-                }
-                # Detect the distribution by checking for the package manager
-                if command -v pacman &> /dev/null; then
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Debian/Ubuntu..."</span>
+                apt-get install -y --ignore-missing $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_UBUNTU</span> docker.io build-essential
+                <span style="color: #8c8c8c;">}</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Fedora
+                </span><span style="color: #96a6c8;">install_fedora</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Fedora..."</span>
+                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_FEDORA</span>; <span style="color: #FFA657;">do</span>
+                dnf -y install <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
+                <span style="color: #FFA657;">done</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing development tools for Fedora..."</span>
+                dnf -y groupinstall <span style="color: #A1D08E;">"C Development Tools and Libraries"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping 'C Development Tools and Libraries' group: not found or error."</span>
+                <span style="color: #8c8c8c;">}</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on OpenSUSE
+                </span><span style="color: #96a6c8;">install_opensuse</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for OpenSUSE..."</span>
+                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_SUSE</span>; <span style="color: #FFA657;">do</span>
+                zypper install -y <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
+                <span style="color: #FFA657;">done</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing development tools for OpenSUSE..."</span>
+                zypper install -y -t pattern devel_basis || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping 'devel_basis' pattern: not found or error."</span>
+                <span style="color: #8c8c8c;">}</span>
+
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Detect the distribution by checking for the package manager
+                </span><span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v pacman &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_arch
-                elif command -v apt-get &> /dev/null; then
+                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v apt-get &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_ubuntu
-                elif command -v dnf &> /dev/null; then
+                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v dnf &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_fedora
-                elif command -v zypper &> /dev/null; then
+                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v zypper &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_opensuse
-                else
-                echo "Could not detect a supported package manager (pacman, apt, dnf, zypper)."
-                exit 1
-                fi
-                echo "Basic packages installation complete."
-                echo "Setting up Fcitx5 environment variables..."
-                # Create environment file for Fcitx5
-                mkdir -p /etc/environment.d
-                cat > /etc/environment.d/90-fcitx5.conf << EOL
-                                                           QT_IM_MODULE=fcitx
-                                                           XMODIFIERS=@im=fcitx
-                                                           EOL
-                                                           echo "Starting Rime configuration..."
-                                                           # Run the Rime configuration as the user who invoked sudo
-                                                           if [ -n "$SUDO_USER" ]; then
-                                                           sudo -u "$SUDO_USER" bash -c '
-                                                                                         echo "Cloning plum repository..."
-                                                                                         if [ -d "$HOME/plum" ]; then
-                                                                                         echo "$HOME/plum already exists. Skipping clone."
-                                                                                         else
-                                                                                         git clone --depth 1 https://github.com/rime/plum "$HOME/plum"
-                                                                                         fi
-                                                                                         echo "Changing to plum directory..."
-                                                                                         cd "$HOME/plum"
-                                                                                         echo "Installing rime-ice..."
-                                                                                         rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
-                                                                                         '
-                                                           else
-                                                           echo "Could not determine the user to install Rime for."
-                                                           echo "Please run the following commands manually as a regular user:"
-                                                           echo "git clone --depth 1 https://github.com/rime/plum ~/plum"
-                                                           echo "cd ~/plum"
-                                                           echo "rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full"
-                                                           fi
-                                                           echo "Installation and setup complete."
-                                                           echo "Please reboot your system for all changes to take effect."</pre>
-                                                           </div>
+                <span style="color: #FFA657;">else</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Could not detect a supported package manager (pacman, apt, dnf, zypper)."</span>
+                <span style="color: #FFA657;">exit</span> 1
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Basic packages installation complete."</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Setting up Fcitx5 environment variables..."</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Create environment file for Fcitx5
+                </span>mkdir -p /etc/environment.d
+                cat &gt; /etc/environment.d/90-fcitx5.conf &lt;&lt; EOL<span style="color: #ffff00; font-weight: bold;">
+                  QT_IM_MODULE=fcitx
+                  XMODIFIERS=@im=fcitx
+                  EOL
+                </span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Starting Rime configuration..."</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Run the Rime configuration as the user who invoked sudo
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -n <span style="color: #A1D08E;">"$SUDO_USER"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                sudo -u <span style="color: #A1D08E;">"$SUDO_USER"</span> bash -c <span style="color: #A1D08E;">'
+                  echo "Cloning plum repository..."
+                  if [ -d "$HOME/plum" ]; then
+                  echo "$HOME/plum already exists. Skipping clone."
+                  else
+                  git clone --depth 1 https://github.com/rime/plum "$HOME/plum"
+                  fi
+
+                  echo "Changing to plum directory..."
+                  cd "$HOME/plum"
+
+                  echo "Installing rime-ice..."
+                  rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
+                  '</span>
+                <span style="color: #FFA657;">else</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Could not determine the user to install Rime for."</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Please run the following commands manually as a regular user:"</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"git clone --depth 1 https://github.com/rime/plum ~/plum"</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"cd ~/plum"</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full"</span>
+                <span style="color: #FFA657;">fi</span>
+
+
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installation and setup complete."</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Please reboot your system for all changes to take effect."</span>
+              </pre>
+            </div>
           </div>
         </div>
-        <div id="outline-container-org4d943c5" class="outline-3">
-          <h3 id="org4d943c5">dotfiles</h3>
-          <div class="outline-text-3" id="text-org4d943c5">
+        <div id="outline-container-org7ecc1a6" class="outline-3">
+          <h3 id="org7ecc1a6">dotfiles</h3>
+          <div class="outline-text-3" id="text-org7ecc1a6">
             <p>
               bash，tmux，Emacs，Nvim，还有其他的配置一直用 GitHub 在同步，迁移起来也很顺畅。
             </p>
@@ -274,9 +292,9 @@
             </p>
           </div>
         </div>
-        <div id="outline-container-org7d3b489" class="outline-3">
-          <h3 id="org7d3b489">桌面环境和窗口管理</h3>
-          <div class="outline-text-3" id="text-org7d3b489">
+        <div id="outline-container-org4573c4e" class="outline-3">
+          <h3 id="org4573c4e">桌面环境和窗口管理</h3>
+          <div class="outline-text-3" id="text-org4573c4e">
             <p>
               KDE 的 Plasma 太重了，许多功能我也不需要。在 Arch Linux 里，发现 hyprland 自由度很高，就选择了这个。
             </p>
@@ -286,7 +304,7 @@
             </p>
 
             <p>
-              一直使用的是堆叠式的窗口管理，现在换到了 hyprland 的平铺式，才发现我更喜欢平铺式，特别是在大屏幕上，体验太好了。在 hyprland 里配置快捷键和启动项很方便，在绑定了快捷键之后，体全键盘操作就可以切换窗口和 Workspace。
+              一直使用的是堆叠式的窗口管理，现在换到了 hyprland 的平铺式，才发现我更喜欢平铺式，特别是在大屏幕上，体验太好了。在 hyprland 里配置快捷键和启动项很方便，在绑定了快捷键之后，可以全键盘操作切换窗口和 Workspace。
             </p>
 
             <p>
@@ -298,49 +316,58 @@
             </p>
 
             <div class="org-src-container">
-              <pre class="src src-bash">#!/bin/bash
-                # Directory to store the original workspace ID of the window
-                STATE_DIR="/tmp/hypr-special-state"
-                mkdir -p "$STATE_DIR"
-                # Get active window info as JSON
-                active_window_json=$(/usr/bin/hyprctl activewindow -j)
-                # Extract address and workspace info
-                window_address=$(echo "$active_window_json" | /usr/bin/jq -r '.address')
-                workspace_id=$(echo "$active_window_json" | /usr/bin/jq -r '.workspace.id')
-                workspace_name=$(echo "$active_window_json" | /usr/bin/jq -r '.workspace.name')
-                # Exit if no active window is found
-                if [ -z "$window_address" ] || [ "$window_address" == "null" ]; then
-                exit 0
-                fi
-                # Path to the state file for the current window
-                STATE_FILE="$STATE_DIR/$window_address"
-                # Check if the window is in the special workspace
-                if [[ "$workspace_name" == "special"* ]]; then
-                # Window is in a special workspace, move it back to its original workspace
-                if [ -f "$STATE_FILE" ]; then
-                target_workspace=$(cat "$STATE_FILE")
-                rm "$STATE_FILE" # Clean up the state file
-                else
-                # Fallback: if no state file is found, move to the first available regular workspace
-                target_workspace=$(/usr/bin/hyprctl workspaces -j | /usr/bin/jq -r '.[] | select(.id >= 1) | .id' | head -n 1)
-                # Default to workspace 1 if no other regular workspace is found
-                if [ -z "$target_workspace" ]; then
-                target_workspace=1
-                fi
-                fi
-                # Move the specific window to the target workspace
-                /usr/bin/hyprctl dispatch movetoworkspace "$target_workspace,address:$window_address"
-                else
-                # Window is not in a special workspace, so move it there and save its current workspace
-                echo "$workspace_id" > "$STATE_FILE"
-                                                           /usr/bin/hyprctl dispatch movetoworkspacesilent "special,address:$window_address"
-                                                           fi</pre>
-                                                           </div>
+              <pre class="src src-bash">
+                <span style="color: #787878;">#</span><span style="color: #787878;">!/bin/bash
+                </span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Directory to store the original workspace ID of the window
+                </span><span style="color: #f4f4ff;">STATE_DIR</span>=<span style="color: #A1D08E;">"/tmp/hypr-special-state"</span>
+                mkdir -p <span style="color: #A1D08E;">"$STATE_DIR"</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Get active window info as JSON
+                </span><span style="color: #f4f4ff;">active_window_json</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">/usr/bin/hyprctl activewindow -j</span><span style="color: #8c8c8c;">)</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Extract address and workspace info
+                </span><span style="color: #f4f4ff;">window_address</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.address'</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #f4f4ff;">workspace_id</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.workspace.id'</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #f4f4ff;">workspace_name</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.workspace.name'</span><span style="color: #8c8c8c;">)</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Exit if no active window is found
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$window_address"</span> <span style="color: #8c8c8c;">]</span> || <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$window_address"</span> == <span style="color: #A1D08E;">"null"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #FFA657;">exit</span> 0
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Path to the state file for the current window
+                </span><span style="color: #f4f4ff;">STATE_FILE</span>=<span style="color: #A1D08E;">"$STATE_DIR/$window_address"</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Check if the window is in the special workspace
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$workspace_name"</span> == <span style="color: #A1D08E;">"special"</span>* <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Window is in a special workspace, move it back to its original workspace
+                </span>    <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -f <span style="color: #A1D08E;">"$STATE_FILE"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #f4f4ff;">target_workspace</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$STATE_FILE"</span><span style="color: #8c8c8c;">)</span>
+                rm <span style="color: #A1D08E;">"$STATE_FILE"</span> <span style="color: #787878;"># </span><span style="color: #787878;">Clean up the state file
+                </span>    <span style="color: #FFA657;">else</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Fallback: if no state file is found, move to the first available regular workspace
+                </span>        <span style="color: #f4f4ff;">target_workspace</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">/usr/bin/hyprctl workspaces -j | /usr/bin/jq -r '.[] | select(.id &gt;= 1</span><span style="color: #A1D08E;">) | .id'</span> | head -n 1<span style="color: #8c8c8c;">)</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Default to workspace 1 if no other regular workspace is found
+                </span>        <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$target_workspace"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #f4f4ff;">target_workspace</span>=1
+                <span style="color: #FFA657;">fi</span>
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Move the specific window to the target workspace
+                </span>    /usr/bin/hyprctl dispatch movetoworkspace <span style="color: #A1D08E;">"$target_workspace,address:$window_address"</span>
+                <span style="color: #FFA657;">else</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Window is not in a special workspace, so move it there and save its current workspace
+                </span>    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"$workspace_id"</span> &gt; <span style="color: #A1D08E;">"$STATE_FILE"</span>
+                /usr/bin/hyprctl dispatch movetoworkspacesilent <span style="color: #A1D08E;">"special,address:$window_address"</span>
+                <span style="color: #FFA657;">fi</span>
+              </pre>
+            </div>
           </div>
         </div>
-        <div id="outline-container-org93654e8" class="outline-3">
-          <h3 id="org93654e8">Tips</h3>
-          <div class="outline-text-3" id="text-org93654e8">
+        <div id="outline-container-orgef8bdb6" class="outline-3">
+          <h3 id="orgef8bdb6">Tips</h3>
+          <div class="outline-text-3" id="text-orgef8bdb6">
             <p>
               在国内，安装 Linux 遇到的最大的问题应该就是网络问题了。
             </p>
@@ -350,7 +377,7 @@
             </p>
 
             <p>
-              好在可以先直接在 Arch 里， <code>sudo pacman -S v2ray</code> ，然后把代理的 config.json 用 U 盘挂载，导入进来就好了。
+              好在可以直接在 Arch 里， <code>sudo pacman -S v2ray</code> ，然后把代理的 config.json 用 U 盘挂载，导入进来就好了。
             </p>
           </div>
         </div>

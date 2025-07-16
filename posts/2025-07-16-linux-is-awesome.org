@@ -39,7 +39,7 @@ Mac 里的 Emacsclient 一直感觉怪怪的，在 Linux 里体验就很顺畅�
 
 如果说上面的这些是让我开始使用 Linux 的诱因，那么 Linus 和 [[https://wiki.vandee.art/#%E3%80%8AJust%20For%20Fun%E3%80%8B][《Just For Fun》]] 这本书，就是让我会一直使用 Linux 的原因。Linus 开源 Linux 的这个决定实在是太伟大了。Linus 对于他实现的许多我看来很了不起的事情，只是很谦虚的表示：他在当时完全没有想到后面的事情，只是觉得自己对这些很感兴趣就做了，从结果来看就是自己一次次的走在了自己的前面。
 
-在 Linux 里一切感觉都那么自由，这种体验实在太好了。
+Linux 这种自由的感觉很舒服。
 
 * Arch Linux 配置记录
 简单记录一下从 Mac 迁移到 Arch Linux 的配置。
@@ -168,13 +168,14 @@ KDE 的 Plasma 太重了，许多功能我也不需要。在 Arch Linux 里，�
 
 Gnome 不太喜欢，之前在虚拟机里一直用的 Ubuntu 就是 Gnome，整个的设计和操作逻辑都不太喜欢。看起来和 MacOS 挺像，但是用起来我感觉挺不顺手，而且 Mac 的 Dock 栏我一直不太喜欢。
 
-一直使用的是堆叠式的窗口管理，现在换到了 hyprland 的平铺式，才发现我更喜欢平铺式，特别是在大屏幕上，体验太好了。在 hyprland 里配置快捷键和启动项很方便，在绑定了快捷键之后，体全键盘操作就可以切换窗口和 Workspace。
+一直使用的是堆叠式的窗口管理，现在换到了 hyprland 的平铺式，才发现我更喜欢平铺式，特别是在大屏幕上，体验太好了。在 hyprland 里配置快捷键和启动项很方便，在绑定了快捷键之后，可以全键盘操作切换窗口和 Workspace。
 
 登录还是使用的 KDE SDDM。
 
 弄了一个小脚本用来把当前窗口隐藏到 hyprland 的 special Workspace，我感觉很实用：
 
 #+begin_src bash
+
 #!/bin/bash
 
 # Directory to store the original workspace ID of the window
@@ -226,4 +227,4 @@ fi
 
 在没有安装桌面环境之前，只有命令行，配置代理很不方便。Arch 是可以在安装之前选择国内的镜像的，但是涉及到需要使用 GitHub 和 yay 的包，就不行了。
 
-好在可以先直接在 Arch 里， ~sudo pacman -S v2ray~ ，然后把代理的 config.json 用 U 盘挂载，导入进来就好了。
+好在可以直接在 Arch 里， ~sudo pacman -S v2ray~ ，然后把代理的 config.json 用 U 盘挂载，导入进来就好了。
