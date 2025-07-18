@@ -16,7 +16,7 @@ AI 现在的发展趋势，更多的是资本的裹挟。它直接导致，如�
 #+begin_quote
 AI 就是一种新型的操作系统，帮你完成各种任务。这个系统的 CPU 就是大模型，内存就是模型的上下文窗口，窗口越大能完成的任务规模就越大。
 
--- [[https://rlancemartin.github.io/2025/06/23/context_engineering/][Andrej Karpathy]]，著名 AI 科学家
+-- [[https://rlancemartin.github.io/2025/06/23/context_engineering/][Andrej Karpathy]]
 #+end_quote
 
 我其实很期待根据上面 AK 大佬所构想的以 LLM 大语言模型为驱动的新操作系统，想想就挺有意思的：当 CPU 里直接集成了大语言模型模块之后，每次打开一个系统里的新窗口，它都可以动态的根据你短暂的操作历史、或是天气、心情，生成。这才是我觉得真正的 AI 整合到操作系统。
