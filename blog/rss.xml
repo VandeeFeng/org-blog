@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Fri, 18 Jul 2025 12:02:09 +0800</lastBuildDate>
+<lastBuildDate>Sat, 19 Jul 2025 10:45:24 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Linux 太自由了]]></title>
   <description><![CDATA[
@@ -12,30 +12,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9b59a2d">TL;DR</a></li>
-<li><a href="#org3fa9fef">“不可避免的 AI”</a></li>
-<li><a href="#org1a58d74">Arch Linux 配置记录</a>
+<li><a href="#org7fc03a1">TL;DR</a></li>
+<li><a href="#org90f3d8d">“不可避免的 AI”</a></li>
+<li><a href="#org203489d">Arch Linux 配置记录</a>
 <ul>
-<li><a href="#org1a1f704">脚本</a></li>
-<li><a href="#orga6877e2">dotfiles</a></li>
-<li><a href="#org208c338">桌面环境和窗口管理</a></li>
-<li><a href="#org507770b">Tips</a></li>
+<li><a href="#orgfba3f3f">脚本</a></li>
+<li><a href="#org458a67f">dotfiles</a></li>
+<li><a href="#orgbc5a1e8">桌面环境和窗口管理</a></li>
+<li><a href="#orga207100">Tips</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org9b59a2d" class="outline-2">
-<h2 id="org9b59a2d">TL;DR</h2>
-<div class="outline-text-2" id="text-org9b59a2d">
+<div id="outline-container-org7fc03a1" class="outline-2">
+<h2 id="org7fc03a1">TL;DR</h2>
+<div class="outline-text-2" id="text-org7fc03a1">
 <p>
 Linux 就是我从现在开始会一直使用下去的操作系统。它的太多设计理念和我不谋而合，Linus 有太多理念和我不谋而合。
 </p>
 </div>
 </div>
-<div id="outline-container-org3fa9fef" class="outline-2">
-<h2 id="org3fa9fef">“不可避免的 AI”</h2>
-<div class="outline-text-2" id="text-org3fa9fef">
+<div id="outline-container-org90f3d8d" class="outline-2">
+<h2 id="org90f3d8d">“不可避免的 AI”</h2>
+<div class="outline-text-2" id="text-org90f3d8d">
 <p>
 从接触到个人电脑 PC 这个概念开始，就一直用的 Windows，直到很晚才开始使用 Mac，最初的原因也只是需要处理摄影的照片，Mac 的 M 芯片在刚出来的时候就是王炸。
 </p>
@@ -67,11 +67,41 @@ AI 就是一种新型的操作系统，帮你完成各种任务。这个系统�
 </p>
 
 <p>
-互联网发展到现在已经成为了一个普惠的基础服务设施，但 AI 现在还不是，对 AI 过度鼓吹的那些布道者所宣称的普惠性，到现在我还没有真正体会到。它们正在把 token 变成现在的网络流量一样，网络流量的付费那是基础服务设施的付费，AI 现在的 token 付费完全还只是产品的付费。工业革命不管怎么样，是完全把人类社会的生产力提高了一个层次，机器替代了许多重复性的人工劳动实现了自动化，AI 革命距离它提高生产力还有太远，现在还只是资本游戏的开头。解决不了能源问题，以 AI 现在的耗电量，我都怕撑不到 AI 革命正式开始的那一天。
+互联网发展到现在已经成为了一个普惠的基础服务设施，但 AI 现在还不是，对 AI 过度鼓吹的那些布道者所宣称的普惠性，到现在我还没有真正体会到。它们正在把 token 变成现在的网络流量一样，网络流量的付费那是基础服务设施的付费，AI 现在的 token 付费完全还只是产品的付费。工业革命不管怎么样，是完全把人类社会的生产力提高了一个层次，机器替代了许多重复性的人工劳动实现了自动化，AI 革命距离它提高社会整体生产力还有太远，现在还只是资本游戏的开头。解决不了能源问题，以 AI 现在的耗电量，我都怕撑不到 AI 革命正式开始的那一天。
 </p>
 
 <p>
-<a href="https://tomrenner.com/posts/llm-inevitabilism/">The sound of inevitability</a> 这个文章的观点挺好：
+当然，由于 LLM 预测生成的特性，它已经可以实现很多代码编程方面的自动化。现在这个阶段，纯 vibe coding 的产物，它生成的 MVP 、页面、代码片段等等，就像工业革命刚开始的时候，流水线上生产出来的工艺品一样。我当然不否定它创造的经济价值和社会价值，但就像 20 世纪中期的波普艺术和其他工业革命时期的艺术运动想表达的一样，这些流水线产物没得灵魂。
+</p>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/David_Heinemeier_Hansson">David Heinemeier Hansson</a> 在最近一次 <a href="https://www.youtube.com/watch?v=vagyIcmIGOQ&amp;t=5292s">Lex Fridman 的访谈</a> 里说到：
+</p>
+
+<blockquote>
+<p>
+"I use AI in a separate window. I don't enjoy Cursor or Windsurf, I can literally feel competence draining out of my fingers."
+</p>
+
+<p>
+"我在一个单独的窗口中使用人工智能。我不喜欢Cursor或Windsurf，我真的能感觉到能力从我的指尖流失。"
+</p>
+</blockquote>
+
+<p>
+DHH 还表示，手动自己编程在键盘上的敲打，就像弹吉他一样，你无法通过观看弹吉他视频就掌握弹吉他这个技能。你可以通过 vibe coding 快速了解到很多，但是这和真正上手掌握一个技术是两回事。
+</p>
+
+<p>
+作为一个行业外的人，我很赞同 DHH 的观点。vibe coding、AI、自动化，可以提高效率，但这和兴趣爱好、自己的热爱是两码事，可以用 AI 套套公式做出一个爆款口水歌 (我并不否认这种成功) ，也可以只是表达表达自我搞搞乐队，just for fun。我一直无所谓对于 AI 革命哪种观点是正确的，这没太大意义，历史前进的方向不会因为现在这些对错而改变，但保持自己对于这些改变的态度很重要，坚持自己的选择就好。
+</p>
+
+<p>
+Flowith 的创始人 Derek 有句话说的挺好：品味是人类在 AI 时代最后的壁垒。对于 AI 带来的这些变革，我其实更多的还是期待，仅从艺术这个我更感兴趣的领域来说，可能又可以经历一次大的艺术变革了，艺术领域也太多年没有新鲜玩意了。
+</p>
+
+<p>
+对于 “不可避免的 AI”，<a href="https://tomrenner.com/posts/llm-inevitabilism/">The sound of inevitability</a> 这个文章的观点挺好：
 </p>
 
 <blockquote>
@@ -121,16 +151,16 @@ Linux 这种自由的感觉很舒服。
 </p>
 </div>
 </div>
-<div id="outline-container-org1a58d74" class="outline-2">
-<h2 id="org1a58d74">Arch Linux 配置记录</h2>
-<div class="outline-text-2" id="text-org1a58d74">
+<div id="outline-container-org203489d" class="outline-2">
+<h2 id="org203489d">Arch Linux 配置记录</h2>
+<div class="outline-text-2" id="text-org203489d">
 <p>
 简单记录一下从 Mac 迁移到 Arch Linux 的配置。
 </p>
 </div>
-<div id="outline-container-org1a1f704" class="outline-3">
-<h3 id="org1a1f704">脚本</h3>
-<div class="outline-text-3" id="text-org1a1f704">
+<div id="outline-container-orgfba3f3f" class="outline-3">
+<h3 id="orgfba3f3f">脚本</h3>
+<div class="outline-text-3" id="text-orgfba3f3f">
 <p>
 让 LLM 随便弄了一个 Linux 的初始化脚本，安装一些我需要的软件和配置。
 </p>
@@ -233,9 +263,9 @@ echo "Please reboot your system for all changes to take effect."</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga6877e2" class="outline-3">
-<h3 id="orga6877e2">dotfiles</h3>
-<div class="outline-text-3" id="text-orga6877e2">
+<div id="outline-container-org458a67f" class="outline-3">
+<h3 id="org458a67f">dotfiles</h3>
+<div class="outline-text-3" id="text-org458a67f">
 <p>
 bash，tmux，Emacs，Nvim，还有其他的配置一直用 GitHub 在同步，迁移起来也很顺畅。
 </p>
@@ -245,9 +275,9 @@ Mac 和 Linux 在文件路径上基本是一致的，需要改的也很少。我
 </p>
 </div>
 </div>
-<div id="outline-container-org208c338" class="outline-3">
-<h3 id="org208c338">桌面环境和窗口管理</h3>
-<div class="outline-text-3" id="text-org208c338">
+<div id="outline-container-orgbc5a1e8" class="outline-3">
+<h3 id="orgbc5a1e8">桌面环境和窗口管理</h3>
+<div class="outline-text-3" id="text-orgbc5a1e8">
 <p>
 KDE 的 Plasma 太重了，许多功能我也不需要。在 Arch Linux 里，发现 hyprland 自由度很高，就选择了这个。
 </p>
@@ -310,9 +340,9 @@ fi</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org507770b" class="outline-3">
-<h3 id="org507770b">Tips</h3>
-<div class="outline-text-3" id="text-org507770b">
+<div id="outline-container-orga207100" class="outline-3">
+<h3 id="orga207100">Tips</h3>
+<div class="outline-text-3" id="text-orga207100">
 <p>
 在国内，安装 Linux 遇到的最大的问题应该就是网络问题了。
 </p>
