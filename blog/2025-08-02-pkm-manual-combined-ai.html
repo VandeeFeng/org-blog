@@ -59,26 +59,26 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org2ad39a3">Intro</a></li>
-            <li><a href="#org381d6e5">Manual</a>
+            <li><a href="#org3fe4774">Intro</a></li>
+            <li><a href="#org0900ad8">Manual</a>
               <ul>
-                <li><a href="#org71c1661">Principles</a></li>
-                <li><a href="#org7c60057">Methods</a>
+                <li><a href="#org1848b82">Principles</a></li>
+                <li><a href="#orgdc7fdfb">Methods</a>
                   <ul>
-                    <li><a href="#org117e135">信息获取 - 输入</a></li>
-                    <li><a href="#org0679a9c">文档、知识管理 - 迭代</a></li>
-                    <li><a href="#orgeeff676">笔记和写作 - 输出</a></li>
+                    <li><a href="#org29bbc1a">信息获取 - 输入</a></li>
+                    <li><a href="#org851e1f6">文档、知识管理 - 迭代</a></li>
+                    <li><a href="#org4dfc2d6">笔记和写作 - 输出</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li><a href="#orga131d44">Thanks</a></li>
+            <li><a href="#orgc312df8">Thanks</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org2ad39a3" class="outline-2">
-        <h2 id="org2ad39a3">Intro</h2>
-        <div class="outline-text-2" id="text-org2ad39a3">
+      <div id="outline-container-org3fe4774" class="outline-2">
+        <h2 id="org3fe4774">Intro</h2>
+        <div class="outline-text-2" id="text-org3fe4774">
           <p>
             距离 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> 居然已经一年多了。里面关于 PKM 和 AI 结合的部分许多已经过时了，今年也有了新的思路。
           </p>
@@ -140,16 +140,16 @@
           </blockquote>
         </div>
       </div>
-      <div id="outline-container-org381d6e5" class="outline-2">
-        <h2 id="org381d6e5">Manual</h2>
-        <div class="outline-text-2" id="text-org381d6e5">
+      <div id="outline-container-org0900ad8" class="outline-2">
+        <h2 id="org0900ad8">Manual</h2>
+        <div class="outline-text-2" id="text-org0900ad8">
           <p>
             这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。
           </p>
         </div>
-        <div id="outline-container-org71c1661" class="outline-3">
-          <h3 id="org71c1661">Principles</h3>
-          <div class="outline-text-3" id="text-org71c1661">
+        <div id="outline-container-org1848b82" class="outline-3">
+          <h3 id="org1848b82">Principles</h3>
+          <div class="outline-text-3" id="text-org1848b82">
             <p>
               基于 transformer 架构的 LLM 本质上就是一个概率生成器，因此 PKM with AI 总体的原则就是：让 LLM 提升自己的能力，帮助自己找到实现目标的最大可能性方案。
             </p>
@@ -162,9 +162,9 @@
             </ul>
           </div>
         </div>
-        <div id="outline-container-org7c60057" class="outline-3">
-          <h3 id="org7c60057">Methods</h3>
-          <div class="outline-text-3" id="text-org7c60057">
+        <div id="outline-container-orgdc7fdfb" class="outline-3">
+          <h3 id="orgdc7fdfb">Methods</h3>
+          <div class="outline-text-3" id="text-orgdc7fdfb">
             <p>
               Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，但我始终认为这种层面的知识管理和交互并不能很有效的提升思维。
             </p>
@@ -190,9 +190,9 @@
               随着 context engineering 概念的兴起，我觉得 memory layer，数据接口，是 PKM 和 AI 结合比较合适的方向，例如 <a href="https://supermemory.ai/">supermemory</a> 这个项目，从它刚开始就一直在关注，现在发展的挺不错的。
             </p>
           </div>
-          <div id="outline-container-org117e135" class="outline-4">
-            <h4 id="org117e135">信息获取 - 输入</h4>
-            <div class="outline-text-4" id="text-org117e135">
+          <div id="outline-container-org29bbc1a" class="outline-4">
+            <h4 id="org29bbc1a">信息获取 - 输入</h4>
+            <div class="outline-text-4" id="text-org29bbc1a">
               <p>
                 获取零散信息、新闻我一直通过 RSS，<a href="https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html">ReadWise</a> 今年不打算续订了，转向了 <a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">Hoarder</a> 。修改了一下 <a href="https://github.com/VandeeFeng/obsidian-clipper">obsidian-clipper</a> 用来在网页里高亮阅读保存到 Hoarder。在 Emacs 里写了一个小脚本，用来同步 Hoarder 的高亮和笔记到本地。还搞了个小玩意 <a href="https://github.com/VandeeFeng/RSS-CLI">RSS-CLI</a> 。
               </p>
@@ -206,19 +206,19 @@
               </p>
 
               <p>
-                再一个，与其让 AI 从海量信息源里找到自己感兴趣想要的，不如转向关注自己感兴趣的人和圈子，多接触到具体的人和事。信息茧房其实也就是自己更原因相信或接受什么罢了，不同的圈子和阶层都固然会有信息茧房，要不然就不是圈子了。
+                再一个，与其让 AI 从海量信息源里找到自己感兴趣想要的，不如转向关注自己感兴趣的人和圈子，多接触到具体的人和事。信息茧房其实也就是自己更愿意相信或接受什么罢了，不同的圈子和阶层都固然会有信息茧房，要不然就不是圈子了。
               </p>
 
               <p>
-                我积累到现在的 RSS 订阅源都是日积月累慢慢发现的，这种发现只有用心的看了文章才会有，AI 速读总结不出作者隐藏在字里行间里的思维以及写作的表达技巧。
+                我积累到现在的 RSS 订阅源是日积月累慢慢发现的，这种发现只有用心看了文章才会有，AI 速读总结不出作者隐藏在字里行间里的思维以及写作的表达技巧。
               </p>
             </div>
           </div>
-          <div id="outline-container-org0679a9c" class="outline-4">
-            <h4 id="org0679a9c">文档、知识管理 - 迭代</h4>
-            <div class="outline-text-4" id="text-org0679a9c">
+          <div id="outline-container-org851e1f6" class="outline-4">
+            <h4 id="org851e1f6">文档、知识管理 - 迭代</h4>
+            <div class="outline-text-4" id="text-org851e1f6">
               <p>
-                Notion 其实一直是一个很不错的选择，特别是现在 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
+                Notion 其实一直是一个很不错的选择，特别是现在的 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
               </p>
 
               <p>
@@ -226,11 +226,11 @@
               </p>
 
               <p>
-                今年从 org-roam 转为使用 <a href="https://github.com/protesilaos/denote">denote</a> ,org-roam 的 UI 从来就没怎么用过，出了可以对外展示一下有多少笔记之外，我觉得没啥用。
+                今年从 org-roam 转为使用 <a href="https://github.com/protesilaos/denote">denote</a> ,org-roam 的 UI 从来就没怎么用过，除了可以对外展示一下有多少笔记之外，我觉得没啥用。
               </p>
 
               <p>
-                Emacs 里的 org 文档作为笔记初稿，高度原子化之后输出到 tiddlywiki，形成常青笔记和原子笔记。
+                Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddlywiki，形成常青笔记和原子笔记。
               </p>
 
               <p>
@@ -238,13 +238,13 @@
               </p>
 
               <p>
-                <a href="https://cloud.llamaindex.ai/">cloud.Llamaindex</a> 和 NoNotes 类似，可以 index 文档，提供 RAG 接口，Qdrant 这类向量数据库 加上 MCP 也可以达到类似的效果。自动补全用自己喜欢的语言再写一个和系统交互的 API 就 OK 了。
+                <a href="https://cloud.llamaindex.ai/">cloud.Llamaindex</a> 和 NoNotes 的实现类似，可以 index 文档，提供 RAG 接口，Qdrant 这类向量数据库加上 MCP 也可以达到类似的效果。自动补全用自己喜欢的语言再写一个和系统交互的 API 就 OK 了。
               </p>
             </div>
           </div>
-          <div id="outline-container-orgeeff676" class="outline-4">
-            <h4 id="orgeeff676">笔记和写作 - 输出</h4>
-            <div class="outline-text-4" id="text-orgeeff676">
+          <div id="outline-container-org4dfc2d6" class="outline-4">
+            <h4 id="org4dfc2d6">笔记和写作 - 输出</h4>
+            <div class="outline-text-4" id="text-org4dfc2d6">
               <p>
                 PKM 知识管理只是学习的方法，永远不是目的。做知识管理很容易就会做成了管理知识，变成了折腾各种笔记工具，学习各种笔记软件，甚至被笔记软件或平台捆绑。这也是 Nonotes 想避免的，笔记不应该被笔记软件或者笔记载体局限甚至捆绑。
               </p>
@@ -276,9 +276,9 @@
           </div>
         </div>
       </div>
-      <div id="outline-container-orga131d44" class="outline-2">
-        <h2 id="orga131d44">Thanks</h2>
-        <div class="outline-text-2" id="text-orga131d44">
+      <div id="outline-container-orgc312df8" class="outline-2">
+        <h2 id="orgc312df8">Thanks</h2>
+        <div class="outline-text-2" id="text-orgc312df8">
           <p>
             如果这些内容对你有所帮助，我会很开心。
           </p>
