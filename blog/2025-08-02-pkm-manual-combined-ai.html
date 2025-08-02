@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="如果把人和人的思维比作计算机，外界信息给定一个输入，人就会给出输出，每一个时间、空间下自己的输出就构成了当下别人眼里的自己和自己认为的自己，而每一个当下就构成了自我和物质世界之间的信息交互，也就是所谓的存在。">
+    <link rel="alternate"
+          type="application/rss+xml"
+          href="https://www.vandee.art/blog/rss.xml"
+          title="RSS feed for https://www.vandee.art/blog/">
+    <title>PKM（个人知识管理）构建手册 - with AI</title>
+    <meta property="og:title" content="PKM（个人知识管理）构建手册 - with AI">
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="如果把人和人的思维比作计算机，外界信息给定一个输入，人就会给出输出，每一个时间、空间下自己的输出就构成了当下别人眼里的自己和自己认为的自己，而每一个当下就构成了自我和物质世界之间的信息交互，也就是所谓的存在。">
+    <meta property="og:url" content="https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html">
+    <meta name="author" content="Vandee">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+    <link rel="stylesheet"
+          href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet"
+          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        pangu.spacingPage();
+      });
+    </script>
+
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/copyCode.js" defer></script>
+    <script src="assets/js/shiba.js" defer></script>
+    <script src="assets/js/search.js" defer></script></head>
+  <body>
+    <div id="preamble" class="status">
+      <header>
+        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+        <nav>
+          <a href="https://www.vandee.art/blog/">Home</a>
+          <a href="https://x404.xyz/wiki">Wiki</a>
+          <a href="https://x404.xyz/photo">Photo</a>
+          <a href="archive.html">Archive</a>
+          <a href="tags.html">Tags</a>
+          <div id="search-container">
+            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+        </nav>
+    </header></div>
+    <div id="content">
+      <div class="post-date">02 Aug 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html">PKM（个人知识管理）构建手册 - with AI</a></h1>
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#org2ad39a3">Intro</a></li>
+            <li><a href="#org381d6e5">Manual</a>
+              <ul>
+                <li><a href="#org71c1661">Principles</a></li>
+                <li><a href="#org7c60057">Methods</a>
+                  <ul>
+                    <li><a href="#org117e135">信息获取 - 输入</a></li>
+                    <li><a href="#org0679a9c">文档、知识管理 - 迭代</a></li>
+                    <li><a href="#orgeeff676">笔记和写作 - 输出</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#orga131d44">Thanks</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div id="outline-container-org2ad39a3" class="outline-2">
+        <h2 id="org2ad39a3">Intro</h2>
+        <div class="outline-text-2" id="text-org2ad39a3">
+          <p>
+            距离 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> 居然已经一年多了。里面关于 PKM 和 AI 结合的部分许多已经过时了，今年也有了新的思路。
+          </p>
+
+          <p>
+            AI 发展的速度实在是太快，从 Cursor Tab 到现在的 vibe coding、Claude Code CLI，从 ChatGPT 到现在的 parallel agents，从 RAG 到 MCP，从 prompt 到 context engineering。
+          </p>
+
+          <p>
+            但不管 AI 如何发展，大语言模型的能力如何提升，LLM 始终是一个输入到输出的过程。从 RAG 到今年的 MCP 和 <a href="https://simonwillison.net/2025/Jun/27/context-engineering/">context engineering</a> ，LLM 获取外部资源的方式和能力有了质的飞跃，context window 也越来越大。数据和数据质量一直是 LLM 的核心之一。
+          </p>
+
+          <p>
+            起初折腾 PKM 的目的之一就是构建和 LLM 交互的数据。LLM 是一个放大器，输入的质量越高，相关性越高，放大的效果就越好。
+          </p>
+
+          <p>
+            AI 使得从 0 到 1 的开始变得更容易：
+          </p>
+
+          <blockquote>
+            <p>
+              Before AI, learners faced a matching problem: learning resources have to be created with a target audience in mind. This means as a consumer, learning resources were suboptimal fits for you:
+            </p>
+
+            <p>
+              在AI之前，学习者面临一个匹配问题：学习资源必须针对特定受众创建。这意味着作为消费者，学习资源对你来说是不理想的匹配：
+            </p>
+
+            <ul class="org-ul">
+              <li><p>
+                  You're a newbie at <code>$topic_of_interest</code>, but have knowledge in related topic <code>$related_topic</code>. But finding learning resources that teach <code>$topic_of_interest</code> in terms of <code>$related_topic</code>  is difficult.
+                </p>
+
+                <p>
+                  你是$topic_of_interest 的新手，但对相关主题$related_topic 有知识。但是找到以$related_topic 为基础教授$topic_of_interest 的学习资源是困难的。
+              </p></li>
+
+              <li><p>
+                  To effectively learn <code>$topic_of_interest</code>, you really need to learn prerequisite skill <code>$prereq_skill</code>. But as a beginner you don't know you should really learn <code>$prereq_skill</code> before learning <code>$topic_of_interest</code> .
+                </p>
+
+                <p>
+                  为了有效地学习 $topic_of_interest，你需要学习先决技能 $prereq_skill。但是作为初学者，你不知道你应该在学习 $topic_of_interest 之前先学习 $prereq_skill。
+              </p></li>
+
+              <li><p>
+                  You have basic knowledge of <code>$topic_of_interest</code>, but have plateaued, and have difficulty finding the right resources for <code>$intermediate_sticking_point</code>
+                </p>
+
+                <p>
+                  你对 $topic_of_interest 有基本知识，但已经停滞不前，并且在寻找合适的 $intermediate_sticking_point 资源方面遇到困难。
+              </p></li>
+            </ul>
+
+            <p>
+              via: <a href="https://elroy.bot/blog/2025/07/29/ai-is-a-floor-raiser-not-a-ceiling-raiser.html#license">https://elroy.bot/blog/2025/07/29/ai-is-a-floor-raiser-not-a-ceiling-raiser.html#license</a>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div id="outline-container-org381d6e5" class="outline-2">
+        <h2 id="org381d6e5">Manual</h2>
+        <div class="outline-text-2" id="text-org381d6e5">
+          <p>
+            这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。
+          </p>
+        </div>
+        <div id="outline-container-org71c1661" class="outline-3">
+          <h3 id="org71c1661">Principles</h3>
+          <div class="outline-text-3" id="text-org71c1661">
+            <p>
+              基于 transformer 架构的 LLM 本质上就是一个概率生成器，因此 PKM with AI 总体的原则就是：让 LLM 提升自己的能力，帮助自己找到实现目标的最大可能性方案。
+            </p>
+
+            <ul class="org-ul">
+              <li>让 AI 帮助自己提出更好的问题，而不是 AI 速读</li>
+              <li>让 AI 去掉无关信息，更好的聚焦 key points</li>
+              <li>让 AI 评估、测试自己的思考和方案，更好的迭代</li>
+              <li>让 AI 生成路标和地图，而不是代替自己走完全程</li>
+            </ul>
+          </div>
+        </div>
+        <div id="outline-container-org7c60057" class="outline-3">
+          <h3 id="org7c60057">Methods</h3>
+          <div class="outline-text-3" id="text-org7c60057">
+            <p>
+              Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，但我始终认为这种层面的知识管理和交互并不能很有效的提升思维。
+            </p>
+
+            <p>
+              各种 RAG 类知识管理项目或软件，从本质上达到的效果是：根据特定的文档获得更准确的检索结果的生成。GraphRAG 效果确实可以比传统 RAG 更好，但它们始终是在学习资料中「检索」和「生成」。
+              它可以提升知识管理的效率，但这和思维的提升是两码事。
+            </p>
+
+            <p>
+              而且，只要是生成，就会降低准确性，对我来说，我不想在检索知识的时候，看到 LLM 一大堆废话，只想准确快速的找到我想检索的信息。虽然通过特定的 prompt 可以优化 RAG 生成内容和原文一致性，但问题的关键不在这里，生成其实是不必须的，关键在检索。而传统的文档检索其实就相当够用了，我一直在 Emacs 里使用正则和 tags 进行检索，这比丢给 LLM 20 个文档，等个 1 分钟要快太多了。
+            </p>
+
+            <p>
+              所以 PKM with AI，我的思路是：让 LLM 更好的配合 PKM 完成检索，生成路标和知识网点地图，把检索做到极致，去掉生成的部分。
+            </p>
+
+            <p>
+              因此我构建了 <a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">NoNotes</a> ,用向量相似检索自动补全替代 RAG 生成。创造来源于思维的流动，而思维的流动就是联想，我在需要相关概念的时候，直接检索光标当前内容，在高度原子化的 PKM 里通过向量相似检索补全相关的概念和引用来源。
+            </p>
+
+            <p>
+              随着 context engineering 概念的兴起，我觉得 memory layer，数据接口，是 PKM 和 AI 结合比较合适的方向，例如 <a href="https://supermemory.ai/">supermemory</a> 这个项目，从它刚开始就一直在关注，现在发展的挺不错的。
+            </p>
+          </div>
+          <div id="outline-container-org117e135" class="outline-4">
+            <h4 id="org117e135">信息获取 - 输入</h4>
+            <div class="outline-text-4" id="text-org117e135">
+              <p>
+                获取零散信息、新闻我一直通过 RSS，<a href="https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html">ReadWise</a> 今年不打算续订了，转向了 <a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">Hoarder</a> 。修改了一下 <a href="https://github.com/VandeeFeng/obsidian-clipper">obsidian-clipper</a> 用来在网页里高亮阅读保存到 Hoarder。在 Emacs 里写了一个小脚本，用来同步 Hoarder 的高亮和笔记到本地。还搞了个小玩意 <a href="https://github.com/VandeeFeng/RSS-CLI">RSS-CLI</a> 。
+              </p>
+
+              <p>
+                我尝试过好几个 AI 聚合信息的项目，起初体验是挺不错，每天 AI 自动根据信息源生成摘要和简报，但时间久了，感觉就像是在吃预制菜，甚至是二手预制菜（许多信息源也就是 AI 生成的）。而且由于是用同一个总结模板 prompt 在总结不同类型的信息，很多时候总结的要点都不准确。
+              </p>
+
+              <p>
+                还是在 RSS 阅读器里自己看更有滋味。
+              </p>
+
+              <p>
+                再一个，与其让 AI 从海量信息源里找到自己感兴趣想要的，不如转向关注自己感兴趣的人和圈子，多接触到具体的人和事。信息茧房其实也就是自己更原因相信或接受什么罢了，不同的圈子和阶层都固然会有信息茧房，要不然就不是圈子了。
+              </p>
+
+              <p>
+                我积累到现在的 RSS 订阅源都是日积月累慢慢发现的，这种发现只有用心的看了文章才会有，AI 速读总结不出作者隐藏在字里行间里的思维以及写作的表达技巧。
+              </p>
+            </div>
+          </div>
+          <div id="outline-container-org0679a9c" class="outline-4">
+            <h4 id="org0679a9c">文档、知识管理 - 迭代</h4>
+            <div class="outline-text-4" id="text-org0679a9c">
+              <p>
+                Notion 其实一直是一个很不错的选择，特别是现在 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
+              </p>
+
+              <p>
+                但是用了 Emacs 之后，其他的就真不想用了。
+              </p>
+
+              <p>
+                今年从 org-roam 转为使用 <a href="https://github.com/protesilaos/denote">denote</a> ,org-roam 的 UI 从来就没怎么用过，出了可以对外展示一下有多少笔记之外，我觉得没啥用。
+              </p>
+
+              <p>
+                Emacs 里的 org 文档作为笔记初稿，高度原子化之后输出到 tiddlywiki，形成常青笔记和原子笔记。
+              </p>
+
+              <p>
+                在原子笔记里，我又精炼了一部分，向量化之后储存在向量数据库，通过 NoNotes 补全。如果遇到哪个概念补全不出来，那就说明这个概念还没有掌握或着精炼的程度不够。
+              </p>
+
+              <p>
+                <a href="https://cloud.llamaindex.ai/">cloud.Llamaindex</a> 和 NoNotes 类似，可以 index 文档，提供 RAG 接口，Qdrant 这类向量数据库 加上 MCP 也可以达到类似的效果。自动补全用自己喜欢的语言再写一个和系统交互的 API 就 OK 了。
+              </p>
+            </div>
+          </div>
+          <div id="outline-container-orgeeff676" class="outline-4">
+            <h4 id="orgeeff676">笔记和写作 - 输出</h4>
+            <div class="outline-text-4" id="text-orgeeff676">
+              <p>
+                PKM 知识管理只是学习的方法，永远不是目的。做知识管理很容易就会做成了管理知识，变成了折腾各种笔记工具，学习各种笔记软件，甚至被笔记软件或平台捆绑。这也是 Nonotes 想避免的，笔记不应该被笔记软件或者笔记载体局限甚至捆绑。
+              </p>
+
+              <p>
+                学习资料在变成笔记的过程中，在精炼和重述的时候，思维已经得到了一些锻炼，但这还远远不够。
+              </p>
+
+              <p>
+                PKM 的迭代一定要有表达和输出。<a href="https://wiki.vandee.art/#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%80%9D%E8%80%83%E8%80%8C%E4%B8%8D%E8%BE%93%E5%87%BA%EF%BC%8C%E4%BD%A0%E5%8F%AA%E6%98%AF%E4%BB%A5%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%9C%A8%E6%80%9D%E8%80%83">如果你思考而不输出，你只是以为自己在思考</a> ，脑子里知道了，和写出来，讲出来，画出来是两码事。
+              </p>
+
+              <p>
+                关于表达，我想讨论的重点不是表达能力和华丽的写作技巧，而是：表达和输出是自我和外界信息的交互、反馈和对抗。用嘴说话和面部表情是我们最平常最熟悉的思维输出和表达，写作、音乐、绘画、编程其实也是一样，只是用了不同的载体和形式。
+              </p>
+
+              <p>
+                如果把人和人的思维比作计算机，外界信息给定一个输入，人给出输出（没有反馈和输出这里也算作输出的一种，也就是输出为 0），每一个时间、空间下自己的输出就构成了当下别人眼里的自己和自己认为的自己，而每一个当下就构成了自我和物质世界之间的信息交互，也就是所谓的存在。
+              </p>
+
+              <p>
+                我挺喜欢汪峰的 <a href="https://www.bilibili.com/video/BV1TJ411T7qa/">存在</a> ，名字和自我介绍从我们出生开始，到最后刻在墓碑上，没有多少人给了自己这个问题很好的答案：我该如何存在。
+              </p>
+
+              <p>
+                希望在 AI 的帮助下，我能够找到我的答案。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-orga131d44" class="outline-2">
+        <h2 id="orga131d44">Thanks</h2>
+        <div class="outline-text-2" id="text-orga131d44">
+          <p>
+            如果这些内容对你有所帮助，我会很开心。
+          </p>
+
+          <p>
+            AI 带来的便利性一定会让人变懒。变懒可以，但变笨不行。
+          </p>
+
+          <p>
+            另见:
+          </p>
+          <ul class="org-ul">
+            <li><a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#org8655a2e">PKM（个人知识管理）构建手册 - Emacs</a></li>
+            <li><a href="https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html">PKM（个人知识管理）构建手册 - Nvim</a></li>
+            <li><a href="https://www.vandee.art/blog/2025-01-20-fragmented-knowledge-learning-with-ai.html">碎片知识学习 - with AI</a></li>
+            <li><a href="https://www.vandee.art/blog/2024-12-24-the-structrued-knowledge-workflow-with-ai.html">结构化知识工作流 - with AI</a></li>
+            <li><a href="https://www.vandee.art/blog/2025-05-23-information-vectorization.html">AI 驱使下的信息向量化</a></li>
+            <li><a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">从有形到无形 - NoNotes，知识库自动补全</a></li>
+            <li><a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">稍后阅读新方案 Emacs-Hoarder</a></li>
+          </ul>
+
+          <p>
+            Relative reading：<a href="https://evrim.zone/blog/opinion/vibes_casino">Vibe Coding Casino</a> ， <a href="https://blog.val.town/vibe-code">Vibe code is legacy code</a> ，<a href="https://www.youtube.com/watch?v=vagyIcmIGOQ&amp;t=5292s">DHH: Future of Programming</a>
+          </p>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> </div></div>
+    <div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+        <p>
+          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+        </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+        <i class="fa-solid fa-angle-up fa-2xl"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = 'visible';
+            mybutton.style.opacity = '1';
+          } else {
+            mybutton.style.visibility = 'hidden';
+            mybutton.style.opacity = '0';
+          }
+        };
+    </script></div>
+  </body>
+</html>
