@@ -59,6 +59,8 @@ Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，�
 
 随着 context engineering 概念的兴起，我觉得 memory layer，数据接口，是 PKM 和 AI 结合比较合适的方向，例如 [[https://supermemory.ai/][supermemory]] 这个项目，从它刚开始就一直在关注，现在发展的挺不错的。
 
+用 Dify、n8n 构建 Workflow 也是很不错的选择，但是对于 PKM 我不太想增加太多的中间流程，也不想花太多时间为了 PKM 去学它们。
+
 *** 信息获取 - 输入
 获取零散信息、新闻我一直通过 RSS，[[https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html][ReadWise]] 今年不打算续订了，转向了 [[https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html][Hoarder]] 。修改了一下 [[https://github.com/VandeeFeng/obsidian-clipper][obsidian-clipper]] 用来在网页里高亮阅读保存到 Hoarder。在 Emacs 里写了一个小脚本，用来同步 Hoarder 的高亮和笔记到本地。还搞了个小玩意 [[https://github.com/VandeeFeng/RSS-CLI][RSS-CLI]] 。
 
@@ -68,7 +70,7 @@ Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，�
 
 再一个，与其让 AI 从海量信息源里找到自己感兴趣想要的，不如转向关注自己感兴趣的人和圈子，多接触到具体的人和事。信息茧房其实也就是自己更愿意相信或接受什么罢了，不同的圈子和阶层都固然会有信息茧房，要不然就不是圈子了。
 
-我积累到现在的 RSS 订阅源是日积月累慢慢发现的，这种发现只有用心看了文章才会有，AI 速读总结不出作者隐藏在字里行间里的思维以及写作的表达技巧。
+我的 RSS 订阅源是日积月累慢慢发现的，这种发现只有用心看了文章才会有，AI 速读总结不出作者隐藏在字里行间里的思维以及写作的表达技巧。
 *** 文档、知识管理 - 迭代
 Notion 其实一直是一个很不错的选择，特别是现在的 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
 
