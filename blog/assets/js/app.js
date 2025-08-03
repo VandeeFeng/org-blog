@@ -1,28 +1,23 @@
-$(document).ready(function () {
-
-  // 处理所有具有 img 类的图片，添加 data-fancybox 属性
-  $('.img').each(function () {
-    $(this).attr("data-fancybox", "gallery"); // 添加 data-fancybox 属性
-  });
-
-
-  // 初始化 Fancybox
-  Fancybox.bind("[data-fancybox='gallery']", {
-    loop: true, // 图片循环
-    buttons: ["zoom", "close"], // 控制按钮
-  });
-});
-
-
 document.addEventListener('DOMContentLoaded', function() {
-  // 获取目录中的所有链接及其对应的ID
+  // --- Fancybox Setup ---
+  if (typeof Fancybox !== 'undefined') {
+    document.querySelectorAll('.img').forEach(function(imgElement) {
+      imgElement.setAttribute('data-fancybox', 'gallery');
+    });
+
+    Fancybox.bind("[data-fancybox='gallery']", {
+      loop: true,
+      buttons: ["zoom", "close"],
+    });
+  }
+
+  // --- Sticky Headers with Anchors ---
   const tocLinks = document.querySelectorAll('#text-table-of-contents a');
   const tocIds = Array.from(tocLinks).map(link => {
       const href = link.getAttribute('href');
       return href ? href.substring(1) : null;
-  }).filter(id => id); // 过滤掉 null 值
+  }).filter(id => id);
 
-  // 使用更精确的选择器来获取内容区域内的 h2、h3 和 h4 标题
   const headers = document.querySelectorAll('#content h2:not(.post-title):not(.tags-title), #content h3, #content h4');
   
   headers.forEach(header => {

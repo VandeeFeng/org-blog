@@ -23,7 +23,6 @@
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
        <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
        <script defer>
@@ -59,22 +58,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8fe11b3">TL;DR</a></li>
-<li><a href="#org36dcf42">General Tips</a></li>
-<li><a href="#orgc592f43">Container</a>
+<li><a href="#orgb070f6f">TL;DR</a></li>
+<li><a href="#orgd7c16ad">General Tips</a></li>
+<li><a href="#orgc2da1b5">Container</a>
 <ul>
-<li><a href="#orgda4b6fc">Coding Assistant Container</a></li>
-<li><a href="#org2592c00">MCP Container</a></li>
+<li><a href="#org8032528">Coding Assistant Container</a></li>
+<li><a href="#orgb3f9928">MCP Container</a></li>
 </ul>
 </li>
-<li><a href="#org030cf61">CLI AI Coding Tools</a></li>
+<li><a href="#org7d5d7d2">CLI AI Coding Tools</a></li>
 </ul>
 </div>
 </nav>
-
-<div id="outline-container-org8fe11b3" class="outline-2">
-<h2 id="org8fe11b3">TL;DR</h2>
-<div class="outline-text-2" id="text-org8fe11b3">
+<div id="outline-container-orgb070f6f" class="outline-2">
+<h2 id="orgb070f6f">TL;DR</h2>
+<div class="outline-text-2" id="text-orgb070f6f">
 <p>
 各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
 </p>
@@ -88,10 +86,9 @@
 </p>
 </div>
 </div>
-
-<div id="outline-container-org36dcf42" class="outline-2">
-<h2 id="org36dcf42">General Tips</h2>
-<div class="outline-text-2" id="text-org36dcf42">
+<div id="outline-container-orgd7c16ad" class="outline-2">
+<h2 id="orgd7c16ad">General Tips</h2>
+<div class="outline-text-2" id="text-orgd7c16ad">
 <p>
 由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
 </p>
@@ -129,14 +126,13 @@ OpenAI 的 codex, Gemini CLI 相继开源，背后的核心实现会越来越清
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc592f43" class="outline-2">
-<h2 id="orgc592f43">Container</h2>
-<div class="outline-text-2" id="text-orgc592f43">
+<div id="outline-container-orgc2da1b5" class="outline-2">
+<h2 id="orgc2da1b5">Container</h2>
+<div class="outline-text-2" id="text-orgc2da1b5">
 </div>
-<div id="outline-container-orgda4b6fc" class="outline-3">
-<h3 id="orgda4b6fc">Coding Assistant Container</h3>
-<div class="outline-text-3" id="text-orgda4b6fc">
+<div id="outline-container-org8032528" class="outline-3">
+<h3 id="org8032528">Coding Assistant Container</h3>
+<div class="outline-text-3" id="text-org8032528">
 <p>
 参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
 </p>
@@ -236,10 +232,9 @@ alias geminix='docker run -it --rm \
 </p>
 </div>
 </div>
-
-<div id="outline-container-org2592c00" class="outline-3">
-<h3 id="org2592c00">MCP Container</h3>
-<div class="outline-text-3" id="text-org2592c00">
+<div id="outline-container-orgb3f9928" class="outline-3">
+<h3 id="orgb3f9928">MCP Container</h3>
+<div class="outline-text-3" id="text-orgb3f9928">
 <p>
 MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
 </p>
@@ -262,10 +257,9 @@ MCP Container 相关的项目也挺多，我用的是: <a href="https://github.c
 </div>
 </div>
 </div>
-
-<div id="outline-container-org030cf61" class="outline-2">
-<h2 id="org030cf61">CLI AI Coding Tools</h2>
-<div class="outline-text-2" id="text-org030cf61">
+<div id="outline-container-org7d5d7d2" class="outline-2">
+<h2 id="org7d5d7d2">CLI AI Coding Tools</h2>
+<div class="outline-text-2" id="text-org7d5d7d2">
 <p>
 整理了一些现在 star 比较多的 CLI AI Coding 项目：
 </p>

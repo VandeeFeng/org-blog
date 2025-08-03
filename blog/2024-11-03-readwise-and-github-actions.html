@@ -21,7 +21,6 @@
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
        <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
        <script defer>
@@ -57,16 +56,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6fa1788">结合之前的 bookmark-collection</a>
+<li><a href="#org46e5fa8">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#orgb969122">python</a></li>
-<li><a href="#orgf17c9df">workflow</a></li>
+<li><a href="#org4bf3d5e">python</a></li>
+<li><a href="#orgdbf1424">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org48b62d4">Readwise highlights</a>
+<li><a href="#orgcb3032f">Readwise highlights</a>
 <ul>
-<li><a href="#org8c0da0e">python</a></li>
-<li><a href="#orgb282cc3">workflow</a></li>
+<li><a href="#orgcd05617">python</a></li>
+<li><a href="#orgdcf88d4">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -75,10 +74,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-
-<div id="outline-container-org6fa1788" class="outline-2">
-<h2 id="org6fa1788">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org6fa1788">
+<div id="outline-container-org46e5fa8" class="outline-2">
+<h2 id="org46e5fa8">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-org46e5fa8">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -95,9 +93,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-orgb969122" class="outline-3">
-<h3 id="orgb969122">python</h3>
-<div class="outline-text-3" id="text-orgb969122">
+<div id="outline-container-org4bf3d5e" class="outline-3">
+<h3 id="org4bf3d5e">python</h3>
+<div class="outline-text-3" id="text-org4bf3d5e">
 <div class="org-src-container">
 <pre class="src src-python">import os
 import re
@@ -192,10 +190,9 @@ if __name__ == "__main__":
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgf17c9df" class="outline-3">
-<h3 id="orgf17c9df">workflow</h3>
-<div class="outline-text-3" id="text-orgf17c9df">
+<div id="outline-container-orgdbf1424" class="outline-3">
+<h3 id="orgdbf1424">workflow</h3>
+<div class="outline-text-3" id="text-orgdbf1424">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Save Bookmark to Readwise
@@ -235,18 +232,16 @@ jobs:
 </div>
 </div>
 </div>
-
-<div id="outline-container-org48b62d4" class="outline-2">
-<h2 id="org48b62d4">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org48b62d4">
+<div id="outline-container-orgcb3032f" class="outline-2">
+<h2 id="orgcb3032f">Readwise highlights</h2>
+<div class="outline-text-2" id="text-orgcb3032f">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-
-<div id="outline-container-org8c0da0e" class="outline-3">
-<h3 id="org8c0da0e">python</h3>
-<div class="outline-text-3" id="text-org8c0da0e">
+<div id="outline-container-orgcd05617" class="outline-3">
+<h3 id="orgcd05617">python</h3>
+<div class="outline-text-3" id="text-orgcd05617">
 <div class="org-src-container">
 <pre class="src src-python">
 import requests
@@ -469,10 +464,9 @@ if __name__ == "__main__":
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb282cc3" class="outline-3">
-<h3 id="orgb282cc3">workflow</h3>
-<div class="outline-text-3" id="text-orgb282cc3">
+<div id="outline-container-orgdcf88d4" class="outline-3">
+<h3 id="orgdcf88d4">workflow</h3>
+<div class="outline-text-3" id="text-orgdcf88d4">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Sync Readwise Articles
