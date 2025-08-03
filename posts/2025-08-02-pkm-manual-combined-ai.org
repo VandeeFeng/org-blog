@@ -36,7 +36,9 @@ via: https://elroy.bot/blog/2025/07/29/ai-is-a-floor-raiser-not-a-ceiling-raiser
 
 
 * Manual
-这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。
+这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。PKM 基本的构建思路都在 [[https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top][PKM（个人知识管理）构建手册 - Emacs]] ，这个手册侧重和 AI 的整合。
+** Prerequisites
+LLM API KEY，终端或 IDE，AI 和编程的基础知识，能科学上网是最好，还涉及到一点 self-hosting。
 ** Principles
 基于 transformer 架构的 LLM 本质上就是一个概率生成器，因此 PKM with AI 总体的原则就是：让 LLM 提升自己的能力，帮助自己找到实现目标的最大可能性方案。
 
@@ -72,6 +74,7 @@ Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，�
 
 我的 RSS 订阅源是日积月累慢慢发现的，这种发现只有用心看了文章才会有，AI 速读总结不出作者隐藏在字里行间里的思维以及写作的表达技巧。
 *** 文档、知识管理 - 迭代
+**** 笔记编辑器选择
 Notion 其实一直是一个很不错的选择，特别是现在的 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
 
 但是用了 Emacs 之后，其他的就真不想用了。
@@ -84,6 +87,21 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 
 [[https://cloud.llamaindex.ai/][cloud.Llamaindex]] 和 NoNotes 的实现类似，可以 index 文档，提供 RAG 接口，Qdrant 这类向量数据库加上 MCP 也可以达到类似的效果。自动补全用自己喜欢的语言再写一个和系统交互的 API 就 OK 了。
 
+笔记的同步就用 GitHub 就好了，笔记的版本管理和备份是很必须的，GitHub 的 commit 对于管理笔记太合适了。如果特别看重隐私或者讨厌 GitHub，可以自托管 [[https://docs.gitea.com/][Gitea]] 。
+**** 迭代
+每个星期我会让 LLM 总结一下 PKM 里新增的内容，用 python 写了一个小脚本获取我 GitHub 仓库的 git diff，可以选日期范围，指定的仓库。PKM 丢在了 GitHub ，脚本会生成一个 MD 文档，包含 git commit 新增的内容，把文档丢给 LLM，让它提出几个相关的深度思考问题。
+
+在 prompt 的设计上，我喜欢让 LLM 扮演一个批判者，用完全相反的视角分析我的观点，往往会有意想不到的惊喜。
+
+也可以用 n8n 或者 GitHub Actions 自动完成这个过程，让 LLM 每周敲打一下自己。
+
+迭代是我觉得 PKM 里最重要的一环，让 AI 帮助自己提出更好的问题，找到自己 [[https://wiki.vandee.art/#%E6%89%BE%E5%88%B0%E7%9F%A5%E8%AF%86%E7%9A%84%E7%BC%9D%E9%9A%99][知识的缝隙]] 。
+**** 其他和 AI 交互的工具
+一个 Gemini CLI 管理笔记的例子：Gemini CLI 在半小时内整理了 400 个笔记，在各个主题之间建立了有意义的联系，重命名、整理，合理构建笔记集合，via: https://x.com/karminski3/status/1939502900503355669
+
+这些 CLI 工具不拿来编程，做 PKM 管理也很合适。比起 chat UI，这些 CLI coding 工具提供了更底层、更便捷的 LLM 接口。
+
+在 Emacs 里，我一直用 gptel，也很方便。其他和 vibe coding 相关的我记录在了 [[https://www.vandee.art/blog/2025-06-30-vibe-coding-tips.html][Vibe Coding Tips]] ,小工具记录在了 [[https://www.vandee.art/blog/2025-01-20-fragmented-knowledge-learning-with-ai.html][碎片知识学习 - with AI]] 。
 *** 笔记和写作 - 输出
 PKM 知识管理只是学习的方法，永远不是目的。做知识管理很容易就会做成了管理知识，变成了折腾各种笔记工具，学习各种笔记软件，甚至被笔记软件或平台捆绑。这也是 Nonotes 想避免的，笔记不应该被笔记软件或者笔记载体局限甚至捆绑。
 
