@@ -10,7 +10,7 @@ AI 发展的速度实在是太快，从 Cursor Tab 到现在的 vibe coding、Cl
 
 但不管 AI 如何发展，大语言模型的能力如何提升，LLM 始终是一个输入到输出的过程。从 RAG 到今年的 MCP 和 [[https://simonwillison.net/2025/Jun/27/context-engineering/][context engineering]] ，LLM 获取外部资源的方式和能力有了质的飞跃，context window 也越来越大。数据和数据质量一直是 LLM 的核心之一。
 
-起初折腾 PKM 的目的之一就是构建和 LLM 交互的数据。LLM 是一个放大器，输入的质量越高，相关性越高，放大的效果就越好。
+起初折腾 PKM 的目的之一就是构建和 LLM 交互的数据。正如 Notion 创始人 Ivan Zhao 说的，现在的 AI 产品就像酿酒。你无法完全控制结果，只能创造一个环境，让其自行发展。因此，它更像是一种酿造过程，你无法强迫 AI。产品是酒桶，数据才是水、小麦和酒花。数据的质量越高，酿出的酒就越香。
 
 AI 使得从 0 到 1 的开始变得更容易：
 
@@ -38,7 +38,7 @@ via: https://elroy.bot/blog/2025/07/29/ai-is-a-floor-raiser-not-a-ceiling-raiser
 * Manual
 这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。PKM 基本的构建思路都在 [[https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top][PKM（个人知识管理）构建手册 - Emacs]] ，这个手册侧重和 AI 的整合。
 ** Prerequisites
-LLM API KEY，终端或 IDE，AI 和编程的基础知识，能科学上网是最好，还涉及到一点 self-hosting。
+LLM API KEY，终端或 IDE，AI 和编程的基础知识，还涉及到一点 self-hosting。
 ** Principles
 基于 transformer 架构的 LLM 本质上就是一个概率生成器，因此 PKM with AI 总体的原则就是：让 LLM 提升自己的能力，帮助自己找到实现目标的最大可能性方案。
 
