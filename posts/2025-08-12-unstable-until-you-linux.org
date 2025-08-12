@@ -95,6 +95,8 @@ i3 是一个裸的图形化窗口管理，图片查看，文件资源管理器�
 
 脚本会安装好 rime 输入法，系统字体，ghostty 终端，paru 包管理器，Node.js，UV python，Emacs，thunar（文件管理器），opensnitch（轻量网络监控）, flameshot（截图），mpv（媒体播放）,feh（图片查看）等软件并设置好一些系统启动项服务。
 
+应用启动就用了 dmenu，很轻量，也可以直接在 i3 的配置里写快捷键。
+
 dotfiles 一直在用 GitHub 同步管理，迁移过来也很方便。
 * 冤家 Fcitx 和 Emacs
 
@@ -125,6 +127,6 @@ QT_IM_MODULE=fcitx
 我猜测可能的原因是因为 Emacsclient 在设置为系统的 service 之后，启动需要加载的环境和 i3 之间有顺序要求。有时候加载的顺序对了，环境就应用上了。
 
 * 小结
-这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么不稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
+这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
 
 Linux 就是我会一直使用下去的操作系统, [[https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html][Linux 太自由了]] 。

@@ -58,27 +58,27 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org892fb34">TL;DR</a></li>
-            <li><a href="#org649d0fb">折腾记录</a>
+            <li><a href="#orgf88f4a0">TL;DR</a></li>
+            <li><a href="#orgd9920a9">折腾记录</a>
               <ul>
-                <li><a href="#org37b36f0">Arch Linux 初始安装</a></li>
-                <li><a href="#org0e79cf3">i3</a>
+                <li><a href="#org38fda20">Arch Linux 初始安装</a></li>
+                <li><a href="#org27be92d">i3</a>
                   <ul>
-                    <li><a href="#orgbabfec6">安装：</a></li>
-                    <li><a href="#org5fa2747">配置</a></li>
+                    <li><a href="#org55a5742">安装：</a></li>
+                    <li><a href="#org90e7fbe">配置</a></li>
                   </ul>
                 </li>
-                <li><a href="#org9773def">其他设定</a></li>
+                <li><a href="#orgaeef57f">其他设定</a></li>
               </ul>
             </li>
-            <li><a href="#org3530291">冤家 Fcitx 和 Emacs</a></li>
-            <li><a href="#org52ce943">小结</a></li>
+            <li><a href="#org16c84e8">冤家 Fcitx 和 Emacs</a></li>
+            <li><a href="#org51ce112">小结</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org892fb34" class="outline-2">
-        <h2 id="org892fb34">TL;DR</h2>
-        <div class="outline-text-2" id="text-org892fb34">
+      <div id="outline-container-orgf88f4a0" class="outline-2">
+        <h2 id="orgf88f4a0">TL;DR</h2>
+        <div class="outline-text-2" id="text-orgf88f4a0">
           <p>
             Both stable and unstable until you linux.
           </p>
@@ -92,9 +92,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-org649d0fb" class="outline-2">
-        <h2 id="org649d0fb">折腾记录</h2>
-        <div class="outline-text-2" id="text-org649d0fb">
+      <div id="outline-container-orgd9920a9" class="outline-2">
+        <h2 id="orgd9920a9">折腾记录</h2>
+        <div class="outline-text-2" id="text-orgd9920a9">
           <p>
             近道都是远路，尝试过几个大佬自己封装好的 Arch Linux，附带了桌面环境的安装和配置。是挺方便的，但是遇到一些小问题的时候，由于不知道他具体是怎么实现的一些功能，又要去看文档和源码。我这个电脑又比较老了，很多问题都没有现成的答案和别人的复现。
           </p>
@@ -108,14 +108,14 @@
           </p>
 
 
-          <figure id="orgc9dc2aa">
+          <figure id="org5c812a7">
             <img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="50%" height="50%">
 
           </figure>
         </div>
-        <div id="outline-container-org37b36f0" class="outline-3">
-          <h3 id="org37b36f0">Arch Linux 初始安装</h3>
-          <div class="outline-text-3" id="text-org37b36f0">
+        <div id="outline-container-org38fda20" class="outline-3">
+          <h3 id="org38fda20">Arch Linux 初始安装</h3>
+          <div class="outline-text-3" id="text-org38fda20">
             <p>
               <a href="https://archlinux.org/download/">Arch Linux - Downloads</a> 页面下载最新的 ISO 文件，有很多国内镜像可以选。写入 U 盘之后，进入 BIOS 启动 U 盘引导。
             </p>
@@ -140,16 +140,16 @@
             </p>
           </div>
         </div>
-        <div id="outline-container-org0e79cf3" class="outline-3">
-          <h3 id="org0e79cf3">i3</h3>
-          <div class="outline-text-3" id="text-org0e79cf3">
+        <div id="outline-container-org27be92d" class="outline-3">
+          <h3 id="org27be92d">i3</h3>
+          <div class="outline-text-3" id="text-org27be92d">
             <p>
               <a href="https://github.com/i3/i3">i3</a> 的简洁实在太爱了。
             </p>
           </div>
-          <div id="outline-container-orgbabfec6" class="outline-4">
-            <h4 id="orgbabfec6">安装：</h4>
-            <div class="outline-text-4" id="text-orgbabfec6">
+          <div id="outline-container-org55a5742" class="outline-4">
+            <h4 id="org55a5742">安装：</h4>
+            <div class="outline-text-4" id="text-org55a5742">
               <div class="org-src-container">
                 <pre class="src src-bash">sudo pacman -S i3 xorg xrog-xinit
                   echo "exec i3" > ~/.xinitrc</pre>
@@ -160,9 +160,9 @@
               </p>
             </div>
           </div>
-          <div id="outline-container-org5fa2747" class="outline-4">
-            <h4 id="org5fa2747">配置</h4>
-            <div class="outline-text-4" id="text-org5fa2747">
+          <div id="outline-container-org90e7fbe" class="outline-4">
+            <h4 id="org90e7fbe">配置</h4>
+            <div class="outline-text-4" id="text-org90e7fbe">
               <ul class="org-ul">
                 <li><p>
                     设置鼠标滚轮翻转
@@ -213,9 +213,9 @@
             </div>
           </div>
         </div>
-        <div id="outline-container-org9773def" class="outline-3">
-          <h3 id="org9773def">其他设定</h3>
-          <div class="outline-text-3" id="text-org9773def">
+        <div id="outline-container-orgaeef57f" class="outline-3">
+          <h3 id="orgaeef57f">其他设定</h3>
+          <div class="outline-text-3" id="text-orgaeef57f">
             <p>
               i3 是一个裸的图形化窗口管理，图片查看，文件资源管理器什么的都没有。
             </p>
@@ -229,14 +229,18 @@
             </p>
 
             <p>
+              应用启动就用了 dmenu，很轻量，也可以直接在 i3 的配置里写快捷键。
+            </p>
+
+            <p>
               dotfiles 一直在用 GitHub 同步管理，迁移过来也很方便。
             </p>
           </div>
         </div>
       </div>
-      <div id="outline-container-org3530291" class="outline-2">
-        <h2 id="org3530291">冤家 Fcitx 和 Emacs</h2>
-        <div class="outline-text-2" id="text-org3530291">
+      <div id="outline-container-org16c84e8" class="outline-2">
+        <h2 id="org16c84e8">冤家 Fcitx 和 Emacs</h2>
+        <div class="outline-text-2" id="text-org16c84e8">
           <p>
             <code>~/.xprofile</code>
           </p>
@@ -278,11 +282,11 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-org52ce943" class="outline-2">
-        <h2 id="org52ce943">小结</h2>
-        <div class="outline-text-2" id="text-org52ce943">
+      <div id="outline-container-org51ce112" class="outline-2">
+        <h2 id="org51ce112">小结</h2>
+        <div class="outline-text-2" id="text-org51ce112">
           <p>
-            这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么不稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
+            这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
           </p>
 
           <p>
