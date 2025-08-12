@@ -17,7 +17,7 @@ Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux �
 
 最后决定使用 i3 和 X11，运行起来一点不卡，所有应用都是秒开。
 
-#+attr_html: :alt :class img :width 50% :height 50%
+#+attr_html: :alt :class img :width 70% :height 70%
 https://pic.vandee.art/images/2025-08-12_16-18.png
 
 ** Arch Linux 初始安装
@@ -118,7 +118,7 @@ QT_IM_MODULE=fcitx
 
 还有其他网上能查到的地方我都设置了。
 
-现在他们两个的情况就是：有时候是 Emacs 里可以用，系统不能用，有时候又刚好反过来，极少数情况都可以用。
+现在他们两个的情况就是：有时候是 Emacs 里可以用，系统不能用，有时候又刚好反过来，还有的时候 Emacs 桌面不能用，但是 Emacsclient 可以，大多数时候在终端里 ~emacs -nw~ 可以，极少数情况都可以用。
 
 这篇博客就是趁它们刚好都可以同时运行的时候抓紧时间写的！
 
