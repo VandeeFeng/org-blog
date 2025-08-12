@@ -4,7 +4,253 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Fri, 08 Aug 2025 15:33:50 +0800</lastBuildDate>
+<lastBuildDate>Tue, 12 Aug 2025 17:09:23 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[薛定谔的 Linux]]></title>
+  <description><![CDATA[
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#org892fb34">TL;DR</a></li>
+            <li><a href="#org649d0fb">折腾记录</a>
+              <ul>
+                <li><a href="#org37b36f0">Arch Linux 初始安装</a></li>
+                <li><a href="#org0e79cf3">i3</a>
+                  <ul>
+                    <li><a href="#orgbabfec6">安装：</a></li>
+                    <li><a href="#org5fa2747">配置</a></li>
+                  </ul>
+                </li>
+                <li><a href="#org9773def">其他设定</a></li>
+              </ul>
+            </li>
+            <li><a href="#org3530291">冤家 Fcitx 和 Emacs</a></li>
+            <li><a href="#org52ce943">小结</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div id="outline-container-org892fb34" class="outline-2">
+        <h2 id="org892fb34">TL;DR</h2>
+        <div class="outline-text-2" id="text-org892fb34">
+          <p>
+            Both stable and unstable until you linux.
+          </p>
+
+          <p>
+            Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux 的图形界面和显示器协议的混乱和前端有的一拼。
+          </p>
+
+          <p>
+            我的 Fcitx 输入法框架在 Emacs 和系统之间反复横跳，就像薛定谔的猫一样。有时候是 Emacs 里可以用，系统不能用，有时候又刚好反过来。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org649d0fb" class="outline-2">
+        <h2 id="org649d0fb">折腾记录</h2>
+        <div class="outline-text-2" id="text-org649d0fb">
+          <p>
+            近道都是远路，尝试过几个大佬自己封装好的 Arch Linux，附带了桌面环境的安装和配置。是挺方便的，但是遇到一些小问题的时候，由于不知道他具体是怎么实现的一些功能，又要去看文档和源码。我这个电脑又比较老了，很多问题都没有现成的答案和别人的复现。
+          </p>
+
+          <p>
+            也尝试了 DHH 的 <a href="https://omarchy.org/">Omarchy</a> ，桌面环境是 hyprland + Wayland，可能是我的电脑比较老了，运行起来有点卡顿。内置的 theme 我又不太喜欢，体验了 2 天之后，感觉不是很顺手。
+          </p>
+
+          <p>
+            最后决定使用 i3 和 X11，运行起来一点不卡，所有应用都是秒开。
+          </p>
+
+
+          <figure id="orgc9dc2aa">
+            <img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="50%" height="50%">
+
+          </figure>
+        </div>
+        <div id="outline-container-org37b36f0" class="outline-3">
+          <h3 id="org37b36f0">Arch Linux 初始安装</h3>
+          <div class="outline-text-3" id="text-org37b36f0">
+            <p>
+              <a href="https://archlinux.org/download/">Arch Linux - Downloads</a> 页面下载最新的 ISO 文件，有很多国内镜像可以选。写入 U 盘之后，进入 BIOS 启动 U 盘引导。
+            </p>
+
+            <p>
+              <a href="https://wiki.archlinux.org/title/Archinstall">archinstall</a> 是 Arch Linux 的官方安装脚本，挺方便的，命令行输入 <code>archinstall</code> 启动安装脚本。
+            </p>
+
+            <ul class="org-ul">
+              <li>选择仓库镜像为 China</li>
+              <li>设置硬盘和分区：由于我的老电脑一个硬盘是小固态，一个是机械硬盘。在 <code>manually partition</code> 里手动设置把 arch 的系统（挂载 EFI Root）安装在固态，home 挂在在机械硬盘。设置完之后，设定 disk encryption 硬盘加密。</li>
+              <li>设定 root 密码并添加用户</li>
+              <li>设定 audio 为 pipewire，不在这里设定就播放不了音频，之后要单独安装。</li>
+            </ul>
+
+            <p>
+              Arch Linux 的镜像对国内环境太友好了，差不多 10 分钟就安装好了。
+            </p>
+
+            <p>
+              接下来就是大坑桌面环境。
+            </p>
+          </div>
+        </div>
+        <div id="outline-container-org0e79cf3" class="outline-3">
+          <h3 id="org0e79cf3">i3</h3>
+          <div class="outline-text-3" id="text-org0e79cf3">
+            <p>
+              <a href="https://github.com/i3/i3">i3</a> 的简洁实在太爱了。
+            </p>
+          </div>
+          <div id="outline-container-orgbabfec6" class="outline-4">
+            <h4 id="orgbabfec6">安装：</h4>
+            <div class="outline-text-4" id="text-orgbabfec6">
+              <div class="org-src-container">
+                <pre class="src src-bash">sudo pacman -S i3 xorg xrog-xinit
+                  echo "exec i3" > ~/.xinitrc</pre>
+              </div>
+
+              <p>
+                输入 startx 进入桌面环境。i3 会有一个引导界面，可以初始化生成配置文件到 <code>/home/user/.config/i3/config</code> 。
+              </p>
+            </div>
+          </div>
+          <div id="outline-container-org5fa2747" class="outline-4">
+            <h4 id="org5fa2747">配置</h4>
+            <div class="outline-text-4" id="text-org5fa2747">
+              <ul class="org-ul">
+                <li><p>
+                    设置鼠标滚轮翻转
+                  </p>
+
+                  <p>
+                    编辑 /usr/share/X11/xorg.conf.d/40-libinput.conf 文件:
+                  </p>
+
+                  <div class="org-src-container">
+                    <pre class="src src-bash">  Section "InputClass"
+                      Identifier "libinput pointer catchall"
+                      MatchIsPointer "on"
+                      MatchDevicePath "/dev/input/event*"
+                      Driver "libinput"
+                      Option "NaturalScrolling" "True"
+                      EndSection</pre>
+                </div></li>
+
+                <li><p>
+                    我的自定义设置
+                  </p>
+
+                  <div class="org-src-container">
+                    <pre class="src src-bash">exec --no-startup-id opensnitch-ui
+                      exec --no-startup-id copyq
+                      exec --no-startup-id feh --bg-fill /home/vandee/Pictures/create.jpg
+                      bindsym $mod+period exec ghostty
+                      bindsym $mod+b exec librewolf --new--windows
+                      bindsym $mod+e exec emacsclient -c -a ""
+                      bindsym $mod+f exec thunar
+                      bindsym $mod+q kill
+                      # bindsym $mod+Mod1+v exec --no-startup-id copyq show
+                      # Gaps
+                      gaps inner 5
+                      smart_gaps on
+                      # hide tiling window title bar
+                      for_window [tiling] border pixel 1
+                      smart_borders on
+                      # Set environment variables for Fcitx
+                      exec --no-startup-id export GTK_IM_MODULE=fcitx
+                      exec --no-startup-id export QT_IM_MODULE=fcitx
+                      exec --no-startup-id export XMODIFIERS=@im=fcitx
+                      exec --no-startup-id fcitx5
+                      exec --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY GTK_IM_MODULE QT_IM_MODULE XMODIFIERS</pre>
+                </div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org9773def" class="outline-3">
+          <h3 id="org9773def">其他设定</h3>
+          <div class="outline-text-3" id="text-org9773def">
+            <p>
+              i3 是一个裸的图形化窗口管理，图片查看，文件资源管理器什么的都没有。
+            </p>
+
+            <p>
+              一些基础的 app 和系统设定，让 LLM 生成了一个安装脚本。迭代了很多次现在基本可用了。
+            </p>
+
+            <p>
+              脚本会安装好 rime 输入法，系统字体，ghostty 终端，paru 包管理器，Node.js，UV python，Emacs，thunar（文件管理器），opensnitch（轻量网络监控）, flameshot（截图），mpv（媒体播放）,feh（图片查看）等软件并设置好一些系统启动项服务。
+            </p>
+
+            <p>
+              dotfiles 一直在用 GitHub 同步管理，迁移过来也很方便。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org3530291" class="outline-2">
+        <h2 id="org3530291">冤家 Fcitx 和 Emacs</h2>
+        <div class="outline-text-2" id="text-org3530291">
+          <p>
+            <code>~/.xprofile</code>
+          </p>
+
+          <div class="org-src-container">
+            <pre class="src src-bash">export GTK_IM_MODULE=fcitx
+              export QT_IM_MODULE=fcitx
+              export XMODIFIERS=@im=fcitx</pre>
+          </div>
+
+          <p>
+            <code>/etc/environment.d/90-fcitx5.conf</code>
+          </p>
+
+          <div class="org-src-container">
+            <pre class="src src-bash">XMODIFIERS=@im=fcitx
+              GTK_IM_MODULE=fcitx
+              QT_IM_MODULE=fcitx</pre>
+          </div>
+
+          <p>
+            还有其他网上能查到的地方我都设置了。
+          </p>
+
+          <p>
+            现在他们两个的情况就是：有时候是 Emacs 里可以用，系统不能用，有时候又刚好反过来，极少数情况都可以用。
+          </p>
+
+          <p>
+            这篇博客就是趁它们刚好都可以同时运行的时候抓紧时间写的！
+          </p>
+
+          <p>
+            用 Emacs rime 可以解决现在这个问题，但我更想弄明白到底是哪里出了问题。
+          </p>
+
+          <p>
+            我猜测可能的原因是因为 Emacsclient 在设置为系统的 service 之后，启动需要加载的环境和 i3 之间有顺序要求。有时候加载的顺序对了，环境就应用上了。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org52ce943" class="outline-2">
+        <h2 id="org52ce943">小结</h2>
+        <div class="outline-text-2" id="text-org52ce943">
+          <p>
+            这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么不稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
+          </p>
+
+          <p>
+            Linux 就是我会一直使用下去的操作系统, <a href="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">Linux 太自由了</a> 。
+          </p>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-linux.html">Linux</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div>]]></description>
+  <category><![CDATA[Linux]]></category>
+  <category><![CDATA[Ramble]]></category>
+  <link>https://www.vandee.art/blog/2025-08-12-unstable-until-you-linux.html</link>
+  <guid>https://www.vandee.art/blog/2025-08-12-unstable-until-you-linux.html</guid>
+  <pubDate>Tue, 12 Aug 2025 15:10:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[PKM（个人知识管理）构建手册 - with AI]]></title>
   <description><![CDATA[
