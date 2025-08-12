@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Tue, 12 Aug 2025 17:54:34 +0800</lastBuildDate>
+<lastBuildDate>Wed, 13 Aug 2025 01:12:18 +0800</lastBuildDate>
 <item>
   <title><![CDATA[薛定谔的 Linux]]></title>
   <description><![CDATA[
@@ -12,27 +12,27 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org7098969">TL;DR</a></li>
-            <li><a href="#org57d67e1">折腾记录</a>
+            <li><a href="#orgf5671b3">TL;DR</a></li>
+            <li><a href="#org34eb437">折腾记录</a>
               <ul>
-                <li><a href="#org8bdf7b9">Arch Linux 初始安装</a></li>
-                <li><a href="#org3050f41">i3</a>
+                <li><a href="#orge03c961">Arch Linux 初始安装</a></li>
+                <li><a href="#org2342f39">i3</a>
                   <ul>
-                    <li><a href="#org52d0d4b">安装：</a></li>
-                    <li><a href="#org2f3cd8f">配置</a></li>
+                    <li><a href="#org0652e91">安装：</a></li>
+                    <li><a href="#org6c3eab7">配置</a></li>
                   </ul>
                 </li>
-                <li><a href="#org963a621">其他设定</a></li>
+                <li><a href="#org65c6a54">其他设定</a></li>
               </ul>
             </li>
-            <li><a href="#orgc372984">冤家 Fcitx 和 Emacs</a></li>
-            <li><a href="#orgd438451">小结</a></li>
+            <li><a href="#org4507b6a">冤家 Fcitx 和 Emacs</a></li>
+            <li><a href="#org30428e7">小结</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org7098969" class="outline-2">
-        <h2 id="org7098969">TL;DR</h2>
-        <div class="outline-text-2" id="text-org7098969">
+      <div id="outline-container-orgf5671b3" class="outline-2">
+        <h2 id="orgf5671b3">TL;DR</h2>
+        <div class="outline-text-2" id="text-orgf5671b3">
           <p>
             Both stable and unstable until you linux.
           </p>
@@ -46,9 +46,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-org57d67e1" class="outline-2">
-        <h2 id="org57d67e1">折腾记录</h2>
-        <div class="outline-text-2" id="text-org57d67e1">
+      <div id="outline-container-org34eb437" class="outline-2">
+        <h2 id="org34eb437">折腾记录</h2>
+        <div class="outline-text-2" id="text-org34eb437">
           <p>
             近道都是远路，尝试过几个大佬自己封装好的 Arch Linux，附带了桌面环境的安装和配置。是挺方便的，但是遇到一些小问题的时候，由于不知道他具体是怎么实现的一些功能，又要去看文档和源码。我这个电脑又比较老了，很多问题都没有现成的答案和别人的复现。
           </p>
@@ -62,14 +62,14 @@
           </p>
 
 
-          <figure id="org634a933">
+          <figure id="orge3eca3d">
             <img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="70%" height="70%">
 
           </figure>
         </div>
-        <div id="outline-container-org8bdf7b9" class="outline-3">
-          <h3 id="org8bdf7b9">Arch Linux 初始安装</h3>
-          <div class="outline-text-3" id="text-org8bdf7b9">
+        <div id="outline-container-orge03c961" class="outline-3">
+          <h3 id="orge03c961">Arch Linux 初始安装</h3>
+          <div class="outline-text-3" id="text-orge03c961">
             <p>
               <a href="https://archlinux.org/download/">Arch Linux - Downloads</a> 页面下载最新的 ISO 文件，有很多国内镜像可以选。写入 U 盘之后，进入 BIOS 启动 U 盘引导。
             </p>
@@ -94,16 +94,16 @@
             </p>
           </div>
         </div>
-        <div id="outline-container-org3050f41" class="outline-3">
-          <h3 id="org3050f41">i3</h3>
-          <div class="outline-text-3" id="text-org3050f41">
+        <div id="outline-container-org2342f39" class="outline-3">
+          <h3 id="org2342f39">i3</h3>
+          <div class="outline-text-3" id="text-org2342f39">
             <p>
               <a href="https://github.com/i3/i3">i3</a> 的简洁实在太爱了。
             </p>
           </div>
-          <div id="outline-container-org52d0d4b" class="outline-4">
-            <h4 id="org52d0d4b">安装：</h4>
-            <div class="outline-text-4" id="text-org52d0d4b">
+          <div id="outline-container-org0652e91" class="outline-4">
+            <h4 id="org0652e91">安装：</h4>
+            <div class="outline-text-4" id="text-org0652e91">
               <div class="org-src-container">
                 <pre class="src src-bash">sudo pacman -S i3 xorg xrog-xinit
                   echo "exec i3" > ~/.xinitrc</pre>
@@ -114,9 +114,9 @@
               </p>
             </div>
           </div>
-          <div id="outline-container-org2f3cd8f" class="outline-4">
-            <h4 id="org2f3cd8f">配置</h4>
-            <div class="outline-text-4" id="text-org2f3cd8f">
+          <div id="outline-container-org6c3eab7" class="outline-4">
+            <h4 id="org6c3eab7">配置</h4>
+            <div class="outline-text-4" id="text-org6c3eab7">
               <ul class="org-ul">
                 <li><p>
                     设置鼠标滚轮翻转
@@ -156,20 +156,15 @@
                       # hide tiling window title bar
                       for_window [tiling] border pixel 1
                       smart_borders on
-                      # Set environment variables for Fcitx
-                      exec --no-startup-id export GTK_IM_MODULE=fcitx
-                      exec --no-startup-id export QT_IM_MODULE=fcitx
-                      exec --no-startup-id export XMODIFIERS=@im=fcitx
-                      exec --no-startup-id fcitx5
-                      exec --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY GTK_IM_MODULE QT_IM_MODULE XMODIFIERS</pre>
+                      exec --no-startup-id fcitx5</pre>
                 </div></li>
               </ul>
             </div>
           </div>
         </div>
-        <div id="outline-container-org963a621" class="outline-3">
-          <h3 id="org963a621">其他设定</h3>
-          <div class="outline-text-3" id="text-org963a621">
+        <div id="outline-container-org65c6a54" class="outline-3">
+          <h3 id="org65c6a54">其他设定</h3>
+          <div class="outline-text-3" id="text-org65c6a54">
             <p>
               i3 是一个裸的图形化窗口管理，图片查看，文件资源管理器什么的都没有。
             </p>
@@ -192,9 +187,9 @@
           </div>
         </div>
       </div>
-      <div id="outline-container-orgc372984" class="outline-2">
-        <h2 id="orgc372984">冤家 Fcitx 和 Emacs</h2>
-        <div class="outline-text-2" id="text-orgc372984">
+      <div id="outline-container-org4507b6a" class="outline-2">
+        <h2 id="org4507b6a">冤家 Fcitx 和 Emacs</h2>
+        <div class="outline-text-2" id="text-org4507b6a">
           <p>
             <code>~/.xprofile</code>
           </p>
@@ -234,11 +229,15 @@
           <p>
             我猜测可能的原因是因为 Emacsclient 在设置为系统的 service 之后，启动需要加载的环境和 i3 之间有顺序要求。有时候加载的顺序对了，环境就应用上了。
           </p>
+
+          <p>
+            之前的猜测错了，是因为我用 systemd 启动了 Emacs daemon，而 i3 启动的 Fcitx5 获取的是 i3 session 的环境变量。之前就算我在 Emacs 里使用 <code>getenv</code> 指令获取到了 <code>XMODIFIERS=@im=fcitx</code> ，输入法框架还是出不来。由于某种原因，systemd 里启动的 Emacs 和 i3 的环境变量没有统一。找到一个最简单的方法，直接用 tmux 后台 <code>Emacs --daemon</code> 。
+          </p>
         </div>
       </div>
-      <div id="outline-container-orgd438451" class="outline-2">
-        <h2 id="orgd438451">小结</h2>
-        <div class="outline-text-2" id="text-orgd438451">
+      <div id="outline-container-org30428e7" class="outline-2">
+        <h2 id="org30428e7">小结</h2>
+        <div class="outline-text-2" id="text-org30428e7">
           <p>
             这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
           </p>

@@ -81,12 +81,7 @@ smart_gaps on
 for_window [tiling] border pixel 1
 smart_borders on
 
-# Set environment variables for Fcitx
-exec --no-startup-id export GTK_IM_MODULE=fcitx
-exec --no-startup-id export QT_IM_MODULE=fcitx
-exec --no-startup-id export XMODIFIERS=@im=fcitx
 exec --no-startup-id fcitx5
-exec --no-startup-id systemctl --user import-environment DISPLAY XAUTHORITY GTK_IM_MODULE QT_IM_MODULE XMODIFIERS
   #+end_src
 ** 其他设定
 i3 是一个裸的图形化窗口管理，图片查看，文件资源管理器什么的都没有。
@@ -125,6 +120,8 @@ QT_IM_MODULE=fcitx
 用 Emacs rime 可以解决现在这个问题，但我更想弄明白到底是哪里出了问题。
 
 我猜测可能的原因是因为 Emacsclient 在设置为系统的 service 之后，启动需要加载的环境和 i3 之间有顺序要求。有时候加载的顺序对了，环境就应用上了。
+
+之前的猜测错了，是因为我用 systemd 启动了 Emacs daemon，而 i3 启动的 Fcitx5 获取的是 i3 session 的环境变量。之前就算我在 Emacs 里使用 ~getenv~ 指令获取到了 ~XMODIFIERS=@im=fcitx~ ，输入法框架还是出不来。由于某种原因，systemd 里启动的 Emacs 和 i3 的环境变量没有统一。找到一个最简单的方法，直接用 tmux 后台 ~Emacs --daemon~ 。
 
 * 小结
 这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
