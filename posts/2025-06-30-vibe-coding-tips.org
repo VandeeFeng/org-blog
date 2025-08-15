@@ -176,3 +176,25 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
 - Claude Squad: Claude Squad is a terminal app that manages multiple Claude Code, Codex (and other local agents including Aider) in separate workspaces, allowing you to work on multiple tasks simultaneously.
 
   https://github.com/smtg-ai/claude-squad
+- 一个 OpenRouter 的开源增强版，LMRouter，会支持所有 LLM /图片/视频/音频/embedding模型，提供统一的OpenAI/Anthropic/Responses API接口。
+  https://github.com/LMRouter/lmrouter-core
+- Control Claude Code remotely via email. Start tasks locally, receive notifications when Claude completes them, and send new commands by simply replying to emails.
+  https://github.com/JessyTsui/Claude-Code-Remote
+- claude-code-templates: CLI tool for configuring and monitoring Claude Code
+  https://github.com/davila7/claude-code-templates
+- charmbracelet/crush 是一个专为终端打造的 AI 编程助手，它能够在你最喜欢的命令行环境下，为你的开发工作提供智能支持。该项目以 Go 语言开发，主打轻量、高效和极简美学，结合了 Glamour 风格的界面表现。crush 能帮助你更高效地编写、理解和管理代码，让 AI 助手真正融入你的终端开发流程，提升工作体验和生产力。
+  https://github.com/charmbracelet/crush
+- ccundo seamlessly integrates with Claude Code to provide granular undo functionality. It reads directly from Claude Code's session files to track file operations and allows you to selectively revert changes with full preview and cascading safety.
+  https://github.com/RonitSachdev/ccundo
+- claude-code-proxy: A proxy server that enables Claude Code to work with OpenAI-compatible API providers. Convert Claude API requests to OpenAI API calls, allowing you to use various LLM providers through the Claude Code CLI.
+  https://github.com/fuergaosi233/claude-code-proxy
+- claude-code-router: 可以将 Claude Code 里面的请求转发到其他你自定义的模型中，比如本地 Ollama 或者任何一个大模型的云服务。
+  https://github.com/musistudio/claude-code-router
+
+* Articles
+- [[https://evrim.zone/blog/opinion/vibes_casino][Vibe Coding Casino – blog/opinion/vibes_casino — evrim.zone]]
+- [[https://blog.val.town/vibe-code][Vibe code is legacy code | Val Town Blog]]
+- [[https://onevcat.com/2025/08/claude-code/][一个半月高强度 Claude Code 使用后感受 | OneV's Den]]
+- [[https://www.anthropic.com/news/how-anthropic-teams-use-claude-code][How Anthropic teams use Claude Code \ Anthropic]]
+- [[https://www.dzombak.com/blog/2025/08/getting-good-results-from-claude-code/][Getting Good Results from Claude Code • Chris Dzombak]]
+  文章的 CLAUDE.md 还不错

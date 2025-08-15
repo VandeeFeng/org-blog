@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Thu, 14 Aug 2025 16:32:17 +0800</lastBuildDate>
+<lastBuildDate>Fri, 15 Aug 2025 15:00:24 +0800</lastBuildDate>
 <item>
   <title><![CDATA[薛定谔的 Linux]]></title>
   <description><![CDATA[
@@ -1105,284 +1105,312 @@ source: {{url}}
 <item>
   <title><![CDATA[Vibe Coding Tips]]></title>
   <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgb070f6f">TL;DR</a></li>
-<li><a href="#orgd7c16ad">General Tips</a></li>
-<li><a href="#orgc2da1b5">Container</a>
-<ul>
-<li><a href="#org8032528">Coding Assistant Container</a></li>
-<li><a href="#orgb3f9928">MCP Container</a></li>
-</ul>
-</li>
-<li><a href="#org7d5d7d2">CLI AI Coding Tools</a></li>
-</ul>
-</div>
-</nav>
-<div id="outline-container-orgb070f6f" class="outline-2">
-<h2 id="orgb070f6f">TL;DR</h2>
-<div class="outline-text-2" id="text-orgb070f6f">
-<p>
-各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
-</p>
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#org9902a2d">TL;DR</a></li>
+            <li><a href="#orgaeddedc">General Tips</a></li>
+            <li><a href="#orgc238b46">Container</a>
+              <ul>
+                <li><a href="#orgb3c3e11">Coding Assistant Container</a></li>
+                <li><a href="#orge6142b8">MCP Container</a></li>
+              </ul>
+            </li>
+            <li><a href="#org8db75ec">CLI AI Coding Tools</a></li>
+            <li><a href="#org422ac25">Articles</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div id="outline-container-org9902a2d" class="outline-2">
+        <h2 id="org9902a2d">TL;DR</h2>
+        <div class="outline-text-2" id="text-org9902a2d">
+          <p>
+            各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
+          </p>
 
-<p>
-持续记录一下 vibe coding 的相关 tips。
-</p>
+          <p>
+            持续记录一下 vibe coding 的相关 tips。
+          </p>
 
-<p>
-<a href="https://memo.vandee.art/issue/62">Vibe Coding Timeline #62 - Git Memo</a>
-</p>
-</div>
-</div>
-<div id="outline-container-orgd7c16ad" class="outline-2">
-<h2 id="orgd7c16ad">General Tips</h2>
-<div class="outline-text-2" id="text-orgd7c16ad">
-<p>
-由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
-</p>
+          <p>
+            <a href="https://memo.vandee.art/issue/62">Vibe Coding Timeline #62 - Git Memo</a>
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orgaeddedc" class="outline-2">
+        <h2 id="orgaeddedc">General Tips</h2>
+        <div class="outline-text-2" id="text-orgaeddedc">
+          <p>
+            由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
+          </p>
 
-<p>
-事实证明当时的判断是正确的，没有把时间和精力过多的用在学习 cursor 这个工具上面。现在 Cursor 被 Claude code 抄家背刺了，变笨了许多。现在风向又铺天盖地的倒向了 Claude code。
-</p>
+          <p>
+            事实证明当时的判断是正确的，没有把时间和精力过多的用在学习 cursor 这个工具上面。现在 Cursor 被 Claude code 抄家背刺了，变笨了许多。现在风向又铺天盖地的倒向了 Claude code。
+          </p>
 
-<p>
-现在的 Vibe Coding 也是一样，以后还会出现更智能的 vibe 工具和形态，AI 的迭代实在太快了。
-</p>
+          <p>
+            现在的 Vibe Coding 也是一样，以后还会出现更智能的 vibe 工具和形态，AI 的迭代实在太快了。
+          </p>
 
-<p>
-这些工具本身不是那么关键，之前 Cursor 对 Claude 优化的 prompt 和方法，以及现在 Claude code 的底层优化才是 vibe coding 这个阶段更值得学习的。
-</p>
+          <p>
+            这些工具本身不是那么关键，之前 Cursor 对 Claude 优化的 prompt 和方法，以及现在 Claude code 的底层优化才是 vibe coding 这个阶段更值得学习的。
+          </p>
 
-<p>
-OpenAI 的 codex, Gemini CLI 相继开源，背后的核心实现会越来越清晰。
-</p>
+          <p>
+            OpenAI 的 codex, Gemini CLI 相继开源，背后的核心实现会越来越清晰。
+          </p>
 
-<p>
-最近一直在看三巨头的代码库，还有这个 <a href="https://github.com/sst/opencode">https://github.com/sst/opencode</a> ，让 Gemini CLI 分析 Gemini CLI 也是挺有趣。
-</p>
+          <p>
+            最近一直在看三巨头的代码库，还有这个 <a href="https://github.com/sst/opencode">https://github.com/sst/opencode</a> ，让 Gemini CLI 分析 Gemini CLI 也是挺有趣。
+          </p>
 
-<p>
-这些 CLI 代码工具不一定要拿来写代码，就像 cursor 可以和 obsidian 的库结合做笔记一样。
-</p>
+          <p>
+            这些 CLI 代码工具不一定要拿来写代码，就像 cursor 可以和 obsidian 的库结合做笔记一样。
+          </p>
 
-<p>
-<code>gemini -p "&lt;prompt&gt;"</code> 直接调用 Gemini CLI 完全可以当作一个终端的 AI 小助手了。也可以结合其他工作流，充分利用 Gemini 超长的上下文提供 context 给其他 LLM。
-</p>
+          <p>
+            <code>gemini -p "&lt;prompt&gt;"</code> 直接调用 Gemini CLI 完全可以当作一个终端的 AI 小助手了。也可以结合其他工作流，充分利用 Gemini 超长的上下文提供 context 给其他 LLM。
+          </p>
 
-<p>
-很久之前的这个 <a href="https://github.com/OpenInterpreter/open-interpreter">OpenInterpreter/open-interpreter</a> 项目能做的事，现在用 CLI 代码工具也可以轻松实现了。 <a href="https://github.com/warpdotdev/Warp">warpdotdev/Warp</a> AI 终端的很多功能现在也可以使用 Gemini CLI 等工具实现了。
-</p>
-</div>
-</div>
-<div id="outline-container-orgc2da1b5" class="outline-2">
-<h2 id="orgc2da1b5">Container</h2>
-<div class="outline-text-2" id="text-orgc2da1b5">
-</div>
-<div id="outline-container-org8032528" class="outline-3">
-<h3 id="org8032528">Coding Assistant Container</h3>
-<div class="outline-text-3" id="text-org8032528">
-<p>
-参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
-</p>
+          <p>
+            很久之前的这个 <a href="https://github.com/OpenInterpreter/open-interpreter">OpenInterpreter/open-interpreter</a> 项目能做的事，现在用 CLI 代码工具也可以轻松实现了。 <a href="https://github.com/warpdotdev/Warp">warpdotdev/Warp</a> AI 终端的很多功能现在也可以使用 Gemini CLI 等工具实现了。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orgc238b46" class="outline-2">
+        <h2 id="orgc238b46">Container</h2>
+        <div class="outline-text-2" id="text-orgc238b46">
+        </div>
+        <div id="outline-container-orgb3c3e11" class="outline-3">
+          <h3 id="orgb3c3e11">Coding Assistant Container</h3>
+          <div class="outline-text-3" id="text-orgb3c3e11">
+            <p>
+              参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
+            </p>
 
-<p>
-Claude 4 的编程效果现在普遍认为是最好的，但是 Claude 的封控太严格了，我也没那么大编程的需求，封一次号就又要折腾。
-</p>
+            <p>
+              Claude 4 的编程效果现在普遍认为是最好的，但是 Claude 的封控太严格了，我也没那么大编程的需求，封一次号就又要折腾。
+            </p>
 
-<p>
-Gemini 2.5 Pro 的 API 现在每天有 1000 次免费请求，对我来说足够了。Gemini 的超长 context window 对分析和学习项目帮助很大。但 Gemini 免费的代价就是共享对话的数据。
-</p>
+            <p>
+              Gemini 2.5 Pro 的 API 现在每天有 1000 次免费请求，对我来说足够了。Gemini 的超长 context window 对分析和学习项目帮助很大。但 Gemini 免费的代价就是共享对话的数据。
+            </p>
 
-<p>
-以 Gemini CLI 为例，执行 <code>docker build -t YOUR-IMAGE-NAME .</code> build image。
-</p>
+            <p>
+              以 Gemini CLI 为例，执行 <code>docker build -t YOUR-IMAGE-NAME .</code> build image。
+            </p>
 
-<div class="org-src-container">
-<pre class="src src-nil">FROM ubuntu:latest
-# Update system and install base dependencies
-RUN apt-get update && apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    build-essential \
-    git \
-    curl \
-    wget \
-    vim \
-    neovim \
-    sudo \
-    openssh-client \
-    ca-certificates \
-    gnupg
-# Install development tools
-RUN apt-get install -y \
-    python3 \
-    python3-pip \
-    jq \
-    tmux \
-    htop \
-    tree \
-    unzip \
-    protobuf-compiler \
-    zip
-# Install Node.js and npm
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g pnpm yarn
-# Install ripgrep and fd-find
-RUN apt-get update && \
-    apt-get install -y ripgrep fd-find
-# Create a regular user
-RUN useradd -m -G sudo -s /bin/bash user && \
-    echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-# Switch to user for installations
-USER user
-WORKDIR /home/user
-# Switch back to root for cleanup
-USER root
-# Clean apt cache
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-# Switch back to user
-USER user
-# Install Gemini CLI globally (user has npm permissions via sudo)
-RUN sudo npm install -g @google/gemini-cli
-# Set working directory
-WORKDIR /workspace
-# Set shell to bash and ensure .bashrc is loaded
-SHELL ["/bin/bash", "-c"]
-RUN echo '[ -f ~/.bashrc ] && source ~/.bashrc' >> ~/.bash_profile
-CMD ["/bin/bash", "-l", "-c", "gemini"]</pre>
-</div>
+            <div class="org-src-container">
+              <pre class="src src-nil">FROM ubuntu:latest
+                # Update system and install base dependencies
+                RUN apt-get update && apt-get upgrade -y && \
+                DEBIAN_FRONTEND=noninteractive apt-get install -y \
+                build-essential \
+                git \
+                curl \
+                wget \
+                vim \
+                neovim \
+                sudo \
+                openssh-client \
+                ca-certificates \
+                gnupg
+                # Install development tools
+                RUN apt-get install -y \
+                python3 \
+                python3-pip \
+                jq \
+                tmux \
+                htop \
+                tree \
+                unzip \
+                protobuf-compiler \
+                zip
+                # Install Node.js and npm
+                RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+                apt-get install -y nodejs && \
+                npm install -g pnpm yarn
+                # Install ripgrep and fd-find
+                RUN apt-get update && \
+                apt-get install -y ripgrep fd-find
+                # Create a regular user
+                RUN useradd -m -G sudo -s /bin/bash user && \
+                echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+                # Switch to user for installations
+                USER user
+                WORKDIR /home/user
+                # Switch back to root for cleanup
+                USER root
+                # Clean apt cache
+                RUN apt-get clean && \
+                rm -rf /var/lib/apt/lists/*
+                # Switch back to user
+                USER user
+                # Install Gemini CLI globally (user has npm permissions via sudo)
+                RUN sudo npm install -g @google/gemini-cli
+                # Set working directory
+                WORKDIR /workspace
+                # Set shell to bash and ensure .bashrc is loaded
+                SHELL ["/bin/bash", "-c"]
+                RUN echo '[ -f ~/.bashrc ] && source ~/.bashrc' >> ~/.bash_profile
+                CMD ["/bin/bash", "-l", "-c", "gemini"]</pre>
+            </div>
 
-<p>
-以 bash 为例，在 <code>~/.bashrc</code> 里添加：
-</p>
+            <p>
+              以 bash 为例，在 <code>~/.bashrc</code> 里添加：
+            </p>
 
-<div class="org-src-container">
-<pre class="src src-bash">
-# geminix
-alias geminix='docker run -it --rm \
-  -v $(pwd):/workspace \
-  -v ~/.bashrc:/home/user/.bashrc \
-  -v ~/.config/gh:/home/user/.config/gh \
-  YOUR-IMAGE-NAME'</pre>
-</div>
+            <div class="org-src-container">
+              <pre class="src src-bash">
+                # geminix
+                alias geminix='docker run -it --rm \
+                -v $(pwd):/workspace \
+                -v ~/.bashrc:/home/user/.bashrc \
+                -v ~/.config/gh:/home/user/.config/gh \
+                YOUR-IMAGE-NAME'</pre>
+            </div>
 
-<p>
-<code>-v $(pwd):/workspace</code> 会把当前目录挂载到 docker 的 volume。可以根据需求挂载更多的目录。
-</p>
+            <p>
+              <code>-v $(pwd):/workspace</code> 会把当前目录挂载到 docker 的 volume。可以根据需求挂载更多的目录。
+            </p>
 
-<p>
-这样就实现了在 docker 隔离环境里使用 Gemini CLI 或其他 AI 工具，vibe coding 指定的项目。
-</p>
+            <p>
+              这样就实现了在 docker 隔离环境里使用 Gemini CLI 或其他 AI 工具，vibe coding 指定的项目。
+            </p>
 
-<p>
-如果在 macOS，用 OrbStack 就更方便了，它可以直接共享本机和 container 的数据。
-</p>
-</div>
-</div>
-<div id="outline-container-orgb3f9928" class="outline-3">
-<h3 id="orgb3f9928">MCP Container</h3>
-<div class="outline-text-3" id="text-orgb3f9928">
-<p>
-MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
-</p>
+            <p>
+              如果在 macOS，用 OrbStack 就更方便了，它可以直接共享本机和 container 的数据。
+            </p>
+          </div>
+        </div>
+        <div id="outline-container-orge6142b8" class="outline-3">
+          <h3 id="orge6142b8">MCP Container</h3>
+          <div class="outline-text-3" id="text-orge6142b8">
+            <p>
+              MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
+            </p>
 
-<p>
-MCP Container 相关的项目也挺多，我用的是: <a href="https://github.com/TBXark/mcp-proxy">https://github.com/TBXark/mcp-proxy</a>
-</p>
+            <p>
+              MCP Container 相关的项目也挺多，我用的是: <a href="https://github.com/TBXark/mcp-proxy">https://github.com/TBXark/mcp-proxy</a>
+            </p>
 
-<p>
-<a href="https://miantiao.me/posts/guide-to-running-mcp-server-in-a-sandbox/">在 Docker 沙箱中运行 MCP Server | 面条实验室</a> 作者还写了一个教程。
-</p>
+            <p>
+              <a href="https://miantiao.me/posts/guide-to-running-mcp-server-in-a-sandbox/">在 Docker 沙箱中运行 MCP Server | 面条实验室</a> 作者还写了一个教程。
+            </p>
 
-<p>
-我已经把我常用的几个 MCP 都部署好了。
-</p>
+            <p>
+              我已经把我常用的几个 MCP 都部署好了。
+            </p>
 
-<p>
-用的最多的就是 sequential-thinking ，Exa search。
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org7d5d7d2" class="outline-2">
-<h2 id="org7d5d7d2">CLI AI Coding Tools</h2>
-<div class="outline-text-2" id="text-org7d5d7d2">
-<p>
-整理了一些现在 star 比较多的 CLI AI Coding 项目：
-</p>
+            <p>
+              用的最多的就是 sequential-thinking ，Exa search。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org8db75ec" class="outline-2">
+        <h2 id="org8db75ec">CLI AI Coding Tools</h2>
+        <div class="outline-text-2" id="text-org8db75ec">
+          <p>
+            整理了一些现在 star 比较多的 CLI AI Coding 项目：
+          </p>
 
-<ul class="org-ul">
-<li><p>
-CCSeva: A beautiful macOS menu bar app for tracking your Claude Code usage in real-time. Monitor token consumption, costs, and usage patterns with an elegant interface.
-</p>
+          <ul class="org-ul">
+            <li><p>
+                CCSeva: A beautiful macOS menu bar app for tracking your Claude Code usage in real-time. Monitor token consumption, costs, and usage patterns with an elegant interface.
+              </p>
 
-<p>
-<a href="https://github.com/Iamshankhadeep/ccseva">https://github.com/Iamshankhadeep/ccseva</a>
-</p></li>
+              <p>
+                <a href="https://github.com/Iamshankhadeep/ccseva">https://github.com/Iamshankhadeep/ccseva</a>
+            </p></li>
 
-<li><p>
-SuperClaude: this lightweight framework turns claude code into a complete dev partner
-</p>
+            <li><p>
+                SuperClaude: this lightweight framework turns claude code into a complete dev partner
+              </p>
 
-<p>
-<a href="https://github.com/NomenAK/SuperClaude">https://github.com/NomenAK/SuperClaude</a>
-</p></li>
+              <p>
+                <a href="https://github.com/NomenAK/SuperClaude">https://github.com/NomenAK/SuperClaude</a>
+            </p></li>
 
-<li><p>
-claudia: Claude code GUI
-</p>
+            <li><p>
+                claudia: Claude code GUI
+              </p>
 
-<p>
-<a href="https://github.com/getAsterisk/claudia">https://github.com/getAsterisk/claudia</a>
-</p></li>
+              <p>
+                <a href="https://github.com/getAsterisk/claudia">https://github.com/getAsterisk/claudia</a>
+            </p></li>
 
-<li><p>
-Open Codex CLI: 一个大佬 fork 了 OpenAI 最近出的 CLI 工具，支持了更多的模型。
-</p>
+            <li><p>
+                Open Codex CLI: 一个大佬 fork 了 OpenAI 最近出的 CLI 工具，支持了更多的模型。
+              </p>
 
-<p>
-<a href="https://github.com/ymichael/open-codex">https://github.com/ymichael/open-codex</a>
-</p></li>
+              <p>
+                <a href="https://github.com/ymichael/open-codex">https://github.com/ymichael/open-codex</a>
+            </p></li>
 
-<li><p>
-codex: Lightweight coding agent that runs in your terminal
-</p>
+            <li><p>
+                codex: Lightweight coding agent that runs in your terminal
+              </p>
 
-<p>
-<a href="https://github.com/openai/codex">https://github.com/openai/codex</a>
-</p></li>
+              <p>
+                <a href="https://github.com/openai/codex">https://github.com/openai/codex</a>
+            </p></li>
 
-<li><p>
-opencode: AI coding agent, built for the terminal.
-</p>
+            <li><p>
+                opencode: AI coding agent, built for the terminal.
+              </p>
 
-<p>
-<a href="https://github.com/sst/opencode">https://github.com/sst/opencode</a>
-</p></li>
+              <p>
+                <a href="https://github.com/sst/opencode">https://github.com/sst/opencode</a>
+            </p></li>
 
-<li><p>
-opencode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
-</p>
+            <li><p>
+                opencode: OpenCode is a Go-based CLI application that brings AI assistance to your terminal. It provides a TUI (Terminal User Interface) for interacting with various AI models to help with coding tasks, debugging, and more.
+              </p>
 
-<p>
-<a href="https://github.com/opencode-ai/opencode">https://github.com/opencode-ai/opencode</a>
-</p></li>
+              <p>
+                <a href="https://github.com/opencode-ai/opencode">https://github.com/opencode-ai/opencode</a>
+            </p></li>
 
-<li><p>
-Claude Squad: Claude Squad is a terminal app that manages multiple Claude Code, Codex (and other local agents including Aider) in separate workspaces, allowing you to work on multiple tasks simultaneously.
-</p>
+            <li><p>
+                Claude Squad: Claude Squad is a terminal app that manages multiple Claude Code, Codex (and other local agents including Aider) in separate workspaces, allowing you to work on multiple tasks simultaneously.
+              </p>
 
-<p>
-<a href="https://github.com/smtg-ai/claude-squad">https://github.com/smtg-ai/claude-squad</a>
-</p></li>
-</ul>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div>]]></description>
+              <p>
+                <a href="https://github.com/smtg-ai/claude-squad">https://github.com/smtg-ai/claude-squad</a>
+            </p></li>
+            <li>一个 OpenRouter 的开源增强版，LMRouter，会支持所有 LLM /图片/视频/音频/embedding模型，提供统一的OpenAI/Anthropic/Responses API接口。
+              <a href="https://github.com/LMRouter/lmrouter-core">https://github.com/LMRouter/lmrouter-core</a></li>
+            <li>Control Claude Code remotely via email. Start tasks locally, receive notifications when Claude completes them, and send new commands by simply replying to emails.
+              <a href="https://github.com/JessyTsui/Claude-Code-Remote">https://github.com/JessyTsui/Claude-Code-Remote</a></li>
+            <li>claude-code-templates: CLI tool for configuring and monitoring Claude Code
+              <a href="https://github.com/davila7/claude-code-templates">https://github.com/davila7/claude-code-templates</a></li>
+            <li>charmbracelet/crush 是一个专为终端打造的 AI 编程助手，它能够在你最喜欢的命令行环境下，为你的开发工作提供智能支持。该项目以 Go 语言开发，主打轻量、高效和极简美学，结合了 Glamour 风格的界面表现。crush 能帮助你更高效地编写、理解和管理代码，让 AI 助手真正融入你的终端开发流程，提升工作体验和生产力。
+              <a href="https://github.com/charmbracelet/crush">https://github.com/charmbracelet/crush</a></li>
+            <li>ccundo seamlessly integrates with Claude Code to provide granular undo functionality. It reads directly from Claude Code's session files to track file operations and allows you to selectively revert changes with full preview and cascading safety.
+              <a href="https://github.com/RonitSachdev/ccundo">https://github.com/RonitSachdev/ccundo</a></li>
+            <li>claude-code-proxy: A proxy server that enables Claude Code to work with OpenAI-compatible API providers. Convert Claude API requests to OpenAI API calls, allowing you to use various LLM providers through the Claude Code CLI.
+              <a href="https://github.com/fuergaosi233/claude-code-proxy">https://github.com/fuergaosi233/claude-code-proxy</a></li>
+            <li>claude-code-router: 可以将 Claude Code 里面的请求转发到其他你自定义的模型中，比如本地 Ollama 或者任何一个大模型的云服务。
+              <a href="https://github.com/musistudio/claude-code-router">https://github.com/musistudio/claude-code-router</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="outline-container-org422ac25" class="outline-2">
+        <h2 id="org422ac25">Articles</h2>
+        <div class="outline-text-2" id="text-org422ac25">
+          <ul class="org-ul">
+            <li><a href="https://evrim.zone/blog/opinion/vibes_casino">Vibe Coding Casino – blog/opinion/vibes_casino — evrim.zone</a></li>
+            <li><a href="https://blog.val.town/vibe-code">Vibe code is legacy code | Val Town Blog</a></li>
+            <li><a href="https://onevcat.com/2025/08/claude-code/">一个半月高强度 Claude Code 使用后感受 | OneV's Den</a></li>
+            <li><a href="https://www.anthropic.com/news/how-anthropic-teams-use-claude-code">How Anthropic teams use Claude Code \ Anthropic</a></li>
+            <li><a href="https://www.dzombak.com/blog/2025/08/getting-good-results-from-claude-code/">Getting Good Results from Claude Code • Chris Dzombak</a>
+              文章的 CLAUDE.md 还不错</li>
+          </ul>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div>]]></description>
   <category><![CDATA[Coding]]></category>
   <link>https://www.vandee.art/blog/2025-06-30-vibe-coding-tips.html</link>
   <guid>https://www.vandee.art/blog/2025-06-30-vibe-coding-tips.html</guid>
