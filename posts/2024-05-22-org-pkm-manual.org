@@ -715,6 +715,7 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 - [[https://sspai.com/post/89828][u-Sir/drag-to-preview]]，最近发现一个Firefox浏览器插件，可以选中网页链接拖拽弹出单独的窗口预览网页，在窗口外区域鼠标点击即可关闭，很符合我的胃口。
 
+  已改名为：https://github.com/u-Sir/peek-pop
 **** 输入法设置
 
 由于使用了evil，如果使用系统的输入法，每次在 ~:w~ 保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。

@@ -58,22 +58,22 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org9902a2d">TL;DR</a></li>
-            <li><a href="#orgaeddedc">General Tips</a></li>
-            <li><a href="#orgc238b46">Container</a>
+            <li><a href="#org25eb970">TL;DR</a></li>
+            <li><a href="#org88352b3">General Tips</a></li>
+            <li><a href="#org8f5ef96">Container</a>
               <ul>
-                <li><a href="#orgb3c3e11">Coding Assistant Container</a></li>
-                <li><a href="#orge6142b8">MCP Container</a></li>
+                <li><a href="#orgc6f28ff">Coding Assistant Container</a></li>
+                <li><a href="#orgc979964">MCP Container</a></li>
               </ul>
             </li>
-            <li><a href="#org8db75ec">CLI AI Coding Tools</a></li>
-            <li><a href="#org422ac25">Articles</a></li>
+            <li><a href="#orgebdd7bb">CLI AI Coding Tools</a></li>
+            <li><a href="#orgaff5694">Articles</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org9902a2d" class="outline-2">
-        <h2 id="org9902a2d">TL;DR</h2>
-        <div class="outline-text-2" id="text-org9902a2d">
+      <div id="outline-container-org25eb970" class="outline-2">
+        <h2 id="org25eb970">TL;DR</h2>
+        <div class="outline-text-2" id="text-org25eb970">
           <p>
             各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
           </p>
@@ -87,9 +87,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgaeddedc" class="outline-2">
-        <h2 id="orgaeddedc">General Tips</h2>
-        <div class="outline-text-2" id="text-orgaeddedc">
+      <div id="outline-container-org88352b3" class="outline-2">
+        <h2 id="org88352b3">General Tips</h2>
+        <div class="outline-text-2" id="text-org88352b3">
           <p>
             由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
           </p>
@@ -127,13 +127,13 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgc238b46" class="outline-2">
-        <h2 id="orgc238b46">Container</h2>
-        <div class="outline-text-2" id="text-orgc238b46">
+      <div id="outline-container-org8f5ef96" class="outline-2">
+        <h2 id="org8f5ef96">Container</h2>
+        <div class="outline-text-2" id="text-org8f5ef96">
         </div>
-        <div id="outline-container-orgb3c3e11" class="outline-3">
-          <h3 id="orgb3c3e11">Coding Assistant Container</h3>
-          <div class="outline-text-3" id="text-orgb3c3e11">
+        <div id="outline-container-orgc6f28ff" class="outline-3">
+          <h3 id="orgc6f28ff">Coding Assistant Container</h3>
+          <div class="outline-text-3" id="text-orgc6f28ff">
             <p>
               参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
             </p>
@@ -233,9 +233,9 @@
             </p>
           </div>
         </div>
-        <div id="outline-container-orge6142b8" class="outline-3">
-          <h3 id="orge6142b8">MCP Container</h3>
-          <div class="outline-text-3" id="text-orge6142b8">
+        <div id="outline-container-orgc979964" class="outline-3">
+          <h3 id="orgc979964">MCP Container</h3>
+          <div class="outline-text-3" id="text-orgc979964">
             <p>
               MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
             </p>
@@ -258,9 +258,9 @@
           </div>
         </div>
       </div>
-      <div id="outline-container-org8db75ec" class="outline-2">
-        <h2 id="org8db75ec">CLI AI Coding Tools</h2>
-        <div class="outline-text-2" id="text-org8db75ec">
+      <div id="outline-container-orgebdd7bb" class="outline-2">
+        <h2 id="orgebdd7bb">CLI AI Coding Tools</h2>
+        <div class="outline-text-2" id="text-orgebdd7bb">
           <p>
             整理了一些现在 star 比较多的 CLI AI Coding 项目：
           </p>
@@ -329,27 +329,71 @@
               <p>
                 <a href="https://github.com/smtg-ai/claude-squad">https://github.com/smtg-ai/claude-squad</a>
             </p></li>
-            <li>一个 OpenRouter 的开源增强版，LMRouter，会支持所有 LLM /图片/视频/音频/embedding模型，提供统一的OpenAI/Anthropic/Responses API接口。
-              <a href="https://github.com/LMRouter/lmrouter-core">https://github.com/LMRouter/lmrouter-core</a></li>
-            <li>Control Claude Code remotely via email. Start tasks locally, receive notifications when Claude completes them, and send new commands by simply replying to emails.
-              <a href="https://github.com/JessyTsui/Claude-Code-Remote">https://github.com/JessyTsui/Claude-Code-Remote</a></li>
-            <li>claude-code-templates: CLI tool for configuring and monitoring Claude Code
-              <a href="https://github.com/davila7/claude-code-templates">https://github.com/davila7/claude-code-templates</a></li>
-            <li>charmbracelet/crush 是一个专为终端打造的 AI 编程助手，它能够在你最喜欢的命令行环境下，为你的开发工作提供智能支持。该项目以 Go 语言开发，主打轻量、高效和极简美学，结合了 Glamour 风格的界面表现。crush 能帮助你更高效地编写、理解和管理代码，让 AI 助手真正融入你的终端开发流程，提升工作体验和生产力。
-              <a href="https://github.com/charmbracelet/crush">https://github.com/charmbracelet/crush</a></li>
-            <li>ccundo seamlessly integrates with Claude Code to provide granular undo functionality. It reads directly from Claude Code's session files to track file operations and allows you to selectively revert changes with full preview and cascading safety.
-              <a href="https://github.com/RonitSachdev/ccundo">https://github.com/RonitSachdev/ccundo</a></li>
-            <li>claude-code-proxy: A proxy server that enables Claude Code to work with OpenAI-compatible API providers. Convert Claude API requests to OpenAI API calls, allowing you to use various LLM providers through the Claude Code CLI.
-              <a href="https://github.com/fuergaosi233/claude-code-proxy">https://github.com/fuergaosi233/claude-code-proxy</a></li>
-            <li>claude-code-router: 可以将 Claude Code 里面的请求转发到其他你自定义的模型中，比如本地 Ollama 或者任何一个大模型的云服务。
-              <a href="https://github.com/musistudio/claude-code-router">https://github.com/musistudio/claude-code-router</a></li>
+            <li><p>
+                一个 OpenRouter 的开源增强版，LMRouter，会支持所有 LLM /图片/视频/音频/embedding模型，提供统一的OpenAI/Anthropic/Responses API接口。
+              </p>
+
+              <p>
+                <a href="https://github.com/LMRouter/lmrouter-core">https://github.com/LMRouter/lmrouter-core</a>
+            </p></li>
+            <li><p>
+                Control Claude Code remotely via email. Start tasks locally, receive notifications when Claude completes them, and send new commands by simply replying to emails.
+              </p>
+
+              <p>
+                <a href="https://github.com/JessyTsui/Claude-Code-Remote">https://github.com/JessyTsui/Claude-Code-Remote</a>
+            </p></li>
+            <li><p>
+                claude-code-templates: CLI tool for configuring and monitoring Claude Code
+              </p>
+
+              <p>
+                <a href="https://github.com/davila7/claude-code-templates">https://github.com/davila7/claude-code-templates</a>
+            </p></li>
+            <li><p>
+                charmbracelet/crush 是一个专为终端打造的 AI 编程助手，它能够在你最喜欢的命令行环境下，为你的开发工作提供智能支持。该项目以 Go 语言开发，主打轻量、高效和极简美学，结合了 Glamour 风格的界面表现。crush 能帮助你更高效地编写、理解和管理代码，让 AI 助手真正融入你的终端开发流程，提升工作体验和生产力。
+              </p>
+
+              <p>
+                <a href="https://github.com/charmbracelet/crush">https://github.com/charmbracelet/crush</a>
+            </p></li>
+            <li><p>
+                ccundo seamlessly integrates with Claude Code to provide granular undo functionality. It reads directly from Claude Code's session files to track file operations and allows you to selectively revert changes with full preview and cascading safety.
+              </p>
+
+              <p>
+                <a href="https://github.com/RonitSachdev/ccundo">https://github.com/RonitSachdev/ccundo</a>
+            </p></li>
+            <li><p>
+                claude-code-proxy: A proxy server that enables Claude Code to work with OpenAI-compatible API providers. Convert Claude API requests to OpenAI API calls, allowing you to use various LLM providers through the Claude Code CLI.
+              </p>
+
+              <p>
+                <a href="https://github.com/fuergaosi233/claude-code-proxy">https://github.com/fuergaosi233/claude-code-proxy</a>
+            </p></li>
+            <li><p>
+                claude-code-router: 可以将 Claude Code 里面的请求转发到其他你自定义的模型中，比如本地 Ollama 或者任何一个大模型的云服务。
+              </p>
+
+              <p>
+                <a href="https://github.com/musistudio/claude-code-router">https://github.com/musistudio/claude-code-router</a>
+            </p></li>
           </ul>
         </div>
       </div>
-      <div id="outline-container-org422ac25" class="outline-2">
-        <h2 id="org422ac25">Articles</h2>
-        <div class="outline-text-2" id="text-org422ac25">
+      <div id="outline-container-orgaff5694" class="outline-2">
+        <h2 id="orgaff5694">Articles</h2>
+        <div class="outline-text-2" id="text-orgaff5694">
           <ul class="org-ul">
+            <li><p>
+                <a href="https://ghuntley.com/agent/">how to build a coding agent: free workshop</a>
+              </p>
+
+              <p>
+                <a href="https://github.com/ghuntley/how-to-build-a-coding-agent">https://github.com/ghuntley/how-to-build-a-coding-agent</a>
+            </p></li>
+
+            <li><a href="https://minusx.ai/blog/decoding-claude-code/">Minusx | What makes Claude Code so damn good (and how to recreate that magic in your agent)!?</a></li>
             <li><a href="https://evrim.zone/blog/opinion/vibes_casino">Vibe Coding Casino – blog/opinion/vibes_casino — evrim.zone</a></li>
             <li><a href="https://blog.val.town/vibe-code">Vibe code is legacy code | Val Town Blog</a></li>
             <li><a href="https://onevcat.com/2025/08/claude-code/">一个半月高强度 Claude Code 使用后感受 | OneV's Den</a></li>
