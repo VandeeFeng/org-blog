@@ -199,6 +199,8 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
   https://github.com/musistudio/claude-code-router
 
 * Articles
+- [[https://blog.sigplan.org/2025/08/29/ai-models-need-a-virtual-machine/][AI Models Need a Virtual Machine | SIGPLAN Blog]]
+- [[https://guangzhengli.com/blog/zh/vibe-coding-and-context-coding][谈谈 AI 编程工具的进化与 Vibe Coding]]
 - [[https://ghuntley.com/agent/][how to build a coding agent: free workshop]]
 
   https://github.com/ghuntley/how-to-build-a-coding-agent

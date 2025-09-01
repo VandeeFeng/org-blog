@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Mon, 01 Sep 2025 15:58:07 +0800</lastBuildDate>
+<lastBuildDate>Mon, 01 Sep 2025 22:42:14 +0800</lastBuildDate>
 <item>
   <title><![CDATA[薛定谔的 Linux]]></title>
   <description><![CDATA[
@@ -1130,22 +1130,22 @@ source: {{url}}
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org25eb970">TL;DR</a></li>
-            <li><a href="#org88352b3">General Tips</a></li>
-            <li><a href="#org8f5ef96">Container</a>
+            <li><a href="#org413c68e">TL;DR</a></li>
+            <li><a href="#orged0dfdc">General Tips</a></li>
+            <li><a href="#orgfc77432">Container</a>
               <ul>
-                <li><a href="#orgc6f28ff">Coding Assistant Container</a></li>
-                <li><a href="#orgc979964">MCP Container</a></li>
+                <li><a href="#orgdedab6c">Coding Assistant Container</a></li>
+                <li><a href="#org42600cb">MCP Container</a></li>
               </ul>
             </li>
-            <li><a href="#orgebdd7bb">CLI AI Coding Tools</a></li>
-            <li><a href="#orgaff5694">Articles</a></li>
+            <li><a href="#org1b59593">CLI AI Coding Tools</a></li>
+            <li><a href="#org8b7292f">Articles</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org25eb970" class="outline-2">
-        <h2 id="org25eb970">TL;DR</h2>
-        <div class="outline-text-2" id="text-org25eb970">
+      <div id="outline-container-org413c68e" class="outline-2">
+        <h2 id="org413c68e">TL;DR</h2>
+        <div class="outline-text-2" id="text-org413c68e">
           <p>
             各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
           </p>
@@ -1159,9 +1159,9 @@ source: {{url}}
           </p>
         </div>
       </div>
-      <div id="outline-container-org88352b3" class="outline-2">
-        <h2 id="org88352b3">General Tips</h2>
-        <div class="outline-text-2" id="text-org88352b3">
+      <div id="outline-container-orged0dfdc" class="outline-2">
+        <h2 id="orged0dfdc">General Tips</h2>
+        <div class="outline-text-2" id="text-orged0dfdc">
           <p>
             由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
           </p>
@@ -1199,13 +1199,13 @@ source: {{url}}
           </p>
         </div>
       </div>
-      <div id="outline-container-org8f5ef96" class="outline-2">
-        <h2 id="org8f5ef96">Container</h2>
-        <div class="outline-text-2" id="text-org8f5ef96">
+      <div id="outline-container-orgfc77432" class="outline-2">
+        <h2 id="orgfc77432">Container</h2>
+        <div class="outline-text-2" id="text-orgfc77432">
         </div>
-        <div id="outline-container-orgc6f28ff" class="outline-3">
-          <h3 id="orgc6f28ff">Coding Assistant Container</h3>
-          <div class="outline-text-3" id="text-orgc6f28ff">
+        <div id="outline-container-orgdedab6c" class="outline-3">
+          <h3 id="orgdedab6c">Coding Assistant Container</h3>
+          <div class="outline-text-3" id="text-orgdedab6c">
             <p>
               参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
             </p>
@@ -1305,9 +1305,9 @@ source: {{url}}
             </p>
           </div>
         </div>
-        <div id="outline-container-orgc979964" class="outline-3">
-          <h3 id="orgc979964">MCP Container</h3>
-          <div class="outline-text-3" id="text-orgc979964">
+        <div id="outline-container-org42600cb" class="outline-3">
+          <h3 id="org42600cb">MCP Container</h3>
+          <div class="outline-text-3" id="text-org42600cb">
             <p>
               MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
             </p>
@@ -1330,9 +1330,9 @@ source: {{url}}
           </div>
         </div>
       </div>
-      <div id="outline-container-orgebdd7bb" class="outline-2">
-        <h2 id="orgebdd7bb">CLI AI Coding Tools</h2>
-        <div class="outline-text-2" id="text-orgebdd7bb">
+      <div id="outline-container-org1b59593" class="outline-2">
+        <h2 id="org1b59593">CLI AI Coding Tools</h2>
+        <div class="outline-text-2" id="text-org1b59593">
           <p>
             整理了一些现在 star 比较多的 CLI AI Coding 项目：
           </p>
@@ -1453,10 +1453,12 @@ source: {{url}}
           </ul>
         </div>
       </div>
-      <div id="outline-container-orgaff5694" class="outline-2">
-        <h2 id="orgaff5694">Articles</h2>
-        <div class="outline-text-2" id="text-orgaff5694">
+      <div id="outline-container-org8b7292f" class="outline-2">
+        <h2 id="org8b7292f">Articles</h2>
+        <div class="outline-text-2" id="text-org8b7292f">
           <ul class="org-ul">
+            <li><a href="https://blog.sigplan.org/2025/08/29/ai-models-need-a-virtual-machine/">AI Models Need a Virtual Machine | SIGPLAN Blog</a></li>
+            <li><a href="https://guangzhengli.com/blog/zh/vibe-coding-and-context-coding">谈谈 AI 编程工具的进化与 Vibe Coding</a></li>
             <li><p>
                 <a href="https://ghuntley.com/agent/">how to build a coding agent: free workshop</a>
               </p>
