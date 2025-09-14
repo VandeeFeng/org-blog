@@ -190,6 +190,8 @@ bash，tmux，Emacs，Nvim，还有其他的配置一直用 GitHub 在同步，�
 
 Mac 和 Linux 在文件路径上基本是一致的，需要改的也很少。我也没有啥复杂的开发环境。。。
 ** 桌面环境和窗口管理
+2025-09-14 added : 已经转到了 Wayland 和 Sway，偶尔也用 X11 [[https://www.vandee.art/blog/2025-08-12-unstable-until-you-linux.html][薛定谔的 Linux]]
+
 KDE 的 Plasma 太重了，许多功能我也不需要。在 Arch Linux 里，发现 hyprland 自由度很高，就选择了这个。
 
 Gnome 不太喜欢，之前在虚拟机里一直用的 Ubuntu 就是 Gnome，整个的设计和操作逻辑都不太喜欢。看起来和 MacOS 挺像，但是用起来我感觉挺不顺手，而且 Mac 的 Dock 栏我一直不太喜欢。

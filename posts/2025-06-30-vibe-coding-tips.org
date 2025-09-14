@@ -142,6 +142,25 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
 
 用的最多的就是 sequential-thinking ，Exa search。
 
+* Articles
+整理了一些感觉还不错的文章
+
+- [[https://geohot.github.io//blog/jekyll/update/2025/09/12/ai-coding.html][AI Coding | the singularity is nearer]]
+  这篇的观点挺赞同
+- [[https://idiallo.com/blog/writing-code-is-easy-reading-is-hard][Writing Code Is Easy. Reading It Isn’t.]]
+- [[https://blog.sigplan.org/2025/08/29/ai-models-need-a-virtual-machine/][AI Models Need a Virtual Machine | SIGPLAN Blog]]
+- [[https://guangzhengli.com/blog/zh/vibe-coding-and-context-coding][谈谈 AI 编程工具的进化与 Vibe Coding]]
+- [[https://ghuntley.com/agent/][how to build a coding agent: free workshop]]
+
+  https://github.com/ghuntley/how-to-build-a-coding-agent
+
+- [[https://minusx.ai/blog/decoding-claude-code/][Minusx | What makes Claude Code so damn good (and how to recreate that magic in your agent)!?]]
+- [[https://evrim.zone/blog/opinion/vibes_casino][Vibe Coding Casino – blog/opinion/vibes_casino — evrim.zone]]
+- [[https://blog.val.town/vibe-code][Vibe code is legacy code | Val Town Blog]]
+- [[https://onevcat.com/2025/08/claude-code/][一个半月高强度 Claude Code 使用后感受 | OneV's Den]]
+- [[https://www.anthropic.com/news/how-anthropic-teams-use-claude-code][How Anthropic teams use Claude Code \ Anthropic]]
+- [[https://www.dzombak.com/blog/2025/08/getting-good-results-from-claude-code/][Getting Good Results from Claude Code • Chris Dzombak]]
+  文章的 CLAUDE.md 还不错
 * CLI AI Coding Tools
 整理了一些现在 star 比较多的 CLI AI Coding 项目：
 
@@ -197,18 +216,3 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
 - claude-code-router: 可以将 Claude Code 里面的请求转发到其他你自定义的模型中，比如本地 Ollama 或者任何一个大模型的云服务。
 
   https://github.com/musistudio/claude-code-router
-
-* Articles
-- [[https://blog.sigplan.org/2025/08/29/ai-models-need-a-virtual-machine/][AI Models Need a Virtual Machine | SIGPLAN Blog]]
-- [[https://guangzhengli.com/blog/zh/vibe-coding-and-context-coding][谈谈 AI 编程工具的进化与 Vibe Coding]]
-- [[https://ghuntley.com/agent/][how to build a coding agent: free workshop]]
-
-  https://github.com/ghuntley/how-to-build-a-coding-agent
-
-- [[https://minusx.ai/blog/decoding-claude-code/][Minusx | What makes Claude Code so damn good (and how to recreate that magic in your agent)!?]]
-- [[https://evrim.zone/blog/opinion/vibes_casino][Vibe Coding Casino – blog/opinion/vibes_casino — evrim.zone]]
-- [[https://blog.val.town/vibe-code][Vibe code is legacy code | Val Town Blog]]
-- [[https://onevcat.com/2025/08/claude-code/][一个半月高强度 Claude Code 使用后感受 | OneV's Den]]
-- [[https://www.anthropic.com/news/how-anthropic-teams-use-claude-code][How Anthropic teams use Claude Code \ Anthropic]]
-- [[https://www.dzombak.com/blog/2025/08/getting-good-results-from-claude-code/][Getting Good Results from Claude Code • Chris Dzombak]]
-  文章的 CLAUDE.md 还不错
