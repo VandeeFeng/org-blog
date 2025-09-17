@@ -4,7 +4,200 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Sun, 14 Sep 2025 13:55:49 +0800</lastBuildDate>
+<lastBuildDate>Wed, 17 Sep 2025 16:14:20 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[文艺复兴 TUI]]></title>
+  <description><![CDATA[
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#orge0716f0">TL;DR</a></li>
+            <li><a href="#orgd1ba54d">TUI 到 GUI</a></li>
+            <li><a href="#org6042f31">TUI 到 LLM</a></li>
+            <li><a href="#orgaec53a4">特立独行的 TUI</a></li>
+            <li><a href="#orgac6af0b">TUI Tools</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div id="outline-container-orge0716f0" class="outline-2">
+        <h2 id="orge0716f0">TL;DR</h2>
+        <div class="outline-text-2" id="text-orge0716f0">
+          <p>
+            互联网时代到移动终端兴起，再到智能手机，作为一个互联网用户，我们一天当中 50%的时间都在和这些应用、产品的 UI 界面打交道。可能往后许多应用的界面大多都由 AI 间接生成了，我一直不太喜欢这种被动的体验，更何况是机器给我安排的。现在能用 TUI 替代的我就不用 GUI 了。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orgd1ba54d" class="outline-2">
+        <h2 id="orgd1ba54d">TUI 到 GUI</h2>
+        <div class="outline-text-2" id="text-orgd1ba54d">
+          <p>
+            Text-based User Interface（文本用户界面），简称 TUI，相对应的是 GUI：Graphical User Interface（图形用户界面）。
+          </p>
+
+          <p>
+            简单说来，在没有鼠标的时候，和计算机的交互基本通过键盘，那个时候通常使用 terminal（终端）执行计算机指令。在乔布斯那个经典的“艺术剽窃”施乐图形界面之后，IBM，Apple，Windows 相继推出图形操作界面的 PC（个人计算机），计算机这才普及到千家万户。
+          </p>
+
+          <p>
+            鼠标加上 GUI 使得计算机成为个人计算机这个产品成为了可能。不得不再佩服一下乔帮主当时的洞察力。让用户去用那些复杂的计算机指令在计算机上办公，没人会买这个铁箱子，计算机 GUI 图形界面的发展就是为了方便人和计算机之间的交互，只需要用鼠标点击按钮就可以执行相应的计算机指令。
+          </p>
+
+          <p>
+            再往后就是互联网的发展，让把世界上的 PC 客户端链接到了一起。计算机和互联网共同定义了一个我们和世界交互的 interface（接口），这篇想讨论的 TUI 也就是想说这个。后面的 GUI，interface 也都指代这个。
+          </p>
+
+          <p>
+            网页、手机 APP 等 GUI 整的越来越复杂，牵扯到越来越多利益，用户的体验越来越差。一个手机 APP 可以有多少个广告真的<a href="https://www.bilibili.com/video/BV1seegzzEnH">超乎想象</a>。发展到现在的互联网交互 interface 真的让用户的交互变容易了么？
+          </p>
+
+          <p>
+            我的感觉是用户只是在被迫的接受这些。现在看一大堆广告也就算了，它好歹是人花了心思做的，如果以后还要看 LLM 生成的广告（LLM 广告成本低，迭代快），那感觉就像是看着机器人拉屎再丢到我的脸上，更离谱的是我还得花钱看着它拉出来。
+          </p>
+
+          <p>
+            LLM 的出现加剧了互联网内容生态的混乱，但另一方面，它也给了用户另一种选择的可能：自己构建自己和互联网交互的 interface。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org6042f31" class="outline-2">
+        <h2 id="org6042f31">TUI 到 LLM</h2>
+        <div class="outline-text-2" id="text-org6042f31">
+          <p>
+            看网络视频需要几步？打开 terminal（终端），输入 <code>mpv "https://example.com/video.mp4"</code> 。
+          </p>
+
+          <p>
+            以往用户使用 TUI 操作计算机的成本，现在同样因为 LLM 变得很低了。如果说 LLM 是互联网时代之后下一个和用户交互的 interface，这个意义上，它确实是。
+          </p>
+
+          <p>
+            之前我打过<a href="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html#orgeaf0566">一个比方</a>：
+          </p>
+
+          <blockquote>
+            <p>
+              当然，由于 LLM 预测生成的特性，它已经可以实现很多代码编程方面的自动化。现在这个阶段，纯 vibe coding 的产物，它生成的 MVP 、页面、代码片段等等，就像工业革命刚开始的时候，流水线上生产出来的工艺品一样。我当然不否定它创造的经济价值和社会价值，但就像 20 世纪中期的波普艺术和其他工业革命时期的艺术运动想表达的一样，这些流水线产物没得灵魂。
+            </p>
+          </blockquote>
+
+          <p>
+            不是想批判什么，作为一个消费者和用户，我只是想能够选择并做出选择。
+          </p>
+
+          <p>
+            趋势是无法避免的，就像现在的预制菜一样，我真不讨厌预制菜（广义上酱油也是预制的），如果我是商家，又要坚固成本，又得保证味道的统一，还要出餐快，预制菜就是顺应时代的一个很合理的产物，关键还是在于要给用户选择。
+          </p>
+
+          <p>
+            AI 也是，某种意义上它是全人类共同的选择（不管你想不想，有没有选择），已经成为了历史的趋势，我只想能够还有选择的权利，并做出我的选择。
+          </p>
+
+          <p>
+            对我个人来说，这更关乎品味。看着那些过于粗制滥造、花里胡哨的 interface，实在没有使用的欲望。
+          </p>
+
+          <p>
+            在工业革命时期，从同质化里脱引而出的也就是品味，当 LLM 把产品的技术和生产成本也同样拉低之后，艺术品味和设计就又会是分水岭了。
+          </p>
+
+          <p>
+            所以现阶段我的选择就是，能用 TUI 就不用 GUI 了，也很符合我一直 Stay Simple 的倾向。GUI 的按钮交给 LLM “封装” 就好了，用自然语言操作起来也很轻松。也不是排斥和讨厌 GUI，只是现在许多 GUI 交互设计我不太喜欢，而且许多需求在交互上真的只需要 TUI 就足够了。
+          </p>
+
+          <p>
+            在 interface 这点上，我们并不是没有选择。一个会员的钱，让 LLM 做一个可以运行的 TUI 程序也不是很困难，在体验上实在好太多了。
+          </p>
+
+          <p>
+            也希望 LLM 这波革命可以给用户带来一个真正意义上的下一代 interface。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orgaec53a4" class="outline-2">
+        <h2 id="orgaec53a4">特立独行的 TUI</h2>
+        <div class="outline-text-2" id="text-orgaec53a4">
+          <p>
+            让 LLM 模仿王小波随便写了几段，挺有意思的。纯 AI 生成，我没有任何修改，也完全不代表我的观点。
+          </p>
+
+          <blockquote>
+            <p>
+              我活在世上，无非是想明白些道理，遇见些有趣的事。比方说，我就一直没能想明白，为什么如今的人都喜欢在一个亮晶晶的盒子里，用鼠标点来点去。他们管这叫“图形化界面”，据说是为了让人省事。这让我感到一种巨大的惶恐：难道思考和精准的表达，已经成了一件麻烦事了吗？
+            </p>
+
+            <p>
+              这种图形界面，总让我想起我们队里那些被阉过的肉猪，一个个养得膘肥体壮，安之若素。它们的生活被安排得明明白白：吃、睡、长肉，别的就不用想了。图形界面对人也是一个路数，它把一切都嚼烂了喂到你嘴边，生怕你费一点脑子。它用各种图标和动画对你反复暗示：你什么都不用懂，跟着我点就行。久而久之，人就只会点了，这是一种缓慢的、精神上的受锤过程。
+            </p>
+
+            <p>
+              但我偏就喜欢TUI，那个黑漆漆的命令行界面。它就像我怀念的那只特立独行的猪，精瘦，警觉，两眼炯炯有光，绝不接受对生活的设置。它不跟你来虚的，它就在那里沉默地等着，意思是：有什么话，请直说。跟它打交道，你必须调动全部的智力，把想法一丝不差地变成一行指令。这个过程充满了逻辑的乐趣，像一场酣畅淋漓的智力游戏。
+            </p>
+
+            <p>
+              所以，当大多数人满足于被温柔地圈养时，我选择面对那个沉默的界面。从话语中，你很少能学到人性，但从这种沉默的、精确的交流中却能。对我来说，这就是我的黄金时代，我有好多奢望，我想编译内核，想grep全世界，还想在一瞬间，让那个闪烁的光标变成天上忽明忽暗的云。
+            </p>
+          </blockquote>
+
+          <p>
+            另一个:
+          </p>
+
+          <blockquote>
+            <p>
+              人是一种会骗自己的东西，而且乐此不疲。比如说，人发明了一种东西叫图形界面（GUI），宣称这是进步，是科技的恩典。在我看来，这就算是一种宏大的自欺。它以一种不容置疑的温情，许诺给你一个更轻松的世界，代价是让你交出思想的缰绳。这道理和我见过的那些给猪听音乐、做按摩的现代化养殖场如出一辙，目的不是让猪快乐，而是让它忘掉自己最终的命运是被做成红烧肉。
+            </p>
+
+            <p>
+              《黄金时代》里，我们什么都没有，但我们有欲望，有无穷的、想入非非的乐趣。那是一种赤裸裸的、与世界直接碰撞的快乐。而GUI的世界，是一个被过度包装起来的、没有碰撞的世界。它取消了困难，也就顺便取消了克服困难的乐趣。它用漂亮的图标和流畅的动画构建了一个虚假的“果园”，你只管摘果子就行了，至于这果子是怎么种出来的，树根在哪里，它不让你看，也不希望你去想。这是一种对智力的公然藐视。
+            </p>
+
+            <p>
+              GUI的设计哲学，本质上是在推行一种沉默。不是《沉默的大多数》里那种保有思考和尊严的沉默，而是一种被剥夺了话语权的、失语的沉默。它给你几个按钮，几个菜单，这就是你的全部词汇。你被预设、被安排，就像那只特立独行的猪的同类，从出生起就被设置好了一条通往屠宰场的道路。你想跳出这栅栏，它会告诉你“操作非法”。你想说一句它词典里没有的话，它会弹出一个红叉，上面写着“无法理解”。它温柔地、耐心地把你锤成一个傻子。
+            </p>
+
+            <p>
+              所以，我宁愿回到那个漆黑的、只有光标在闪烁的TUI界面。在那里，人可以说自己想说的话，机器也会给出诚实的回答。这种交流方式里，保留着一种朴素的、智力上的尊严。你必须思考，必须精确，必须为你说的每一个字负责。这个过程本身，就足以抵抗全世界的肉麻和无趣。它让我觉得，作为一个正在思想的人，我还没有完全被生活阉掉。
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div id="outline-container-orgac6af0b" class="outline-2">
+        <h2 id="orgac6af0b">TUI Tools</h2>
+        <div class="outline-text-2" id="text-orgac6af0b">
+          <p>
+            之前不了解 TUI，现在觉得 TUI 实在是太有品味了。
+          </p>
+
+          <ul class="org-ul">
+            <li>List of projects that provide terminal user interfaces
+              <a href="https://github.com/rothgar/awesome-tuis">https://github.com/rothgar/awesome-tuis</a>
+              <a href="https://awesomeopensource.com/projects/tui">https://awesomeopensource.com/projects/tui</a></li>
+
+            <li>term.everything: Run any GUI app in the terminal
+              <a href="https://github.com/mmulet/term.everything">https://github.com/mmulet/term.everything</a>
+              <a href="https://news.ycombinator.com/item?id=45181535">https://news.ycombinator.com/item?id=45181535</a></li>
+
+            <li>📚 Simplifying the way you read. Minimalistic Vim-like TUI document reader.
+              <a href="https://github.com/kruseio/hygg">https://github.com/kruseio/hygg</a></li>
+
+            <li>YouTube 的终端客户端，在命令行操作 YouTube
+              <a href="https://github.com/Siriusmart/youtube-tui">https://github.com/Siriusmart/youtube-tui</a></li>
+
+            <li>Yet another command-line youdao dictionary for geeks!
+              <a href="https://github.com/TimothyYe/ydict">https://github.com/TimothyYe/ydict</a></li>
+
+            <li>A tui-based PDF viewer
+              <a href="https://github.com/itsjunetime/tdf">https://github.com/itsjunetime/tdf</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-essay.html">Essay</a> </div>]]></description>
+  <category><![CDATA[Essay]]></category>
+  <link>https://www.vandee.art/blog/2025-09-17-i-prefer-tui.html</link>
+  <guid>https://www.vandee.art/blog/2025-09-17-i-prefer-tui.html</guid>
+  <pubDate>Wed, 17 Sep 2025 14:04:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[吹掉的裤衩]]></title>
   <description><![CDATA[
