@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Wed, 17 Sep 2025 16:47:02 +0800</lastBuildDate>
+<lastBuildDate>Wed, 17 Sep 2025 18:59:24 +0800</lastBuildDate>
 <item>
   <title><![CDATA[文艺复兴 TUI]]></title>
   <description><![CDATA[
@@ -12,25 +12,25 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org68be8f9">TL;DR</a></li>
-            <li><a href="#org63d14e0">TUI 到 GUI</a></li>
-            <li><a href="#orgc23a585">TUI 到 LLM</a></li>
-            <li><a href="#org0fc080e">特立独行的 TUI</a></li>
-            <li><a href="#org012a884">TUI Tools</a></li>
+            <li><a href="#org171b464">TL;DR</a></li>
+            <li><a href="#orgf6d4698">TUI 到 GUI</a></li>
+            <li><a href="#orgc97f3b2">TUI 到 LLM</a></li>
+            <li><a href="#orgfb263d1">特立独行的 TUI</a></li>
+            <li><a href="#org7ea164f">TUI Tools</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org68be8f9" class="outline-2">
-        <h2 id="org68be8f9">TL;DR</h2>
-        <div class="outline-text-2" id="text-org68be8f9">
+      <div id="outline-container-org171b464" class="outline-2">
+        <h2 id="org171b464">TL;DR</h2>
+        <div class="outline-text-2" id="text-org171b464">
           <p>
             互联网时代到移动终端兴起，再到智能手机，作为一个互联网用户，我们一天当中 50%的时间都在和这些应用、产品的 UI 界面打交道。可能往后许多应用的界面大多都由 AI 间接生成了，我一直不太喜欢这种被动的体验，更何况是机器给我安排的。现在能用 TUI 替代的我就不用 GUI 了。
           </p>
         </div>
       </div>
-      <div id="outline-container-org63d14e0" class="outline-2">
-        <h2 id="org63d14e0">TUI 到 GUI</h2>
-        <div class="outline-text-2" id="text-org63d14e0">
+      <div id="outline-container-orgf6d4698" class="outline-2">
+        <h2 id="orgf6d4698">TUI 到 GUI</h2>
+        <div class="outline-text-2" id="text-orgf6d4698">
           <p>
             Text-based User Interface（文本用户界面），简称 TUI，相对应的是 GUI：Graphical User Interface（图形用户界面）。
           </p>
@@ -60,9 +60,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgc23a585" class="outline-2">
-        <h2 id="orgc23a585">TUI 到 LLM</h2>
-        <div class="outline-text-2" id="text-orgc23a585">
+      <div id="outline-container-orgc97f3b2" class="outline-2">
+        <h2 id="orgc97f3b2">TUI 到 LLM</h2>
+        <div class="outline-text-2" id="text-orgc97f3b2">
           <p>
             看网络视频需要几步？打开 terminal（终端），输入 <code>mpv "https://example.com/video.mp4"</code> 。
           </p>
@@ -106,17 +106,17 @@
           </p>
 
           <p>
-            在 interface 这点上，我们并不是没有选择。一个会员的钱，让 LLM 做一个可以运行的 TUI 程序也不是很困难，在体验上实在好太多了。
+            在 interface 这点上，还是有其他选择的。一个会员的钱，让 LLM 做一个可以运行的 TUI 程序也不是很困难，在体验上实在好太多了。也有很多大厂服务的开源平替，在这些项目的基础上，可以实现许多满足自己需求的小玩意。
           </p>
 
           <p>
-            也希望 LLM 这波革命可以给用户带来一个真正意义上的下一代 interface。
+            我更期待 LLM 这波革命可以给用户带来一个真正意义上的下一代 interface。
           </p>
         </div>
       </div>
-      <div id="outline-container-org0fc080e" class="outline-2">
-        <h2 id="org0fc080e">特立独行的 TUI</h2>
-        <div class="outline-text-2" id="text-org0fc080e">
+      <div id="outline-container-orgfb263d1" class="outline-2">
+        <h2 id="orgfb263d1">特立独行的 TUI</h2>
+        <div class="outline-text-2" id="text-orgfb263d1">
           <p>
             让 LLM 模仿王小波随便写了几段，挺有意思的。纯 AI 生成，我没有任何修改，也完全不代表我的观点。
           </p>
@@ -162,9 +162,9 @@
           </blockquote>
         </div>
       </div>
-      <div id="outline-container-org012a884" class="outline-2">
-        <h2 id="org012a884">TUI Tools</h2>
-        <div class="outline-text-2" id="text-org012a884">
+      <div id="outline-container-org7ea164f" class="outline-2">
+        <h2 id="org7ea164f">TUI Tools</h2>
+        <div class="outline-text-2" id="text-org7ea164f">
           <p>
             之前不了解 TUI，现在觉得 TUI 实在是太有品味了。
           </p>
