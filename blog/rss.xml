@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Wed, 17 Sep 2025 16:14:20 +0800</lastBuildDate>
+<lastBuildDate>Wed, 17 Sep 2025 16:16:12 +0800</lastBuildDate>
 <item>
   <title><![CDATA[文艺复兴 TUI]]></title>
   <description><![CDATA[
@@ -12,25 +12,25 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#orge0716f0">TL;DR</a></li>
-            <li><a href="#orgd1ba54d">TUI 到 GUI</a></li>
-            <li><a href="#org6042f31">TUI 到 LLM</a></li>
-            <li><a href="#orgaec53a4">特立独行的 TUI</a></li>
-            <li><a href="#orgac6af0b">TUI Tools</a></li>
+            <li><a href="#orgd57fc28">TL;DR</a></li>
+            <li><a href="#org0bad4c5">TUI 到 GUI</a></li>
+            <li><a href="#org81bad5b">TUI 到 LLM</a></li>
+            <li><a href="#orgfa1c9f0">特立独行的 TUI</a></li>
+            <li><a href="#org6931df8">TUI Tools</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-orge0716f0" class="outline-2">
-        <h2 id="orge0716f0">TL;DR</h2>
-        <div class="outline-text-2" id="text-orge0716f0">
+      <div id="outline-container-orgd57fc28" class="outline-2">
+        <h2 id="orgd57fc28">TL;DR</h2>
+        <div class="outline-text-2" id="text-orgd57fc28">
           <p>
             互联网时代到移动终端兴起，再到智能手机，作为一个互联网用户，我们一天当中 50%的时间都在和这些应用、产品的 UI 界面打交道。可能往后许多应用的界面大多都由 AI 间接生成了，我一直不太喜欢这种被动的体验，更何况是机器给我安排的。现在能用 TUI 替代的我就不用 GUI 了。
           </p>
         </div>
       </div>
-      <div id="outline-container-orgd1ba54d" class="outline-2">
-        <h2 id="orgd1ba54d">TUI 到 GUI</h2>
-        <div class="outline-text-2" id="text-orgd1ba54d">
+      <div id="outline-container-org0bad4c5" class="outline-2">
+        <h2 id="org0bad4c5">TUI 到 GUI</h2>
+        <div class="outline-text-2" id="text-org0bad4c5">
           <p>
             Text-based User Interface（文本用户界面），简称 TUI，相对应的是 GUI：Graphical User Interface（图形用户界面）。
           </p>
@@ -60,9 +60,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-org6042f31" class="outline-2">
-        <h2 id="org6042f31">TUI 到 LLM</h2>
-        <div class="outline-text-2" id="text-org6042f31">
+      <div id="outline-container-org81bad5b" class="outline-2">
+        <h2 id="org81bad5b">TUI 到 LLM</h2>
+        <div class="outline-text-2" id="text-org81bad5b">
           <p>
             看网络视频需要几步？打开 terminal（终端），输入 <code>mpv "https://example.com/video.mp4"</code> 。
           </p>
@@ -114,9 +114,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgaec53a4" class="outline-2">
-        <h2 id="orgaec53a4">特立独行的 TUI</h2>
-        <div class="outline-text-2" id="text-orgaec53a4">
+      <div id="outline-container-orgfa1c9f0" class="outline-2">
+        <h2 id="orgfa1c9f0">特立独行的 TUI</h2>
+        <div class="outline-text-2" id="text-orgfa1c9f0">
           <p>
             让 LLM 模仿王小波随便写了几段，挺有意思的。纯 AI 生成，我没有任何修改，也完全不代表我的观点。
           </p>
@@ -162,33 +162,69 @@
           </blockquote>
         </div>
       </div>
-      <div id="outline-container-orgac6af0b" class="outline-2">
-        <h2 id="orgac6af0b">TUI Tools</h2>
-        <div class="outline-text-2" id="text-orgac6af0b">
+      <div id="outline-container-org6931df8" class="outline-2">
+        <h2 id="org6931df8">TUI Tools</h2>
+        <div class="outline-text-2" id="text-org6931df8">
           <p>
             之前不了解 TUI，现在觉得 TUI 实在是太有品味了。
           </p>
 
           <ul class="org-ul">
-            <li>List of projects that provide terminal user interfaces
-              <a href="https://github.com/rothgar/awesome-tuis">https://github.com/rothgar/awesome-tuis</a>
-              <a href="https://awesomeopensource.com/projects/tui">https://awesomeopensource.com/projects/tui</a></li>
+            <li><p>
+                List of projects that provide terminal user interfaces
+              </p>
 
-            <li>term.everything: Run any GUI app in the terminal
-              <a href="https://github.com/mmulet/term.everything">https://github.com/mmulet/term.everything</a>
-              <a href="https://news.ycombinator.com/item?id=45181535">https://news.ycombinator.com/item?id=45181535</a></li>
+              <p>
+                <a href="https://github.com/rothgar/awesome-tuis">https://github.com/rothgar/awesome-tuis</a>
+              </p>
 
-            <li>📚 Simplifying the way you read. Minimalistic Vim-like TUI document reader.
-              <a href="https://github.com/kruseio/hygg">https://github.com/kruseio/hygg</a></li>
+              <p>
+                <a href="https://awesomeopensource.com/projects/tui">https://awesomeopensource.com/projects/tui</a>
+            </p></li>
 
-            <li>YouTube 的终端客户端，在命令行操作 YouTube
-              <a href="https://github.com/Siriusmart/youtube-tui">https://github.com/Siriusmart/youtube-tui</a></li>
+            <li><p>
+                term.everything: Run any GUI app in the terminal
+              </p>
 
-            <li>Yet another command-line youdao dictionary for geeks!
-              <a href="https://github.com/TimothyYe/ydict">https://github.com/TimothyYe/ydict</a></li>
+              <p>
+                <a href="https://github.com/mmulet/term.everything">https://github.com/mmulet/term.everything</a>
+              </p>
 
-            <li>A tui-based PDF viewer
-              <a href="https://github.com/itsjunetime/tdf">https://github.com/itsjunetime/tdf</a></li>
+              <p>
+                <a href="https://news.ycombinator.com/item?id=45181535">https://news.ycombinator.com/item?id=45181535</a>
+            </p></li>
+
+            <li><p>
+                📚 Simplifying the way you read. Minimalistic Vim-like TUI document reader.
+              </p>
+
+              <p>
+                <a href="https://github.com/kruseio/hygg">https://github.com/kruseio/hygg</a>
+            </p></li>
+
+            <li><p>
+                YouTube 的终端客户端，在命令行操作 YouTube
+              </p>
+
+              <p>
+                <a href="https://github.com/Siriusmart/youtube-tui">https://github.com/Siriusmart/youtube-tui</a>
+            </p></li>
+
+            <li><p>
+                Yet another command-line youdao dictionary for geeks!
+              </p>
+
+              <p>
+                <a href="https://github.com/TimothyYe/ydict">https://github.com/TimothyYe/ydict</a>
+            </p></li>
+
+            <li><p>
+                A tui-based PDF viewer
+              </p>
+
+              <p>
+                <a href="https://github.com/itsjunetime/tdf">https://github.com/itsjunetime/tdf</a>
+            </p></li>
           </ul>
         </div>
       </div>

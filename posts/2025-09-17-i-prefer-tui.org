@@ -78,21 +78,29 @@ GUI的设计哲学，本质上是在推行一种沉默。不是《沉默的大�
 之前不了解 TUI，现在觉得 TUI 实在是太有品味了。
 
 - List of projects that provide terminal user interfaces
+
   https://github.com/rothgar/awesome-tuis
+
   https://awesomeopensource.com/projects/tui
 
 - term.everything: Run any GUI app in the terminal
+
   https://github.com/mmulet/term.everything
+
   https://news.ycombinator.com/item?id=45181535
 
 - 📚 Simplifying the way you read. Minimalistic Vim-like TUI document reader.
+
   https://github.com/kruseio/hygg
 
 - YouTube 的终端客户端，在命令行操作 YouTube
+
   https://github.com/Siriusmart/youtube-tui
 
 - Yet another command-line youdao dictionary for geeks!
+
   https://github.com/TimothyYe/ydict
 
 - A tui-based PDF viewer
+
   https://github.com/itsjunetime/tdf
