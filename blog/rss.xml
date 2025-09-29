@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Mon, 29 Sep 2025 13:11:50 +0800</lastBuildDate>
+<lastBuildDate>Mon, 29 Sep 2025 16:49:38 +0800</lastBuildDate>
 <item>
   <title><![CDATA[文艺复兴 TUI]]></title>
   <description><![CDATA[
@@ -290,28 +290,28 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org5983664">TL;DR</a></li>
-            <li><a href="#orgc852887">折腾记录</a>
+            <li><a href="#org70bf4c8">TL;DR</a></li>
+            <li><a href="#orgbfe2aed">折腾记录</a>
               <ul>
-                <li><a href="#orgdb700ad">Arch Linux 初始安装</a></li>
-                <li><a href="#orgf6f3300">i3-X11</a>
+                <li><a href="#org874747d">Arch Linux 初始安装</a></li>
+                <li><a href="#orgc6969b2">i3-X11</a>
                   <ul>
-                    <li><a href="#orgb8f2457">安装：</a></li>
-                    <li><a href="#org7b9d980">配置</a></li>
-                    <li><a href="#orgfe2f6dc">其他设定</a></li>
+                    <li><a href="#org357acbd">安装：</a></li>
+                    <li><a href="#org7d721fc">配置</a></li>
+                    <li><a href="#orgb29c8a8">其他设定</a></li>
                   </ul>
                 </li>
-                <li><a href="#orgf05cf81">Sway-Wayland</a></li>
+                <li><a href="#org362b9a2">Sway-Wayland</a></li>
               </ul>
             </li>
-            <li><a href="#orgb4d23c7">冤家 Fcitx 和 Emacs</a></li>
-            <li><a href="#orgce08e96">小结</a></li>
+            <li><a href="#org2a30a81">冤家 Fcitx 和 Emacs</a></li>
+            <li><a href="#org31b736e">小结</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org5983664" class="outline-2">
-        <h2 id="org5983664">TL;DR</h2>
-        <div class="outline-text-2" id="text-org5983664">
+      <div id="outline-container-org70bf4c8" class="outline-2">
+        <h2 id="org70bf4c8">TL;DR</h2>
+        <div class="outline-text-2" id="text-org70bf4c8">
           <p>
             Both stable and unstable until you linux.
           </p>
@@ -325,9 +325,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgc852887" class="outline-2">
-        <h2 id="orgc852887">折腾记录</h2>
-        <div class="outline-text-2" id="text-orgc852887">
+      <div id="outline-container-orgbfe2aed" class="outline-2">
+        <h2 id="orgbfe2aed">折腾记录</h2>
+        <div class="outline-text-2" id="text-orgbfe2aed">
           <p>
             近道都是远路，尝试过几个大佬自己封装好的 Arch Linux，附带了桌面环境的安装和配置。是挺方便的，但是遇到一些小问题的时候，由于不知道他具体是怎么实现的一些功能，又要去看文档和源码。我这个电脑又比较老了，很多问题都没有现成的答案和别人的复现。
           </p>
@@ -341,14 +341,14 @@
           </p>
 
 
-          <figure id="orga933ad2">
+          <figure id="org54ff515">
             <img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="70%" height="70%">
 
           </figure>
         </div>
-        <div id="outline-container-orgdb700ad" class="outline-3">
-          <h3 id="orgdb700ad">Arch Linux 初始安装</h3>
-          <div class="outline-text-3" id="text-orgdb700ad">
+        <div id="outline-container-org874747d" class="outline-3">
+          <h3 id="org874747d">Arch Linux 初始安装</h3>
+          <div class="outline-text-3" id="text-org874747d">
             <p>
               <a href="https://archlinux.org/download/">Arch Linux - Downloads</a> 页面下载最新的 ISO 文件，有很多国内镜像可以选。写入 U 盘之后，进入 BIOS 启动 U 盘引导。
             </p>
@@ -373,19 +373,21 @@
             </p>
           </div>
         </div>
-        <div id="outline-container-orgf6f3300" class="outline-3">
-          <h3 id="orgf6f3300">i3-X11</h3>
-          <div class="outline-text-3" id="text-orgf6f3300">
+        <div id="outline-container-orgc6969b2" class="outline-3">
+          <h3 id="orgc6969b2">i3-X11</h3>
+          <div class="outline-text-3" id="text-orgc6969b2">
             <p>
               <a href="https://github.com/i3/i3">i3</a> 的简洁实在太爱了。
             </p>
           </div>
-          <div id="outline-container-orgb8f2457" class="outline-4">
-            <h4 id="orgb8f2457">安装：</h4>
-            <div class="outline-text-4" id="text-orgb8f2457">
+          <div id="outline-container-org357acbd" class="outline-4">
+            <h4 id="org357acbd">安装：</h4>
+            <div class="outline-text-4" id="text-org357acbd">
               <div class="org-src-container">
                 <pre class="src src-bash">sudo pacman -S i3 xorg xorg-xinit
-                  echo "exec i3" > ~/.xinitrc</pre>
+
+                  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"exec i3"</span> &gt; ~/.xinitrc
+                </pre>
               </div>
 
               <p>
@@ -393,9 +395,9 @@
               </p>
             </div>
           </div>
-          <div id="outline-container-org7b9d980" class="outline-4">
-            <h4 id="org7b9d980">配置</h4>
-            <div class="outline-text-4" id="text-org7b9d980">
+          <div id="outline-container-org7d721fc" class="outline-4">
+            <h4 id="org7d721fc">配置</h4>
+            <div class="outline-text-4" id="text-org7d721fc">
               <ul class="org-ul">
                 <li><p>
                     设置鼠标滚轮翻转
@@ -406,13 +408,14 @@
                   </p>
 
                   <div class="org-src-container">
-                    <pre class="src src-bash">  Section "InputClass"
-                      Identifier "libinput pointer catchall"
-                      MatchIsPointer "on"
-                      MatchDevicePath "/dev/input/event*"
-                      Driver "libinput"
-                      Option "NaturalScrolling" "True"
-                      EndSection</pre>
+                    <pre class="src src-bash">  Section <span style="color: #A1D08E;">"InputClass"</span>
+                      Identifier <span style="color: #A1D08E;">"libinput pointer catchall"</span>
+                      MatchIsPointer <span style="color: #A1D08E;">"on"</span>
+                      MatchDevicePath <span style="color: #A1D08E;">"/dev/input/event*"</span>
+                      Driver <span style="color: #A1D08E;">"libinput"</span>
+                      Option <span style="color: #A1D08E;">"NaturalScrolling"</span> <span style="color: #A1D08E;">"True"</span>
+                      EndSection
+                    </pre>
                 </div></li>
 
                 <li><p>
@@ -420,33 +423,39 @@
                   </p>
 
                   <div class="org-src-container">
-                    <pre class="src src-bash">exec --no-startup-id opensnitch-ui
-                      exec --no-startup-id copyq
-                      exec --no-startup-id feh --bg-fill /home/vandee/Pictures/create.jpg
-                      bindsym $mod+period exec ghostty
-                      bindsym $mod+b exec librewolf --new--windows
-                      bindsym $mod+e exec emacsclient -c -a ""
-                      bindsym $mod+f exec thunar
-                      bindsym $mod+q kill
-                      # bindsym $mod+Mod1+v exec --no-startup-id copyq show
-                      # Gaps
-                      gaps inner 5
+                    <pre class="src src-bash"><span style="color: #FFA657;">exec</span> --no-startup-id opensnitch-ui
+                      <span style="color: #FFA657;">exec</span> --no-startup-id copyq
+                      <span style="color: #FFA657;">exec</span> --no-startup-id feh --bg-fill /home/vandee/Pictures/create.jpg
+
+                      bindsym $<span style="color: #f4f4ff;">mod</span>+period exec ghostty
+                      bindsym $<span style="color: #f4f4ff;">mod</span>+b exec librewolf --new--windows
+                      bindsym $<span style="color: #f4f4ff;">mod</span>+e exec emacsclient -c -a <span style="color: #A1D08E;">""</span>
+                      bindsym $<span style="color: #f4f4ff;">mod</span>+f exec thunar
+                      bindsym $<span style="color: #f4f4ff;">mod</span>+q kill
+
+                      <span style="color: #787878;"># </span><span style="color: #787878;">bindsym $mod+Mod1+v exec --no-startup-id copyq show
+                      </span>
+                      <span style="color: #787878;"># </span><span style="color: #787878;">Gaps
+                      </span>gaps inner 5
                       smart_gaps on
-                      # hide tiling window title bar
-                      for_window [tiling] border pixel 1
+
+                      <span style="color: #787878;"># </span><span style="color: #787878;">hide tiling window title bar
+                      </span>for_window <span style="color: #8c8c8c;">[</span>tiling<span style="color: #8c8c8c;">]</span> border pixel 1
                       smart_borders on
-                      exec --no-startup-id fcitx5</pre>
+
+                      <span style="color: #FFA657;">exec</span> --no-startup-id fcitx5
+                    </pre>
                 </div></li>
               </ul>
             </div>
           </div>
-          <div id="outline-container-orgfe2f6dc" class="outline-4">
-            <h4 id="orgfe2f6dc">其他设定</h4>
+          <div id="outline-container-orgb29c8a8" class="outline-4">
+            <h4 id="orgb29c8a8">其他设定</h4>
           </div>
         </div>
-        <div id="outline-container-orgf05cf81" class="outline-3">
-          <h3 id="orgf05cf81">Sway-Wayland</h3>
-          <div class="outline-text-3" id="text-orgf05cf81">
+        <div id="outline-container-org362b9a2" class="outline-3">
+          <h3 id="org362b9a2">Sway-Wayland</h3>
+          <div class="outline-text-3" id="text-org362b9a2">
             <p>
               2025-09-01 added
             </p>
@@ -480,23 +489,25 @@
                 <div class="org-src-container">
                   <pre class="src src-nil">   input * {
                     natural_scroll enabled
-                    }</pre>
+                    }
+                  </pre>
               </div></li>
             </ul>
           </div>
         </div>
       </div>
-      <div id="outline-container-orgb4d23c7" class="outline-2">
-        <h2 id="orgb4d23c7">冤家 Fcitx 和 Emacs</h2>
-        <div class="outline-text-2" id="text-orgb4d23c7">
+      <div id="outline-container-org2a30a81" class="outline-2">
+        <h2 id="org2a30a81">冤家 Fcitx 和 Emacs</h2>
+        <div class="outline-text-2" id="text-org2a30a81">
           <p>
             <code>~/.xprofile</code>
           </p>
 
           <div class="org-src-container">
-            <pre class="src src-bash">export GTK_IM_MODULE=fcitx
-              export QT_IM_MODULE=fcitx
-              export XMODIFIERS=@im=fcitx</pre>
+            <pre class="src src-bash"><span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">GTK_IM_MODULE</span>=fcitx
+              <span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">QT_IM_MODULE</span>=fcitx
+              <span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">XMODIFIERS</span>=@<span style="color: #f4f4ff;">im</span>=fcitx
+            </pre>
           </div>
 
           <p>
@@ -504,9 +515,10 @@
           </p>
 
           <div class="org-src-container">
-            <pre class="src src-bash">XMODIFIERS=@im=fcitx
-              GTK_IM_MODULE=fcitx
-              QT_IM_MODULE=fcitx</pre>
+            <pre class="src src-bash"><span style="color: #f4f4ff;">XMODIFIERS</span>=@<span style="color: #f4f4ff;">im</span>=fcitx
+              <span style="color: #f4f4ff;">GTK_IM_MODULE</span>=fcitx
+              <span style="color: #f4f4ff;">QT_IM_MODULE</span>=fcitx
+            </pre>
           </div>
 
           <p>
@@ -534,9 +546,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgce08e96" class="outline-2">
-        <h2 id="orgce08e96">小结</h2>
-        <div class="outline-text-2" id="text-orgce08e96">
+      <div id="outline-container-org31b736e" class="outline-2">
+        <h2 id="org31b736e">小结</h2>
+        <div class="outline-text-2" id="text-org31b736e">
           <p>
             这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
           </p>
@@ -560,27 +572,27 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org7da58d7">Intro</a></li>
-            <li><a href="#org9c9abe4">Manual</a>
+            <li><a href="#org1a1a77a">Intro</a></li>
+            <li><a href="#org361707e">Manual</a>
               <ul>
-                <li><a href="#org14481a7">Prerequisites</a></li>
-                <li><a href="#orgf43b6ec">Principles</a></li>
-                <li><a href="#org33916d7">Methods</a>
+                <li><a href="#orgc3947ac">Prerequisites</a></li>
+                <li><a href="#org5200e2a">Principles</a></li>
+                <li><a href="#org0edb4f2">Methods</a>
                   <ul>
-                    <li><a href="#orgd1a8990">信息获取 - 输入</a></li>
-                    <li><a href="#org7745092">文档、知识管理 - 迭代</a></li>
-                    <li><a href="#orgc69dc20">笔记和写作 - 输出</a></li>
+                    <li><a href="#org27f894c">信息获取 - 输入</a></li>
+                    <li><a href="#orgb4dd461">文档、知识管理 - 迭代</a></li>
+                    <li><a href="#org32fd8a7">笔记和写作 - 输出</a></li>
                   </ul>
                 </li>
               </ul>
             </li>
-            <li><a href="#org40a2cae">Thanks</a></li>
+            <li><a href="#org933fd15">Thanks</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org7da58d7" class="outline-2">
-        <h2 id="org7da58d7">Intro</h2>
-        <div class="outline-text-2" id="text-org7da58d7">
+      <div id="outline-container-org1a1a77a" class="outline-2">
+        <h2 id="org1a1a77a">Intro</h2>
+        <div class="outline-text-2" id="text-org1a1a77a">
           <p>
             距离 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> 居然已经一年多了。里面关于 PKM 和 AI 结合的部分许多已经过时了，今年也有了新的思路。
           </p>
@@ -642,24 +654,24 @@
           </blockquote>
         </div>
       </div>
-      <div id="outline-container-org9c9abe4" class="outline-2">
-        <h2 id="org9c9abe4">Manual</h2>
-        <div class="outline-text-2" id="text-org9c9abe4">
+      <div id="outline-container-org361707e" class="outline-2">
+        <h2 id="org361707e">Manual</h2>
+        <div class="outline-text-2" id="text-org361707e">
           <p>
             这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。PKM 基本的构建思路都在 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> ，这个手册侧重和 AI 的整合。
           </p>
         </div>
-        <div id="outline-container-org14481a7" class="outline-3">
-          <h3 id="org14481a7">Prerequisites</h3>
-          <div class="outline-text-3" id="text-org14481a7">
+        <div id="outline-container-orgc3947ac" class="outline-3">
+          <h3 id="orgc3947ac">Prerequisites</h3>
+          <div class="outline-text-3" id="text-orgc3947ac">
             <p>
               LLM API KEY，终端或 IDE，AI 和编程的基础知识，还涉及到一点 self-hosting。
             </p>
           </div>
         </div>
-        <div id="outline-container-orgf43b6ec" class="outline-3">
-          <h3 id="orgf43b6ec">Principles</h3>
-          <div class="outline-text-3" id="text-orgf43b6ec">
+        <div id="outline-container-org5200e2a" class="outline-3">
+          <h3 id="org5200e2a">Principles</h3>
+          <div class="outline-text-3" id="text-org5200e2a">
             <p>
               基于 transformer 架构的 LLM 本质上就是一个概率生成器，因此 PKM with AI 总体的原则就是：让 LLM 提升自己的能力，帮助自己找到实现目标的最大可能性方案。
             </p>
@@ -672,9 +684,9 @@
             </ul>
           </div>
         </div>
-        <div id="outline-container-org33916d7" class="outline-3">
-          <h3 id="org33916d7">Methods</h3>
-          <div class="outline-text-3" id="text-org33916d7">
+        <div id="outline-container-org0edb4f2" class="outline-3">
+          <h3 id="org0edb4f2">Methods</h3>
+          <div class="outline-text-3" id="text-org0edb4f2">
             <p>
               Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，但我始终认为这种层面的知识管理和交互并不能很有效的提升思维。
             </p>
@@ -704,9 +716,9 @@
               用 Dify、n8n 构建 Workflow 也是很不错的选择，但是对于 PKM 我不太想增加太多的中间流程，也不想花太多时间为了 PKM 去学它们。
             </p>
           </div>
-          <div id="outline-container-orgd1a8990" class="outline-4">
-            <h4 id="orgd1a8990">信息获取 - 输入</h4>
-            <div class="outline-text-4" id="text-orgd1a8990">
+          <div id="outline-container-org27f894c" class="outline-4">
+            <h4 id="org27f894c">信息获取 - 输入</h4>
+            <div class="outline-text-4" id="text-org27f894c">
               <p>
                 获取零散信息、新闻我一直通过 RSS，<a href="https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html">ReadWise</a> 今年不打算续订了，转向了 <a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">Hoarder</a> 。修改了一下 <a href="https://github.com/VandeeFeng/obsidian-clipper">obsidian-clipper</a> 用来在网页里高亮阅读保存到 Hoarder。在 Emacs 里写了一个小脚本，用来同步 Hoarder 的高亮和笔记到本地。还搞了个小玩意 <a href="https://github.com/VandeeFeng/RSS-CLI">RSS-CLI</a> 。
               </p>
@@ -728,13 +740,13 @@
               </p>
             </div>
           </div>
-          <div id="outline-container-org7745092" class="outline-4">
-            <h4 id="org7745092">文档、知识管理 - 迭代</h4>
-            <div class="outline-text-4" id="text-org7745092">
+          <div id="outline-container-orgb4dd461" class="outline-4">
+            <h4 id="orgb4dd461">文档、知识管理 - 迭代</h4>
+            <div class="outline-text-4" id="text-orgb4dd461">
             </div>
             <ul class="org-ul">
-              <li><a id="org0b254fc"></a>笔记编辑器选择<br>
-                <div class="outline-text-5" id="text-org0b254fc">
+              <li><a id="org6ba6979"></a>笔记编辑器选择<br>
+                <div class="outline-text-5" id="text-org6ba6979">
                   <p>
                     Notion 其实一直是一个很不错的选择，特别是现在的 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
                   </p>
@@ -764,8 +776,8 @@
                   </p>
                 </div>
               </li>
-              <li><a id="orgf504b54"></a>迭代<br>
-                <div class="outline-text-5" id="text-orgf504b54">
+              <li><a id="org3a15d96"></a>迭代<br>
+                <div class="outline-text-5" id="text-org3a15d96">
                   <p>
                     每个星期我会让 LLM 总结一下 PKM 里新增的内容，用 python 写了一个小脚本获取我 GitHub 仓库的 git diff，可以选日期范围，指定的仓库。PKM 丢在了 GitHub ，脚本会生成一个 MD 文档，包含 git commit 新增的内容，把文档丢给 LLM，让它提出几个相关的深度思考问题。
                   </p>
@@ -783,8 +795,8 @@
                   </p>
                 </div>
               </li>
-              <li><a id="org093c600"></a>其他和 AI 交互的工具<br>
-                <div class="outline-text-5" id="text-org093c600">
+              <li><a id="orgefcdef8"></a>其他和 AI 交互的工具<br>
+                <div class="outline-text-5" id="text-orgefcdef8">
                   <p>
                     一个 Gemini CLI 管理笔记的例子：Gemini CLI 在半小时内整理了 400 个笔记，在各个主题之间建立了有意义的联系，重命名、整理，合理构建笔记集合，via: <a href="https://x.com/karminski3/status/1939502900503355669">https://x.com/karminski3/status/1939502900503355669</a>
                   </p>
@@ -800,9 +812,9 @@
               </li>
             </ul>
           </div>
-          <div id="outline-container-orgc69dc20" class="outline-4">
-            <h4 id="orgc69dc20">笔记和写作 - 输出</h4>
-            <div class="outline-text-4" id="text-orgc69dc20">
+          <div id="outline-container-org32fd8a7" class="outline-4">
+            <h4 id="org32fd8a7">笔记和写作 - 输出</h4>
+            <div class="outline-text-4" id="text-org32fd8a7">
               <p>
                 PKM 知识管理只是学习的方法，永远不是目的。做知识管理很容易就会做成了管理知识，变成了折腾各种笔记工具，学习各种笔记软件，甚至被笔记软件或平台捆绑。这也是 Nonotes 想避免的，笔记不应该被笔记软件或者笔记载体局限甚至捆绑。
               </p>
@@ -834,9 +846,9 @@
           </div>
         </div>
       </div>
-      <div id="outline-container-org40a2cae" class="outline-2">
-        <h2 id="org40a2cae">Thanks</h2>
-        <div class="outline-text-2" id="text-org40a2cae">
+      <div id="outline-container-org933fd15" class="outline-2">
+        <h2 id="org933fd15">Thanks</h2>
+        <div class="outline-text-2" id="text-org933fd15">
           <p>
             如果这些内容对你有所帮助，我会很开心。
           </p>
@@ -876,30 +888,30 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#orgfc754dc">TL;DR</a></li>
-            <li><a href="#orgeaf0566">“不可避免的 AI”</a></li>
-            <li><a href="#org81d7636">Arch Linux 配置记录</a>
+            <li><a href="#orgae5831a">TL;DR</a></li>
+            <li><a href="#org41ca0c0">“不可避免的 AI”</a></li>
+            <li><a href="#org6972273">Arch Linux 配置记录</a>
               <ul>
-                <li><a href="#org7cb83c4">脚本</a></li>
-                <li><a href="#orgd79e014">dotfiles</a></li>
-                <li><a href="#org954dd8d">桌面环境和窗口管理</a></li>
-                <li><a href="#org673bd8c">Tips</a></li>
+                <li><a href="#org0611ef6">脚本</a></li>
+                <li><a href="#org503d741">dotfiles</a></li>
+                <li><a href="#org4a7061a">桌面环境和窗口管理</a></li>
+                <li><a href="#org1370e00">Tips</a></li>
               </ul>
             </li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-orgfc754dc" class="outline-2">
-        <h2 id="orgfc754dc">TL;DR</h2>
-        <div class="outline-text-2" id="text-orgfc754dc">
+      <div id="outline-container-orgae5831a" class="outline-2">
+        <h2 id="orgae5831a">TL;DR</h2>
+        <div class="outline-text-2" id="text-orgae5831a">
           <p>
             Linux 就是我从现在开始会一直使用下去的操作系统。它的太多设计理念和我不谋而合，Linus 有太多理念和我不谋而合。
           </p>
         </div>
       </div>
-      <div id="outline-container-orgeaf0566" class="outline-2">
-        <h2 id="orgeaf0566">“不可避免的 AI”</h2>
-        <div class="outline-text-2" id="text-orgeaf0566">
+      <div id="outline-container-org41ca0c0" class="outline-2">
+        <h2 id="org41ca0c0">“不可避免的 AI”</h2>
+        <div class="outline-text-2" id="text-org41ca0c0">
           <p>
             从接触到个人电脑 PC 这个概念开始，就一直用的 Windows，直到很晚才开始使用 Mac，最初的原因也只是需要处理摄影的照片，Mac 的 M 芯片在刚出来的时候就是王炸。
           </p>
@@ -1015,121 +1027,139 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-org81d7636" class="outline-2">
-        <h2 id="org81d7636">Arch Linux 配置记录</h2>
-        <div class="outline-text-2" id="text-org81d7636">
+      <div id="outline-container-org6972273" class="outline-2">
+        <h2 id="org6972273">Arch Linux 配置记录</h2>
+        <div class="outline-text-2" id="text-org6972273">
           <p>
             简单记录一下从 Mac 迁移到 Arch Linux 的配置。
           </p>
         </div>
-        <div id="outline-container-org7cb83c4" class="outline-3">
-          <h3 id="org7cb83c4">脚本</h3>
-          <div class="outline-text-3" id="text-org7cb83c4">
+        <div id="outline-container-org0611ef6" class="outline-3">
+          <h3 id="org0611ef6">脚本</h3>
+          <div class="outline-text-3" id="text-org0611ef6">
             <p>
               让 LLM 随便弄了一个 Linux 的初始化脚本，安装一些我需要的软件和配置。
             </p>
 
             <div class="org-src-container">
               <pre class="src src-bash">
-                #!/bin/bash
-                # Exit immediately if a command exits with a non-zero status.
-                set -e
-                # Check if the script is run as root
-                if [ "$(id -u)" -ne 0 ]; then
-                echo "This script must be run as root" >&2
-                exit 1
-                fi
-                # --- Package Lists ---
-                BASE_PACKAGES="git curl neovim emacs vim feh mpv docker opensnitch"
-                FCITX5_PACKAGES_ARCH="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
-                FCITX5_PACKAGES_UBUNTU="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-config-qt"
-                FCITX5_PACKAGES_FEDORA="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
-                FCITX5_PACKAGES_SUSE="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
-                # Function to install packages on Arch Linux
-                install_arch() {
-                echo "Updating system..."
+                <span style="color: #787878;">#</span><span style="color: #787878;">!/bin/bash
+                </span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Exit immediately if a command exits with a non-zero status.
+                </span><span style="color: #79C0FF;">set</span> -e
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Check if the script is run as root
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">id -u</span><span style="color: #A1D08E;">)"</span> -ne 0 <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"This script must be run as root"</span> &gt;&amp;2
+                <span style="color: #FFA657;">exit</span> 1
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">--- Package Lists ---
+                </span><span style="color: #f4f4ff;">BASE_PACKAGES</span>=<span style="color: #A1D08E;">"git curl neovim emacs vim feh mpv docker opensnitch"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_ARCH</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_UBUNTU</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-config-qt"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_FEDORA</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
+                <span style="color: #f4f4ff;">FCITX5_PACKAGES_SUSE</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Arch Linux
+                </span><span style="color: #96a6c8;">install_arch</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Updating system..."</span>
                 pacman -Syu --noconfirm --needed
-                echo "Installing packages for Arch..."
-                for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_ARCH base-devel; do
-                pacman -S --noconfirm --needed "$pkg" || echo "Skipping '$pkg': not found or error."
-                done
-                }
-                # Function to install packages on Ubuntu/Debian
-                install_ubuntu() {
-                echo "Updating system..."
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Arch..."</span>
+                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_ARCH</span> base-devel; <span style="color: #FFA657;">do</span>
+                pacman -S --noconfirm --needed <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
+                <span style="color: #FFA657;">done</span>
+                <span style="color: #8c8c8c;">}</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Ubuntu/Debian
+                </span><span style="color: #96a6c8;">install_ubuntu</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Updating system..."</span>
                 apt-get update
-                echo "Installing packages for Debian/Ubuntu..."
-                apt-get install -y --ignore-missing $BASE_PACKAGES $FCITX5_PACKAGES_UBUNTU docker.io build-essential
-                }
-                # Function to install packages on Fedora
-                install_fedora() {
-                echo "Installing packages for Fedora..."
-                for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_FEDORA; do
-                dnf -y install "$pkg" || echo "Skipping '$pkg': not found or error."
-                done
-                echo "Installing development tools for Fedora..."
-                dnf -y groupinstall "C Development Tools and Libraries" || echo "Skipping 'C Development Tools and Libraries' group: not found or error."
-                }
-                # Function to install packages on OpenSUSE
-                install_opensuse() {
-                echo "Installing packages for OpenSUSE..."
-                for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_SUSE; do
-                zypper install -y "$pkg" || echo "Skipping '$pkg': not found or error."
-                done
-                echo "Installing development tools for OpenSUSE..."
-                zypper install -y -t pattern devel_basis || echo "Skipping 'devel_basis' pattern: not found or error."
-                }
-                # Detect the distribution by checking for the package manager
-                if command -v pacman &> /dev/null; then
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Debian/Ubuntu..."</span>
+                apt-get install -y --ignore-missing $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_UBUNTU</span> docker.io build-essential
+                <span style="color: #8c8c8c;">}</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Fedora
+                </span><span style="color: #96a6c8;">install_fedora</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Fedora..."</span>
+                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_FEDORA</span>; <span style="color: #FFA657;">do</span>
+                dnf -y install <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
+                <span style="color: #FFA657;">done</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing development tools for Fedora..."</span>
+                dnf -y groupinstall <span style="color: #A1D08E;">"C Development Tools and Libraries"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping 'C Development Tools and Libraries' group: not found or error."</span>
+                <span style="color: #8c8c8c;">}</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on OpenSUSE
+                </span><span style="color: #96a6c8;">install_opensuse</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for OpenSUSE..."</span>
+                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_SUSE</span>; <span style="color: #FFA657;">do</span>
+                zypper install -y <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
+                <span style="color: #FFA657;">done</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing development tools for OpenSUSE..."</span>
+                zypper install -y -t pattern devel_basis || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping 'devel_basis' pattern: not found or error."</span>
+                <span style="color: #8c8c8c;">}</span>
+
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Detect the distribution by checking for the package manager
+                </span><span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v pacman &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_arch
-                elif command -v apt-get &> /dev/null; then
+                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v apt-get &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_ubuntu
-                elif command -v dnf &> /dev/null; then
+                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v dnf &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_fedora
-                elif command -v zypper &> /dev/null; then
+                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v zypper &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
                 install_opensuse
-                else
-                echo "Could not detect a supported package manager (pacman, apt, dnf, zypper)."
-                exit 1
-                fi
-                echo "Basic packages installation complete."
-                echo "Setting up Fcitx5 environment variables..."
-                # Create environment file for Fcitx5
-                mkdir -p /etc/environment.d
-                cat > /etc/environment.d/90-fcitx5.conf << EOL
-                                                           QT_IM_MODULE=fcitx
-                                                           XMODIFIERS=@im=fcitx
-                                                           EOL
-                                                           echo "Starting Rime configuration..."
-                                                           # Run the Rime configuration as the user who invoked sudo
-                                                           if [ -n "$SUDO_USER" ]; then
-                                                           sudo -u "$SUDO_USER" bash -c '
-                                                                                         echo "Cloning plum repository..."
-                                                                                         if [ -d "$HOME/plum" ]; then
-                                                                                         echo "$HOME/plum already exists. Skipping clone."
-                                                                                         else
-                                                                                         git clone --depth 1 https://github.com/rime/plum "$HOME/plum"
-                                                                                         fi
-                                                                                         echo "Changing to plum directory..."
-                                                                                         cd "$HOME/plum"
-                                                                                         echo "Installing rime-ice..."
-                                                                                         rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
-                                                                                         '
-                                                           else
-                                                           echo "Could not determine the user to install Rime for."
-                                                           echo "Please run the following commands manually as a regular user:"
-                                                           echo "git clone --depth 1 https://github.com/rime/plum ~/plum"
-                                                           echo "cd ~/plum"
-                                                           echo "rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full"
-                                                           fi
-                                                           echo "Installation and setup complete."
-                                                           echo "Please reboot your system for all changes to take effect."</pre>
-                                                           </div>
+                <span style="color: #FFA657;">else</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Could not detect a supported package manager (pacman, apt, dnf, zypper)."</span>
+                <span style="color: #FFA657;">exit</span> 1
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Basic packages installation complete."</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Setting up Fcitx5 environment variables..."</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Create environment file for Fcitx5
+                </span>mkdir -p /etc/environment.d
+                cat &gt; /etc/environment.d/90-fcitx5.conf &lt;&lt; EOL<span style="color: #ffff00; font-weight: bold;">
+                  QT_IM_MODULE=fcitx
+                  XMODIFIERS=@im=fcitx
+                  EOL
+                </span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Starting Rime configuration..."</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Run the Rime configuration as the user who invoked sudo
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -n <span style="color: #A1D08E;">"$SUDO_USER"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                sudo -u <span style="color: #A1D08E;">"$SUDO_USER"</span> bash -c <span style="color: #A1D08E;">'
+                  echo "Cloning plum repository..."
+                  if [ -d "$HOME/plum" ]; then
+                  echo "$HOME/plum already exists. Skipping clone."
+                  else
+                  git clone --depth 1 https://github.com/rime/plum "$HOME/plum"
+                  fi
+
+                  echo "Changing to plum directory..."
+                  cd "$HOME/plum"
+
+                  echo "Installing rime-ice..."
+                  rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
+                  '</span>
+                <span style="color: #FFA657;">else</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Could not determine the user to install Rime for."</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Please run the following commands manually as a regular user:"</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"git clone --depth 1 https://github.com/rime/plum ~/plum"</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"cd ~/plum"</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full"</span>
+                <span style="color: #FFA657;">fi</span>
+
+
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installation and setup complete."</span>
+                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Please reboot your system for all changes to take effect."</span>
+              </pre>
+            </div>
           </div>
         </div>
-        <div id="outline-container-orgd79e014" class="outline-3">
-          <h3 id="orgd79e014">dotfiles</h3>
-          <div class="outline-text-3" id="text-orgd79e014">
+        <div id="outline-container-org503d741" class="outline-3">
+          <h3 id="org503d741">dotfiles</h3>
+          <div class="outline-text-3" id="text-org503d741">
             <p>
               bash，tmux，Emacs，Nvim，还有其他的配置一直用 GitHub 在同步，迁移起来也很顺畅。
             </p>
@@ -1139,9 +1169,9 @@
             </p>
           </div>
         </div>
-        <div id="outline-container-org954dd8d" class="outline-3">
-          <h3 id="org954dd8d">桌面环境和窗口管理</h3>
-          <div class="outline-text-3" id="text-org954dd8d">
+        <div id="outline-container-org4a7061a" class="outline-3">
+          <h3 id="org4a7061a">桌面环境和窗口管理</h3>
+          <div class="outline-text-3" id="text-org4a7061a">
             <p>
               2025-09-14 added : 已经转到了 Wayland 和 Sway，偶尔也用 X11 <a href="https://www.vandee.art/blog/2025-08-12-unstable-until-you-linux.html">薛定谔的 Linux</a>
             </p>
@@ -1168,49 +1198,57 @@
 
             <div class="org-src-container">
               <pre class="src src-bash">
-                #!/bin/bash
-                # Directory to store the original workspace ID of the window
-                STATE_DIR="/tmp/hypr-special-state"
-                mkdir -p "$STATE_DIR"
-                # Get active window info as JSON
-                active_window_json=$(/usr/bin/hyprctl activewindow -j)
-                # Extract address and workspace info
-                window_address=$(echo "$active_window_json" | /usr/bin/jq -r '.address')
-                workspace_id=$(echo "$active_window_json" | /usr/bin/jq -r '.workspace.id')
-                workspace_name=$(echo "$active_window_json" | /usr/bin/jq -r '.workspace.name')
-                # Exit if no active window is found
-                if [ -z "$window_address" ] || [ "$window_address" == "null" ]; then
-                exit 0
-                fi
-                # Path to the state file for the current window
-                STATE_FILE="$STATE_DIR/$window_address"
-                # Check if the window is in the special workspace
-                if [[ "$workspace_name" == "special"* ]]; then
-                # Window is in a special workspace, move it back to its original workspace
-                if [ -f "$STATE_FILE" ]; then
-                target_workspace=$(cat "$STATE_FILE")
-                rm "$STATE_FILE" # Clean up the state file
-                else
-                # Fallback: if no state file is found, move to the first available regular workspace
-                target_workspace=$(/usr/bin/hyprctl workspaces -j | /usr/bin/jq -r '.[] | select(.id >= 1) | .id' | head -n 1)
-                # Default to workspace 1 if no other regular workspace is found
-                if [ -z "$target_workspace" ]; then
-                target_workspace=1
-                fi
-                fi
-                # Move the specific window to the target workspace
-                /usr/bin/hyprctl dispatch movetoworkspace "$target_workspace,address:$window_address"
-                else
-                # Window is not in a special workspace, so move it there and save its current workspace
-                echo "$workspace_id" > "$STATE_FILE"
-                                                           /usr/bin/hyprctl dispatch movetoworkspacesilent "special,address:$window_address"
-                                                           fi</pre>
-                                                           </div>
+                <span style="color: #787878;">#</span><span style="color: #787878;">!/bin/bash
+                </span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Directory to store the original workspace ID of the window
+                </span><span style="color: #f4f4ff;">STATE_DIR</span>=<span style="color: #A1D08E;">"/tmp/hypr-special-state"</span>
+                mkdir -p <span style="color: #A1D08E;">"$STATE_DIR"</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Get active window info as JSON
+                </span><span style="color: #f4f4ff;">active_window_json</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">/usr/bin/hyprctl activewindow -j</span><span style="color: #8c8c8c;">)</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Extract address and workspace info
+                </span><span style="color: #f4f4ff;">window_address</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.address'</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #f4f4ff;">workspace_id</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.workspace.id'</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #f4f4ff;">workspace_name</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.workspace.name'</span><span style="color: #8c8c8c;">)</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Exit if no active window is found
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$window_address"</span> <span style="color: #8c8c8c;">]</span> || <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$window_address"</span> == <span style="color: #A1D08E;">"null"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #FFA657;">exit</span> 0
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Path to the state file for the current window
+                </span><span style="color: #f4f4ff;">STATE_FILE</span>=<span style="color: #A1D08E;">"$STATE_DIR/$window_address"</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Check if the window is in the special workspace
+                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$workspace_name"</span> == <span style="color: #A1D08E;">"special"</span>* <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Window is in a special workspace, move it back to its original workspace
+                </span>    <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -f <span style="color: #A1D08E;">"$STATE_FILE"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #f4f4ff;">target_workspace</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$STATE_FILE"</span><span style="color: #8c8c8c;">)</span>
+                rm <span style="color: #A1D08E;">"$STATE_FILE"</span> <span style="color: #787878;"># </span><span style="color: #787878;">Clean up the state file
+                </span>    <span style="color: #FFA657;">else</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Fallback: if no state file is found, move to the first available regular workspace
+                </span>        <span style="color: #f4f4ff;">target_workspace</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">/usr/bin/hyprctl workspaces -j | /usr/bin/jq -r '.[] | select(.id &gt;= 1</span><span style="color: #A1D08E;">) | .id'</span> | head -n 1<span style="color: #8c8c8c;">)</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Default to workspace 1 if no other regular workspace is found
+                </span>        <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$target_workspace"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+                <span style="color: #f4f4ff;">target_workspace</span>=1
+                <span style="color: #FFA657;">fi</span>
+                <span style="color: #FFA657;">fi</span>
+
+                <span style="color: #787878;"># </span><span style="color: #787878;">Move the specific window to the target workspace
+                </span>    /usr/bin/hyprctl dispatch movetoworkspace <span style="color: #A1D08E;">"$target_workspace,address:$window_address"</span>
+                <span style="color: #FFA657;">else</span>
+                <span style="color: #787878;"># </span><span style="color: #787878;">Window is not in a special workspace, so move it there and save its current workspace
+                </span>    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"$workspace_id"</span> &gt; <span style="color: #A1D08E;">"$STATE_FILE"</span>
+                /usr/bin/hyprctl dispatch movetoworkspacesilent <span style="color: #A1D08E;">"special,address:$window_address"</span>
+                <span style="color: #FFA657;">fi</span>
+              </pre>
+            </div>
           </div>
         </div>
-        <div id="outline-container-org673bd8c" class="outline-3">
-          <h3 id="org673bd8c">Tips</h3>
-          <div class="outline-text-3" id="text-org673bd8c">
+        <div id="outline-container-org1370e00" class="outline-3">
+          <h3 id="org1370e00">Tips</h3>
+          <div class="outline-text-3" id="text-org1370e00">
             <p>
               在国内，安装 Linux 遇到的最大的问题应该就是网络问题了。
             </p>
