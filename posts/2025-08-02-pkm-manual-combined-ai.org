@@ -87,7 +87,7 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 
 [[https://cloud.llamaindex.ai/][cloud.Llamaindex]] 和 NoNotes 的实现类似，可以 index 文档，提供 RAG 接口，Qdrant 这类向量数据库加上 MCP 也可以达到类似的效果。自动补全用自己喜欢的语言再写一个和系统交互的 API 就 OK 了。
 
-笔记的同步就用 GitHub 就好了，笔记的版本管理和备份是很必须的，GitHub 的 commit 对于管理笔记太合适了。如果特别看重隐私或者讨厌 GitHub，可以自托管 [[https://docs.gitea.com/][Gitea]] 。
+笔记的同步就用 GitHub 就好了，笔记的版本管理和备份是很必须的，GitHub 的 commit 对于管理笔记太合适了。如果特别看重隐私或者讨厌 GitHub，可以自托管 [[https://docs.gitea.com/][Gitea]] 或 [[https://about.gitlab.com/install/][GitLab]]。
 **** 迭代
 每个星期我会让 LLM 总结一下 PKM 里新增的内容，用 python 写了一个小脚本获取我 GitHub 仓库的 git diff，可以选日期范围，指定的仓库。PKM 丢在了 GitHub ，脚本会生成一个 MD 文档，包含 git commit 新增的内容，把文档丢给 LLM，让它提出几个相关的深度思考问题。
 
