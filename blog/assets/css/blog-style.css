@@ -462,7 +462,7 @@ tr:nth-child(even) {
     cursor: pointer;
 }
 
-.top-link {
+#top-link {
     visibility: hidden;
     position: fixed;
     bottom: 5rem;
@@ -476,14 +476,14 @@ tr:nth-child(even) {
     transition: visibility 0.5s, opacity 0.8s linear;
 }
 
-.top-link:focus,
+#top-link:focus,
 #theme-toggle:focus {
     outline: 0;
 }
 
 
 
-.top-link {
+#top-link {
     font-size: 80%;
     color: #073642;  /* replacing $fg-color with Solarized base02 */
 }
@@ -526,7 +526,7 @@ tr:nth-child(even) {
         white-space: nowrap;
     }
     
-    .top-link {
+    #top-link {
         right: 0.05rem;
         bottom: 1rem;
     }
