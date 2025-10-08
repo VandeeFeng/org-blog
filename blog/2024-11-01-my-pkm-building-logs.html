@@ -1,1006 +1,970 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="alternate"
-          type="application/rss+xml"
-          href="https://www.vandee.art/blog/rss.xml"
-          title="RSS feed for https://www.vandee.art/blog/">
-    <title>我的 PKM 构建 Log</title>
-    <meta property="og:title" content="我的 PKM 构建 Log">
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://www.vandee.art/blog/2024-11-01-my-pkm-building-logs.html">
-    <meta name="author" content="Vandee">
-    <meta name="referrer" content="origin-when-cross-origin">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>我的 PKM 构建 Log</title>
+<meta property="og:title" content="我的 PKM 构建 Log">
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.vandee.art/blog/2024-11-01-my-pkm-building-logs.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
-    <link rel="stylesheet"
-          href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet"
-          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
-    <script defer>
-      document.addEventListener("DOMContentLoaded", function () {
-        pangu.spacingPage();
-      });
-    </script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
 
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/copyCode.js" defer></script>
-    <script src="assets/js/shiba.js" defer></script>
-    <script src="assets/js/search.js" defer></script></head>
-  <body>
-    <div id="preamble" class="status">
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
       <header>
-        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
-        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
-        <nav>
-          <a href="https://www.vandee.art/blog/">Home</a>
-          <a href="https://x404.xyz/wiki">Wiki</a>
-          <a href="https://x404.xyz/photo">Photo</a>
-          <a href="archive.html">Archive</a>
-          <a href="tags.html">Tags</a>
-          <div id="search-container">
-            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-            <i class="fas fa-search search-icon"></i>
-          </div>
-        </nav>
-    </header></div>
-    <div id="content">
-      <div class="post-date">01 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-11-01-my-pkm-building-logs.html">我的 PKM 构建 Log</a></h1>
-      <nav id="table-of-contents" role="doc-toc">
-        <h2>Table of Contents</h2>
-        <div id="text-table-of-contents" role="doc-toc">
-          <ul>
-            <li><a href="#orge578758">前言</a></li>
-            <li><a href="#org49429ad">笔记和 PKM 的构建 Log</a>
-              <ul>
-                <li><a href="#org2c47cd4">2022-07-20 开始系统的记笔记</a>
-                  <ul>
-                    <li><a href="#orgc21b7b3">Add</a></li>
-                    <li><a href="#org82879c0">为什么要花这么多心思在记笔记？</a></li>
-                  </ul>
-                </li>
-                <li><a href="#org24d6452">2023-07-19 又一次知识管理逻辑的完善</a>
-                  <ul>
-                    <li><a href="#orgc33e45e">Add</a></li>
-                    <li><a href="#orgb5315a0">知识管理与记录</a></li>
-                    <li><a href="#orgc0edfa1">重新折腾obsidian</a></li>
-                    <li><a href="#org9f12984">知识管理与文档记录的意义</a></li>
-                  </ul>
-                </li>
-                <li><a href="#org4727dcb">2023-09-14 obsidian和logseq联用的PKM尝试</a>
-                  <ul>
-                    <li><a href="#org64a227b">Add</a></li>
-                    <li><a href="#orgfc28eda">Logseq</a></li>
-                    <li><a href="#org5dd4545">ob和Logseq的简单对比</a></li>
-                    <li><a href="#org7d64903">现在的选择</a></li>
-                    <li><a href="#org11de52a">Reference</a></li>
-                  </ul>
-                </li>
-                <li><a href="#org7f69e5d">2024-04-13 神的编辑器</a>
-                  <ul>
-                    <li><a href="#orgbdc79b3">Add</a></li>
-                    <li><a href="#org1e4f2b1">做自己的笔记“软件”</a></li>
-                    <li><a href="#org7b47d43">Emacs</a></li>
-                  </ul>
-                </li>
-                <li><a href="#org3f3a9f6">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
-                  <ul>
-                    <li><a href="#orgcd3773d">Add</a></li>
-                    <li><a href="#org597af06">PKM去形式化</a></li>
-                    <li><a href="#org274c8ea">nb</a></li>
-                    <li><a href="#orgd885af7">去形式化之后的PKM</a></li>
-                    <li><a href="#org76177a6">Logseq适配Quartz</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#org7c3966a">Emacs 阶段</a></li>
-            <li><a href="#orge3b0b76">ChangeLog</a></li>
-          </ul>
-        </div>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
       </nav>
-      <div id="outline-container-orge578758" class="outline-2">
-        <h2 id="orge578758">前言</h2>
-        <div class="outline-text-2" id="text-orge578758">
-          <p>
-            最近开始 all in Emacs，用 org-mode 写作和生成静态博客页面，顺便对以前的写作再迭代整理一次。
-          </p>
-
-          <p>
-            知识的循环是固定结构化知识不可缺少的一步。
-          </p>
-
-          <p>
-            在整理这些关于 PKM 和笔记零散的博客的过程种，依然能回忆起某些段落，某些反复推敲的文字背后那些思考的火花。它们依然滋滋作响，这些思维的闪光穿越了时间和空间，它们在历史和记录中变得永恒。它们当然是宇宙里不可能被侦测到的无穷小量，但它们的能量在物质的永恒中已经签上了自己的 ID。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-org49429ad" class="outline-2">
-        <h2 id="org49429ad">笔记和 PKM 的构建 Log</h2>
-        <div class="outline-text-2" id="text-org49429ad">
-          <p>
-            这部分是之前相关零散文章的整理， <code>Add</code> 是新增，其他部分是之前的原文（部分修改）。
-          </p>
-        </div>
-        <div id="outline-container-org2c47cd4" class="outline-3">
-          <h3 id="org2c47cd4">2022-07-20 开始系统的记笔记</h3>
-          <div class="outline-text-3" id="text-org2c47cd4">
-            <p>
-              Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
-            </p>
-
-            <p>
-              好处在哪里：Typora解决文本编辑，obsidian解决文档的本地储存和分类，并且win，mac，都能用。notion解决网络储存，并且有着强大的数据库和嵌入系统。这样基本实现了跨平台，跨终端，本地和网络双储存，多平台同步笔记。
-            </p>
-
-            <p>
-              Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么执着于markdown格式，因为它简单高效，门槛也低，在网络文本传输有天然的优势。这中间还要解决的一个问题就是本地图片上传。利用Typora和gitee图床就可以完美解决。obsidian配合icloud也可以多平台同步。
-            </p>
-          </div>
-          <div id="outline-container-orgc21b7b3" class="outline-4">
-            <h4 id="orgc21b7b3">Add</h4>
-            <div class="outline-text-4" id="text-orgc21b7b3">
-              <p>
-                最开始接触到做笔记这个概念是从 Notion 开始，那个时候 Notion 正火。随后由于网络问题转到了 markdown 和 obsidian，开始折腾本地笔记。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org82879c0" class="outline-4">
-            <h4 id="org82879c0">为什么要花这么多心思在记笔记？</h4>
-            <div class="outline-text-4" id="text-org82879c0">
-              <p>
-                也还是从疫情说起，疫情让协同办公变成刚需。团队协作当中，本地与网络文档同步直接影响工作的效率。而对于个人，记笔记也直接影响信息的处理效率。而信息的输入与存储直接影响了，我们对于外界的认知，对信息的接受与处理，在准确全面的认知之下，思维才有用武之地。
-              </p>
-
-              <p>
-                我个人习惯每个星期会整理一次，做好输出与整理。一个月之后再进行一次，如此反复。
-              </p>
-
-              <p>
-                基维百科：文件是对思想创意的书面呈现，档案是对事物发展过程的书面保存，文档可以说就是主观和客观的书面记录。
-              </p>
-
-              <p>
-                文档其实是我们工作学习生活都离不开的一个记录形式。
-              </p>
-
-              <p>
-                汉谟拉比法典可以说就是最早的文档了。从社会发展的角度来说，人类各项基础活动都离不开书写和记录还有归档。文档的记录更直接关乎人类历史的发展与承接。信息处理的效率，更直接影响着文明发展的快慢。现在网络一秒钟传输的数据量，已经是几千年前全世界文档记录量的不知道多少倍了。
-              </p>
-            </div>
-          </div>
-        </div>
-        <div id="outline-container-org24d6452" class="outline-3">
-          <h3 id="org24d6452">2023-07-19 又一次知识管理逻辑的完善</h3>
-          <div class="outline-text-3" id="text-org24d6452">
-            <p>
-              最近刷到了这个文章<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>，重新思考了一下知识管理的逻辑。
-            </p>
-
-            <p>
-              距离上一次更新正好一年。在当时的方案中，由于还不能实现科学上网自由，obsidian的插件许多都没有，也没想着太折腾，notion的剪藏与数据库实在是方便。但是对于文档记录，本地储存才是一劳永逸的，notion的网络又还是时好时坏。还是决定再折腾一下。
-            </p>
-          </div>
-          <div id="outline-container-orgc33e45e" class="outline-4">
-            <h4 id="orgc33e45e">Add</h4>
-            <div class="outline-text-4" id="text-orgc33e45e">
-              <p>
-                现在互联网已经被 AI 内容污染的不成样了。那个时候开始意识到历史和记录的意义了。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-orgb5315a0" class="outline-4">
-            <h4 id="orgb5315a0">知识管理与记录</h4>
-            <div class="outline-text-4" id="text-orgb5315a0">
-              <p>
-                <a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>里提到
-              </p>
-
-              <blockquote>
-                <p>
-                  我给这个生活管理系统的标签是「知行合一」， <b>希望能够让知识流动起来，融贯到生活中的方方面面，来指导我们更好地行动，创造出更多的价值。</b>
-                </p>
-
-                <p>
-                  也希望能帮你做到「知行合一」。
-                </p>
-              </blockquote>
-
-              <p>
-                简单来说，人类学习一项事物，或者说认知一个事物的基本逻辑是：
-              </p>
-
-              <p>
-                <a href="https://www.vandee.art/posts/20230313-295a230d.html?highlight=%E4%BF%A1%E6%81%AF#%E8%A1%A8%E4%B8%8E%E9%87%8C"> <b>物质实质 — 物质表象 — 生理接受 — 思维转化 — 信息处理 — 信息表达 — 认知迭代的过程</b> </a>
-              </p>
-
-              <p>
-                现在垃圾信息越来越多了，GTP等LLM生成式AI会制造更多信息垃圾。
-              </p>
-
-              <p>
-                从互联网诞生之初，垃圾信息就是使用者面临的一大难题。如何从无数信息中寻找到有用信息？搜索引擎的需求由此而来。早期的垃圾信息都是由人工生成，因此其数量受制于人类工作的局限性。但随着生成式 AI 的到来，大批量生成将使得垃圾信息的量级远超过去。五月初，新闻评级公司 NewsGuard 发现有 49 个假新闻网站使用 AI 生成内容。到 6 月底，这个数字增加到了 277。这些 AI 生成内容网站旨在通过 Google 的广告获利。来源：<a href="https://www.solidot.org/story?sid=75525">https://www.solidot.org/story?sid=75525</a>
-              </p>
-
-              <p>
-                信息输入是认知的源头，重要性不言而喻，去年折腾了一下RSS订阅来粗略的管理信息输入，
-              </p>
-
-              <p>
-                有了相对良性的信息输入，才能反哺思维的建立，最后一个阶段，就是思维加工之后，形成档案记录，循环到新的信息输入当中。所以，知识管理与记录是认知迭代环节中，非常重要的一环。从互联网时代，到大数据，到现在的生成式AI，每天基于互联网产生的数据早已超过过去纸质档案数据的总和。科学的文档管理和检索系统，提高信息查找的准确度与效率，非常有必要。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-orgc0edfa1" class="outline-4">
-            <h4 id="orgc0edfa1">重新折腾obsidian</h4>
-            <div class="outline-text-4" id="text-orgc0edfa1">
-              <p>
-                正好前段时间Anytype的内测通过了，体验了一下，copy了一下它的设计理念， <b>决定以object-tag-type-relation的逻辑来整理信息，统一对于信息处理，思维上的内在逻辑分类，以及文档管理、记录、输出的外在分类。</b>
-              </p>
-
-              <p>
-                既然要重新整理，干脆把obsidian捡起来吧。
-              </p>
-
-              <p>
-                这次要解决的重点问题是：
-              </p>
-              <ul class="org-ul">
-                <li>notion的剪藏与数据库需求</li>
-                <li>思维逻辑与外在记录的统一</li>
-                <li>信息、任务管理的自动化更新</li>
-              </ul>
-
-              <p>
-                参考这些以及<a href="https://forum-zh.obsidian.md/">Obsidian 中文论坛 </a>，折腾了几天，
-              </p>
-              <ul class="org-ul">
-                <li><a href="https://client.sspai.com/post/73958#">玩转 Obsidian 08：利用 Dataview 打造自动化 HomePage - 少数派 (sspai.com)</a></li>
-                <li><a href="https://www.bilibili.com/video/BV1YT4y167dL/?vd_source=6d02c197c6cb438dff451b14b29c6080">从零开始保姆级教程：用Obsidian搭建个人书库（一）_哔哩哔哩_bilibili</a></li>
-                <li><a href="https://sspai.com/post/77304">从卡片笔记到 Obsidian：本质、方法与工具 - 少数派 (sspai.com)</a></li>
-                <li><a href="https://sspai.com/post/80634">去中心化笔记体系 - 少数派 (sspai.com)</a></li>
-                <li><a href="https://forum-zh.obsidian.md/t/topic/75">obsidian使用Maoxian插件完美剪藏网页文章 - 经验分享 - Obsidian 中文论坛</a></li>
-                <li><a href="https://forum-zh.obsidian.md/t/topic/200">我的 Obsidian 工作流：模板+QuickAdd+Dataview 快速创建和自动索引 - 经验分享 - Obsidian 中文论坛</a></li>
-              </ul>
-
-              <p>
-                依赖obsidian的qucikadd和dataview插件，加上快捷指令，基本实现了这次知识管理更新的目的。
-              </p>
-
-              <p>
-                几个主要界面:
-              </p>
-
-
-              <figure id="org59fb565">
-                <img src="https://s2.loli.net/2023/07/19/EeMl1FW29UHJONI.jpg" class="img" width="50%" height="50%">
-
-              </figure>
-
-              <p>
-                创建Daily来记录每天的Todo以及零碎的信息，通过标签和obsidian的双链来链接，让信息关联。两个主页用来自动更新数据和汇总，DB folder插件生成的类似notion的数据库，解决文档的标签，分类，查找，归档。
-              </p>
-
-              <p>
-                这几年折腾了几次，但始终要明确的是：知识管理的目的是管理知识，是为了提高效率，而不是为了管理而管理。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org9f12984" class="outline-4">
-            <h4 id="org9f12984">知识管理与文档记录的意义</h4>
-            <div class="outline-text-4" id="text-org9f12984">
-              <p>
-                <a href="https://www.bilibili.com/video/BV14Y4y1n7YQ/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">【苏星河】全网都在吹的飞书，到底是个什么软件？_哔哩哔哩_bilibili</a>这个视频的最后说的很有道理：
-              </p>
-
-              <blockquote>
-                <p>
-                  文档全称文件与档案，其中文基百科对于文件的解释是其实对思想创意的书面呈现，而对于档案则是对事物发展过程的书面保存。关于事物的所有文档，就是关于该事物在主观思想与客观过程这两个层面的完整书面记录。
-                </p>
-
-                <p>
-                  而我们知道人类所进行过的所有活动，其实无外乎就是主观思想与客观构成的一系列纠缠统一，所以文档工具也就自然而然地成为了我们工作学习社会发展的核心内容，贯穿始终。
-                </p>
-
-                <p>
-                  那历史上最早的文档其实就是5000年前的楔形文字，这苏美人在泥板上努力刻下的符号，本质就是在以书面的形式呈现。作为文档最大的问题显然就是极低的内容承载效率，一块硕大的泥巴只能记录非常有限的内容
-                  于是直到3000年后，蔡伦改进的造纸术，才让轻薄柔韧造价低廉的纸张成为了文章在现实世界中最完美的承载。
-                </p>
-
-                <p>
-                  拥有和纸张文档后，人们便开始疯狂书写记录世界。于是如何才能提高内容输入效率，又成为了许多人关注的全新议题。在随后的1000多年里，以表音文字为代表的中国发明了雕版印刷，而以表音文字为代表的欧美则偏爱活字印刷，总之这两种印刷术都大大提高了内容的输入效率。而且欧美国家后期发明的打字机，更是将活字印刷的效率发挥到了极致，输入方式的进化将文档的生产与传播效率提高到了全新的高度。
-                  但这也同时放大了一个原本不起眼的问题，那就是文档的内容编辑效率。
-                </p>
-
-                <p>
-                  虽然写这件事从未改变，但为了写的效率，我们付出了整整5000年的努力。
-                  因为就像我们开头说的，文档是人类思想与行为的书面记录，其中思想与行为赋予着人类特殊的价值，而书面记录则让多人合作与传承成为可能。
-                  所以提高文档工具的效率，就是在提高人类发展的效率。
-                </p>
-              </blockquote>
-
-              <p>
-                现在的文档记录基本上都依赖于互联网信息，而现阶段GPT等LLM生成式AI，会生成许多虚假内容，<a href="https://www.ifanr.com/1553456?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">疯狂污染互联网，人类比 AI 擅长多了 </a>
-              </p>
-
-              <p>
-                这也是为什么许多大佬会站出来抵制生成式AI，Twitter限制用户浏览推文数量，Reddit论坛关闭API，Claude、BingChat、bard，包括马斯克最近要成立的XAI，也都是在争夺文档信息，同样也是在争夺历史。
-              </p>
-
-              <p>
-                <b>文档是人类思想与行为的书面记录，其中思想与行为赋予着人类特殊的价值，而书面记录则让多人合作与传承成为可能，所以提高文档工具的效率，就是在提高人类发展的效率。</b>
-              </p>
-
-              <p>
-                <b>这些文档也就是人类的历史，但现在AI信息污染的过程本身，也同样是人类历史的一部分。</b>
-              </p>
-
-              <p>
-                这又让我想起了刚开始用chatGPT的时候，问过他的一个问题：美国是现在的世界老大么？
-              </p>
-
-              <p>
-                记得当时的答案还是相对客观的，不知道百年之后，各大XXXGPT的回答是什么。
-              </p>
-            </div>
-          </div>
-        </div>
-        <div id="outline-container-org4727dcb" class="outline-3">
-          <h3 id="org4727dcb">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
-          <div class="outline-text-3" id="text-org4727dcb">
-            <p>
-              距上一次折腾，不知不觉已经两个月了。在“深入”使用obsidian(后面简称ob)这两个月期间，一个之前暂时搁置的问题逐渐浮现出来：那就是数据储存形式。
-            </p>
-
-            <p>
-              也正好看到了这篇文章<a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a>。
-            </p>
-
-            <p>
-              从易用性和数据呈现来看，很显然它是，从保存数据和数据结构的角度来看，markdown不是一个很优秀的格式。当然这是当数据到达一个相当的量级才需要考虑的事。于是，开始了解Logseq。
-            </p>
-
-            <p>
-              没有最好的笔记软件，适合自己的才是最好的。
-            </p>
-          </div>
-          <div id="outline-container-org64a227b" class="outline-4">
-            <h4 id="org64a227b">Add</h4>
-            <div class="outline-text-4" id="text-org64a227b">
-              <p>
-                这个时候开始意识到数据的重要性了，以前的纸质记录、现在的电子记录，都是数据。现在的社会是信息和数据的社会，在 AI 介入之后，更是如此。没有最好的笔记软件，只有最适合自己的笔记软件，这句话一直说到现在。Logseq 是一个很好的笔记软件设计，但现在回过头来看，它从设计底层强制性的使用 markdown 语法里的列表格式来实现的块并不是那么容易让所有人接受，只要导入了其他 markdown 文档，就会强制性的加上列表格式。也是从 Logseq 开始，我第一次接触到了 Lisp 语言这个概念。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-orgfc28eda" class="outline-4">
-            <h4 id="orgfc28eda">Logseq</h4>
-            <div class="outline-text-4" id="text-orgfc28eda">
-              <p>
-                第一次打开Logseq就被UI的设计吸引，这是一种美学上的天然的吸引。和第一次打开Typora的感觉很像。
-              </p>
-
-              <p>
-                <a href="https://bytetalk.fm/posts/episode-7">跟 Logseq 的创造者天生聊聊 Logseq 的故事</a>里介绍到：Logseq是开源的，由Clojure / ClojureScript开发。dataScript 库，函数式语言在数据操作方面会有些优势 ，可以写出很丰富的 query。 要知道，鼎鼎大名的Roam Research也是基于Clojure开发。
-              </p>
-
-              <p>
-                Roam Research为什么如此受追捧，除了双链和block之外，我觉得它的Query和数据结构才是重点，并且它
-              </p>
-
-              <blockquote>
-                <ul class="org-ul">
-                  <li>第三，协作性。Conor 的野心，是让每一个学生 <b>不需要通过</b> 高质量的学校教育，就能自行从 Roam Research 组建的全社会协作知识网络中，学会任何自己想学会的知识和技能，并且能够更容易探索与创造知识。</li>
-                  <li>第四，激励性。为了促进人们生产和分享知识，Roam Research 想方设法降低知识采集和生产的成本，激发人们的创造、分享和协作行为。</li>
-                </ul>
-
-                <p>
-                  Source：<a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a>
-                </p>
-              </blockquote>
-
-              <p>
-                <a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a>
-              </p>
-
-              <p>
-                Logseq的开发者<a href="https://twitter.com/tiensonqin">秦天生</a>也说到，想做一个 GitHub 和 Wikipedia 的 2.0 版本。从开发到理念，可以说和Roam Research殊路同归。
-              </p>
-
-              <p>
-                在这一点上，Logseq发展的很完美。而这几点，同样是我想做PKM，或者说，对知识本身的理解和态度。
-              </p>
-
-              <p>
-                <b>知识是上帝给人类的财富，它就应该是开源的。</b>
-              </p>
-
-              <p>
-                因此，和ob相比，这种设计开发理念，更吸引我。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org5dd4545" class="outline-4">
-            <h4 id="org5dd4545">ob和Logseq的简单对比</h4>
-            <div class="outline-text-4" id="text-org5dd4545">
-              <p>
-                我认为obsidian的生命力来源于社区和插件，与其说用ob不如说是再用它的插件，ob开放了插件API，让爱好者自由发挥。
-              </p>
-
-              <p>
-                ob更像是一个全能的高达，身上装备者各种插件盔甲和武器，你可以根据自己的Project、GTD、PKM，制定出个性化很高的管理系统。 <b>插件是ob很大的一个优势。</b>
-              </p>
-
-              <p>
-                <b>ob和Logseq的对比：</b>
-              </p>
-
-              <p>
-                obsidian：
-              </p>
-
-              <ul class="org-ul">
-                <li>page为单位，你的每一篇笔记就是一个markdown文档，通过双链链接起来。当然ob也有块的概念，
-                  但和Logseq可展开的块不一样，ob的块是文字的每一行，可以通过 <code>^</code> 来标记和检索。</li>
-                <li>有文件夹系统，习惯文件夹管理的，这是ob的很大优势。</li>
-                <li>除了ob自带的搜索功能，数据呈现和检索其实主要依靠dataview插件，而这个不是数据结构层面的。
-                  Logseq的dataScript库在数据结构上优势更大。</li>
-                <li>可以通过 <b>TagFolder</b> 、 <b>Tag Summary</b> 等插件自己制作标签页，标签管理方面自由度也很高。</li>
-                <li>ob的多端同步很方便，这依赖于 <b>Remotely Save</b> 这个插件。</li>
-                <li>和Zotero的联动依靠插件来导入高亮和笔记。</li>
-              </ul>
-
-              <p>
-                Logseq：
-              </p>
-
-              <ul class="org-ul">
-                <li>块为最小单位,使得它的颗粒可以很小，每一个block都可以展开并且关联和查询。这是和ob以page为单位，很不一样的地方。</li>
-                <li>每一个tag会自动生成标签页，这样很方便做 Tag_Pages，和moc。这样就可以通过标签页来链接block。它的标签可以看做一个特殊的块，也就是标签的moc。</li>
-                <li>它没有文件夹，因此moc很重要，类似的它提供了一个专门的Contents页面，相当于文件夹管理。</li>
-                <li>日志系统和todo系统很完善。logseq自带日志，它就是一个log。Logseq的理念应该是用日志来串联，而不是
-                  把分类的经历消耗在文件夹的分类。当然如何选择是自己的事，我们一样可以手动用文件夹分类储存管理。</li>
-                <li>Outline大纲模式，在markdown里，每一个block就是一个无序列表格式。</li>
-                <li>Logseq的同步相对麻烦，得git和Working Copy结合起来。</li>
-                <li>可以直接接入Zotero的API，这很方便。</li>
-              </ul>
-
-              <p>
-                总体来说，ob很大，Logseq更小。ob处理大量文字也不会卡，而在Logseq一个块如果包含太多文字会报错无法编辑。Logseq自带的日志系统很好用，开箱即写，用outline提炼出更精简的文字来做思维的串联。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org7d64903" class="outline-4">
-            <h4 id="org7d64903">现在的选择</h4>
-            <div class="outline-text-4" id="text-org7d64903">
-              <p>
-                <b>做电子笔记，实际上是在做数据储存和数据处理。</b>
-              </p>
-
-              <p>
-                数据编辑的易用性，和数据检索、数据结构之间的取舍很关键。从这个角度出发，可能随着时间偏移，重心会偏向Logseq和数据结构方面。
-              </p>
-
-              <p>
-                而ob本身就可以看做是一个Logseq的库和inbox来使用，反过来Logseq也可以包含在ob的文件夹系统里。这完全取决于自身的需求。
-              </p>
-
-              <p>
-                现在基本上把ob当做一个大的inbox和Markdown文件管理编辑系统，Logseq来做长青笔记和日志。
-              </p>
-
-              <p>
-                Read Later用Omnivore，剪藏网页，可以自动导入Logseq和ob，roma-highlighter浏览器插件做高亮剪藏。
-              </p>
-
-              <p>
-                Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
-              </p>
-
-              <p>
-                这里要强烈推荐Omnivore，和一年六七百的Readwise相比，基本功能都有，但它是开源和免费的。
-              </p>
-
-              <p>
-                最后，几个原则，也是提醒自己：
-              </p>
-
-              <ul class="org-ul">
-                <li>做笔记是方法，不是目的。</li>
-                <li>信息很容易被误认为是知识，而做笔记不是汇总信息，是提炼思维，汇总元知识。</li>
-              </ul>
-
-              <p>
-                没有最好的笔记软件，只有最适合自己的笔记软件。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org11de52a" class="outline-4">
-            <h4 id="org11de52a">Reference</h4>
-            <div class="outline-text-4" id="text-org11de52a">
-              <ul class="org-ul">
-                <li><a href="https://sspai.com/post/82793">Obsidian技巧：通过多个标签快速定位文件(by TagFolder) - 少数派 (sspai.com)</a></li>
-                <li><a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a></li>
-                <li><a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a></li>
-                <li><a href="https://bytetalk.fm/posts/episode-7">跟 Logseq 的创造者天生聊聊 Logseq 的故事</a></li>
-                <li><a href="https://www.bilibili.com/video/BV1vM4y1h7H4/?p=44&amp;spm_id_from=pageDriver">Obsidian中的标签，到底该如何使用？（第三集 设计你的标签页）_哔哩哔哩_bilibili</a></li>
-                <li><a href="https://www.bilibili.com/video/BV1bP411H7rx/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">Obsidian的全局引用你用对了吗？Johnny学Obsidian_哔哩哔哩_bilibili</a></li>
-                <li><a href="https://pkmer.cn/">PKMer</a></li>
-                <li><a href="https://sspai.com/post/80042#!">双剑合璧：Obsidian和Logseq联用的一些经验 - 少数派 (sspai.com)</a></li>
-                <li><a href="https://www.bilibili.com/video/BV1pm4y1A79c/?p=3&amp;vd_source=92184533e359726f138fee9650261f0f">03 ios终端(手机和平板)的logseq同步设置_哔哩哔哩_bilibili</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div id="outline-container-org7f69e5d" class="outline-3">
-          <h3 id="org7f69e5d">2024-04-13 神的编辑器</h3>
-          <div class="outline-text-3" id="text-org7f69e5d">
-          </div>
-          <div id="outline-container-orgbdc79b3" class="outline-4">
-            <h4 id="orgbdc79b3">Add</h4>
-            <div class="outline-text-4" id="text-orgbdc79b3">
-              <p>
-                开始正式使用 Emacs 了，脱离笔记软件，将做笔记这个事从使用工具记录变成了思维概念上的一种习惯，而不是一个行为。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org1e4f2b1" class="outline-4">
-            <h4 id="org1e4f2b1">做自己的笔记“软件”</h4>
-            <div class="outline-text-4" id="text-org1e4f2b1">
-              <p>
-                在订阅里看到推荐的这篇文章  <a href="https://wiki.heptabase.com/the-roadmap?lang=zh-Hant">My Vision - The Roadmap | Heptabase Public Wiki</a>，大概讲了一下Heptabase 下一步的Roadmap，还有一些笔记理念上的东西。Heptabase 有所耳闻，因为订阅的价格一直没有去尝试。
-                如同这个文章里说的：
-              </p>
-              <blockquote>
-                <p>
-                  在<a href="https://wiki.heptabase.com/the-knowledge-lifecycle?lang=zh-Hant"> <b>上一篇文章的結尾</b> </a>，我將 Heptabase 的願景描繪如下：
-                </p>
-
-                <p>
-                  <b>總結來說，在「知識的生命週期」這個維度上，我們希望能透過 [[<a href="https://heptabase.com/">https://heptabase.com/</a>][ *Heptabase</b> ]] 的工具來幫助全世界的知識工作者打通「探索 → 收集 → 思考 → 創作 → 分享」的知識生命週期，讓資訊具備原生的互用性、讓想法的脈絡可被追蹤、讓集體知識的創建更為容易，進而演化出一個脈絡化的知識網路。
-                </p>
-              </blockquote>
-
-              <p>
-                一个笔记软件的生命力，我认为最重要的是：产品设计理念，社区活跃度。obsidian的设计理念，我记得ob的作者曾经说过，他的初衷就是做一个可以一直用下去不用换的笔记软件。放在现在来说，已经不太能打了，但是社区、插件的活跃也一定会让ob延续下去。科学的知识、信息处理理念加上新的技术和设计，会催生出一个又一个的笔记、知识软件，Roam Research、Notion、obsidian、Logseq、Heptabase、craft、思源笔记、甚至飞书文档等等。一个可以一直用下去的笔记软件一定不是最好的，也不会是最适合自己的，如果是那样的话，说明自己的需求一直没有提升。
-              </p>
-
-              <p>
-                从txt，到word，exel，各种电脑、手机里的备忘录，这些现代化的文本、文档记录软件、工具，都为了一件事：提升信息、知识记录、处理的效率。做笔记也好，笔记软件也好，都是学习的一部分，知识的一部分，是思维、知识的呈现。没有最好的笔记软件，只有不断迭代的学习方法，最本末倒置的事情就是把笔记和学习绑定在了学习工具上。
-              </p>
-
-              <p>
-                从折腾ob开始，就一直想找到一个自由度更高，更科学的笔记体系和软件，偶然刷到这篇文章<a href="https://sspai.com/post/87028">构建可持续发展的个人工作流 01：认识篇</a>，让我想到了一些pkm和笔记软件的灵感
-              </p>
-
-              <p>
-                这次的结论是：最适合自己的笔记软件，就是自己做的。从折腾obsidian 到 PKM 和 Logseq，这一次的目标：回归数据本身，回归思维本身，回归知识本身。
-              </p>
-
-              <p>
-                现在流行且科学有效的笔记软件基本基于 Zettelkasten 卡片盒笔记、双链、卡片式笔记、数据库检索，再就是wiki类知识分享这几个底层逻辑。而知识管理、学习、信息处理从来不是被笔记、笔记软件主导的，是独立的思维和方法。现在LLM技术的突破，各种GPT的出现，AI革命必然会让知识处理的效率指数提升，代码、计算机技术的壁垒也随之被打破了。而知识、信息处理的效率一定和认知提升的效率正相关，从竹简、简牍到印刷、打字机，再到互联网、电脑，现在是AI。人类知识认知推动着科学、技术，技术也同样革命着认知。
-              </p>
-
-              <p>
-                因此，何必再依赖于市面上的笔记软件，自己做一个就好。一个满足双链、卡片、数据库、标签检索的数据处理工具，就是做电子数据笔记最本质的需求。
-              </p>
-
-              <p>
-                于是，正式进军定制个人硅基第二大脑的第一步，Emacs。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org7b47d43" class="outline-4">
-            <h4 id="org7b47d43">Emacs</h4>
-            <div class="outline-text-4" id="text-org7b47d43">
-              <p>
-                回归数据本身，那第一件事就是找到笔和纸，也就是编辑器。
-              </p>
-
-              <p>
-                网上查了查，有这么一个比喻：Emacs是神的编辑器，而Vim是编辑器之神。
-              </p>
-
-              <p>
-                这两个都没用过，简单体验了spacemasc、doomemacs、vim、neovim、LunarVim、spacevim之后，对我现在的认知而言，Vim更像是一个api，一套文本编辑处理的方法，代码编辑器的极致，而Emacs是一个基于ELisp的系统。
-              </p>
-
-              <p>
-                用编辑器构建系统，还是从系统构建编辑器，我现在选择了后者，等编程能力提升了或许会再来用Vim。
-              </p>
-
-              <p>
-                doomemacs的界面更符合我的审美，插件管理起来也挺方便，就先用这个了。总之先迈出了定制化硅基第二大脑的第一步，加上乌鸦logo和Lust for life 的底标🤣。
-              </p>
-
-
-              <figure id="orgd43b189">
-                <img src="https://s2.loli.net/2024/04/08/7suBLpiKVqDz25a.png" class="img" width="50%" height="50%">
-
-              </figure>
-
-              <p>
-                <a href="https://www.vandee.art/2023-09-18-read-or-listen.html">to understand something, you must actively engage with it</a>，我认为学习一个新东西比较有效的方式，直接上手操作（本能的反应更能检验对陌生知识的反馈情况），然后分享出来，一个人学还是慢一些，三人行必有大佬
-              </p>
-
-              <p>
-                关于Emacs的学习，后面都会放到这个GitHub仓库 <a href="https://github.com/VandeeFeng/doomemacs">doomemacs</a>。
-              </p>
-
-              <p>
-                Logseq现在的pkm体系用的还是挺顺手，效率也挺高，不会弃用，现阶段的目标是把Emacs的org笔记和Logseq结合起来，一起作为笔和纸。doomemacs，evil模式绑定Vim键位，代码编辑和窗口的切换，效率是真的高。没用过原生Emacs不用习惯Emacs的键位倒成了一个优势。
-              </p>
-
-              <p>
-                剩下的就是思维逻辑的提升和具象化到编程里了，先把Lisp学一学，再从Rust、Go、Python、C++里选一个（搞的跟都会了一样🤣）。
-              </p>
-
-              <p>
-                Roam Research、Notion、Logseq、Heptabase的笔记设计理念都还挺不错，先copy一下，加入到我还没开始的苏格拉底·贾维斯逻辑小助手项目。
-              </p>
-
-              <p>
-                Just learn, learn, and learn。
-              </p>
-              <blockquote>
-                <p>
-                  进化论中有一条定律叫 <b>“多洛不可逆定律”</b> ，说的是一个物种一旦失去了某种特征，就永远不会再获得这种特征，因为最初赋予它这种特征的路径是如此复杂，以至于无法复制。假设一种动物有角，然后它进化到失去角。它进化到重新长出角的几率为零，因为最初赋予它角的路径是如此复杂&#x2013;在特定的环境和竞争条件下经过数百万年的选择，而这种选择在未来不会重复。你不能把进化特征说成是运气&#x2013;它们是在非常特殊的力量作用下产生的。只是你永远无法依赖这些力量完全按照过去的方式重演。
-                </p>
-
-                <p>
-                  来源：<a href="https://collabfund.com/blog/lucky-vs-repeatable/">Lucky vs. Repeatable · Collab Fund</a>
-                </p>
-              </blockquote>
-
-              <p>
-                AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各种提升效率的工具以让我们能有更多时间和精力满足反效率（需要大量时间和经历成效比较慢的事）的爱好和精神需求，不管AI会如何影响人类，不能丢掉的一定包括艺术、学习、爱和想象力。
-              </p>
-            </div>
-          </div>
-        </div>
-        <div id="outline-container-org3f3a9f6" class="outline-3">
-          <h3 id="org3f3a9f6">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
-          <div class="outline-text-3" id="text-org3f3a9f6">
-          </div>
-          <div id="outline-container-orgcd3773d" class="outline-4">
-            <h4 id="orgcd3773d">Add</h4>
-            <div class="outline-text-4" id="text-orgcd3773d">
-              <p>
-                从这里开始梳理出了自己 PKM 的原则。也从 nb 了解到了 CLI 笔记工具，开始琢磨用 bash 脚本做笔记了。
-              </p>
-
-              <p>
-                把人自身的思维看作一个向量，它有自己的方向和属性，在大脑里让它们串联起来的是一个个神经元和突触，在笔记里就是双链和索引。因此，要在PKM里最大程度复现大脑思维的流动，我认为，最自然的方式就是让笔记向量与思维最自然的习惯同步。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org597af06" class="outline-4">
-            <h4 id="org597af06">PKM去形式化</h4>
-            <div class="outline-text-4" id="text-org597af06">
-              <p>
-                书接上回，现在的PKM第一原则是：数据的去形式化和通用性。只基于md文档的通用基础语法，其他功能以不污染文档内容的方式来实现。
-              </p>
-
-              <p>
-                为了实现这个目标，写了一些简单的bash脚本模板生成md，还有Emacs的Lisp函数做tag检索、文本查询，并将本地PKM-base库(最原子化的常青笔记)和Ollama对接（暂时用的是<a href="https://github.com/reorproject/reor">Reor</a>）做一些思维扩展。卡在了md文档的全局引用和相对链接转换。
-              </p>
-
-              <p>
-                正愁着呢，在Github里无意中发现了一个宝藏！<a href="https://github.com/xwmx/nb">nb</a>，牛逼！
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org274c8ea" class="outline-4">
-            <h4 id="org274c8ea">nb</h4>
-            <div class="outline-text-4" id="text-org274c8ea">
-              <p>
-                我愿称其为最强CLI笔记工具！完美匹配我现在的所有需求，设计思路也和我不谋而合，还支持用Emacs做编辑器。虽然Emacs也可以通过自定义函数和插件来复现这些功能，但既然有现成的，就先copy吧🤣。
-              </p>
-
-              <p>
-                果然你能想到的99%都已经有人完成了101%。
-              </p>
-
-
-              <figure id="org4bb7c6d">
-                <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-05-13_09-54-33.png" class="img" width="50%" height="50%">
-
-              </figure>
-
-              <p>
-                macOS /Homebrew安装， <code>brew install xwmx/taps/nb</code> 。nb也提供自己的shell，md预览可通过<a href="https://xwmx.github.io/nb/#-browsing">GUI web browsers</a>，经常写md的基本也不需要预览。命令基本都是大白话，不需要刻意记忆，还提供<a href="https://xwmx.github.io/nb/#shortcut-aliases">Shortcut Aliases</a>自定义命令 。nb不是一个笔记软件，是一个CLI工具。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-orgd885af7" class="outline-4">
-            <h4 id="orgd885af7">去形式化之后的PKM</h4>
-            <div class="outline-text-4" id="text-orgd885af7">
-              <p>
-                bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
-              </p>
-
-
-              <figure id="org88776e2">
-                <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nbnb.gif" class="img" width="50%" height="50%">
-
-              </figure>
-
-              <p>
-                本地文档的双链、全局引用、tag、检索、查询、同步，这些关键功能现在都可以实现了，PKM脱离笔记软件初步达成。由于之前ob和Logseq联用保留了文件夹结构，现在还是沿用ACCESS结构换成nb和Emacs来管理，nb提供全局的检索和双链，Emacs做统筹（org-mode还在犹豫），部署就先用 <a href="https://quartz.jzhao.xyz/">Quartz v4.2.3</a>  ，暂时当作我的<a href="https://dg.vandee.art">数字花园</a>，欢迎来玩！Blog练笔，Clip剪藏，Garden做wiki。目前还是不太想all in one ，以后可能会做个后端数据库。
-              </p>
-
-              <p>
-                至于Logseq和 ob以及其他笔记软件里的通过块ID来引用块、嵌入块，查询语句，通过css和js实现的排版样式等，这些通过非md标准语法实现的功能，全部舍弃。尽最大可能减少笔记元数据转化为其他形式的成本，它应该可以独立于笔记软件又具备优秀的兼容性。
-              </p>
-
-              <p>
-                这些在各种笔记软件里实现的个性化功能，比如白板、卡片、思维导图，当然提升了信息处理的效率，但最核心的还是双链，以及思维的同步率。
-              </p>
-
-              <p>
-                把人自身的思维看作一个向量，它有自己的方向和属性，在大脑里让它们串联起来的是一个个神经元和突触，在笔记里就是双链和索引。因此，要在PKM里最大程度复现大脑思维的流动，我认为，最自然的方式就是让笔记向量与思维最自然的习惯同步。
-              </p>
-
-              <p>
-                例如我们的语言系统，我们不会在用母语表达一些简单想法的时候还费力思考，笔记也应该是一样。当我大脑里现在想到一个概念，需要在笔记里找到相应的内容，脱口而出时，就应该只需要按照思维本来的习惯检索到笔记。
-              </p>
-
-              <p>
-                比如我现在想表达：王小波牛逼！在PKM里我只需要输入王小波牛逼这个一模一样的内容，和这个向量相关的信息都会以双链链接起来，而不需要我再按照tag做二级查询，通过属性反过来找概念。这些tag标注的是向量的属性以便做复杂的分类和列举，例如《黄金时代》，文学，王小波，这些在大脑里自然联系起来的概念，不应该在笔记查询的时候再做重复的检索，我不需要反过来通过查询文学、王小波，来找到《黄金时代》，然后再找到我想在书里表达的概念。而是自然的通过和王小波牛逼这个概念同步联系起来的反链呈现。这就要求原子笔记里的概念有极高的抽象程度以及自身思维习惯同步率。
-              </p>
-
-              <p>
-                解决了这个问题，我觉得无论笔记形式怎么变，用什么笔记软件，思维向量的生命周期就可以在这些形式里延长。
-              </p>
-
-              <p>
-                到现在，我更加确定，下一个笔记软件何必是笔记软件。
-              </p>
-
-              <p>
-                至于为什么一直折腾做笔记这件事，因为思维的具象化一直是这几年我着重思考的问题，平常思考的哲学和艺术都是它的分支，它们都是思维抽象而成的具象表达。思维呈现的效果和处理的效率都和做笔记正相关，也同样作用于认知。现在正处于量变的积累过程，效率就更加重要了。现在的PKM可以让我的思维向量更好的碰撞，因为高度同步于我自身的思维，它们在数据里延续着生命，自发地碰撞出思维的电子火花。这一点经过一年的折腾已经得到验证。
-              </p>
-
-              <p>
-                之前说要通过这些具象化的思维材料复刻一个自己的数字人，可得捏的像一些。
-              </p>
-            </div>
-          </div>
-          <div id="outline-container-org76177a6" class="outline-4">
-            <h4 id="org76177a6">Logseq适配Quartz</h4>
-            <div class="outline-text-4" id="text-org76177a6">
-              <p>
-                这次在logseq格式转化的时候，几个问题小折腾了一会。
-              </p>
-
-              <p>
-                七拼八凑了一下，下面是用GPT缝合的，Logseq重新排版批量输出为md格式的Python代码。这段代码会把Logseq文档头部的 <code>key:: value</code> 格式化为标准的yaml格式并去除标题前面的无序列表符号。Logseq本身可以输出text但排版不是很完美，也不方便。Logseq和ob联用的兄弟们应该用得上。
-              </p>
-
-              <div class="org-src-container">
-                <pre class="src src-python"><span style="color: #787878;"># </span><span style="color: #787878;">-*- coding = utf-8 -*-
-                  </span><span style="color: #787878;"># </span><span style="color: #787878;">@Project : Logseq&#26631;&#39064;&#20248;&#21270;
-                  </span><span style="color: #787878;"># </span><span style="color: #787878;">@File : Logseq&#26684;&#24335;&#20248;&#21270;.py
-                  </span><span style="color: #787878;"># </span><span style="color: #787878;">@time : 2024/05/11
-                  </span><span style="color: #787878;"># </span><span style="color: #787878;">@Author : Vandee
-                  </span><span style="color: #787878;"># </span><span style="color: #787878;">@Description &#65306;&#36866;&#21512;yaml&#20026;Logseq&#30340;::&#26679;&#24335;
-                  </span>
-                  <span style="color: #FFA657;">import</span> re
-                  <span style="color: #FFA657;">import</span> os
-                  <span style="color: #787878;"># </span><span style="color: #787878;">Frontmatter consts for start and end of Frontmatter YAML heading in Markdown
-                  </span><span style="color: #f4f4ff;">FRONTMATTER_START_STR</span> = <span style="color: #A1D08E;">"---</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span>
-                  <span style="color: #f4f4ff;">FRONTMATTER_END_STR</span> = <span style="color: #A1D08E;">"---</span><span style="color: #95a99f;">\n\n</span><span style="color: #A1D08E;">"</span>
-                  <span style="color: #f4f4ff;">FRONTMATTER_PARAM_NAME_REGEXP</span>: <span style="color: #79C0FF;">str</span> = r<span style="color: #A1D08E;">"[A-Za-z0-9-_.]+::\s"</span>
-                  <span style="color: #f4f4ff;">LOGSEQ_LIST_REGEXP</span>: <span style="color: #79C0FF;">str</span> = r<span style="color: #A1D08E;">"^[\s\t]*- "</span>
-
-
-                  <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">load_logseq_sanitized</span><span style="color: #8c8c8c;">(</span>file_path: <span style="color: #79C0FF;">str</span>, encoding: <span style="color: #79C0FF;">str</span> = <span style="color: #A1D08E;">"utf-8"</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span>:
-
-                  <span style="color: #FFA657;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>file_path, <span style="color: #A1D08E;">"r"</span>, encoding=encoding<span style="color: #8c8c8c;">)</span> <span style="color: #FFA657;">as</span> f:
-                  <span style="color: #f4f4ff;">lines</span>: <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = f.readlines<span style="color: #8c8c8c;">()</span>
-
-                  <span style="color: #f4f4ff;">return_lines</span>: <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="color: #8c8c8c;">[]</span>
-                  <span style="color: #FFA657;">for</span> line <span style="color: #FFA657;">in</span> lines:
-                  <span style="color: #787878;"># </span><span style="color: #787878;">we skip empty lines
-                  </span>        <span style="color: #FFA657;">if</span> line <span style="color: #FFA657;">in</span> <span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span>, <span style="color: #A1D08E;">"- </span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span>, <span style="color: #A1D08E;">"-</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span>, <span style="color: #A1D08E;">"- </span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #FFA657;">continue</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">we remove "- " or "  " from the beginning of line as
-                  </span>        <span style="color: #787878;"># </span><span style="color: #787878;">it's Logseq specific "everyghing is a list" approach
-                  </span>        <span style="color: #FFA657;">if</span> line.startswith<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"- "</span>, <span style="color: #A1D08E;">"  "</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #f4f4ff;">line</span> = line<span style="color: #8c8c8c;">[</span>2:<span style="color: #8c8c8c;">]</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">we remove first occurance of tab character ("\\t") from a line as
-                  </span>        <span style="color: #787878;"># </span><span style="color: #787878;">it's indicating list item
-                  </span>        <span style="color: #FFA657;">if</span> line.startswith<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\t</span><span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #f4f4ff;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\t</span><span style="color: #A1D08E;">"</span>, <span style="color: #A1D08E;">""</span>, 1<span style="color: #8c8c8c;">)</span>
-
-                  return_lines.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #FFA657;">return</span> return_lines
-
-
-                  <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">logseq2markdown</span><span style="color: #8c8c8c;">(</span>logseq_lines: <span style="color: #79C0FF;">list</span><span style="color: #93a8c6;">[</span><span style="color: #79C0FF;">str</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
-                  <span style="color: #787878;">"""Goes through list of Logseq sanitized lines (provided by `load_logseq_sanitized()`) and
-                    translates them to proper Markdown and Frontmatter.
-
-                    Args:
-                    logseq_lines (list[str]): List of sanitized lines from Logseq file loader
-
-                    Returns:
-                    str: String containing Frontmatter header in YML format followed by proper Markdown.
-                    """</span>
-                  <span style="color: #f4f4ff;">mk_content</span>: <span style="color: #79C0FF;">list</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="color: #8c8c8c;">[]</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">Using dict here as we don't want to have duplicate parameter names in Frontmatter
-                  </span>    <span style="color: #787878;"># </span><span style="color: #787878;">(each should have unique indentifier).
-                  </span>
-                  <span style="color: #f4f4ff;">mk_frontmatter</span>: <span style="color: #79C0FF;">dict</span><span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span>, <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span> = <span style="color: #8c8c8c;">{}</span>
-
-                  <span style="color: #f4f4ff;">param_regex</span> = re.<span style="color: #79C0FF;">compile</span><span style="color: #8c8c8c;">(</span>FRONTMATTER_PARAM_NAME_REGEXP<span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">logseq_list_regexp</span> = re.<span style="color: #79C0FF;">compile</span><span style="color: #8c8c8c;">(</span>LOGSEQ_LIST_REGEXP<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #FFA657;">for</span> line <span style="color: #FFA657;">in</span> logseq_lines:
-                  <span style="color: #f4f4ff;">params_result</span> = param_regex.findall<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">logseq_list_result</span> = logseq_list_regexp.findall<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">if line containts "logseq.order-list-type:: number" it should be
-                  </span>        <span style="color: #787878;"># </span><span style="color: #787878;">numbered list and this line should be ommited
-                  </span>        <span style="color: #FFA657;">if</span> -1 != line.find<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"logseq.order-list-type:: number"</span><span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #f4f4ff;">line</span> = mk_content.pop<span style="color: #8c8c8c;">()</span>
-                  <span style="color: #f4f4ff;">line</span> = line.lstrip<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"- "</span>, <span style="color: #A1D08E;">"1. "</span>, 1<span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\t</span><span style="color: #A1D08E;">"</span>, <span style="color: #A1D08E;">"    "</span><span style="color: #8c8c8c;">)</span>
-                  mk_content.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">if line containts "logseq.order-list-type:: bulllet" it should be
-                  </span>        <span style="color: #787878;"># </span><span style="color: #787878;">bullet point list and this line should be ommited
-                  </span>        <span style="color: #FFA657;">elif</span> -1 != line.find<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"logseq.order-list-type:: bullet"</span><span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #f4f4ff;">line</span> = mk_content.pop<span style="color: #8c8c8c;">()</span>
-                  <span style="color: #f4f4ff;">line</span> = line.lstrip<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"- "</span>, <span style="color: #A1D08E;">"* "</span>, 1<span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\t</span><span style="color: #A1D08E;">"</span>, <span style="color: #A1D08E;">"    "</span><span style="color: #8c8c8c;">)</span>
-                  mk_content.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">if line is proper unordered list we parse it as such
-                  </span>        <span style="color: #FFA657;">elif</span> logseq_list_result:
-                  <span style="color: #f4f4ff;">line</span> = line.lstrip<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">line</span> = line.replace<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\t</span><span style="color: #A1D08E;">"</span>, <span style="color: #A1D08E;">"    "</span><span style="color: #8c8c8c;">)</span>
-                  mk_content.append<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">if line starts with "# " (meaning h1 in html) we parse it as Frontmatter "title:" param
-                  </span>        <span style="color: #FFA657;">elif</span> line.startswith<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"# "</span><span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #f4f4ff;">mk_frontmatter</span><span style="color: #8c8c8c;">[</span><span style="color: #A1D08E;">"title"</span><span style="color: #8c8c8c;">]</span> = <span style="color: #A1D08E;">'"'</span> + line<span style="color: #8c8c8c;">[</span>2:<span style="color: #8c8c8c;">]</span>.strip<span style="color: #8c8c8c;">()</span> + <span style="color: #A1D08E;">'"'</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">if line doesn't have any Logseq-specific parameters like numbered or bullet list in it
-                  </span>        <span style="color: #787878;"># </span><span style="color: #787878;">and has Frontmatter param format we add it to Frontmatter header
-                  </span>        <span style="color: #FFA657;">elif</span> params_result:
-                  mk_frontmatter<span style="color: #8c8c8c;">[</span>params_result<span style="color: #93a8c6;">[</span>0<span style="color: #93a8c6;">][</span>0:-3<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span> = line<span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">len</span><span style="color: #93a8c6;">(</span>params_result<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">)</span> :<span style="color: #8c8c8c;">]</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">otherwise we add it to content as any other Markdown element
-                  </span>        <span style="color: #FFA657;">else</span>:
-                  mk_content.append<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span> + line<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #f4f4ff;">return_string</span>: <span style="color: #79C0FF;">str</span> = <span style="color: #A1D08E;">""</span>
-                  <span style="color: #FFA657;">if</span> mk_frontmatter:
-                  <span style="color: #f4f4ff;">return_string</span> = <span style="color: #8c8c8c;">(</span>
-                  FRONTMATTER_START_STR
-                  + <span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span>.join<span style="color: #93a8c6;">(</span>
-                  <span style="color: #b0b1a3;">[</span>
-                  f<span style="color: #A1D08E;">"</span>{fm_item[0]}<span style="color: #A1D08E;">: </span>{fm_item[1].strip()}<span style="color: #A1D08E;">"</span>
-                  <span style="color: #FFA657;">for</span> fm_item <span style="color: #FFA657;">in</span> <span style="color: #79C0FF;">list</span><span style="color: #97b098;">(</span>mk_frontmatter.items<span style="color: #aebed8;">()</span><span style="color: #97b098;">)</span>
-                  <span style="color: #b0b1a3;">]</span>
-                  <span style="color: #93a8c6;">)</span>
-                  + <span style="color: #A1D08E;">"</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">"</span>
-                  + FRONTMATTER_END_STR
-                  <span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #FFA657;">return</span> return_string + <span style="color: #A1D08E;">""</span>.join<span style="color: #8c8c8c;">(</span>mk_content<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">process_folder</span><span style="color: #8c8c8c;">(</span>input_folder: <span style="color: #79C0FF;">str</span>, output_folder: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #787878;">"""&#22788;&#29702;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#25991;&#20214;&#65292;&#24182;&#23558;&#32467;&#26524;&#23548;&#20986;&#21040;&#36755;&#20986;&#25991;&#20214;&#22841;&#12290;
-
-                    Args:
-                    input_folder (str): &#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;
-                    output_folder (str): &#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#12290;
-                    """</span>
-                  <span style="color: #787878;"># </span><span style="color: #787878;">&#30830;&#20445;&#36755;&#20986;&#25991;&#20214;&#22841;&#23384;&#22312;&#65292;&#22914;&#26524;&#19981;&#23384;&#22312;&#21017;&#21019;&#24314;
-                  </span>    <span style="color: #FFA657;">if</span> <span style="color: #FFA657;">not</span> os.path.exists<span style="color: #8c8c8c;">(</span>output_folder<span style="color: #8c8c8c;">)</span>:
-                  os.makedirs<span style="color: #8c8c8c;">(</span>output_folder<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">&#36941;&#21382;&#36755;&#20837;&#25991;&#20214;&#22841;&#20013;&#30340;&#27599;&#20010;&#25991;&#20214;
-                  </span>    <span style="color: #FFA657;">for</span> file_name <span style="color: #FFA657;">in</span> os.listdir<span style="color: #8c8c8c;">(</span>input_folder<span style="color: #8c8c8c;">)</span>:
-                  <span style="color: #FFA657;">if</span> file_name.endswith<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">".md"</span><span style="color: #8c8c8c;">)</span>:  <span style="color: #787878;"># </span><span style="color: #787878;">&#20165;&#22788;&#29702;&#20197; .md &#32467;&#23614;&#30340;&#25991;&#20214;
-                  </span>            <span style="color: #f4f4ff;">input_file_path</span> = os.path.join<span style="color: #8c8c8c;">(</span>input_folder, file_name<span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">output_file_path</span> = os.path.join<span style="color: #8c8c8c;">(</span>output_folder, file_name<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">&#21152;&#36733;&#12289;&#22788;&#29702;&#21644;&#23548;&#20986;&#25991;&#20214;
-                  </span>            <span style="color: #f4f4ff;">logseq_lines</span> = load_logseq_sanitized<span style="color: #8c8c8c;">(</span>file_path=input_file_path<span style="color: #8c8c8c;">)</span>
-                  <span style="color: #f4f4ff;">markdown_content</span> = logseq2markdown<span style="color: #8c8c8c;">(</span>logseq_lines<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">&#23558;&#36716;&#25442;&#21518;&#30340;&#20869;&#23481;&#20889;&#20837;&#21040;&#36755;&#20986;&#25991;&#20214;&#20013;
-                  </span>            <span style="color: #FFA657;">with</span> <span style="color: #79C0FF;">open</span><span style="color: #8c8c8c;">(</span>output_file_path, <span style="color: #A1D08E;">"w"</span>, encoding=<span style="color: #A1D08E;">"utf-8"</span><span style="color: #8c8c8c;">)</span> <span style="color: #FFA657;">as</span> f:
-                  f.write<span style="color: #8c8c8c;">(</span>markdown_content<span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"&#25991;&#20214; '</span>{file_name}<span style="color: #A1D08E;">' &#24050;&#22788;&#29702;&#24182;&#23548;&#20986;&#21040; '</span>{output_folder}<span style="color: #A1D08E;">'"</span><span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">&#20027;&#31243;&#24207;&#20013;&#20351;&#29992;&#21629;&#20196;&#34892;&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;
-                  </span><span style="color: #FFA657;">if</span> <span style="color: #79C0FF;">__name__</span> == <span style="color: #A1D08E;">"__main__"</span>:
-                  <span style="color: #787878;"># </span><span style="color: #787878;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;
-                  </span>    <span style="color: #f4f4ff;">input_folder</span> = <span style="color: #79C0FF;">input</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"&#35831;&#36755;&#20837;&#36755;&#20837;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span><span style="color: #8c8c8c;">)</span>
-
-                  <span style="color: #787878;"># </span><span style="color: #787878;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;
-                  </span>    <span style="color: #f4f4ff;">output_folder</span> = <span style="color: #79C0FF;">input</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"&#35831;&#36755;&#20837;&#36755;&#20986;&#25991;&#20214;&#22841;&#36335;&#24452;&#65306;"</span><span style="color: #8c8c8c;">)</span>
-
-                  process_folder<span style="color: #8c8c8c;">(</span>input_folder, output_folder<span style="color: #8c8c8c;">)</span>
-
-                </pre>
-              </div>
-
-              <p>
-                处理之后，Logseq库接近700个文档99%的排版都没问题，部分三级列表以上的复杂排版，列表会多出一些空行或层级错位，Logseq复杂排版的换行和简单的 <code>\r\n</code> 还是有区别。可能也有CRLF和LF的问题，mac和win互相git，脚本里用的是LF，如果你是win最好还是 <code>\r\n</code> 。Quartz在转换md到html的时候换行逻辑不一样，在Typora里看是有换行的，但是Quartz部署成网页之后部分换行就没了。
-              </p>
-
-              <p>
-                yaml区域的逻辑可以再用yaml库优化，后面再完善这个格式化脚本来把任意其他排版统一成我的标准样式。
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="outline-container-org7c3966a" class="outline-2">
-        <h2 id="org7c3966a">Emacs 阶段</h2>
-        <div class="outline-text-2" id="text-org7c3966a">
-          <p>
-            中间使用了 2 个月的 Nvim，还是放不下 Emacs。随后遇到了 <a href="https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html">Tiddlywiki</a> ,然后就到了现在重度使用 Emacs 了：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ， <a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a>。
-          </p>
-
-          <p>
-            脱离笔记软件并不是脱离某个具体的体系和产品，而是将这些体系变成自己的，进而脱离笔记软件和传统笔记方法的固定思维。现在在 Emacs 里，我依然会使用 bash 脚本来完成部分零散的笔记，例如结合我的 TiddlyWiki，快速构建 Markdown 笔记。
-          </p>
-
-          <p>
-            无论是 Emacs 还是 Nvim，它们都可以用 bash 脚本作为依赖最低的方法扩展自己记录笔记的方式。Nvim 和 Emacs 我真的都很喜欢，但是 org-mode 给我的编辑体验是其他任何其他纯文本形式替代不了的。
-          </p>
-
-          <p>
-            Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系统链接起来，你可以在任何环境使用这只笔。忘掉所有招式就练成太极了。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-orge3b0b76" class="outline-2">
-        <h2 id="orge3b0b76">ChangeLog</h2>
-      </div>
-      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-blog.html">Blog</a> </div></div>
-    <div id="postamble" class="status"><div id="search-results"></div>
+      </header></div>
+<div id="content">
+<div class="post-date">01 Nov 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-11-01-my-pkm-building-logs.html">我的 PKM 构建 Log</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org664f7e2">前言</a></li>
+<li><a href="#org16e667d">笔记和 PKM 的构建 Log</a>
+<ul>
+<li><a href="#orgb5f6adc">2022-07-20 开始系统的记笔记</a>
+<ul>
+<li><a href="#org7ce6bbe">Add</a></li>
+<li><a href="#orga9bbbcb">为什么要花这么多心思在记笔记？</a></li>
+</ul>
+</li>
+<li><a href="#org3d96f87">2023-07-19 又一次知识管理逻辑的完善</a>
+<ul>
+<li><a href="#orga7953b8">Add</a></li>
+<li><a href="#org7ce2899">知识管理与记录</a></li>
+<li><a href="#org055d603">重新折腾obsidian</a></li>
+<li><a href="#orgeb7575f">知识管理与文档记录的意义</a></li>
+</ul>
+</li>
+<li><a href="#orgc5621fa">2023-09-14 obsidian和logseq联用的PKM尝试</a>
+<ul>
+<li><a href="#org28392b2">Add</a></li>
+<li><a href="#org0b2a2ea">Logseq</a></li>
+<li><a href="#org63a4763">ob和Logseq的简单对比</a></li>
+<li><a href="#orge7cdc84">现在的选择</a></li>
+<li><a href="#orgca580d9">Reference</a></li>
+</ul>
+</li>
+<li><a href="#orgffb1297">2024-04-13 神的编辑器</a>
+<ul>
+<li><a href="#org77490bb">Add</a></li>
+<li><a href="#org4fd9070">做自己的笔记“软件”</a></li>
+<li><a href="#org3a37a51">Emacs</a></li>
+</ul>
+</li>
+<li><a href="#org895ad30">2024-05-13 脱离笔记软件，CLI笔记工具—nb</a>
+<ul>
+<li><a href="#orgd74d300">Add</a></li>
+<li><a href="#org17684a7">PKM去形式化</a></li>
+<li><a href="#org3aceb22">nb</a></li>
+<li><a href="#orgf0d52d3">去形式化之后的PKM</a></li>
+<li><a href="#org1f876dc">Logseq适配Quartz</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org78be0f2">Emacs 阶段</a></li>
+<li><a href="#org2b2f398">ChangeLog</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org664f7e2" class="outline-2">
+<h2 id="org664f7e2">前言</h2>
+<div class="outline-text-2" id="text-org664f7e2">
+<p>
+最近开始 all in Emacs，用 org-mode 写作和生成静态博客页面，顺便对以前的写作再迭代整理一次。
+</p>
+
+<p>
+知识的循环是固定结构化知识不可缺少的一步。
+</p>
+
+<p>
+在整理这些关于 PKM 和笔记零散的博客的过程种，依然能回忆起某些段落，某些反复推敲的文字背后那些思考的火花。它们依然滋滋作响，这些思维的闪光穿越了时间和空间，它们在历史和记录中变得永恒。它们当然是宇宙里不可能被侦测到的无穷小量，但它们的能量在物质的永恒中已经签上了自己的 ID。
+</p>
+</div>
+</div>
+<div id="outline-container-org16e667d" class="outline-2">
+<h2 id="org16e667d">笔记和 PKM 的构建 Log</h2>
+<div class="outline-text-2" id="text-org16e667d">
+<p>
+这部分是之前相关零散文章的整理， <code>Add</code> 是新增，其他部分是之前的原文（部分修改）。
+</p>
+</div>
+<div id="outline-container-orgb5f6adc" class="outline-3">
+<h3 id="orgb5f6adc">2022-07-20 开始系统的记笔记</h3>
+<div class="outline-text-3" id="text-orgb5f6adc">
+<p>
+Typora+obsidian+notion，这个是我现在暂定的笔记解决方案。
+</p>
+
+<p>
+好处在哪里：Typora解决文本编辑，obsidian解决文档的本地储存和分类，并且win，mac，都能用。notion解决网络储存，并且有着强大的数据库和嵌入系统。这样基本实现了跨平台，跨终端，本地和网络双储存，多平台同步笔记。
+</p>
+
+<p>
+Typora无疑是这么多年来最好用的markdown编辑器了。至于为什么执着于markdown格式，因为它简单高效，门槛也低，在网络文本传输有天然的优势。这中间还要解决的一个问题就是本地图片上传。利用Typora和gitee图床就可以完美解决。obsidian配合icloud也可以多平台同步。
+</p>
+</div>
+<div id="outline-container-org7ce6bbe" class="outline-4">
+<h4 id="org7ce6bbe">Add</h4>
+<div class="outline-text-4" id="text-org7ce6bbe">
+<p>
+最开始接触到做笔记这个概念是从 Notion 开始，那个时候 Notion 正火。随后由于网络问题转到了 markdown 和 obsidian，开始折腾本地笔记。
+</p>
+</div>
+</div>
+<div id="outline-container-orga9bbbcb" class="outline-4">
+<h4 id="orga9bbbcb">为什么要花这么多心思在记笔记？</h4>
+<div class="outline-text-4" id="text-orga9bbbcb">
+<p>
+也还是从疫情说起，疫情让协同办公变成刚需。团队协作当中，本地与网络文档同步直接影响工作的效率。而对于个人，记笔记也直接影响信息的处理效率。而信息的输入与存储直接影响了，我们对于外界的认知，对信息的接受与处理，在准确全面的认知之下，思维才有用武之地。
+</p>
+
+<p>
+我个人习惯每个星期会整理一次，做好输出与整理。一个月之后再进行一次，如此反复。
+</p>
+
+<p>
+基维百科：文件是对思想创意的书面呈现，档案是对事物发展过程的书面保存，文档可以说就是主观和客观的书面记录。
+</p>
+
+<p>
+文档其实是我们工作学习生活都离不开的一个记录形式。
+</p>
+
+<p>
+汉谟拉比法典可以说就是最早的文档了。从社会发展的角度来说，人类各项基础活动都离不开书写和记录还有归档。文档的记录更直接关乎人类历史的发展与承接。信息处理的效率，更直接影响着文明发展的快慢。现在网络一秒钟传输的数据量，已经是几千年前全世界文档记录量的不知道多少倍了。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3d96f87" class="outline-3">
+<h3 id="org3d96f87">2023-07-19 又一次知识管理逻辑的完善</h3>
+<div class="outline-text-3" id="text-org3d96f87">
+<p>
+最近刷到了这个文章<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>，重新思考了一下知识管理的逻辑。
+</p>
+
+<p>
+距离上一次更新正好一年。在当时的方案中，由于还不能实现科学上网自由，obsidian的插件许多都没有，也没想着太折腾，notion的剪藏与数据库实在是方便。但是对于文档记录，本地储存才是一劳永逸的，notion的网络又还是时好时坏。还是决定再折腾一下。
+</p>
+</div>
+<div id="outline-container-orga7953b8" class="outline-4">
+<h4 id="orga7953b8">Add</h4>
+<div class="outline-text-4" id="text-orga7953b8">
+<p>
+现在互联网已经被 AI 内容污染的不成样了。那个时候开始意识到历史和记录的意义了。
+</p>
+</div>
+</div>
+<div id="outline-container-org7ce2899" class="outline-4">
+<h4 id="org7ce2899">知识管理与记录</h4>
+<div class="outline-text-4" id="text-org7ce2899">
+<p>
+<a href="https://mp.weixin.qq.com/s/yPJyRROXVHgQYWML1BmU5g">分享我的 2023 版生活管理流程图 (qq.com)</a>里提到
+</p>
+
+<blockquote>
+<p>
+我给这个生活管理系统的标签是「知行合一」， <b>希望能够让知识流动起来，融贯到生活中的方方面面，来指导我们更好地行动，创造出更多的价值。</b>
+</p>
+
+<p>
+也希望能帮你做到「知行合一」。
+</p>
+</blockquote>
+
+<p>
+简单来说，人类学习一项事物，或者说认知一个事物的基本逻辑是：
+</p>
+
+<p>
+<a href="https://www.vandee.art/posts/20230313-295a230d.html?highlight=%E4%BF%A1%E6%81%AF#%E8%A1%A8%E4%B8%8E%E9%87%8C"> <b>物质实质 — 物质表象 — 生理接受 — 思维转化 — 信息处理 — 信息表达 — 认知迭代的过程</b> </a>
+</p>
+
+<p>
+现在垃圾信息越来越多了，GTP等LLM生成式AI会制造更多信息垃圾。
+</p>
+
+<p>
+从互联网诞生之初，垃圾信息就是使用者面临的一大难题。如何从无数信息中寻找到有用信息？搜索引擎的需求由此而来。早期的垃圾信息都是由人工生成，因此其数量受制于人类工作的局限性。但随着生成式 AI 的到来，大批量生成将使得垃圾信息的量级远超过去。五月初，新闻评级公司 NewsGuard 发现有 49 个假新闻网站使用 AI 生成内容。到 6 月底，这个数字增加到了 277。这些 AI 生成内容网站旨在通过 Google 的广告获利。来源：<a href="https://www.solidot.org/story?sid=75525">https://www.solidot.org/story?sid=75525</a>
+</p>
+
+<p>
+信息输入是认知的源头，重要性不言而喻，去年折腾了一下RSS订阅来粗略的管理信息输入，
+</p>
+
+<p>
+有了相对良性的信息输入，才能反哺思维的建立，最后一个阶段，就是思维加工之后，形成档案记录，循环到新的信息输入当中。所以，知识管理与记录是认知迭代环节中，非常重要的一环。从互联网时代，到大数据，到现在的生成式AI，每天基于互联网产生的数据早已超过过去纸质档案数据的总和。科学的文档管理和检索系统，提高信息查找的准确度与效率，非常有必要。
+</p>
+</div>
+</div>
+<div id="outline-container-org055d603" class="outline-4">
+<h4 id="org055d603">重新折腾obsidian</h4>
+<div class="outline-text-4" id="text-org055d603">
+<p>
+正好前段时间Anytype的内测通过了，体验了一下，copy了一下它的设计理念， <b>决定以object-tag-type-relation的逻辑来整理信息，统一对于信息处理，思维上的内在逻辑分类，以及文档管理、记录、输出的外在分类。</b>
+</p>
+
+<p>
+既然要重新整理，干脆把obsidian捡起来吧。
+</p>
+
+<p>
+这次要解决的重点问题是：
+</p>
+<ul class="org-ul">
+<li>notion的剪藏与数据库需求</li>
+<li>思维逻辑与外在记录的统一</li>
+<li>信息、任务管理的自动化更新</li>
+</ul>
+
+<p>
+参考这些以及<a href="https://forum-zh.obsidian.md/">Obsidian 中文论坛 </a>，折腾了几天，
+</p>
+<ul class="org-ul">
+<li><a href="https://client.sspai.com/post/73958#">玩转 Obsidian 08：利用 Dataview 打造自动化 HomePage - 少数派 (sspai.com)</a></li>
+<li><a href="https://www.bilibili.com/video/BV1YT4y167dL/?vd_source=6d02c197c6cb438dff451b14b29c6080">从零开始保姆级教程：用Obsidian搭建个人书库（一）_哔哩哔哩_bilibili</a></li>
+<li><a href="https://sspai.com/post/77304">从卡片笔记到 Obsidian：本质、方法与工具 - 少数派 (sspai.com)</a></li>
+<li><a href="https://sspai.com/post/80634">去中心化笔记体系 - 少数派 (sspai.com)</a></li>
+<li><a href="https://forum-zh.obsidian.md/t/topic/75">obsidian使用Maoxian插件完美剪藏网页文章 - 经验分享 - Obsidian 中文论坛</a></li>
+<li><a href="https://forum-zh.obsidian.md/t/topic/200">我的 Obsidian 工作流：模板+QuickAdd+Dataview 快速创建和自动索引 - 经验分享 - Obsidian 中文论坛</a></li>
+</ul>
+
+<p>
+依赖obsidian的qucikadd和dataview插件，加上快捷指令，基本实现了这次知识管理更新的目的。
+</p>
+
+<p>
+几个主要界面:
+</p>
+
+
+<figure id="orga79388c">
+<img src="https://s2.loli.net/2023/07/19/EeMl1FW29UHJONI.jpg" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+创建Daily来记录每天的Todo以及零碎的信息，通过标签和obsidian的双链来链接，让信息关联。两个主页用来自动更新数据和汇总，DB folder插件生成的类似notion的数据库，解决文档的标签，分类，查找，归档。
+</p>
+
+<p>
+这几年折腾了几次，但始终要明确的是：知识管理的目的是管理知识，是为了提高效率，而不是为了管理而管理。
+</p>
+</div>
+</div>
+<div id="outline-container-orgeb7575f" class="outline-4">
+<h4 id="orgeb7575f">知识管理与文档记录的意义</h4>
+<div class="outline-text-4" id="text-orgeb7575f">
+<p>
+<a href="https://www.bilibili.com/video/BV14Y4y1n7YQ/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">【苏星河】全网都在吹的飞书，到底是个什么软件？_哔哩哔哩_bilibili</a>这个视频的最后说的很有道理：
+</p>
+
+<blockquote>
+<p>
+文档全称文件与档案，其中文基百科对于文件的解释是其实对思想创意的书面呈现，而对于档案则是对事物发展过程的书面保存。关于事物的所有文档，就是关于该事物在主观思想与客观过程这两个层面的完整书面记录。
+</p>
+
+<p>
+而我们知道人类所进行过的所有活动，其实无外乎就是主观思想与客观构成的一系列纠缠统一，所以文档工具也就自然而然地成为了我们工作学习社会发展的核心内容，贯穿始终。
+</p>
+
+<p>
+那历史上最早的文档其实就是5000年前的楔形文字，这苏美人在泥板上努力刻下的符号，本质就是在以书面的形式呈现。作为文档最大的问题显然就是极低的内容承载效率，一块硕大的泥巴只能记录非常有限的内容
+于是直到3000年后，蔡伦改进的造纸术，才让轻薄柔韧造价低廉的纸张成为了文章在现实世界中最完美的承载。
+</p>
+
+<p>
+拥有和纸张文档后，人们便开始疯狂书写记录世界。于是如何才能提高内容输入效率，又成为了许多人关注的全新议题。在随后的1000多年里，以表音文字为代表的中国发明了雕版印刷，而以表音文字为代表的欧美则偏爱活字印刷，总之这两种印刷术都大大提高了内容的输入效率。而且欧美国家后期发明的打字机，更是将活字印刷的效率发挥到了极致，输入方式的进化将文档的生产与传播效率提高到了全新的高度。
+但这也同时放大了一个原本不起眼的问题，那就是文档的内容编辑效率。
+</p>
+
+<p>
+虽然写这件事从未改变，但为了写的效率，我们付出了整整5000年的努力。
+因为就像我们开头说的，文档是人类思想与行为的书面记录，其中思想与行为赋予着人类特殊的价值，而书面记录则让多人合作与传承成为可能。
+所以提高文档工具的效率，就是在提高人类发展的效率。
+</p>
+</blockquote>
+
+<p>
+现在的文档记录基本上都依赖于互联网信息，而现阶段GPT等LLM生成式AI，会生成许多虚假内容，<a href="https://www.ifanr.com/1553456?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=">疯狂污染互联网，人类比 AI 擅长多了 </a>
+</p>
+
+<p>
+这也是为什么许多大佬会站出来抵制生成式AI，Twitter限制用户浏览推文数量，Reddit论坛关闭API，Claude、BingChat、bard，包括马斯克最近要成立的XAI，也都是在争夺文档信息，同样也是在争夺历史。
+</p>
+
+<p>
+<b>文档是人类思想与行为的书面记录，其中思想与行为赋予着人类特殊的价值，而书面记录则让多人合作与传承成为可能，所以提高文档工具的效率，就是在提高人类发展的效率。</b>
+</p>
+
+<p>
+<b>这些文档也就是人类的历史，但现在AI信息污染的过程本身，也同样是人类历史的一部分。</b>
+</p>
+
+<p>
+这又让我想起了刚开始用chatGPT的时候，问过他的一个问题：美国是现在的世界老大么？
+</p>
+
+<p>
+记得当时的答案还是相对客观的，不知道百年之后，各大XXXGPT的回答是什么。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc5621fa" class="outline-3">
+<h3 id="orgc5621fa">2023-09-14 obsidian和logseq联用的PKM尝试</h3>
+<div class="outline-text-3" id="text-orgc5621fa">
+<p>
+距上一次折腾，不知不觉已经两个月了。在“深入”使用obsidian(后面简称ob)这两个月期间，一个之前暂时搁置的问题逐渐浮现出来：那就是数据储存形式。
+</p>
+
+<p>
+也正好看到了这篇文章<a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a>。
+</p>
+
+<p>
+从易用性和数据呈现来看，很显然它是，从保存数据和数据结构的角度来看，markdown不是一个很优秀的格式。当然这是当数据到达一个相当的量级才需要考虑的事。于是，开始了解Logseq。
+</p>
+
+<p>
+没有最好的笔记软件，适合自己的才是最好的。
+</p>
+</div>
+<div id="outline-container-org28392b2" class="outline-4">
+<h4 id="org28392b2">Add</h4>
+<div class="outline-text-4" id="text-org28392b2">
+<p>
+这个时候开始意识到数据的重要性了，以前的纸质记录、现在的电子记录，都是数据。现在的社会是信息和数据的社会，在 AI 介入之后，更是如此。没有最好的笔记软件，只有最适合自己的笔记软件，这句话一直说到现在。Logseq 是一个很好的笔记软件设计，但现在回过头来看，它从设计底层强制性的使用 markdown 语法里的列表格式来实现的块并不是那么容易让所有人接受，只要导入了其他 markdown 文档，就会强制性的加上列表格式。也是从 Logseq 开始，我第一次接触到了 Lisp 语言这个概念。
+</p>
+</div>
+</div>
+<div id="outline-container-org0b2a2ea" class="outline-4">
+<h4 id="org0b2a2ea">Logseq</h4>
+<div class="outline-text-4" id="text-org0b2a2ea">
+<p>
+第一次打开Logseq就被UI的设计吸引，这是一种美学上的天然的吸引。和第一次打开Typora的感觉很像。
+</p>
+
+<p>
+<a href="https://bytetalk.fm/posts/episode-7">跟 Logseq 的创造者天生聊聊 Logseq 的故事</a>里介绍到：Logseq是开源的，由Clojure / ClojureScript开发。dataScript 库，函数式语言在数据操作方面会有些优势 ，可以写出很丰富的 query。 要知道，鼎鼎大名的Roam Research也是基于Clojure开发。
+</p>
+
+<p>
+Roam Research为什么如此受追捧，除了双链和block之外，我觉得它的Query和数据结构才是重点，并且它
+</p>
+
+<blockquote>
+<ul class="org-ul">
+<li>第三，协作性。Conor 的野心，是让每一个学生 <b>不需要通过</b> 高质量的学校教育，就能自行从 Roam Research 组建的全社会协作知识网络中，学会任何自己想学会的知识和技能，并且能够更容易探索与创造知识。</li>
+<li>第四，激励性。为了促进人们生产和分享知识，Roam Research 想方设法降低知识采集和生产的成本，激发人们的创造、分享和协作行为。</li>
+</ul>
+
+<p>
+Source：<a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a>
+</p>
+</blockquote>
+
+<p>
+<a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a>
+</p>
+
+<p>
+Logseq的开发者<a href="https://twitter.com/tiensonqin">秦天生</a>也说到，想做一个 GitHub 和 Wikipedia 的 2.0 版本。从开发到理念，可以说和Roam Research殊路同归。
+</p>
+
+<p>
+在这一点上，Logseq发展的很完美。而这几点，同样是我想做PKM，或者说，对知识本身的理解和态度。
+</p>
+
+<p>
+<b>知识是上帝给人类的财富，它就应该是开源的。</b>
+</p>
+
+<p>
+因此，和ob相比，这种设计开发理念，更吸引我。
+</p>
+</div>
+</div>
+<div id="outline-container-org63a4763" class="outline-4">
+<h4 id="org63a4763">ob和Logseq的简单对比</h4>
+<div class="outline-text-4" id="text-org63a4763">
+<p>
+我认为obsidian的生命力来源于社区和插件，与其说用ob不如说是再用它的插件，ob开放了插件API，让爱好者自由发挥。
+</p>
+
+<p>
+ob更像是一个全能的高达，身上装备者各种插件盔甲和武器，你可以根据自己的Project、GTD、PKM，制定出个性化很高的管理系统。 <b>插件是ob很大的一个优势。</b>
+</p>
+
+<p>
+<b>ob和Logseq的对比：</b>
+</p>
+
+<p>
+obsidian：
+</p>
+
+<ul class="org-ul">
+<li>page为单位，你的每一篇笔记就是一个markdown文档，通过双链链接起来。当然ob也有块的概念，
+但和Logseq可展开的块不一样，ob的块是文字的每一行，可以通过 <code>^</code> 来标记和检索。</li>
+<li>有文件夹系统，习惯文件夹管理的，这是ob的很大优势。</li>
+<li>除了ob自带的搜索功能，数据呈现和检索其实主要依靠dataview插件，而这个不是数据结构层面的。
+Logseq的dataScript库在数据结构上优势更大。</li>
+<li>可以通过 <b>TagFolder</b> 、 <b>Tag Summary</b> 等插件自己制作标签页，标签管理方面自由度也很高。</li>
+<li>ob的多端同步很方便，这依赖于 <b>Remotely Save</b> 这个插件。</li>
+<li>和Zotero的联动依靠插件来导入高亮和笔记。</li>
+</ul>
+
+<p>
+Logseq：
+</p>
+
+<ul class="org-ul">
+<li>块为最小单位,使得它的颗粒可以很小，每一个block都可以展开并且关联和查询。这是和ob以page为单位，很不一样的地方。</li>
+<li>每一个tag会自动生成标签页，这样很方便做 Tag_Pages，和moc。这样就可以通过标签页来链接block。它的标签可以看做一个特殊的块，也就是标签的moc。</li>
+<li>它没有文件夹，因此moc很重要，类似的它提供了一个专门的Contents页面，相当于文件夹管理。</li>
+<li>日志系统和todo系统很完善。logseq自带日志，它就是一个log。Logseq的理念应该是用日志来串联，而不是
+把分类的经历消耗在文件夹的分类。当然如何选择是自己的事，我们一样可以手动用文件夹分类储存管理。</li>
+<li>Outline大纲模式，在markdown里，每一个block就是一个无序列表格式。</li>
+<li>Logseq的同步相对麻烦，得git和Working Copy结合起来。</li>
+<li>可以直接接入Zotero的API，这很方便。</li>
+</ul>
+
+<p>
+总体来说，ob很大，Logseq更小。ob处理大量文字也不会卡，而在Logseq一个块如果包含太多文字会报错无法编辑。Logseq自带的日志系统很好用，开箱即写，用outline提炼出更精简的文字来做思维的串联。
+</p>
+</div>
+</div>
+<div id="outline-container-orge7cdc84" class="outline-4">
+<h4 id="orge7cdc84">现在的选择</h4>
+<div class="outline-text-4" id="text-orge7cdc84">
+<p>
+<b>做电子笔记，实际上是在做数据储存和数据处理。</b>
+</p>
+
+<p>
+数据编辑的易用性，和数据检索、数据结构之间的取舍很关键。从这个角度出发，可能随着时间偏移，重心会偏向Logseq和数据结构方面。
+</p>
+
+<p>
+而ob本身就可以看做是一个Logseq的库和inbox来使用，反过来Logseq也可以包含在ob的文件夹系统里。这完全取决于自身的需求。
+</p>
+
+<p>
+现在基本上把ob当做一个大的inbox和Markdown文件管理编辑系统，Logseq来做长青笔记和日志。
+</p>
+
+<p>
+Read Later用Omnivore，剪藏网页，可以自动导入Logseq和ob，roma-highlighter浏览器插件做高亮剪藏。
+</p>
+
+<p>
+Zotero来阅读PDF和文献，Logseq和ob也是无缝衔接。
+</p>
+
+<p>
+这里要强烈推荐Omnivore，和一年六七百的Readwise相比，基本功能都有，但它是开源和免费的。
+</p>
+
+<p>
+最后，几个原则，也是提醒自己：
+</p>
+
+<ul class="org-ul">
+<li>做笔记是方法，不是目的。</li>
+<li>信息很容易被误认为是知识，而做笔记不是汇总信息，是提炼思维，汇总元知识。</li>
+</ul>
+
+<p>
+没有最好的笔记软件，只有最适合自己的笔记软件。
+</p>
+</div>
+</div>
+<div id="outline-container-orgca580d9" class="outline-4">
+<h4 id="orgca580d9">Reference</h4>
+<div class="outline-text-4" id="text-orgca580d9">
+<ul class="org-ul">
+<li><a href="https://sspai.com/post/82793">Obsidian技巧：通过多个标签快速定位文件(by TagFolder) - 少数派 (sspai.com)</a></li>
+<li><a href="https://mp.weixin.qq.com/s/wWez_Ijq_Dukr-rch4P24g">Heptabase，如果笔记工具公司倒闭了，你的笔记还能接着用吗？</a></li>
+<li><a href="https://sspai.com/post/60787">Roam Research 到底好在哪儿？ - 少数派 (sspai.com)</a></li>
+<li><a href="https://bytetalk.fm/posts/episode-7">跟 Logseq 的创造者天生聊聊 Logseq 的故事</a></li>
+<li><a href="https://www.bilibili.com/video/BV1vM4y1h7H4/?p=44&amp;spm_id_from=pageDriver">Obsidian中的标签，到底该如何使用？（第三集 设计你的标签页）_哔哩哔哩_bilibili</a></li>
+<li><a href="https://www.bilibili.com/video/BV1bP411H7rx/?spm_id_from=333.999.0.0&amp;vd_source=92184533e359726f138fee9650261f0f">Obsidian的全局引用你用对了吗？Johnny学Obsidian_哔哩哔哩_bilibili</a></li>
+<li><a href="https://pkmer.cn/">PKMer</a></li>
+<li><a href="https://sspai.com/post/80042#!">双剑合璧：Obsidian和Logseq联用的一些经验 - 少数派 (sspai.com)</a></li>
+<li><a href="https://www.bilibili.com/video/BV1pm4y1A79c/?p=3&amp;vd_source=92184533e359726f138fee9650261f0f">03 ios终端(手机和平板)的logseq同步设置_哔哩哔哩_bilibili</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgffb1297" class="outline-3">
+<h3 id="orgffb1297">2024-04-13 神的编辑器</h3>
+<div class="outline-text-3" id="text-orgffb1297">
+</div>
+<div id="outline-container-org77490bb" class="outline-4">
+<h4 id="org77490bb">Add</h4>
+<div class="outline-text-4" id="text-org77490bb">
+<p>
+开始正式使用 Emacs 了，脱离笔记软件，将做笔记这个事从使用工具记录变成了思维概念上的一种习惯，而不是一个行为。
+</p>
+</div>
+</div>
+<div id="outline-container-org4fd9070" class="outline-4">
+<h4 id="org4fd9070">做自己的笔记“软件”</h4>
+<div class="outline-text-4" id="text-org4fd9070">
+<p>
+在订阅里看到推荐的这篇文章  <a href="https://wiki.heptabase.com/the-roadmap?lang=zh-Hant">My Vision - The Roadmap | Heptabase Public Wiki</a>，大概讲了一下Heptabase 下一步的Roadmap，还有一些笔记理念上的东西。Heptabase 有所耳闻，因为订阅的价格一直没有去尝试。
+如同这个文章里说的：
+</p>
+<blockquote>
+<p>
+在<a href="https://wiki.heptabase.com/the-knowledge-lifecycle?lang=zh-Hant"> <b>上一篇文章的結尾</b> </a>，我將 Heptabase 的願景描繪如下：
+</p>
+
+<p>
+<b>總結來說，在「知識的生命週期」這個維度上，我們希望能透過 [[<a href="https://heptabase.com/">https://heptabase.com/</a>][ *Heptabase</b> ]] 的工具來幫助全世界的知識工作者打通「探索 → 收集 → 思考 → 創作 → 分享」的知識生命週期，讓資訊具備原生的互用性、讓想法的脈絡可被追蹤、讓集體知識的創建更為容易，進而演化出一個脈絡化的知識網路。
+</p>
+</blockquote>
+
+<p>
+一个笔记软件的生命力，我认为最重要的是：产品设计理念，社区活跃度。obsidian的设计理念，我记得ob的作者曾经说过，他的初衷就是做一个可以一直用下去不用换的笔记软件。放在现在来说，已经不太能打了，但是社区、插件的活跃也一定会让ob延续下去。科学的知识、信息处理理念加上新的技术和设计，会催生出一个又一个的笔记、知识软件，Roam Research、Notion、obsidian、Logseq、Heptabase、craft、思源笔记、甚至飞书文档等等。一个可以一直用下去的笔记软件一定不是最好的，也不会是最适合自己的，如果是那样的话，说明自己的需求一直没有提升。
+</p>
+
+<p>
+从txt，到word，exel，各种电脑、手机里的备忘录，这些现代化的文本、文档记录软件、工具，都为了一件事：提升信息、知识记录、处理的效率。做笔记也好，笔记软件也好，都是学习的一部分，知识的一部分，是思维、知识的呈现。没有最好的笔记软件，只有不断迭代的学习方法，最本末倒置的事情就是把笔记和学习绑定在了学习工具上。
+</p>
+
+<p>
+从折腾ob开始，就一直想找到一个自由度更高，更科学的笔记体系和软件，偶然刷到这篇文章<a href="https://sspai.com/post/87028">构建可持续发展的个人工作流 01：认识篇</a>，让我想到了一些pkm和笔记软件的灵感
+</p>
+
+<p>
+这次的结论是：最适合自己的笔记软件，就是自己做的。从折腾obsidian 到 PKM 和 Logseq，这一次的目标：回归数据本身，回归思维本身，回归知识本身。
+</p>
+
+<p>
+现在流行且科学有效的笔记软件基本基于 Zettelkasten 卡片盒笔记、双链、卡片式笔记、数据库检索，再就是wiki类知识分享这几个底层逻辑。而知识管理、学习、信息处理从来不是被笔记、笔记软件主导的，是独立的思维和方法。现在LLM技术的突破，各种GPT的出现，AI革命必然会让知识处理的效率指数提升，代码、计算机技术的壁垒也随之被打破了。而知识、信息处理的效率一定和认知提升的效率正相关，从竹简、简牍到印刷、打字机，再到互联网、电脑，现在是AI。人类知识认知推动着科学、技术，技术也同样革命着认知。
+</p>
+
+<p>
+因此，何必再依赖于市面上的笔记软件，自己做一个就好。一个满足双链、卡片、数据库、标签检索的数据处理工具，就是做电子数据笔记最本质的需求。
+</p>
+
+<p>
+于是，正式进军定制个人硅基第二大脑的第一步，Emacs。
+</p>
+</div>
+</div>
+<div id="outline-container-org3a37a51" class="outline-4">
+<h4 id="org3a37a51">Emacs</h4>
+<div class="outline-text-4" id="text-org3a37a51">
+<p>
+回归数据本身，那第一件事就是找到笔和纸，也就是编辑器。
+</p>
+
+<p>
+网上查了查，有这么一个比喻：Emacs是神的编辑器，而Vim是编辑器之神。
+</p>
+
+<p>
+这两个都没用过，简单体验了spacemasc、doomemacs、vim、neovim、LunarVim、spacevim之后，对我现在的认知而言，Vim更像是一个api，一套文本编辑处理的方法，代码编辑器的极致，而Emacs是一个基于ELisp的系统。
+</p>
+
+<p>
+用编辑器构建系统，还是从系统构建编辑器，我现在选择了后者，等编程能力提升了或许会再来用Vim。
+</p>
+
+<p>
+doomemacs的界面更符合我的审美，插件管理起来也挺方便，就先用这个了。总之先迈出了定制化硅基第二大脑的第一步，加上乌鸦logo和Lust for life 的底标🤣。
+</p>
+
+
+<figure id="org6eed1aa">
+<img src="https://s2.loli.net/2024/04/08/7suBLpiKVqDz25a.png" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+<a href="https://www.vandee.art/2023-09-18-read-or-listen.html">to understand something, you must actively engage with it</a>，我认为学习一个新东西比较有效的方式，直接上手操作（本能的反应更能检验对陌生知识的反馈情况），然后分享出来，一个人学还是慢一些，三人行必有大佬
+</p>
+
+<p>
+关于Emacs的学习，后面都会放到这个GitHub仓库 <a href="https://github.com/VandeeFeng/doomemacs">doomemacs</a>。
+</p>
+
+<p>
+Logseq现在的pkm体系用的还是挺顺手，效率也挺高，不会弃用，现阶段的目标是把Emacs的org笔记和Logseq结合起来，一起作为笔和纸。doomemacs，evil模式绑定Vim键位，代码编辑和窗口的切换，效率是真的高。没用过原生Emacs不用习惯Emacs的键位倒成了一个优势。
+</p>
+
+<p>
+剩下的就是思维逻辑的提升和具象化到编程里了，先把Lisp学一学，再从Rust、Go、Python、C++里选一个（搞的跟都会了一样🤣）。
+</p>
+
+<p>
+Roam Research、Notion、Logseq、Heptabase的笔记设计理念都还挺不错，先copy一下，加入到我还没开始的苏格拉底·贾维斯逻辑小助手项目。
+</p>
+
+<p>
+Just learn, learn, and learn。
+</p>
+<blockquote>
+<p>
+进化论中有一条定律叫 <b>“多洛不可逆定律”</b> ，说的是一个物种一旦失去了某种特征，就永远不会再获得这种特征，因为最初赋予它这种特征的路径是如此复杂，以至于无法复制。假设一种动物有角，然后它进化到失去角。它进化到重新长出角的几率为零，因为最初赋予它角的路径是如此复杂&#x2013;在特定的环境和竞争条件下经过数百万年的选择，而这种选择在未来不会重复。你不能把进化特征说成是运气&#x2013;它们是在非常特殊的力量作用下产生的。只是你永远无法依赖这些力量完全按照过去的方式重演。
+</p>
+
+<p>
+来源：<a href="https://collabfund.com/blog/lucky-vs-repeatable/">Lucky vs. Repeatable · Collab Fund</a>
+</p>
+</blockquote>
+
+<p>
+AI一定会让人变懒，而正是因为人懒所以发展了技术、AI和各种提升效率的工具以让我们能有更多时间和精力满足反效率（需要大量时间和经历成效比较慢的事）的爱好和精神需求，不管AI会如何影响人类，不能丢掉的一定包括艺术、学习、爱和想象力。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org895ad30" class="outline-3">
+<h3 id="org895ad30">2024-05-13 脱离笔记软件，CLI笔记工具—nb</h3>
+<div class="outline-text-3" id="text-org895ad30">
+</div>
+<div id="outline-container-orgd74d300" class="outline-4">
+<h4 id="orgd74d300">Add</h4>
+<div class="outline-text-4" id="text-orgd74d300">
+<p>
+从这里开始梳理出了自己 PKM 的原则。也从 nb 了解到了 CLI 笔记工具，开始琢磨用 bash 脚本做笔记了。
+</p>
+
+<p>
+把人自身的思维看作一个向量，它有自己的方向和属性，在大脑里让它们串联起来的是一个个神经元和突触，在笔记里就是双链和索引。因此，要在PKM里最大程度复现大脑思维的流动，我认为，最自然的方式就是让笔记向量与思维最自然的习惯同步。
+</p>
+</div>
+</div>
+<div id="outline-container-org17684a7" class="outline-4">
+<h4 id="org17684a7">PKM去形式化</h4>
+<div class="outline-text-4" id="text-org17684a7">
+<p>
+书接上回，现在的PKM第一原则是：数据的去形式化和通用性。只基于md文档的通用基础语法，其他功能以不污染文档内容的方式来实现。
+</p>
+
+<p>
+为了实现这个目标，写了一些简单的bash脚本模板生成md，还有Emacs的Lisp函数做tag检索、文本查询，并将本地PKM-base库(最原子化的常青笔记)和Ollama对接（暂时用的是<a href="https://github.com/reorproject/reor">Reor</a>）做一些思维扩展。卡在了md文档的全局引用和相对链接转换。
+</p>
+
+<p>
+正愁着呢，在Github里无意中发现了一个宝藏！<a href="https://github.com/xwmx/nb">nb</a>，牛逼！
+</p>
+</div>
+</div>
+<div id="outline-container-org3aceb22" class="outline-4">
+<h4 id="org3aceb22">nb</h4>
+<div class="outline-text-4" id="text-org3aceb22">
+<p>
+我愿称其为最强CLI笔记工具！完美匹配我现在的所有需求，设计思路也和我不谋而合，还支持用Emacs做编辑器。虽然Emacs也可以通过自定义函数和插件来复现这些功能，但既然有现成的，就先copy吧🤣。
+</p>
+
+<p>
+果然你能想到的99%都已经有人完成了101%。
+</p>
+
+
+<figure id="org898d035">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-05-13_09-54-33.png" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+macOS /Homebrew安装， <code>brew install xwmx/taps/nb</code> 。nb也提供自己的shell，md预览可通过<a href="https://xwmx.github.io/nb/#-browsing">GUI web browsers</a>，经常写md的基本也不需要预览。命令基本都是大白话，不需要刻意记忆，还提供<a href="https://xwmx.github.io/nb/#shortcut-aliases">Shortcut Aliases</a>自定义命令 。nb不是一个笔记软件，是一个CLI工具。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf0d52d3" class="outline-4">
+<h4 id="orgf0d52d3">去形式化之后的PKM</h4>
+<div class="outline-text-4" id="text-orgf0d52d3">
+<p>
+bash脚本+nb实现，模板创建Daily和note，GUI web 预览：
+</p>
+
+
+<figure id="orgcab183d">
+<img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nbnb.gif" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+本地文档的双链、全局引用、tag、检索、查询、同步，这些关键功能现在都可以实现了，PKM脱离笔记软件初步达成。由于之前ob和Logseq联用保留了文件夹结构，现在还是沿用ACCESS结构换成nb和Emacs来管理，nb提供全局的检索和双链，Emacs做统筹（org-mode还在犹豫），部署就先用 <a href="https://quartz.jzhao.xyz/">Quartz v4.2.3</a>  ，暂时当作我的<a href="https://dg.vandee.art">数字花园</a>，欢迎来玩！Blog练笔，Clip剪藏，Garden做wiki。目前还是不太想all in one ，以后可能会做个后端数据库。
+</p>
+
+<p>
+至于Logseq和 ob以及其他笔记软件里的通过块ID来引用块、嵌入块，查询语句，通过css和js实现的排版样式等，这些通过非md标准语法实现的功能，全部舍弃。尽最大可能减少笔记元数据转化为其他形式的成本，它应该可以独立于笔记软件又具备优秀的兼容性。
+</p>
+
+<p>
+这些在各种笔记软件里实现的个性化功能，比如白板、卡片、思维导图，当然提升了信息处理的效率，但最核心的还是双链，以及思维的同步率。
+</p>
+
+<p>
+把人自身的思维看作一个向量，它有自己的方向和属性，在大脑里让它们串联起来的是一个个神经元和突触，在笔记里就是双链和索引。因此，要在PKM里最大程度复现大脑思维的流动，我认为，最自然的方式就是让笔记向量与思维最自然的习惯同步。
+</p>
+
+<p>
+例如我们的语言系统，我们不会在用母语表达一些简单想法的时候还费力思考，笔记也应该是一样。当我大脑里现在想到一个概念，需要在笔记里找到相应的内容，脱口而出时，就应该只需要按照思维本来的习惯检索到笔记。
+</p>
+
+<p>
+比如我现在想表达：王小波牛逼！在PKM里我只需要输入王小波牛逼这个一模一样的内容，和这个向量相关的信息都会以双链链接起来，而不需要我再按照tag做二级查询，通过属性反过来找概念。这些tag标注的是向量的属性以便做复杂的分类和列举，例如《黄金时代》，文学，王小波，这些在大脑里自然联系起来的概念，不应该在笔记查询的时候再做重复的检索，我不需要反过来通过查询文学、王小波，来找到《黄金时代》，然后再找到我想在书里表达的概念。而是自然的通过和王小波牛逼这个概念同步联系起来的反链呈现。这就要求原子笔记里的概念有极高的抽象程度以及自身思维习惯同步率。
+</p>
+
+<p>
+解决了这个问题，我觉得无论笔记形式怎么变，用什么笔记软件，思维向量的生命周期就可以在这些形式里延长。
+</p>
+
+<p>
+到现在，我更加确定，下一个笔记软件何必是笔记软件。
+</p>
+
+<p>
+至于为什么一直折腾做笔记这件事，因为思维的具象化一直是这几年我着重思考的问题，平常思考的哲学和艺术都是它的分支，它们都是思维抽象而成的具象表达。思维呈现的效果和处理的效率都和做笔记正相关，也同样作用于认知。现在正处于量变的积累过程，效率就更加重要了。现在的PKM可以让我的思维向量更好的碰撞，因为高度同步于我自身的思维，它们在数据里延续着生命，自发地碰撞出思维的电子火花。这一点经过一年的折腾已经得到验证。
+</p>
+
+<p>
+之前说要通过这些具象化的思维材料复刻一个自己的数字人，可得捏的像一些。
+</p>
+</div>
+</div>
+<div id="outline-container-org1f876dc" class="outline-4">
+<h4 id="org1f876dc">Logseq适配Quartz</h4>
+<div class="outline-text-4" id="text-org1f876dc">
+<p>
+这次在logseq格式转化的时候，几个问题小折腾了一会。
+</p>
+
+<p>
+七拼八凑了一下，下面是用GPT缝合的，Logseq重新排版批量输出为md格式的Python代码。这段代码会把Logseq文档头部的 <code>key:: value</code> 格式化为标准的yaml格式并去除标题前面的无序列表符号。Logseq本身可以输出text但排版不是很完美，也不方便。Logseq和ob联用的兄弟们应该用得上。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"># -*- coding = utf-8 -*-
+# @Project : Logseq标题优化
+# @File : Logseq格式优化.py
+# @time : 2024/05/11
+# @Author : Vandee
+# @Description ：适合yaml为Logseq的::样式
+import re
+import os
+# Frontmatter consts for start and end of Frontmatter YAML heading in Markdown
+FRONTMATTER_START_STR = "---\n"
+FRONTMATTER_END_STR = "---\n\n"
+FRONTMATTER_PARAM_NAME_REGEXP: str = r"[A-Za-z0-9-_.]+::\s"
+LOGSEQ_LIST_REGEXP: str = r"^[\s\t]*- "
+def load_logseq_sanitized(file_path: str, encoding: str = "utf-8") -> list[str]:
+    with open(file_path, "r", encoding=encoding) as f:
+        lines: list[str] = f.readlines()
+    return_lines: list[str] = []
+    for line in lines:
+        # we skip empty lines
+        if line in ("\n", "- \n", "-\n", "- \n"):
+            continue
+        # we remove "- " or "  " from the beginning of line as
+        # it's Logseq specific "everyghing is a list" approach
+        if line.startswith(("- ", "  ")):
+            line = line[2:]
+        # we remove first occurance of tab character ("\\t") from a line as
+        # it's indicating list item
+        if line.startswith("\t"):
+            line = line.replace("\t", "", 1)
+        return_lines.append(line)
+    return return_lines
+def logseq2markdown(logseq_lines: list[str]) -> str:
+    """Goes through list of Logseq sanitized lines (provided by `load_logseq_sanitized()`) and
+    translates them to proper Markdown and Frontmatter.
+    Args:
+        logseq_lines (list[str]): List of sanitized lines from Logseq file loader
+    Returns:
+        str: String containing Frontmatter header in YML format followed by proper Markdown.
+    """
+    mk_content: list[str] = []
+    # Using dict here as we don't want to have duplicate parameter names in Frontmatter
+    # (each should have unique indentifier).
+    mk_frontmatter: dict[str, str] = {}
+    param_regex = re.compile(FRONTMATTER_PARAM_NAME_REGEXP)
+    logseq_list_regexp = re.compile(LOGSEQ_LIST_REGEXP)
+    for line in logseq_lines:
+        params_result = param_regex.findall(line)
+        logseq_list_result = logseq_list_regexp.findall(line)
+        # if line containts "logseq.order-list-type:: number" it should be
+        # numbered list and this line should be ommited
+        if -1 != line.find("logseq.order-list-type:: number"):
+            line = mk_content.pop()
+            line = line.lstrip("\n")
+            line = line.replace("- ", "1. ", 1)
+            line = line.replace("\t", "    ")
+            mk_content.append(line)
+        # if line containts "logseq.order-list-type:: bulllet" it should be
+        # bullet point list and this line should be ommited
+        elif -1 != line.find("logseq.order-list-type:: bullet"):
+            line = mk_content.pop()
+            line = line.lstrip("\n")
+            line = line.replace("- ", "* ", 1)
+            line = line.replace("\t", "    ")
+            mk_content.append(line)
+        # if line is proper unordered list we parse it as such
+        elif logseq_list_result:
+            line = line.lstrip("\n")
+            line = line.replace("\t", "    ")
+            mk_content.append(line)
+        # if line starts with "# " (meaning h1 in html) we parse it as Frontmatter "title:" param
+        elif line.startswith("# "):
+            mk_frontmatter["title"] = '"' + line[2:].strip() + '"'
+        # if line doesn't have any Logseq-specific parameters like numbered or bullet list in it
+        # and has Frontmatter param format we add it to Frontmatter header
+        elif params_result:
+            mk_frontmatter[params_result[0][0:-3]] = line[len(params_result[0]) :]
+        # otherwise we add it to content as any other Markdown element
+        else:
+            mk_content.append("\n" + line)
+    return_string: str = ""
+    if mk_frontmatter:
+        return_string = (
+            FRONTMATTER_START_STR
+            + "\n".join(
+                [
+                    f"{fm_item[0]}: {fm_item[1].strip()}"
+                    for fm_item in list(mk_frontmatter.items())
+                ]
+            )
+            + "\n"
+            + FRONTMATTER_END_STR
+        )
+    return return_string + "".join(mk_content)
+def process_folder(input_folder: str, output_folder: str):
+    """处理输入文件夹中的文件，并将结果导出到输出文件夹。
+    Args:
+        input_folder (str): 输入文件夹路径。
+        output_folder (str): 输出文件夹路径。
+    """
+    # 确保输出文件夹存在，如果不存在则创建
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    # 遍历输入文件夹中的每个文件
+    for file_name in os.listdir(input_folder):
+        if file_name.endswith(".md"):  # 仅处理以 .md 结尾的文件
+            input_file_path = os.path.join(input_folder, file_name)
+            output_file_path = os.path.join(output_folder, file_name)
+            # 加载、处理和导出文件
+            logseq_lines = load_logseq_sanitized(file_path=input_file_path)
+            markdown_content = logseq2markdown(logseq_lines)
+            # 将转换后的内容写入到输出文件中
+            with open(output_file_path, "w", encoding="utf-8") as f:
+                f.write(markdown_content)
+            print(f"文件 '{file_name}' 已处理并导出到 '{output_folder}'")
+# 主程序中使用命令行提示用户输入文件夹路径
+if __name__ == "__main__":
+    # 提示用户输入输入文件夹路径
+    input_folder = input("请输入输入文件夹路径：")
+    # 提示用户输入输出文件夹路径
+    output_folder = input("请输入输出文件夹路径：")
+    process_folder(input_folder, output_folder)</pre>
+</div>
+
+<p>
+处理之后，Logseq库接近700个文档99%的排版都没问题，部分三级列表以上的复杂排版，列表会多出一些空行或层级错位，Logseq复杂排版的换行和简单的 <code>\r\n</code> 还是有区别。可能也有CRLF和LF的问题，mac和win互相git，脚本里用的是LF，如果你是win最好还是 <code>\r\n</code> 。Quartz在转换md到html的时候换行逻辑不一样，在Typora里看是有换行的，但是Quartz部署成网页之后部分换行就没了。
+</p>
+
+<p>
+yaml区域的逻辑可以再用yaml库优化，后面再完善这个格式化脚本来把任意其他排版统一成我的标准样式。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org78be0f2" class="outline-2">
+<h2 id="org78be0f2">Emacs 阶段</h2>
+<div class="outline-text-2" id="text-org78be0f2">
+<p>
+中间使用了 2 个月的 Nvim，还是放不下 Emacs。随后遇到了 <a href="https://www.vandee.art/2024-08-10-thinking-about-structured-data-in-notes.html">Tiddlywiki</a> ,然后就到了现在重度使用 Emacs 了：<a href="https://www.vandee.art/2024-05-22-org-pkm-manual.html">PKM（个人知识管理）构建手册 - Emacs</a> ， <a href="https://www.vandee.art/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a>。
+</p>
+
+<p>
+脱离笔记软件并不是脱离某个具体的体系和产品，而是将这些体系变成自己的，进而脱离笔记软件和传统笔记方法的固定思维。现在在 Emacs 里，我依然会使用 bash 脚本来完成部分零散的笔记，例如结合我的 TiddlyWiki，快速构建 Markdown 笔记。
+</p>
+
+<p>
+无论是 Emacs 还是 Nvim，它们都可以用 bash 脚本作为依赖最低的方法扩展自己记录笔记的方式。Nvim 和 Emacs 我真的都很喜欢，但是 org-mode 给我的编辑体验是其他任何其他纯文本形式替代不了的。
+</p>
+
+<p>
+Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系统链接起来，你可以在任何环境使用这只笔。忘掉所有招式就练成太极了。
+</p>
+</div>
+</div>
+<div id="outline-container-org2b2f398" class="outline-2">
+<h2 id="org2b2f398">ChangeLog</h2>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-blog.html">Blog</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>
-          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
-        </p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-        <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
       </a>
 
       <script>
         var mybutton = document.getElementById('top-link');
         window.onscroll = function () {
-          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = 'visible';
-            mybutton.style.opacity = '1';
-          } else {
-            mybutton.style.visibility = 'hidden';
-            mybutton.style.opacity = '0';
-          }
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
         };
-    </script></div>
-  </body>
+      </script></div>
+</body>
 </html>

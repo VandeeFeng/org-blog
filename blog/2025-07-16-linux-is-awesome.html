@@ -1,463 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="AI 现在的发展趋势，更多的是资本的裹挟。它直接导致，如果不接入它，就会被市场淘汰。所以操作系统整合 AI 这个趋势，我很理解，如果以后它们单独推出不绑定 AI 的操作系统版本，我还是有可能会继续用。但是如果你把这些强行让消费者来买单，不给消费者选择，这是我反感的。PC 这个产品，或者说操作系统压根就和 AI 没有半毛钱必然的关系啊，为啥我要使用 PC 就一定要用 AI？这就好像我只是想骑自行车，但是必须要带上一个一直会在旁边 BB 的导航一样，我不需要给资本的这些运作买单。">
-    <link rel="alternate"
-          type="application/rss+xml"
-          href="https://www.vandee.art/blog/rss.xml"
-          title="RSS feed for https://www.vandee.art/blog/">
-    <title>Linux 太自由了</title>
-    <meta property="og:title" content="Linux 太自由了">
-    <meta property="og:type" content="article" />
-    <meta property="og:description" content="AI 现在的发展趋势，更多的是资本的裹挟。它直接导致，如果不接入它，就会被市场淘汰。所以操作系统整合 AI 这个趋势，我很理解，如果以后它们单独推出不绑定 AI 的操作系统版本，我还是有可能会继续用。但是如果你把这些强行让消费者来买单，不给消费者选择，这是我反感的。PC 这个产品，或者说操作系统压根就和 AI 没有半毛钱必然的关系啊，为啥我要使用 PC 就一定要用 AI？这就好像我只是想骑自行车，但是必须要带上一个一直会在旁边 BB 的导航一样，我不需要给资本的这些运作买单。">
-    <meta property="og:url" content="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">
-    <meta name="author" content="Vandee">
-    <meta name="referrer" content="origin-when-cross-origin">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="AI 现在的发展趋势，更多的是资本的裹挟。它直接导致，如果不接入它，就会被市场淘汰。所以操作系统整合 AI 这个趋势，我很理解，如果以后它们单独推出不绑定 AI 的操作系统版本，我还是有可能会继续用。但是如果你把这些强行让消费者来买单，不给消费者选择，这是我反感的。PC 这个产品，或者说操作系统压根就和 AI 没有半毛钱必然的关系啊，为啥我要使用 PC 就一定要用 AI？这就好像我只是想骑自行车，但是必须要带上一个一直会在旁边 BB 的导航一样，我不需要给资本的这些运作买单。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>Linux 太自由了</title>
+<meta property="og:title" content="Linux 太自由了">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="AI 现在的发展趋势，更多的是资本的裹挟。它直接导致，如果不接入它，就会被市场淘汰。所以操作系统整合 AI 这个趋势，我很理解，如果以后它们单独推出不绑定 AI 的操作系统版本，我还是有可能会继续用。但是如果你把这些强行让消费者来买单，不给消费者选择，这是我反感的。PC 这个产品，或者说操作系统压根就和 AI 没有半毛钱必然的关系啊，为啥我要使用 PC 就一定要用 AI？这就好像我只是想骑自行车，但是必须要带上一个一直会在旁边 BB 的导航一样，我不需要给资本的这些运作买单。">
+<meta property="og:url" content="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
-    <link rel="stylesheet"
-          href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet"
-          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
-    <script defer>
-      document.addEventListener("DOMContentLoaded", function () {
-        pangu.spacingPage();
-      });
-    </script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
 
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/copyCode.js" defer></script>
-    <script src="assets/js/shiba.js" defer></script>
-    <script src="assets/js/search.js" defer></script></head>
-  <body>
-    <div id="preamble" class="status">
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
       <header>
-        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
-        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
-        <nav>
-          <a href="https://www.vandee.art/blog/">Home</a>
-          <a href="https://x404.xyz/wiki">Wiki</a>
-          <a href="https://x404.xyz/photo">Photo</a>
-          <a href="archive.html">Archive</a>
-          <a href="tags.html">Tags</a>
-          <div id="search-container">
-            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-            <i class="fas fa-search search-icon"></i>
-          </div>
-        </nav>
-    </header></div>
-    <div id="content">
-      <div class="post-date">16 Jul 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">Linux 太自由了</a></h1>
-      <nav id="table-of-contents" role="doc-toc">
-        <h2>Table of Contents</h2>
-        <div id="text-table-of-contents" role="doc-toc">
-          <ul>
-            <li><a href="#orge6b5782">TL;DR</a></li>
-            <li><a href="#orgc43a96d">“不可避免的 AI”</a></li>
-            <li><a href="#orgb17e9a4">Arch Linux 配置记录</a>
-              <ul>
-                <li><a href="#org063b700">脚本</a></li>
-                <li><a href="#org4e33f28">dotfiles</a></li>
-                <li><a href="#org6240ba3">桌面环境和窗口管理</a></li>
-                <li><a href="#org18dd336">Tips</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
       </nav>
-      <div id="outline-container-orge6b5782" class="outline-2">
-        <h2 id="orge6b5782">TL;DR</h2>
-        <div class="outline-text-2" id="text-orge6b5782">
-          <p>
-            Linux 就是我从现在开始会一直使用下去的操作系统。它的太多设计理念和我不谋而合，Linus 有太多理念和我不谋而合。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-orgc43a96d" class="outline-2">
-        <h2 id="orgc43a96d">“不可避免的 AI”</h2>
-        <div class="outline-text-2" id="text-orgc43a96d">
-          <p>
-            从接触到个人电脑 PC 这个概念开始，就一直用的 Windows，直到很晚才开始使用 Mac，最初的原因也只是需要处理摄影的照片，Mac 的 M 芯片在刚出来的时候就是王炸。
-          </p>
+      </header></div>
+<div id="content">
+<div class="post-date">16 Jul 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">Linux 太自由了</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org21089e8">TL;DR</a></li>
+<li><a href="#org3a9c40b">“不可避免的 AI”</a></li>
+<li><a href="#org77d3393">Arch Linux 配置记录</a>
+<ul>
+<li><a href="#orgc22dcc8">脚本</a></li>
+<li><a href="#org5e4a0a9">dotfiles</a></li>
+<li><a href="#org79df0fe">桌面环境和窗口管理</a></li>
+<li><a href="#org945aa36">Tips</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org21089e8" class="outline-2">
+<h2 id="org21089e8">TL;DR</h2>
+<div class="outline-text-2" id="text-org21089e8">
+<p>
+Linux 就是我从现在开始会一直使用下去的操作系统。它的太多设计理念和我不谋而合，Linus 有太多理念和我不谋而合。
+</p>
+</div>
+</div>
+<div id="outline-container-org3a9c40b" class="outline-2">
+<h2 id="org3a9c40b">“不可避免的 AI”</h2>
+<div class="outline-text-2" id="text-org3a9c40b">
+<p>
+从接触到个人电脑 PC 这个概念开始，就一直用的 Windows，直到很晚才开始使用 Mac，最初的原因也只是需要处理摄影的照片，Mac 的 M 芯片在刚出来的时候就是王炸。
+</p>
 
-          <p>
-            之前我对操作系统一直没有什么概念，用着顺手，系统 UI 看着舒服就好了，对 PC 和操作系统也没有什么特殊的情怀和偏爱。但近几年，Windows 首先开始把 AI 功能整合到操作系统默认的系统服务里，这种趋势是我很反感的。要是很有用也就算了，隐私问题就更得不到保证，现在 Apple 也开始了。作为一个普通的消费者，如果产品里没有我可以选择的需求，不用就好了。
-          </p>
+<p>
+之前我对操作系统一直没有什么概念，用着顺手，系统 UI 看着舒服就好了，对 PC 和操作系统也没有什么特殊的情怀和偏爱。但近几年，Windows 首先开始把 AI 功能整合到操作系统默认的系统服务里，这种趋势是我很反感的。要是很有用也就算了，隐私问题就更得不到保证，现在 Apple 也开始了。作为一个普通的消费者，如果产品里没有我可以选择的需求，不用就好了。
+</p>
 
-          <p>
-            AI 现在的发展趋势，更多的是资本的裹挟。它直接导致，如果不接入它，就会被市场淘汰。所以操作系统整合 AI 这个趋势，我很理解，如果以后它们单独推出不绑定 AI 的操作系统版本，我还是有可能会继续用。但是如果你把这些强行让消费者来买单，不给消费者选择，这是我反感的。PC 这个产品，或者说操作系统压根就和 AI 没有半毛钱必然的关系啊，为啥我要使用 PC 就一定要用 AI？这就好像我只是想骑自行车，但是必须要带上一个一直会在旁边 BB 的导航一样，我不需要给资本的这些运作买单。几个巨头，大佬发发推，搞搞发布会，融融资，AI 就成了必然和必须，所谓的 AI 革命就开始了。
-          </p>
+<p>
+AI 现在的发展趋势，更多的是资本的裹挟。它直接导致，如果不接入它，就会被市场淘汰。所以操作系统整合 AI 这个趋势，我很理解，如果以后它们单独推出不绑定 AI 的操作系统版本，我还是有可能会继续用。但是如果你把这些强行让消费者来买单，不给消费者选择，这是我反感的。PC 这个产品，或者说操作系统压根就和 AI 没有半毛钱必然的关系啊，为啥我要使用 PC 就一定要用 AI？这就好像我只是想骑自行车，但是必须要带上一个一直会在旁边 BB 的导航一样，我不需要给资本的这些运作买单。几个巨头，大佬发发推，搞搞发布会，融融资，AI 就成了必然和必须，所谓的 AI 革命就开始了。
+</p>
 
-          <blockquote>
-            <p>
-              AI 就是一种新型的操作系统，帮你完成各种任务。这个系统的 CPU 就是大模型，内存就是模型的上下文窗口，窗口越大能完成的任务规模就越大。
-            </p>
+<blockquote>
+<p>
+AI 就是一种新型的操作系统，帮你完成各种任务。这个系统的 CPU 就是大模型，内存就是模型的上下文窗口，窗口越大能完成的任务规模就越大。
+</p>
 
-            <p>
-              &#x2013; <a href="https://rlancemartin.github.io/2025/06/23/context_engineering/">Andrej Karpathy</a>
-            </p>
-          </blockquote>
+<p>
+&#x2013; <a href="https://rlancemartin.github.io/2025/06/23/context_engineering/">Andrej Karpathy</a>
+</p>
+</blockquote>
 
-          <p>
-            我其实很期待根据上面 AK 大佬所构想的以 LLM 大语言模型为驱动的新操作系统，想想就挺有意思的：当 CPU 里直接集成了大语言模型模块之后，每次打开一个系统里的新窗口，它都可以动态的根据你短暂的操作历史、或是天气、心情，生成。这才是我觉得真正的 AI 整合到操作系统。
-          </p>
+<p>
+我其实很期待根据上面 AK 大佬所构想的以 LLM 大语言模型为驱动的新操作系统，想想就挺有意思的：当 CPU 里直接集成了大语言模型模块之后，每次打开一个系统里的新窗口，它都可以动态的根据你短暂的操作历史、或是天气、心情，生成。这才是我觉得真正的 AI 整合到操作系统。
+</p>
 
-          <p>
-            但 AI 现在的形态最多只是一种更智能的自动化实现(agent &amp; agentic workflow)，距离通用人工智能（AGI）还有很远。
-          </p>
+<p>
+但 AI 现在的形态最多只是一种更智能的自动化实现(agent &amp; agentic workflow)，距离通用人工智能（AGI）还有很远。
+</p>
 
-          <p>
-            互联网发展到现在已经成为了一个普惠的基础服务设施，但 AI 现在还不是，对 AI 过度鼓吹的那些布道者所宣称的普惠性，到现在我还没有真正体会到。它们正在把 token 变成现在的网络流量一样，网络流量的付费那是基础服务设施的付费，AI 现在的 token 付费完全还只是产品的付费。工业革命不管怎么样，是完全把人类社会的生产力提高了一个层次，机器替代了许多重复性的人工劳动实现了自动化，AI 革命距离它提高社会整体生产力还有太远，现在还只是资本游戏的开头。解决不了能源问题，以 AI 现在的耗电量，我都怕撑不到 AI 革命正式开始的那一天。
-          </p>
+<p>
+互联网发展到现在已经成为了一个普惠的基础服务设施，但 AI 现在还不是，对 AI 过度鼓吹的那些布道者所宣称的普惠性，到现在我还没有真正体会到。它们正在把 token 变成现在的网络流量一样，网络流量的付费那是基础服务设施的付费，AI 现在的 token 付费完全还只是产品的付费。工业革命不管怎么样，是完全把人类社会的生产力提高了一个层次，机器替代了许多重复性的人工劳动实现了自动化，AI 革命距离它提高社会整体生产力还有太远，现在还只是资本游戏的开头。解决不了能源问题，以 AI 现在的耗电量，我都怕撑不到 AI 革命正式开始的那一天。
+</p>
 
-          <p>
-            当然，由于 LLM 预测生成的特性，它已经可以实现很多代码编程方面的自动化。现在这个阶段，纯 vibe coding 的产物，它生成的 MVP 、页面、代码片段等等，就像工业革命刚开始的时候，流水线上生产出来的工艺品一样。我当然不否定它创造的经济价值和社会价值，但就像 20 世纪中期的波普艺术和其他工业革命时期的艺术运动想表达的一样，这些流水线产物没得灵魂。
-          </p>
+<p>
+当然，由于 LLM 预测生成的特性，它已经可以实现很多代码编程方面的自动化。现在这个阶段，纯 vibe coding 的产物，它生成的 MVP 、页面、代码片段等等，就像工业革命刚开始的时候，流水线上生产出来的工艺品一样。我当然不否定它创造的经济价值和社会价值，但就像 20 世纪中期的波普艺术和其他工业革命时期的艺术运动想表达的一样，这些流水线产物没得灵魂。
+</p>
 
-          <p>
-            <a href="https://en.wikipedia.org/wiki/David_Heinemeier_Hansson">David Heinemeier Hansson</a> 在最近一次 <a href="https://www.youtube.com/watch?v=vagyIcmIGOQ&amp;t=5292s">Lex Fridman 的访谈</a> 里说到：
-          </p>
+<p>
+<a href="https://en.wikipedia.org/wiki/David_Heinemeier_Hansson">David Heinemeier Hansson</a> 在最近一次 <a href="https://www.youtube.com/watch?v=vagyIcmIGOQ&amp;t=5292s">Lex Fridman 的访谈</a> 里说到：
+</p>
 
-          <blockquote>
-            <p>
-              "I use AI in a separate window. I don't enjoy Cursor or Windsurf, I can literally feel competence draining out of my fingers."
-            </p>
+<blockquote>
+<p>
+"I use AI in a separate window. I don't enjoy Cursor or Windsurf, I can literally feel competence draining out of my fingers."
+</p>
 
-            <p>
-              "我在一个单独的窗口中使用人工智能。我不喜欢Cursor或Windsurf，我真的能感觉到能力从我的指尖流失。"
-            </p>
-          </blockquote>
+<p>
+"我在一个单独的窗口中使用人工智能。我不喜欢Cursor或Windsurf，我真的能感觉到能力从我的指尖流失。"
+</p>
+</blockquote>
 
-          <p>
-            DHH 还表示，手动自己编程在键盘上的敲打，就像弹吉他一样，你无法通过观看弹吉他视频就掌握弹吉他这个技能。你可以通过 vibe coding 快速了解到很多，但是这和真正上手掌握一个技术是两回事。
-          </p>
+<p>
+DHH 还表示，手动自己编程在键盘上的敲打，就像弹吉他一样，你无法通过观看弹吉他视频就掌握弹吉他这个技能。你可以通过 vibe coding 快速了解到很多，但是这和真正上手掌握一个技术是两回事。
+</p>
 
-          <p>
-            作为一个行业外的人，我很赞同 DHH 的观点。vibe coding、AI、自动化，可以提高效率，但这和兴趣爱好、自己的热爱是两码事，可以用 AI 套套公式做出一个爆款口水歌 (我并不否认这种成功) ，也可以只是表达表达自我搞搞乐队，just for fun。我一直无所谓对于 AI 革命哪种观点是正确的，这没太大意义，历史前进的方向不会因为现在这些对错而改变，但保持自己对于这些改变的态度很重要，坚持自己的选择就好。
-          </p>
+<p>
+作为一个行业外的人，我很赞同 DHH 的观点。vibe coding、AI、自动化，可以提高效率，但这和兴趣爱好、自己的热爱是两码事，可以用 AI 套套公式做出一个爆款口水歌 (我并不否认这种成功) ，也可以只是表达表达自我搞搞乐队，just for fun。我一直无所谓对于 AI 革命哪种观点是正确的，这没太大意义，历史前进的方向不会因为现在这些对错而改变，但保持自己对于这些改变的态度很重要，坚持自己的选择就好。
+</p>
 
-          <p>
-            Flowith 的创始人 Derek 有句话说的挺好：品味是人类在 AI 时代最后的壁垒。对于 AI 带来的这些变革，我其实更多的还是期待，仅从艺术这个我更感兴趣的领域来说，可能又可以经历一次大的艺术变革了，艺术领域也太多年没有新鲜玩意了。
-          </p>
+<p>
+Flowith 的创始人 Derek 有句话说的挺好：品味是人类在 AI 时代最后的壁垒。对于 AI 带来的这些变革，我其实更多的还是期待，仅从艺术这个我更感兴趣的领域来说，可能又可以经历一次大的艺术变革了，艺术领域也太多年没有新鲜玩意了。
+</p>
 
-          <p>
-            对于 “不可避免的 AI”，<a href="https://tomrenner.com/posts/llm-inevitabilism/">The sound of inevitability</a> 这个文章的观点挺好：
-          </p>
+<p>
+对于 “不可避免的 AI”，<a href="https://tomrenner.com/posts/llm-inevitabilism/">The sound of inevitability</a> 这个文章的观点挺好：
+</p>
 
-          <blockquote>
-            <p>
-              People advancing an inevitabilist world view state that the future they perceive will inevitably come to pass. It follows, relatively straightforwardly, that the only sensible way to respond to this is to prepare as best you can for that future.
-            </p>
+<blockquote>
+<p>
+People advancing an inevitabilist world view state that the future they perceive will inevitably come to pass. It follows, relatively straightforwardly, that the only sensible way to respond to this is to prepare as best you can for that future.
+</p>
 
-            <p>
-              持有不可避免主义世界观的人声称他们所感知的未来将不可避免地到来。相对简单地说，回应这一点的唯一明智方式就是尽可能为那个未来做好准备。
-            </p>
+<p>
+持有不可避免主义世界观的人声称他们所感知的未来将不可避免地到来。相对简单地说，回应这一点的唯一明智方式就是尽可能为那个未来做好准备。
+</p>
 
-            <p>
-              This is a fantastic framing method. Anyone who sees the future differently to you can be brushed aside as “ignoring reality”, and the only conversations worth engaging are those that already accept your premise.
-            </p>
+<p>
+This is a fantastic framing method. Anyone who sees the future differently to you can be brushed aside as “ignoring reality”, and the only conversations worth engaging are those that already accept your premise.
+</p>
 
-            <p>
-              这是一种绝妙的框架方法。任何与您看待未来不同的人都可以被视为“忽视现实”，而唯一值得参与的对话是那些已经接受您前提的对话。
-            </p>
+<p>
+这是一种绝妙的框架方法。任何与您看待未来不同的人都可以被视为“忽视现实”，而唯一值得参与的对话是那些已经接受您前提的对话。
+</p>
 
-            <p>
-              I’m not convinced that LLMs are the future. I’m certainly not convinced that they’re the future I want. But what I’m most certain of is that we have choices about what our future should look like, and how we choose to use machines to build it.
-            </p>
+<p>
+I’m not convinced that LLMs are the future. I’m certainly not convinced that they’re the future I want. But what I’m most certain of is that we have choices about what our future should look like, and how we choose to use machines to build it.
+</p>
 
-            <p>
-              我并不相信大型语言模型是未来。我当然不相信它们是我想要的未来。但我最确定的是，我们对未来应该是什么样子有选择权，以及我们选择如何使用机器来构建它。
-            </p>
-          </blockquote>
+<p>
+我并不相信大型语言模型是未来。我当然不相信它们是我想要的未来。但我最确定的是，我们对未来应该是什么样子有选择权，以及我们选择如何使用机器来构建它。
+</p>
+</blockquote>
 
-          <p>
-            今年一直在看 C 语言，体验 C 语言最合适的操作系统当然就是 Linux 了。在虚拟机里许多底层的实验操作起来不是很方便，正好还有一个很老的电脑已经不能装 Win10 了，最开始是抱着试一试的想法，安装了 Arch Linux，没想到使用体验实在是太好了，一点不卡。选 Arch Linux 是因为它的 wiki 做的太好了，对于新手很友好，Arch 的自由度也很高。
-          </p>
+<p>
+今年一直在看 C 语言，体验 C 语言最合适的操作系统当然就是 Linux 了。在虚拟机里许多底层的实验操作起来不是很方便，正好还有一个很老的电脑已经不能装 Win10 了，最开始是抱着试一试的想法，安装了 Arch Linux，没想到使用体验实在是太好了，一点不卡。选 Arch Linux 是因为它的 wiki 做的太好了，对于新手很友好，Arch 的自由度也很高。
+</p>
 
-          <p>
-            再加上，Emacs 在 Linux 里才是满血的，现在所有的 workflow，除了 PS 处理照片和 ollama 的本地模型之外，都迁移到了这个老电脑 Arch Linux。
-          </p>
+<p>
+再加上，Emacs 在 Linux 里才是满血的，现在所有的 workflow，除了 PS 处理照片和 ollama 的本地模型之外，都迁移到了这个老电脑 Arch Linux。
+</p>
 
-          <p>
-            Mac 里的 Emacsclient 一直感觉怪怪的，在 Linux 里体验就很顺畅，打开 Emacsclient 也是秒开，和 Nvim 打开的速度一样快。
-          </p>
+<p>
+Mac 里的 Emacsclient 一直感觉怪怪的，在 Linux 里体验就很顺畅，打开 Emacsclient 也是秒开，和 Nvim 打开的速度一样快。
+</p>
 
-          <p>
-            如果说上面的这些是让我开始使用 Linux 的诱因，那么 Linus 和 <a href="https://wiki.vandee.art/#%E3%80%8AJust%20For%20Fun%E3%80%8B">《Just For Fun》</a> 这本书，就是让我会一直使用 Linux 的原因。Linus 开源 Linux 的这个决定实在是太伟大了。Linus 对于他实现的许多我看来很了不起的事情，只是很谦虚的表示：他在当时完全没有想到后面的事情，只是觉得自己对这些很感兴趣就做了，从结果来看就是自己一次次的走在了自己的前面。
-          </p>
+<p>
+如果说上面的这些是让我开始使用 Linux 的诱因，那么 Linus 和 <a href="https://wiki.vandee.art/#%E3%80%8AJust%20For%20Fun%E3%80%8B">《Just For Fun》</a> 这本书，就是让我会一直使用 Linux 的原因。Linus 开源 Linux 的这个决定实在是太伟大了。Linus 对于他实现的许多我看来很了不起的事情，只是很谦虚的表示：他在当时完全没有想到后面的事情，只是觉得自己对这些很感兴趣就做了，从结果来看就是自己一次次的走在了自己的前面。
+</p>
 
-          <p>
-            Linux 这种自由的感觉很舒服。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-orgb17e9a4" class="outline-2">
-        <h2 id="orgb17e9a4">Arch Linux 配置记录</h2>
-        <div class="outline-text-2" id="text-orgb17e9a4">
-          <p>
-            简单记录一下从 Mac 迁移到 Arch Linux 的配置。
-          </p>
-        </div>
-        <div id="outline-container-org063b700" class="outline-3">
-          <h3 id="org063b700">脚本</h3>
-          <div class="outline-text-3" id="text-org063b700">
-            <p>
-              让 LLM 随便弄了一个 Linux 的初始化脚本，安装一些我需要的软件和配置。
-            </p>
+<p>
+Linux 这种自由的感觉很舒服。
+</p>
+</div>
+</div>
+<div id="outline-container-org77d3393" class="outline-2">
+<h2 id="org77d3393">Arch Linux 配置记录</h2>
+<div class="outline-text-2" id="text-org77d3393">
+<p>
+简单记录一下从 Mac 迁移到 Arch Linux 的配置。
+</p>
+</div>
+<div id="outline-container-orgc22dcc8" class="outline-3">
+<h3 id="orgc22dcc8">脚本</h3>
+<div class="outline-text-3" id="text-orgc22dcc8">
+<p>
+让 LLM 随便弄了一个 Linux 的初始化脚本，安装一些我需要的软件和配置。
+</p>
 
-            <div class="org-src-container">
-              <pre class="src src-bash">
-                <span style="color: #787878;">#</span><span style="color: #787878;">!/bin/bash
-                </span>
-                <span style="color: #787878;"># </span><span style="color: #787878;">Exit immediately if a command exits with a non-zero status.
-                </span><span style="color: #79C0FF;">set</span> -e
+<div class="org-src-container">
+<pre class="src src-bash">
+#!/bin/bash
+# Exit immediately if a command exits with a non-zero status.
+set -e
+# Check if the script is run as root
+if [ "$(id -u)" -ne 0 ]; then
+  echo "This script must be run as root" >&2
+  exit 1
+fi
+# --- Package Lists ---
+BASE_PACKAGES="git curl neovim emacs vim feh mpv docker opensnitch"
+FCITX5_PACKAGES_ARCH="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
+FCITX5_PACKAGES_UBUNTU="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-config-qt"
+FCITX5_PACKAGES_FEDORA="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
+FCITX5_PACKAGES_SUSE="fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"
+# Function to install packages on Arch Linux
+install_arch() {
+  echo "Updating system..."
+  pacman -Syu --noconfirm --needed
+  echo "Installing packages for Arch..."
+  for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_ARCH base-devel; do
+    pacman -S --noconfirm --needed "$pkg" || echo "Skipping '$pkg': not found or error."
+  done
+}
+# Function to install packages on Ubuntu/Debian
+install_ubuntu() {
+  echo "Updating system..."
+  apt-get update
+  echo "Installing packages for Debian/Ubuntu..."
+  apt-get install -y --ignore-missing $BASE_PACKAGES $FCITX5_PACKAGES_UBUNTU docker.io build-essential
+}
+# Function to install packages on Fedora
+install_fedora() {
+  echo "Installing packages for Fedora..."
+  for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_FEDORA; do
+    dnf -y install "$pkg" || echo "Skipping '$pkg': not found or error."
+  done
+  echo "Installing development tools for Fedora..."
+  dnf -y groupinstall "C Development Tools and Libraries" || echo "Skipping 'C Development Tools and Libraries' group: not found or error."
+}
+# Function to install packages on OpenSUSE
+install_opensuse() {
+    echo "Installing packages for OpenSUSE..."
+    for pkg in $BASE_PACKAGES $FCITX5_PACKAGES_SUSE; do
+        zypper install -y "$pkg" || echo "Skipping '$pkg': not found or error."
+    done
+    echo "Installing development tools for OpenSUSE..."
+    zypper install -y -t pattern devel_basis || echo "Skipping 'devel_basis' pattern: not found or error."
+}
+# Detect the distribution by checking for the package manager
+if command -v pacman &> /dev/null; then
+    install_arch
+elif command -v apt-get &> /dev/null; then
+    install_ubuntu
+elif command -v dnf &> /dev/null; then
+    install_fedora
+elif command -v zypper &> /dev/null; then
+    install_opensuse
+else
+    echo "Could not detect a supported package manager (pacman, apt, dnf, zypper)."
+    exit 1
+fi
+echo "Basic packages installation complete."
+echo "Setting up Fcitx5 environment variables..."
+# Create environment file for Fcitx5
+mkdir -p /etc/environment.d
+cat > /etc/environment.d/90-fcitx5.conf << EOL
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+EOL
+echo "Starting Rime configuration..."
+# Run the Rime configuration as the user who invoked sudo
+if [ -n "$SUDO_USER" ]; then
+    sudo -u "$SUDO_USER" bash -c '
+        echo "Cloning plum repository..."
+        if [ -d "$HOME/plum" ]; then
+            echo "$HOME/plum already exists. Skipping clone."
+        else
+            git clone --depth 1 https://github.com/rime/plum "$HOME/plum"
+        fi
+        echo "Changing to plum directory..."
+        cd "$HOME/plum"
+        echo "Installing rime-ice..."
+        rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
+    '
+else
+    echo "Could not determine the user to install Rime for."
+    echo "Please run the following commands manually as a regular user:"
+    echo "git clone --depth 1 https://github.com/rime/plum ~/plum"
+    echo "cd ~/plum"
+    echo "rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full"
+fi
+echo "Installation and setup complete."
+echo "Please reboot your system for all changes to take effect."</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5e4a0a9" class="outline-3">
+<h3 id="org5e4a0a9">dotfiles</h3>
+<div class="outline-text-3" id="text-org5e4a0a9">
+<p>
+bash，tmux，Emacs，Nvim，还有其他的配置一直用 GitHub 在同步，迁移起来也很顺畅。
+</p>
 
-                <span style="color: #787878;"># </span><span style="color: #787878;">Check if the script is run as root
-                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">id -u</span><span style="color: #A1D08E;">)"</span> -ne 0 <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"This script must be run as root"</span> &gt;&amp;2
-                <span style="color: #FFA657;">exit</span> 1
-                <span style="color: #FFA657;">fi</span>
+<p>
+Mac 和 Linux 在文件路径上基本是一致的，需要改的也很少。我也没有啥复杂的开发环境。。。
+</p>
+</div>
+</div>
+<div id="outline-container-org79df0fe" class="outline-3">
+<h3 id="org79df0fe">桌面环境和窗口管理</h3>
+<div class="outline-text-3" id="text-org79df0fe">
+<p>
+2025-09-14 added : 已经转到了 Wayland 和 Sway，偶尔也用 X11 <a href="https://www.vandee.art/blog/2025-08-12-unstable-until-you-linux.html">薛定谔的 Linux</a>
+</p>
 
-                <span style="color: #787878;"># </span><span style="color: #787878;">--- Package Lists ---
-                </span><span style="color: #f4f4ff;">BASE_PACKAGES</span>=<span style="color: #A1D08E;">"git curl neovim emacs vim feh mpv docker opensnitch"</span>
-                <span style="color: #f4f4ff;">FCITX5_PACKAGES_ARCH</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
-                <span style="color: #f4f4ff;">FCITX5_PACKAGES_UBUNTU</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-config-qt"</span>
-                <span style="color: #f4f4ff;">FCITX5_PACKAGES_FEDORA</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
-                <span style="color: #f4f4ff;">FCITX5_PACKAGES_SUSE</span>=<span style="color: #A1D08E;">"fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-configtool"</span>
+<p>
+KDE 的 Plasma 太重了，许多功能我也不需要。在 Arch Linux 里，发现 hyprland 自由度很高，就选择了这个。
+</p>
 
-                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Arch Linux
-                </span><span style="color: #96a6c8;">install_arch</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Updating system..."</span>
-                pacman -Syu --noconfirm --needed
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Arch..."</span>
-                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_ARCH</span> base-devel; <span style="color: #FFA657;">do</span>
-                pacman -S --noconfirm --needed <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
-                <span style="color: #FFA657;">done</span>
-                <span style="color: #8c8c8c;">}</span>
+<p>
+Gnome 不太喜欢，之前在虚拟机里一直用的 Ubuntu 就是 Gnome，整个的设计和操作逻辑都不太喜欢。看起来和 MacOS 挺像，但是用起来我感觉挺不顺手，而且 Mac 的 Dock 栏我一直不太喜欢。
+</p>
 
-                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Ubuntu/Debian
-                </span><span style="color: #96a6c8;">install_ubuntu</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Updating system..."</span>
-                apt-get update
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Debian/Ubuntu..."</span>
-                apt-get install -y --ignore-missing $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_UBUNTU</span> docker.io build-essential
-                <span style="color: #8c8c8c;">}</span>
+<p>
+一直使用的是堆叠式的窗口管理，现在换到了 hyprland 的平铺式，才发现我更喜欢平铺式，特别是在大屏幕上，体验太好了。在 hyprland 里配置快捷键和启动项很方便，在绑定了快捷键之后，可以全键盘操作切换窗口和 Workspace。
+</p>
 
-                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on Fedora
-                </span><span style="color: #96a6c8;">install_fedora</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for Fedora..."</span>
-                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_FEDORA</span>; <span style="color: #FFA657;">do</span>
-                dnf -y install <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
-                <span style="color: #FFA657;">done</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing development tools for Fedora..."</span>
-                dnf -y groupinstall <span style="color: #A1D08E;">"C Development Tools and Libraries"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping 'C Development Tools and Libraries' group: not found or error."</span>
-                <span style="color: #8c8c8c;">}</span>
+<p>
+登录还是使用的 KDE SDDM。
+</p>
 
-                <span style="color: #787878;"># </span><span style="color: #787878;">Function to install packages on OpenSUSE
-                </span><span style="color: #96a6c8;">install_opensuse</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing packages for OpenSUSE..."</span>
-                <span style="color: #FFA657;">for</span> pkg<span style="color: #FFA657;"> in</span> $<span style="color: #f4f4ff;">BASE_PACKAGES</span> $<span style="color: #f4f4ff;">FCITX5_PACKAGES_SUSE</span>; <span style="color: #FFA657;">do</span>
-                zypper install -y <span style="color: #A1D08E;">"$pkg"</span> || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping '$pkg': not found or error."</span>
-                <span style="color: #FFA657;">done</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installing development tools for OpenSUSE..."</span>
-                zypper install -y -t pattern devel_basis || <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Skipping 'devel_basis' pattern: not found or error."</span>
-                <span style="color: #8c8c8c;">}</span>
+<p>
+弄了一个小脚本用来把当前窗口隐藏到 hyprland 的 special Workspace，我感觉很实用：
+</p>
 
+<div class="org-src-container">
+<pre class="src src-bash">
+#!/bin/bash
+# Directory to store the original workspace ID of the window
+STATE_DIR="/tmp/hypr-special-state"
+mkdir -p "$STATE_DIR"
+# Get active window info as JSON
+active_window_json=$(/usr/bin/hyprctl activewindow -j)
+# Extract address and workspace info
+window_address=$(echo "$active_window_json" | /usr/bin/jq -r '.address')
+workspace_id=$(echo "$active_window_json" | /usr/bin/jq -r '.workspace.id')
+workspace_name=$(echo "$active_window_json" | /usr/bin/jq -r '.workspace.name')
+# Exit if no active window is found
+if [ -z "$window_address" ] || [ "$window_address" == "null" ]; then
+    exit 0
+fi
+# Path to the state file for the current window
+STATE_FILE="$STATE_DIR/$window_address"
+# Check if the window is in the special workspace
+if [[ "$workspace_name" == "special"* ]]; then
+    # Window is in a special workspace, move it back to its original workspace
+    if [ -f "$STATE_FILE" ]; then
+        target_workspace=$(cat "$STATE_FILE")
+        rm "$STATE_FILE" # Clean up the state file
+    else
+        # Fallback: if no state file is found, move to the first available regular workspace
+        target_workspace=$(/usr/bin/hyprctl workspaces -j | /usr/bin/jq -r '.[] | select(.id >= 1) | .id' | head -n 1)
+        # Default to workspace 1 if no other regular workspace is found
+        if [ -z "$target_workspace" ]; then
+            target_workspace=1
+        fi
+    fi
+    # Move the specific window to the target workspace
+    /usr/bin/hyprctl dispatch movetoworkspace "$target_workspace,address:$window_address"
+else
+    # Window is not in a special workspace, so move it there and save its current workspace
+    echo "$workspace_id" > "$STATE_FILE"
+    /usr/bin/hyprctl dispatch movetoworkspacesilent "special,address:$window_address"
+fi</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org945aa36" class="outline-3">
+<h3 id="org945aa36">Tips</h3>
+<div class="outline-text-3" id="text-org945aa36">
+<p>
+在国内，安装 Linux 遇到的最大的问题应该就是网络问题了。
+</p>
 
-                <span style="color: #787878;"># </span><span style="color: #787878;">Detect the distribution by checking for the package manager
-                </span><span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v pacman &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
-                install_arch
-                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v apt-get &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
-                install_ubuntu
-                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v dnf &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
-                install_fedora
-                <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v zypper &amp;&gt; /dev/null; <span style="color: #FFA657;">then</span>
-                install_opensuse
-                <span style="color: #FFA657;">else</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Could not detect a supported package manager (pacman, apt, dnf, zypper)."</span>
-                <span style="color: #FFA657;">exit</span> 1
-                <span style="color: #FFA657;">fi</span>
+<p>
+在没有安装桌面环境之前，只有命令行，配置代理很不方便。Arch 是可以在安装之前选择国内的镜像的，但是涉及到需要使用 GitHub 和 yay 的包，就不行了。
+</p>
 
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Basic packages installation complete."</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Setting up Fcitx5 environment variables..."</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Create environment file for Fcitx5
-                </span>mkdir -p /etc/environment.d
-                cat &gt; /etc/environment.d/90-fcitx5.conf &lt;&lt; EOL<span style="color: #ffff00; font-weight: bold;">
-                  QT_IM_MODULE=fcitx
-                  XMODIFIERS=@im=fcitx
-                  EOL
-                </span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Starting Rime configuration..."</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Run the Rime configuration as the user who invoked sudo
-                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -n <span style="color: #A1D08E;">"$SUDO_USER"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-                sudo -u <span style="color: #A1D08E;">"$SUDO_USER"</span> bash -c <span style="color: #A1D08E;">'
-                  echo "Cloning plum repository..."
-                  if [ -d "$HOME/plum" ]; then
-                  echo "$HOME/plum already exists. Skipping clone."
-                  else
-                  git clone --depth 1 https://github.com/rime/plum "$HOME/plum"
-                  fi
-
-                  echo "Changing to plum directory..."
-                  cd "$HOME/plum"
-
-                  echo "Installing rime-ice..."
-                  rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
-                  '</span>
-                <span style="color: #FFA657;">else</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Could not determine the user to install Rime for."</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Please run the following commands manually as a regular user:"</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"git clone --depth 1 https://github.com/rime/plum ~/plum"</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"cd ~/plum"</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full"</span>
-                <span style="color: #FFA657;">fi</span>
-
-
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Installation and setup complete."</span>
-                <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Please reboot your system for all changes to take effect."</span>
-              </pre>
-            </div>
-          </div>
-        </div>
-        <div id="outline-container-org4e33f28" class="outline-3">
-          <h3 id="org4e33f28">dotfiles</h3>
-          <div class="outline-text-3" id="text-org4e33f28">
-            <p>
-              bash，tmux，Emacs，Nvim，还有其他的配置一直用 GitHub 在同步，迁移起来也很顺畅。
-            </p>
-
-            <p>
-              Mac 和 Linux 在文件路径上基本是一致的，需要改的也很少。我也没有啥复杂的开发环境。。。
-            </p>
-          </div>
-        </div>
-        <div id="outline-container-org6240ba3" class="outline-3">
-          <h3 id="org6240ba3">桌面环境和窗口管理</h3>
-          <div class="outline-text-3" id="text-org6240ba3">
-            <p>
-              2025-09-14 added : 已经转到了 Wayland 和 Sway，偶尔也用 X11 <a href="https://www.vandee.art/blog/2025-08-12-unstable-until-you-linux.html">薛定谔的 Linux</a>
-            </p>
-
-            <p>
-              KDE 的 Plasma 太重了，许多功能我也不需要。在 Arch Linux 里，发现 hyprland 自由度很高，就选择了这个。
-            </p>
-
-            <p>
-              Gnome 不太喜欢，之前在虚拟机里一直用的 Ubuntu 就是 Gnome，整个的设计和操作逻辑都不太喜欢。看起来和 MacOS 挺像，但是用起来我感觉挺不顺手，而且 Mac 的 Dock 栏我一直不太喜欢。
-            </p>
-
-            <p>
-              一直使用的是堆叠式的窗口管理，现在换到了 hyprland 的平铺式，才发现我更喜欢平铺式，特别是在大屏幕上，体验太好了。在 hyprland 里配置快捷键和启动项很方便，在绑定了快捷键之后，可以全键盘操作切换窗口和 Workspace。
-            </p>
-
-            <p>
-              登录还是使用的 KDE SDDM。
-            </p>
-
-            <p>
-              弄了一个小脚本用来把当前窗口隐藏到 hyprland 的 special Workspace，我感觉很实用：
-            </p>
-
-            <div class="org-src-container">
-              <pre class="src src-bash">
-                <span style="color: #787878;">#</span><span style="color: #787878;">!/bin/bash
-                </span>
-                <span style="color: #787878;"># </span><span style="color: #787878;">Directory to store the original workspace ID of the window
-                </span><span style="color: #f4f4ff;">STATE_DIR</span>=<span style="color: #A1D08E;">"/tmp/hypr-special-state"</span>
-                mkdir -p <span style="color: #A1D08E;">"$STATE_DIR"</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Get active window info as JSON
-                </span><span style="color: #f4f4ff;">active_window_json</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">/usr/bin/hyprctl activewindow -j</span><span style="color: #8c8c8c;">)</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Extract address and workspace info
-                </span><span style="color: #f4f4ff;">window_address</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.address'</span><span style="color: #8c8c8c;">)</span>
-                <span style="color: #f4f4ff;">workspace_id</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.workspace.id'</span><span style="color: #8c8c8c;">)</span>
-                <span style="color: #f4f4ff;">workspace_name</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$active_window_json" | /usr/bin/jq -r '.workspace.name'</span><span style="color: #8c8c8c;">)</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Exit if no active window is found
-                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$window_address"</span> <span style="color: #8c8c8c;">]</span> || <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$window_address"</span> == <span style="color: #A1D08E;">"null"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-                <span style="color: #FFA657;">exit</span> 0
-                <span style="color: #FFA657;">fi</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Path to the state file for the current window
-                </span><span style="color: #f4f4ff;">STATE_FILE</span>=<span style="color: #A1D08E;">"$STATE_DIR/$window_address"</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Check if the window is in the special workspace
-                </span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$workspace_name"</span> == <span style="color: #A1D08E;">"special"</span>* <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-                <span style="color: #787878;"># </span><span style="color: #787878;">Window is in a special workspace, move it back to its original workspace
-                </span>    <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -f <span style="color: #A1D08E;">"$STATE_FILE"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-                <span style="color: #f4f4ff;">target_workspace</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$STATE_FILE"</span><span style="color: #8c8c8c;">)</span>
-                rm <span style="color: #A1D08E;">"$STATE_FILE"</span> <span style="color: #787878;"># </span><span style="color: #787878;">Clean up the state file
-                </span>    <span style="color: #FFA657;">else</span>
-                <span style="color: #787878;"># </span><span style="color: #787878;">Fallback: if no state file is found, move to the first available regular workspace
-                </span>        <span style="color: #f4f4ff;">target_workspace</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">/usr/bin/hyprctl workspaces -j | /usr/bin/jq -r '.[] | select(.id &gt;= 1</span><span style="color: #A1D08E;">) | .id'</span> | head -n 1<span style="color: #8c8c8c;">)</span>
-                <span style="color: #787878;"># </span><span style="color: #787878;">Default to workspace 1 if no other regular workspace is found
-                </span>        <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$target_workspace"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-                <span style="color: #f4f4ff;">target_workspace</span>=1
-                <span style="color: #FFA657;">fi</span>
-                <span style="color: #FFA657;">fi</span>
-
-                <span style="color: #787878;"># </span><span style="color: #787878;">Move the specific window to the target workspace
-                </span>    /usr/bin/hyprctl dispatch movetoworkspace <span style="color: #A1D08E;">"$target_workspace,address:$window_address"</span>
-                <span style="color: #FFA657;">else</span>
-                <span style="color: #787878;"># </span><span style="color: #787878;">Window is not in a special workspace, so move it there and save its current workspace
-                </span>    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"$workspace_id"</span> &gt; <span style="color: #A1D08E;">"$STATE_FILE"</span>
-                /usr/bin/hyprctl dispatch movetoworkspacesilent <span style="color: #A1D08E;">"special,address:$window_address"</span>
-                <span style="color: #FFA657;">fi</span>
-              </pre>
-            </div>
-          </div>
-        </div>
-        <div id="outline-container-org18dd336" class="outline-3">
-          <h3 id="org18dd336">Tips</h3>
-          <div class="outline-text-3" id="text-org18dd336">
-            <p>
-              在国内，安装 Linux 遇到的最大的问题应该就是网络问题了。
-            </p>
-
-            <p>
-              在没有安装桌面环境之前，只有命令行，配置代理很不方便。Arch 是可以在安装之前选择国内的镜像的，但是涉及到需要使用 GitHub 和 yay 的包，就不行了。
-            </p>
-
-            <p>
-              好在可以直接在 Arch 里， <code>sudo pacman -S v2ray</code> ，然后把代理的 config.json 用 U 盘挂载，导入进来就好了。
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-linux.html">Linux</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
-    <div id="postamble" class="status"><div id="search-results"></div>
+<p>
+好在可以直接在 Arch 里， <code>sudo pacman -S v2ray</code> ，然后把代理的 config.json 用 U 盘挂载，导入进来就好了。
+</p>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-linux.html">Linux</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>
-          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
-        </p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-        <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
       </a>
 
       <script>
         var mybutton = document.getElementById('top-link');
         window.onscroll = function () {
-          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = 'visible';
-            mybutton.style.opacity = '1';
-          } else {
-            mybutton.style.visibility = 'hidden';
-            mybutton.style.opacity = '0';
-          }
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
         };
-    </script></div>
-  </body>
+      </script></div>
+</body>
 </html>

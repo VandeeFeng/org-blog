@@ -1,233 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 [[https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1][最好的投资永远是你自己]] 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。">
-    <link rel="alternate"
-          type="application/rss+xml"
-          href="https://www.vandee.art/blog/rss.xml"
-          title="RSS feed for https://www.vandee.art/blog/">
-    <title>从有形到无形 - NoNotes，知识库自动补全</title>
-    <meta property="og:title" content="从有形到无形 - NoNotes，知识库自动补全">
-    <meta property="og:type" content="article" />
-    <meta property="og:description" content="知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 [[https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1][最好的投资永远是你自己]] 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。">
-    <meta property="og:url" content="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">
-    <meta name="author" content="Vandee">
-    <meta name="referrer" content="origin-when-cross-origin">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 [[https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1][最好的投资永远是你自己]] 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>从有形到无形 - NoNotes，知识库自动补全</title>
+<meta property="og:title" content="从有形到无形 - NoNotes，知识库自动补全">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 [[https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1][最好的投资永远是你自己]] 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。">
+<meta property="og:url" content="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
-    <link rel="stylesheet"
-          href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet"
-          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
-    <script defer>
-      document.addEventListener("DOMContentLoaded", function () {
-        pangu.spacingPage();
-      });
-    </script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
 
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/copyCode.js" defer></script>
-    <script src="assets/js/shiba.js" defer></script>
-    <script src="assets/js/search.js" defer></script></head>
-  <body>
-    <div id="preamble" class="status">
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
       <header>
-        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
-        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
-        <nav>
-          <a href="https://www.vandee.art/blog/">Home</a>
-          <a href="https://x404.xyz/wiki">Wiki</a>
-          <a href="https://x404.xyz/photo">Photo</a>
-          <a href="archive.html">Archive</a>
-          <a href="tags.html">Tags</a>
-          <div id="search-container">
-            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-            <i class="fas fa-search search-icon"></i>
-          </div>
-        </nav>
-    </header></div>
-    <div id="content">
-      <div class="post-date">10 Jun 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">从有形到无形 - NoNotes，知识库自动补全</a></h1>
-      <nav id="table-of-contents" role="doc-toc">
-        <h2>Table of Contents</h2>
-        <div id="text-table-of-contents" role="doc-toc">
-          <ul>
-            <li><a href="#org2982721">TL;DR</a></li>
-            <li><a href="#org851b604">知识的流动性</a></li>
-            <li><a href="#orge6e4c1f">自动补全 VS RAG</a></li>
-            <li><a href="#org0409a98">NoNotes</a></li>
-          </ul>
-        </div>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
       </nav>
-      <div id="outline-container-org2982721" class="outline-2">
-        <h2 id="org2982721">TL;DR</h2>
-        <div class="outline-text-2" id="text-org2982721">
-          <p>
-            NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
-          </p>
+      </header></div>
+<div id="content">
+<div class="post-date">10 Jun 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">从有形到无形 - NoNotes，知识库自动补全</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge274751">TL;DR</a></li>
+<li><a href="#orga9e1720">知识的流动性</a></li>
+<li><a href="#orgaf167f0">自动补全 VS RAG</a></li>
+<li><a href="#org46a9c33">NoNotes</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orge274751" class="outline-2">
+<h2 id="orge274751">TL;DR</h2>
+<div class="outline-text-2" id="text-orge274751">
+<p>
+NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
+</p>
 
-          <p>
-            自动联想补全，回归知识、思考最自然的样子。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-org851b604" class="outline-2">
-        <h2 id="org851b604">知识的流动性</h2>
-        <div class="outline-text-2" id="text-org851b604">
-          <p>
-            在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
-          </p>
+<p>
+自动联想补全，回归知识、思考最自然的样子。
+</p>
+</div>
+</div>
+<div id="outline-container-orga9e1720" class="outline-2">
+<h2 id="orga9e1720">知识的流动性</h2>
+<div class="outline-text-2" id="text-orga9e1720">
+<p>
+在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
+</p>
 
-          <p>
-            举个例子，在生活里我们经常会遇到这种情况，一个常用物，有时候就是会不记得它被放在了哪里，突然就找不到了，它的下一次出现可能就得是搬家的时候了。
-          </p>
+<p>
+举个例子，在生活里我们经常会遇到这种情况，一个常用物，有时候就是会不记得它被放在了哪里，突然就找不到了，它的下一次出现可能就得是搬家的时候了。
+</p>
 
-          <p>
-            知识和笔记也是一样。正是因为它太常用了，以至于我们不会刻意的去记忆它在哪里，它已经成为了一种习惯。
-          </p>
+<p>
+知识和笔记也是一样。正是因为它太常用了，以至于我们不会刻意的去记忆它在哪里，它已经成为了一种习惯。
+</p>
 
-          <p>
-            我理想中的笔记载体形态应该想水一样，它的形态可以自由变化，可以很好的和其他事物兼容。它应该可以像水的固态、液态、气态一样，根据实际的情况变幻自己的状态。它应该也是一种习惯，不需要刻意的怎么样。
-          </p>
+<p>
+我理想中的笔记载体形态应该想水一样，它的形态可以自由变化，可以很好的和其他事物兼容。它应该可以像水的固态、液态、气态一样，根据实际的情况变幻自己的状态。它应该也是一种习惯，不需要刻意的怎么样。
+</p>
 
-          <p>
-            知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 <a href="https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1">最好的投资永远是你自己</a> 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。
-          </p>
+<p>
+知识管理和学习是从无到有，现在我需要实现从有到无，PKM 最终要实现的是思维、能力的提升。做笔记的目的从来也不是做笔记，学习的目的也从来不是学习，正如巴菲特所说 <a href="https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1">最好的投资永远是你自己</a> 。它是为了能够更好的和物质世界的信息交互，不断提升自己成长的效率，让自己在每一个选择的实践当中，提升最优决策实现的可能性。
+</p>
 
-          <p>
-            做笔记和学习如果只是停留在笔记，那么它顶多只是一些对自己很有用的资料而已，创造不了太多价值。
-          </p>
+<p>
+做笔记和学习如果只是停留在笔记，那么它顶多只是一些对自己很有用的资料而已，创造不了太多价值。
+</p>
 
-          <blockquote>
-            <p>
-              Steve Jobs on why thinking without doing is incomplete:
-            </p>
+<blockquote>
+<p>
+Steve Jobs on why thinking without doing is incomplete:
+</p>
 
-            <p>
-              史蒂夫·乔布斯谈到为什么不行动的思考是不完整的：
-            </p>
+<p>
+史蒂夫·乔布斯谈到为什么不行动的思考是不完整的：
+</p>
 
-            <p>
-              “My observation is that the doers are the major thinkers. The people that really create the things that change this industry are both the thinker and doer in one person. And if we really go back and we examine, you know, did Leonardo have a guy off to the side that was thinking five years out in the future what he would paint or the technology he would use to paint it? Of course not. Leonardo was the artist, but he also mixed all his own paints. He also was a fairly good chemist. He knew about pigments, knew about human anatomy. And combining all of those skills together, the art and the science, the thinking and the doing, was what resulted in the exceptional result. And there is no difference in our industry. The people that have really made the contributions have been the thinkers and the doers.”
-            </p>
+<p>
+“My observation is that the doers are the major thinkers. The people that really create the things that change this industry are both the thinker and doer in one person. And if we really go back and we examine, you know, did Leonardo have a guy off to the side that was thinking five years out in the future what he would paint or the technology he would use to paint it? Of course not. Leonardo was the artist, but he also mixed all his own paints. He also was a fairly good chemist. He knew about pigments, knew about human anatomy. And combining all of those skills together, the art and the science, the thinking and the doing, was what resulted in the exceptional result. And there is no difference in our industry. The people that have really made the contributions have been the thinkers and the doers.”
+</p>
 
-            <p>
-              “我的观察是，行动者是主要的思想者。真正创造出改变这个行业的事物的人，既是思想者也是行动者。如果我们真的回过头来审视，你知道，达芬奇是否有一个人在旁边思考他五年后会画什么，或者他会使用什么技术来绘画？当然没有。达芬奇是艺术家，但他也自己调配所有的颜料。他也是一个相当不错的化学家。他了解颜料，了解人体解剖。将所有这些技能结合在一起，艺术与科学，思考与行动，才产生了卓越的结果。在我们的行业中没有区别。真正做出贡献的人是思想者和行动者。”
-            </p>
-          </blockquote>
-        </div>
-      </div>
-      <div id="outline-container-orge6e4c1f" class="outline-2">
-        <h2 id="orge6e4c1f">自动补全 VS RAG</h2>
-        <div class="outline-text-2" id="text-orge6e4c1f">
-          <p>
-            大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
-          </p>
+<p>
+“我的观察是，行动者是主要的思想者。真正创造出改变这个行业的事物的人，既是思想者也是行动者。如果我们真的回过头来审视，你知道，达芬奇是否有一个人在旁边思考他五年后会画什么，或者他会使用什么技术来绘画？当然没有。达芬奇是艺术家，但他也自己调配所有的颜料。他也是一个相当不错的化学家。他了解颜料，了解人体解剖。将所有这些技能结合在一起，艺术与科学，思考与行动，才产生了卓越的结果。在我们的行业中没有区别。真正做出贡献的人是思想者和行动者。”
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgaf167f0" class="outline-2">
+<h2 id="orgaf167f0">自动补全 VS RAG</h2>
+<div class="outline-text-2" id="text-orgaf167f0">
+<p>
+大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
+</p>
 
-          <p>
-            NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的不同是，它的重点不在 generation，而是联想和检索。
-          </p>
+<p>
+NoNotes 想达到的实现和 RAG（Retrieval-Augmented Generation）最大的不同是，它的重点不在 generation，而是联想和检索。
+</p>
 
-          <p>
-            RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Context Protocol) 也是一样，它们都是通过给 LLM 提供额外的数据接口来增加 LLM 的能力，让它能够更准确的生成内容。
-          </p>
+<p>
+RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Context Protocol) 也是一样，它们都是通过给 LLM 提供额外的数据接口来增加 LLM 的能力，让它能够更准确的生成内容。
+</p>
 
-          <p>
-            我一直不太想过多的依赖一种工具来管理知识，即使 LLM 再强大，这点也不会变。Google 的 NotebookLM 已经做到了知识库形态很完整的实现，可以直接和大量的数据对话，类似的大小型知识库 RAG 项目也非常多非常成熟，但是这种层面的知识交互，并不能很好的实现我想把知识流动起来的根本原则。
-          </p>
+<p>
+我一直不太想过多的依赖一种工具来管理知识，即使 LLM 再强大，这点也不会变。Google 的 NotebookLM 已经做到了知识库形态很完整的实现，可以直接和大量的数据对话，类似的大小型知识库 RAG 项目也非常多非常成熟，但是这种层面的知识交互，并不能很好的实现我想把知识流动起来的根本原则。
+</p>
 
-          <p>
-            它们的重点都是在生成，这也就意味着，很难通过这种和知识的交互直接返还我想查找到的原文内容（特定的 prompt 还是可以实现，但这又增加了学习和使用的成本）。而 NoNotes 通过检索自动补全的是我相关的笔记原文，这就可以在一定程度上保证，我的思考和学习是原汁原味的。再一个 RAG 的生成的速度是很难保证实时补全的。
-          </p>
+<p>
+它们的重点都是在生成，这也就意味着，很难通过这种和知识的交互直接返还我想查找到的原文内容（特定的 prompt 还是可以实现，但这又增加了学习和使用的成本）。而 NoNotes 通过检索自动补全的是我相关的笔记原文，这就可以在一定程度上保证，我的思考和学习是原汁原味的。再一个 RAG 的生成的速度是很难保证实时补全的。
+</p>
 
-          <p>
-            我也不太想通过 LLM 的生成来管理、生成笔记，这样总感觉不是自己的，也很难在学习的过程里进入心流和深度思考。还是一个字一个字的敲，更自在。
-          </p>
+<p>
+我也不太想通过 LLM 的生成来管理、生成笔记，这样总感觉不是自己的，也很难在学习的过程里进入心流和深度思考。还是一个字一个字的敲，更自在。
+</p>
 
-          <p>
-            自动补全可能是我现在能想到的，最简洁，最自然的实现流动知识的实现。未来能集成到输入法里也说不定呢。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-org0409a98" class="outline-2">
-        <h2 id="org0409a98">NoNotes</h2>
-        <div class="outline-text-2" id="text-org0409a98">
-          <p>
-            无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
-          </p>
+<p>
+自动补全可能是我现在能想到的，最简洁，最自然的实现流动知识的实现。未来能集成到输入法里也说不定呢。
+</p>
+</div>
+</div>
+<div id="outline-container-org46a9c33" class="outline-2">
+<h2 id="org46a9c33">NoNotes</h2>
+<div class="outline-text-2" id="text-org46a9c33">
+<p>
+无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
+</p>
 
-          <p>
-            难点在数据的处理和联想的算法，这部分我还在学习。
-          </p>
+<p>
+难点在数据的处理和联想的算法，这部分我还在学习。
+</p>
 
-          <p>
-            源码就不放出来了，因为整个实现还只是雏形，而且也很好实现，可以选择的框架和编程语言也很多。
-          </p>
+<p>
+源码就不放出来了，因为整个实现还只是雏形，而且也很好实现，可以选择的框架和编程语言也很多。
+</p>
 
-          <p>
-            NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时只能处理 Markdown、PDF、txt 文本。
-          </p>
-
-
-          <figure id="orgdd4018d">
-            <img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
-
-          </figure>
-
-          <p>
-            现在做了两个 API，一个是向量相似性检索的，一个是 RAG 的。效果如下：
-          </p>
+<p>
+NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时只能处理 Markdown、PDF、txt 文本。
+</p>
 
 
-          <figure id="orga379ecb">
-            <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
+<figure id="orgd1877e7">
+<img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
 
-          </figure>
+</figure>
 
-          <p>
-            目前只实现了在 Emacs 里的自动补全，我补全用的是 corfu。
-          </p>
+<p>
+现在做了两个 API，一个是向量相似性检索的，一个是 RAG 的。效果如下：
+</p>
 
-          <p>
-            现在已经在数据库里导入了很多知识库里的笔记，搞了几个表，memory，knowledge。memory 就相当于备忘录了,现在可以自动补全最近干了什么了。
-          </p>
 
-          <p>
-            我觉得面对 LLM 和以后 AI 技术的发展，把非结构化数据向量化，是一个很好的实践，提供一个属于自己的可用的知识接口。
-          </p>
-        </div>
-      </div>
-      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
-    <div id="postamble" class="status"><div id="search-results"></div>
+<figure id="org9303d62">
+<img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+目前只实现了在 Emacs 里的自动补全，我补全用的是 corfu。
+</p>
+
+<p>
+现在已经在数据库里导入了很多知识库里的笔记，搞了几个表，memory，knowledge。memory 就相当于备忘录了,现在可以自动补全最近干了什么了。
+</p>
+
+<p>
+我觉得面对 LLM 和以后 AI 技术的发展，把非结构化数据向量化，是一个很好的实践，提供一个属于自己的可用的知识接口。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>
-          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
-        </p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-        <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
       </a>
 
       <script>
         var mybutton = document.getElementById('top-link');
         window.onscroll = function () {
-          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = 'visible';
-            mybutton.style.opacity = '1';
-          } else {
-            mybutton.style.visibility = 'hidden';
-            mybutton.style.opacity = '0';
-          }
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
         };
-    </script></div>
-  </body>
+      </script></div>
+</body>
 </html>

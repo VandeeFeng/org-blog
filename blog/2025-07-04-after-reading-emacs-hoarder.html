@@ -1,253 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="alternate"
-          type="application/rss+xml"
-          href="https://www.vandee.art/blog/rss.xml"
-          title="RSS feed for https://www.vandee.art/blog/">
-    <title>稍后阅读新方案 Emacs-Hoarder</title>
-    <meta property="og:title" content="稍后阅读新方案 Emacs-Hoarder">
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">
-    <meta name="author" content="Vandee">
-    <meta name="referrer" content="origin-when-cross-origin">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<meta charset="UTF-8">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>稍后阅读新方案 Emacs-Hoarder</title>
+<meta property="og:title" content="稍后阅读新方案 Emacs-Hoarder">
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
-    <link rel="stylesheet"
-          href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
-    <link rel="stylesheet"
-          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
-    <script defer>
-      document.addEventListener("DOMContentLoaded", function () {
-        pangu.spacingPage();
-      });
-    </script>
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", function () {
+           pangu.spacingPage();
+         });
+       </script>
 
-    <script src="assets/js/app.js" defer></script>
-    <script src="assets/js/copyCode.js" defer></script>
-    <script src="assets/js/shiba.js" defer></script>
-    <script src="assets/js/search.js" defer></script></head>
-  <body>
-    <div id="preamble" class="status">
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
       <header>
-        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
-        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
-        <nav>
-          <a href="https://www.vandee.art/blog/">Home</a>
-          <a href="https://x404.xyz/wiki">Wiki</a>
-          <a href="https://x404.xyz/photo">Photo</a>
-          <a href="archive.html">Archive</a>
-          <a href="tags.html">Tags</a>
-          <div id="search-container">
-            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-            <i class="fas fa-search search-icon"></i>
-          </div>
-        </nav>
-    </header></div>
-    <div id="content">
-      <div class="post-date">04 Jul 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">稍后阅读新方案 Emacs-Hoarder</a></h1>
-      <nav id="table-of-contents" role="doc-toc">
-        <h2>Table of Contents</h2>
-        <div id="text-table-of-contents" role="doc-toc">
-          <ul>
-            <li><a href="#org36c7867">TL;DR</a></li>
-            <li><a href="#orgeb1e7af">Hoarder</a></li>
-            <li><a href="#org72d38d4">Emacs-Hoarder</a></li>
-            <li><a href="#org03ecacd">Obsidian-Web-Clipper</a></li>
-          </ul>
-        </div>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="fas fa-search search-icon"></i>
+      </div>
       </nav>
-      <div id="outline-container-org36c7867" class="outline-2">
-        <h2 id="org36c7867">TL;DR</h2>
-        <div class="outline-text-2" id="text-org36c7867">
-          <p>
-            从 Omnivore 到 <a href="https://github.com/VandeeFeng/bookmark-summary%20">Clip</a> ,再到 ReadWise，一直没有找到一个符合自己需求和习惯的稍后阅读 + 高亮剪藏方案。再持续观察和试用 <a href="https://github.com/hoarder-app/hoarder/">Hoarder</a> 之后，最终决定就是它了。
-          </p>
+      </header></div>
+<div id="content">
+<div class="post-date">04 Jul 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">稍后阅读新方案 Emacs-Hoarder</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8152282">TL;DR</a></li>
+<li><a href="#org8c325aa">Hoarder</a></li>
+<li><a href="#orgccc20b6">Emacs-Hoarder</a></li>
+<li><a href="#orgf172734">Obsidian-Web-Clipper</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org8152282" class="outline-2">
+<h2 id="org8152282">TL;DR</h2>
+<div class="outline-text-2" id="text-org8152282">
+<p>
+从 Omnivore 到 <a href="https://github.com/VandeeFeng/bookmark-summary%20">Clip</a> ,再到 ReadWise，一直没有找到一个符合自己需求和习惯的稍后阅读 + 高亮剪藏方案。再持续观察和试用 <a href="https://github.com/hoarder-app/hoarder/">Hoarder</a> 之后，最终决定就是它了。
+</p>
 
-          <p>
-            因此之前的 clip 就正式 <a href="https://memo.vandee.art/issue/63">停用</a> 了。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-orgeb1e7af" class="outline-2">
-        <h2 id="orgeb1e7af">Hoarder</h2>
-        <div class="outline-text-2" id="text-orgeb1e7af">
-          <p>
-            <a href="https://github.com/karakeep-app/karakeep">Karakeep</a> （原 Hoarder），作者的解释是：
-          </p>
+<p>
+因此之前的 clip 就正式 <a href="https://memo.vandee.art/issue/63">停用</a> 了。
+</p>
+</div>
+</div>
+<div id="outline-container-org8c325aa" class="outline-2">
+<h2 id="org8c325aa">Hoarder</h2>
+<div class="outline-text-2" id="text-org8c325aa">
+<p>
+<a href="https://github.com/karakeep-app/karakeep">Karakeep</a> （原 Hoarder），作者的解释是：
+</p>
 
-          <blockquote>
-            <p>
-              The name Karakeep is inspired by the Arabic word "كراكيب" (karakeeb), a colloquial term commonly used to refer to miscellaneous clutter, odds and ends, or items that may seem disorganized but often hold personal value or hidden usefulness. It evokes the image of a messy drawer or forgotten box, full of stuff you can't quite throw away—because somehow, it matters (or more likely, because you're a hoarder!).
-            </p>
+<blockquote>
+<p>
+The name Karakeep is inspired by the Arabic word "كراكيب" (karakeeb), a colloquial term commonly used to refer to miscellaneous clutter, odds and ends, or items that may seem disorganized but often hold personal value or hidden usefulness. It evokes the image of a messy drawer or forgotten box, full of stuff you can't quite throw away—because somehow, it matters (or more likely, because you're a hoarder!).
+</p>
 
-            <p>
-              Karakeep 这个名称的灵感来源于阿拉伯词语 “كراكيب” (karakeeb)，这是一个口语化术语，通常用来指代杂物、零碎物品，或者看起来杂乱无章但往往具有个人价值或隐藏用处的物品。它唤起了一个凌乱的抽屉或被遗忘的箱子的形象，里面塞满了你无法完全扔掉的东西——因为不知怎的，它很重要（或者更可能是，因为你是个囤积者！）。
-            </p>
-          </blockquote>
+<p>
+Karakeep 这个名称的灵感来源于阿拉伯词语 “كراكيب” (karakeeb)，这是一个口语化术语，通常用来指代杂物、零碎物品，或者看起来杂乱无章但往往具有个人价值或隐藏用处的物品。它唤起了一个凌乱的抽屉或被遗忘的箱子的形象，里面塞满了你无法完全扔掉的东西——因为不知怎的，它很重要（或者更可能是，因为你是个囤积者！）。
+</p>
+</blockquote>
 
-          <p>
-            我还是习惯叫 Hoarder，后面也都用这个。
-          </p>
+<p>
+我还是习惯叫 Hoarder，后面也都用这个。
+</p>
 
-          <p>
-            Hoarder 可以看作是一个精简版的 ReadWise，支持 RSS feed，书签导入，URL 导入，高亮笔记，webhook，还有简明的 API 文档。有移动端客户端，浏览器插件，支持 sefl-hosting。
-          </p>
+<p>
+Hoarder 可以看作是一个精简版的 ReadWise，支持 RSS feed，书签导入，URL 导入，高亮笔记，webhook，还有简明的 API 文档。有移动端客户端，浏览器插件，支持 sefl-hosting。
+</p>
 
-          <p>
-            结合 LLM 的功能是生成 tags 书签，生成 summary 总结，可以不使用。也支持 MCP。
-          </p>
+<p>
+结合 LLM 的功能是生成 tags 书签，生成 summary 总结，可以不使用。也支持 MCP。
+</p>
 
-          <p>
-            除了这些之外，再没有其他臃肿的功能了。关注了这么久，这个项目的开发方向一直很稳定，没有加入杂七杂八的噱头功能。
-          </p>
+<p>
+除了这些之外，再没有其他臃肿的功能了。关注了这么久，这个项目的开发方向一直很稳定，没有加入杂七杂八的噱头功能。
+</p>
 
-          <p>
-            部署也很方便（没有服务器就本地跑）：
-          </p>
+<p>
+部署也很方便（没有服务器就本地跑）：
+</p>
 
-          <div class="org-src-container">
-            <pre class="src src-bash">mkdir karakeep-app
+<div class="org-src-container">
+<pre class="src src-bash">mkdir karakeep-app
+wget https://raw.githubusercontent.com/karakeep-app/karakeep/main/docker/docker-compose.yml
+# .env
+KARAKEEP_VERSION=release
+NEXTAUTH_SECRET=super_random_string
+MEILI_MASTER_KEY=another_random_string
+NEXTAUTH_URL=http://localhost:3000</pre>
+</div>
 
-              wget https://raw.githubusercontent.com/karakeep-app/karakeep/main/docker/docker-compose.yml
+<p>
+它没有深度绑定 AI 反而是我现在决定长期使用它的原因了。
+</p>
 
-              <span style="color: #787878;"># </span><span style="color: #787878;">.env
-              </span><span style="color: #f4f4ff;">KARAKEEP_VERSION</span>=release
-              <span style="color: #f4f4ff;">NEXTAUTH_SECRET</span>=super_random_string
-              <span style="color: #f4f4ff;">MEILI_MASTER_KEY</span>=another_random_string
-              <span style="color: #f4f4ff;">NEXTAUTH_URL</span>=http://localhost:3000
-            </pre>
-          </div>
+<p>
+ReadWise 用了快一年了，实际的使用当中，ReadWise 的 AI 功能基本没怎么用，前几个月出来的可以根据 highlight 提问对话还是挺好用。
+</p>
 
-          <p>
-            它没有深度绑定 AI 反而是我现在决定长期使用它的原因了。
-          </p>
+<p>
+而且现在 PKM 里绝大部分的内容都已经接入了 <a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">Nonotes</a> 做向量相似检索和补全。
+</p>
 
-          <p>
-            ReadWise 用了快一年了，实际的使用当中，ReadWise 的 AI 功能基本没怎么用，前几个月出来的可以根据 highlight 提问对话还是挺好用。
-          </p>
+<p>
+我现在需要的是一个多端同步，支持稍后阅读，RSS 订阅，高亮笔记的中转站，Hoarder 的功能正好很契合。尝试过自己搭，但是真的很麻烦，还是用现成的吧。
+</p>
 
-          <p>
-            而且现在 PKM 里绝大部分的内容都已经接入了 <a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">Nonotes</a> 做向量相似检索和补全。
-          </p>
+<p>
+AI 速读没得灵魂，渐进式阅读，高亮剪藏更容易进入心流，引发深度思考。
+</p>
 
-          <p>
-            我现在需要的是一个多端同步，支持稍后阅读，RSS 订阅，高亮笔记的中转站，Hoarder 的功能正好很契合。尝试过自己搭，但是真的很麻烦，还是用现成的吧。
-          </p>
+<p>
+它的缺点嘛，就是 UI 太丑了，而且移动端和浏览器插件的功能很简陋。
+</p>
 
-          <p>
-            AI 速读没得灵魂，渐进式阅读，高亮剪藏更容易进入心流，引发深度思考。
-          </p>
+<p>
+基于 <a href="https://github.com/obsidianmd/obsidian-clipper">Obsidian-Web-Clipper</a> 插件修改了一下，增加了导入到 Hoarder 的功能： <a href="https://github.com/VandeeFeng/obsidian-clipper/tree/hoarder">https://github.com/VandeeFeng/obsidian-clipper/tree/hoarder</a>
+</p>
 
-          <p>
-            它的缺点嘛，就是 UI 太丑了，而且移动端和浏览器插件的功能很简陋。
-          </p>
+<p>
+可以把剪藏的内容记录到 hoarder 的 note 部分，并保存网页。
+</p>
+</div>
+</div>
+<div id="outline-container-orgccc20b6" class="outline-2">
+<h2 id="orgccc20b6">Emacs-Hoarder</h2>
+<div class="outline-text-2" id="text-orgccc20b6">
+<p>
+写了一个小工具在 Emacs 里同步 Hoarder 的高亮。正好把 Gemini CLI 拉出来练练，Lisp 的括号真是 LLM 杀手。在重构代码的时候，每次都不能正确的处理括号，Claude、GPT 也是一样。
+</p>
 
-          <p>
-            基于 <a href="https://github.com/obsidianmd/obsidian-clipper">Obsidian-Web-Clipper</a> 插件修改了一下，增加了导入到 Hoarder 的功能： <a href="https://github.com/VandeeFeng/obsidian-clipper/tree/hoarder">https://github.com/VandeeFeng/obsidian-clipper/tree/hoarder</a>
-          </p>
+<p>
+Github: <a href="https://github.com/VandeeFeng/Emacs-Hoarder">https://github.com/VandeeFeng/Emacs-Hoarder</a>
+</p>
 
-          <p>
-            可以把剪藏的内容记录到 hoarder 的 note 部分，并保存网页。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-org72d38d4" class="outline-2">
-        <h2 id="org72d38d4">Emacs-Hoarder</h2>
-        <div class="outline-text-2" id="text-org72d38d4">
-          <p>
-            写了一个小工具在 Emacs 里同步 Hoarder 的高亮。正好把 Gemini CLI 拉出来练练，Lisp 的括号真是 LLM 杀手。在重构代码的时候，每次都不能正确的处理括号，Claude、GPT 也是一样。
-          </p>
+<p>
+Hoarder 有 MCP 可以检索笔记、添加笔记，所以其他功能就不重复做了。后面想到什么方便的功能再慢慢加。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf172734" class="outline-2">
+<h2 id="orgf172734">Obsidian-Web-Clipper</h2>
+<div class="outline-text-2" id="text-orgf172734">
+<p>
+用 Obsidian-Web-Clipper 已经很长时间了，这就是目前为止我用过最好的网页剪藏工具。
+</p>
 
-          <p>
-            Github: <a href="https://github.com/VandeeFeng/Emacs-Hoarder">https://github.com/VandeeFeng/Emacs-Hoarder</a>
-          </p>
+<p>
+Github：<a href="https://github.com/obsidianmd/obsidian-clipper">https://github.com/obsidianmd/obsidian-clipper</a>
+</p>
 
-          <p>
-            Hoarder 有 MCP 可以检索笔记、添加笔记，所以其他功能就不重复做了。后面想到什么方便的功能再慢慢加。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-org03ecacd" class="outline-2">
-        <h2 id="org03ecacd">Obsidian-Web-Clipper</h2>
-        <div class="outline-text-2" id="text-org03ecacd">
-          <p>
-            用 Obsidian-Web-Clipper 已经很长时间了，这就是目前为止我用过最好的网页剪藏工具。
-          </p>
+<p>
+几个亮点：
+</p>
+<ul class="org-ul">
+<li>可以自定义剪藏的模板</li>
+<li>可以结合 LLM 自定义 prompt 进一步优化剪藏的内容</li>
+<li>内置了一个阅读器视图</li>
+</ul>
 
-          <p>
-            Github：<a href="https://github.com/obsidianmd/obsidian-clipper">https://github.com/obsidianmd/obsidian-clipper</a>
-          </p>
+<p>
+Obsidian-Web-Clipper 提供了相当多的变量和语法，可以发挥想象设计出很多有意思的模板。具体可以查看 <a href="https://help.obsidian.md/web-clipper">帮助文档</a> 。
+</p>
 
-          <p>
-            几个亮点：
-          </p>
-          <ul class="org-ul">
-            <li>可以自定义剪藏的模板</li>
-            <li>可以结合 LLM 自定义 prompt 进一步优化剪藏的内容</li>
-            <li>内置了一个阅读器视图</li>
-          </ul>
+<p>
+就算不使用 obsidian，它也可以很好的融合到其他的工作流当中。
+</p>
 
-          <p>
-            Obsidian-Web-Clipper 提供了相当多的变量和语法，可以发挥想象设计出很多有意思的模板。具体可以查看 <a href="https://help.obsidian.md/web-clipper">帮助文档</a> 。
-          </p>
+<p>
+例如这个用在 Emacs 里的 org 格式剪藏模板：
+</p>
 
-          <p>
-            就算不使用 obsidian，它也可以很好的融合到其他的工作流当中。
-          </p>
+<div class="org-src-container">
+<pre class="src src-nil">
+**{{title}}
+<{{date|date:"YYYY-MM-DD ddd HH:mm"}}>
+source: {{url}}
+{{content}}</pre>
+</div>
 
-          <p>
-            例如这个用在 Emacs 里的 org 格式剪藏模板：
-          </p>
-
-          <div class="org-src-container">
-            <pre class="src src-nil">
-              **{{title}}
-              &lt;{{date|date:"YYYY-MM-DD ddd HH:mm"}}&gt;
-
-              source: {{url}}
-
-              {{content}}
-
-            </pre>
-          </div>
-
-          <p>
-            也可以直接生成 org 文件，甚至美观的 HTML 网页或者 SVG 小卡片方便社交网络分享。
-          </p>
-        </div>
-      </div>
-      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div></div>
-    <div id="postamble" class="status"><div id="search-results"></div>
+<p>
+也可以直接生成 org 文件，甚至美观的 HTML 网页或者 SVG 小卡片方便社交网络分享。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-        <p>
-          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
-        </p>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
         <div class="social-links"></div>
       </footer>
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-        <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="fa-solid fa-angle-up fa-2xl"></i>
       </a>
 
       <script>
         var mybutton = document.getElementById('top-link');
         window.onscroll = function () {
-          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = 'visible';
-            mybutton.style.opacity = '1';
-          } else {
-            mybutton.style.visibility = 'hidden';
-            mybutton.style.opacity = '0';
-          }
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
         };
-    </script></div>
-  </body>
+      </script></div>
+</body>
 </html>
