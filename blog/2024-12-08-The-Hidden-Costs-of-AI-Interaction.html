@@ -1,216 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。">
-<link rel="alternate"
-      type="application/rss+xml"
-      href="https://www.vandee.art/blog/rss.xml"
-      title="RSS feed for https://www.vandee.art/blog/">
-<title>AI 交互的隐性成本</title>
-<meta property="og:title" content="AI 交互的隐性成本">
-<meta property="og:type" content="article" />
-<meta property="og:description" content="从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。">
-<meta property="og:url" content="https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">
-<meta name="author" content="Vandee">
-       <meta name="referrer" content="origin-when-cross-origin">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。">
+    <link rel="alternate"
+          type="application/rss+xml"
+          href="https://www.vandee.art/blog/rss.xml"
+          title="RSS feed for https://www.vandee.art/blog/">
+    <title>AI 交互的隐性成本</title>
+    <meta property="og:title" content="AI 交互的隐性成本">
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。">
+    <meta property="og:url" content="https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">
+    <meta name="author" content="Vandee">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
-       <link rel="stylesheet"
-             href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
-       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+    <link rel="stylesheet"
+          href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet"
+          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", function () {
-           pangu.spacingPage();
-         });
-       </script>
+    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/pangu/4.0.7/pangu.min.js" defer></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        pangu.spacingPage();
+      });
+    </script>
 
-       <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
-<body>
-<div id="preamble" class="status">
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/copyCode.js" defer></script>
+    <script src="assets/js/shiba.js" defer></script>
+    <script src="assets/js/search.js" defer></script></head>
+  <body>
+    <div id="preamble" class="status">
       <header>
-      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
-      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
-      <nav>
-      <a href="https://www.vandee.art/blog/">Home</a>
-      <a href="https://x404.xyz/wiki">Wiki</a>
-      <a href="https://x404.xyz/photo">Photo</a>
-      <a href="archive.html">Archive</a>
-      <a href="tags.html">Tags</a>
-      <div id="search-container">
-        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-        <i class="fas fa-search search-icon"></i>
-      </div>
+        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+        <nav>
+          <a href="https://www.vandee.art/blog/">Home</a>
+          <a href="https://x404.xyz/wiki">Wiki</a>
+          <a href="https://x404.xyz/photo">Photo</a>
+          <a href="archive.html">Archive</a>
+          <a href="tags.html">Tags</a>
+          <div id="search-container">
+            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+        </nav>
+    </header></div>
+    <div id="content">
+      <div class="post-date">08 Dec 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">AI 交互的隐性成本</a></h1>
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#orgb615de2">AI 交互的隐性成本</a>
+              <ul>
+                <li><a href="#orgee2eea1">Prompt 成本</a></li>
+                <li><a href="#orga31c90d">试错成本</a></li>
+                <li><a href="#org5d4e253">构建成本</a></li>
+                <li><a href="#orgc1f3124">依赖成本</a></li>
+              </ul>
+            </li>
+            <li><a href="#org1557e58">技术革命</a></li>
+          </ul>
+        </div>
       </nav>
-      </header></div>
-<div id="content">
-<div class="post-date">08 Dec 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-12-08-The-Hidden-Costs-of-AI-Interaction.html">AI 交互的隐性成本</a></h1>
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orge1e44c0">AI 交互的隐性成本</a>
-<ul>
-<li><a href="#org891137e">Prompt 成本</a></li>
-<li><a href="#org1534d1f">试错成本</a></li>
-<li><a href="#org2afe05f">构建成本</a></li>
-<li><a href="#org15f6125">依赖成本</a></li>
-</ul>
-</li>
-<li><a href="#org29b1d4b">技术革命</a></li>
-</ul>
-</div>
-</nav>
-<p>
-从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。AI 真的直接提升了我们的效率，节约了成本么？
-</p>
+      <p>
+        从 ChatGPT 出现到现在已经两年了，也是从 ChatGPT 开始，让我们很自然的把和 AI 的交互形式放在了 Chat 这种形式上。这也是我对 AI 产品的第一印象，从和大语言模型 LLM 的打字、语言交流开始，我们和 AI 有了第一次近距离的接触。当我们一次次惊叹于 ChatGPT、Claude 等 AI 产品发布的新特性时，随着把使用 AI 已经当作了一种习惯之后，一个重要的问题逐渐被忽略了：AI 的使用成本。AI 真的直接提升了我们的效率，节约了成本么？
+      </p>
 
-<p>
-如果把 AI 使用成本分成显性和隐性，对用户而言显性成本的包括：API 的充值，pro 会员的充值等等这些实际的消费。而隐性的成本很少有人提及，它们包括但不限于：学习使用的成本，依赖的成本，还有今天想说说的交互的成本。
-</p>
+      <p>
+        如果把 AI 使用成本分成显性和隐性，对用户而言显性成本的包括：API 的充值，pro 会员的充值等等这些实际的消费。而隐性的成本很少有人提及，它们包括但不限于：学习使用的成本，依赖的成本，还有今天想说说的交互的成本。
+      </p>
 
-<p>
-<a href="https://www.lesswrong.com/posts/tqmQTezvXGFmfSe7f/how-much-are-llms-actually-boosting-real-world-programmer">How Much Are LLMs Actually Boosting Real-World Programmer Productivity? — LessWrong</a> 这篇文章也提及到了这个问题
-</p>
-<div id="outline-container-orge1e44c0" class="outline-2">
-<h2 id="orge1e44c0">AI 交互的隐性成本</h2>
-<div class="outline-text-2" id="text-orge1e44c0">
-</div>
-<div id="outline-container-org891137e" class="outline-3">
-<h3 id="org891137e">Prompt 成本</h3>
-<div class="outline-text-3" id="text-org891137e">
-<p>
-与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
-</p>
+      <p>
+        <a href="https://www.lesswrong.com/posts/tqmQTezvXGFmfSe7f/how-much-are-llms-actually-boosting-real-world-programmer">How Much Are LLMs Actually Boosting Real-World Programmer Productivity? — LessWrong</a> 这篇文章也提及到了这个问题
+      </p>
+      <div id="outline-container-orgb615de2" class="outline-2">
+        <h2 id="orgb615de2">AI 交互的隐性成本</h2>
+        <div class="outline-text-2" id="text-orgb615de2">
+        </div>
+        <div id="outline-container-orgee2eea1" class="outline-3">
+          <h3 id="orgee2eea1">Prompt 成本</h3>
+          <div class="outline-text-3" id="text-orgee2eea1">
+            <p>
+              与 AI 的交互远远不只是聊天 Chat 这种形式。这只是 ChatGPT 将大语言模型 LLM 代入大众视野当中一个成功的产品。我们都知道现在 LLM 可以理解人类的自然语言，通过预测以聊天的方式进行交互，这直接打破了编程语言和自然语言之间的壁垒，我们可以直接使用自然语言来和计算机沟通了。而这之间被忽略的是：我们和 LLM 的交互同样是有成本的，这个成本就是 prompt，提示词。
+            </p>
 
-<p>
-要想让 LLM 更精准的理解和处理我们的需求，就必须了解 prompt。简单来说，合适的 prompt 触发了 LLM 的关键字，它才能更精准的预测分析输出结果，而和 LLM 交互最合适的自然语言是英语。这也就是为什么，同样的意思，换一句话可能 LLM 生成的结果就会更好。对于不是英语母语的使用者来说，这就是双重成本。
-</p>
+            <p>
+              要想让 LLM 更精准的理解和处理我们的需求，就必须了解 prompt。简单来说，合适的 prompt 触发了 LLM 的关键字，它才能更精准的预测分析输出结果，而和 LLM 交互最合适的自然语言是英语。这也就是为什么，同样的意思，换一句话可能 LLM 生成的结果就会更好。对于不是英语母语的使用者来说，这就是双重成本。
+            </p>
 
-<p>
-而且不同的 LLM 对于 prompt 语法的支持程度也不一样。Claude 对 XML 格式支持的比较好，而 GPT 对 JSON 格式支持的比较好，llama 则更适合用 markdown 语法来写。
-</p>
-</div>
-</div>
-<div id="outline-container-org1534d1f" class="outline-3">
-<h3 id="org1534d1f">试错成本</h3>
-<div class="outline-text-3" id="text-org1534d1f">
-<p>
-prompt 又直接影响沟通交互的成本。
-</p>
+            <p>
+              而且不同的 LLM 对于 prompt 语法的支持程度也不一样。Claude 对 XML 格式支持的比较好，而 GPT 对 JSON 格式支持的比较好，llama 则更适合用 markdown 语法来写。
+            </p>
+          </div>
+        </div>
+        <div id="outline-container-orga31c90d" class="outline-3">
+          <h3 id="orga31c90d">试错成本</h3>
+          <div class="outline-text-3" id="text-orga31c90d">
+            <p>
+              prompt 又直接影响沟通交互的成本。
+            </p>
 
-<p>
-人和人之间沟通的成本我们很好理解，AI 的交互也是一样。如果 prompt 不合适，你会发现 LLM 很笨。在一次次让它理解我们提问的过程当中，无形的会消耗掉很多时间和精力。对于 LLM 来说，简单和困难的事情往往和人类相反。我们需要把对于自己复杂的问题转换为对 AI 简单的问题，才能真正有效的解决我们的问题。
-</p>
+            <p>
+              人和人之间沟通的成本我们很好理解，AI 的交互也是一样。如果 prompt 不合适，你会发现 LLM 很笨。在一次次让它理解我们提问的过程当中，无形的会消耗掉很多时间和精力。对于 LLM 来说，简单和困难的事情往往和人类相反。我们需要把对于自己复杂的问题转换为对 AI 简单的问题，才能真正有效的解决我们的问题。
+            </p>
 
-<p>
-比如我想要查询王小波的生平信息。如果只是说“给我介绍一下王小波”，就过于宽泛。换成 “请告诉我关于王小波的主要作品和生活年代的相关信息。” 效果就会好很多。
-</p>
+            <p>
+              比如我想要查询王小波的生平信息。如果只是说“给我介绍一下王小波”，就过于宽泛。换成 “请告诉我关于王小波的主要作品和生活年代的相关信息。” 效果就会好很多。
+            </p>
 
-<p>
-往往一个问题，我们需要和 AI 迭代至少 2 到 3 次，才能得到想要的结果。许多问题相反传统的解决方法会更直接有效。
-</p>
+            <p>
+              往往一个问题，我们需要和 AI 迭代至少 2 到 3 次，才能得到想要的结果。许多问题相反传统的解决方法会更直接有效。
+            </p>
 
-<p>
-这次重构 GitMemo 的时候，用 cursor 来 debug，每一次就是 10 分钟，加上部署到 Vercel，一个小问题经常要花费半小时，而请一个程序员来看看，可能只是 5 分钟的事。
-</p>
-</div>
-</div>
-<div id="outline-container-org2afe05f" class="outline-3">
-<h3 id="org2afe05f">构建成本</h3>
-<div class="outline-text-3" id="text-org2afe05f">
-<p>
-因此我们自然会往下想到通过多个 AI 协作来提高成功率。
-</p>
+            <p>
+              这次重构 GitMemo 的时候，用 cursor 来 debug，每一次就是 10 分钟，加上部署到 Vercel，一个小问题经常要花费半小时，而请一个程序员来看看，可能只是 5 分钟的事。
+            </p>
+          </div>
+        </div>
+        <div id="outline-container-org5d4e253" class="outline-3">
+          <h3 id="org5d4e253">构建成本</h3>
+          <div class="outline-text-3" id="text-org5d4e253">
+            <p>
+              因此我们自然会往下想到通过多个 AI 协作来提高成功率。
+            </p>
 
-<p>
-想提高 AI 解决问题的成功率，最直接的方法就是 Workflow 和 Agent 了。这也就是 Dify、Coze 瞄准的切入点。学习使用这些工具、中间件又是一个成本，各个平台的会员也是。
-</p>
+            <p>
+              想提高 AI 解决问题的成功率，最直接的方法就是 Workflow 和 Agent 了。这也就是 Dify、Coze 瞄准的切入点。学习使用这些工具、中间件又是一个成本，各个平台的会员也是。
+            </p>
 
-<p>
-更进一步如果想从源头训练一个 LLM，最起码需要看得懂 Python，有一个 IDE，一个像样的显卡和电脑。再就是一个科学上网的工具。
-</p>
-</div>
-</div>
-<div id="outline-container-org15f6125" class="outline-3">
-<h3 id="org15f6125">依赖成本</h3>
-<div class="outline-text-3" id="text-org15f6125">
-<p>
-当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
-</p>
+            <p>
+              更进一步如果想从源头训练一个 LLM，最起码需要看得懂 Python，有一个 IDE，一个像样的显卡和电脑。再就是一个科学上网的工具。
+            </p>
+          </div>
+        </div>
+        <div id="outline-container-orgc1f3124" class="outline-3">
+          <h3 id="orgc1f3124">依赖成本</h3>
+          <div class="outline-text-3" id="text-orgc1f3124">
+            <p>
+              当你完成了上面的学习，付出了高昂的成本之后，恭喜你，你大概率已经成功依赖上 AI 了。
+            </p>
 
-<p>
-你会进入一个恶性循环，在达到一定 AI 熟练度之前，上面提到的几点不完全的隐性成本，会随着对 AI 的使用而增加，导致解决问题本身的效率降低。依赖上之后，传统的技能熟练度下降，效率又更低了。如果不能越过这个阈值，那么 AI 的使用反而会带来副作用。
-</p>
+            <p>
+              你会进入一个恶性循环，在达到一定 AI 熟练度之前，上面提到的几点不完全的隐性成本，会随着对 AI 的使用而增加，导致解决问题本身的效率降低。依赖上之后，传统的技能熟练度下降，效率又更低了。如果不能越过这个阈值，那么 AI 的使用反而会带来副作用。
+            </p>
 
-<p>
-和其他技术一样 AI 一定会让人更懒，但我们同样可以借助它让自己变得更聪明，而不是依赖上它从变懒到变笨。
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org29b1d4b" class="outline-2">
-<h2 id="org29b1d4b">技术革命</h2>
-<div class="outline-text-2" id="text-org29b1d4b">
-<p>
-利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
-</p>
+            <p>
+              和其他技术一样 AI 一定会让人更懒，但我们同样可以借助它让自己变得更聪明，而不是依赖上它从变懒到变笨。
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org1557e58" class="outline-2">
+        <h2 id="org1557e58">技术革命</h2>
+        <div class="outline-text-2" id="text-org1557e58">
+          <p>
+            利用蒸汽驱动机器，这使得工厂可以建在远离河流的地方，极大地提高了生产效率，并开启了工业革命。后来电力的应用再一次彻底改变了生产和生活方式。再到互联网、智能手机，直到现在可能已经到来的 AI 革命。
+          </p>
 
-<p>
-每一次技术的革新，科学的发展，都会提高生产力，提升效率，但这不等于是对个人的，相反技术的革命会增加个人的成本，个人要适应这些变化，还有更多<a href="https://wiki.vandee.art/#%E6%8A%80%E6%9C%AF%E8%BF%9B%E6%AD%A5%E7%9A%84%E4%BB%A3%E4%BB%B7">技术进步的代价</a>。
-</p>
+          <p>
+            每一次技术的革新，科学的发展，都会提高生产力，提升效率，但这不等于是对个人的，相反技术的革命会增加个人的成本，个人要适应这些变化，还有更多<a href="https://wiki.vandee.art/#%E6%8A%80%E6%9C%AF%E8%BF%9B%E6%AD%A5%E7%9A%84%E4%BB%A3%E4%BB%B7">技术进步的代价</a>。
+          </p>
 
-<p>
-让 AI 帮助自己思考才是本质，最大的投资永远应该是自己。
-</p>
+          <p>
+            让 AI 帮助自己思考才是本质，最大的投资永远应该是自己。
+          </p>
 
-<p>
-这也是为什么，近大半年我一直在折腾我的各种 PKM。用 AI 来优化信息获取、信息整理，帮助自己思考，我认为是一劳永逸的。学 AI 就是学一个新的语言，一个和代码、二进制沟通的语言，而这个语言迟早会和当初英文一样，编入义务教育的课本。
-</p>
+          <p>
+            这也是为什么，近大半年我一直在折腾我的各种 PKM。用 AI 来优化信息获取、信息整理，帮助自己思考，我认为是一劳永逸的。学 AI 就是学一个新的语言，一个和代码、二进制沟通的语言，而这个语言迟早会和当初英文一样，编入义务教育的课本。
+          </p>
 
-<p>
-就单纯想想以后不想被那些和我曾经一样嚣张跋扈的年轻人鄙视，就很有动力了🤣。
-</p>
+          <p>
+            就单纯想想以后不想被那些和我曾经一样嚣张跋扈的年轻人鄙视，就很有动力了🤣。
+          </p>
 
-<p>
-想到什么后面再更新。
-</p>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
-<div id="postamble" class="status"><div id="search-results"></div>
+          <p>
+            想到什么后面再更新。
+          </p>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+    <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
-         <p>
-            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
-         </p>
+        <p>
+          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+        </p>
         <div class="social-links"></div>
       </footer>
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-         <i class="fa-solid fa-angle-up fa-2xl"></i>
+        <i class="fa-solid fa-angle-up fa-2xl"></i>
       </a>
 
       <script>
         var mybutton = document.getElementById('top-link');
         window.onscroll = function () {
-            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-                mybutton.style.visibility = 'visible';
-                mybutton.style.opacity = '1';
-            } else {
-                mybutton.style.visibility = 'hidden';
-                mybutton.style.opacity = '0';
-            }
+          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = 'visible';
+            mybutton.style.opacity = '1';
+          } else {
+            mybutton.style.visibility = 'hidden';
+            mybutton.style.opacity = '0';
+          }
         };
-      </script></div>
-</body>
+    </script></div>
+  </body>
 </html>

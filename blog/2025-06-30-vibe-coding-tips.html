@@ -58,22 +58,22 @@
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org3e95b12">TL;DR</a></li>
-            <li><a href="#orgdcd663b">General Tips</a></li>
-            <li><a href="#org464a736">Container</a>
+            <li><a href="#orgee4cc9b">TL;DR</a></li>
+            <li><a href="#org3bb67d3">General Tips</a></li>
+            <li><a href="#orgf100cb7">Container</a>
               <ul>
-                <li><a href="#org3159646">Coding Assistant Container</a></li>
-                <li><a href="#orga236dc3">MCP Container</a></li>
+                <li><a href="#org747ded4">Coding Assistant Container</a></li>
+                <li><a href="#org965bce0">MCP Container</a></li>
               </ul>
             </li>
-            <li><a href="#org6dd02bb">Articles</a></li>
-            <li><a href="#orgba3253d">CLI AI Coding Tools</a></li>
+            <li><a href="#org5b2373a">Articles</a></li>
+            <li><a href="#orgd292b24">CLI AI Coding Tools</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org3e95b12" class="outline-2">
-        <h2 id="org3e95b12">TL;DR</h2>
-        <div class="outline-text-2" id="text-org3e95b12">
+      <div id="outline-container-orgee4cc9b" class="outline-2">
+        <h2 id="orgee4cc9b">TL;DR</h2>
+        <div class="outline-text-2" id="text-orgee4cc9b">
           <p>
             各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
           </p>
@@ -87,9 +87,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgdcd663b" class="outline-2">
-        <h2 id="orgdcd663b">General Tips</h2>
-        <div class="outline-text-2" id="text-orgdcd663b">
+      <div id="outline-container-org3bb67d3" class="outline-2">
+        <h2 id="org3bb67d3">General Tips</h2>
+        <div class="outline-text-2" id="text-org3bb67d3">
           <p>
             由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
           </p>
@@ -127,13 +127,13 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-org464a736" class="outline-2">
-        <h2 id="org464a736">Container</h2>
-        <div class="outline-text-2" id="text-org464a736">
+      <div id="outline-container-orgf100cb7" class="outline-2">
+        <h2 id="orgf100cb7">Container</h2>
+        <div class="outline-text-2" id="text-orgf100cb7">
         </div>
-        <div id="outline-container-org3159646" class="outline-3">
-          <h3 id="org3159646">Coding Assistant Container</h3>
-          <div class="outline-text-3" id="text-org3159646">
+        <div id="outline-container-org747ded4" class="outline-3">
+          <h3 id="org747ded4">Coding Assistant Container</h3>
+          <div class="outline-text-3" id="text-org747ded4">
             <p>
               参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
             </p>
@@ -152,8 +152,9 @@
 
             <div class="org-src-container">
               <pre class="src src-nil">FROM ubuntu:latest
+
                 # Update system and install base dependencies
-                RUN apt-get update && apt-get upgrade -y && \
+                RUN apt-get update &amp;&amp; apt-get upgrade -y &amp;&amp; \
                 DEBIAN_FRONTEND=noninteractive apt-get install -y \
                 build-essential \
                 git \
@@ -165,6 +166,7 @@
                 openssh-client \
                 ca-certificates \
                 gnupg
+
                 # Install development tools
                 RUN apt-get install -y \
                 python3 \
@@ -176,34 +178,48 @@
                 unzip \
                 protobuf-compiler \
                 zip
+
                 # Install Node.js and npm
-                RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-                apt-get install -y nodejs && \
+                RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &amp;&amp; \
+                apt-get install -y nodejs &amp;&amp; \
                 npm install -g pnpm yarn
+
+
                 # Install ripgrep and fd-find
-                RUN apt-get update && \
+                RUN apt-get update &amp;&amp; \
                 apt-get install -y ripgrep fd-find
+
+
                 # Create a regular user
-                RUN useradd -m -G sudo -s /bin/bash user && \
-                echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+                RUN useradd -m -G sudo -s /bin/bash user &amp;&amp; \
+                echo "user ALL=(ALL) NOPASSWD: ALL" &gt;&gt; /etc/sudoers
+
                 # Switch to user for installations
                 USER user
                 WORKDIR /home/user
+
                 # Switch back to root for cleanup
                 USER root
+
                 # Clean apt cache
-                RUN apt-get clean && \
+                RUN apt-get clean &amp;&amp; \
                 rm -rf /var/lib/apt/lists/*
+
                 # Switch back to user
                 USER user
+
                 # Install Gemini CLI globally (user has npm permissions via sudo)
                 RUN sudo npm install -g @google/gemini-cli
+
                 # Set working directory
                 WORKDIR /workspace
+
                 # Set shell to bash and ensure .bashrc is loaded
                 SHELL ["/bin/bash", "-c"]
-                RUN echo '[ -f ~/.bashrc ] && source ~/.bashrc' >> ~/.bash_profile
-                CMD ["/bin/bash", "-l", "-c", "gemini"]</pre>
+                RUN echo '[ -f ~/.bashrc ] &amp;&amp; source ~/.bashrc' &gt;&gt; ~/.bash_profile
+
+                CMD ["/bin/bash", "-l", "-c", "gemini"]
+              </pre>
             </div>
 
             <p>
@@ -212,12 +228,14 @@
 
             <div class="org-src-container">
               <pre class="src src-bash">
-                # geminix
-                alias geminix='docker run -it --rm \
-                -v $(pwd):/workspace \
-                -v ~/.bashrc:/home/user/.bashrc \
-                -v ~/.config/gh:/home/user/.config/gh \
-                YOUR-IMAGE-NAME'</pre>
+                <span style="color: #787878;"># </span><span style="color: #787878;">geminix
+                </span><span style="color: #79C0FF;">alias</span> <span style="color: #f4f4ff;">geminix</span>=<span style="color: #A1D08E;">'docker run -it --rm \
+                  -v $(</span><span style="color: #ff4f58;">pwd</span><span style="color: #A1D08E;">):/workspace \
+                  -v ~/.bashrc:/home/user/.bashrc \
+                  -v ~/.config/gh:/home/user/.config/gh \
+                  YOUR-IMAGE-NAME'</span>
+
+              </pre>
             </div>
 
             <p>
@@ -233,9 +251,9 @@
             </p>
           </div>
         </div>
-        <div id="outline-container-orga236dc3" class="outline-3">
-          <h3 id="orga236dc3">MCP Container</h3>
-          <div class="outline-text-3" id="text-orga236dc3">
+        <div id="outline-container-org965bce0" class="outline-3">
+          <h3 id="org965bce0">MCP Container</h3>
+          <div class="outline-text-3" id="text-org965bce0">
             <p>
               MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
             </p>
@@ -258,9 +276,9 @@
           </div>
         </div>
       </div>
-      <div id="outline-container-org6dd02bb" class="outline-2">
-        <h2 id="org6dd02bb">Articles</h2>
-        <div class="outline-text-2" id="text-org6dd02bb">
+      <div id="outline-container-org5b2373a" class="outline-2">
+        <h2 id="org5b2373a">Articles</h2>
+        <div class="outline-text-2" id="text-org5b2373a">
           <p>
             整理了一些感觉还不错的文章
           </p>
@@ -289,9 +307,9 @@
           </ul>
         </div>
       </div>
-      <div id="outline-container-orgba3253d" class="outline-2">
-        <h2 id="orgba3253d">CLI AI Coding Tools</h2>
-        <div class="outline-text-2" id="text-orgba3253d">
+      <div id="outline-container-orgd292b24" class="outline-2">
+        <h2 id="orgd292b24">CLI AI Coding Tools</h2>
+        <div class="outline-text-2" id="text-orgd292b24">
           <p>
             整理了一些现在 star 比较多的 CLI AI Coding 项目：
           </p>
@@ -429,13 +447,13 @@
       <script>
         var mybutton = document.getElementById('top-link');
         window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-        mybutton.style.visibility = 'visible';
-        mybutton.style.opacity = '1';
-        } else {
-        mybutton.style.visibility = 'hidden';
-        mybutton.style.opacity = '0';
-        }
+          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = 'visible';
+            mybutton.style.opacity = '1';
+          } else {
+            mybutton.style.visibility = 'hidden';
+            mybutton.style.opacity = '0';
+          }
         };
     </script></div>
   </body>
