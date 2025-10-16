@@ -18,7 +18,7 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"/>
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
@@ -48,7 +48,7 @@
       <a href="tags.html">Tags</a>
       <div id="search-container">
         <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-        <i class="fas fa-search search-icon"></i>
+        <i class="ri-search-line ri-xl"></i>
       </div>
       </nav>
       </header></div>
@@ -58,16 +58,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge274751">TL;DR</a></li>
-<li><a href="#orga9e1720">知识的流动性</a></li>
-<li><a href="#orgaf167f0">自动补全 VS RAG</a></li>
-<li><a href="#org46a9c33">NoNotes</a></li>
+<li><a href="#org2fa151a">TL;DR</a></li>
+<li><a href="#orgf28400f">知识的流动性</a></li>
+<li><a href="#org7ea94d1">自动补全 VS RAG</a></li>
+<li><a href="#org6fae07a">NoNotes</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orge274751" class="outline-2">
-<h2 id="orge274751">TL;DR</h2>
-<div class="outline-text-2" id="text-orge274751">
+<div id="outline-container-org2fa151a" class="outline-2">
+<h2 id="org2fa151a">TL;DR</h2>
+<div class="outline-text-2" id="text-org2fa151a">
 <p>
 NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
 </p>
@@ -77,9 +77,9 @@ NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个�
 </p>
 </div>
 </div>
-<div id="outline-container-orga9e1720" class="outline-2">
-<h2 id="orga9e1720">知识的流动性</h2>
-<div class="outline-text-2" id="text-orga9e1720">
+<div id="outline-container-orgf28400f" class="outline-2">
+<h2 id="orgf28400f">知识的流动性</h2>
+<div class="outline-text-2" id="text-orgf28400f">
 <p>
 在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
 </p>
@@ -123,9 +123,9 @@ Steve Jobs on why thinking without doing is incomplete:
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgaf167f0" class="outline-2">
-<h2 id="orgaf167f0">自动补全 VS RAG</h2>
-<div class="outline-text-2" id="text-orgaf167f0">
+<div id="outline-container-org7ea94d1" class="outline-2">
+<h2 id="org7ea94d1">自动补全 VS RAG</h2>
+<div class="outline-text-2" id="text-org7ea94d1">
 <p>
 大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
 </p>
@@ -155,9 +155,9 @@ RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Con
 </p>
 </div>
 </div>
-<div id="outline-container-org46a9c33" class="outline-2">
-<h2 id="org46a9c33">NoNotes</h2>
-<div class="outline-text-2" id="text-org46a9c33">
+<div id="outline-container-org6fae07a" class="outline-2">
+<h2 id="org6fae07a">NoNotes</h2>
+<div class="outline-text-2" id="text-org6fae07a">
 <p>
 无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
 </p>
@@ -175,7 +175,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="orgd1877e7">
+<figure id="orgfcee867">
 <img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -185,7 +185,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="org9303d62">
+<figure id="org842ba0c">
 <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -214,7 +214,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-         <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="ri-arrow-up-double-line ri-3x"></i>
       </a>
 
       <script>

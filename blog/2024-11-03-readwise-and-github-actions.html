@@ -16,7 +16,7 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"/>
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
@@ -46,7 +46,7 @@
       <a href="tags.html">Tags</a>
       <div id="search-container">
         <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-        <i class="fas fa-search search-icon"></i>
+        <i class="ri-search-line ri-xl"></i>
       </div>
       </nav>
       </header></div>
@@ -56,16 +56,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga583898">结合之前的 bookmark-collection</a>
+<li><a href="#orgcf1eeaf">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#org9afdf3f">python</a></li>
-<li><a href="#org3594884">workflow</a></li>
+<li><a href="#org9f9e2aa">python</a></li>
+<li><a href="#org6cfe583">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org6b44991">Readwise highlights</a>
+<li><a href="#orga7e0611">Readwise highlights</a>
 <ul>
-<li><a href="#org85d4afe">python</a></li>
-<li><a href="#org3bdf496">workflow</a></li>
+<li><a href="#org007cb46">python</a></li>
+<li><a href="#org23b132f">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -74,9 +74,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-orga583898" class="outline-2">
-<h2 id="orga583898">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-orga583898">
+<div id="outline-container-orgcf1eeaf" class="outline-2">
+<h2 id="orgcf1eeaf">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orgcf1eeaf">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -93,9 +93,9 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org9afdf3f" class="outline-3">
-<h3 id="org9afdf3f">python</h3>
-<div class="outline-text-3" id="text-org9afdf3f">
+<div id="outline-container-org9f9e2aa" class="outline-3">
+<h3 id="org9f9e2aa">python</h3>
+<div class="outline-text-3" id="text-org9f9e2aa">
 <div class="org-src-container">
 <pre class="src src-python">import os
 import re
@@ -190,9 +190,9 @@ if __name__ == "__main__":
 </div>
 </div>
 </div>
-<div id="outline-container-org3594884" class="outline-3">
-<h3 id="org3594884">workflow</h3>
-<div class="outline-text-3" id="text-org3594884">
+<div id="outline-container-org6cfe583" class="outline-3">
+<h3 id="org6cfe583">workflow</h3>
+<div class="outline-text-3" id="text-org6cfe583">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Save Bookmark to Readwise
@@ -232,16 +232,16 @@ jobs:
 </div>
 </div>
 </div>
-<div id="outline-container-org6b44991" class="outline-2">
-<h2 id="org6b44991">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org6b44991">
+<div id="outline-container-orga7e0611" class="outline-2">
+<h2 id="orga7e0611">Readwise highlights</h2>
+<div class="outline-text-2" id="text-orga7e0611">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-org85d4afe" class="outline-3">
-<h3 id="org85d4afe">python</h3>
-<div class="outline-text-3" id="text-org85d4afe">
+<div id="outline-container-org007cb46" class="outline-3">
+<h3 id="org007cb46">python</h3>
+<div class="outline-text-3" id="text-org007cb46">
 <div class="org-src-container">
 <pre class="src src-python">
 import requests
@@ -464,9 +464,9 @@ if __name__ == "__main__":
 </div>
 </div>
 </div>
-<div id="outline-container-org3bdf496" class="outline-3">
-<h3 id="org3bdf496">workflow</h3>
-<div class="outline-text-3" id="text-org3bdf496">
+<div id="outline-container-org23b132f" class="outline-3">
+<h3 id="org23b132f">workflow</h3>
+<div class="outline-text-3" id="text-org23b132f">
 <div class="org-src-container">
 <pre class="src src-yaml">
 name: Sync Readwise Articles
@@ -554,7 +554,7 @@ jobs:
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-         <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="ri-arrow-up-double-line ri-3x"></i>
       </a>
 
       <script>

@@ -18,7 +18,7 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/js/all.min.js"/>
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
@@ -48,7 +48,7 @@
       <a href="tags.html">Tags</a>
       <div id="search-container">
         <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
-        <i class="fas fa-search search-icon"></i>
+        <i class="ri-search-line ri-xl"></i>
       </div>
       </nav>
       </header></div>
@@ -58,28 +58,28 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2ae4a96">TL;DR</a></li>
-<li><a href="#orgbc8c373">折腾记录</a>
+<li><a href="#org9ea9273">TL;DR</a></li>
+<li><a href="#org5e89faf">折腾记录</a>
 <ul>
-<li><a href="#orge694aa5">Arch Linux 初始安装</a></li>
-<li><a href="#org5da42ce">i3-X11</a>
+<li><a href="#org093049d">Arch Linux 初始安装</a></li>
+<li><a href="#orgb4bb383">i3-X11</a>
 <ul>
-<li><a href="#orgc3a253c">安装：</a></li>
-<li><a href="#org8a8ef5d">配置</a></li>
-<li><a href="#org66df986">其他设定</a></li>
+<li><a href="#orgdcb7bff">安装：</a></li>
+<li><a href="#org412e1ca">配置</a></li>
+<li><a href="#orge13d7cc">其他设定</a></li>
 </ul>
 </li>
-<li><a href="#org7faa4d7">Sway-Wayland</a></li>
+<li><a href="#org7a9e39a">Sway-Wayland</a></li>
 </ul>
 </li>
-<li><a href="#org9c584a9">冤家 Fcitx 和 Emacs</a></li>
-<li><a href="#org7d2e3ad">小结</a></li>
+<li><a href="#org4ab0547">冤家 Fcitx 和 Emacs</a></li>
+<li><a href="#orgddcae00">小结</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org2ae4a96" class="outline-2">
-<h2 id="org2ae4a96">TL;DR</h2>
-<div class="outline-text-2" id="text-org2ae4a96">
+<div id="outline-container-org9ea9273" class="outline-2">
+<h2 id="org9ea9273">TL;DR</h2>
+<div class="outline-text-2" id="text-org9ea9273">
 <p>
 Both stable and unstable until you linux.
 </p>
@@ -93,9 +93,9 @@ Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux �
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc8c373" class="outline-2">
-<h2 id="orgbc8c373">折腾记录</h2>
-<div class="outline-text-2" id="text-orgbc8c373">
+<div id="outline-container-org5e89faf" class="outline-2">
+<h2 id="org5e89faf">折腾记录</h2>
+<div class="outline-text-2" id="text-org5e89faf">
 <p>
 近道都是远路，尝试过几个大佬自己封装好的 Arch Linux，附带了桌面环境的安装和配置。是挺方便的，但是遇到一些小问题的时候，由于不知道他具体是怎么实现的一些功能，又要去看文档和源码。我这个电脑又比较老了，很多问题都没有现成的答案和别人的复现。
 </p>
@@ -109,14 +109,14 @@ Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux �
 </p>
 
 
-<figure id="org43aca43">
+<figure id="org9916fb7">
 <img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="70%" height="70%">
 
 </figure>
 </div>
-<div id="outline-container-orge694aa5" class="outline-3">
-<h3 id="orge694aa5">Arch Linux 初始安装</h3>
-<div class="outline-text-3" id="text-orge694aa5">
+<div id="outline-container-org093049d" class="outline-3">
+<h3 id="org093049d">Arch Linux 初始安装</h3>
+<div class="outline-text-3" id="text-org093049d">
 <p>
 <a href="https://archlinux.org/download/">Arch Linux - Downloads</a> 页面下载最新的 ISO 文件，有很多国内镜像可以选。写入 U 盘之后，进入 BIOS 启动 U 盘引导。
 </p>
@@ -141,16 +141,16 @@ Arch Linux 的镜像对国内环境太友好了，差不多 10 分钟就安装�
 </p>
 </div>
 </div>
-<div id="outline-container-org5da42ce" class="outline-3">
-<h3 id="org5da42ce">i3-X11</h3>
-<div class="outline-text-3" id="text-org5da42ce">
+<div id="outline-container-orgb4bb383" class="outline-3">
+<h3 id="orgb4bb383">i3-X11</h3>
+<div class="outline-text-3" id="text-orgb4bb383">
 <p>
 <a href="https://github.com/i3/i3">i3</a> 的简洁实在太爱了。
 </p>
 </div>
-<div id="outline-container-orgc3a253c" class="outline-4">
-<h4 id="orgc3a253c">安装：</h4>
-<div class="outline-text-4" id="text-orgc3a253c">
+<div id="outline-container-orgdcb7bff" class="outline-4">
+<h4 id="orgdcb7bff">安装：</h4>
+<div class="outline-text-4" id="text-orgdcb7bff">
 <div class="org-src-container">
 <pre class="src src-bash">sudo pacman -S i3 xorg xorg-xinit
 echo "exec i3" > ~/.xinitrc</pre>
@@ -161,9 +161,9 @@ echo "exec i3" > ~/.xinitrc</pre>
 </p>
 </div>
 </div>
-<div id="outline-container-org8a8ef5d" class="outline-4">
-<h4 id="org8a8ef5d">配置</h4>
-<div class="outline-text-4" id="text-org8a8ef5d">
+<div id="outline-container-org412e1ca" class="outline-4">
+<h4 id="org412e1ca">配置</h4>
+<div class="outline-text-4" id="text-org412e1ca">
 <ul class="org-ul">
 <li><p>
 设置鼠标滚轮翻转
@@ -208,13 +208,13 @@ exec --no-startup-id fcitx5</pre>
 </ul>
 </div>
 </div>
-<div id="outline-container-org66df986" class="outline-4">
-<h4 id="org66df986">其他设定</h4>
+<div id="outline-container-orge13d7cc" class="outline-4">
+<h4 id="orge13d7cc">其他设定</h4>
 </div>
 </div>
-<div id="outline-container-org7faa4d7" class="outline-3">
-<h3 id="org7faa4d7">Sway-Wayland</h3>
-<div class="outline-text-3" id="text-org7faa4d7">
+<div id="outline-container-org7a9e39a" class="outline-3">
+<h3 id="org7a9e39a">Sway-Wayland</h3>
+<div class="outline-text-3" id="text-org7a9e39a">
 <p>
 2025-09-01 added
 </p>
@@ -254,9 +254,9 @@ dmenu 换成了 fuzzel，也很轻量。
 </div>
 </div>
 </div>
-<div id="outline-container-org9c584a9" class="outline-2">
-<h2 id="org9c584a9">冤家 Fcitx 和 Emacs</h2>
-<div class="outline-text-2" id="text-org9c584a9">
+<div id="outline-container-org4ab0547" class="outline-2">
+<h2 id="org4ab0547">冤家 Fcitx 和 Emacs</h2>
+<div class="outline-text-2" id="text-org4ab0547">
 <p>
 <code>~/.xprofile</code>
 </p>
@@ -302,9 +302,9 @@ QT_IM_MODULE=fcitx</pre>
 </p>
 </div>
 </div>
-<div id="outline-container-org7d2e3ad" class="outline-2">
-<h2 id="org7d2e3ad">小结</h2>
-<div class="outline-text-2" id="text-org7d2e3ad">
+<div id="outline-container-orgddcae00" class="outline-2">
+<h2 id="orgddcae00">小结</h2>
+<div class="outline-text-2" id="text-orgddcae00">
 <p>
 这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
 </p>
@@ -325,7 +325,7 @@ Linux 就是我会一直使用下去的操作系统, <a href="https://www.vandee
 
       <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
          class="top-link" id="top-link" accesskey="g">
-         <i class="fa-solid fa-angle-up fa-2xl"></i>
+         <i class="ri-arrow-up-double-line ri-3x"></i>
       </a>
 
       <script>
