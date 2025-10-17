@@ -4,32 +4,32 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Fri, 17 Oct 2025 15:43:06 +0800</lastBuildDate>
+<lastBuildDate>Fri, 17 Oct 2025 18:04:37 +0800</lastBuildDate>
 <item>
-  <title><![CDATA[自然语言的局限性 - 大语言模型的逻辑的中间表示]]></title>
+  <title><![CDATA[自然语言的局限性 - 大语言模型的逻辑中间表示]]></title>
   <description><![CDATA[
       <nav id="table-of-contents" role="doc-toc">
         <h2>Table of Contents</h2>
         <div id="text-table-of-contents" role="doc-toc">
           <ul>
-            <li><a href="#org333d1e4">TL;DR</a></li>
-            <li><a href="#orge5b2e1f">Intro</a></li>
-            <li><a href="#orgbf1b0d1">逻辑的中间表示</a></li>
-            <li><a href="#org38e12c0">Promptheus</a></li>
+            <li><a href="#org703f3d6">TL;DR</a></li>
+            <li><a href="#orgd19e058">Intro</a></li>
+            <li><a href="#org5a65084">逻辑中间表示</a></li>
+            <li><a href="#org9b8ef96">Promptheus</a></li>
           </ul>
         </div>
       </nav>
-      <div id="outline-container-org333d1e4" class="outline-2">
-        <h2 id="org333d1e4">TL;DR</h2>
-        <div class="outline-text-2" id="text-org333d1e4">
+      <div id="outline-container-org703f3d6" class="outline-2">
+        <h2 id="org703f3d6">TL;DR</h2>
+        <div class="outline-text-2" id="text-org703f3d6">
           <p>
             自然语言作为和 LLM 交互的入口成本很高，如果有一个逻辑的中间表示层作为自然语言和大语言模型的中间层，我感觉会很不一样。
           </p>
         </div>
       </div>
-      <div id="outline-container-orge5b2e1f" class="outline-2">
-        <h2 id="orge5b2e1f">Intro</h2>
-        <div class="outline-text-2" id="text-orge5b2e1f">
+      <div id="outline-container-orgd19e058" class="outline-2">
+        <h2 id="orgd19e058">Intro</h2>
+        <div class="outline-text-2" id="text-orgd19e058">
           <p>
             自然语言，承载了人类数千年的文明。语言的演变，也是人类社会的变迁、人类文明的演变。词汇的兴衰、语法的更迭，都是特定时代的经济、政治、文化烙印，可以说语言就是人类历史的活化石。
           </p>
@@ -63,9 +63,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-orgbf1b0d1" class="outline-2">
-        <h2 id="orgbf1b0d1">逻辑的中间表示</h2>
-        <div class="outline-text-2" id="text-orgbf1b0d1">
+      <div id="outline-container-org5a65084" class="outline-2">
+        <h2 id="org5a65084">逻辑中间表示</h2>
+        <div class="outline-text-2" id="text-org5a65084">
           <p>
             我一直有一个隐隐约约的胡思乱想的想法：将自然语言转换为基于逻辑的中间表示（Intermediate Representation, IR），再将逻辑表达式或者数学语言映射到 token。放弃将自然语言直接作为沟通媒介，转而构建一个全新的、基于数学和二进制逻辑的中间层。
           </p>
@@ -115,9 +115,9 @@
           </p>
         </div>
       </div>
-      <div id="outline-container-org38e12c0" class="outline-2">
-        <h2 id="org38e12c0">Promptheus</h2>
-        <div class="outline-text-2" id="text-org38e12c0">
+      <div id="outline-container-org9b8ef96" class="outline-2">
+        <h2 id="org9b8ef96">Promptheus</h2>
+        <div class="outline-text-2" id="text-org9b8ef96">
           <p>
             在这之前，普通用户能提升 LLM 准确性最直接的方法就是 prompt 模板了。
           </p>
