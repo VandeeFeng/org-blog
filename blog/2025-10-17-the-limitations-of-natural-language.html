@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="alternate"
+          type="application/rss+xml"
+          href="https://www.vandee.art/blog/rss.xml"
+          title="RSS feed for https://www.vandee.art/blog/">
+    <title>自然语言的局限性 - 大语言模型的逻辑的中间表示</title>
+    <meta property="og:title" content="自然语言的局限性 - 大语言模型的逻辑的中间表示">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.vandee.art/blog/2025-10-17-the-limitations-of-natural-language.html">
+    <meta name="author" content="Vandee">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+    <link rel="stylesheet"
+          href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
+    <link rel="stylesheet"
+          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+    <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        pangu.spacingPage();
+      });
+    </script>
+
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/copyCode.js" defer></script>
+    <script src="assets/js/shiba.js" defer></script>
+    <script src="assets/js/search.js" defer></script></head>
+  <body>
+    <div id="preamble" class="status">
+      <header>
+        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+        <nav>
+          <a href="https://www.vandee.art/blog/">Home</a>
+          <a href="https://x404.xyz/wiki">Wiki</a>
+          <a href="https://x404.xyz/photo">Photo</a>
+          <a href="archive.html">Archive</a>
+          <a href="tags.html">Tags</a>
+          <div id="search-container">
+            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+            <i class="ri-search-line ri-xl"></i>
+          </div>
+        </nav>
+    </header></div>
+    <div id="content">
+      <div class="post-date">17 Oct 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-10-17-the-limitations-of-natural-language.html">自然语言的局限性 - 大语言模型的逻辑的中间表示</a></h1>
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#org892ba7c">TL;DR</a></li>
+            <li><a href="#orgb05ad64">Intro</a></li>
+            <li><a href="#org99656e9">逻辑的中间表示</a></li>
+            <li><a href="#orge388347">Promptheus</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div id="outline-container-org892ba7c" class="outline-2">
+        <h2 id="org892ba7c">TL;DR</h2>
+        <div class="outline-text-2" id="text-org892ba7c">
+          <p>
+            自然语言作为和 LLM 交互的入口成本很高，如果有一个逻辑的中间表示层作为自然语言和大语言模型的中间层，我感觉会很不一样。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orgb05ad64" class="outline-2">
+        <h2 id="orgb05ad64">Intro</h2>
+        <div class="outline-text-2" id="text-orgb05ad64">
+          <p>
+            自然语言，承载了人类数千年的文明。语言的演变，也是人类社会的变迁、人类文明的演变。词汇的兴衰、语法的更迭，都是特定时代的经济、政治、文化烙印，可以说语言就是人类历史的活化石。
+          </p>
+
+          <p>
+            但是从很小开始，我就一直觉得自然语言作为信息沟通的工具而言，效率其实是很低的，特别是博大精深的中文，语言天然带有模糊性。（我并不是在否定自然语言内涵的丰富性，语义的多样性，使得信息转换的不会是单一的）
+          </p>
+
+          <p>
+            对于机器而言，更是这样。自然语言的歧义很难准确的转换为机器可以准确执行的指令和逻辑判断，现有的 transformer 架构的模型，是通过 token 推算出最可能的概率。依据克劳德·香农（Claude Shannon）的信息论，自然语言的“信息熵”很高，这意味着它需要更多的 bit (比特)来传递一个确切无误的信息。这种 Token 化机制，很自然的继承了语言的模糊性,这也是大语言模型无法避免幻觉的原因之一。
+          </p>
+
+          <p>
+            如果说 LLM 是人类自然语言与编程语言之间的“编译器”，将我们模糊的意图“翻译”成编程语言代码，进而执行程序的自动化指令，我觉得现有的 LLM 的中间层是走了很大的弯路的。虽然现在的大语言模型已经实现了更高层次的自动化，但是我始终感觉这种语言到 token 的抽象并不合适。
+          </p>
+
+          <p>
+            从自动化的角度来看，大语言模型更多的是要实现准确的编译自然语言，把自然语言转换为准确可靠的计算机指令，从而实现编程语言达不到的更高层次的自动化。
+          </p>
+
+          <p>
+            如果说现在的大语言模型已经打通了自然语言到机器语言的桥梁，但我总感觉不太符合直觉。这种感觉就像 MCP 最开始出现给我的感觉一样。
+          </p>
+
+          <p>
+            编程语言正是从机器码到自然语言的抽象，让 LLM 再实现一次机器码到自然语言的抽象，现在的实现路径总感觉哪里不对。因为从机器码抽象到自然语言这么多年形成了编程语言，而 LLM 并不是再此之上的实现，那么就应该是两种可能：要么直接替代编程语言，要么和编程语言结合形成新的抽象。按照后者，现在 LLM 的实现还肯定不是。
+          </p>
+
+          <p>
+            从计算机出现到现在，每个时代的人们都在想办法用自然语言实现对机器的控制，但可能这个思路从一开始就不是最合适的，因为自然语言从来就不是为了这个场景而出现的。就像时间是人类为了度量创造出来的一个单位，以表达这个还无法被理解的物质形态。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org99656e9" class="outline-2">
+        <h2 id="org99656e9">逻辑的中间表示</h2>
+        <div class="outline-text-2" id="text-org99656e9">
+          <p>
+            我一直有一个隐隐约约的胡思乱想的想法：将自然语言转换为基于逻辑的中间表示（Intermediate Representation, IR），再将逻辑表达式或者数学语言映射到 token。放弃将自然语言直接作为沟通媒介，转而构建一个全新的、基于数学和二进制逻辑的中间层。
+          </p>
+
+          <p>
+            这个转换的核心思想是：将一句自然语言陈述，看作是对一个事件或关系的描述，并将其“主-谓-宾”组件，一一映射，转换为逻辑组件。
+          </p>
+
+          <ul class="org-ul">
+            <li>主语 (Subject)，作为动作的发出者，被映射为逻辑世界中的一个实体 (Entity) 或一个待定的变量 (Variable)。</li>
+
+            <li>谓语 (Verb)，作为句子的灵魂，描述动作或状态，被映射为一个谓词 (Predicate)。谓词本质上是一个可以判断真假的函数模板，定义了一种关系。</li>
+
+            <li>宾语 (Object)，作为动作的承受者，则被映射为填充这个谓词模板的另一个实体或参数 (Argument)。</li>
+          </ul>
+
+          <p>
+            例如“我喜欢柴犬。”这句话，翻译成逻辑语言大概是：∀x ( IsShibaInu(x) → Likes(speaker, x) )。
+          </p>
+
+          <p>
+            主语：“我” (一个明确的实体，即发出指令者)，谓语：“喜欢” (一种状态或关系)，宾语：“柴犬” (一个类别，而非单个个体)。
+          </p>
+
+          <p>
+            映射到逻辑元素：
+          </p>
+
+          <p>
+            “我” → 实体 speaker (或任何唯一标识符)，“喜欢” → 谓词 Likes( , )，“柴犬” → 一个变量 x 和一个类别谓词 IsShibaInu(x)，即“任何一个实体x，只要它是一只柴犬”。
+          </p>
+
+          <p>
+            这和编程语言里的函数式编程、函数表达式的实现逻辑类似。
+          </p>
+
+          <p>
+            我现在没有相应的数学基础，所以只能进行逻辑上的猜想。
+          </p>
+
+          <p>
+            从直觉上，逻辑 token 的预测一定比自然语言 token 的预测不确定性要小，但是代价就是少了语义模糊性带来的语义内涵。对于和机器沟通而言，我觉得是可以接受的，况且现在的大语言模型对于语义的理解也不是真正的理解，只是在大量的语言文本里找规律，给的样本越多，输出的内容就学的越像。
+          </p>
+
+          <p>
+            并且这些逻辑输出是可以直接内嵌到编程语言里的，这又少了一次转换，也就又提升了一次准确性。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orge388347" class="outline-2">
+        <h2 id="orge388347">Promptheus</h2>
+        <div class="outline-text-2" id="text-orge388347">
+          <p>
+            在这之前，普通用户能提升 LLM 准确性最直接的方法就是 prompt 模板了。
+          </p>
+
+          <p>
+            之前简单的写了一个 <a href="https://www.vandee.art/blog/2025-05-17-prompt-another-key-to-the-compressed-world.html">Prompt: Another Key to the Compressed World</a> . 如果说大语言模型是一个巨大的知识库 zip，那么 prompt 就是解压缩的 key。
+          </p>
+
+          <p>
+            边学边用边写，在 Claude code 的协助下糊了一个管理 prompt 模板的小玩意：<a href="https://github.com/VandeeFeng/promptheus">promptheus</a> .
+          </p>
+
+          <p>
+            promptheus 是普罗米修斯 Prometheus 和 prompt 的结合。想表达的意思也就是 prompt 是开启新世界的一个小钥匙。
+          </p>
+
+          <p>
+            prompt 可以分为系统提示词和用户提示词。后面说的都是用户提示词。简单来说，Prompt（提示）是指用户向模型提供的指令、问题或上下文，用于引导模型生成特定输出。
+          </p>
+
+          <p>
+            优秀的提示词，相当于给 LLM 加上了一个变装（我感觉有点像赛亚人形态），能够短时间内根据 prompt 的设定，输出更符合要求的内容。当然 prompt jailbreaking （绕过大语言模型的内置安全防护机制，诱导模型生成原本被禁止的有害、偏见或非法内容）是另外一回事。
+          </p>
+
+          <p>
+            只要足够了解一个模型在训练时候的特定标注，就能够用特定的引导词让大语言模型回答出一些非常规的回答，引导出大语言模型的“潜力”。
+          </p>
+
+          <p>
+            我平常用的最多的还是 role play 角色扮演，让 LLM 扮演苏格拉底来和我辩论 🤣。李继刚的这个 prompt 也很实用：<a href="https://x.com/lijigang_com/status/1977598274006864272">搞懂一个观点</a> 。类似这种的 prompt 设计本质是思维的重构，把自己的思维重构成能引导 LLM 的格式，LLM 就变成了一个放大器。
+          </p>
+
+          <p>
+            在 vibe coding 里，claude code、codex、gemini cli 的 agent.md 也就是 prompt 的另一种设定形式。官方文档里给出的示例就是一个规范性的模板格式。
+          </p>
+
+          <p>
+            claude 最新出来的 skills 也是对 prompt 的高级应用：
+          </p>
+
+          <p>
+            <a href="https://simonwillison.net/2025/Oct/16/claude-skills/#atom-everything">Claude Skills are awesome, maybe a bigger deal than MCP</a> , <a href="https://github.com/anthropics/skills">https://github.com/anthropics/skills</a> , <a href="https://github.com/anthropics/skills">https://github.com/anthropics/skills</a>
+          </p>
+
+          <p>
+            和我一直不看好的 MCP 相比，这个更符合我对大语言模型的直觉。skills 和 claude 这段时间出来的 plugins ，从最开始的 function calling 到现在的 skills，大语言模型能力的迭代提升实在是太快了，现在的大语言模型工具调用的能力强了太多，已经完全从单个工具的调用到了 workflows 的集成和编排。而这些实现的基础形式也离不开 prompt。
+          </p>
+
+          <p>
+            但回到最开头，我始终认为自然语言和大语言模型之间还缺少一个重要的中间层。如果不能通过二进制重新定义 CPU，大语言模型和现在所出现的人工智能很难发展成 AGI 通用人工智能。现在大语言模型所依赖的计算和训练迟早有一天可以浓缩到一个芯片里，就像最初的庞大计算机一样。
+          </p>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+    <div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+        <p>
+          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+        </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+        <i class="ri-arrow-up-double-line ri-3x"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = 'visible';
+            mybutton.style.opacity = '1';
+          } else {
+            mybutton.style.visibility = 'hidden';
+            mybutton.style.opacity = '0';
+          }
+        };
+    </script></div>
+  </body>
+</html>
