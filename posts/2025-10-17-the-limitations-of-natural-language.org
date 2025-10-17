@@ -14,7 +14,7 @@
 
 如果说 LLM 是人类自然语言与编程语言之间的“编译器”，将我们模糊的意图“翻译”成编程语言代码，进而执行程序的自动化指令，我觉得现有的 LLM 的中间层是走了很大的弯路的。虽然现在的大语言模型已经实现了更高层次的自动化，但是我始终感觉这种语言到 token 的抽象并不合适。
 
-从自动化的角度来看，大语言模型更多的是要实现准确的编译自然语言，把自然语言转换为准确可靠的计算机指令，从而实现编程语言达不到的更高层次的自动化。
+从自动化的角度来看(不考虑 AIGC 图片、音乐生成)，大语言模型更多的是要实现准确的编译自然语言，把自然语言转换为准确可靠的计算机指令，从而实现编程语言达不到的更高层次的自动化。
 
 如果说现在的大语言模型已经打通了自然语言到机器语言的桥梁，但我总感觉不太符合直觉。这种感觉就像 MCP 最开始出现给我的感觉一样。
 
@@ -70,7 +70,8 @@ prompt 可以分为系统提示词和用户提示词。后面说的都是用户�
 
 claude 最新出来的 skills 也是对 prompt 的高级应用：
 
-[[https://simonwillison.net/2025/Oct/16/claude-skills/#atom-everything][Claude Skills are awesome, maybe a bigger deal than MCP]] , https://github.com/anthropics/skills , https://github.com/anthropics/skills
+[[https://simonwillison.net/2025/Oct/16/claude-skills/#atom-everything][Claude Skills are awesome, maybe a bigger deal than MCP]] , https://www.anthropic.com/news/skills
+ , https://github.com/anthropics/skills
 
 和我一直不看好的 MCP 相比，这个更符合我对大语言模型的直觉。skills 和 claude 这段时间出来的 plugins ，从最开始的 function calling 到现在的 skills，大语言模型能力的迭代提升实在是太快了，现在的大语言模型工具调用的能力强了太多，已经完全从单个工具的调用到了 workflows 的集成和编排。而这些实现的基础形式也离不开 prompt。
 
