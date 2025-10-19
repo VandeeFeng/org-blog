@@ -27,7 +27,7 @@
        <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
        <script defer>
          document.addEventListener("DOMContentLoaded", function () {
-           pangu.spacingPage();
+           pangu.autoSpacingPage();
          });
        </script>
 
@@ -58,27 +58,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org235edf9">Intro</a></li>
-<li><a href="#org72d7a0c">Manual</a>
+<li><a href="#org4717d0d">Intro</a></li>
+<li><a href="#org8d6f11d">Manual</a>
 <ul>
-<li><a href="#org141b711">Prerequisites</a></li>
-<li><a href="#org8b7d870">Principles</a></li>
-<li><a href="#org50c5677">Methods</a>
+<li><a href="#org06d0f82">Prerequisites</a></li>
+<li><a href="#orgfbc38e4">Principles</a></li>
+<li><a href="#org7cc95ea">Methods</a>
 <ul>
-<li><a href="#orgc9e5e22">信息获取 - 输入</a></li>
-<li><a href="#org81ffd98">文档、知识管理 - 迭代</a></li>
-<li><a href="#org4b4f3ec">笔记和写作 - 输出</a></li>
+<li><a href="#orgc46fa22">信息获取 - 输入</a></li>
+<li><a href="#orgc0daf87">文档、知识管理 - 迭代</a></li>
+<li><a href="#orgdfc9861">笔记和写作 - 输出</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org447a37b">Thanks</a></li>
+<li><a href="#orgd168088">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org235edf9" class="outline-2">
-<h2 id="org235edf9">Intro</h2>
-<div class="outline-text-2" id="text-org235edf9">
+<div id="outline-container-org4717d0d" class="outline-2">
+<h2 id="org4717d0d">Intro</h2>
+<div class="outline-text-2" id="text-org4717d0d">
 <p>
 距离 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> 居然已经一年多了。里面关于 PKM 和 AI 结合的部分许多已经过时了，今年也有了新的思路。
 </p>
@@ -140,24 +140,24 @@ via: <a href="https://elroy.bot/blog/2025/07/29/ai-is-a-floor-raiser-not-a-ceili
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org72d7a0c" class="outline-2">
-<h2 id="org72d7a0c">Manual</h2>
-<div class="outline-text-2" id="text-org72d7a0c">
+<div id="outline-container-org8d6f11d" class="outline-2">
+<h2 id="org8d6f11d">Manual</h2>
+<div class="outline-text-2" id="text-org8d6f11d">
 <p>
 这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。PKM 基本的构建思路都在 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> ，这个手册侧重和 AI 的整合。
 </p>
 </div>
-<div id="outline-container-org141b711" class="outline-3">
-<h3 id="org141b711">Prerequisites</h3>
-<div class="outline-text-3" id="text-org141b711">
+<div id="outline-container-org06d0f82" class="outline-3">
+<h3 id="org06d0f82">Prerequisites</h3>
+<div class="outline-text-3" id="text-org06d0f82">
 <p>
 LLM API KEY，终端或 IDE，AI 和编程的基础知识，还涉及到一点 self-hosting。
 </p>
 </div>
 </div>
-<div id="outline-container-org8b7d870" class="outline-3">
-<h3 id="org8b7d870">Principles</h3>
-<div class="outline-text-3" id="text-org8b7d870">
+<div id="outline-container-orgfbc38e4" class="outline-3">
+<h3 id="orgfbc38e4">Principles</h3>
+<div class="outline-text-3" id="text-orgfbc38e4">
 <p>
 基于 transformer 架构的 LLM 本质上就是一个概率生成器，因此 PKM with AI 总体的原则就是：让 LLM 提升自己的能力，帮助自己找到实现目标的最大可能性方案。
 </p>
@@ -170,9 +170,9 @@ LLM API KEY，终端或 IDE，AI 和编程的基础知识，还涉及到一点 s
 </ul>
 </div>
 </div>
-<div id="outline-container-org50c5677" class="outline-3">
-<h3 id="org50c5677">Methods</h3>
-<div class="outline-text-3" id="text-org50c5677">
+<div id="outline-container-org7cc95ea" class="outline-3">
+<h3 id="org7cc95ea">Methods</h3>
+<div class="outline-text-3" id="text-org7cc95ea">
 <p>
 Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，但我始终认为这种层面的知识管理和交互并不能很有效的提升思维。
 </p>
@@ -202,9 +202,9 @@ Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，�
 用 Dify、n8n 构建 Workflow 也是很不错的选择，但是对于 PKM 我不太想增加太多的中间流程，也不想花太多时间为了 PKM 去学它们。
 </p>
 </div>
-<div id="outline-container-orgc9e5e22" class="outline-4">
-<h4 id="orgc9e5e22">信息获取 - 输入</h4>
-<div class="outline-text-4" id="text-orgc9e5e22">
+<div id="outline-container-orgc46fa22" class="outline-4">
+<h4 id="orgc46fa22">信息获取 - 输入</h4>
+<div class="outline-text-4" id="text-orgc46fa22">
 <p>
 获取零散信息、新闻我一直通过 RSS，<a href="https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html">ReadWise</a> 今年不打算续订了，转向了 <a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">Hoarder</a> 。修改了一下 <a href="https://github.com/VandeeFeng/obsidian-clipper">obsidian-clipper</a> 用来在网页里高亮阅读保存到 Hoarder。在 Emacs 里写了一个小脚本，用来同步 Hoarder 的高亮和笔记到本地。还搞了个小玩意 <a href="https://github.com/VandeeFeng/RSS-CLI">RSS-CLI</a> 。
 </p>
@@ -226,13 +226,13 @@ Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，�
 </p>
 </div>
 </div>
-<div id="outline-container-org81ffd98" class="outline-4">
-<h4 id="org81ffd98">文档、知识管理 - 迭代</h4>
-<div class="outline-text-4" id="text-org81ffd98">
+<div id="outline-container-orgc0daf87" class="outline-4">
+<h4 id="orgc0daf87">文档、知识管理 - 迭代</h4>
+<div class="outline-text-4" id="text-orgc0daf87">
 </div>
 <ul class="org-ul">
-<li><a id="org47dc8c5"></a>笔记编辑器选择<br>
-<div class="outline-text-5" id="text-org47dc8c5">
+<li><a id="org2c5f11e"></a>笔记编辑器选择<br>
+<div class="outline-text-5" id="text-org2c5f11e">
 <p>
 Notion 其实一直是一个很不错的选择，特别是现在的 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
 </p>
@@ -262,8 +262,8 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 </p>
 </div>
 </li>
-<li><a id="org7fc4cc4"></a>迭代<br>
-<div class="outline-text-5" id="text-org7fc4cc4">
+<li><a id="org50011aa"></a>迭代<br>
+<div class="outline-text-5" id="text-org50011aa">
 <p>
 每个星期我会让 LLM 总结一下 PKM 里新增的内容，用 python 写了一个小脚本获取我 GitHub 仓库的 git diff，可以选日期范围，指定的仓库。PKM 丢在了 GitHub ，脚本会生成一个 MD 文档，包含 git commit 新增的内容，把文档丢给 LLM，让它提出几个相关的深度思考问题。
 </p>
@@ -281,8 +281,8 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 </p>
 </div>
 </li>
-<li><a id="orgc99ad85"></a>其他和 AI 交互的工具<br>
-<div class="outline-text-5" id="text-orgc99ad85">
+<li><a id="org587c02c"></a>其他和 AI 交互的工具<br>
+<div class="outline-text-5" id="text-org587c02c">
 <p>
 一个 Gemini CLI 管理笔记的例子：Gemini CLI 在半小时内整理了 400 个笔记，在各个主题之间建立了有意义的联系，重命名、整理，合理构建笔记集合，via: <a href="https://x.com/karminski3/status/1939502900503355669">https://x.com/karminski3/status/1939502900503355669</a>
 </p>
@@ -298,9 +298,9 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 </li>
 </ul>
 </div>
-<div id="outline-container-org4b4f3ec" class="outline-4">
-<h4 id="org4b4f3ec">笔记和写作 - 输出</h4>
-<div class="outline-text-4" id="text-org4b4f3ec">
+<div id="outline-container-orgdfc9861" class="outline-4">
+<h4 id="orgdfc9861">笔记和写作 - 输出</h4>
+<div class="outline-text-4" id="text-orgdfc9861">
 <p>
 PKM 知识管理只是学习的方法，永远不是目的。做知识管理很容易就会做成了管理知识，变成了折腾各种笔记工具，学习各种笔记软件，甚至被笔记软件或平台捆绑。这也是 Nonotes 想避免的，笔记不应该被笔记软件或者笔记载体局限甚至捆绑。
 </p>
@@ -332,9 +332,9 @@ PKM 的迭代一定要有表达和输出。<a href="https://wiki.vandee.art/#%E5
 </div>
 </div>
 </div>
-<div id="outline-container-org447a37b" class="outline-2">
-<h2 id="org447a37b">Thanks</h2>
-<div class="outline-text-2" id="text-org447a37b">
+<div id="outline-container-orgd168088" class="outline-2">
+<h2 id="orgd168088">Thanks</h2>
+<div class="outline-text-2" id="text-orgd168088">
 <p>
 如果这些内容对你有所帮助，我会很开心。
 </p>
