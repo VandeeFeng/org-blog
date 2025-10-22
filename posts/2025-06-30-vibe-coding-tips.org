@@ -145,6 +145,28 @@ MCP Container 相关的项目也挺多，我用的是: https://github.com/TBXark
 * Articles
 整理了一些感觉还不错的文章
 
+- The contents of /mnt/skills in Claude's code interpreter environment
+  https://github.com/simonw/claude-skills
+  via: https://simonwillison.net/2025/Oct/10/claude-skills
+  [[https://simonwillison.net/2025/Oct/10/superpowers/#atom-everything][Superpowers: How I'm using coding agents in October 2025]]
+
+- [[https://simonwillison.net/2025/Oct/7/vibe-engineering/#atom-everything][Vibe engineering]]
+  simon 大佬也讨厌 vibes 这个定义
+
+- [[https://www.anthropic.com/news/claude-code-on-the-web][Claude Code web - Anthropic’s Cloud-Based Async Agent]] ‍
+  Anthropic 刚刚发布了一个网页异步版本的 Claude Code，在研究预览中，仅供 Pro 和 Max 订阅者使用，它让您能够跨不同 repos 启动多个编码任务，所有任务都在他们的云基础设施上并行运行。
+  Simon Willison 写了一篇非常不错的博客，分享了他与 Claude Code web 的体验，并且他指出了重要的一点：需要不断批准的代理非常缓慢，但是这个在 "YOLO mode" 中运行，具有适当的沙箱设置，这使它真正有用。https://simonwillison.net/2025/Oct/20/claude-code-for-web/
+
+- [[https://simonwillison.net/2025/Oct/22/claude-code-logs/#atom-everything][Don&#x27;t let Claude Code delete your session logs]]
+
+  不幸的是，Claude Code 有一个讨厌的默认行为，会在 30 天后删除这些！ 你不能完全禁用这个，但你至少可以通过将这个添加到你的 ~/.claude/settings.json 文件中来延迟它 274 年：
+
+    {
+    "cleanupPeriodDays": 99999
+    }
+
+- [[https://hojberg.xyz/the-programmer-identity-crisis/][The Programmer Identity Crisis ❈ Simon Højber]]
+  真正的手艺人啊！
 - [[https://geohot.github.io//blog/jekyll/update/2025/09/12/ai-coding.html][AI Coding | the singularity is nearer]]
   这篇的观点挺赞同
 - [[https://idiallo.com/blog/writing-code-is-easy-reading-is-hard][Writing Code Is Easy. Reading It Isn’t.]]
