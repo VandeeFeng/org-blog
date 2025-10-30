@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="趁现在还有心情和精力去感受这些事物，我怕再过几年，LLM 彻底改变软件开发行业，改变自动化之后，我不再怀念这些了。就像现在，现场纯手工制作的橙汁和美年达在我面前，我肯定会毫不犹豫的选择美年达，因为它快，手工橙汁要等，而且它更便宜。也像预制菜一样，这些规模化让我们不再那么怀念手艺了。">
+    <link rel="alternate"
+          type="application/rss+xml"
+          href="https://www.vandee.art/blog/rss.xml"
+          title="RSS feed for https://www.vandee.art/blog/">
+    <title>致敬 Linus 和手艺人 - GitNano</title>
+    <meta property="og:title" content="致敬 Linus 和手艺人 - GitNano">
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="趁现在还有心情和精力去感受这些事物，我怕再过几年，LLM 彻底改变软件开发行业，改变自动化之后，我不再怀念这些了。就像现在，现场纯手工制作的橙汁和美年达在我面前，我肯定会毫不犹豫的选择美年达，因为它快，手工橙汁要等，而且它更便宜。也像预制菜一样，这些规模化让我们不再那么怀念手艺了。">
+    <meta property="og:url" content="https://www.vandee.art/blog/2025-10-30-gitnano-hats-off-to-linus.html">
+    <meta name="author" content="Vandee">
+    <meta name="referrer" content="origin-when-cross-origin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+    <link rel="stylesheet"
+          href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
+    <link rel="stylesheet"
+          href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+    <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+    <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", function () {
+        pangu.autoSpacingPage();
+      });
+    </script>
+
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/copyCode.js" defer></script>
+    <script src="assets/js/shiba.js" defer></script>
+    <script src="assets/js/search.js" defer></script></head>
+  <body>
+    <div id="preamble" class="status">
+      <header>
+        <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+        <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+        <nav>
+          <a href="https://www.vandee.art/blog/">Home</a>
+          <a href="https://x404.xyz/wiki">Wiki</a>
+          <a href="https://x404.xyz/photo">Photo</a>
+          <a href="archive.html">Archive</a>
+          <a href="tags.html">Tags</a>
+          <div id="search-container">
+            <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+            <i class="ri-search-line ri-xl"></i>
+          </div>
+        </nav>
+    </header></div>
+    <div id="content">
+      <div class="post-date">30 Oct 2025</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2025-10-30-gitnano-hats-off-to-linus.html">致敬 Linus 和手艺人 - GitNano</a></h1>
+      <nav id="table-of-contents" role="doc-toc">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents" role="doc-toc">
+          <ul>
+            <li><a href="#org3e08190">TL;DR</a></li>
+            <li><a href="#orge1dd185">Git 是什么</a></li>
+            <li><a href="#org1b894b2">AK 大佬的演讲</a></li>
+            <li><a href="#orge979736">GitNano</a></li>
+            <li><a href="#org423be28">一些想法</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div id="outline-container-org3e08190" class="outline-2">
+        <h2 id="org3e08190">TL;DR</h2>
+        <div class="outline-text-2" id="text-org3e08190">
+          <p>
+            感谢 Linus，感谢 Git。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orge1dd185" class="outline-2">
+        <h2 id="orge1dd185">Git 是什么</h2>
+        <div class="outline-text-2" id="text-orge1dd185">
+          <p>
+            这是官网上 <a href="https://git-scm.com/">Git</a> 的介绍：
+          </p>
+
+          <blockquote>
+            <p>
+              Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+            </p>
+
+            <p>
+              Git是一个免费的开源分布式版本控制系统，旨在高效快速地处理从小型到大型的各种项目。
+            </p>
+          </blockquote>
+
+          <p>
+            简单说来，在软件开发和项目管理的时候，需要处理不同版本的开发、变更、提交。Git 会把每一次提交（commit）拍下一张“快照”，这样就可以回到特定的提交，查看当时的文件。Git 让开发项目的成员可以 fork（创建项目完整副本，包括所有历史记录）。这样一来，就可以同时开发，再将这些更改合并到主线上。
+          </p>
+
+          <p>
+            Linus Torvalds 开发 Git 的动机源于 Linux 内核项目对高效版本控制系统的迫切需求，以及与BitKeeper 的许可纠纷。
+          </p>
+
+          <p>
+            最初，Linux 开发没有正式的版本控制系统，开发者通过Usenet群组或邮件列表提交补丁，Linus 手动应用到他的源代码树中，然后发布整个树作为新版本。历史记录只能通过完整发布版本之间的 diff 来查看，当时的开源工具如 CVS 和 SVN 不能满足 Linus 对于开发效率的需求，也无法处理大规模分布式协作。随后，Linus 选择了 BitKeeper 这一闭源分布式版本控制系统（DVCS），BitMover 公司提供免费许可给Linux 社区，但条件是开发者不得开发竞争产品或逆向工程。
+          </p>
+
+          <p>
+            但是，在2005年，Andrew Tridgell 逆向 BitKeeper 协议，搞了一个开源替代品，导致 BitMover 撤销了免费许可。这使 Linux 内核开发陷入危机，现有的开源工具如 Monotone 或 Darcs 均无法满足 Linus 对速度、简单性和大规模项目支持的要求。Linus 一气之下决定自创工具，仅用约10天时间完成了 Git 的核心实现。
+          </p>
+
+          <p>
+            Git 就这样诞生了，影响了全球软件开发。这些内容参考 <a href="https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git">Git - A Short History of Git</a> 和一些网络文章。
+          </p>
+
+          <p>
+            最让我钦佩的还是 Linus 那个一贯的态度，以及对技术和自己的爱好纯粹的热爱：
+          </p>
+
+          <blockquote>
+            <p>
+              在今年 GitHub 对 Linus 的一个访谈里：<a href="https://www.youtube.com/watch?v=0wLidyXzFk8">Linus Torvalds: Known more for Git than Linux? - YouTube</a> Linus 也又提到了 Git 的这些往事。(GitHub 你好意思么！)
+            </p>
+
+            <p>
+              "Git was never a big thing for me.It was a,i need to get this done to do the kernel.And it's kind of ridiculous that,I used four months of my life maintaining it."
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div id="outline-container-org1b894b2" class="outline-2">
+        <h2 id="org1b894b2">AK 大佬的演讲</h2>
+        <div class="outline-text-2" id="text-org1b894b2">
+          <p>
+            <a href="https://www.youtube.com/watch?v=LCEmiRjPEtQ">Andrej Karpathy: Software Is Changing (Again)</a>
+          </p>
+
+          <p>
+            全文演讲稿我放在了 <a href="https://wiki.vandee.art/#Andrej%20Karpathy's%20YC%20talk">Andrej Karpathy's YC talk</a> .
+          </p>
+
+          <p>
+            其中 AK 大佬又一次的提到了 LLM 对软件开发和整个行业带来的变化：
+          </p>
+
+          <blockquote>
+            <p>
+              现在我们所拥有的实际上有点像软件 2.0 领域中的 Git 的等价物。我认为 Hugging Face 基本上是软件 2.0 中 GitHub 的等价物。还有一个模型图谱，你可以可视化那里编写的所有代码。顺便说一下，如果你感兴趣，那个巨大的圆圈中间的点是 Flux 的参数，图像生成器。因此，每当有人在 Flux 模型上调整 LoRA 时，你基本上是在这个空间中创建一个 git 提交，并创建一种不同类型的图像生成器。因此，基本上我们有软件 1.0 是编程计算机的计算机代码。软件 2.0 是编程神经网络的权重。这是一个 AlexNet 图像识别神经网络的例子。到目前为止，我们熟悉的所有神经网络直到最近都像是固定功能的计算机。图像类别或类似的东西。我认为改变的地方，且我认为这是一个根本性的变化，是神经网络变得可以用大型库进行编程。因此，我认为这是相当新的，独特的。这是一种新型计算机。在我看来，值得将其称为软件 3.0。基本上，你的产品现在是编程人们的程序。而且值得注意的是，这些产品是用英语编写的。所以这是一种非常有趣的编程语言。
+            </p>
+
+            <p>
+              [&#x2026;]
+            </p>
+
+            <p>
+              所以，总结一下，给这个行业带来一个惊人的时刻。我们需要重写大量代码。大量代码将由专业人士和玩家编写。这些大型语言模型有点像工具，有点像实验室，但它们尤其像操作系统。但现在还太早了。这就像 1960 年代的操作系统。我认为很多类比是可以互通的。 这些大型语言模型就像我们必须学会合作的那些易错的人类精神。为了正确做到这一点，我们需要调整我们的基础设施。因此，当你构建这些大型语言模型时，实际上是有效地与这些大型语言模型合作的一些方法，以及使这一切成为可能的一些工具。你可以非常非常快速地旋转这个，基本上为产品创造部分时间。然后，是的，代理需要编写大量代码。但无论如何，回到钢铁侠套装的类比，我认为在接下来的十年里，我们将看到的是，我们将把滑块从左移到右。非常有趣。看到那是什么样子将会非常有趣。谢谢大家。
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div id="outline-container-orge979736" class="outline-2">
+        <h2 id="orge979736">GitNano</h2>
+        <div class="outline-text-2" id="text-orge979736">
+          <p>
+            文章标题和今天的内容其实没有太大关系，只是因为最近在折腾的 <a href="https://github.com/VandeeFeng/GitNano">GitNano</a> ，也一直很钦佩 Linus 对世界做出的无私贡献，就顺手写了这个标题。
+          </p>
+
+          <p>
+            GitNano 起初只是我为了弄清楚 Git 背后的原理，学习 C 语言和 Linux，东拼西凑的一些代码，和一些实验。在大语言模型的帮助下，它才能有现在的完整实现。
+          </p>
+
+          <p>
+            也就是说时隔这么多年，在大语言模型的帮助下，我才勉强实现了当初 Linux 一个人实现的 Git 的几个最基础的功能。也就是说 Linus - Me ≈ LLM + Claude Code 🤣
+          </p>
+
+          <p>
+            GitNano 简陋的实现了文件的版本控制和同步备份，而且不会和 Git 冲突。也就是说，我现在有两个版本控制的途径了。一些重要的文件，可以用 GitNano 来做本地的版本管理。十年之后，我就可以看看十年前这个文件发生了什么，还是挺有意思的。每一个 commit 也就像一张张照片一样。
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-org423be28" class="outline-2">
+        <h2 id="org423be28">一些想法</h2>
+        <div class="outline-text-2" id="text-org423be28">
+          <p>
+            从 Linus 和 Git 的故事，再到 AK 大佬的演讲，可以肯定的是，不管 LLM 是不是互联网之后又一个泡沫，它都已经对世界产生了巨大的影响。
+          </p>
+
+          <p>
+            正如 AK 大佬在演讲里说到的：大量代码将由专业人士和玩家编写。我这样的门外汉玩家，在 LLM 的协助下就可以用自然语言不那么费力的实现一个 Git 的本地雏形，未来真的已经来了。
+          </p>
+
+          <p>
+            我总是把 LLM 生成的内容和工业革命初期的机械制造对比。因为我觉得现在很像那个阶段。
+          </p>
+
+          <p>
+            今年用 LLM 辅助写了许多代码，折腾了几个小玩意，我的感觉是：
+          </p>
+
+          <p>
+            LLM 它知道要放胡椒，但是它不知道是白胡椒更适合这道菜还是黑胡椒，它知道要加热了，但是不知道怎么控制火候。现在的 LLM 能做出茶包，模拟出茶的味道，但是它泡不出一壶好茶。它写的代码是能跑通，但是它就像你上课快睡着的时候记笔记的字迹一样。
+          </p>
+
+          <p>
+            这也是为什么，在 LLM 已经可以疯狂搞钱做项目的时候，我还在研究 Git。因为我不想这些“传统手艺”就这么快要变成“非遗”了。
+          </p>
+
+          <p>
+            趁现在还有心情和精力去感受这些事物，我怕再过几年，LLM 彻底改变软件开发，改变自动化之后，我不再怀念这些了。就像现在，现场纯手工制作的橙汁和美年达在我面前，我肯定会毫不犹豫的选择美年达，因为它快，手工橙汁要等，而且它更便宜。也像预制菜一样，这些规模化让我们不再那么怀念手艺了。
+          </p>
+        </div>
+      </div>
+      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+    <div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+        <p>
+          © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+        </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+        <i class="ri-arrow-up-double-line ri-3x"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+          if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = 'visible';
+            mybutton.style.opacity = '1';
+          } else {
+            mybutton.style.visibility = 'hidden';
+            mybutton.style.opacity = '0';
+          }
+        };
+    </script></div>
+  </body>
+</html>
