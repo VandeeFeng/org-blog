@@ -44,7 +44,7 @@
       <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
-      <a href="projects.html">Archive</a>
+      <a href="projects.html">Projects</a>
       <a href="archive.html">Archive</a>
       <a href="tags.html">Tags</a>
       <div id="search-container">
@@ -59,14 +59,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4d082bb">GitHub 书签</a></li>
-<li><a href="#org33f5239">从GitHub书签到页面</a></li>
+<li><a href="#org1516670">GitHub 书签</a></li>
+<li><a href="#org3105b7e">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org4d082bb" class="outline-2">
-<h2 id="org4d082bb">GitHub 书签</h2>
-<div class="outline-text-2" id="text-org4d082bb">
+<div id="outline-container-org1516670" class="outline-2">
+<h2 id="org1516670">GitHub 书签</h2>
+<div class="outline-text-2" id="text-org1516670">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull's Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -120,7 +120,7 @@ process_changes.py
 </p>
 
 
-<figure id="orgeeff2c1">
+<figure id="org32eb7c3">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -321,15 +321,15 @@ if __name__ == "__main__":
 </div>
 </div>
 </div>
-<div id="outline-container-org33f5239" class="outline-2">
-<h2 id="org33f5239">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org33f5239">
+<div id="outline-container-org3105b7e" class="outline-2">
+<h2 id="org3105b7e">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org3105b7e">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="orgd9fde8b">
+<figure id="orge571437">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>
