@@ -24,9 +24,9 @@
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
        <script defer>
-         document.addEventListener("DOMContentLoaded", function () {
+         document.addEventListener("DOMContentLoaded",  () => {
            pangu.autoSpacingPage();
          });
        </script>
@@ -58,16 +58,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org466b077">Intro</a></li>
-<li><a href="#org5d5f85f">Emacs</a></li>
-<li><a href="#org888cdee">Nvim</a></li>
-<li><a href="#org72436aa">小结</a></li>
+<li><a href="#org4abc4a8">Intro</a></li>
+<li><a href="#orga484164">Emacs</a></li>
+<li><a href="#orgc222005">Nvim</a></li>
+<li><a href="#org4cdad5a">小结</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org466b077" class="outline-2">
-<h2 id="org466b077">Intro</h2>
-<div class="outline-text-2" id="text-org466b077">
+<div id="outline-container-org4abc4a8" class="outline-2">
+<h2 id="org4abc4a8">Intro</h2>
+<div class="outline-text-2" id="text-org4abc4a8">
 <p>
 OpenAI 最近计划花 30 亿美元<a href="https://www.bloomberg.com/news/articles/2025-04-16/openai-said-to-be-in-talks-to-buy-windsurf-for-about-3-billion">收购 windsurf</a> ，字节也在今年终于发布了 <a href="https://www.trae.ai/">Trae</a> ，这两个都是和 <a href="https://www.cursor.com">Cursor</a> 一样的 AI IDE（集成开发环境Integrated Development Environment）。也是今年模型即产品开始这个概念开始推行，Google 和 OpenAI 从年初到现在陆续放出了很多新的模型。但大模型这玩意太烧钱了，通过推出新模型已经调动不起消费者的热情了，IDE 成了新的赛道。
 </p>
@@ -97,9 +97,9 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </p>
 </div>
 </div>
-<div id="outline-container-org5d5f85f" class="outline-2">
-<h2 id="org5d5f85f">Emacs</h2>
-<div class="outline-text-2" id="text-org5d5f85f">
+<div id="outline-container-orga484164" class="outline-2">
+<h2 id="orga484164">Emacs</h2>
+<div class="outline-text-2" id="text-orga484164">
 <p>
 我现在日常用的比较多的就是：<a href="https://github.com/MatthewZMD/aidermacs">aidermacs</a> , <a href="https://github.com/karthink/gptel">gptel</a> , <a href="https://github.com/milanglacier/minuet-ai.el">minuet-ai.el</a> 。
 </p>
@@ -113,35 +113,35 @@ AI 迭代的太快了，后面还会出现更多未完成的中间态概念，�
 </p>
 
 
-<figure id="org4332497">
+<figure id="orgb43ab2e">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org888cdee" class="outline-2">
-<h2 id="org888cdee">Nvim</h2>
-<div class="outline-text-2" id="text-org888cdee">
+<div id="outline-container-orgc222005" class="outline-2">
+<h2 id="orgc222005">Nvim</h2>
+<div class="outline-text-2" id="text-orgc222005">
 <p>
 <a href="https://github.com/yetone/avante.nvim/">yetone/avante.nvim</a> 是一个 Nvim 插件，可以在 Nvim 里获得类似 cursor 的体验。
 </p>
 
 
-<figure id="org0b59def">
+<figure id="org26954fa">
 <img src="https://pic.vandee.art/images/nvim.gif" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="orge843223">
+<figure id="orgde04d55">
 <img src="https://pic.vandee.art/images/nvim-code.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org72436aa" class="outline-2">
-<h2 id="org72436aa">小结</h2>
-<div class="outline-text-2" id="text-org72436aa">
+<div id="outline-container-org4cdad5a" class="outline-2">
+<h2 id="org4cdad5a">小结</h2>
+<div class="outline-text-2" id="text-org4cdad5a">
 <p>
 我的体验下来，极致的 vibe coding 首选还是 cursor。其他同类产品替代不了 cursor 的还是它的 tab 补全和模型调教。它的 tab 就真的像有读心术一样，很准确的知道我下一步想做什么。当然还有它的各种免费破解（支持正版！）
 </p>

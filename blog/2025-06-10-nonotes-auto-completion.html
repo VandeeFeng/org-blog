@@ -24,9 +24,9 @@
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.min.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
        <script defer>
-         document.addEventListener("DOMContentLoaded", function () {
+         document.addEventListener("DOMContentLoaded",  () => {
            pangu.autoSpacingPage();
          });
        </script>
@@ -58,16 +58,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org93cecaf">TL;DR</a></li>
-<li><a href="#orgdcc68d0">知识的流动性</a></li>
-<li><a href="#org8881e8d">自动补全 VS RAG</a></li>
-<li><a href="#orgb8f5028">NoNotes</a></li>
+<li><a href="#org666cdae">TL;DR</a></li>
+<li><a href="#orgbaf309c">知识的流动性</a></li>
+<li><a href="#orgc3f1f04">自动补全 VS RAG</a></li>
+<li><a href="#org241bca5">NoNotes</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org93cecaf" class="outline-2">
-<h2 id="org93cecaf">TL;DR</h2>
-<div class="outline-text-2" id="text-org93cecaf">
+<div id="outline-container-org666cdae" class="outline-2">
+<h2 id="org666cdae">TL;DR</h2>
+<div class="outline-text-2" id="text-org666cdae">
 <p>
 NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
 </p>
@@ -77,9 +77,9 @@ NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个�
 </p>
 </div>
 </div>
-<div id="outline-container-orgdcc68d0" class="outline-2">
-<h2 id="orgdcc68d0">知识的流动性</h2>
-<div class="outline-text-2" id="text-orgdcc68d0">
+<div id="outline-container-orgbaf309c" class="outline-2">
+<h2 id="orgbaf309c">知识的流动性</h2>
+<div class="outline-text-2" id="text-orgbaf309c">
 <p>
 在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
 </p>
@@ -123,9 +123,9 @@ Steve Jobs on why thinking without doing is incomplete:
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org8881e8d" class="outline-2">
-<h2 id="org8881e8d">自动补全 VS RAG</h2>
-<div class="outline-text-2" id="text-org8881e8d">
+<div id="outline-container-orgc3f1f04" class="outline-2">
+<h2 id="orgc3f1f04">自动补全 VS RAG</h2>
+<div class="outline-text-2" id="text-orgc3f1f04">
 <p>
 大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
 </p>
@@ -155,9 +155,9 @@ RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Con
 </p>
 </div>
 </div>
-<div id="outline-container-orgb8f5028" class="outline-2">
-<h2 id="orgb8f5028">NoNotes</h2>
-<div class="outline-text-2" id="text-orgb8f5028">
+<div id="outline-container-org241bca5" class="outline-2">
+<h2 id="org241bca5">NoNotes</h2>
+<div class="outline-text-2" id="text-org241bca5">
 <p>
 无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
 </p>
@@ -175,7 +175,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="org568d149">
+<figure id="org9f0c008">
 <img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -185,7 +185,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="orgf3da08d">
+<figure id="orgce62ea1">
 <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
 
 </figure>
