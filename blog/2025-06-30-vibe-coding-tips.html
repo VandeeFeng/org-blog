@@ -26,7 +26,7 @@
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
        <script defer>
-         document.addEventListener("DOMContentLoaded",  () => {
+         document.addEventListener("DOMContentLoaded", () => {
            pangu.autoSpacingPage();
          });
        </script>
@@ -44,6 +44,7 @@
       <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
+      <a href="projects.html">Archive</a>
       <a href="archive.html">Archive</a>
       <a href="tags.html">Tags</a>
       <div id="search-container">
@@ -58,22 +59,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9cc2705">TL;DR</a></li>
-<li><a href="#orgf05894c">General Tips</a></li>
-<li><a href="#org5f09bd8">Container</a>
+<li><a href="#orgdd86ef5">TL;DR</a></li>
+<li><a href="#org5d71f8e">General Tips</a></li>
+<li><a href="#orgcfed806">Container</a>
 <ul>
-<li><a href="#org1feace0">Coding Assistant Container</a></li>
-<li><a href="#orgb40f3f8">MCP Container</a></li>
+<li><a href="#orged384a7">Coding Assistant Container</a></li>
+<li><a href="#org995f0ac">MCP Container</a></li>
 </ul>
 </li>
-<li><a href="#org231bc6a">Articles</a></li>
-<li><a href="#orgcf96e5a">CLI AI Coding Tools</a></li>
+<li><a href="#org3ff9a09">Articles</a></li>
+<li><a href="#org88400af">CLI AI Coding Tools</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org9cc2705" class="outline-2">
-<h2 id="org9cc2705">TL;DR</h2>
-<div class="outline-text-2" id="text-org9cc2705">
+<div id="outline-container-orgdd86ef5" class="outline-2">
+<h2 id="orgdd86ef5">TL;DR</h2>
+<div class="outline-text-2" id="text-orgdd86ef5">
 <p>
 各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
 </p>
@@ -87,9 +88,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgf05894c" class="outline-2">
-<h2 id="orgf05894c">General Tips</h2>
-<div class="outline-text-2" id="text-orgf05894c">
+<div id="outline-container-org5d71f8e" class="outline-2">
+<h2 id="org5d71f8e">General Tips</h2>
+<div class="outline-text-2" id="text-org5d71f8e">
 <p>
 由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
 </p>
@@ -127,13 +128,13 @@ OpenAI 的 codex, Gemini CLI 相继开源，背后的核心实现会越来越清
 </p>
 </div>
 </div>
-<div id="outline-container-org5f09bd8" class="outline-2">
-<h2 id="org5f09bd8">Container</h2>
-<div class="outline-text-2" id="text-org5f09bd8">
+<div id="outline-container-orgcfed806" class="outline-2">
+<h2 id="orgcfed806">Container</h2>
+<div class="outline-text-2" id="text-orgcfed806">
 </div>
-<div id="outline-container-org1feace0" class="outline-3">
-<h3 id="org1feace0">Coding Assistant Container</h3>
-<div class="outline-text-3" id="text-org1feace0">
+<div id="outline-container-orged384a7" class="outline-3">
+<h3 id="orged384a7">Coding Assistant Container</h3>
+<div class="outline-text-3" id="text-orged384a7">
 <p>
 参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
 </p>
@@ -233,9 +234,9 @@ alias geminix='docker run -it --rm \
 </p>
 </div>
 </div>
-<div id="outline-container-orgb40f3f8" class="outline-3">
-<h3 id="orgb40f3f8">MCP Container</h3>
-<div class="outline-text-3" id="text-orgb40f3f8">
+<div id="outline-container-org995f0ac" class="outline-3">
+<h3 id="org995f0ac">MCP Container</h3>
+<div class="outline-text-3" id="text-org995f0ac">
 <p>
 MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
 </p>
@@ -258,9 +259,9 @@ MCP Container 相关的项目也挺多，我用的是: <a href="https://github.c
 </div>
 </div>
 </div>
-<div id="outline-container-org231bc6a" class="outline-2">
-<h2 id="org231bc6a">Articles</h2>
-<div class="outline-text-2" id="text-org231bc6a">
+<div id="outline-container-org3ff9a09" class="outline-2">
+<h2 id="org3ff9a09">Articles</h2>
+<div class="outline-text-2" id="text-org3ff9a09">
 <p>
 整理了一些感觉还不错的文章
 </p>
@@ -317,9 +318,9 @@ Simon Willison 写了一篇非常不错的博客，分享了他与 Claude Code w
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcf96e5a" class="outline-2">
-<h2 id="orgcf96e5a">CLI AI Coding Tools</h2>
-<div class="outline-text-2" id="text-orgcf96e5a">
+<div id="outline-container-org88400af" class="outline-2">
+<h2 id="org88400af">CLI AI Coding Tools</h2>
+<div class="outline-text-2" id="text-org88400af">
 <p>
 整理了一些现在 star 比较多的 CLI AI Coding 项目：
 </p>

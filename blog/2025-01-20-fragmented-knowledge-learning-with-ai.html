@@ -26,7 +26,7 @@
        <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
        <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
        <script defer>
-         document.addEventListener("DOMContentLoaded",  () => {
+         document.addEventListener("DOMContentLoaded", () => {
            pangu.autoSpacingPage();
          });
        </script>
@@ -44,6 +44,7 @@
       <a href="https://www.vandee.art/blog/">Home</a>
       <a href="https://x404.xyz/wiki">Wiki</a>
       <a href="https://x404.xyz/photo">Photo</a>
+      <a href="projects.html">Archive</a>
       <a href="archive.html">Archive</a>
       <a href="tags.html">Tags</a>
       <div id="search-container">
@@ -58,22 +59,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org18c03c6">前言</a></li>
-<li><a href="#org27c36a1">PDF 阅读</a></li>
-<li><a href="#org703e734">网页阅读</a></li>
-<li><a href="#org856096a">零散的概念</a></li>
-<li><a href="#org3a8fe82">搜索</a>
+<li><a href="#org94b04f2">前言</a></li>
+<li><a href="#org66e83f2">PDF 阅读</a></li>
+<li><a href="#orgdf4c0af">网页阅读</a></li>
+<li><a href="#orga75b523">零散的概念</a></li>
+<li><a href="#orgdb46488">搜索</a>
 <ul>
-<li><a href="#org5d98e5e">2025-03-08 added</a></li>
+<li><a href="#org0ac92f5">2025-03-08 added</a></li>
 </ul>
 </li>
-<li><a href="#org9417801">其他工具</a></li>
+<li><a href="#orga1ffced">其他工具</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org18c03c6" class="outline-2">
-<h2 id="org18c03c6">前言</h2>
-<div class="outline-text-2" id="text-org18c03c6">
+<div id="outline-container-org94b04f2" class="outline-2">
+<h2 id="org94b04f2">前言</h2>
+<div class="outline-text-2" id="text-org94b04f2">
 <p>
 对于是否要拥抱 AI，在程序员里大致可以分为两派：一部分是坚决不用，一类是已经将 AI 融入了自己的工作流程。后面就简称为革新派和精英派。
 </p>
@@ -113,9 +114,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org27c36a1" class="outline-2">
-<h2 id="org27c36a1">PDF 阅读</h2>
-<div class="outline-text-2" id="text-org27c36a1">
+<div id="outline-container-org66e83f2" class="outline-2">
+<h2 id="org66e83f2">PDF 阅读</h2>
+<div class="outline-text-2" id="text-org66e83f2">
 <p>
 <a href="https://github.com/echohive42/AI-reads-books-page-by-page">GitHub - echohive42/AI-reads-books-page-by-page</a> 这个项目前段时间上了 GitHub Trends，项目逻辑很值得学习，立马 fork 自定义了一下：<a href="https://github.com/VandeeFeng/ReadPDFpbp">https://github.com/VandeeFeng/ReadPDFpbp</a> 。主要增加了 ollama 和 OpenRouter 模型的调用，还有一些自定义的参数，可以直接在 CLI 里调用。行业标准害人啊，cookbook 里都默认使用 OpenAI 和 Claude 的 API。
 </p>
@@ -129,9 +130,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org703e734" class="outline-2">
-<h2 id="org703e734">网页阅读</h2>
-<div class="outline-text-2" id="text-org703e734">
+<div id="outline-container-orgdf4c0af" class="outline-2">
+<h2 id="orgdf4c0af">网页阅读</h2>
+<div class="outline-text-2" id="text-orgdf4c0af">
 <p>
 <a href="https://github.com/vandeefeng/gitmemo/issues/26">在知识之间、AI 之间创造 connection</a> 这里是有关用 phidata 构建 Agent 来同时分析 2 个以上网页文章的内容。
 </p>
@@ -145,30 +146,30 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org856096a" class="outline-2">
-<h2 id="org856096a">零散的概念</h2>
-<div class="outline-text-2" id="text-org856096a">
+<div id="outline-container-orga75b523" class="outline-2">
+<h2 id="orga75b523">零散的概念</h2>
+<div class="outline-text-2" id="text-orga75b523">
 <p>
 平常一些概念上的学习，之前是在 OpenWeb UI 里，现在基本都在 Emacs 里用 gptel 了，全部都汇总在一个 org 文档里。
 </p>
 
 
-<figure id="org2c99053">
+<figure id="org02cdc0e">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/llmchat.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org3a8fe82" class="outline-2">
-<h2 id="org3a8fe82">搜索</h2>
-<div class="outline-text-2" id="text-org3a8fe82">
+<div id="outline-container-orgdb46488" class="outline-2">
+<h2 id="orgdb46488">搜索</h2>
+<div class="outline-text-2" id="text-orgdb46488">
 <p>
 一般的搜索直接用 DuckDuckGo 。再就是自己改了一下的 <a href="https://github.com/VandeeFeng/Gemini-Search">Gemini-Search</a> ，部署到 docker 调用 Gemini 的 API 实现类似 Perplexity 的体验。
 </p>
 </div>
-<div id="outline-container-org5d98e5e" class="outline-3">
-<h3 id="org5d98e5e">2025-03-08 added</h3>
-<div class="outline-text-3" id="text-org5d98e5e">
+<div id="outline-container-org0ac92f5" class="outline-3">
+<h3 id="org0ac92f5">2025-03-08 added</h3>
+<div class="outline-text-3" id="text-org0ac92f5">
 <p>
 最近各种 Deep Research 和 Deep Search 大大提升了用 AI 搜索的效率。OpenAI 和 Grok 的深度搜索效果都挺不错的。Deep Research 使用了半个多月，对我来说它最大的作用是针对一定的领域、topic，开拓思路，快速的找到这些问题领域的框架和索引。
 </p>
@@ -227,9 +228,9 @@ Websites：<a href="https://storm.genie.stanford.edu/">https://storm.genie.stanf
 </div>
 </div>
 </div>
-<div id="outline-container-org9417801" class="outline-2">
-<h2 id="org9417801">其他工具</h2>
-<div class="outline-text-2" id="text-org9417801">
+<div id="outline-container-orga1ffced" class="outline-2">
+<h2 id="orga1ffced">其他工具</h2>
+<div class="outline-text-2" id="text-orga1ffced">
 <p>
 另外要强烈安利 <a href="https://github.com/nbonamy/witsy">Witsy</a> 这个项目，不多介绍了，它就是我到目前为止用过最好用的 LLM 客户端。
 </p>
