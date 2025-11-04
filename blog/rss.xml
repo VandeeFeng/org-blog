@@ -4,7 +4,212 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Mon, 03 Nov 2025 22:15:03 +0800</lastBuildDate>
+<lastBuildDate>Tue, 04 Nov 2025 16:24:13 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[用 C 极简复现 Claude Skills]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd4c5874">TL;DR</a></li>
+<li><a href="#orgbf8b513">Claude Skills</a></li>
+<li><a href="#org5a4d63e">复现 Claude Skills</a>
+<ul>
+<li><a href="#org380586f">核心实现</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orgd4c5874" class="outline-2">
+<h2 id="orgd4c5874">TL;DR</h2>
+<div class="outline-text-2" id="text-orgd4c5874">
+<p>
+大道至简，Claude Skills 的这个思路很符合我对 LLM 工具能力扩展的构想。
+</p>
+</div>
+</div>
+<div id="outline-container-orgbf8b513" class="outline-2">
+<h2 id="orgbf8b513">Claude Skills</h2>
+<div class="outline-text-2" id="text-orgbf8b513">
+<p>
+Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Claude 模型的工具能力。
+</p>
+
+<p>
+通过本地的 skills 文件，Claude 可以智能的选择相应的 skills 脚本实现本地工具的调用和整合。这些本地的 skills 文件包含一个技能描述指导文档：SKILL.md，相应的脚本：scripts 文件夹。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">  skills/
+  ├── skill1/
+  │   ├── SKILL.md
+  │   ├── scripts/
+  │   │   └── script.py
+  │   └── reference.md
+  └── skill2/
+      ├── SKILL.md
+      └── scripts/
+          └── script.sh</pre>
+</div>
+
+<p>
+核心实现原理：
+</p>
+
+<p>
+所有 SKILL 的元数据（name,description）会自动加载到系统提示词 system prompt，这样 LLM 就能够知道现在有哪些 skill 和它们的功能是什么，这些元数据占用的 token 量极少。当 LLM 判断需要使用相应的 skill 才会动态读取完整的 SKILL.md 文档，然后调用相应的 script，最后把脚本结果返回给 LLM。
+</p>
+
+<p>
+这个思路完美的避免了 MCP 的超长上下文对 LLM 上下文窗口 context 的占用。
+</p>
+
+<p>
+之前我在许多 agent 框架里，就是想实现一个 agent 调度员，我输入相应的指令，它能够自己选择相应的工具来实现，现在 skill 的这个思路完美的解决了这个问题，并且不用依赖复杂的 agent 框架。
+</p>
+
+<p>
+直觉上，我觉得这就是以后 agent 扩展工具能力的最佳实践了: 老大模型（agent 调度）+ 隔离环境扩展（本地或云脚本+小模型）。优势很明显，不用过多依赖主模型的算力、agent 框架和上下文，自定义脚本意味着可以使用本地计算机的算力和其他模型，手动编写的脚本在稳定性上也限制了 LLM 的幻觉和随机性。特定场景下，在 agent 框架里编写 Workflow 和 loop 不如直接用编程语言写脚本来的可靠。
+</p>
+
+<p>
+这意味着：一个可以处理 tool 调用的普通小模型再加上扩展（skill 也就是一个特定的 plugin），基本上就可以脱离 agent 框架实现自定义的 agent 了。理论上我们可以构建任何想要扩展的自定义功能，例如用 python 批量获取论文并调用本地模型整理。
+</p>
+
+<p>
+总的来说，我感觉，Skill 的这种实现，从本质上解决了编程语言、代码能力、自动化和 LLM 结合的问题。
+</p>
+
+<p>
+Reference:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://simonwillison.net/2025/Oct/16/claude-skills/#atom-everything">Claude Skills are awesome, maybe a bigger deal than MCP</a></li>
+<li><a href="https://www.anthropic.com/news/skills">https://www.anthropic.com/news/skills</a></li>
+<li><a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</a></li>
+<li><a href="https://github.com/anthropics/skills">https://github.com/anthropics/skills</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5a4d63e" class="outline-2">
+<h2 id="org5a4d63e">复现 Claude Skills</h2>
+<div class="outline-text-2" id="text-org5a4d63e">
+<p>
+最近正好看到一个项目 <a href="https://github.com/bravenewxyz/agent-c">GitHub - bravenewxyz/agent-c: Ultra-lightweight AI Agent</a> ，从来没有想过一个 agent 可以有这么极简的实现方式。
+</p>
+
+
+<p>
+在这个项目的基础上，很轻松的就实现了 skills 的功能。
+</p>
+
+<p>
+只需要把 SKILL 的元数据（name,description）加载到系统提示词 system prompt，然后自定义一个 execute_skill 的工具。LLM 就能够调用这个 tool 来执行相应的本地 script 了。
+</p>
+
+
+<figure id="org9a78907">
+<img src="https://pic.vandee.art/images/agent-c-skills.png" class="img" width="60%" height="60%">
+
+</figure>
+
+<p>
+源码在：<a href="https://github.com/VandeeFeng/agent-c">https://github.com/VandeeFeng/agent-c</a>
+</p>
+</div>
+<div id="outline-container-org380586f" class="outline-3">
+<h3 id="org380586f">核心实现</h3>
+<div class="outline-text-3" id="text-org380586f">
+<p>
+agent.c:6-41 - init_agent() 函数: 在系统初始化时将技能列表添加到 system prompt
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C">
+  // 构建基础系统提示
+  char base_prompt[MAX_CONTENT];
+  snprintf(base_prompt, sizeof(base_prompt),
+           "You are JARVIS..." /* 基础提示内容 */);
+  // 发现技能并构建技能列表
+  char skills_list[MAX_CONTENT];
+  int skill_count = discover_skills(skills_list, sizeof(skills_list));
+  // 将技能列表添加到系统提示中
+  if (skill_count > 0) {
+      snprintf(agent.messages[0].content, MAX_CONTENT,
+               "%s=== AVAILABLE SKILLS ===\n%s"
+               "HOW TO USE SKILLS:\n"
+               "1. Call extract_skill with skill_name to get the complete skill
+  documentation\n"
+               // ...技能使用说明...
+               , base_prompt, skills_list);
+  }</pre>
+</div>
+
+
+<p>
+agent.c:84-100 - 动态技能内容注入: 当调用 extract_skill 时，会将完整的 SKILL.md 内容动态添加到系统提示中
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C">  if (result == 0) {
+      // 获取当前系统提示
+      char current_system[MAX_CONTENT];
+      strncpy(current_system, agent.messages[0].content, MAX_CONTENT - 1);
+      // 将技能内容注入到系统提示中
+      snprintf(agent.messages[0].content, MAX_CONTENT,
+               "%s\n\n=== SKILL: %s ===\n%s\n=== END SKILL ===\n",
+               current_system, skill_name, skill_content);
+  }</pre>
+</div>
+
+<p>
+skill.c:91-153 - extract_skill_description() 函数:从 SKILL.md 文件中提取技能描述
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C">  static int extract_skill_description(const char* skill_name, char* description, size_t
+   desc_size) {
+      // 构建 SKILL.md 文件路径
+      char md_path[MAX_SKILL_PATH];
+      snprintf(md_path, sizeof(md_path), "%s/SKILL.md", skill_path);
+      // 读取 SKILL.md 文件内容
+      FILE* file = fopen(md_path, "r");
+      // ...提取描述内容...
+  }</pre>
+</div>
+
+<p>
+skill.c:156-219 - discover_skills() 函数: 发现所有可用技能并构建技能列表
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C">  int discover_skills(char* skills_list, size_t list_size) {
+      // 遍历技能目录
+      while ((entry = readdir(dir)) != NULL) {
+          // 提取每个技能的描述
+          if (extract_skill_description(entry->d_name, description, sizeof(description))
+   != 0) {
+              snprintf(description, sizeof(description), "Skill: %s", entry->d_name);
+          }
+          // 构建技能列表条目
+          snprintf(skill_entry, sizeof(skill_entry), "- %s: %s\n", entry->d_name,
+  description);
+      }
+  }</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-llm.html">LLM</a> <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div>]]></description>
+  <category><![CDATA[LLM]]></category>
+  <category><![CDATA[Coding]]></category>
+  <link>https://www.vandee.art/blog/2025-11-04-minimal-C-reimplementation-of-claude-skills.html</link>
+  <guid>https://www.vandee.art/blog/2025-11-04-minimal-C-reimplementation-of-claude-skills.html</guid>
+  <pubDate>Tue, 04 Nov 2025 14:57:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[致敬 Linus 和手艺人 - GitNano]]></title>
   <description><![CDATA[
