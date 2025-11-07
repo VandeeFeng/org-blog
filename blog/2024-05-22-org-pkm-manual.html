@@ -59,36 +59,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgabe9053">Intro</a></li>
-<li><a href="#org25d09c9">Manual</a>
+<li><a href="#orga694d5e">Intro</a></li>
+<li><a href="#orgcc38cbd">Manual</a>
 <ul>
-<li><a href="#org7011547">Prerequisites</a></li>
-<li><a href="#org2d94fcc">PKM</a>
+<li><a href="#org9e02176">Prerequisites</a></li>
+<li><a href="#org70ae53d">PKM</a>
 <ul>
-<li><a href="#org14ef17a">Principles</a></li>
-<li><a href="#org2cb8385">Methods</a></li>
+<li><a href="#org7fe5992">Principles</a></li>
+<li><a href="#orgac24f94">Methods</a></li>
 </ul>
 </li>
-<li><a href="#org7108fe9">PKM with LLM</a>
+<li><a href="#orgb7faa7e">PKM with LLM</a>
 <ul>
-<li><a href="#org9b19fd9">Ollama</a></li>
-<li><a href="#org3ba31ce">Open WebUI</a></li>
-<li><a href="#org829176a">Aider</a></li>
-<li><a href="#orgbdb4ec4">gptel</a></li>
-<li><a href="#org782d0fc">Kotaemon</a></li>
-<li><a href="#org0f41d55">Chipper</a></li>
+<li><a href="#orgffa727e">Ollama</a></li>
+<li><a href="#org1db3c43">Open WebUI</a></li>
+<li><a href="#org9f184e7">Aider</a></li>
+<li><a href="#org83f9af6">gptel</a></li>
+<li><a href="#org0be7097">Kotaemon</a></li>
+<li><a href="#orgc3c28f1">Chipper</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org37d0a46">ChangeLog</a></li>
-<li><a href="#org869a91e">Thanks</a></li>
+<li><a href="#org6962973">ChangeLog</a></li>
+<li><a href="#orgac312e8">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgabe9053" class="outline-2">
-<h2 id="orgabe9053">Intro</h2>
-<div class="outline-text-2" id="text-orgabe9053">
+<div id="outline-container-orga694d5e" class="outline-2">
+<h2 id="orga694d5e">Intro</h2>
+<div class="outline-text-2" id="text-orga694d5e">
 <blockquote>
 <p>
 For me, taking notes helps make sure that I’m really thinking hard about what’s in there. If I disagree with the book, sometimes it takes a long time to read the books because I’m writing so much in the margin. <a href="https://youtu.be/eTFy8RnUkoU?t=11">Bill Gates</a>
@@ -128,9 +128,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 </p>
 </div>
 </div>
-<div id="outline-container-org25d09c9" class="outline-2">
-<h2 id="org25d09c9">Manual</h2>
-<div class="outline-text-2" id="text-org25d09c9">
+<div id="outline-container-orgcc38cbd" class="outline-2">
+<h2 id="orgcc38cbd">Manual</h2>
+<div class="outline-text-2" id="text-orgcc38cbd">
 <p>
 这是一个以 <a href="https://zh.wikipedia.org/wiki/Emacs">Emacs</a> 为基础编辑器、文件管理的Org-mode本地笔记PKM。
 </p>
@@ -149,9 +149,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 <li>PKM-with-LLM：PKM和大语言模型结合的使用、ollama、RAG(待更新)</li>
 </ul>
 </div>
-<div id="outline-container-org7011547" class="outline-3">
-<h3 id="org7011547">Prerequisites</h3>
-<div class="outline-text-3" id="text-org7011547">
+<div id="outline-container-org9e02176" class="outline-3">
+<h3 id="org9e02176">Prerequisites</h3>
+<div class="outline-text-3" id="text-org9e02176">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://www.gnu.org/software/emacs/">GNU Emacs</a>，<a href="https://github.com/doomemacs/doomemacs">doomemacs</a>，<a href="https://orgmode.org/">Org mode for GNU Emacs</a>，<a href="https://www.orgroam.com/">Org-roam</a>。
 </p>
@@ -215,15 +215,15 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://w
 </p>
 
 
-<figure id="org256a872">
+<figure id="orgffd32e2">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/new-emacs3.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org2d94fcc" class="outline-3">
-<h3 id="org2d94fcc">PKM</h3>
-<div class="outline-text-3" id="text-org2d94fcc">
+<div id="outline-container-org70ae53d" class="outline-3">
+<h3 id="org70ae53d">PKM</h3>
+<div class="outline-text-3" id="text-org70ae53d">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -241,7 +241,7 @@ Januarys用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="org1dee4be">
+<figure id="org0e180a9">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -274,9 +274,9 @@ Stay foolish，stay simple。
 本地笔记没有在线笔记软件方便的地方就是多端同步与预览。我的本地笔记已经上传到了GitHub仓库，通过Git同步。临时需要修改的直接在GitHub仓库里就修改了。预览方面，我的笔记输出到了 <a href="https://wiki.vandee.art">Vandee — Wiki</a>
 </p>
 </div>
-<div id="outline-container-org14ef17a" class="outline-4">
-<h4 id="org14ef17a">Principles</h4>
-<div class="outline-text-4" id="text-org14ef17a">
+<div id="outline-container-org7fe5992" class="outline-4">
+<h4 id="org7fe5992">Principles</h4>
+<div class="outline-text-4" id="text-org7fe5992">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -314,9 +314,9 @@ Stay foolish，stay simple。
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org2cb8385" class="outline-4">
-<h4 id="org2cb8385">Methods</h4>
-<div class="outline-text-4" id="text-org2cb8385">
+<div id="outline-container-orgac24f94" class="outline-4">
+<h4 id="orgac24f94">Methods</h4>
+<div class="outline-text-4" id="text-orgac24f94">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -351,14 +351,14 @@ Emacs，org-roam，模板创建Daily和note：
 </p>
 
 
-<figure id="orgd10cb38">
+<figure id="org73793ea">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 <ul class="org-ul">
-<li><a id="orgd2a976d"></a>Org-tag<br>
-<div class="outline-text-5" id="text-orgd2a976d">
+<li><a id="org0a5c026"></a>Org-tag<br>
+<div class="outline-text-5" id="text-org0a5c026">
 <p>
 org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的 <b>标签的统一性</b> ，大小写或者单复数不统一会很麻烦。
 </p>
@@ -387,7 +387,8 @@ org里的标签功能也很全面，支持多个分组，可以自动补全，�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">(setq org-tag-alist '(("@work" . ?w) ("@home" . ? h ) ("@laptop" . ?l)))</pre>
+<pre class="src src-nil">(setq org-tag-alist '(("@work" . ?w) ("@home" . ? h ) ("@laptop" . ?l)))
+</pre>
 </div>
 
 <p>
@@ -395,7 +396,8 @@ org里的标签功能也很全面，支持多个分组，可以自动补全，�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">#+TAGS: @work(w) @home(h) @tennisclub(t) laptop(l) pc(p)</pre>
+<pre class="src src-nil">#+TAGS: @work(w) @home(h) @tennisclub(t) laptop(l) pc(p)
+</pre>
 </div>
 
 <p>
@@ -403,7 +405,8 @@ org里的标签功能也很全面，支持多个分组，可以自动补全，�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">#+TAGS: @work(w) @home(h) @tennisclub(t) \n laptop(l) pc(p)</pre>
+<pre class="src src-nil">#+TAGS: @work(w) @home(h) @tennisclub(t) \n laptop(l) pc(p)
+</pre>
 </div>
 
 <p>
@@ -412,7 +415,8 @@ org里的标签功能也很全面，支持多个分组，可以自动补全，�
 
 <div class="org-src-container">
 <pre class="src src-nil">#+TAGS: @work(w) @home(h) @tennisclub(t)
-#+TAGS: laptop(l) pc(p)</pre>
+#+TAGS: laptop(l) pc(p)
+</pre>
 </div>
 
 <p>
@@ -420,7 +424,8 @@ org里的标签功能也很全面，支持多个分组，可以自动补全，�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">#+TAGS: { @work(w) @home(h) @tennisclub(t) } laptop(l) pc(p)</pre>
+<pre class="src src-nil">#+TAGS: { @work(w) @home(h) @tennisclub(t) } laptop(l) pc(p)
+</pre>
 </div>
 
 <p>
@@ -436,11 +441,12 @@ org 也允许多个分组。当光标在这些行上的时候，不要忘了按 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(setq org-tag-alist '((:startgroup . nil)
-                      ("@work" . ?w) ("@home" . ?h)
-                      ("@tennisclub" . ?t)
-                      (:endgroup . nil)
-                      ("laptop" . ?l) ("pc" . ?p))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-tag-alist <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #79C0FF;">:startgroup</span> . nil<span style="color: #b0b1a3;">)</span>
+                      <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"@work"</span> . ?w<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"@home"</span> . ?h<span style="color: #b0b1a3;">)</span>
+                      <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"@tennisclub"</span> . ?t<span style="color: #b0b1a3;">)</span>
+                      <span style="color: #b0b1a3;">(</span><span style="color: #79C0FF;">:endgroup</span> . nil<span style="color: #b0b1a3;">)</span>
+                      <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"laptop"</span> . ?l<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"pc"</span> . ?p<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+</pre>
 </div>
 
 
@@ -455,8 +461,8 @@ Ref:
 </ul>
 </div>
 </li>
-<li><a id="org253153a"></a>Org-agenda<br>
-<div class="outline-text-5" id="text-org253153a">
+<li><a id="org89cd15c"></a>Org-agenda<br>
+<div class="outline-text-5" id="text-org89cd15c">
 <p>
 最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用 <code>#TODO</code> 来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 </p>
@@ -470,27 +476,29 @@ Ref:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; 单独的文件
-(setq org-agenda-files '("~/your/path/to/1.org" "~/your/path/to/2.org"))
-;; 文件夹
-;; 这样会把目录下包括子文件夹的文件都添加进去 https://emacs-china.org/t/org-txt-agenda/13506/5
-(setq org-agenda-files (directory-files-recursively "~/your/directory/" "\\.org$"))
-;; 文件夹但不包括子文件夹
-(setq org-agenda-directory "~/your/agenda/directory/")</pre>
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;; </span><span style="color: #787878;">&#21333;&#29420;&#30340;&#25991;&#20214;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-agenda-files <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"~/your/path/to/1.org"</span> <span style="color: #A1D08E;">"~/your/path/to/2.org"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #787878;">;; </span><span style="color: #787878;">&#25991;&#20214;&#22841;
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">&#36825;&#26679;&#20250;&#25226;&#30446;&#24405;&#19979;&#21253;&#25324;&#23376;&#25991;&#20214;&#22841;&#30340;&#25991;&#20214;&#37117;&#28155;&#21152;&#36827;&#21435; https://emacs-china.org/t/org-txt-agenda/13506/5
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-agenda-files <span style="color: #93a8c6;">(</span>directory-files-recursively <span style="color: #A1D08E;">"~/your/directory/"</span> <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.org$"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #787878;">;; </span><span style="color: #787878;">&#25991;&#20214;&#22841;&#20294;&#19981;&#21253;&#25324;&#23376;&#25991;&#20214;&#22841;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-agenda-directory <span style="color: #A1D08E;">"~/your/agenda/directory/"</span><span style="color: #8c8c8c;">)</span>
+
+</pre>
 </div>
 
 <p>
 这是现在的样子：
 </p>
 
-<figure id="org8b479c3">
+<figure id="org8927935">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-06-15%2011.28.09.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </li>
-<li><a id="org7bf1196"></a>TODOs<br>
-<div class="outline-text-5" id="text-org7bf1196">
+<li><a id="org333029a"></a>TODOs<br>
+<div class="outline-text-5" id="text-org333029a">
 <ul class="org-ul">
 <li><p>
 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入 <code>[/]</code> 或者 <code>[%]</code> 。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
@@ -502,7 +510,8 @@ Ref:
       - [ ] Peter
       - [X] Sarah
     - [X] order food
-    - [ ] think about what music to play</pre>
+    - [ ] think about what music to play
+</pre>
 </div>
 
 <p>
@@ -521,7 +530,8 @@ Org mode 允许定义进入状态和离开状态时的额外动作，可用的�
 <div class="org-src-container">
 <pre class="src src-nil">  DONE(d@)       ; 进入时添加笔记
   DONE(d/!)      ; 离开时添加变更信息
-  DONE(d@/!)     ; 进入时添加笔记，离开时添加变更信息</pre>
+  DONE(d@/!)     ; 进入时添加笔记，离开时添加变更信息
+</pre>
 </div>
 
 <ul class="org-ul">
@@ -578,9 +588,11 @@ TODO sequence
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
-   (setq org-todo-keywords
-         '((sequence "TODO(t)" "DOING(i)" "|" "DONE(d@)")))
-   (setq org-log-done 'time) ;; 每次当你将一个项从 TODO (not-done) 状态变成任意的 DONE 状态时，那么，它就会自动在标题的下面插入一行下面的内容：CLOSED: [timestamp]</pre>
+   <span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-todo-keywords
+         <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>sequence <span style="color: #A1D08E;">"TODO(t)"</span> <span style="color: #A1D08E;">"DOING(i)"</span> <span style="color: #A1D08E;">"|"</span> <span style="color: #A1D08E;">"DONE(d@)"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+   <span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-log-done <span style="color: #FFA657;">'</span><span style="color: #95a99f;">time</span><span style="color: #8c8c8c;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#27599;&#27425;&#24403;&#20320;&#23558;&#19968;&#20010;&#39033;&#20174; TODO (not-done) &#29366;&#24577;&#21464;&#25104;&#20219;&#24847;&#30340; DONE &#29366;&#24577;&#26102;&#65292;&#37027;&#20040;&#65292;&#23427;&#23601;&#20250;&#33258;&#21160;&#22312;&#26631;&#39064;&#30340;&#19979;&#38754;&#25554;&#20837;&#19968;&#34892;&#19979;&#38754;&#30340;&#20869;&#23481;&#65306;CLOSED: [timestamp]
+</span>
+</pre>
 </div></li>
 </ul></li>
 </ul>
@@ -599,8 +611,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org68f5ba5"></a>Org-capture<br>
-<div class="outline-text-5" id="text-org68f5ba5">
+<li><a id="org847cab1"></a>Org-capture<br>
+<div class="outline-text-5" id="text-org847cab1">
 <p>
 <a href="https://orgmode.org/manual/Capture.html">Org-capture</a> 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 </p>
@@ -622,14 +634,15 @@ Ref：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; org-capture支持自定义函数，通过function来执行
-(defun my-org-goto-last-todo-headline ()
-    "Move point to the last headline in file matching \"* Notes\"."
-    (end-of-buffer)
-    (re-search-backward "\\* TODOs"))
-(add-to-list 'org-capture-templates
-            '("t" "Task" entry (file+function "~/Vandee/pkm/org/Journal.org"
-                                                my-org-goto-last-todo-headline)</pre>
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;; </span><span style="color: #787878;">org-capture&#25903;&#25345;&#33258;&#23450;&#20041;&#20989;&#25968;&#65292;&#36890;&#36807;function&#26469;&#25191;&#34892;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-org-goto-last-todo-headline</span> <span style="color: #93a8c6;">()</span>
+    <span style="color: #787878;">"Move point to the last headline in file matching </span><span style="color: #787878; font-weight: bold;">\</span><span style="color: #787878; font-weight: bold;">"</span><span style="color: #787878;">* Notes</span><span style="color: #787878; font-weight: bold;">\</span><span style="color: #787878; font-weight: bold;">"</span><span style="color: #787878;">."</span>
+    <span style="color: #93a8c6;">(</span>end-of-buffer<span style="color: #93a8c6;">)</span>
+    <span style="color: #93a8c6;">(</span>re-search-backward <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">* TODOs"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span>
+            <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"t"</span> <span style="color: #A1D08E;">"Task"</span> entry <span style="color: #b0b1a3;">(</span>file+function <span style="color: #A1D08E;">"~/Vandee/pkm/org/Journal.org"</span>
+                                                my-org-goto-last-todo-headline<span style="color: #b0b1a3;">)</span>
+</pre>
 </div>
 
 
@@ -639,51 +652,56 @@ Ref：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(after! org
-  ;; (server-start)
-  ;; (require 'org-protocol)
-  (org-link-set-parameters "zotero" :follow
-                           (lambda (zpath)
-                             (browse-url
-                              ;; we get the "zotero:"-less url, so we put it back.
-                              (format "zotero:%s" zpath))))
-  (setq org-agenda-files '("~/Vandee/pkm/org/Journal.org" "~/Vandee/pkm/org/clip.org"))
-  ;; (setq org-agenda-include-diary t)
-  ;; (setq org-agenda-diary-file "~/Vandee/pkm/org/Journal.org")
-  (setq org-directory "~/Vandee/pkm/org/")
-  (global-set-key (kbd "C-c c") 'org-capture)
-  ;;(setq org-default-notes-file "~/Vandee/pkm/inbox.org")
-  (setq org-capture-templates nil)
-  ;; (add-to-list 'org-capture-templates
-  ;;              '("j" "Journal" entry (file+datetree  "~/Vandee/pkm/Journals/Journal.org")
-  ;;                "* [[file:%<%Y>/%<%Y-%m-%d>.org][%<%Y-%m-%d>]] - %^{heading} %^g\n %?\n"))
-  (add-to-list 'org-capture-templates
-               '("j" "Journal" entry (file+datetree "~/Vandee/pkm/org/Journal.org")
-                 "* TODOs\n* Inbox\n- %?"))
-  (add-to-list 'org-capture-templates
-               '("i" "Inbox" entry (file+datetree "~/Vandee/pkm/org/Inbox.org")
-                 "* %U - %^{heading} %^g\n %?\n"))
-  (defun my-org-goto-last-todo-headline ()
-    "Move point to the last headline in file matching \"* Notes\"."
-    (end-of-buffer)
-    (re-search-backward "\\* TODOs"))
-  (add-to-list 'org-capture-templates
-               '("t" "Task" entry (file+function "~/Vandee/pkm/org/Journal.org"
-                                                 my-org-goto-last-todo-headline)
-                 "* TODO %i%? \n%T"))
-  (add-to-list 'org-capture-templates '("c" "Collections"))
-  (add-to-list 'org-capture-templates
-               '("cw" "Web Collections" item
-                 (file+headline "~/Vandee/pkm/org/websites.org" "实用")
-                 "%?"))
-  (add-to-list 'org-capture-templates
-               '("ct" "Tool Collections" item
-                 (file+headline "~/Vandee/pkm/org/tools.org" "实用")
-                 "%?"))
-  (add-to-list 'org-capture-templates
-               '("cc" "Clip Collections" entry
-                 (file+headline "~/Vandee/pkm/org/clip.org" "Clip")
-                 "* %^{heading} %^g\n%T\nSource: %^{source}\n%?"))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span>after! org
+  <span style="color: #787878;">;; </span><span style="color: #787878;">(server-start)
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">(require 'org-protocol)
+</span>  <span style="color: #93a8c6;">(</span>org-link-set-parameters <span style="color: #A1D08E;">"zotero"</span> <span style="color: #79C0FF;">:follow</span>
+                           <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #97b098;">(</span>zpath<span style="color: #97b098;">)</span>
+                             <span style="color: #97b098;">(</span>browse-url
+                              <span style="color: #787878;">;; </span><span style="color: #787878;">we get the "zotero:"-less url, so we put it back.
+</span>                              <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"zotero:%s"</span> zpath<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> org-agenda-files <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"~/Vandee/pkm/org/Journal.org"</span> <span style="color: #A1D08E;">"~/Vandee/pkm/org/clip.org"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">(setq org-agenda-include-diary t)
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">(setq org-agenda-diary-file "~/Vandee/pkm/org/Journal.org")
+</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> org-directory <span style="color: #A1D08E;">"~/Vandee/pkm/org/"</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>global-set-key <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"C-c c"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;;</span><span style="color: #787878;">(setq org-default-notes-file "~/Vandee/pkm/inbox.org")
+</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> org-capture-templates nil<span style="color: #93a8c6;">)</span>
+
+  <span style="color: #787878;">;; </span><span style="color: #787878;">(add-to-list 'org-capture-templates
+</span>  <span style="color: #787878;">;;              </span><span style="color: #787878;">'("j" "Journal" entry (file+datetree  "~/Vandee/pkm/Journals/Journal.org")
+</span>  <span style="color: #787878;">;;                </span><span style="color: #787878;">"* [[file:%&lt;%Y&gt;/%&lt;%Y-%m-%d&gt;.org][%&lt;%Y-%m-%d&gt;]] - %^{heading} %^g\n %?\n"))
+</span>  <span style="color: #93a8c6;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span>
+               <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"j"</span> <span style="color: #A1D08E;">"Journal"</span> entry <span style="color: #97b098;">(</span>file+datetree <span style="color: #A1D08E;">"~/Vandee/pkm/org/Journal.org"</span><span style="color: #97b098;">)</span>
+                 <span style="color: #A1D08E;">"* TODOs</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">* Inbox</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">- %?"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span>
+               <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"i"</span> <span style="color: #A1D08E;">"Inbox"</span> entry <span style="color: #97b098;">(</span>file+datetree <span style="color: #A1D08E;">"~/Vandee/pkm/org/Inbox.org"</span><span style="color: #97b098;">)</span>
+                 <span style="color: #A1D08E;">"* %U - %^{heading} %^g</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;"> %?</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-org-goto-last-todo-headline</span> <span style="color: #b0b1a3;">()</span>
+    <span style="color: #787878;">"Move point to the last headline in file matching </span><span style="color: #787878; font-weight: bold;">\</span><span style="color: #787878; font-weight: bold;">"</span><span style="color: #787878;">* Notes</span><span style="color: #787878; font-weight: bold;">\</span><span style="color: #787878; font-weight: bold;">"</span><span style="color: #787878;">."</span>
+    <span style="color: #b0b1a3;">(</span>end-of-buffer<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span>re-search-backward <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">* TODOs"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span>
+               <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"t"</span> <span style="color: #A1D08E;">"Task"</span> entry <span style="color: #97b098;">(</span>file+function <span style="color: #A1D08E;">"~/Vandee/pkm/org/Journal.org"</span>
+                                                 my-org-goto-last-todo-headline<span style="color: #97b098;">)</span>
+                 <span style="color: #A1D08E;">"* TODO %i%? </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">%T"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+
+  <span style="color: #93a8c6;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span> <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"c"</span> <span style="color: #A1D08E;">"Collections"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span>
+               <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"cw"</span> <span style="color: #A1D08E;">"Web Collections"</span> item
+                 <span style="color: #97b098;">(</span>file+headline <span style="color: #A1D08E;">"~/Vandee/pkm/org/websites.org"</span> <span style="color: #A1D08E;">"&#23454;&#29992;"</span><span style="color: #97b098;">)</span>
+                 <span style="color: #A1D08E;">"%?"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span>
+               <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"ct"</span> <span style="color: #A1D08E;">"Tool Collections"</span> item
+                 <span style="color: #97b098;">(</span>file+headline <span style="color: #A1D08E;">"~/Vandee/pkm/org/tools.org"</span> <span style="color: #A1D08E;">"&#23454;&#29992;"</span><span style="color: #97b098;">)</span>
+                 <span style="color: #A1D08E;">"%?"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>add-to-list <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-capture-templates</span>
+               <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"cc"</span> <span style="color: #A1D08E;">"Clip Collections"</span> entry
+                 <span style="color: #97b098;">(</span>file+headline <span style="color: #A1D08E;">"~/Vandee/pkm/org/clip.org"</span> <span style="color: #A1D08E;">"Clip"</span><span style="color: #97b098;">)</span>
+                 <span style="color: #A1D08E;">"* %^{heading} %^g</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">%T</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">Source: %^{source}</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">%?"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+
+</pre>
 </div>
 
 
@@ -697,8 +715,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="orga7446e0"></a>denote<br>
-<div class="outline-text-5" id="text-orga7446e0">
+<li><a id="org056afd8"></a>denote<br>
+<div class="outline-text-5" id="text-org056afd8">
 <p>
 2025-06-28 added
 </p>
@@ -737,14 +755,14 @@ Ref:
 </ul>
 </div>
 </li>
-<li><a id="orgd5e2e28"></a>Org-roam<br>
-<div class="outline-text-5" id="text-orgd5e2e28">
+<li><a id="orgb260034"></a>Org-roam<br>
+<div class="outline-text-5" id="text-orgb260034">
 <p>
 <a href="https://www.orgroam.com/">Org-roam</a> 是 Emacs的一个包，可以简单的实现双链，通过org-roam-ui直观的预览。
 </p>
 
 
-<figure id="orga67ff4d">
+<figure id="org1f62390">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam-ui-2024-05-22%2013.31.40.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -778,43 +796,45 @@ org-roam-ui 也有和 Logseq一样的网点图谱「 Graph View 」，也提供�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; (setq org-roam-dailies-directory "~/Vandee/pkm/Journals/")
-(setq org-export-with-toc nil) ;;禁止生成toc
-(use-package org-roam
-  :ensure t
-  :init
-  (setq org-roam-v2-ack t)
-  :custom
-  ;; (org-roam-dailies-capture-templates
-  ;;  '(("d" "daily" plain "* %<%Y-%m-%d>\n* TODO\n- \n* Inbox\n- %?"
-  ;;     :if-new (file+head "%<%Y>/%<%Y-%m-%d>.org" "#+TITLE: %<%Y-%m-%d>\n"))))
-  (org-roam-directory "~/Vandee/pkm/roam/")
-  (org-id-locations-file "~/Vandee/pkm/roam/.orgids")
-  (org-roam-capture-templates
-   ~(("n" "note" plain "%?"
-      :if-new (file+head "${title}.org"
-                         "#+TITLE: ${title}\n#+UID: %<%Y%m%d%H%M%S>\n#+FILETAGS: \n#+TYPE: \n#+SOURCE: \n#+DATE: %<%Y-%m-%d>\n")
-      :unnarrowed t))
-   )
-  (org-roam-completion-everywhere t)
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n I" . org-roam-node-insert-immediate)
-         ("C-c n c" . org-roam-capture)
-         ;; ("C-c n j" . org-roam-dailies-capture-today)
-         :map org-mode-map
-         ("C-M-i" . completion-at-point)
-         ;; :map org-roam-dailies-map
-         ;; ("Y" . org-roam-dailies-capture-yesterday)
-         ;; ("T" . org-roam-dailies-capture-tomorrow))
-  ;; :bind-keymap
-  ;; ("C-c n d" . org-roam-dailies-map)
-  :config
-  (require 'org-roam-dailies) ;; Ensure the keymap is available
-  (org-roam-db-autosync-mode)
-  (require 'org-roam-protocol)
-  )</pre>
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;; </span><span style="color: #787878;">(setq org-roam-dailies-directory "~/Vandee/pkm/Journals/")
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-export-with-toc nil<span style="color: #8c8c8c;">)</span> <span style="color: #787878;">;;</span><span style="color: #787878;">&#31105;&#27490;&#29983;&#25104;toc
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> org-roam
+  <span style="color: #79C0FF;">:ensure</span> t
+  <span style="color: #79C0FF;">:init</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> org-roam-v2-ack t<span style="color: #93a8c6;">)</span>
+  <span style="color: #79C0FF;">:custom</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">(org-roam-dailies-capture-templates
+</span>  <span style="color: #787878;">;;  </span><span style="color: #787878;">'(("d" "daily" plain "* %&lt;%Y-%m-%d&gt;\n* TODO\n- \n* Inbox\n- %?"
+</span>  <span style="color: #787878;">;;     </span><span style="color: #787878;">:if-new (file+head "%&lt;%Y&gt;/%&lt;%Y-%m-%d&gt;.org" "#+TITLE: %&lt;%Y-%m-%d&gt;\n"))))
+</span>  <span style="color: #93a8c6;">(</span>org-roam-directory <span style="color: #A1D08E;">"~/Vandee/pkm/roam/"</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>org-id-locations-file <span style="color: #A1D08E;">"~/Vandee/pkm/roam/.orgids"</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>org-roam-capture-templates
+   ~<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">"n"</span> <span style="color: #A1D08E;">"note"</span> plain <span style="color: #A1D08E;">"%?"</span>
+      <span style="color: #79C0FF;">:if-new</span> <span style="color: #aebed8;">(</span>file+head <span style="color: #A1D08E;">"${title}.org"</span>
+                         <span style="color: #A1D08E;">"#+TITLE: ${title}</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+UID: %&lt;%Y%m%d%H%M%S&gt;</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+FILETAGS: </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+TYPE: </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+SOURCE: </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+DATE: %&lt;%Y-%m-%d&gt;</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #aebed8;">)</span>
+      <span style="color: #79C0FF;">:unnarrowed</span> t<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+   <span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>org-roam-completion-everywhere t<span style="color: #93a8c6;">)</span>
+  <span style="color: #79C0FF;">:bind</span> <span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"C-c n l"</span> . org-roam-buffer-toggle<span style="color: #b0b1a3;">)</span>
+         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"C-c n f"</span> . org-roam-node-find<span style="color: #b0b1a3;">)</span>
+         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"C-c n i"</span> . org-roam-node-insert<span style="color: #b0b1a3;">)</span>
+         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"C-c n I"</span> . org-roam-node-insert-immediate<span style="color: #b0b1a3;">)</span>
+         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"C-c n c"</span> . org-roam-capture<span style="color: #b0b1a3;">)</span>
+         <span style="color: #787878;">;; </span><span style="color: #787878;">("C-c n j" . org-roam-dailies-capture-today)
+</span>         <span style="color: #79C0FF;">:map</span> org-mode-map
+         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"C-M-i"</span> . completion-at-point<span style="color: #b0b1a3;">)</span>
+         <span style="color: #787878;">;; </span><span style="color: #787878;">:map org-roam-dailies-map
+</span>         <span style="color: #787878;">;; </span><span style="color: #787878;">("Y" . org-roam-dailies-capture-yesterday)
+</span>         <span style="color: #787878;">;; </span><span style="color: #787878;">("T" . org-roam-dailies-capture-tomorrow))
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">:bind-keymap
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">("C-c n d" . org-roam-dailies-map)
+</span>  <span style="color: #79C0FF;">:config</span>
+  <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-roam-dailies</span><span style="color: #b0b1a3;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">Ensure the keymap is available
+</span>  <span style="color: #b0b1a3;">(</span>org-roam-db-autosync-mode<span style="color: #b0b1a3;">)</span>
+  <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-roam-protocol</span><span style="color: #b0b1a3;">)</span>
+  <span style="color: #93a8c6;">)</span>
+
+</pre>
 </div>
 
 <p>
@@ -822,22 +842,24 @@ org-roam-ui 也有和 Logseq一样的网点图谱「 Graph View 」，也提供�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; org-roam-capture模板分组
-(setq org-roam-capture-templates
-      '(
-        ("d" "default" plain (function org-roam-capture--get-point)
-         "%?"
-         :file-name "%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+title: ${title}\n#+roam_alias:\n\n")
-        ("g" "group")
-        ("ga" "Group A" plain (function org-roam-capture--get-point)
-         "%?"
-         :file-name "%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+title: ${title}\n#+roam_alias:\n\n")
-        ("gb" "Group B" plain (function org-roam-capture--get-point)
-         "%?"
-         :file-name "%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+title: ${title}\n#+roam_alias:\n\n")))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;; </span><span style="color: #787878;">org-roam-capture&#27169;&#26495;&#20998;&#32452;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-roam-capture-templates
+      <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"d"</span> <span style="color: #A1D08E;">"default"</span> plain <span style="color: #97b098;">(</span><span style="color: #FFA657;">function</span> org-roam-capture--get-point<span style="color: #97b098;">)</span>
+         <span style="color: #A1D08E;">"%?"</span>
+         <span style="color: #79C0FF;">:file-name</span> <span style="color: #A1D08E;">"%&lt;%Y%m%d%H%M%S&gt;-${slug}"</span>
+         <span style="color: #79C0FF;">:head</span> <span style="color: #A1D08E;">"#+title: ${title}</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+roam_alias:</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"g"</span> <span style="color: #A1D08E;">"group"</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"ga"</span> <span style="color: #A1D08E;">"Group A"</span> plain <span style="color: #97b098;">(</span><span style="color: #FFA657;">function</span> org-roam-capture--get-point<span style="color: #97b098;">)</span>
+         <span style="color: #A1D08E;">"%?"</span>
+         <span style="color: #79C0FF;">:file-name</span> <span style="color: #A1D08E;">"%&lt;%Y%m%d%H%M%S&gt;-${slug}"</span>
+         <span style="color: #79C0FF;">:head</span> <span style="color: #A1D08E;">"#+title: ${title}</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+roam_alias:</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"gb"</span> <span style="color: #A1D08E;">"Group B"</span> plain <span style="color: #97b098;">(</span><span style="color: #FFA657;">function</span> org-roam-capture--get-point<span style="color: #97b098;">)</span>
+         <span style="color: #A1D08E;">"%?"</span>
+         <span style="color: #79C0FF;">:file-name</span> <span style="color: #A1D08E;">"%&lt;%Y%m%d%H%M%S&gt;-${slug}"</span>
+         <span style="color: #79C0FF;">:head</span> <span style="color: #A1D08E;">"#+title: ${title}</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">#+roam_alias:</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+</pre>
 </div>
 
 
@@ -856,40 +878,41 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org40dc939"></a>Org-export<br>
-<div class="outline-text-5" id="text-org40dc939">
+<li><a id="org001520b"></a>Org-export<br>
+<div class="outline-text-5" id="text-org001520b">
 <p>
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些<a href="https://orgmode.org/zh-CN/tools.html">工具</a> 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; 当前buffer下，替换markdown的链接和标题格式到org-mode的格式，排除图片的转换、替换代码块格式。
-(defun my-markdown-to-org ()
-  (interactive)
-  (save-excursion
-    ;; 转换Markdown标题为Org-mode标题
-    (goto-char (point-min))
-    (while (re-search-forward "^\s*\\(#+\\) \\(.*\\)" nil t)
-      (let ((level (length (match-string 1)))
-            (title1 (match-string 2)))
-        (replace-match (concat (make-string level ?*) " " title1)))))
-  ;; 转换Markdown链接为Org-mode链接,但是跳过图片链接
-  (goto-char (point-min))
-  (while (re-search-forward "\\[[\(.*?\][\(.*?\)\]])" nil t)
-    (let ((title (match-string 1))
-          (url (match-string 2)))
-      (unless (and (string-match "\\(jpeg\\|png\\|svg\\)" url)
-                   (string-match "https" url))
-        (replace-match (format "[[%s][%s]]" url title)))))
-  ;; 转换Markdown代码块为Org-mode代码块
-  (goto-char (point-min))
-  (while (re-search-forward "^~~~" nil t)
-    (if (looking-back "^~~~")
-        (progn
-          (replace-match "#+begin_src")
-          (re-search-forward "^~~~" nil t)
-          (if (looking-back "^~~~")
-              (replace-match "#+end_src"))))))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;; </span><span style="color: #787878;">&#24403;&#21069;buffer&#19979;&#65292;&#26367;&#25442;markdown&#30340;&#38142;&#25509;&#21644;&#26631;&#39064;&#26684;&#24335;&#21040;org-mode&#30340;&#26684;&#24335;&#65292;&#25490;&#38500;&#22270;&#29255;&#30340;&#36716;&#25442;&#12289;&#26367;&#25442;&#20195;&#30721;&#22359;&#26684;&#24335;&#12290;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-markdown-to-org</span> <span style="color: #93a8c6;">()</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">save-excursion</span>
+    <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#26631;&#39064;&#20026;Org-mode&#26631;&#39064;
+</span>    <span style="color: #b0b1a3;">(</span>goto-char <span style="color: #97b098;">(</span>point-min<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">while</span> <span style="color: #97b098;">(</span>re-search-forward <span style="color: #A1D08E;">"^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">s</span><span style="color: #A1D08E;">*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">#+</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;"> </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">"</span> nil t<span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>level <span style="color: #90a890;">(</span>length <span style="color: #a2b6da;">(</span>match-string 1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+            <span style="color: #b0b0b3;">(</span>title1 <span style="color: #90a890;">(</span>match-string 2<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>replace-match <span style="color: #b0b0b3;">(</span>concat <span style="color: #90a890;">(</span>make-string level ?*<span style="color: #90a890;">)</span> <span style="color: #A1D08E;">" "</span> title1<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#38142;&#25509;&#20026;Org-mode&#38142;&#25509;,&#20294;&#26159;&#36339;&#36807;&#22270;&#29255;&#38142;&#25509;
+</span>  <span style="color: #93a8c6;">(</span>goto-char <span style="color: #b0b1a3;">(</span>point-min<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">while</span> <span style="color: #b0b1a3;">(</span>re-search-forward <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">[[</span><span style="color: #f43841; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*?</span><span style="color: #f43841; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">]</span><span style="color: #A1D08E;">[</span><span style="color: #f43841; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*?</span><span style="color: #f43841; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #f43841; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">]</span><span style="color: #A1D08E;">])"</span> nil t<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>title <span style="color: #b0b0b3;">(</span>match-string 1<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+          <span style="color: #aebed8;">(</span>url <span style="color: #b0b0b3;">(</span>match-string 2<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #aebed8;">(</span><span style="color: #FFA657;">and</span> <span style="color: #b0b0b3;">(</span>string-match <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">jpeg</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">png</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">svg</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">"</span> url<span style="color: #b0b0b3;">)</span>
+                   <span style="color: #b0b0b3;">(</span>string-match <span style="color: #A1D08E;">"https"</span> url<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>replace-match <span style="color: #b0b0b3;">(</span>format <span style="color: #A1D08E;">"[[%s][%s]]"</span> url title<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#20195;&#30721;&#22359;&#20026;Org-mode&#20195;&#30721;&#22359;
+</span>  <span style="color: #93a8c6;">(</span>goto-char <span style="color: #b0b1a3;">(</span>point-min<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">while</span> <span style="color: #b0b1a3;">(</span>re-search-forward <span style="color: #A1D08E;">"^~~~"</span> nil t<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>looking-back <span style="color: #A1D08E;">"^~~~"</span><span style="color: #97b098;">)</span>
+        <span style="color: #97b098;">(</span><span style="color: #FFA657;">progn</span>
+          <span style="color: #aebed8;">(</span>replace-match <span style="color: #A1D08E;">"#+begin_src"</span><span style="color: #aebed8;">)</span>
+          <span style="color: #aebed8;">(</span>re-search-forward <span style="color: #A1D08E;">"^~~~"</span> nil t<span style="color: #aebed8;">)</span>
+          <span style="color: #aebed8;">(</span><span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>looking-back <span style="color: #A1D08E;">"^~~~"</span><span style="color: #b0b0b3;">)</span>
+              <span style="color: #b0b0b3;">(</span>replace-match <span style="color: #A1D08E;">"#+end_src"</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
 
 
@@ -916,8 +939,8 @@ Ref：<a href="https://orgmode.org/manual/Exporting.html">Exporting (The Org Man
 </p>
 </div>
 </li>
-<li><a id="orgd39d622"></a>Org with Zotero<br>
-<div class="outline-text-5" id="text-orgd39d622">
+<li><a id="org73486bc"></a>Org with Zotero<br>
+<div class="outline-text-5" id="text-org73486bc">
 <p>
 书和论文的PDF文件，我现在全部放在<a href="https://www.zotero.org/">Zotero</a>。快速复制单个笔记到org-mode也挺简单：
 </p>
@@ -932,26 +955,28 @@ Ref：<a href="https://orgmode.org/manual/Exporting.html">Exporting (The Org Man
 
 
 <div class="org-src-container">
-<pre class="src src-js">{
-"translatorID":"76a79119-3a32-453a-a0a9-c92640e3c93b",
-"translatorType":2,
-"label":"Zotero Select Item",
-"creator":"Scott Campbell, Avram Lyon",
-"target":"html",
-"minVersion":"2.0",
-"maxVersion":"",
-"priority":200,
-"inRepository":false,
-"lastUpdated":"2012-07-17 22:27:00"
-}
-function doExport() {
-        var item;
-        while(item = Zotero.nextItem()) {
-                Zotero.write("zotero://select/items/");
-                var library_id = item.libraryID ? item.libraryID : 0;
-                Zotero.write(library_id+"_"+item.key);
-        }
-}</pre>
+<pre class="src src-js"><span style="color: #8c8c8c;">{</span>
+<span style="color: #A1D08E;">"translatorID"</span>:<span style="color: #A1D08E;">"76a79119-3a32-453a-a0a9-c92640e3c93b"</span>,
+<span style="color: #A1D08E;">"translatorType"</span>:2,
+<span style="color: #A1D08E;">"label"</span>:<span style="color: #A1D08E;">"Zotero Select Item"</span>,
+<span style="color: #A1D08E;">"creator"</span>:<span style="color: #A1D08E;">"Scott Campbell, Avram Lyon"</span>,
+<span style="color: #A1D08E;">"target"</span>:<span style="color: #A1D08E;">"html"</span>,
+<span style="color: #A1D08E;">"minVersion"</span>:<span style="color: #A1D08E;">"2.0"</span>,
+<span style="color: #A1D08E;">"maxVersion"</span>:<span style="color: #A1D08E;">""</span>,
+<span style="color: #A1D08E;">"priority"</span>:200,
+<span style="color: #A1D08E;">"inRepository"</span>:<span style="color: #95a99f;">false</span>,
+<span style="color: #A1D08E;">"lastUpdated"</span>:<span style="color: #A1D08E;">"2012-07-17 22:27:00"</span>
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">doExport</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">item</span>;
+        <span style="color: #FFA657;">while</span><span style="color: #93a8c6;">(</span>item = Zotero.nextItem<span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+                Zotero.write<span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"zotero://select/items/"</span><span style="color: #b0b1a3;">)</span>;
+                <span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">library_id</span> = item.libraryID ? item.libraryID : 0;
+                Zotero.write<span style="color: #b0b1a3;">(</span>library_id+<span style="color: #A1D08E;">"_"</span>+item.key<span style="color: #b0b1a3;">)</span>;
+        <span style="color: #93a8c6;">}</span>
+<span style="color: #8c8c8c;">}</span>
+</pre>
 </div>
 
 <p>
@@ -959,11 +984,12 @@ function doExport() {
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(org-link-set-parameters "zotero" :follow
-                        (lambda (zpath)
-                        (browse-url
-                            ;; we get the "zotero:"-less url, so we put it back.
-                            (format "zotero:%s" zpath))))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span>org-link-set-parameters <span style="color: #A1D08E;">"zotero"</span> <span style="color: #79C0FF;">:follow</span>
+                        <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b1a3;">(</span>zpath<span style="color: #b0b1a3;">)</span>
+                        <span style="color: #b0b1a3;">(</span>browse-url
+                            <span style="color: #787878;">;; </span><span style="color: #787878;">we get the "zotero:"-less url, so we put it back.
+</span>                            <span style="color: #97b098;">(</span>format <span style="color: #A1D08E;">"zotero:%s"</span> zpath<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
 
 <p>
@@ -976,8 +1002,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org0865de7"></a>Org-mode美化<br>
-<div class="outline-text-5" id="text-org0865de7">
+<li><a id="org815658d"></a>Org-mode美化<br>
+<div class="outline-text-5" id="text-org815658d">
 <p>
 我觉得原生的就挺好看，可读性也还好。
 </p>
@@ -990,34 +1016,39 @@ Ref：
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; 设置标题大小
-(after! org
-  (custom-set-faces!
-    '(outline-1 :weight extra-bold :height 1.25)
-    '(outline-2 :weight bold :height 1.15)
-    '(outline-3 :weight bold :height 1.12)
-    '(outline-4 :weight semi-bold :height 1.09)
-    '(outline-5 :weight semi-bold :height 1.06)
-    '(outline-6 :weight semi-bold :height 1.03)
-    '(outline-8 :weight semi-bold)
-    '(outline-9 :weight semi-bold))
-  (custom-set-faces!
-    '(org-document-title :height 1.2)))
-;;字体，设置正文大小
-(setq doom-font (font-spec :family "霞鹜文楷等宽" :weight 'regular :size 14))
-;; 设置行内make up，直接显示*粗体*，/斜体/，=高亮=，~代码~
-(setq org-hide-emphasis-markers t)
-;; 盘古，中英文混合排版美化
-;;https://github.com/coldnew/pangu-spacing
-(use-package pangu-spacing)
-(add-hook 'org-mode-hook
-          '(lambda ()
-             (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;; </span><span style="color: #787878;">&#35774;&#32622;&#26631;&#39064;&#22823;&#23567;
+</span><span style="color: #8c8c8c;">(</span>after! org
+  <span style="color: #93a8c6;">(</span>custom-set-faces!
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-1 <span style="color: #79C0FF;">:weight</span> extra-bold <span style="color: #79C0FF;">:height</span> 1.25<span style="color: #b0b1a3;">)</span>
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-2 <span style="color: #79C0FF;">:weight</span> bold <span style="color: #79C0FF;">:height</span> 1.15<span style="color: #b0b1a3;">)</span>
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-3 <span style="color: #79C0FF;">:weight</span> bold <span style="color: #79C0FF;">:height</span> 1.12<span style="color: #b0b1a3;">)</span>
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-4 <span style="color: #79C0FF;">:weight</span> semi-bold <span style="color: #79C0FF;">:height</span> 1.09<span style="color: #b0b1a3;">)</span>
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-5 <span style="color: #79C0FF;">:weight</span> semi-bold <span style="color: #79C0FF;">:height</span> 1.06<span style="color: #b0b1a3;">)</span>
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-6 <span style="color: #79C0FF;">:weight</span> semi-bold <span style="color: #79C0FF;">:height</span> 1.03<span style="color: #b0b1a3;">)</span>
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-8 <span style="color: #79C0FF;">:weight</span> semi-bold<span style="color: #b0b1a3;">)</span>
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>outline-9 <span style="color: #79C0FF;">:weight</span> semi-bold<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+
+  <span style="color: #93a8c6;">(</span>custom-set-faces!
+    <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>org-document-title <span style="color: #79C0FF;">:height</span> 1.2<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;;</span><span style="color: #787878;">&#23383;&#20307;&#65292;&#35774;&#32622;&#27491;&#25991;&#22823;&#23567;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> doom-font <span style="color: #93a8c6;">(</span>font-spec <span style="color: #79C0FF;">:family</span> <span style="color: #A1D08E;">"&#38686;&#40540;&#25991;&#26999;&#31561;&#23485;"</span> <span style="color: #79C0FF;">:weight</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">regular</span> <span style="color: #79C0FF;">:size</span> 14<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">&#35774;&#32622;&#34892;&#20869;make up&#65292;&#30452;&#25509;&#26174;&#31034;*&#31895;&#20307;*&#65292;/&#26012;&#20307;/&#65292;=&#39640;&#20142;=&#65292;~&#20195;&#30721;~
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-hide-emphasis-markers t<span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">&#30424;&#21476;&#65292;&#20013;&#33521;&#25991;&#28151;&#21512;&#25490;&#29256;&#32654;&#21270;
+</span><span style="color: #787878;">;;</span><span style="color: #787878;">https://github.com/coldnew/pangu-spacing
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> pangu-spacing<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-mode-hook</span>
+          <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>lambda <span style="color: #b0b1a3;">()</span>
+             <span style="color: #b0b1a3;">(</span>set <span style="color: #97b098;">(</span>make-local-variable <span style="color: #FFA657;">'</span><span style="color: #95a99f;">pangu-spacing-real-insert-separtor</span><span style="color: #97b098;">)</span> t<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
 </div>
 </li>
-<li><a id="orgd1584db"></a>Org-protocol<br>
-<div class="outline-text-5" id="text-orgd1584db">
+<li><a id="orgf3254b8"></a>Org-protocol<br>
+<div class="outline-text-5" id="text-orgf3254b8">
 <p>
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 </p>
@@ -1069,14 +1100,14 @@ Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的appl
 </ul>
 </div>
 </li>
-<li><a id="org7f73464"></a>网页摘录和after-reading<br>
-<div class="outline-text-5" id="text-org7f73464">
+<li><a id="orgb2ea052"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-orgb2ea052">
 <p>
 利用org-capture，做剪藏和摘录很方便。现在保存在 <code>clip.org</code> 文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 </p>
 
 
-<figure id="orgcb436b9">
+<figure id="org336abdc">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -1090,7 +1121,8 @@ Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的appl
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript">javascript:(function(){var e=document.body;const n=document.head.appendChild(document.createElement("style"));n.textContent=".mainonly { outline: 2px solid red; }";const t=CSS.supports("selector(:has(*))");function o(n){n instanceof HTMLElement&&(e.classList.remove("mainonly"),(e=n).classList.add("mainonly"))}function s(e){o(e.target)}function a(o){if(o.preventDefault(),t)n.textContent=":not(:has(.mainonly), .mainonly, .mainonly *) { display: none; }";else{n.textContent=":not(.mainonly *, .mainonly-ancestor) { display: none; }";var s=e;do{s.classList.add("mainonly-ancestor")}while(s=s.parentElement)}l()}function i(n){n.preventDefault(),n.deltaY<0?o(e.parentElement):o(e.firstElementChild)}function l(){document.removeEventListener("mouseover",s),document.removeEventListener("click",a),document.removeEventListener("wheel",i)}document.addEventListener("mouseover",s),document.addEventListener("click",a),document.addEventListener("wheel",i,{passive:!1}),document.addEventListener("keydown",(function o(s){if("Escape"===s.key&&(n.remove(),document.removeEventListener("keydown",o),l(),e?.classList.remove("mainonly"),!t))for(const e of document.getElementsByClassName("mainonly-ancestor"))e.classList.remove("mainonly-ancestor")}))}())</pre>
+<pre class="src src-javascript">javascript:<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">function</span><span style="color: #93a8c6;">(){</span><span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">e</span>=document.body;<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">n</span>=document.head.appendChild<span style="color: #b0b1a3;">(</span>document.createElement<span style="color: #97b098;">(</span><span style="color: #A1D08E;">"style"</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>;n.textContent=<span style="color: #A1D08E;">".mainonly { outline: 2px solid red; }"</span>;<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">t</span>=CSS.supports<span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"selector(:has(*))"</span><span style="color: #b0b1a3;">)</span>;<span style="color: #FFA657;">function</span> o<span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">n</span><span style="color: #b0b1a3;">){</span>n <span style="color: #FFA657;">instanceof</span> <span style="color: #95a99f;">HTMLElement</span>&amp;&amp;<span style="color: #97b098;">(</span>e.classList.remove<span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"mainonly"</span><span style="color: #aebed8;">)</span>,<span style="color: #aebed8;">(</span>e=n<span style="color: #aebed8;">)</span>.classList.add<span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"mainonly"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">}</span><span style="color: #FFA657;">function</span> s<span style="color: #b0b1a3;">(</span>e<span style="color: #b0b1a3;">){</span>o<span style="color: #97b098;">(</span>e.target<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">}</span><span style="color: #FFA657;">function</span> a<span style="color: #b0b1a3;">(</span>o<span style="color: #b0b1a3;">){</span><span style="color: #FFA657;">if</span><span style="color: #97b098;">(</span>o.preventDefault<span style="color: #aebed8;">()</span>,t<span style="color: #97b098;">)</span>n.textContent=<span style="color: #A1D08E;">":not(:has(.mainonly), .mainonly, .mainonly *) { display: none; }"</span>;<span style="color: #FFA657;">else</span><span style="color: #97b098;">{</span>n.textContent=<span style="color: #A1D08E;">":not(.mainonly *, .mainonly-ancestor) { display: none; }"</span>;<span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">s</span>=e;<span style="color: #FFA657;">do</span><span style="color: #aebed8;">{</span>s.classList.add<span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"mainonly-ancestor"</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">}</span><span style="color: #FFA657;">while</span><span style="color: #aebed8;">(</span>s=s.parentElement<span style="color: #aebed8;">)</span><span style="color: #97b098;">}</span>l<span style="color: #97b098;">()</span><span style="color: #b0b1a3;">}</span><span style="color: #FFA657;">function</span> i<span style="color: #b0b1a3;">(</span>n<span style="color: #b0b1a3;">){</span>n.preventDefault<span style="color: #97b098;">()</span>,n.deltaY&lt;0?o<span style="color: #97b098;">(</span>e.parentElement<span style="color: #97b098;">)</span>:o<span style="color: #97b098;">(</span>e.firstElementChild<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">}</span><span style="color: #FFA657;">function</span> l<span style="color: #b0b1a3;">(){</span>document.removeEventListener<span style="color: #97b098;">(</span><span style="color: #A1D08E;">"mouseover"</span>,s<span style="color: #97b098;">)</span>,document.removeEventListener<span style="color: #97b098;">(</span><span style="color: #A1D08E;">"click"</span>,a<span style="color: #97b098;">)</span>,document.removeEventListener<span style="color: #97b098;">(</span><span style="color: #A1D08E;">"wheel"</span>,i<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">}</span>document.addEventListener<span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"mouseover"</span>,s<span style="color: #b0b1a3;">)</span>,document.addEventListener<span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"click"</span>,a<span style="color: #b0b1a3;">)</span>,document.addEventListener<span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"wheel"</span>,i,<span style="color: #97b098;">{</span>passive:!1<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>,document.addEventListener<span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"keydown"</span>,<span style="color: #97b098;">(</span><span style="color: #FFA657;">function</span> o<span style="color: #aebed8;">(</span>s<span style="color: #aebed8;">){</span><span style="color: #FFA657;">if</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"Escape"</span>===s.key&amp;&amp;<span style="color: #90a890;">(</span>n.remove<span style="color: #a2b6da;">()</span>,document.removeEventListener<span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"keydown"</span>,o<span style="color: #a2b6da;">)</span>,l<span style="color: #a2b6da;">()</span>,e?.classList.remove<span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"mainonly"</span><span style="color: #a2b6da;">)</span>,!t<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #FFA657;">for</span><span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">e</span> <span style="color: #FFA657;">of</span> document.getElementsByClassName<span style="color: #90a890;">(</span><span style="color: #A1D08E;">"mainonly-ancestor"</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>e.classList.remove<span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"mainonly-ancestor"</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">}</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">}()</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
 
 <p>
@@ -1114,8 +1146,8 @@ after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org9800e6a"></a>tools<br>
-<div class="outline-text-6" id="text-org9800e6a">
+<li><a id="org570d294"></a>tools<br>
+<div class="outline-text-6" id="text-org570d294">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -1143,7 +1175,8 @@ Reader does two things:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript">  javascript: var currentUrl = window.location.href;var newUrl = "https://r.jina.ai/" + currentUrl;window.open(newUrl, '_blank');window.history.pushState({}, '', currentUrl);</pre>
+<pre class="src src-javascript">  javascript: <span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">currentUrl</span> = window.location.href;<span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">newUrl</span> = <span style="color: #A1D08E;">"https://r.jina.ai/"</span> + currentUrl;window.open<span style="color: #8c8c8c;">(</span>newUrl, <span style="color: #A1D08E;">'_blank'</span><span style="color: #8c8c8c;">)</span>;window.history.pushState<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{}</span>, <span style="color: #A1D08E;">''</span>, currentUrl<span style="color: #8c8c8c;">)</span>;
+</pre>
 </div></li>
 </ul>
 
@@ -1167,15 +1200,15 @@ Reader does two things:
 </li>
 </ul>
 </li>
-<li><a id="org14c797c"></a>输入法设置<br>
-<div class="outline-text-5" id="text-org14c797c">
+<li><a id="org75512e6"></a>输入法设置<br>
+<div class="outline-text-5" id="text-org75512e6">
 <p>
 由于使用了evil，如果使用系统的输入法，每次在 <code>:w</code> 保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org1271a01"></a>SIS<br>
-<div class="outline-text-6" id="text-org1271a01">
+<li><a id="orgc7db438"></a>SIS<br>
+<div class="outline-text-6" id="text-orgc7db438">
 <p>
 <a href="https://github.com/laishulu/emacs-smart-input-source">emacs-smart-input-source</a> 是一个可以自动切换输入法的Emacs包。
 </p>
@@ -1185,34 +1218,40 @@ Reader does two things:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(use-package sis
-  ;; :hook
-  ;; enable the /context/ and /inline region/ mode for specific buffers
-  ;; (((text-mode prog-mode) . sis-context-mode)
-  ;;  ((text-mode prog-mode) . sis-inline-mode))
-  :config
-  ;; For MacOS
-  (sis-ism-lazyman-config
-   ;; English input source may be: "ABC", "US" or another one.
-   ;; "com.apple.keylayout.ABC"
-   "com.apple.keylayout.ABC"
-   ;; Other language input source: "rime", "sogou" or another one.
-   ;; "im.rime.inputmethod.Squirrel.Rime"
-   "im.rime.inputmethod.Squirrel.Hans")
-  ;; enable the /cursor color/ mode
-  ;; (sis-global-cursor-color-mode t)
-  ;; enable the /respect/ mode
-  (sis-global-respect-mode t)
-  ;; enable the /context/ mode for all buffers
-  (sis-global-context-mode t)
-  ;; enable the /inline english/ mode for all buffers
-  (sis-global-inline-mode t)
-  )</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> sis
+  <span style="color: #787878;">;; </span><span style="color: #787878;">:hook
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">enable the /context/ and /inline region/ mode for specific buffers
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">(((text-mode prog-mode) . sis-context-mode)
+</span>  <span style="color: #787878;">;;  </span><span style="color: #787878;">((text-mode prog-mode) . sis-inline-mode))
+</span>
+  <span style="color: #79C0FF;">:config</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">For MacOS
+</span>  <span style="color: #93a8c6;">(</span>sis-ism-lazyman-config
+
+   <span style="color: #787878;">;; </span><span style="color: #787878;">English input source may be: "ABC", "US" or another one.
+</span>   <span style="color: #787878;">;; </span><span style="color: #787878;">"com.apple.keylayout.ABC"
+</span>   <span style="color: #A1D08E;">"com.apple.keylayout.ABC"</span>
+
+   <span style="color: #787878;">;; </span><span style="color: #787878;">Other language input source: "rime", "sogou" or another one.
+</span>   <span style="color: #787878;">;; </span><span style="color: #787878;">"im.rime.inputmethod.Squirrel.Rime"
+</span>   <span style="color: #A1D08E;">"im.rime.inputmethod.Squirrel.Hans"</span><span style="color: #93a8c6;">)</span>
+
+  <span style="color: #787878;">;; </span><span style="color: #787878;">enable the /cursor color/ mode
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">(sis-global-cursor-color-mode t)
+</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">enable the /respect/ mode
+</span>  <span style="color: #93a8c6;">(</span>sis-global-respect-mode t<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">enable the /context/ mode for all buffers
+</span>  <span style="color: #93a8c6;">(</span>sis-global-context-mode t<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">enable the /inline english/ mode for all buffers
+</span>  <span style="color: #93a8c6;">(</span>sis-global-inline-mode t<span style="color: #93a8c6;">)</span>
+  <span style="color: #8c8c8c;">)</span>
+
+</pre>
 </div>
 </div>
 </li>
-<li><a id="orgb2c2304"></a>pyim<br>
-<div class="outline-text-6" id="text-orgb2c2304">
+<li><a id="org1393e3f"></a>pyim<br>
+<div class="outline-text-6" id="text-org1393e3f">
 <p>
 <a href="https://github.com/tumashu/pyim">pyim</a> 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 </p>
@@ -1230,10 +1269,11 @@ Reader does two things:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(add-hook 'org-mode-hook
-          (lambda ()
-            (toggle-input-method)
-            (setq default-input-method "pyim")))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-mode-hook</span>
+          <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b1a3;">()</span>
+            <span style="color: #b0b1a3;">(</span>toggle-input-method<span style="color: #b0b1a3;">)</span>
+            <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">setq</span> default-input-method <span style="color: #A1D08E;">"pyim"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
 
 
@@ -1243,40 +1283,47 @@ Reader does two things:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;;输入法 https://github.com/tumashu/pyim
-(global-set-key (kbd "C-\\") 'toggle-input-method)
-(use-package pyim
-  :init
-  :config
-  (pyim-default-scheme 'xiaohe-shuangpin)
-  (setq default-input-method "pyim")
-  )
-(use-package pyim-basedict
-  :config
-  (pyim-basedict-enable))
-(add-hook 'org-mode-hook
-          (lambda ()
-            (toggle-input-method)
-            (setq default-input-method "pyim")))
-;; 设置 pyim 探针
-;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换 :-)
-;; 我自己使用的中英文动态切换规则是：
-;; 1. 光标只有在注释里面时，才可以输入中文。
-;; 2. 光标前是汉字字符时，才能输入中文。
-;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-(setq-default pyim-english-input-switch-functions
-              '(;; pyim-probe-dynamic-english
-                pyim-probe-isearch-mode
-                ;; pyim-probe-program-mode
-                pyim-probe-org-structure-template
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;;</span><span style="color: #787878;">&#36755;&#20837;&#27861; https://github.com/tumashu/pyim
+</span><span style="color: #8c8c8c;">(</span>global-set-key <span style="color: #93a8c6;">(</span>kbd <span style="color: #A1D08E;">"C-</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">"</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">toggle-input-method</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> pyim
+  <span style="color: #79C0FF;">:init</span>
+  <span style="color: #79C0FF;">:config</span>
+  <span style="color: #93a8c6;">(</span>pyim-default-scheme <span style="color: #FFA657;">'</span><span style="color: #95a99f;">xiaohe-shuangpin</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> default-input-method <span style="color: #A1D08E;">"pyim"</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> pyim-basedict
+  <span style="color: #79C0FF;">:config</span>
+  <span style="color: #93a8c6;">(</span>pyim-basedict-enable<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-mode-hook</span>
+          <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b1a3;">()</span>
+            <span style="color: #b0b1a3;">(</span>toggle-input-method<span style="color: #b0b1a3;">)</span>
+            <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">setq</span> default-input-method <span style="color: #A1D08E;">"pyim"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">&#35774;&#32622; pyim &#25506;&#38024;
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">&#35774;&#32622; pyim &#25506;&#38024;&#35774;&#32622;&#65292;&#36825;&#26159; pyim &#39640;&#32423;&#21151;&#33021;&#35774;&#32622;&#65292;&#21487;&#20197;&#23454;&#29616; *&#26080;&#30171;* &#20013;&#33521;&#25991;&#20999;&#25442; :-)
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">&#25105;&#33258;&#24049;&#20351;&#29992;&#30340;&#20013;&#33521;&#25991;&#21160;&#24577;&#20999;&#25442;&#35268;&#21017;&#26159;&#65306;
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">1. &#20809;&#26631;&#21482;&#26377;&#22312;&#27880;&#37322;&#37324;&#38754;&#26102;&#65292;&#25165;&#21487;&#20197;&#36755;&#20837;&#20013;&#25991;&#12290;
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">2. &#20809;&#26631;&#21069;&#26159;&#27721;&#23383;&#23383;&#31526;&#26102;&#65292;&#25165;&#33021;&#36755;&#20837;&#20013;&#25991;&#12290;
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">3. &#20351;&#29992; M-j &#24555;&#25463;&#38190;&#65292;&#24378;&#21046;&#23558;&#20809;&#26631;&#21069;&#30340;&#25340;&#38899;&#23383;&#31526;&#20018;&#36716;&#25442;&#20026;&#20013;&#25991;&#12290;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq-default</span> pyim-english-input-switch-functions
+              <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #787878;">;; </span><span style="color: #787878;">pyim-probe-dynamic-english
+</span>                pyim-probe-isearch-mode
+                <span style="color: #787878;">;; </span><span style="color: #787878;">pyim-probe-program-mode
+</span>                pyim-probe-org-structure-template
                 pyim-probe-evil-normal-mode
-                ))
-(setq-default pyim-punctuation-half-width-functions
-              '(pyim-probe-punctuation-line-beginning
-                pyim-probe-punctuation-after-punctuation))
-;; 键位绑定，解绑，转换
-;; 修改默认键位映射，取消command键位
-(setq mac-option-modifier 'meta)</pre>
+                <span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq-default</span> pyim-punctuation-half-width-functions
+              <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>pyim-probe-punctuation-line-beginning
+                pyim-probe-punctuation-after-punctuation<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">&#38190;&#20301;&#32465;&#23450;&#65292;&#35299;&#32465;&#65292;&#36716;&#25442;
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">&#20462;&#25913;&#40664;&#35748;&#38190;&#20301;&#26144;&#23556;&#65292;&#21462;&#28040;command&#38190;&#20301;
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> mac-option-modifier <span style="color: #FFA657;">'</span><span style="color: #95a99f;">meta</span><span style="color: #8c8c8c;">)</span>
+
+</pre>
 </div>
 
 
@@ -1290,10 +1337,10 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org51456a7"></a>RIME<br>
-<div class="outline-text-6" id="text-org51456a7">
+<li><a id="orgc634d8d"></a>RIME<br>
+<div class="outline-text-6" id="text-orgc634d8d">
 
-<figure id="org8e4e2f8">
+<figure id="org1a3a6e7">
 <img src="https://pic.vandee.art/images/rime.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -1316,7 +1363,8 @@ Ref：
 
 <div class="org-src-container">
 <pre class="src src-nil">style/horizontal 將徹底移除，雖然本版程序仍支持，但會被新控件的默認值覆蓋
-請使用 candidate_list_layout: stacked/linear 和 text_orientation: horizontal/vertical</pre>
+請使用 candidate_list_layout: stacked/linear 和 text_orientation: horizontal/vertical
+</pre>
 </div>
 
 <p>
@@ -1331,40 +1379,54 @@ Ref：
 <pre class="src src-bash">;; mac:
 ;; mac rime: https://rime.im/download/
 Homebrew: brew install --cask squirrel
-或者直接下载
+&#25110;&#32773;&#30452;&#25509;&#19979;&#36733;
 ;; mac rime-ice
-使用东风破 plum 安装: https://github.com/rime/plum
+&#20351;&#29992;&#19996;&#39118;&#30772; plum &#23433;&#35013;: https://github.com/rime/plum
 curl -fsSL https://raw.githubusercontent.com/rime/plum/master/rime-install | bash
-安装 rime-ice:
-℞ 安装或更新全部文件
+
+&#23433;&#35013; rime-ice:
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#20840;&#37096;&#25991;&#20214;
 bash rime-install iDvel/rime-ice:others/recipes/full
-℞ 安装或更新所有词库文件（包含下面三个）
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#25152;&#26377;&#35789;&#24211;&#25991;&#20214;<span style="color: #8c8c8c;">&#65288;</span>&#21253;&#21547;&#19979;&#38754;&#19977;&#20010;<span style="color: #8c8c8c;">&#65289;</span>
 bash rime-install iDvel/rime-ice:others/recipes/all_dicts
-℞ 安装或更新拼音词库文件（ cn_dicts/ 目录内所有文件）
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#25340;&#38899;&#35789;&#24211;&#25991;&#20214;<span style="color: #8c8c8c;">&#65288;</span> cn_dicts/ &#30446;&#24405;&#20869;&#25152;&#26377;&#25991;&#20214;<span style="color: #8c8c8c;">&#65289;</span>
 bash rime-install iDvel/rime-ice:others/recipes/cn_dicts
-℞ 安装或更新英文词库文件（ en_dicts/ 目录内所有文件）
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032;&#33521;&#25991;&#35789;&#24211;&#25991;&#20214;<span style="color: #8c8c8c;">&#65288;</span> en_dicts/ &#30446;&#24405;&#20869;&#25152;&#26377;&#25991;&#20214;<span style="color: #8c8c8c;">&#65289;</span>
 bash rime-install iDvel/rime-ice:others/recipes/en_dicts
-℞ 安装或更新 opencc （ opencc/ 目录内所有文件）
+
+&#8478; &#23433;&#35013;&#25110;&#26356;&#26032; opencc <span style="color: #8c8c8c;">&#65288;</span> opencc/ &#30446;&#24405;&#20869;&#25152;&#26377;&#25991;&#20214;<span style="color: #8c8c8c;">&#65289;</span>
 bash rime-install iDvel/rime-ice:others/recipes/opencc
-;;或使用 rime-auto-deploy：https://github.com/Mark24Code/rime-auto-deploy，这个和plum只用选一个。
+
+;;&#25110;&#20351;&#29992; rime-auto-deploy&#65306;https://github.com/Mark24Code/rime-auto-deploy&#65292;&#36825;&#20010;&#21644;plum&#21482;&#29992;&#36873;&#19968;&#20010;&#12290;
+
 =======================================================
 ;;Linux
 ibus:
 https://github.com/rime/home/wiki/RimeWithIBus
-sudo apt-get install ibus-rime                   #ibus
+sudo apt-get install ibus-rime                   <span style="color: #787878;">#</span><span style="color: #787878;">ibus
+</span>
 fcitx5:
-sudo pacman -Sy fcitx5-rime                      # Arch Linux
-sudo apt update && sudo apt install fcitx5-rime  # Ubuntu / Debian / Deepin
-sudo zypper install fcitx5-rime                  # OpenSUSE
-sudo dnf install fcitx5-rime                     # Fedora
-plum and rime-ice：
+sudo pacman -Sy fcitx5-rime                      <span style="color: #787878;"># </span><span style="color: #787878;">Arch Linux
+</span>sudo apt update &amp;&amp; sudo apt install fcitx5-rime  <span style="color: #787878;"># </span><span style="color: #787878;">Ubuntu / Debian / Deepin
+</span>sudo zypper install fcitx5-rime                  <span style="color: #787878;"># </span><span style="color: #787878;">OpenSUSE
+</span>sudo dnf install fcitx5-rime                     <span style="color: #787878;"># </span><span style="color: #787878;">Fedora
+</span>
+plum and rime-ice&#65306;
 git clone --depth 1 https://github.com/rime/plum ~/plum
-;; 切换到东风破的目录
-cd ~/plum
-;; 如果你使用Fcitx5，你需要加入参数，让东风破把配置文件写到正确的位置
-rime_frontend=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
-;; 如果你是用IBus，则不需加参数，因为东风破默认是为IBus版的RIME打造。
-bash rime-install iDvel/rime-ice:others/recipes/full</pre>
+
+;; &#20999;&#25442;&#21040;&#19996;&#39118;&#30772;&#30340;&#30446;&#24405;
+<span style="color: #79C0FF;">cd</span> ~/plum
+
+;; &#22914;&#26524;&#20320;&#20351;&#29992;Fcitx5&#65292;&#20320;&#38656;&#35201;&#21152;&#20837;&#21442;&#25968;&#65292;&#35753;&#19996;&#39118;&#30772;&#25226;&#37197;&#32622;&#25991;&#20214;&#20889;&#21040;&#27491;&#30830;&#30340;&#20301;&#32622;
+<span style="color: #f4f4ff;">rime_frontend</span>=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
+
+;; &#22914;&#26524;&#20320;&#26159;&#29992;IBus&#65292;&#21017;&#19981;&#38656;&#21152;&#21442;&#25968;&#65292;&#22240;&#20026;&#19996;&#39118;&#30772;&#40664;&#35748;&#26159;&#20026;IBus&#29256;&#30340;RIME&#25171;&#36896;&#12290;
+bash rime-install iDvel/rime-ice:others/recipes/full
+
+</pre>
 </div>
 
 
@@ -1385,8 +1447,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full</pre>
 </li>
 </ul>
 </li>
-<li><a id="org7e6b17d"></a>Others<br>
-<div class="outline-text-5" id="text-org7e6b17d">
+<li><a id="orgfb08709"></a>Others<br>
+<div class="outline-text-5" id="text-orgfb08709">
 <ul class="org-ul">
 <li><a href="https://github.com/lijigang/100-questions-about-orgmode">lijigang/100-questions-about-orgmode: It's all about <b>orgmode</b> !</a></li>
 
@@ -1463,9 +1525,9 @@ Emacs里的其他笔记相关使用包
 </ul>
 </div>
 </div>
-<div id="outline-container-org7108fe9" class="outline-3">
-<h3 id="org7108fe9">PKM with LLM</h3>
-<div class="outline-text-3" id="text-org7108fe9">
+<div id="outline-container-orgb7faa7e" class="outline-3">
+<h3 id="orgb7faa7e">PKM with LLM</h3>
+<div class="outline-text-3" id="text-orgb7faa7e">
 <p>
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
 </p>
@@ -1487,7 +1549,7 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="org1e5b9c9">
+<figure id="org9a318a6">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -1497,14 +1559,14 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="org4199e5b">
+<figure id="orgef7f1ba">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
-<div id="outline-container-org9b19fd9" class="outline-4">
-<h4 id="org9b19fd9">Ollama</h4>
-<div class="outline-text-4" id="text-org9b19fd9">
+<div id="outline-container-orgffa727e" class="outline-4">
+<h4 id="orgffa727e">Ollama</h4>
+<div class="outline-text-4" id="text-orgffa727e">
 <p>
 <a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 </p>
@@ -1526,9 +1588,9 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 </ul>
 </div>
 </div>
-<div id="outline-container-org3ba31ce" class="outline-4">
-<h4 id="org3ba31ce">Open WebUI</h4>
-<div class="outline-text-4" id="text-org3ba31ce">
+<div id="outline-container-org1db3c43" class="outline-4">
+<h4 id="org1db3c43">Open WebUI</h4>
+<div class="outline-text-4" id="text-org1db3c43">
 <p>
 <a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 </p>
@@ -1542,13 +1604,13 @@ Open WebUI 在2024-10-06的版本中<a href="https://github.com/open-webui/open-
 </p>
 
 
-<figure id="orga8f0abc">
+<figure id="org2a06a72">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-03.png" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="orgd0f6dfd">
+<figure id="org8c14756">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-41.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -1586,6 +1648,7 @@ Docker compose: <a href="https://github.com/open-webui/open-webui/blob/main/dock
       tty: true
       restart: unless-stopped
       image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+
     open-webui:
       build:
         context: .
@@ -1606,9 +1669,12 @@ Docker compose: <a href="https://github.com/open-webui/open-webui/blob/main/dock
       extra_hosts:
         - host.docker.internal:host-gateway
       restart: unless-stopped
+
   volumes:
     ollama: {}
-    open-webui: {}</pre>
+    open-webui: {}
+
+</pre>
 </div></li>
 
 <li><a href="https://docs.openwebui.com/getting-started/updating"> Updating | Open WebUI</a></li>
@@ -1619,9 +1685,9 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org829176a" class="outline-4">
-<h4 id="org829176a">Aider</h4>
-<div class="outline-text-4" id="text-org829176a">
+<div id="outline-container-org9f184e7" class="outline-4">
+<h4 id="org9f184e7">Aider</h4>
+<div class="outline-text-4" id="text-org9f184e7">
 <p>
 <a href="https://github.com/Aider-AI/aider">Aider</a> 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个<a href="https://github.com/tninja/aider.el">aider.el</a>。
 </p>
@@ -1636,7 +1702,8 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 
 <div class="org-src-container">
 <pre class="src src-bash">conda activate yourenv
-python -m pip install -U aider-chat</pre>
+python -m pip install -U aider-chat
+</pre>
 </div>
 
 <p>
@@ -1644,12 +1711,13 @@ python -m pip install -U aider-chat</pre>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(use-package aider
-  :config
-  (setq aider-args '("--model" "ollama/llama3.1"))
-  (setenv "OLLAMA_API_BASE" "http://127.0.0.1:11434")
-  (global-set-key (kbd "C-c a") 'aider-transient-menu)
-  )</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> aider
+  <span style="color: #79C0FF;">:config</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> aider-args <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"--model"</span> <span style="color: #A1D08E;">"ollama/llama3.1"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>setenv <span style="color: #A1D08E;">"OLLAMA_API_BASE"</span> <span style="color: #A1D08E;">"http://127.0.0.1:11434"</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>global-set-key <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"C-c a"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">aider-transient-menu</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
 
 <p>
@@ -1657,8 +1725,9 @@ python -m pip install -U aider-chat</pre>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(package! aider
-  :recipe (:host github :repo "tninja/aider.el" :files ("aider.el")))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span>package! aider
+  <span style="color: #79C0FF;">:recipe</span> <span style="color: #93a8c6;">(</span><span style="color: #79C0FF;">:host</span> github <span style="color: #79C0FF;">:repo</span> <span style="color: #A1D08E;">"tninja/aider.el"</span> <span style="color: #79C0FF;">:files</span> <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"aider.el"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
 
 <p>
@@ -1674,15 +1743,15 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 </div>
 </div>
-<div id="outline-container-orgbdb4ec4" class="outline-4">
-<h4 id="orgbdb4ec4">gptel</h4>
-<div class="outline-text-4" id="text-orgbdb4ec4">
+<div id="outline-container-org83f9af6" class="outline-4">
+<h4 id="org83f9af6">gptel</h4>
+<div class="outline-text-4" id="text-org83f9af6">
 <p>
 <a href="https://github.com/karthink/gptel">gptel: A simple LLM client for Emacs</a> 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 </p>
 
 
-<figure id="org6febf93">
+<figure id="org7095b15">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/ollama-emacs.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -1692,7 +1761,7 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 
 
-<figure id="org2b67474">
+<figure id="orge93602a">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/gptel-summary.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -1740,31 +1809,36 @@ Ref: <a href="https://github.com/karthink/gptel?tab=readme-ov-file#include-more-
 
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">;; 基本配置
-(use-package! gptel
- :config
- (setq! gptel-api-key "your key"))
-;; or
-;; :key can be a function that returns the API key.
-(gptel-make-gemini "Gemini" :key "YOUR_GEMINI_API_KEY" :stream t)
-;; or
-;; Perplexity offers an OpenAI compatible API
-(gptel-make-openai "Perplexity"         ;Any name you want
-  :host "api.perplexity.ai"
-  :key "your-api-key"                   ;can be a function that returns the key
-  :endpoint "/chat/completions"
-  :stream t
-  :models '(;; has many more, check perplexity.ai
-            "pplx-7b-chat"
-            "pplx-70b-chat"
-            "pplx-7b-online"
-            "pplx-70b-online"))
-;; or
-;; Ollama
-(gptel-make-ollama "Ollama"             ;Any name of your choosing
-  :host "localhost:11434"               ;Where it's running
-  :stream t                             ;Stream responses
-  :models '("mistral:latest"))          ;List of models</pre>
+<pre class="src src-emacs-lisp"><span style="color: #787878;">;; </span><span style="color: #787878;">&#22522;&#26412;&#37197;&#32622;
+</span><span style="color: #8c8c8c;">(</span>use-package! gptel
+ <span style="color: #79C0FF;">:config</span>
+ <span style="color: #93a8c6;">(</span>setq! gptel-api-key <span style="color: #A1D08E;">"your key"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">or
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">:key can be a function that returns the API key.
+</span><span style="color: #8c8c8c;">(</span>gptel-make-gemini <span style="color: #A1D08E;">"Gemini"</span> <span style="color: #79C0FF;">:key</span> <span style="color: #A1D08E;">"YOUR_GEMINI_API_KEY"</span> <span style="color: #79C0FF;">:stream</span> t<span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">or
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">Perplexity offers an OpenAI compatible API
+</span><span style="color: #8c8c8c;">(</span>gptel-make-openai <span style="color: #A1D08E;">"Perplexity"</span>         <span style="color: #787878;">;</span><span style="color: #787878;">Any name you want
+</span>  <span style="color: #79C0FF;">:host</span> <span style="color: #A1D08E;">"api.perplexity.ai"</span>
+  <span style="color: #79C0FF;">:key</span> <span style="color: #A1D08E;">"your-api-key"</span>                   <span style="color: #787878;">;</span><span style="color: #787878;">can be a function that returns the key
+</span>  <span style="color: #79C0FF;">:endpoint</span> <span style="color: #A1D08E;">"/chat/completions"</span>
+  <span style="color: #79C0FF;">:stream</span> t
+  <span style="color: #79C0FF;">:models</span> <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #787878;">;; </span><span style="color: #787878;">has many more, check perplexity.ai
+</span>            <span style="color: #A1D08E;">"pplx-7b-chat"</span>
+            <span style="color: #A1D08E;">"pplx-70b-chat"</span>
+            <span style="color: #A1D08E;">"pplx-7b-online"</span>
+            <span style="color: #A1D08E;">"pplx-70b-online"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">or
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">Ollama
+</span><span style="color: #8c8c8c;">(</span>gptel-make-ollama <span style="color: #A1D08E;">"Ollama"</span>             <span style="color: #787878;">;</span><span style="color: #787878;">Any name of your choosing
+</span>  <span style="color: #79C0FF;">:host</span> <span style="color: #A1D08E;">"localhost:11434"</span>               <span style="color: #787878;">;</span><span style="color: #787878;">Where it's running
+</span>  <span style="color: #79C0FF;">:stream</span> t                             <span style="color: #787878;">;</span><span style="color: #787878;">Stream responses
+</span>  <span style="color: #79C0FF;">:models</span> <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"mistral:latest"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>          <span style="color: #787878;">;</span><span style="color: #787878;">List of models</span>
+</pre>
 </div>
 
 <p>
@@ -1780,9 +1854,9 @@ MCP 需要安装 <a href="https://github.com/lizqwerscott/mcp.el">lizqwerscott/m
 </p>
 </div>
 </div>
-<div id="outline-container-org782d0fc" class="outline-4">
-<h4 id="org782d0fc">Kotaemon</h4>
-<div class="outline-text-4" id="text-org782d0fc">
+<div id="outline-container-org0be7097" class="outline-4">
+<h4 id="org0be7097">Kotaemon</h4>
+<div class="outline-text-4" id="text-org0be7097">
 <p>
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 </p>
@@ -1819,9 +1893,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </ul>
 </div>
 </div>
-<div id="outline-container-org0f41d55" class="outline-4">
-<h4 id="org0f41d55">Chipper</h4>
-<div class="outline-text-4" id="text-org0f41d55">
+<div id="outline-container-orgc3c28f1" class="outline-4">
+<h4 id="orgc3c28f1">Chipper</h4>
+<div class="outline-text-4" id="text-orgc3c28f1">
 <p>
 Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/TilmanGriesel/chipper</a>
 </p>
@@ -1837,9 +1911,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </div>
 </div>
 </div>
-<div id="outline-container-org37d0a46" class="outline-2">
-<h2 id="org37d0a46">ChangeLog</h2>
-<div class="outline-text-2" id="text-org37d0a46">
+<div id="outline-container-org6962973" class="outline-2">
+<h2 id="org6962973">ChangeLog</h2>
+<div class="outline-text-2" id="text-org6962973">
 <ul class="org-ul">
 <li><p>
 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如<a href="https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el">dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs</a>这是一个把org-roam和Logseq联用的el。
@@ -1867,9 +1941,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </ul>
 </div>
 </div>
-<div id="outline-container-org869a91e" class="outline-2">
-<h2 id="org869a91e">Thanks</h2>
-<div class="outline-text-2" id="text-org869a91e">
+<div id="outline-container-orgac312e8" class="outline-2">
+<h2 id="orgac312e8">Thanks</h2>
+<div class="outline-text-2" id="text-orgac312e8">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>

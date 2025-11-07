@@ -59,28 +59,28 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org097899a">TL;DR</a></li>
-<li><a href="#orgf780fb2">折腾记录</a>
+<li><a href="#orgfca6c33">TL;DR</a></li>
+<li><a href="#org7c84aca">折腾记录</a>
 <ul>
-<li><a href="#org17ae509">Arch Linux 初始安装</a></li>
-<li><a href="#org4d600da">i3-X11</a>
+<li><a href="#orgd953f21">Arch Linux 初始安装</a></li>
+<li><a href="#org971dcfa">i3-X11</a>
 <ul>
-<li><a href="#org2a5ff05">安装：</a></li>
-<li><a href="#org4db9a62">配置</a></li>
-<li><a href="#org9768eea">其他设定</a></li>
+<li><a href="#org409cbe1">安装：</a></li>
+<li><a href="#org6aed8a3">配置</a></li>
+<li><a href="#org3dfb679">其他设定</a></li>
 </ul>
 </li>
-<li><a href="#org01b6c92">Sway-Wayland</a></li>
+<li><a href="#orgc411ce4">Sway-Wayland</a></li>
 </ul>
 </li>
-<li><a href="#orga8d153f">冤家 Fcitx 和 Emacs</a></li>
-<li><a href="#org140e41f">小结</a></li>
+<li><a href="#org7ff4883">冤家 Fcitx 和 Emacs</a></li>
+<li><a href="#org85b4607">小结</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org097899a" class="outline-2">
-<h2 id="org097899a">TL;DR</h2>
-<div class="outline-text-2" id="text-org097899a">
+<div id="outline-container-orgfca6c33" class="outline-2">
+<h2 id="orgfca6c33">TL;DR</h2>
+<div class="outline-text-2" id="text-orgfca6c33">
 <p>
 Both stable and unstable until you linux.
 </p>
@@ -94,9 +94,9 @@ Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux �
 </p>
 </div>
 </div>
-<div id="outline-container-orgf780fb2" class="outline-2">
-<h2 id="orgf780fb2">折腾记录</h2>
-<div class="outline-text-2" id="text-orgf780fb2">
+<div id="outline-container-org7c84aca" class="outline-2">
+<h2 id="org7c84aca">折腾记录</h2>
+<div class="outline-text-2" id="text-org7c84aca">
 <p>
 近道都是远路，尝试过几个大佬自己封装好的 Arch Linux，附带了桌面环境的安装和配置。是挺方便的，但是遇到一些小问题的时候，由于不知道他具体是怎么实现的一些功能，又要去看文档和源码。我这个电脑又比较老了，很多问题都没有现成的答案和别人的复现。
 </p>
@@ -110,14 +110,14 @@ Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux �
 </p>
 
 
-<figure id="orgd2962a2">
+<figure id="org0dbef38">
 <img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="70%" height="70%">
 
 </figure>
 </div>
-<div id="outline-container-org17ae509" class="outline-3">
-<h3 id="org17ae509">Arch Linux 初始安装</h3>
-<div class="outline-text-3" id="text-org17ae509">
+<div id="outline-container-orgd953f21" class="outline-3">
+<h3 id="orgd953f21">Arch Linux 初始安装</h3>
+<div class="outline-text-3" id="text-orgd953f21">
 <p>
 <a href="https://archlinux.org/download/">Arch Linux - Downloads</a> 页面下载最新的 ISO 文件，有很多国内镜像可以选。写入 U 盘之后，进入 BIOS 启动 U 盘引导。
 </p>
@@ -142,19 +142,21 @@ Arch Linux 的镜像对国内环境太友好了，差不多 10 分钟就安装�
 </p>
 </div>
 </div>
-<div id="outline-container-org4d600da" class="outline-3">
-<h3 id="org4d600da">i3-X11</h3>
-<div class="outline-text-3" id="text-org4d600da">
+<div id="outline-container-org971dcfa" class="outline-3">
+<h3 id="org971dcfa">i3-X11</h3>
+<div class="outline-text-3" id="text-org971dcfa">
 <p>
 <a href="https://github.com/i3/i3">i3</a> 的简洁实在太爱了。
 </p>
 </div>
-<div id="outline-container-org2a5ff05" class="outline-4">
-<h4 id="org2a5ff05">安装：</h4>
-<div class="outline-text-4" id="text-org2a5ff05">
+<div id="outline-container-org409cbe1" class="outline-4">
+<h4 id="org409cbe1">安装：</h4>
+<div class="outline-text-4" id="text-org409cbe1">
 <div class="org-src-container">
 <pre class="src src-bash">sudo pacman -S i3 xorg xorg-xinit
-echo "exec i3" > ~/.xinitrc</pre>
+
+<span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"exec i3"</span> &gt; ~/.xinitrc
+</pre>
 </div>
 
 <p>
@@ -162,9 +164,9 @@ echo "exec i3" > ~/.xinitrc</pre>
 </p>
 </div>
 </div>
-<div id="outline-container-org4db9a62" class="outline-4">
-<h4 id="org4db9a62">配置</h4>
-<div class="outline-text-4" id="text-org4db9a62">
+<div id="outline-container-org6aed8a3" class="outline-4">
+<h4 id="org6aed8a3">配置</h4>
+<div class="outline-text-4" id="text-org6aed8a3">
 <ul class="org-ul">
 <li><p>
 设置鼠标滚轮翻转
@@ -175,13 +177,14 @@ echo "exec i3" > ~/.xinitrc</pre>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">  Section "InputClass"
-    Identifier "libinput pointer catchall"
-    MatchIsPointer "on"
-    MatchDevicePath "/dev/input/event*"
-    Driver "libinput"
-    Option "NaturalScrolling" "True"
-  EndSection</pre>
+<pre class="src src-bash">  Section <span style="color: #A1D08E;">"InputClass"</span>
+    Identifier <span style="color: #A1D08E;">"libinput pointer catchall"</span>
+    MatchIsPointer <span style="color: #A1D08E;">"on"</span>
+    MatchDevicePath <span style="color: #A1D08E;">"/dev/input/event*"</span>
+    Driver <span style="color: #A1D08E;">"libinput"</span>
+    Option <span style="color: #A1D08E;">"NaturalScrolling"</span> <span style="color: #A1D08E;">"True"</span>
+  EndSection
+</pre>
 </div></li>
 
 <li><p>
@@ -189,33 +192,39 @@ echo "exec i3" > ~/.xinitrc</pre>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">exec --no-startup-id opensnitch-ui
-exec --no-startup-id copyq
-exec --no-startup-id feh --bg-fill /home/vandee/Pictures/create.jpg
-bindsym $mod+period exec ghostty
-bindsym $mod+b exec librewolf --new--windows
-bindsym $mod+e exec emacsclient -c -a ""
-bindsym $mod+f exec thunar
-bindsym $mod+q kill
-# bindsym $mod+Mod1+v exec --no-startup-id copyq show
-# Gaps
-gaps inner 5
+<pre class="src src-bash"><span style="color: #FFA657;">exec</span> --no-startup-id opensnitch-ui
+<span style="color: #FFA657;">exec</span> --no-startup-id copyq
+<span style="color: #FFA657;">exec</span> --no-startup-id feh --bg-fill /home/vandee/Pictures/create.jpg
+
+bindsym $<span style="color: #f4f4ff;">mod</span>+period exec ghostty
+bindsym $<span style="color: #f4f4ff;">mod</span>+b exec librewolf --new--windows
+bindsym $<span style="color: #f4f4ff;">mod</span>+e exec emacsclient -c -a <span style="color: #A1D08E;">""</span>
+bindsym $<span style="color: #f4f4ff;">mod</span>+f exec thunar
+bindsym $<span style="color: #f4f4ff;">mod</span>+q kill
+
+<span style="color: #787878;"># </span><span style="color: #787878;">bindsym $mod+Mod1+v exec --no-startup-id copyq show
+</span>
+<span style="color: #787878;"># </span><span style="color: #787878;">Gaps
+</span>gaps inner 5
 smart_gaps on
-# hide tiling window title bar
-for_window [tiling] border pixel 1
+
+<span style="color: #787878;"># </span><span style="color: #787878;">hide tiling window title bar
+</span>for_window <span style="color: #8c8c8c;">[</span>tiling<span style="color: #8c8c8c;">]</span> border pixel 1
 smart_borders on
-exec --no-startup-id fcitx5</pre>
+
+<span style="color: #FFA657;">exec</span> --no-startup-id fcitx5
+</pre>
 </div></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9768eea" class="outline-4">
-<h4 id="org9768eea">其他设定</h4>
+<div id="outline-container-org3dfb679" class="outline-4">
+<h4 id="org3dfb679">其他设定</h4>
 </div>
 </div>
-<div id="outline-container-org01b6c92" class="outline-3">
-<h3 id="org01b6c92">Sway-Wayland</h3>
-<div class="outline-text-3" id="text-org01b6c92">
+<div id="outline-container-orgc411ce4" class="outline-3">
+<h3 id="orgc411ce4">Sway-Wayland</h3>
+<div class="outline-text-3" id="text-orgc411ce4">
 <p>
 2025-09-01 added
 </p>
@@ -249,23 +258,25 @@ dmenu 换成了 fuzzel，也很轻量。
 <div class="org-src-container">
 <pre class="src src-nil">   input * {
     natural_scroll enabled
-    }</pre>
+    }
+</pre>
 </div></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-orga8d153f" class="outline-2">
-<h2 id="orga8d153f">冤家 Fcitx 和 Emacs</h2>
-<div class="outline-text-2" id="text-orga8d153f">
+<div id="outline-container-org7ff4883" class="outline-2">
+<h2 id="org7ff4883">冤家 Fcitx 和 Emacs</h2>
+<div class="outline-text-2" id="text-org7ff4883">
 <p>
 <code>~/.xprofile</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx</pre>
+<pre class="src src-bash"><span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">GTK_IM_MODULE</span>=fcitx
+<span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">QT_IM_MODULE</span>=fcitx
+<span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">XMODIFIERS</span>=@<span style="color: #f4f4ff;">im</span>=fcitx
+</pre>
 </div>
 
 <p>
@@ -273,9 +284,10 @@ export XMODIFIERS=@im=fcitx</pre>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">XMODIFIERS=@im=fcitx
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx</pre>
+<pre class="src src-bash"><span style="color: #f4f4ff;">XMODIFIERS</span>=@<span style="color: #f4f4ff;">im</span>=fcitx
+<span style="color: #f4f4ff;">GTK_IM_MODULE</span>=fcitx
+<span style="color: #f4f4ff;">QT_IM_MODULE</span>=fcitx
+</pre>
 </div>
 
 <p>
@@ -303,9 +315,9 @@ QT_IM_MODULE=fcitx</pre>
 </p>
 </div>
 </div>
-<div id="outline-container-org140e41f" class="outline-2">
-<h2 id="org140e41f">小结</h2>
-<div class="outline-text-2" id="text-org140e41f">
+<div id="outline-container-org85b4607" class="outline-2">
+<h2 id="org85b4607">小结</h2>
+<div class="outline-text-2" id="text-org85b4607">
 <p>
 这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
 </p>

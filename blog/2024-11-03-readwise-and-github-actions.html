@@ -57,16 +57,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org636e16f">结合之前的 bookmark-collection</a>
+<li><a href="#orga82f37b">结合之前的 bookmark-collection</a>
 <ul>
-<li><a href="#org1862249">python</a></li>
-<li><a href="#org820fea2">workflow</a></li>
+<li><a href="#org838ffd7">python</a></li>
+<li><a href="#org673e167">workflow</a></li>
 </ul>
 </li>
-<li><a href="#org93ad0c4">Readwise highlights</a>
+<li><a href="#org5d5cd70">Readwise highlights</a>
 <ul>
-<li><a href="#orgaf94c37">python</a></li>
-<li><a href="#orgc2972e9">workflow</a></li>
+<li><a href="#org20a3cf6">python</a></li>
+<li><a href="#org0e726ea">workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -75,9 +75,9 @@
 <p>
 Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没有利用好它的 API，在 PKM 体系里，也一直没有统一到工作流。在 Claude 的协助下，有了现在的方案：
 </p>
-<div id="outline-container-org636e16f" class="outline-2">
-<h2 id="org636e16f">结合之前的 bookmark-collection</h2>
-<div class="outline-text-2" id="text-org636e16f">
+<div id="outline-container-orga82f37b" class="outline-2">
+<h2 id="orga82f37b">结合之前的 bookmark-collection</h2>
+<div class="outline-text-2" id="text-orga82f37b">
 <p>
 现在使用 <code>osmos::memos</code> 插件保存的时候，会默认也保存到 readwise。添加 <code>#2clip</code> 标签触发 clip 的 workflow。详见： <a href="https://www.vandee.art/2024-10-12-bookmark-and-summary-by-github-actions.html">用 GitHub 仓库做书签和 AI 摘要 - 流动知识检索</a>
 </p>
@@ -94,452 +94,529 @@ Readwise 是我体验的最舒服的 after-reading 软件了，之前一直没�
 需要在仓库的 secret 里增加一个 <code>READWISE_TOKEN</code> secert，填入自己的 Readwise API。
 </p>
 </div>
-<div id="outline-container-org1862249" class="outline-3">
-<h3 id="org1862249">python</h3>
-<div class="outline-text-3" id="text-org1862249">
+<div id="outline-container-org838ffd7" class="outline-3">
+<h3 id="org838ffd7">python</h3>
+<div class="outline-text-3" id="text-org838ffd7">
 <div class="org-src-container">
-<pre class="src src-python">import os
-import re
-import logging
-import requests
-from github import Github
-logging.basicConfig(
+<pre class="src src-python"><span style="color: #FFA657;">import</span> os
+<span style="color: #FFA657;">import</span> re
+<span style="color: #FFA657;">import</span> logging
+<span style="color: #FFA657;">import</span> requests
+<span style="color: #FFA657;">from</span> github <span style="color: #FFA657;">import</span> Github
+
+logging.basicConfig<span style="color: #8c8c8c;">(</span>
     level=logging.INFO,
-    format='%(asctime)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
-def get_added_content():
-    """获取这次提交新增的内容"""
-    try:
-        g = Github(os.environ['GITHUB_TOKEN'])
-        repo = g.get_repo(os.environ['GITHUB_REPOSITORY'])
-        commit_sha = os.environ.get('GITHUB_SHA')
-        commit = repo.get_commit(commit_sha)
-        for file in commit.files:
-            if file.filename.endswith('.md'):
-                if file.patch and '+' in file.patch:
-                    added_lines = [line[1:] for line in file.patch.split('\n')
-                                 if line.startswith('+') and not line.startswith('+++')]
-                    return added_lines
-        return []
-    except Exception as e:
-        logging.error(f"Error getting commit content: {str(e)}")
-        raise
-def extract_url(line: str):
-    """从行中提取URL，支持markdown格式的链接"""
-    # 更新后的URL提取模式
-    url_pattern = r'\((https?://[\w\-._~:/?#\[\]@!$&\'()*+,;=.%]+)\)'
-    match = re.search(url_pattern, line)
-    if match:
-        return match.group(1)
-    return None
-def has_clip_tag(line: str) -> bool:
-    """检查是否包含 #2clip 标签"""
-    return bool(re.search(r'#2clip\b', line))
-def trigger_workflow():
-    """触发另一个workflow"""
-    try:
-        g = Github(os.environ['GITHUB_TOKEN'])
-        repo = g.get_repo(os.environ['GITHUB_REPOSITORY'])
-        workflow = repo.get_workflow("bookmark_summary.yml")
-        workflow.create_dispatch("main")
-        logging.info("Successfully triggered the bookmark_summary workflow")
-    except Exception as e:
-        logging.error(f"Failed to trigger workflow: {str(e)}")
-        raise
-def main():
-    try:
-        # 获取所有新增的内容
-        added_lines = get_added_content()
-        if not added_lines:
-            logging.info("No new markdown content found in this commit")
-            return
-        trigger_needed = False
-        # 处理每一行新增的内容
-        for line in added_lines:
-            line = line.strip()
-            logging.info(f"Processing line: {line}")
-            # 检查标签
-            if has_clip_tag(line):
-                trigger_needed = True
-                logging.info("Found #2clip tag")
-            # 提取并处理URL（无论是否有标签）
-            url = extract_url(line)
-            if url:
-                try:
-                    response = requests.post(
-                        url="https://readwise.io/api/v3/save/",
-                        headers={"Authorization": f"Token {os.environ['READWISE_TOKEN']}"},
-                        json={
-                            "url": url,
-                            "tags": ["Bookmark"]
-                        }
-                    )
-                    response.raise_for_status()
-                    logging.info(f"Successfully saved URL: {url}")
-                except requests.exceptions.RequestException as e:
-                    logging.error(f"Failed to save URL {url}: {str(e)}")
-        # 如果发现了标签，触发workflow
-        if trigger_needed:
-            logging.info("Triggering workflow due to #2clip tag")
-            trigger_workflow()
-    except Exception as e:
-        logging.error(f"Error: {str(e)}")
-        raise
-if __name__ == "__main__":
-    main()</pre>
+    <span style="color: #79C0FF;">format</span>=<span style="color: #A1D08E;">'%(asctime)s - %(message)s'</span>,
+    datefmt=<span style="color: #A1D08E;">'%Y-%m-%d %H:%M:%S'</span>
+<span style="color: #8c8c8c;">)</span>
+
+<span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">get_added_content</span><span style="color: #8c8c8c;">()</span>:
+    <span style="color: #787878;">"""&#33719;&#21462;&#36825;&#27425;&#25552;&#20132;&#26032;&#22686;&#30340;&#20869;&#23481;"""</span>
+    <span style="color: #FFA657;">try</span>:
+        <span style="color: #f4f4ff;">g</span> = Github<span style="color: #8c8c8c;">(</span>os.environ<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">'GITHUB_TOKEN'</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #f4f4ff;">repo</span> = g.get_repo<span style="color: #8c8c8c;">(</span>os.environ<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">'GITHUB_REPOSITORY'</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #f4f4ff;">commit_sha</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'GITHUB_SHA'</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #f4f4ff;">commit</span> = repo.get_commit<span style="color: #8c8c8c;">(</span>commit_sha<span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #FFA657;">for</span> <span style="color: #79C0FF;">file</span> <span style="color: #FFA657;">in</span> commit.files:
+            <span style="color: #FFA657;">if</span> <span style="color: #79C0FF;">file</span>.filename.endswith<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'.md'</span><span style="color: #8c8c8c;">)</span>:
+                <span style="color: #FFA657;">if</span> <span style="color: #79C0FF;">file</span>.patch <span style="color: #FFA657;">and</span> <span style="color: #A1D08E;">'+'</span> <span style="color: #FFA657;">in</span> <span style="color: #79C0FF;">file</span>.patch:
+                    <span style="color: #f4f4ff;">added_lines</span> = <span style="color: #8c8c8c;">[</span>line<span style="color: #93a8c6;">[</span>1:<span style="color: #93a8c6;">]</span> <span style="color: #FFA657;">for</span> line <span style="color: #FFA657;">in</span> <span style="color: #79C0FF;">file</span>.patch.split<span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">'</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">'</span><span style="color: #93a8c6;">)</span>
+                                 <span style="color: #FFA657;">if</span> line.startswith<span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">'+'</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">and</span> <span style="color: #FFA657;">not</span> line.startswith<span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">'+++'</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">]</span>
+                    <span style="color: #FFA657;">return</span> added_lines
+        <span style="color: #FFA657;">return</span> <span style="color: #8c8c8c;">[]</span>
+
+    <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span> <span style="color: #FFA657;">as</span> e:
+        logging.error<span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Error getting commit content: </span>{<span style="color: #79C0FF;">str</span>(e)}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">raise</span>
+
+<span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">extract_url</span><span style="color: #8c8c8c;">(</span>line: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span>:
+    <span style="color: #787878;">"""&#20174;&#34892;&#20013;&#25552;&#21462;URL&#65292;&#25903;&#25345;markdown&#26684;&#24335;&#30340;&#38142;&#25509;"""</span>
+    <span style="color: #787878;"># </span><span style="color: #787878;">&#26356;&#26032;&#21518;&#30340;URL&#25552;&#21462;&#27169;&#24335;
+</span>    <span style="color: #f4f4ff;">url_pattern</span> = r<span style="color: #A1D08E;">'\((https?://[\w\-._~:/?#\[\]@!$&amp;\'()*+,;=.%]+)\)'</span>
+    <span style="color: #FFA657;">match</span> = re.search<span style="color: #8c8c8c;">(</span>url_pattern, line<span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #FFA657;">match</span>:
+        <span style="color: #FFA657;">return</span> <span style="color: #FFA657;">match</span>.group<span style="color: #8c8c8c;">(</span>1<span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">None</span>
+
+<span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">has_clip_tag</span><span style="color: #8c8c8c;">(</span>line: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">bool</span>:
+    <span style="color: #787878;">"""&#26816;&#26597;&#26159;&#21542;&#21253;&#21547; #2clip &#26631;&#31614;"""</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #79C0FF;">bool</span><span style="color: #8c8c8c;">(</span>re.search<span style="color: #93a8c6;">(</span>r<span style="color: #A1D08E;">'#2clip\b'</span>, line<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">trigger_workflow</span><span style="color: #8c8c8c;">()</span>:
+    <span style="color: #787878;">"""&#35302;&#21457;&#21478;&#19968;&#20010;workflow"""</span>
+    <span style="color: #FFA657;">try</span>:
+        <span style="color: #f4f4ff;">g</span> = Github<span style="color: #8c8c8c;">(</span>os.environ<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">'GITHUB_TOKEN'</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #f4f4ff;">repo</span> = g.get_repo<span style="color: #8c8c8c;">(</span>os.environ<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">'GITHUB_REPOSITORY'</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #f4f4ff;">workflow</span> = repo.get_workflow<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"bookmark_summary.yml"</span><span style="color: #8c8c8c;">)</span>
+        workflow.create_dispatch<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"main"</span><span style="color: #8c8c8c;">)</span>
+        logging.info<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"Successfully triggered the bookmark_summary workflow"</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span> <span style="color: #FFA657;">as</span> e:
+        logging.error<span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Failed to trigger workflow: </span>{<span style="color: #79C0FF;">str</span>(e)}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">raise</span>
+
+<span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">main</span><span style="color: #8c8c8c;">()</span>:
+    <span style="color: #FFA657;">try</span>:
+        <span style="color: #787878;"># </span><span style="color: #787878;">&#33719;&#21462;&#25152;&#26377;&#26032;&#22686;&#30340;&#20869;&#23481;
+</span>        <span style="color: #f4f4ff;">added_lines</span> = get_added_content<span style="color: #8c8c8c;">()</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #FFA657;">not</span> added_lines:
+            logging.info<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"No new markdown content found in this commit"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">return</span>
+
+        <span style="color: #f4f4ff;">trigger_needed</span> = <span style="color: #95a99f;">False</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">&#22788;&#29702;&#27599;&#19968;&#34892;&#26032;&#22686;&#30340;&#20869;&#23481;
+</span>        <span style="color: #FFA657;">for</span> line <span style="color: #FFA657;">in</span> added_lines:
+            <span style="color: #f4f4ff;">line</span> = line.strip<span style="color: #8c8c8c;">()</span>
+            logging.info<span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Processing line: </span>{line}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+
+            <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#26631;&#31614;
+</span>            <span style="color: #FFA657;">if</span> has_clip_tag<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>:
+                <span style="color: #f4f4ff;">trigger_needed</span> = <span style="color: #95a99f;">True</span>
+                logging.info<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"Found #2clip tag"</span><span style="color: #8c8c8c;">)</span>
+
+            <span style="color: #787878;"># </span><span style="color: #787878;">&#25552;&#21462;&#24182;&#22788;&#29702;URL&#65288;&#26080;&#35770;&#26159;&#21542;&#26377;&#26631;&#31614;&#65289;
+</span>            <span style="color: #f4f4ff;">url</span> = extract_url<span style="color: #8c8c8c;">(</span>line<span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">if</span> url:
+                <span style="color: #FFA657;">try</span>:
+                    <span style="color: #f4f4ff;">response</span> = requests.post<span style="color: #8c8c8c;">(</span>
+                        url=<span style="color: #A1D08E;">"https://readwise.io/api/v3/save/"</span>,
+                        headers=<span style="color: #93a8c6;">{</span><span style="color: #A1D08E;">"Authorization"</span>: f<span style="color: #A1D08E;">"Token </span>{os.environ['READWISE_TOKEN']}<span style="color: #A1D08E;">"</span><span style="color: #93a8c6;">}</span>,
+                        json=<span style="color: #93a8c6;">{</span>
+                            <span style="color: #A1D08E;">"url"</span>: url,
+                            <span style="color: #A1D08E;">"tags"</span>: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"Bookmark"</span><span style="color: #b0b1a3;">]</span>
+                        <span style="color: #93a8c6;">}</span>
+                    <span style="color: #8c8c8c;">)</span>
+                    response.raise_for_status<span style="color: #8c8c8c;">()</span>
+                    logging.info<span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Successfully saved URL: </span>{url}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #FFA657;">except</span> requests.exceptions.RequestException <span style="color: #FFA657;">as</span> e:
+                    logging.error<span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Failed to save URL </span>{url}<span style="color: #A1D08E;">: </span>{<span style="color: #79C0FF;">str</span>(e)}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">&#22914;&#26524;&#21457;&#29616;&#20102;&#26631;&#31614;&#65292;&#35302;&#21457;workflow
+</span>        <span style="color: #FFA657;">if</span> trigger_needed:
+            logging.info<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"Triggering workflow due to #2clip tag"</span><span style="color: #8c8c8c;">)</span>
+            trigger_workflow<span style="color: #8c8c8c;">()</span>
+
+    <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span> <span style="color: #FFA657;">as</span> e:
+        logging.error<span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Error: </span>{<span style="color: #79C0FF;">str</span>(e)}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">raise</span>
+
+<span style="color: #FFA657;">if</span> <span style="color: #79C0FF;">__name__</span> == <span style="color: #A1D08E;">"__main__"</span>:
+    main<span style="color: #8c8c8c;">()</span>
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org820fea2" class="outline-3">
-<h3 id="org820fea2">workflow</h3>
-<div class="outline-text-3" id="text-org820fea2">
+<div id="outline-container-org673e167" class="outline-3">
+<h3 id="org673e167">workflow</h3>
+<div class="outline-text-3" id="text-org673e167">
 <div class="org-src-container">
 <pre class="src src-yaml">
-name: Save Bookmark to Readwise
-on:
-  push:
-    branches:
+<span style="color: #f4f4ff;">name</span>: Save Bookmark to Readwise
+
+<span style="color: #95a99f;">on</span>:
+  <span style="color: #f4f4ff;">push</span>:
+    <span style="color: #f4f4ff;">branches</span>:
       - main
-    paths:
-      - '**.md'
-  workflow_dispatch:
-permissions:
-  contents: read
-  actions: write
-jobs:
-  save-to-readwise:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests PyGithub
-    - name: Run bookmark saver
-      env:
-        READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
-      run: python save_to_readwise.py</pre>
+    <span style="color: #f4f4ff;">paths</span>:
+      - <span style="color: #A1D08E;">'**.md'</span>
+  <span style="color: #f4f4ff;">workflow_dispatch</span>:
+
+<span style="color: #f4f4ff;">permissions</span>:
+  <span style="color: #f4f4ff;">contents</span>: read
+  <span style="color: #f4f4ff;">actions</span>: write
+
+<span style="color: #f4f4ff;">jobs</span>:
+  <span style="color: #f4f4ff;">save-to-readwise</span>:
+    <span style="color: #f4f4ff;">runs-on</span>: ubuntu-latest
+
+    <span style="color: #f4f4ff;">steps</span>:
+    - <span style="color: #f4f4ff;">name</span>: Checkout repository
+      <span style="color: #f4f4ff;">uses</span>: actions/checkout@v4
+      <span style="color: #f4f4ff;">with</span>:
+        <span style="color: #f4f4ff;">token</span>: ${{ secrets.GITHUB_TOKEN }}
+
+    - <span style="color: #f4f4ff;">name</span>: Set up Python
+      <span style="color: #f4f4ff;">uses</span>: actions/setup-python@v4
+      <span style="color: #f4f4ff;">with</span>:
+        <span style="color: #f4f4ff;">python-version</span>: <span style="color: #A1D08E;">'3.10'</span>
+
+    - <span style="color: #f4f4ff;">name</span>: Install dependencies
+      <span style="color: #f4f4ff;">run</span>: |
+        <span style="color: #A1D08E;">python -m pip install --upgrade pip</span>
+<span style="color: #A1D08E;">        pip install requests PyGithub
+</span>
+    - <span style="color: #f4f4ff;">name</span>: Run bookmark saver
+      <span style="color: #f4f4ff;">env</span>:
+        <span style="color: #f4f4ff;">READWISE_TOKEN</span>: ${{ secrets.READWISE_TOKEN }}
+        <span style="color: #f4f4ff;">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #f4f4ff;">GITHUB_REPOSITORY</span>: ${{ github.repository }}
+      <span style="color: #f4f4ff;">run</span>: python save_to_readwise.py
+
+</pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org93ad0c4" class="outline-2">
-<h2 id="org93ad0c4">Readwise highlights</h2>
-<div class="outline-text-2" id="text-org93ad0c4">
+<div id="outline-container-org5d5cd70" class="outline-2">
+<h2 id="org5d5cd70">Readwise highlights</h2>
+<div class="outline-text-2" id="text-org5d5cd70">
 <p>
 写了一个 <code>class ReadwiseAPI</code> 方便其他项目引入。可以定时获取我所有 highlights 的 title 和 url。
 </p>
 </div>
-<div id="outline-container-orgaf94c37" class="outline-3">
-<h3 id="orgaf94c37">python</h3>
-<div class="outline-text-3" id="text-orgaf94c37">
+<div id="outline-container-org20a3cf6" class="outline-3">
+<h3 id="org20a3cf6">python</h3>
+<div class="outline-text-3" id="text-org20a3cf6">
 <div class="org-src-container">
 <pre class="src src-python">
-import requests
-import json
-from datetime import datetime, timedelta
-import os
-from typing import List, Dict, Optional
-from pathlib import Path
-import re
-from github import Github
-import argparse
-class ReadwiseAPI:
-    """Readwise API client for exporting highlights with smart update capability and GitHub integration"""
-    def __init__(self):
-        # Initialize Readwise token
-        self.readwise_token = os.environ.get("READWISE_TOKEN")
-        if not self.readwise_token:
-            raise ValueError("READWISE_TOKEN not found in environment variables")
-        # Initialize GitHub token
-        self.github_token = os.environ.get("GITHUB_TOKEN")
-        if not self.github_token:
-            raise ValueError("GITHUB_TOKEN not found in environment variables")
-        # Get repository from GitHub Actions environment variable
-        self.github_repo = os.environ.get("GITHUB_REPOSITORY")
-        if not self.github_repo:
-            raise ValueError("Not running in GitHub Actions environment (GITHUB_REPOSITORY not found)")
-        # Initialize GitHub client
-        self.github = Github(self.github_token)
-        self.repo = self.github.get_repo(self.github_repo)
-        # Initialize Readwise API settings
-        self.base_url = "https://readwise.io/api/v2"
-        self.headers = {
-            "Authorization": f"Token {self.readwise_token}"
-        }
-        self.last_update_file = "last_update.json"
-        self.articles_file = "articles.json"
-    def get_highlights(self, updated_after: Optional[datetime] = None,
-                      start_date: Optional[datetime] = None,
-                      end_date: Optional[datetime] = None) -> Dict:
-        """Get all highlights with their associated metadata"""
-        endpoint = f"{self.base_url}/export/"
-        params = {}
-        if updated_after:
-            params["updated_after"] = updated_after.isoformat()
-        elif start_date:
-            params["updated_after"] = start_date.isoformat()
-            if end_date:
-                params["updated_before"] = end_date.isoformat()
-        print(f"Fetching highlights with params: {params}")
-        response = requests.get(endpoint, headers=self.headers, params=params)
-        response.raise_for_status()
-        return response.json()
-    def get_file_content(self, path: str) -> Optional[str]:
-        """Get file content from GitHub repository"""
-        try:
-            content = self.repo.get_contents(path)
-            return content.decoded_content.decode('utf-8')
-        except Exception as e:
-            print(f"File {path} not found in repository: {e}")
-            return None
-    def update_file(self, path: str, content: str, message: str):
-        """Update or create file in GitHub repository"""
-        try:
-            # Try to get existing file
-            file = self.repo.get_contents(path)
-            # Update existing file
-            self.repo.update_file(
+<span style="color: #FFA657;">import</span> requests
+<span style="color: #FFA657;">import</span> json
+<span style="color: #FFA657;">from</span> datetime <span style="color: #FFA657;">import</span> datetime, timedelta
+<span style="color: #FFA657;">import</span> os
+<span style="color: #FFA657;">from</span> typing <span style="color: #FFA657;">import</span> List, Dict, Optional
+<span style="color: #FFA657;">from</span> pathlib <span style="color: #FFA657;">import</span> Path
+<span style="color: #FFA657;">import</span> re
+<span style="color: #FFA657;">from</span> github <span style="color: #FFA657;">import</span> Github
+<span style="color: #FFA657;">import</span> argparse
+
+<span style="color: #FFA657;">class</span> <span style="color: #95a99f;">ReadwiseAPI</span>:
+    <span style="color: #787878;">"""Readwise API client for exporting highlights with smart update capability and GitHub integration"""</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">__init__</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span><span style="color: #8c8c8c;">)</span>:
+        <span style="color: #787878;"># </span><span style="color: #787878;">Initialize Readwise token
+</span>        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">readwise_token</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"READWISE_TOKEN"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #FFA657;">not</span> <span style="color: #FFA657;">self</span>.readwise_token:
+            <span style="color: #FFA657;">raise</span> <span style="color: #95a99f;">ValueError</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"READWISE_TOKEN not found in environment variables"</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Initialize GitHub token
+</span>        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">github_token</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"GITHUB_TOKEN"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #FFA657;">not</span> <span style="color: #FFA657;">self</span>.github_token:
+            <span style="color: #FFA657;">raise</span> <span style="color: #95a99f;">ValueError</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"GITHUB_TOKEN not found in environment variables"</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Get repository from GitHub Actions environment variable
+</span>        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">github_repo</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"GITHUB_REPOSITORY"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #FFA657;">not</span> <span style="color: #FFA657;">self</span>.github_repo:
+            <span style="color: #FFA657;">raise</span> <span style="color: #95a99f;">ValueError</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"Not running in GitHub Actions environment (GITHUB_REPOSITORY not found)"</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Initialize GitHub client
+</span>        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">github</span> = Github<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>.github_token<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">repo</span> = <span style="color: #FFA657;">self</span>.github.get_repo<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>.github_repo<span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Initialize Readwise API settings
+</span>        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">base_url</span> = <span style="color: #A1D08E;">"https://readwise.io/api/v2"</span>
+        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">headers</span> = <span style="color: #8c8c8c;">{</span>
+            <span style="color: #A1D08E;">"Authorization"</span>: f<span style="color: #A1D08E;">"Token </span>{<span style="color: #FFA657;">self</span>.readwise_token}<span style="color: #A1D08E;">"</span>
+        <span style="color: #8c8c8c;">}</span>
+        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">last_update_file</span> = <span style="color: #A1D08E;">"last_update.json"</span>
+        <span style="color: #FFA657;">self</span>.<span style="color: #f4f4ff;">articles_file</span> = <span style="color: #A1D08E;">"articles.json"</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">get_highlights</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>, updated_after: Optional<span style="color: #93a8c6;">[</span>datetime<span style="color: #93a8c6;">]</span> = <span style="color: #95a99f;">None</span>,
+                      start_date: Optional<span style="color: #93a8c6;">[</span>datetime<span style="color: #93a8c6;">]</span> = <span style="color: #95a99f;">None</span>,
+                      end_date: Optional<span style="color: #93a8c6;">[</span>datetime<span style="color: #93a8c6;">]</span> = <span style="color: #95a99f;">None</span><span style="color: #8c8c8c;">)</span> -&gt; Dict:
+        <span style="color: #787878;">"""Get all highlights with their associated metadata"""</span>
+        <span style="color: #f4f4ff;">endpoint</span> = f<span style="color: #A1D08E;">"</span>{<span style="color: #FFA657;">self</span>.base_url}<span style="color: #A1D08E;">/export/"</span>
+        <span style="color: #f4f4ff;">params</span> = <span style="color: #8c8c8c;">{}</span>
+
+        <span style="color: #FFA657;">if</span> updated_after:
+            <span style="color: #f4f4ff;">params</span><span style="color: #8c8c8c;">[</span><span style="color: #A1D08E;">"updated_after"</span><span style="color: #8c8c8c;">]</span> = updated_after.isoformat<span style="color: #8c8c8c;">()</span>
+        <span style="color: #FFA657;">elif</span> start_date:
+            <span style="color: #f4f4ff;">params</span><span style="color: #8c8c8c;">[</span><span style="color: #A1D08E;">"updated_after"</span><span style="color: #8c8c8c;">]</span> = start_date.isoformat<span style="color: #8c8c8c;">()</span>
+            <span style="color: #FFA657;">if</span> end_date:
+                <span style="color: #f4f4ff;">params</span><span style="color: #8c8c8c;">[</span><span style="color: #A1D08E;">"updated_before"</span><span style="color: #8c8c8c;">]</span> = end_date.isoformat<span style="color: #8c8c8c;">()</span>
+
+        <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Fetching highlights with params: </span>{params}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #f4f4ff;">response</span> = requests.get<span style="color: #8c8c8c;">(</span>endpoint, headers=<span style="color: #FFA657;">self</span>.headers, params=params<span style="color: #8c8c8c;">)</span>
+        response.raise_for_status<span style="color: #8c8c8c;">()</span>
+        <span style="color: #FFA657;">return</span> response.json<span style="color: #8c8c8c;">()</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">get_file_content</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>, path: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; Optional<span style="color: #8c8c8c;">[</span><span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">]</span>:
+        <span style="color: #787878;">"""Get file content from GitHub repository"""</span>
+        <span style="color: #FFA657;">try</span>:
+            <span style="color: #f4f4ff;">content</span> = <span style="color: #FFA657;">self</span>.repo.get_contents<span style="color: #8c8c8c;">(</span>path<span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">return</span> content.decoded_content.decode<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'utf-8'</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span> <span style="color: #FFA657;">as</span> e:
+            <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"File </span>{path}<span style="color: #A1D08E;"> not found in repository: </span>{e}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">None</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">update_file</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>, path: <span style="color: #79C0FF;">str</span>, content: <span style="color: #79C0FF;">str</span>, message: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span>:
+        <span style="color: #787878;">"""Update or create file in GitHub repository"""</span>
+        <span style="color: #FFA657;">try</span>:
+            <span style="color: #787878;"># </span><span style="color: #787878;">Try to get existing file
+</span>            <span style="color: #79C0FF;">file</span> = <span style="color: #FFA657;">self</span>.repo.get_contents<span style="color: #8c8c8c;">(</span>path<span style="color: #8c8c8c;">)</span>
+            <span style="color: #787878;"># </span><span style="color: #787878;">Update existing file
+</span>            <span style="color: #FFA657;">self</span>.repo.update_file<span style="color: #8c8c8c;">(</span>
                 path=path,
                 message=message,
                 content=content,
-                sha=file.sha
-            )
-        except Exception:
-            # Create new file if it doesn't exist
-            self.repo.create_file(
+                sha=<span style="color: #79C0FF;">file</span>.sha
+            <span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span>:
+            <span style="color: #787878;"># </span><span style="color: #787878;">Create new file if it doesn't exist
+</span>            <span style="color: #FFA657;">self</span>.repo.create_file<span style="color: #8c8c8c;">(</span>
                 path=path,
                 message=message,
                 content=content
-            )
-    def clean_title(self, title: str) -> str:
-        """Clean title by removing newlines and extra spaces"""
-        title = re.sub(r'\s+', ' ', title.replace('\n', ' '))
-        return title.strip()
-    def create_article_json(self, highlights_data: Dict) -> List[Dict]:
-        """Create a list of articles with title and URL, only for category 'articles'"""
-        articles = []
-        for article in highlights_data.get('results', []):
-            if article.get('category', '').lower() == 'articles':
-                title = self.clean_title(article.get('title', 'Untitled'))
-                url = article.get('source_url', '')
-                articles.append({
-                    'title': title,
-                    'url': url
-                })
-        return articles
-    def load_last_update_from_github(self) -> Optional[datetime]:
-        """Load the last update date from GitHub"""
-        content = self.get_file_content(self.last_update_file)
-        if content:
-            try:
-                data = json.loads(content)
-                return datetime.strptime(data['last_update'], '%Y-%m-%d')
-            except Exception as e:
-                print(f"Error parsing last update file: {e}")
-                return None
-        return None
-    def save_last_update_to_github(self):
-        """Save current date as last update date to GitHub"""
-        current_date = datetime.now().strftime('%Y-%m-%d')
-        content = json.dumps({'last_update': current_date})
-        self.update_file(
-            path=self.last_update_file,
+            <span style="color: #8c8c8c;">)</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">clean_title</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>, title: <span style="color: #79C0FF;">str</span><span style="color: #8c8c8c;">)</span> -&gt; <span style="color: #79C0FF;">str</span>:
+        <span style="color: #787878;">"""Clean title by removing newlines and extra spaces"""</span>
+        <span style="color: #f4f4ff;">title</span> = re.sub<span style="color: #8c8c8c;">(</span>r<span style="color: #A1D08E;">'\s+'</span>, <span style="color: #A1D08E;">' '</span>, title.replace<span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">'</span><span style="color: #95a99f;">\n</span><span style="color: #A1D08E;">'</span>, <span style="color: #A1D08E;">' '</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">return</span> title.strip<span style="color: #8c8c8c;">()</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">create_article_json</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>, highlights_data: Dict<span style="color: #8c8c8c;">)</span> -&gt; List<span style="color: #8c8c8c;">[</span>Dict<span style="color: #8c8c8c;">]</span>:
+        <span style="color: #787878;">"""Create a list of articles with title and URL, only for category 'articles'"""</span>
+        <span style="color: #f4f4ff;">articles</span> = <span style="color: #8c8c8c;">[]</span>
+
+        <span style="color: #FFA657;">for</span> article <span style="color: #FFA657;">in</span> highlights_data.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'results'</span>, <span style="color: #93a8c6;">[]</span><span style="color: #8c8c8c;">)</span>:
+            <span style="color: #FFA657;">if</span> article.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'category'</span>, <span style="color: #A1D08E;">''</span><span style="color: #8c8c8c;">)</span>.lower<span style="color: #8c8c8c;">()</span> == <span style="color: #A1D08E;">'articles'</span>:
+                <span style="color: #f4f4ff;">title</span> = <span style="color: #FFA657;">self</span>.clean_title<span style="color: #8c8c8c;">(</span>article.get<span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">'title'</span>, <span style="color: #A1D08E;">'Untitled'</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #f4f4ff;">url</span> = article.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'source_url'</span>, <span style="color: #A1D08E;">''</span><span style="color: #8c8c8c;">)</span>
+
+                articles.append<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>
+                    <span style="color: #A1D08E;">'title'</span>: title,
+                    <span style="color: #A1D08E;">'url'</span>: url
+                <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #FFA657;">return</span> articles
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">load_last_update_from_github</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span><span style="color: #8c8c8c;">)</span> -&gt; Optional<span style="color: #8c8c8c;">[</span>datetime<span style="color: #8c8c8c;">]</span>:
+        <span style="color: #787878;">"""Load the last update date from GitHub"""</span>
+        <span style="color: #f4f4ff;">content</span> = <span style="color: #FFA657;">self</span>.get_file_content<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>.last_update_file<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">if</span> content:
+            <span style="color: #FFA657;">try</span>:
+                <span style="color: #f4f4ff;">data</span> = json.loads<span style="color: #8c8c8c;">(</span>content<span style="color: #8c8c8c;">)</span>
+                <span style="color: #FFA657;">return</span> datetime.strptime<span style="color: #8c8c8c;">(</span>data<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">'last_update'</span><span style="color: #93a8c6;">]</span>, <span style="color: #A1D08E;">'%Y-%m-%d'</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span> <span style="color: #FFA657;">as</span> e:
+                <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Error parsing last update file: </span>{e}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">None</span>
+        <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">None</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">save_last_update_to_github</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span><span style="color: #8c8c8c;">)</span>:
+        <span style="color: #787878;">"""Save current date as last update date to GitHub"""</span>
+        <span style="color: #f4f4ff;">current_date</span> = datetime.now<span style="color: #8c8c8c;">()</span>.strftime<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'%Y-%m-%d'</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #f4f4ff;">content</span> = json.dumps<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span><span style="color: #A1D08E;">'last_update'</span>: current_date<span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">self</span>.update_file<span style="color: #8c8c8c;">(</span>
+            path=<span style="color: #FFA657;">self</span>.last_update_file,
             content=content,
-            message="Update last sync date"
-        )
-    def load_existing_articles_from_github(self) -> List[Dict]:
-        """Load existing articles from GitHub"""
-        content = self.get_file_content(self.articles_file)
-        if content:
-            try:
-                return json.loads(content)
-            except Exception as e:
-                print(f"Error parsing articles file: {e}")
-                return []
-        return []
-    def merge_articles(self, existing_articles: List[Dict], new_articles: List[Dict]) -> List[Dict]:
-        """Merge new articles with existing ones, avoiding duplicates"""
-        existing_set = {(article['title'], article['url']) for article in existing_articles}
-        for article in new_articles:
-            article_tuple = (article['title'], article['url'])
-            if article_tuple not in existing_set:
-                existing_articles.append(article)
-                existing_set.add(article_tuple)
-        return existing_articles
-    def export_articles(self, start_date: Optional[str] = None,
-                       end_date: Optional[str] = None,
-                       all_time: bool = False):
-        """
+            message=<span style="color: #A1D08E;">"Update last sync date"</span>
+        <span style="color: #8c8c8c;">)</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">load_existing_articles_from_github</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span><span style="color: #8c8c8c;">)</span> -&gt; List<span style="color: #8c8c8c;">[</span>Dict<span style="color: #8c8c8c;">]</span>:
+        <span style="color: #787878;">"""Load existing articles from GitHub"""</span>
+        <span style="color: #f4f4ff;">content</span> = <span style="color: #FFA657;">self</span>.get_file_content<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>.articles_file<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">if</span> content:
+            <span style="color: #FFA657;">try</span>:
+                <span style="color: #FFA657;">return</span> json.loads<span style="color: #8c8c8c;">(</span>content<span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span> <span style="color: #FFA657;">as</span> e:
+                <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Error parsing articles file: </span>{e}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #FFA657;">return</span> <span style="color: #8c8c8c;">[]</span>
+        <span style="color: #FFA657;">return</span> <span style="color: #8c8c8c;">[]</span>
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">merge_articles</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>, existing_articles: List<span style="color: #93a8c6;">[</span>Dict<span style="color: #93a8c6;">]</span>, new_articles: List<span style="color: #93a8c6;">[</span>Dict<span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span> -&gt; List<span style="color: #8c8c8c;">[</span>Dict<span style="color: #8c8c8c;">]</span>:
+        <span style="color: #787878;">"""Merge new articles with existing ones, avoiding duplicates"""</span>
+        <span style="color: #f4f4ff;">existing_set</span> = <span style="color: #8c8c8c;">{</span><span style="color: #93a8c6;">(</span>article<span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">'title'</span><span style="color: #b0b1a3;">]</span>, article<span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">'url'</span><span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">for</span> article <span style="color: #FFA657;">in</span> existing_articles<span style="color: #8c8c8c;">}</span>
+
+        <span style="color: #FFA657;">for</span> article <span style="color: #FFA657;">in</span> new_articles:
+            <span style="color: #f4f4ff;">article_tuple</span> = <span style="color: #8c8c8c;">(</span>article<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">'title'</span><span style="color: #93a8c6;">]</span>, article<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">'url'</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">if</span> article_tuple <span style="color: #FFA657;">not</span> <span style="color: #FFA657;">in</span> existing_set:
+                existing_articles.append<span style="color: #8c8c8c;">(</span>article<span style="color: #8c8c8c;">)</span>
+                existing_set.add<span style="color: #8c8c8c;">(</span>article_tuple<span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #FFA657;">return</span> existing_articles
+
+    <span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">export_articles</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">self</span>, start_date: Optional<span style="color: #93a8c6;">[</span><span style="color: #79C0FF;">str</span><span style="color: #93a8c6;">]</span> = <span style="color: #95a99f;">None</span>,
+                       end_date: Optional<span style="color: #93a8c6;">[</span><span style="color: #79C0FF;">str</span><span style="color: #93a8c6;">]</span> = <span style="color: #95a99f;">None</span>,
+                       all_time: <span style="color: #79C0FF;">bool</span> = <span style="color: #95a99f;">False</span><span style="color: #8c8c8c;">)</span>:
+        <span style="color: #787878;">"""
         Export articles to GitHub with smart update capability
+
         Args:
             start_date: Optional start date in YYYY-MM-DD format
             end_date: Optional end date in YYYY-MM-DD format
             all_time: If True, fetch all highlights regardless of dates
-        """
-        if all_time:
-            # 当选择 all_time 时，强制获取所有 highlights，忽略上次更新时间
-            print("Fetching all highlights from the beginning")
-            highlights_data = self.get_highlights()
-        elif start_date:
-            # 如果指定了开始日期，使用指定的日期范围
-            start_datetime = datetime.strptime(start_date, '%Y-%m-%d')
-            end_datetime = datetime.strptime(end_date, '%Y-%m-%d') if end_date else datetime.now()
-            print(f"Fetching highlights from {start_date} to {end_date or 'now'}")
-            highlights_data = self.get_highlights(start_date=start_datetime, end_date=end_datetime)
-        else:
-            # 使用上次更新时间的增量更新逻辑
-            last_update = self.load_last_update_from_github()
-            if last_update:
-                days_since_update = (datetime.now() - last_update).days
-                print(f"Last update was {days_since_update} days ago on {last_update.strftime('%Y-%m-%d')}")
-                if days_since_update > 0:
-                    print(f"Fetching highlights updated after {last_update.strftime('%Y-%m-%d')}")
-                    highlights_data = self.get_highlights(updated_after=last_update)
-                else:
-                    print("Already updated today, no need to fetch new articles")
-                    return
-            else:
-                print("No previous update found, fetching all articles")
-                highlights_data = self.get_highlights()
-        # Create article data
-        new_articles = self.create_article_json(highlights_data)
-        print(f"Found {len(new_articles)} new articles")
-        # Load existing articles
-        existing_articles = self.load_existing_articles_from_github()
-        print(f"Found {len(existing_articles)} existing articles")
-        # Merge new articles with existing ones
-        merged_articles = self.merge_articles(existing_articles, new_articles)
-        print(f"Total unique articles after merge: {len(merged_articles)}")
-        # Save merged articles to GitHub
-        self.update_file(
-            path=self.articles_file,
-            content=json.dumps(merged_articles, ensure_ascii=False, indent=2),
-            message="Update articles list"
-        )
-        # Update the last update date
-        if not start_date and not all_time:  # 只有在非指定日期范围和非全量更新的情况下才更新最后同步时间
-            self.save_last_update_to_github()
-        print(f"Successfully updated articles in GitHub repository")
-        if new_articles:
-            print("New articles added:")
-            for article in new_articles:
-                print(f"- {article['title']}")
-def main():
-    # 从环境变量获取 GitHub Actions 的输入参数
-    gh_start_date = os.environ.get('INPUT_START_DATE', '')
-    gh_end_date = os.environ.get('INPUT_END_DATE', '')
-    gh_all_time = os.environ.get('INPUT_ALL_TIME', '').lower() == 'true'
-    # 设置命令行参数解析器
-    parser = argparse.ArgumentParser(description='Sync Readwise highlights to GitHub')
-    parser.add_argument('--start-date', type=str, help='Start date in YYYY-MM-DD format')
-    parser.add_argument('--end-date', type=str, help='End date in YYYY-MM-DD format')
-    parser.add_argument('--all-time', action='store_true', help='Fetch all highlights from the beginning')
-    args = parser.parse_args()
-    # 优先使用命令行参数，如果没有则使用 GitHub Actions 的输入参数
-    start_date = args.start_date or gh_start_date
-    end_date = args.end_date or gh_end_date
-    all_time = args.all_time or gh_all_time
-    try:
-        client = ReadwiseAPI()
-        client.export_articles(
-            start_date=start_date if start_date else None,
-            end_date=end_date if end_date else None,
+        """</span>
+        <span style="color: #FFA657;">if</span> all_time:
+            <span style="color: #787878;"># </span><span style="color: #787878;">&#24403;&#36873;&#25321; all_time &#26102;&#65292;&#24378;&#21046;&#33719;&#21462;&#25152;&#26377; highlights&#65292;&#24573;&#30053;&#19978;&#27425;&#26356;&#26032;&#26102;&#38388;
+</span>            <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"Fetching all highlights from the beginning"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #f4f4ff;">highlights_data</span> = <span style="color: #FFA657;">self</span>.get_highlights<span style="color: #8c8c8c;">()</span>
+        <span style="color: #FFA657;">elif</span> start_date:
+            <span style="color: #787878;"># </span><span style="color: #787878;">&#22914;&#26524;&#25351;&#23450;&#20102;&#24320;&#22987;&#26085;&#26399;&#65292;&#20351;&#29992;&#25351;&#23450;&#30340;&#26085;&#26399;&#33539;&#22260;
+</span>            <span style="color: #f4f4ff;">start_datetime</span> = datetime.strptime<span style="color: #8c8c8c;">(</span>start_date, <span style="color: #A1D08E;">'%Y-%m-%d'</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #f4f4ff;">end_datetime</span> = datetime.strptime<span style="color: #8c8c8c;">(</span>end_date, <span style="color: #A1D08E;">'%Y-%m-%d'</span><span style="color: #8c8c8c;">)</span> <span style="color: #FFA657;">if</span> end_date <span style="color: #FFA657;">else</span> datetime.now<span style="color: #8c8c8c;">()</span>
+            <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Fetching highlights from </span>{start_date}<span style="color: #A1D08E;"> to </span>{end_date <span style="color: #FFA657;">or</span> 'now'}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #f4f4ff;">highlights_data</span> = <span style="color: #FFA657;">self</span>.get_highlights<span style="color: #8c8c8c;">(</span>start_date=start_datetime, end_date=end_datetime<span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">else</span>:
+            <span style="color: #787878;"># </span><span style="color: #787878;">&#20351;&#29992;&#19978;&#27425;&#26356;&#26032;&#26102;&#38388;&#30340;&#22686;&#37327;&#26356;&#26032;&#36923;&#36753;
+</span>            <span style="color: #f4f4ff;">last_update</span> = <span style="color: #FFA657;">self</span>.load_last_update_from_github<span style="color: #8c8c8c;">()</span>
+            <span style="color: #FFA657;">if</span> last_update:
+                <span style="color: #f4f4ff;">days_since_update</span> = <span style="color: #8c8c8c;">(</span>datetime.now<span style="color: #93a8c6;">()</span> - last_update<span style="color: #8c8c8c;">)</span>.days
+                <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Last update was </span>{days_since_update}<span style="color: #A1D08E;"> days ago on </span>{last_update.strftime('%Y-%m-%d')}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #FFA657;">if</span> days_since_update &gt; 0:
+                    <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Fetching highlights updated after </span>{last_update.strftime('%Y-%m-%d')}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+                    <span style="color: #f4f4ff;">highlights_data</span> = <span style="color: #FFA657;">self</span>.get_highlights<span style="color: #8c8c8c;">(</span>updated_after=last_update<span style="color: #8c8c8c;">)</span>
+                <span style="color: #FFA657;">else</span>:
+                    <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"Already updated today, no need to fetch new articles"</span><span style="color: #8c8c8c;">)</span>
+                    <span style="color: #FFA657;">return</span>
+            <span style="color: #FFA657;">else</span>:
+                <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"No previous update found, fetching all articles"</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #f4f4ff;">highlights_data</span> = <span style="color: #FFA657;">self</span>.get_highlights<span style="color: #8c8c8c;">()</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Create article data
+</span>        <span style="color: #f4f4ff;">new_articles</span> = <span style="color: #FFA657;">self</span>.create_article_json<span style="color: #8c8c8c;">(</span>highlights_data<span style="color: #8c8c8c;">)</span>
+        <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Found </span>{<span style="color: #79C0FF;">len</span>(new_articles)}<span style="color: #A1D08E;"> new articles"</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Load existing articles
+</span>        <span style="color: #f4f4ff;">existing_articles</span> = <span style="color: #FFA657;">self</span>.load_existing_articles_from_github<span style="color: #8c8c8c;">()</span>
+        <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Found </span>{<span style="color: #79C0FF;">len</span>(existing_articles)}<span style="color: #A1D08E;"> existing articles"</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Merge new articles with existing ones
+</span>        <span style="color: #f4f4ff;">merged_articles</span> = <span style="color: #FFA657;">self</span>.merge_articles<span style="color: #8c8c8c;">(</span>existing_articles, new_articles<span style="color: #8c8c8c;">)</span>
+        <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Total unique articles after merge: </span>{<span style="color: #79C0FF;">len</span>(merged_articles)}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Save merged articles to GitHub
+</span>        <span style="color: #FFA657;">self</span>.update_file<span style="color: #8c8c8c;">(</span>
+            path=<span style="color: #FFA657;">self</span>.articles_file,
+            content=json.dumps<span style="color: #93a8c6;">(</span>merged_articles, ensure_ascii=<span style="color: #95a99f;">False</span>, indent=2<span style="color: #93a8c6;">)</span>,
+            message=<span style="color: #A1D08E;">"Update articles list"</span>
+        <span style="color: #8c8c8c;">)</span>
+
+        <span style="color: #787878;"># </span><span style="color: #787878;">Update the last update date
+</span>        <span style="color: #FFA657;">if</span> <span style="color: #FFA657;">not</span> start_date <span style="color: #FFA657;">and</span> <span style="color: #FFA657;">not</span> all_time:  <span style="color: #787878;"># </span><span style="color: #787878;">&#21482;&#26377;&#22312;&#38750;&#25351;&#23450;&#26085;&#26399;&#33539;&#22260;&#21644;&#38750;&#20840;&#37327;&#26356;&#26032;&#30340;&#24773;&#20917;&#19979;&#25165;&#26356;&#26032;&#26368;&#21518;&#21516;&#27493;&#26102;&#38388;
+</span>            <span style="color: #FFA657;">self</span>.save_last_update_to_github<span style="color: #8c8c8c;">()</span>
+
+        <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"Successfully updated articles in GitHub repository"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">if</span> new_articles:
+            <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"New articles added:"</span><span style="color: #8c8c8c;">)</span>
+            <span style="color: #FFA657;">for</span> article <span style="color: #FFA657;">in</span> new_articles:
+                <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"- </span>{article['title']}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #FFA657;">def</span> <span style="color: #96a6c8;">main</span><span style="color: #8c8c8c;">()</span>:
+    <span style="color: #787878;"># </span><span style="color: #787878;">&#20174;&#29615;&#22659;&#21464;&#37327;&#33719;&#21462; GitHub Actions &#30340;&#36755;&#20837;&#21442;&#25968;
+</span>    <span style="color: #f4f4ff;">gh_start_date</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'INPUT_START_DATE'</span>, <span style="color: #A1D08E;">''</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #f4f4ff;">gh_end_date</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'INPUT_END_DATE'</span>, <span style="color: #A1D08E;">''</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #f4f4ff;">gh_all_time</span> = os.environ.get<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'INPUT_ALL_TIME'</span>, <span style="color: #A1D08E;">''</span><span style="color: #8c8c8c;">)</span>.lower<span style="color: #8c8c8c;">()</span> == <span style="color: #A1D08E;">'true'</span>
+
+    <span style="color: #787878;"># </span><span style="color: #787878;">&#35774;&#32622;&#21629;&#20196;&#34892;&#21442;&#25968;&#35299;&#26512;&#22120;
+</span>    <span style="color: #f4f4ff;">parser</span> = argparse.ArgumentParser<span style="color: #8c8c8c;">(</span>description=<span style="color: #A1D08E;">'Sync Readwise highlights to GitHub'</span><span style="color: #8c8c8c;">)</span>
+    parser.add_argument<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'--start-date'</span>, <span style="color: #79C0FF;">type</span>=<span style="color: #79C0FF;">str</span>, <span style="color: #79C0FF;">help</span>=<span style="color: #A1D08E;">'Start date in YYYY-MM-DD format'</span><span style="color: #8c8c8c;">)</span>
+    parser.add_argument<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'--end-date'</span>, <span style="color: #79C0FF;">type</span>=<span style="color: #79C0FF;">str</span>, <span style="color: #79C0FF;">help</span>=<span style="color: #A1D08E;">'End date in YYYY-MM-DD format'</span><span style="color: #8c8c8c;">)</span>
+    parser.add_argument<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'--all-time'</span>, action=<span style="color: #A1D08E;">'store_true'</span>, <span style="color: #79C0FF;">help</span>=<span style="color: #A1D08E;">'Fetch all highlights from the beginning'</span><span style="color: #8c8c8c;">)</span>
+
+    <span style="color: #f4f4ff;">args</span> = parser.parse_args<span style="color: #8c8c8c;">()</span>
+
+    <span style="color: #787878;"># </span><span style="color: #787878;">&#20248;&#20808;&#20351;&#29992;&#21629;&#20196;&#34892;&#21442;&#25968;&#65292;&#22914;&#26524;&#27809;&#26377;&#21017;&#20351;&#29992; GitHub Actions &#30340;&#36755;&#20837;&#21442;&#25968;
+</span>    <span style="color: #f4f4ff;">start_date</span> = args.start_date <span style="color: #FFA657;">or</span> gh_start_date
+    <span style="color: #f4f4ff;">end_date</span> = args.end_date <span style="color: #FFA657;">or</span> gh_end_date
+    <span style="color: #f4f4ff;">all_time</span> = args.all_time <span style="color: #FFA657;">or</span> gh_all_time
+
+    <span style="color: #FFA657;">try</span>:
+        <span style="color: #f4f4ff;">client</span> = ReadwiseAPI<span style="color: #8c8c8c;">()</span>
+        client.export_articles<span style="color: #8c8c8c;">(</span>
+            start_date=start_date <span style="color: #FFA657;">if</span> start_date <span style="color: #FFA657;">else</span> <span style="color: #95a99f;">None</span>,
+            end_date=end_date <span style="color: #FFA657;">if</span> end_date <span style="color: #FFA657;">else</span> <span style="color: #95a99f;">None</span>,
             all_time=all_time
-        )
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        raise
-if __name__ == "__main__":
-    main()</pre>
+        <span style="color: #8c8c8c;">)</span>
+    <span style="color: #FFA657;">except</span> <span style="color: #95a99f;">Exception</span> <span style="color: #FFA657;">as</span> e:
+        <span style="color: #79C0FF;">print</span><span style="color: #8c8c8c;">(</span>f<span style="color: #A1D08E;">"An error occurred: </span>{<span style="color: #79C0FF;">str</span>(e)}<span style="color: #A1D08E;">"</span><span style="color: #8c8c8c;">)</span>
+        <span style="color: #FFA657;">raise</span>
+
+<span style="color: #FFA657;">if</span> <span style="color: #79C0FF;">__name__</span> == <span style="color: #A1D08E;">"__main__"</span>:
+    main<span style="color: #8c8c8c;">()</span>
+
+</pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc2972e9" class="outline-3">
-<h3 id="orgc2972e9">workflow</h3>
-<div class="outline-text-3" id="text-orgc2972e9">
+<div id="outline-container-org0e726ea" class="outline-3">
+<h3 id="org0e726ea">workflow</h3>
+<div class="outline-text-3" id="text-org0e726ea">
 <div class="org-src-container">
 <pre class="src src-yaml">
-name: Sync Readwise Articles
-on:
-  schedule:
-    # 每天凌晨 1 点运行 (UTC 时间，对应北京时间 9 点)
-    - cron: '0 1 * * *'
-  # 支持手动触发，并添加输入参数
-  workflow_dispatch:
-    inputs:
-      start_date:
-        description: 'Start date (YYYY-MM-DD, e.g., 2024-01-01)'
-        required: false
-        type: string
-        default: ''
-      end_date:
-        description: 'End date (YYYY-MM-DD, leave empty for current date)'
-        required: false
-        type: string
-        default: ''
-      all_time:
-        description: 'Fetch all highlights (overrides date range if selected)'
-        type: boolean
-        required: false
-        default: false
-permissions:
-  contents: write      # 仓库内容的读写权限
-jobs:
-  sync:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: 'pip'
-        cache-dependency-path: '**/requirements.txt'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run sync script
-      env:
-        READWISE_TOKEN: ${{ secrets.READWISE_TOKEN }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        INPUT_START_DATE: ${{ github.event.inputs.start_date }}
-        INPUT_END_DATE: ${{ github.event.inputs.end_date }}
-        INPUT_ALL_TIME: ${{ github.event.inputs.all_time }}
-      run: python readwise_sync.py
-    - name: Check for changes
-      id: verify-changed-files
-      run: |
-        if [ -n "$(git status --porcelain)" ]; then
-          echo "changes_found=true" >> $GITHUB_OUTPUT
+<span style="color: #f4f4ff;">name</span>: Sync Readwise Articles
+<span style="color: #95a99f;">on</span>:
+  <span style="color: #f4f4ff;">schedule</span>:
+    <span style="color: #787878;"># </span><span style="color: #787878;">&#27599;&#22825;&#20940;&#26216; 1 &#28857;&#36816;&#34892; (UTC &#26102;&#38388;&#65292;&#23545;&#24212;&#21271;&#20140;&#26102;&#38388; 9 &#28857;)
+</span>    - <span style="color: #f4f4ff;">cron</span>: <span style="color: #A1D08E;">'0 1 * * *'</span>
+
+  <span style="color: #787878;"># </span><span style="color: #787878;">&#25903;&#25345;&#25163;&#21160;&#35302;&#21457;&#65292;&#24182;&#28155;&#21152;&#36755;&#20837;&#21442;&#25968;
+</span>  <span style="color: #f4f4ff;">workflow_dispatch</span>:
+    <span style="color: #f4f4ff;">inputs</span>:
+      <span style="color: #f4f4ff;">start_date</span>:
+        <span style="color: #f4f4ff;">description</span>: <span style="color: #A1D08E;">'Start date (YYYY-MM-DD, e.g., 2024-01-01)'</span>
+        <span style="color: #f4f4ff;">required</span>: <span style="color: #95a99f;">false</span>
+        <span style="color: #f4f4ff;">type</span>: string
+        <span style="color: #f4f4ff;">default</span>: <span style="color: #A1D08E;">''</span>
+      <span style="color: #f4f4ff;">end_date</span>:
+        <span style="color: #f4f4ff;">description</span>: <span style="color: #A1D08E;">'End date (YYYY-MM-DD, leave empty for current date)'</span>
+        <span style="color: #f4f4ff;">required</span>: <span style="color: #95a99f;">false</span>
+        <span style="color: #f4f4ff;">type</span>: string
+        <span style="color: #f4f4ff;">default</span>: <span style="color: #A1D08E;">''</span>
+      <span style="color: #f4f4ff;">all_time</span>:
+        <span style="color: #f4f4ff;">description</span>: <span style="color: #A1D08E;">'Fetch all highlights (overrides date range if selected)'</span>
+        <span style="color: #f4f4ff;">type</span>: boolean
+        <span style="color: #f4f4ff;">required</span>: <span style="color: #95a99f;">false</span>
+        <span style="color: #f4f4ff;">default</span>: <span style="color: #95a99f;">false</span>
+
+<span style="color: #f4f4ff;">permissions</span>:
+  <span style="color: #f4f4ff;">contents</span>: write      <span style="color: #787878;"># </span><span style="color: #787878;">&#20179;&#24211;&#20869;&#23481;&#30340;&#35835;&#20889;&#26435;&#38480;
+</span>
+<span style="color: #f4f4ff;">jobs</span>:
+  <span style="color: #f4f4ff;">sync</span>:
+    <span style="color: #f4f4ff;">runs-on</span>: ubuntu-latest
+
+    <span style="color: #f4f4ff;">steps</span>:
+    - <span style="color: #f4f4ff;">name</span>: Checkout repository
+      <span style="color: #f4f4ff;">uses</span>: actions/checkout@v4
+
+    - <span style="color: #f4f4ff;">name</span>: Set up Python
+      <span style="color: #f4f4ff;">uses</span>: actions/setup-python@v5
+      <span style="color: #f4f4ff;">with</span>:
+        <span style="color: #f4f4ff;">python-version</span>: <span style="color: #A1D08E;">'3.10'</span>
+        <span style="color: #f4f4ff;">cache</span>: <span style="color: #A1D08E;">'pip'</span>
+        <span style="color: #f4f4ff;">cache-dependency-path</span>: <span style="color: #A1D08E;">'**/requirements.txt'</span>
+
+    - <span style="color: #f4f4ff;">name</span>: Install dependencies
+      <span style="color: #f4f4ff;">run</span>: |
+        <span style="color: #A1D08E;">python -m pip install --upgrade pip</span>
+<span style="color: #A1D08E;">        pip install -r requirements.txt
+</span>
+    - <span style="color: #f4f4ff;">name</span>: Run sync script
+      <span style="color: #f4f4ff;">env</span>:
+        <span style="color: #f4f4ff;">READWISE_TOKEN</span>: ${{ secrets.READWISE_TOKEN }}
+        <span style="color: #f4f4ff;">GITHUB_TOKEN</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #f4f4ff;">INPUT_START_DATE</span>: ${{ github.event.inputs.start_date }}
+        <span style="color: #f4f4ff;">INPUT_END_DATE</span>: ${{ github.event.inputs.end_date }}
+        <span style="color: #f4f4ff;">INPUT_ALL_TIME</span>: ${{ github.event.inputs.all_time }}
+      <span style="color: #f4f4ff;">run</span>: python readwise_sync.py
+
+    - <span style="color: #f4f4ff;">name</span>: Check for changes
+      <span style="color: #f4f4ff;">id</span>: verify-changed-files
+      <span style="color: #f4f4ff;">run</span>: |
+        <span style="color: #A1D08E;">if [ -n "$(git status --porcelain)" ]; then</span>
+<span style="color: #A1D08E;">          echo "changes_found=true" &gt;&gt; $GITHUB_OUTPUT
         else
-          echo "changes_found=false" >> $GITHUB_OUTPUT
+          echo "changes_found=false" &gt;&gt; $GITHUB_OUTPUT
         fi
-    - name: Commit changes
-      if: steps.verify-changed-files.outputs.changes_found == 'true'
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+</span>
+    - <span style="color: #f4f4ff;">name</span>: Commit changes
+      <span style="color: #f4f4ff;">if</span>: steps.verify-changed-files.outputs.changes_found == <span style="color: #A1D08E;">'true'</span>
+      <span style="color: #f4f4ff;">run</span>: |
+        <span style="color: #A1D08E;">git config --local user.email "github-actions[bot]@users.noreply.github.com"</span>
+<span style="color: #A1D08E;">        git config --local user.name "github-actions[bot]"
         git add articles.json last_update.json
         git commit -m "Update Readwise articles [skip ci]" || echo "No changes to commit"
-    - name: Push changes
-      if: steps.verify-changed-files.outputs.changes_found == 'true'
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}</pre>
+</span>
+    - <span style="color: #f4f4ff;">name</span>: Push changes
+      <span style="color: #f4f4ff;">if</span>: steps.verify-changed-files.outputs.changes_found == <span style="color: #A1D08E;">'true'</span>
+      <span style="color: #f4f4ff;">uses</span>: ad-m/github-push-action@master
+      <span style="color: #f4f4ff;">with</span>:
+        <span style="color: #f4f4ff;">github_token</span>: ${{ secrets.GITHUB_TOKEN }}
+        <span style="color: #f4f4ff;">branch</span>: ${{ github.ref }}
+
+</pre>
 </div>
 </div>
 </div>

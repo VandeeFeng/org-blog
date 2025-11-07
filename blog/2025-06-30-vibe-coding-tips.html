@@ -59,22 +59,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1310176">TL;DR</a></li>
-<li><a href="#org81f449b">General Tips</a></li>
-<li><a href="#org8eb54e0">Container</a>
+<li><a href="#org990b379">TL;DR</a></li>
+<li><a href="#orgc5eb547">General Tips</a></li>
+<li><a href="#org2bcde4b">Container</a>
 <ul>
-<li><a href="#org593d68c">Coding Assistant Container</a></li>
-<li><a href="#org08b2975">MCP Container</a></li>
+<li><a href="#org2f3bfa7">Coding Assistant Container</a></li>
+<li><a href="#orgb2f3621">MCP Container</a></li>
 </ul>
 </li>
-<li><a href="#org0135e66">Articles</a></li>
-<li><a href="#orga4562d6">CLI AI Coding Tools</a></li>
+<li><a href="#org29d5e6e">Articles</a></li>
+<li><a href="#org912eb34">CLI AI Coding Tools</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org1310176" class="outline-2">
-<h2 id="org1310176">TL;DR</h2>
-<div class="outline-text-2" id="text-org1310176">
+<div id="outline-container-org990b379" class="outline-2">
+<h2 id="org990b379">TL;DR</h2>
+<div class="outline-text-2" id="text-org990b379">
 <p>
 各种 Vibe Coding 工具不是关键，它们背后对模型优化的实现才是。Vibe Coding 在带来了便利的同时，也增加了许多安全隐患，为 AI 设置隔离环境很有必要。
 </p>
@@ -88,9 +88,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org81f449b" class="outline-2">
-<h2 id="org81f449b">General Tips</h2>
-<div class="outline-text-2" id="text-org81f449b">
+<div id="outline-container-orgc5eb547" class="outline-2">
+<h2 id="orgc5eb547">General Tips</h2>
+<div class="outline-text-2" id="text-orgc5eb547">
 <p>
 由于我的主力 IDE 一直是 Emacs，在 Cursor 刚出来的时候，各种针对 Cursor 的 Cursor rules，各种 workflow 铺天盖地，当时就觉得没有必要花时间去研究。在 Emacs 里使用 gptel 和 aider 可以解决我 80%的问题。
 </p>
@@ -128,13 +128,13 @@ OpenAI 的 codex, Gemini CLI 相继开源，背后的核心实现会越来越清
 </p>
 </div>
 </div>
-<div id="outline-container-org8eb54e0" class="outline-2">
-<h2 id="org8eb54e0">Container</h2>
-<div class="outline-text-2" id="text-org8eb54e0">
+<div id="outline-container-org2bcde4b" class="outline-2">
+<h2 id="org2bcde4b">Container</h2>
+<div class="outline-text-2" id="text-org2bcde4b">
 </div>
-<div id="outline-container-org593d68c" class="outline-3">
-<h3 id="org593d68c">Coding Assistant Container</h3>
-<div class="outline-text-3" id="text-org593d68c">
+<div id="outline-container-org2f3bfa7" class="outline-3">
+<h3 id="org2f3bfa7">Coding Assistant Container</h3>
+<div class="outline-text-3" id="text-org2f3bfa7">
 <p>
 参考 <a href="https://xuanwo.io/2025/03-how-i-vibe-coding/">How I Vibe Coding?</a> 这篇 blog 里的思路实践了一下，用 docker 给 Claude code 等这些 AI CLI 代码工具设定一个隔离环境。
 </p>
@@ -153,8 +153,9 @@ Gemini 2.5 Pro 的 API 现在每天有 1000 次免费请求，对我来说足够
 
 <div class="org-src-container">
 <pre class="src src-nil">FROM ubuntu:latest
+
 # Update system and install base dependencies
-RUN apt-get update && apt-get upgrade -y && \
+RUN apt-get update &amp;&amp; apt-get upgrade -y &amp;&amp; \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     git \
@@ -166,6 +167,7 @@ RUN apt-get update && apt-get upgrade -y && \
     openssh-client \
     ca-certificates \
     gnupg
+
 # Install development tools
 RUN apt-get install -y \
     python3 \
@@ -177,34 +179,48 @@ RUN apt-get install -y \
     unzip \
     protobuf-compiler \
     zip
+
 # Install Node.js and npm
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs && \
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &amp;&amp; \
+    apt-get install -y nodejs &amp;&amp; \
     npm install -g pnpm yarn
+
+
 # Install ripgrep and fd-find
-RUN apt-get update && \
+RUN apt-get update &amp;&amp; \
     apt-get install -y ripgrep fd-find
+
+
 # Create a regular user
-RUN useradd -m -G sudo -s /bin/bash user && \
-    echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN useradd -m -G sudo -s /bin/bash user &amp;&amp; \
+    echo "user ALL=(ALL) NOPASSWD: ALL" &gt;&gt; /etc/sudoers
+
 # Switch to user for installations
 USER user
 WORKDIR /home/user
+
 # Switch back to root for cleanup
 USER root
+
 # Clean apt cache
-RUN apt-get clean && \
+RUN apt-get clean &amp;&amp; \
     rm -rf /var/lib/apt/lists/*
+
 # Switch back to user
 USER user
+
 # Install Gemini CLI globally (user has npm permissions via sudo)
 RUN sudo npm install -g @google/gemini-cli
+
 # Set working directory
 WORKDIR /workspace
+
 # Set shell to bash and ensure .bashrc is loaded
 SHELL ["/bin/bash", "-c"]
-RUN echo '[ -f ~/.bashrc ] && source ~/.bashrc' >> ~/.bash_profile
-CMD ["/bin/bash", "-l", "-c", "gemini"]</pre>
+RUN echo '[ -f ~/.bashrc ] &amp;&amp; source ~/.bashrc' &gt;&gt; ~/.bash_profile
+
+CMD ["/bin/bash", "-l", "-c", "gemini"]
+</pre>
 </div>
 
 <p>
@@ -213,12 +229,14 @@ CMD ["/bin/bash", "-l", "-c", "gemini"]</pre>
 
 <div class="org-src-container">
 <pre class="src src-bash">
-# geminix
-alias geminix='docker run -it --rm \
-  -v $(pwd):/workspace \
+<span style="color: #787878;"># </span><span style="color: #787878;">geminix
+</span><span style="color: #79C0FF;">alias</span> <span style="color: #f4f4ff;">geminix</span>=<span style="color: #A1D08E;">'docker run -it --rm \
+  -v $(</span><span style="color: #ff4f58;">pwd</span><span style="color: #A1D08E;">):/workspace \
   -v ~/.bashrc:/home/user/.bashrc \
   -v ~/.config/gh:/home/user/.config/gh \
-  YOUR-IMAGE-NAME'</pre>
+  YOUR-IMAGE-NAME'</span>
+
+</pre>
 </div>
 
 <p>
@@ -234,9 +252,9 @@ alias geminix='docker run -it --rm \
 </p>
 </div>
 </div>
-<div id="outline-container-org08b2975" class="outline-3">
-<h3 id="org08b2975">MCP Container</h3>
-<div class="outline-text-3" id="text-org08b2975">
+<div id="outline-container-orgb2f3621" class="outline-3">
+<h3 id="orgb2f3621">MCP Container</h3>
+<div class="outline-text-3" id="text-orgb2f3621">
 <p>
 MCP 我一直觉得不是很必须，但是偶尔还是会用用，MCP 的安全隐患比 LLM 更大。
 </p>
@@ -259,9 +277,9 @@ MCP Container 相关的项目也挺多，我用的是: <a href="https://github.c
 </div>
 </div>
 </div>
-<div id="outline-container-org0135e66" class="outline-2">
-<h2 id="org0135e66">Articles</h2>
-<div class="outline-text-2" id="text-org0135e66">
+<div id="outline-container-org29d5e6e" class="outline-2">
+<h2 id="org29d5e6e">Articles</h2>
+<div class="outline-text-2" id="text-org29d5e6e">
 <p>
 整理了一些感觉还不错的文章
 </p>
@@ -318,9 +336,9 @@ Simon Willison 写了一篇非常不错的博客，分享了他与 Claude Code w
 </ul>
 </div>
 </div>
-<div id="outline-container-orga4562d6" class="outline-2">
-<h2 id="orga4562d6">CLI AI Coding Tools</h2>
-<div class="outline-text-2" id="text-orga4562d6">
+<div id="outline-container-org912eb34" class="outline-2">
+<h2 id="org912eb34">CLI AI Coding Tools</h2>
+<div class="outline-text-2" id="text-org912eb34">
 <p>
 整理了一些现在 star 比较多的 CLI AI Coding 项目：
 </p>

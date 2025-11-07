@@ -55,9 +55,9 @@
       </header></div>
 <div id="content">
 <div class="post-date">24 Oct 2024</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2024-10-24-my-first-org-blog.html">我的第一篇 org 博客</a></h1>
-<div id="outline-container-org055c4be" class="outline-2">
-<h2 id="org055c4be">一</h2>
-<div class="outline-text-2" id="text-org055c4be">
+<div id="outline-container-orgb1bbe26" class="outline-2">
+<h2 id="orgb1bbe26">一</h2>
+<div class="outline-text-2" id="text-orgb1bbe26">
 <p>
 从 Jekyll 到 Hexo，再到 Hugo，已经忘记了为什么开始写博客了。
 </p>
@@ -83,15 +83,15 @@
 </p>
 
 
-<figure id="orgf40f9d0">
+<figure id="orge979b5b">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-blog.png" alt="org-blog" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-org3eee8de" class="outline-2">
-<h2 id="org3eee8de">二</h2>
-<div class="outline-text-2" id="text-org3eee8de">
+<div id="outline-container-org4885d4e" class="outline-2">
+<h2 id="org4885d4e">二</h2>
+<div class="outline-text-2" id="text-org4885d4e">
 <p>
 无意中发现了这个： <a href="https://github.com/bastibe/org-static-blog">org-static-blog</a> ，可以从 org 文档生成 HTML 文件，简化了 org-publish 的流程。
 </p>
@@ -145,40 +145,43 @@ Source: <a href="https://mp.weixin.qq.com/s/u6_UDiNiu1pct_b3q1np4w">https://mp.w
 之前的 markdwon to org 的脚本又派上用场了：
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(defun my-markdown-to-org ()
-  (interactive)
-  (save-excursion
-    ;; 转换Markdown标题为Org-mode标题
-    (goto-char (point-min))
-    (while (re-search-forward "^\s*\\(#+\\) \\(.*\\)" nil t)
-      (let ((level (length (match-string 1)))
-            (title1 (match-string 2)))
-        (replace-match (concat (make-string level ?*) " " title1)))))
-  ;; 转换Markdown链接为Org-mode链接,但是跳过图片链接
-  (goto-char (point-min))
-  (while (re-search-forward "\\[\\(.*?\\)\\](\\(.*?\\))" nil t)
-    (let ((title (match-string 1))
-          (url (match-string 2)))
-      (unless (and (string-match "\\(jpeg\\|png\\|svg\\)" url)
-                   (string-match "https" url))
-        (replace-match (format "[[%s][%s]]" url title)))))
-  ;; 转换Markdown代码块为Org-mode代码块
-  (goto-char (point-min))
-  (while (re-search-forward "^```" nil t)
-    (if (looking-back "^```")
-        (progn
-          (replace-match "#+begin_src")
-          (re-search-forward "^```" nil t)
-          (if (looking-back "^```")
-              (replace-match "#+end_src")))))
-  ;; 转换Markdown行内代码为Org-mode行内代码，添加空格
-  (goto-char (point-min))
-  (while (re-search-forward "`\\([^`]+?\\)`" nil t)
-    (replace-match (format " ~%s~ " (match-string 1))))
-  ;; 转换Markdown强调为Org-mode强调，添加空格
-  (goto-char (point-min))
-  (while (re-search-forward "\\*\\*\\(.*?\\)\\*\\*" nil t)
-    (replace-match (format " *%s* " (match-string 1)))))</pre>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-markdown-to-org</span> <span style="color: #93a8c6;">()</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">save-excursion</span>
+    <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#26631;&#39064;&#20026;Org-mode&#26631;&#39064;
+</span>    <span style="color: #b0b1a3;">(</span>goto-char <span style="color: #97b098;">(</span>point-min<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">while</span> <span style="color: #97b098;">(</span>re-search-forward <span style="color: #A1D08E;">"^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">s</span><span style="color: #A1D08E;">*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">#+</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;"> </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">"</span> nil t<span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>level <span style="color: #90a890;">(</span>length <span style="color: #a2b6da;">(</span>match-string 1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+            <span style="color: #b0b0b3;">(</span>title1 <span style="color: #90a890;">(</span>match-string 2<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>replace-match <span style="color: #b0b0b3;">(</span>concat <span style="color: #90a890;">(</span>make-string level ?*<span style="color: #90a890;">)</span> <span style="color: #A1D08E;">" "</span> title1<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#38142;&#25509;&#20026;Org-mode&#38142;&#25509;,&#20294;&#26159;&#36339;&#36807;&#22270;&#29255;&#38142;&#25509;
+</span>  <span style="color: #93a8c6;">(</span>goto-char <span style="color: #b0b1a3;">(</span>point-min<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">while</span> <span style="color: #b0b1a3;">(</span>re-search-forward <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">[</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*?</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">](</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*?</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">)"</span> nil t<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>title <span style="color: #b0b0b3;">(</span>match-string 1<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+          <span style="color: #aebed8;">(</span>url <span style="color: #b0b0b3;">(</span>match-string 2<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #aebed8;">(</span><span style="color: #FFA657;">and</span> <span style="color: #b0b0b3;">(</span>string-match <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">jpeg</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">png</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">svg</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">"</span> url<span style="color: #b0b0b3;">)</span>
+                   <span style="color: #b0b0b3;">(</span>string-match <span style="color: #A1D08E;">"https"</span> url<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>replace-match <span style="color: #b0b0b3;">(</span>format <span style="color: #A1D08E;">"[[%s][%s]]"</span> url title<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#20195;&#30721;&#22359;&#20026;Org-mode&#20195;&#30721;&#22359;
+</span>  <span style="color: #93a8c6;">(</span>goto-char <span style="color: #b0b1a3;">(</span>point-min<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">while</span> <span style="color: #b0b1a3;">(</span>re-search-forward <span style="color: #A1D08E;">"^```"</span> nil t<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>looking-back <span style="color: #A1D08E;">"^```"</span><span style="color: #97b098;">)</span>
+        <span style="color: #97b098;">(</span><span style="color: #FFA657;">progn</span>
+          <span style="color: #aebed8;">(</span>replace-match <span style="color: #A1D08E;">"#+begin_src"</span><span style="color: #aebed8;">)</span>
+          <span style="color: #aebed8;">(</span>re-search-forward <span style="color: #A1D08E;">"^```"</span> nil t<span style="color: #aebed8;">)</span>
+          <span style="color: #aebed8;">(</span><span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>looking-back <span style="color: #A1D08E;">"^```"</span><span style="color: #b0b0b3;">)</span>
+              <span style="color: #b0b0b3;">(</span>replace-match <span style="color: #A1D08E;">"#+end_src"</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#34892;&#20869;&#20195;&#30721;&#20026;Org-mode&#34892;&#20869;&#20195;&#30721;&#65292;&#28155;&#21152;&#31354;&#26684;
+</span>  <span style="color: #93a8c6;">(</span>goto-char <span style="color: #b0b1a3;">(</span>point-min<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">while</span> <span style="color: #b0b1a3;">(</span>re-search-forward <span style="color: #A1D08E;">"`</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">[</span><span style="color: #A1D08E;">^</span><span style="color: #A1D08E;">`]+?</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">`"</span> nil t<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span>replace-match <span style="color: #97b098;">(</span>format <span style="color: #A1D08E;">" ~%s~ "</span> <span style="color: #aebed8;">(</span>match-string 1<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+
+  <span style="color: #787878;">;; </span><span style="color: #787878;">&#36716;&#25442;Markdown&#24378;&#35843;&#20026;Org-mode&#24378;&#35843;&#65292;&#28155;&#21152;&#31354;&#26684;
+</span>  <span style="color: #93a8c6;">(</span>goto-char <span style="color: #b0b1a3;">(</span>point-min<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">while</span> <span style="color: #b0b1a3;">(</span>re-search-forward <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*?</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*"</span> nil t<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span>replace-match <span style="color: #97b098;">(</span>format <span style="color: #A1D08E;">" *%s* "</span> <span style="color: #aebed8;">(</span>match-string 1<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+</pre>
 </div>
 </div>
 </div>

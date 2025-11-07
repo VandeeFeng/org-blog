@@ -59,27 +59,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5ab3a33">TL;DR</a></li>
-<li><a href="#orgc9e179e">Claude Skills</a></li>
-<li><a href="#orgac9ac32">复现 Claude Skills</a>
+<li><a href="#org6ef2e81">TL;DR</a></li>
+<li><a href="#org4a8d38d">Claude Skills</a></li>
+<li><a href="#org9a5ea2d">复现 Claude Skills</a>
 <ul>
-<li><a href="#orgadfcf7d">核心实现</a></li>
+<li><a href="#orgf2e0ec3">核心实现</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org5ab3a33" class="outline-2">
-<h2 id="org5ab3a33">TL;DR</h2>
-<div class="outline-text-2" id="text-org5ab3a33">
+<div id="outline-container-org6ef2e81" class="outline-2">
+<h2 id="org6ef2e81">TL;DR</h2>
+<div class="outline-text-2" id="text-org6ef2e81">
 <p>
 大道至简，Claude Skills 的这个思路很符合我对 LLM 工具能力扩展的构想。
 </p>
 </div>
 </div>
-<div id="outline-container-orgc9e179e" class="outline-2">
-<h2 id="orgc9e179e">Claude Skills</h2>
-<div class="outline-text-2" id="text-orgc9e179e">
+<div id="outline-container-org4a8d38d" class="outline-2">
+<h2 id="org4a8d38d">Claude Skills</h2>
+<div class="outline-text-2" id="text-org4a8d38d">
 <p>
 Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Claude 模型的工具能力。
 </p>
@@ -98,7 +98,8 @@ Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Cla
   └── skill2/
       ├── SKILL.md
       └── scripts/
-          └── script.sh</pre>
+          └── script.sh
+</pre>
 </div>
 
 <p>
@@ -141,9 +142,9 @@ Reference:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgac9ac32" class="outline-2">
-<h2 id="orgac9ac32">复现 Claude Skills</h2>
-<div class="outline-text-2" id="text-orgac9ac32">
+<div id="outline-container-org9a5ea2d" class="outline-2">
+<h2 id="org9a5ea2d">复现 Claude Skills</h2>
+<div class="outline-text-2" id="text-org9a5ea2d">
 <p>
 最近正好看到一个项目 <a href="https://github.com/bravenewxyz/agent-c">GitHub - bravenewxyz/agent-c: Ultra-lightweight AI Agent</a> ，从来没有想过一个 agent 可以有这么极简的实现方式。
 </p>
@@ -158,7 +159,7 @@ Reference:
 </p>
 
 
-<figure id="orgf73eadf">
+<figure id="orgf54dc17">
 <img src="https://pic.vandee.art/images/agent-c-skills.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -167,32 +168,36 @@ Reference:
 源码在：<a href="https://github.com/VandeeFeng/agent-c">https://github.com/VandeeFeng/agent-c</a>
 </p>
 </div>
-<div id="outline-container-orgadfcf7d" class="outline-3">
-<h3 id="orgadfcf7d">核心实现</h3>
-<div class="outline-text-3" id="text-orgadfcf7d">
+<div id="outline-container-orgf2e0ec3" class="outline-3">
+<h3 id="orgf2e0ec3">核心实现</h3>
+<div class="outline-text-3" id="text-orgf2e0ec3">
 <p>
 agent.c:6-41 - init_agent() 函数: 在系统初始化时将技能列表添加到 system prompt
 </p>
 
 <div class="org-src-container">
 <pre class="src src-C">
-  // 构建基础系统提示
-  char base_prompt[MAX_CONTENT];
-  snprintf(base_prompt, sizeof(base_prompt),
-           "You are JARVIS..." /* 基础提示内容 */);
-  // 发现技能并构建技能列表
-  char skills_list[MAX_CONTENT];
-  int skill_count = discover_skills(skills_list, sizeof(skills_list));
-  // 将技能列表添加到系统提示中
-  if (skill_count > 0) {
-      snprintf(agent.messages[0].content, MAX_CONTENT,
-               "%s=== AVAILABLE SKILLS ===\n%s"
-               "HOW TO USE SKILLS:\n"
-               "1. Call extract_skill with skill_name to get the complete skill
-  documentation\n"
-               // ...技能使用说明...
-               , base_prompt, skills_list);
-  }</pre>
+  <span style="color: #787878;">// </span><span style="color: #787878;">&#26500;&#24314;&#22522;&#30784;&#31995;&#32479;&#25552;&#31034;
+</span>  <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">base_prompt</span><span style="color: #8c8c8c;">[</span>MAX_CONTENT<span style="color: #8c8c8c;">]</span>;
+  <span style="color: #96a6c8;">snprintf</span><span style="color: #8c8c8c;">(</span>base_prompt, <span style="color: #FFA657;">sizeof</span><span style="color: #93a8c6;">(</span>base_prompt<span style="color: #93a8c6;">)</span>,
+           <span style="color: #A1D08E;">"You are JARVIS..."</span> <span style="color: #787878;">/* </span><span style="color: #787878;">&#22522;&#30784;&#25552;&#31034;&#20869;&#23481;</span><span style="color: #787878;"> */</span><span style="color: #8c8c8c;">)</span>;
+
+  <span style="color: #787878;">// </span><span style="color: #787878;">&#21457;&#29616;&#25216;&#33021;&#24182;&#26500;&#24314;&#25216;&#33021;&#21015;&#34920;
+</span>  <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">skills_list</span><span style="color: #8c8c8c;">[</span>MAX_CONTENT<span style="color: #8c8c8c;">]</span>;
+  <span style="color: #95a99f;">int</span> <span style="color: #f4f4ff;">skill_count</span> = discover_skills<span style="color: #8c8c8c;">(</span>skills_list, <span style="color: #FFA657;">sizeof</span><span style="color: #93a8c6;">(</span>skills_list<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>;
+
+  <span style="color: #787878;">// </span><span style="color: #787878;">&#23558;&#25216;&#33021;&#21015;&#34920;&#28155;&#21152;&#21040;&#31995;&#32479;&#25552;&#31034;&#20013;
+</span>  <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span>skill_count &gt; 0<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+      snprintf<span style="color: #93a8c6;">(</span>agent.messages<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span>.content, MAX_CONTENT,
+               <span style="color: #A1D08E;">"%s=== AVAILABLE SKILLS ===</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">%s"</span>
+               <span style="color: #A1D08E;">"HOW TO USE SKILLS:</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span>
+               <span style="color: #f43841;">"</span><span style="color: #A1D08E;">1. Call extract_skill with skill_name to get the complete skill</span><span style="color: #f43841;">
+</span>  documentation\n<span style="color: #f43841;">"
+</span>               <span style="color: #787878;">// </span><span style="color: #787878;">...&#25216;&#33021;&#20351;&#29992;&#35828;&#26126;...
+</span>               , base_prompt, skills_list<span style="color: #93a8c6;">)</span>;
+  <span style="color: #8c8c8c;">}</span>
+
+</pre>
 </div>
 
 
@@ -201,15 +206,18 @@ agent.c:84-100 - 动态技能内容注入: 当调用 extract_skill 时，会将�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">  if (result == 0) {
-      // 获取当前系统提示
-      char current_system[MAX_CONTENT];
-      strncpy(current_system, agent.messages[0].content, MAX_CONTENT - 1);
-      // 将技能内容注入到系统提示中
-      snprintf(agent.messages[0].content, MAX_CONTENT,
-               "%s\n\n=== SKILL: %s ===\n%s\n=== END SKILL ===\n",
-               current_system, skill_name, skill_content);
-  }</pre>
+<pre class="src src-C">  <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span>result == 0<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+      <span style="color: #787878;">// </span><span style="color: #787878;">&#33719;&#21462;&#24403;&#21069;&#31995;&#32479;&#25552;&#31034;
+</span>      <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">current_system</span><span style="color: #93a8c6;">[</span>MAX_CONTENT<span style="color: #93a8c6;">]</span>;
+      strncpy<span style="color: #93a8c6;">(</span>current_system, agent.messages<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span>.content, MAX_CONTENT - 1<span style="color: #93a8c6;">)</span>;
+
+      <span style="color: #787878;">// </span><span style="color: #787878;">&#23558;&#25216;&#33021;&#20869;&#23481;&#27880;&#20837;&#21040;&#31995;&#32479;&#25552;&#31034;&#20013;
+</span>      snprintf<span style="color: #93a8c6;">(</span>agent.messages<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span>.content, MAX_CONTENT,
+               <span style="color: #A1D08E;">"%s</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">=== SKILL: %s ===</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">%s</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">=== END SKILL ===</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span>,
+               current_system, skill_name, skill_content<span style="color: #93a8c6;">)</span>;
+  <span style="color: #8c8c8c;">}</span>
+
+</pre>
 </div>
 
 <p>
@@ -217,15 +225,18 @@ skill.c:91-153 - extract_skill_description() 函数:从 SKILL.md 文件中提取
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">  static int extract_skill_description(const char* skill_name, char* description, size_t
-   desc_size) {
-      // 构建 SKILL.md 文件路径
-      char md_path[MAX_SKILL_PATH];
-      snprintf(md_path, sizeof(md_path), "%s/SKILL.md", skill_path);
-      // 读取 SKILL.md 文件内容
-      FILE* file = fopen(md_path, "r");
-      // ...提取描述内容...
-  }</pre>
+<pre class="src src-C">  <span style="color: #FFA657;">static</span> <span style="color: #95a99f;">int</span> <span style="color: #96a6c8;">extract_skill_description</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">const</span> <span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">skill_name</span>, <span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">description</span>, <span style="color: #95a99f;">size_t</span>
+   <span style="color: #f4f4ff;">desc_size</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+      <span style="color: #787878;">// </span><span style="color: #787878;">&#26500;&#24314; SKILL.md &#25991;&#20214;&#36335;&#24452;
+</span>      <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">md_path</span><span style="color: #93a8c6;">[</span>MAX_SKILL_PATH<span style="color: #93a8c6;">]</span>;
+      snprintf<span style="color: #93a8c6;">(</span>md_path, <span style="color: #FFA657;">sizeof</span><span style="color: #b0b1a3;">(</span>md_path<span style="color: #b0b1a3;">)</span>, <span style="color: #A1D08E;">"%s/SKILL.md"</span>, skill_path<span style="color: #93a8c6;">)</span>;
+
+      <span style="color: #787878;">// </span><span style="color: #787878;">&#35835;&#21462; SKILL.md &#25991;&#20214;&#20869;&#23481;
+</span>      <span style="color: #95a99f;">FILE</span>* <span style="color: #f4f4ff;">file</span> = fopen<span style="color: #93a8c6;">(</span>md_path, <span style="color: #A1D08E;">"r"</span><span style="color: #93a8c6;">)</span>;
+      <span style="color: #787878;">// </span><span style="color: #787878;">...&#25552;&#21462;&#25551;&#36848;&#20869;&#23481;...
+</span>  <span style="color: #8c8c8c;">}</span>
+
+</pre>
 </div>
 
 <p>
@@ -233,19 +244,21 @@ skill.c:156-219 - discover_skills() 函数: 发现所有可用技能并构建技
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">  int discover_skills(char* skills_list, size_t list_size) {
-      // 遍历技能目录
-      while ((entry = readdir(dir)) != NULL) {
-          // 提取每个技能的描述
-          if (extract_skill_description(entry->d_name, description, sizeof(description))
-   != 0) {
-              snprintf(description, sizeof(description), "Skill: %s", entry->d_name);
-          }
-          // 构建技能列表条目
-          snprintf(skill_entry, sizeof(skill_entry), "- %s: %s\n", entry->d_name,
-  description);
-      }
-  }</pre>
+<pre class="src src-C">  <span style="color: #95a99f;">int</span> <span style="color: #96a6c8;">discover_skills</span><span style="color: #8c8c8c;">(</span><span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">skills_list</span>, <span style="color: #95a99f;">size_t</span> <span style="color: #f4f4ff;">list_size</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+      <span style="color: #787878;">// </span><span style="color: #787878;">&#36941;&#21382;&#25216;&#33021;&#30446;&#24405;
+</span>      <span style="color: #FFA657;">while</span> <span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>entry = readdir<span style="color: #97b098;">(</span>dir<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span> != <span style="color: #95a99f;">NULL</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+          <span style="color: #787878;">// </span><span style="color: #787878;">&#25552;&#21462;&#27599;&#20010;&#25216;&#33021;&#30340;&#25551;&#36848;
+</span>          <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>extract_skill_description<span style="color: #97b098;">(</span>entry-&gt;d_name, description, <span style="color: #FFA657;">sizeof</span><span style="color: #aebed8;">(</span>description<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+   != 0<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+              snprintf<span style="color: #97b098;">(</span>description, <span style="color: #FFA657;">sizeof</span><span style="color: #aebed8;">(</span>description<span style="color: #aebed8;">)</span>, <span style="color: #A1D08E;">"Skill: %s"</span>, entry-&gt;d_name<span style="color: #97b098;">)</span>;
+          <span style="color: #b0b1a3;">}</span>
+
+          <span style="color: #787878;">// </span><span style="color: #787878;">&#26500;&#24314;&#25216;&#33021;&#21015;&#34920;&#26465;&#30446;
+</span>          snprintf<span style="color: #b0b1a3;">(</span>skill_entry, <span style="color: #FFA657;">sizeof</span><span style="color: #97b098;">(</span>skill_entry<span style="color: #97b098;">)</span>, <span style="color: #A1D08E;">"- %s: %s</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span>, entry-&gt;d_name,
+  description<span style="color: #b0b1a3;">)</span>;
+      <span style="color: #93a8c6;">}</span>
+  <span style="color: #8c8c8c;">}</span>
+</pre>
 </div>
 </div>
 </div>

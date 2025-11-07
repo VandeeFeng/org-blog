@@ -57,16 +57,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcfe8e48">TL;DR</a></li>
-<li><a href="#orgffae1b4">Hoarder</a></li>
-<li><a href="#orgfa2a90a">Emacs-Hoarder</a></li>
-<li><a href="#orgb81d282">Obsidian-Web-Clipper</a></li>
+<li><a href="#orgd95bd97">TL;DR</a></li>
+<li><a href="#orgb8fb681">Hoarder</a></li>
+<li><a href="#orgcc4a60e">Emacs-Hoarder</a></li>
+<li><a href="#org36c8ff8">Obsidian-Web-Clipper</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgcfe8e48" class="outline-2">
-<h2 id="orgcfe8e48">TL;DR</h2>
-<div class="outline-text-2" id="text-orgcfe8e48">
+<div id="outline-container-orgd95bd97" class="outline-2">
+<h2 id="orgd95bd97">TL;DR</h2>
+<div class="outline-text-2" id="text-orgd95bd97">
 <p>
 从 Omnivore 到 <a href="https://github.com/VandeeFeng/bookmark-summary%20">Clip</a> ,再到 ReadWise，一直没有找到一个符合自己需求和习惯的稍后阅读 + 高亮剪藏方案。再持续观察和试用 <a href="https://github.com/hoarder-app/hoarder/">Hoarder</a> 之后，最终决定就是它了。
 </p>
@@ -76,9 +76,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgffae1b4" class="outline-2">
-<h2 id="orgffae1b4">Hoarder</h2>
-<div class="outline-text-2" id="text-orgffae1b4">
+<div id="outline-container-orgb8fb681" class="outline-2">
+<h2 id="orgb8fb681">Hoarder</h2>
+<div class="outline-text-2" id="text-orgb8fb681">
 <p>
 <a href="https://github.com/karakeep-app/karakeep">Karakeep</a> （原 Hoarder），作者的解释是：
 </p>
@@ -115,12 +115,15 @@ Hoarder 可以看作是一个精简版的 ReadWise，支持 RSS feed，书签导
 
 <div class="org-src-container">
 <pre class="src src-bash">mkdir karakeep-app
+
 wget https://raw.githubusercontent.com/karakeep-app/karakeep/main/docker/docker-compose.yml
-# .env
-KARAKEEP_VERSION=release
-NEXTAUTH_SECRET=super_random_string
-MEILI_MASTER_KEY=another_random_string
-NEXTAUTH_URL=http://localhost:3000</pre>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">.env
+</span><span style="color: #f4f4ff;">KARAKEEP_VERSION</span>=release
+<span style="color: #f4f4ff;">NEXTAUTH_SECRET</span>=super_random_string
+<span style="color: #f4f4ff;">MEILI_MASTER_KEY</span>=another_random_string
+<span style="color: #f4f4ff;">NEXTAUTH_URL</span>=http://localhost:3000
+</pre>
 </div>
 
 <p>
@@ -156,9 +159,9 @@ AI 速读没得灵魂，渐进式阅读，高亮剪藏更容易进入心流，�
 </p>
 </div>
 </div>
-<div id="outline-container-orgfa2a90a" class="outline-2">
-<h2 id="orgfa2a90a">Emacs-Hoarder</h2>
-<div class="outline-text-2" id="text-orgfa2a90a">
+<div id="outline-container-orgcc4a60e" class="outline-2">
+<h2 id="orgcc4a60e">Emacs-Hoarder</h2>
+<div class="outline-text-2" id="text-orgcc4a60e">
 <p>
 写了一个小工具在 Emacs 里同步 Hoarder 的高亮。正好把 Gemini CLI 拉出来练练，Lisp 的括号真是 LLM 杀手。在重构代码的时候，每次都不能正确的处理括号，Claude、GPT 也是一样。
 </p>
@@ -172,9 +175,9 @@ Hoarder 有 MCP 可以检索笔记、添加笔记，所以其他功能就不重�
 </p>
 </div>
 </div>
-<div id="outline-container-orgb81d282" class="outline-2">
-<h2 id="orgb81d282">Obsidian-Web-Clipper</h2>
-<div class="outline-text-2" id="text-orgb81d282">
+<div id="outline-container-org36c8ff8" class="outline-2">
+<h2 id="org36c8ff8">Obsidian-Web-Clipper</h2>
+<div class="outline-text-2" id="text-org36c8ff8">
 <p>
 用 Obsidian-Web-Clipper 已经很长时间了，这就是目前为止我用过最好的网页剪藏工具。
 </p>
@@ -207,9 +210,13 @@ Obsidian-Web-Clipper 提供了相当多的变量和语法，可以发挥想象�
 <div class="org-src-container">
 <pre class="src src-nil">
 **{{title}}
-<{{date|date:"YYYY-MM-DD ddd HH:mm"}}>
+&lt;{{date|date:"YYYY-MM-DD ddd HH:mm"}}&gt;
+
 source: {{url}}
-{{content}}</pre>
+
+{{content}}
+
+</pre>
 </div>
 
 <p>
