@@ -59,33 +59,33 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd4c5874">TL;DR</a></li>
-<li><a href="#orgbf8b513">Claude Skills</a></li>
-<li><a href="#org5a4d63e">复现 Claude Skills</a>
+<li><a href="#org5ab3a33">TL;DR</a></li>
+<li><a href="#orgc9e179e">Claude Skills</a></li>
+<li><a href="#orgac9ac32">复现 Claude Skills</a>
 <ul>
-<li><a href="#org380586f">核心实现</a></li>
+<li><a href="#orgadfcf7d">核心实现</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgd4c5874" class="outline-2">
-<h2 id="orgd4c5874">TL;DR</h2>
-<div class="outline-text-2" id="text-orgd4c5874">
+<div id="outline-container-org5ab3a33" class="outline-2">
+<h2 id="org5ab3a33">TL;DR</h2>
+<div class="outline-text-2" id="text-org5ab3a33">
 <p>
 大道至简，Claude Skills 的这个思路很符合我对 LLM 工具能力扩展的构想。
 </p>
 </div>
 </div>
-<div id="outline-container-orgbf8b513" class="outline-2">
-<h2 id="orgbf8b513">Claude Skills</h2>
-<div class="outline-text-2" id="text-orgbf8b513">
+<div id="outline-container-orgc9e179e" class="outline-2">
+<h2 id="orgc9e179e">Claude Skills</h2>
+<div class="outline-text-2" id="text-orgc9e179e">
 <p>
 Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Claude 模型的工具能力。
 </p>
 
 <p>
-通过本地的 skills 文件，Claude 可以智能的选择相应的 skills 脚本实现本地工具的调用和整合。这些本地的 skills 文件包含一个技能描述指导文档：SKILL.md，相应的脚本：scripts 文件夹。
+通过本地配置 skills 文件，Claude 可以智能的选择相应的 skills 脚本在它的 Agent Virtual Machine 里调用这些 skills。这些本地的 skills 文件包含一个技能描述指导文档：SKILL.md，相应的脚本：scripts 文件夹。
 </p>
 
 <div class="org-src-container">
@@ -141,9 +141,9 @@ Reference:
 </ul>
 </div>
 </div>
-<div id="outline-container-org5a4d63e" class="outline-2">
-<h2 id="org5a4d63e">复现 Claude Skills</h2>
-<div class="outline-text-2" id="text-org5a4d63e">
+<div id="outline-container-orgac9ac32" class="outline-2">
+<h2 id="orgac9ac32">复现 Claude Skills</h2>
+<div class="outline-text-2" id="text-orgac9ac32">
 <p>
 最近正好看到一个项目 <a href="https://github.com/bravenewxyz/agent-c">GitHub - bravenewxyz/agent-c: Ultra-lightweight AI Agent</a> ，从来没有想过一个 agent 可以有这么极简的实现方式。
 </p>
@@ -158,7 +158,7 @@ Reference:
 </p>
 
 
-<figure id="org9a78907">
+<figure id="orgf73eadf">
 <img src="https://pic.vandee.art/images/agent-c-skills.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -167,9 +167,9 @@ Reference:
 源码在：<a href="https://github.com/VandeeFeng/agent-c">https://github.com/VandeeFeng/agent-c</a>
 </p>
 </div>
-<div id="outline-container-org380586f" class="outline-3">
-<h3 id="org380586f">核心实现</h3>
-<div class="outline-text-3" id="text-org380586f">
+<div id="outline-container-orgadfcf7d" class="outline-3">
+<h3 id="orgadfcf7d">核心实现</h3>
+<div class="outline-text-3" id="text-orgadfcf7d">
 <p>
 agent.c:6-41 - init_agent() 函数: 在系统初始化时将技能列表添加到 system prompt
 </p>

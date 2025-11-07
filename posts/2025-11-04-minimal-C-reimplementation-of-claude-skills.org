@@ -10,7 +10,7 @@
 
 Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Claude 模型的工具能力。
 
-通过本地的 skills 文件，Claude 可以智能的选择相应的 skills 脚本实现本地工具的调用和整合。这些本地的 skills 文件包含一个技能描述指导文档：SKILL.md，相应的脚本：scripts 文件夹。
+通过本地配置 skills 文件，Claude 可以智能的选择相应的 skills 脚本在它的 Agent Virtual Machine 里调用这些 skills。这些本地的 skills 文件包含一个技能描述指导文档：SKILL.md，相应的脚本：scripts 文件夹。
 
 #+begin_src
   skills/
