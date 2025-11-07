@@ -353,6 +353,7 @@ tr:nth-child(even) {
 .copy-button.copied {
   color: #859900;
   border-color: #859900;
+  pointer-events: none;
 }
 
 .org-src-container pre.src {
