@@ -4,106 +4,110 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Thu, 13 Nov 2025 16:47:02 +0800</lastBuildDate>
+<lastBuildDate>Thu, 13 Nov 2025 18:01:57 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Emacs 浮窗快速预览笔记 - Org Hover]]></title>
   <description><![CDATA[
-      <nav id="table-of-contents" role="doc-toc">
-        <h2>Table of Contents</h2>
-        <div id="text-table-of-contents" role="doc-toc">
-          <ul>
-            <li><a href="#orgc06bfcf">TL;DR</a></li>
-            <li><a href="#org4ce9a01">为什么做这个</a></li>
-            <li><a href="#org7d82111">Org Hover</a></li>
-          </ul>
-        </div>
-      </nav>
-      <div id="outline-container-orgc06bfcf" class="outline-2">
-        <h2 id="orgc06bfcf">TL;DR</h2>
-        <div class="outline-text-2" id="text-orgc06bfcf">
-          <p>
-            Org Hover ，在 Emacs 里实现 preview hover 快速预览笔记。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-org4ce9a01" class="outline-2">
-        <h2 id="org4ce9a01">为什么做这个</h2>
-        <div class="outline-text-2" id="text-org4ce9a01">
-          <p>
-            很久以前在使用 Obsidian 和 Logseq 的时候，它们都有一个功能：能够快速预览引入的笔记。预览双链里链接的笔记弹出一个小的浮窗，或是根据引入的其他笔记片段快速定位到该笔记的原文的位置并提供预览。
-          </p>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd1a5d00">TL;DR</a></li>
+<li><a href="#org45ad5ca">为什么做这个</a></li>
+<li><a href="#org931e18d">Org Hover</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orgd1a5d00" class="outline-2">
+<h2 id="orgd1a5d00">TL;DR</h2>
+<div class="outline-text-2" id="text-orgd1a5d00">
+<p>
+Org Hover ，在 Emacs 里实现 preview hover 快速预览笔记。
+</p>
+</div>
+</div>
+<div id="outline-container-org45ad5ca" class="outline-2">
+<h2 id="org45ad5ca">为什么做这个</h2>
+<div class="outline-text-2" id="text-org45ad5ca">
+<p>
+很久以前在使用 Obsidian 和 Logseq 的时候，它们都有一个功能：能够快速预览引入的笔记。预览双链里链接的笔记弹出一个小的浮窗，或是根据引入的其他笔记片段快速定位到该笔记的原文的位置并提供预览。
+</p>
 
-          <p>
-            双链是我现在很依赖的一个基础笔记功能，有了 preview 效率会高很多，不用频繁的切换文件。在使用双链的时候，最普遍的场景也就是引用了其他笔记的片段。
-          </p>
+<p>
+双链是我现在很依赖的一个基础笔记功能，有了 preview 效率会高很多，不用频繁的切换文件。在使用双链的时候，最普遍的场景也就是引用了其他笔记的片段。
+</p>
 
-          <p>
-            而在 Emacs 里我暂时没有找到类似的实现，所以决定自己糊一个。
-          </p>
+<p>
+而在 Emacs 里我暂时没有找到类似的实现，所以决定自己糊一个。
+</p>
 
-          <p>
-            这也是我越来越喜欢在 Emacs 里做笔记的原因，想要什么新的功能，都可以高度自定义。
-          </p>
-        </div>
-      </div>
-      <div id="outline-container-org7d82111" class="outline-2">
-        <h2 id="org7d82111">Org Hover</h2>
-        <div class="outline-text-2" id="text-org7d82111">
+<p>
+每个人都有自己做笔记的小习惯，通用的笔记软件和插件很难满足一些高自定义需求，但是在 Emacs 里，想要什么新功能，自己造一个就完事了。
+</p>
+</div>
+</div>
+<div id="outline-container-org931e18d" class="outline-2">
+<h2 id="org931e18d">Org Hover</h2>
+<div class="outline-text-2" id="text-org931e18d">
 
-          <figure id="orgd630f4d">
-            <img src="https://pic.vandee.art/images/org-hover.gif" class="img" width="60%" height="60%">
+<figure id="org90e9a2c">
+<img src="https://pic.vandee.art/images/org-hover.gif" class="img" width="70%" height="70%">
 
-          </figure>
+</figure>
 
-          <p>
-            <a href="https://github.com/VandeeFeng/org-hover">org-hover</a> 使用 Emacs 原生的 frame 特性，零外部依赖，可以在 org 文件链接的 point 弹出一个浮动窗口 hover popup 显示该文件的内容。支持在 hover popup 里复制，滚动浏览。
-          </p>
+<p>
+<a href="https://github.com/VandeeFeng/org-hover">org-hover</a> 使用 Emacs 原生的 frame 特性，零外部依赖，可以在 org 文件链接的 point 弹出一个浮动窗口 hover popup 显示该文件的内容。支持在 hover popup 里复制，滚动浏览。
+</p>
 
-          <p>
-            并提供 inline 模式：
-          </p>
+<p>
+并提供 inline 模式：
+</p>
 
-          <div class="org-src-container">
-            <pre class="src src-elisp">#+begin_quote
-              #+INCLUDE: <span style="color: #A1D08E;">"file.org"</span>
-              #+end_quote
-            </pre>
-          </div>
+<div class="org-src-container">
+<pre class="src src-elisp">#+begin_quote
+#+INCLUDE: <span style="color: #A1D08E;">"file.org"</span>
+or
+#+INCLUDE: <span style="color: #A1D08E;">"file.org::Header"</span>
+or
+#+INCLUDE: <span style="color: #A1D08E;">"file.org"</span> <span style="color: #79C0FF;">:lines</span> <span style="color: #A1D08E;">"1-30"</span>
+#+end_quote
+</pre>
+</div>
 
-          <p>
-            在常规的 <code>#+begin_quote</code> block 里加上 <code>#+INCLUDE</code> 就可以让 org hover 识别到这个文件。现在支持 <code>#+INCLUDE: "file.org::*Header"</code> , <code>#+INCLUDE: "file.org" :lines "1-30"</code> 这两个参数。
-          </p>
+<p>
+在常规的 <code>#+begin_quote</code> block 里加上 <code>#+INCLUDE</code> 就可以让 org hover 识别到这个文件。现在支持 <code>#+INCLUDE: "file.org::*Header"</code> , <code>#+INCLUDE: "file.org" :lines "1-30"</code> 这两个参数。
+</p>
 
-          <p>
-            header 能够预览链接文件指定的 header 标题部分，lines 能够预览链接文件指定的行。文件名使用相对路径和绝对路径都可以，语法也遵循 Emacs INCLUDE 原生的语法。
-          </p>
+<p>
+header 能够预览链接文件指定的 header 标题部分，lines 能够预览链接文件指定的行。文件名使用相对路径和绝对路径都可以，语法也遵循 Emacs INCLUDE 原生的语法。
+</p>
 
-          <p>
-            并且，还支持自动 insert 这些指定的链接文件内容。
-          </p>
+<p>
+并且，还支持自动 insert 这些指定的链接文件内容，默认为不开启。
+</p>
 
-          <p>
-            如果不带参数，但是在 quote 部分写了相关内容，org hover 就会在链接文件里识别到这个内容所在区域，并在 hover popup 里显示：
-          </p>
+<p>
+如果不带参数，但是在 quote 部分写了相关内容，org hover 就会在链接文件里识别到这个内容所在区域，并在 hover popup 里显示：
+</p>
 
-          <div class="org-src-container">
-            <pre class="src src-elisp">#+begin_quote
-              #+INCLUDE: <span style="color: #A1D08E;">"file.org"</span>
-              text
-              #+end_quote
-            </pre>
-          </div>
+<div class="org-src-container">
+<pre class="src src-elisp">#+begin_quote
+#+INCLUDE: <span style="color: #A1D08E;">"file.org"</span>
+text
+#+end_quote
+</pre>
+</div>
 
-          <p>
-            如果不带参数，且没有 quote 内容，则会默认显示链接原文件的前 1000 个字符。
-          </p>
+<p>
+如果不带参数，且没有 quote 内容，则会默认显示链接原文件的前 1000 个字符。
+</p>
 
-          <p>
-            并且并且，还支持 denote 的 insert link！
-          </p>
-        </div>
-      </div>
-      <div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div>]]></description>
+<p>
+并且并且，还支持 denote 的 insert link 双链！
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div>]]></description>
   <category><![CDATA[Emacs]]></category>
   <link>https://www.vandee.art/blog/2025-11-13-emacs-notes-preview-org-hover.html</link>
   <guid>https://www.vandee.art/blog/2025-11-13-emacs-notes-preview-org-hover.html</guid>

@@ -13,11 +13,11 @@ Org Hover ，在 Emacs 里实现 preview hover 快速预览笔记。
 
 而在 Emacs 里我暂时没有找到类似的实现，所以决定自己糊一个。
 
-这也是我越来越喜欢在 Emacs 里做笔记的原因，想要什么新的功能，都可以高度自定义。
+每个人都有自己做笔记的小习惯，通用的笔记软件和插件很难满足一些高自定义需求，但是在 Emacs 里，想要什么新功能，自己造一个就完事了。
 
 * Org Hover
 
-#+attr_html: :alt  :class img :width 60% :height 60%
+#+attr_html: :alt  :class img :width 70% :height 70%
 https://pic.vandee.art/images/org-hover.gif
 
 [[https://github.com/VandeeFeng/org-hover][org-hover]] 使用 Emacs 原生的 frame 特性，零外部依赖，可以在 org 文件链接的 point 弹出一个浮动窗口 hover popup 显示该文件的内容。支持在 hover popup 里复制，滚动浏览。
@@ -27,6 +27,10 @@ https://pic.vandee.art/images/org-hover.gif
 #+begin_src elisp
 #+begin_quote
 #+INCLUDE: "file.org"
+or
+#+INCLUDE: "file.org::Header"
+or
+#+INCLUDE: "file.org" :lines "1-30"
 #+end_quote
 #+end_src
 
@@ -34,7 +38,7 @@ https://pic.vandee.art/images/org-hover.gif
 
 header 能够预览链接文件指定的 header 标题部分，lines 能够预览链接文件指定的行。文件名使用相对路径和绝对路径都可以，语法也遵循 Emacs INCLUDE 原生的语法。
 
-并且，还支持自动 insert 这些指定的链接文件内容。
+并且，还支持自动 insert 这些指定的链接文件内容，默认为不开启。
 
 如果不带参数，但是在 quote 部分写了相关内容，org hover 就会在链接文件里识别到这个内容所在区域，并在 hover popup 里显示：
 
@@ -47,4 +51,4 @@ text
 
 如果不带参数，且没有 quote 内容，则会默认显示链接原文件的前 1000 个字符。
 
-并且并且，还支持 denote 的 insert link！
+并且并且，还支持 denote 的 insert link 双链！
