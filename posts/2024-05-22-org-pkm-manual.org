@@ -36,7 +36,7 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 
 - Prerequisites：开始构建本PKM需要的工具和准备工作
 - PKM：本PKM的构建原则和具体方法、org-mode的具体使用、org-capture与org-roam、Zotero、网页摘录与after-reading、中英混合输入的输入法配置与RIME
-- PKM-with-LLM：PKM和大语言模型结合的使用、ollama、RAG(待更新)
+- PKM-with-LLM：PKM和大语言模型结合的使用
 
 ** Prerequisites
 
@@ -967,6 +967,7 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 - [[https://mischavandenburg.com/zet/neovim-zettelkasten/][我的 Neovim Zettelkasten：我如何使用 Vim 和 Bash 在 Markdown 中做笔记 |米沙·范登伯格]] 很强，之前用bash来生成md笔记的思路一下子扩展了。使用CLI来做笔记是一个很终极的方案。
 
 ** PKM with LLM
+2025-11-15 added: 和 AI 相关的整理到了 [[https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html][PKM（个人知识管理）构建手册 - with AI]] 。关于 RAG 和各类知识文档管理聚合项目，我目前的想法是，如果没有成千上万的笔记，或者专业学习和科研，普通的 tag+关键字检索 足够用了，对笔记和知识有了适合自己的管理方法，AI 的检索其实不那么必须，通过传统检索方法找到相关的，再结合 AI 更简单高效，AI 和 RAG 的相关性也会高很多。再一个，我个人还是习惯自己完成最原始的笔记，AI 帮助我发散思考，而不是生成笔记。
 
 本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
 
@@ -976,12 +977,12 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 很久之前，看到一篇文章提出了一个观点：随着和LLM互动的增多，特别是现在各种LLM平台，ChatGPT、Claude、perplexity等等，查询、回顾、汇总这些问答是一个值得注意的点。
 
-现在我的日常问答都在本地使用Open WebUI，可以导出聊天还有数据库可以直接备份，甚至还可以给对话打tag，当然也可以搜索。
+现在我的日常问答都在本地使用Open WebUI，可以导出聊天还有数据库可以直接备份，甚至还可以给对话打tag，当然也可以搜索(open webui 现在也用少了，基本都使用 gptel 在 org 文件里直接对话了)。
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png]]
 
-需要联网搜索的内容现在基本在perplexity了，碰巧的是，最近搜索到了自己博客的内容🤣，纪念一下：
+需要联网搜索的内容现在基本在perplexity了，碰巧的是，最近搜索到了自己博客的内容🤣，纪念一下(现在能不用 AI 搜索就不用了，不想把这些没什么质变的便利建立在 AI 对互联网内容的侵略上)：
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png]]
