@@ -411,6 +411,15 @@ Ref:
 - https://github.com/protesilaos/denote
 - https://www.youtube.com/watch?v=mLzFJcLpDFI
 
+**** Org-hover
+2025-11-15 added
+
+自己糊了一个快速预览文件的小玩意 org-hover：https://github.com/VandeeFeng/org-hover
+
+有时候只想快速预览一下双链的文件，org file link 的文件，又不想打开很多 buffer。这个小玩意也支持 denote 链接。
+
+详细介绍在：[[https://www.vandee.art/blog/2025-11-13-emacs-notes-preview-org-hover.html][Emacs 浮窗快速预览笔记 - Org Hover]]
+
 **** Org-roam
 
 [[https://www.orgroam.com/][Org-roam]] 是 Emacs的一个包，可以简单的实现双链，通过org-roam-ui直观的预览。
@@ -1202,6 +1211,7 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2025-02-13：增加 aidermacs.
 - 2025-05-11: 增加 org-supertag, org-node.
 - 2025-06-28: 增加 denote。
+- 2025-11-15：增加 org-hover
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
