@@ -182,8 +182,20 @@
       }
 
       try {
-        const promises = githubRepos.map(repoUrl => fetchRepoData(repoUrl));
-        const projects = await Promise.all(promises);
+        // Process repositories in batches of 5 to avoid rate limiting
+        const projects = [];
+        for (let i = 0; i < githubRepos.length; i += 5) {
+          const batch = githubRepos.slice(i, i + 5);
+          const promises = batch.map(repoUrl => fetchRepoData(repoUrl));
+          const batchResults = await Promise.all(promises);
+          projects.push(...batchResults);
+
+          // Add delay between batches to avoid rate limiting
+          if (i + 5 < githubRepos.length) {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+          }
+        }
+
         const validProjects = projects.filter(project => project !== null);
 
         // Cache the successful results
