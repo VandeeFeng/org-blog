@@ -723,30 +723,20 @@ Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading�
 
   Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的applescript。
 
-**** 网页摘录和after-reading
+**** 网页摘录和 after-reading
+after-reading 转入 hoarder 了：[[https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html][稍后阅读新方案 Emacs-Hoarder]] 。[[https://github.com/obsidianmd/obsidian-clipper][Obsidian Web Clipper]] 这个开源的浏览器插件内置一个阅读器，清除网页样式，瞬间清爽，实在太好用了。沉浸式翻译爆雷之后，改用 [[https://github.com/Bistutu/FluentRead][流畅阅读 (FluentRead)]] , [[https://github.com/OwO-Network/DeepLX][DeepLX]] 和 openrouter 免费的 API 日常翻译基本够用了。
 
-利用org-capture，做剪藏和摘录很方便。现在保存在 ~clip.org~ 文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
+利用org-capture，做剪藏和摘录很方便。保存在 ~clip.org~ 文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif]]
 
-有一个JavaScript我一直在用，可以选定一个网页的特定内容，在翻译和剪藏的时候挺有用，同时也微微提升了一点阅读体验。我用 [[https://github.com/OwO-Network/DeepLX][DeepLX]]  通过沉浸式翻译如果单次翻译内容太多会报错和限制，Deepl的中文翻译还是吊打其他的。
-
+有一个JavaScript我一直在用，可以选定一个网页的特定内容，在翻译和剪藏的时候挺有用，同时也微微提升了一点阅读体验。
 下面的代码保存到书签，单击书签就可以了：
 
 #+begin_src javascript
 javascript:(function(){var e=document.body;const n=document.head.appendChild(document.createElement("style"));n.textContent=".mainonly { outline: 2px solid red; }";const t=CSS.supports("selector(:has(*))");function o(n){n instanceof HTMLElement&&(e.classList.remove("mainonly"),(e=n).classList.add("mainonly"))}function s(e){o(e.target)}function a(o){if(o.preventDefault(),t)n.textContent=":not(:has(.mainonly), .mainonly, .mainonly *) { display: none; }";else{n.textContent=":not(.mainonly *, .mainonly-ancestor) { display: none; }";var s=e;do{s.classList.add("mainonly-ancestor")}while(s=s.parentElement)}l()}function i(n){n.preventDefault(),n.deltaY<0?o(e.parentElement):o(e.firstElementChild)}function l(){document.removeEventListener("mouseover",s),document.removeEventListener("click",a),document.removeEventListener("wheel",i)}document.addEventListener("mouseover",s),document.addEventListener("click",a),document.addEventListener("wheel",i,{passive:!1}),document.addEventListener("keydown",(function o(s){if("Escape"===s.key&&(n.remove(),document.removeEventListener("keydown",o),l(),e?.classList.remove("mainonly"),!t))for(const e of document.getElementsByClassName("mainonly-ancestor"))e.classList.remove("mainonly-ancestor")}))}())
 #+end_src
-
-after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开源免费，支持RSS和Newsletter，可以自动同步高亮标注、摘录到Obsidian和Logseq。这部分用来做 [[https://www.vandee.art/posts/2024-06-18-%E4%BF%A1%E6%81%AF%E7%9A%84%E4%BF%9D%E9%B2%9C%E6%9C%9F-%E6%B5%81%E5%8A%A8%E7%9F%A5%E8%AF%86%E7%9A%84%E6%A3%80%E7%B4%A2/][流动知识的检索]]，文档+RAG现在的项目也越来越多了。用AI来过滤、总结这些信息流很巴适。
-
-简单写了一个python用来直接获取高亮摘录并与本地LLM问答：[[https://www.vandee.art/posts/2024-07-08-omnivore-with-llm-in-python/][RSS 订阅和本地 LLM 结合的初步尝试 - 流动知识检索 | Vandee's Blog]]
-
-有条件直接上 [[https://readwise.io/][Readwise]]，配合Notion、Obsidian、Logseq都挺好用。[[https://getpocket.com/home?src=navbar][Pocket]]、[[https://github.com/usememos/memos][memos]] 也挺不错，可以把阅读整合到PKM里。
-
-[[https://n8n.akashio.com/welcome][欢迎来到 n8n 中文教程 | 简单易懂的现代魔法]]这里给出了一个 omnivore 到 notion 的 workflow。
-
-最近[[https://www.vandee.art/posts/2024-07-24-start-to-get-readwies/][还是入坑了 Readwise]]。
 
 ***** tools
 
@@ -769,8 +759,6 @@ after-reading我一直用的 [[https://docs.omnivore.app/zh/][Omnivore]]，开�
 
 
   以这个工具为跳板，就可以干许多有意思的事情了。
-
-- [[https://github.com/JimmyLv/BibiGPT-v1][JimmyLv/BibiGPT-v1]] 这个项目可以自己部署，总结B站、YouTube、抖音等等的视频内容，挺好用。
 
 - [[https://sspai.com/post/89828][u-Sir/drag-to-preview]]，最近发现一个Firefox浏览器插件，可以选中网页链接拖拽弹出单独的窗口预览网页，在窗口外区域鼠标点击即可关闭，很符合我的胃口。
 
@@ -1263,7 +1251,7 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2025-05-11: 增加 org-supertag, org-node.
 - 2025-06-28: 增加 denote。
 - 2025-11-15：增加 org-hover
-- 2025-11-16: 增加双链的介绍，把 org-hover 加进去了
+- 2025-11-16: 增加双链的介绍，把 org-hover 加进去了。更新网页摘录和 after-reading
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
