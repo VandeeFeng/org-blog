@@ -40,7 +40,7 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 
 ** Prerequisites
 
-Start with：[[https://git-scm.com/download][Git]]，[[https://www.gnu.org/software/emacs/][GNU Emacs]]，[[https://github.com/doomemacs/doomemacs][doomemacs]]，[[https://orgmode.org/][Org mode for GNU Emacs]]，[[https://www.orgroam.com/][Org-roam]]。
+Start with：[[https://git-scm.com/download][Git]]，[[https://www.gnu.org/software/emacs/][GNU Emacs]] ,[[https://orgmode.org/][Org mode for GNU Emacs]]，[[https://github.com/protesilaos/denote][denote]]。
 
 开始你可能需要对Emacs、Org-mode、Git有一些了解，这些可以帮助到你：
 
@@ -143,9 +143,9 @@ Stay foolish，stay simple。
 
 在双链部分由于原则上已经和思维高度同步，因此不需要做额外的增加思维成本的检索，只要在记录原子笔记的时候，顺其自然，高度提炼出明确、简洁的一句话概念即可。
 
-在标签tags部分，我习惯把标签当作是一个object的二、三级属性来看待。例如《黄金时代》这本书，它的基础属性是book，我不会再重复标注它，而是写在property里，记下~Type: book~方便我通过函数来列举所有的书目，tag则记下文学、王小波。我习惯用单数来强调它是个属性，区别与复数的category集合的概念。
+在标签tags部分，我习惯把标签当作是一个object的二、三级属性来看待。例如《黄金时代》这本书，它的基础属性是book，我不会再重复标注它，而是写在property里，记下 ~Type: book~ 方便我通过函数来列举所有的书目，tag则记下文学、王小波。我习惯用单数来强调它是个属性，区别与复数的category集合的概念。
 
-我看过许多博客和PKM，许多情况下，他们的tags在语义概念上都混用了，我习惯把tags和categories分开，分类就是分类，标签就是标签。category、property、tag还是需要在逻辑里有自然的分类，理清楚一个概念的内涵与外延。混用会导致tags越来越多，成百上千的tags反而会增加检索的成本，过个几年，大多数的tags你已经忘了当时为什么记下了，单独再去整理标签无疑是个巨大的工程，tags也失去了应当有的作用。tags的构建同样应当同步与自身的思维习惯，自身对概念、语义的记忆。
+我看过许多博客和PKM，许多情况下，他们的tags在语义概念上都混用了，我习惯把tags和categories分开，分类就是分类，标签就是标签。category、property、tag还是需要在逻辑里有自然的分类，理清楚一个概念的内涵与外延。混用会导致tags越来越多，反而会增加检索的成本，过个几年，大多数的tags 可能已经忘了当时为什么记下了，单独再去整理标签无疑是个巨大的工程，tags也失去了应当有的作用。tags的构建同样应当同步与自身的思维习惯，自身对概念、语义的记忆。
 
 当然这也完全取决于每个人自己的习惯。
 
@@ -158,6 +158,63 @@ Emacs，org-roam，模板创建Daily和note：
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif]]
+
+**** 双链（反链）
+2025-11-16 added
+
+我很喜欢在做笔记的时候使用双链，它简单高效的把单个笔记和其他笔记关联起来，它就是笔记地图里的节点。
+
+tag，category，正则关键字搜索，双链，我觉得这些对于一个笔记系统来说就已经很足够了，再扩展更高层次的抽象，可能会得不偿失。
+
+如果在搜索一个笔记概念的时候，上面的方法都找不到，那么就说明这个概念还没有完全掌握，笔记也需要进一步提炼。
+
+在 Emacs 里，实现一个类似 denote 和 org-roam 的双链预览也极其简单：
+
+#+BEGIN_SRC elisp
+(defun my/org-backlink ()
+  "Find all org files in the current directory that link to the current file.
+The search is performed using `rgrep` for the specific pattern
+'filename.org][filename]]'."
+  (interactive)
+  (unless buffer-file-name
+    (error "Current buffer is not visiting a file"))
+
+  (let* ((current-file (file-name-nondirectory buffer-file-name))
+         (current-dir (file-name-directory buffer-file-name))
+         (file-basename (file-name-sans-extension current-file))
+         ;; Search for the literal string "filename.org][filename]]"
+         (search-pattern (concat (regexp-quote current-file)
+                                 "\\]\\["
+                                 (regexp-quote file-basename)
+                                 "\\]\\]")))
+    (rgrep search-pattern "*.org" current-dir)))
+#+END_SRC
+
+为了在 Emacs 里获得和 obsidian 和 Logseq 里类似的链接预览的体验，自己糊了一个快速预览文件的小玩意 org-hover：https://github.com/VandeeFeng/org-hover
+
+有时候只想快速预览一下双链的文件，org file link 的文件，又不想打开很多 buffer。这个小玩意也支持 denote 链接。
+
+详细介绍在：[[https://www.vandee.art/blog/2025-11-13-emacs-notes-preview-org-hover.html][Emacs 浮窗快速预览笔记 - Org Hover]]
+
+**** denote
+2025-06-28 added
+
+其实在选择 org-roam 的时候也考虑过 denote，但是当时久仰 roam 的大名，对 org-roam 的好感多一些。
+
+在长时间使用 org-roam 之后，其实很多它的功能我都没有使用到，除了核心的双链之外许多都可以直接用 org-capture 实现。org-roam-ui 我用到的次数也是非常少，也已经很久没有更新了。随着对编程的学习，笔记的 web ui 现在也可以自己写了。
+
+denote 最吸引我的一点是它的作者对于记笔记的理解，在这个 [[https://www.youtube.com/watch?v=mLzFJcLpDFI][介绍视频]] 里，展示了 denote 最核心的功能。其中有一个是批量查询相关笔记并导入链接，这个太方便了。虽然在 org-roam 里肯定也可以实现，但是在 denote 里，是开箱即用的。denote 的 backlink 的实现也更简洁，不像 org-roam 依赖数据库和节点 ID。
+
+其次是 denote 默认的文件命名方式：时间戳（identifier） + 文件名（title） + Keywords（tags），这样命名的好处是，可以直接 grep 或者正则检索 tags 和笔记，不需要额外的设置，这个思路是通用的。
+
+denote 还提供三种格式：org，md，txt。对于使用 Emacs，但是不喜欢 org 的来说，也很方便。
+
+总之 denote 的设计更加简洁，依赖更少，自定义起来更方便，现在从 org-roam 转到 denote 了。
+
+Ref:
+- https://protesilaos.com/emacs/denote
+- https://github.com/protesilaos/denote
+- https://www.youtube.com/watch?v=mLzFJcLpDFI
 
 **** Org-tag
 
@@ -219,6 +276,28 @@ org 也允许多个分组。当光标在这些行上的时候，不要忘了按 
                       ("laptop" . ?l) ("pc" . ?p))
 #+end_src
 
+默认情况下，org tags 只会匹配加入到 agenda files 里的文件，如果想匹配其他的文件：
+
+#+BEGIN_SRC elisp
+(defun my/org-tags-view (tags-match)
+  "Search for headings with TAGS-MATCH in all .org files in the current directory of the buffer.
+TAGS-MATCH is a tags search string, like '+project-work'.
+This version disables tag inheritance to avoid listing all headings if a filetag matches."
+  (interactive "sTags match (e.g., +project-work): ")
+  (unless (derived-mode-p 'org-mode)
+    (user-error "This function must be called from an Org-mode buffer"))
+  (let* ((current-file (buffer-file-name))
+         (current-dir (file-name-directory current-file))
+         ;; (parent-dir (expand-file-name ".." current-dir))
+         ;; (org-files (directory-files-recursively parent-dir "\\.org$"))
+         (org-files (directory-files-recursively current-dir "\\.org$"))
+         )
+    (if (null org-files)
+        (message "No .org files found in parent directory: %s" current-dir)
+      (let ((org-agenda-files org-files)
+            (org-use-tag-inheritance nil))  ; Disable inheritance to ignore filetags
+        (org-tags-view nil tags-match)))))
+#+END_SRC
 
 Ref:
 
@@ -390,35 +469,6 @@ Ref：
 
 - [[https://www.zmonster.me/2018/02/28/org-mode-capture.html][强大的 Org mode(4): 使用 capture 功能快速记录 · ZMonster's Blog]]
 - [[https://orgmode.org/manual/Capture.html][Capture (The Org Manual)]]
-
-**** denote
-2025-06-28 added
-
-其实在选择 org-roam 的时候也考虑过 denote，但是当时久仰 roam 的大名，对 org-roam 的好感多一些。
-
-在长时间使用 org-roam 之后，其实很多它的功能我都没有使用到，除了核心的双链之外许多都可以直接用 org-capture 实现。org-roam-ui 我用到的次数也是非常少，也已经很久没有更新了。随着对编程的学习，笔记的 web ui 现在也可以自己写了。
-
-denote 最吸引我的一点是它的作者对于记笔记的理解，在这个 [[https://www.youtube.com/watch?v=mLzFJcLpDFI][介绍视频]] 里，展示了 denote 最核心的功能。其中有一个是批量查询相关笔记并导入链接，这个太方便了。虽然在 org-roam 里肯定也可以实现，但是在 denote 里，是开箱即用的。denote 的 backlink 的实现也更简洁，不像 org-roam 依赖数据库和节点 ID。
-
-其次是 denote 默认的文件命名方式：时间戳（identifier） + 文件名（title） + Keywords（tags），这样命名的好处是，可以直接 grep 或者正则检索 tags 和笔记，不需要额外的设置，这个思路是通用的。
-
-denote 还提供三种格式：org，md，txt。对于使用 Emacs，但是不喜欢 org 的来说，也很方便。
-
-总之 denote 的设计更加简洁，依赖更少，自定义起来更方便，现在从 org-roam 转到 denote 了。
-
-Ref:
-- https://protesilaos.com/emacs/denote
-- https://github.com/protesilaos/denote
-- https://www.youtube.com/watch?v=mLzFJcLpDFI
-
-**** Org-hover
-2025-11-15 added
-
-自己糊了一个快速预览文件的小玩意 org-hover：https://github.com/VandeeFeng/org-hover
-
-有时候只想快速预览一下双链的文件，org file link 的文件，又不想打开很多 buffer。这个小玩意也支持 denote 链接。
-
-详细介绍在：[[https://www.vandee.art/blog/2025-11-13-emacs-notes-preview-org-hover.html][Emacs 浮窗快速预览笔记 - Org Hover]]
 
 **** Org-roam
 
@@ -1213,6 +1263,7 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2025-05-11: 增加 org-supertag, org-node.
 - 2025-06-28: 增加 denote。
 - 2025-11-15：增加 org-hover
+- 2025-11-16: 增加双链的介绍，把 org-hover 加进去了
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
