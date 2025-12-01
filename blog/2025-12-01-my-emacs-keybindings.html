@@ -59,30 +59,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgb3cfc1d">TL;DR</a></li>
-<li><a href="#org6a34642">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#org7ccb995">我的键位设置</a>
+<li><a href="#orgfddcfe7">TL;DR</a></li>
+<li><a href="#org6f7a2c0">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#org3152efc">我的键位设置</a>
 <ul>
-<li><a href="#org2767c61">General</a></li>
-<li><a href="#org01b7c65">mark &amp; move</a></li>
-<li><a href="#orga8b5b20">hydra &amp; general</a></li>
-<li><a href="#orgcf28c51">Misc</a></li>
+<li><a href="#org26a0e07">General</a></li>
+<li><a href="#orgce83888">mark &amp; move</a></li>
+<li><a href="#org0da7479">hydra &amp; general</a></li>
+<li><a href="#orgdfabb3c">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgb3cfc1d" class="outline-2">
-<h2 id="orgb3cfc1d">TL;DR</h2>
-<div class="outline-text-2" id="text-orgb3cfc1d">
+<div id="outline-container-orgfddcfe7" class="outline-2">
+<h2 id="orgfddcfe7">TL;DR</h2>
+<div class="outline-text-2" id="text-orgfddcfe7">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org6a34642" class="outline-2">
-<h2 id="org6a34642">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org6a34642">
+<div id="outline-container-org6f7a2c0" class="outline-2">
+<h2 id="org6f7a2c0">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-org6f7a2c0">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -111,9 +111,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-org7ccb995" class="outline-2">
-<h2 id="org7ccb995">我的键位设置</h2>
-<div class="outline-text-2" id="text-org7ccb995">
+<div id="outline-container-org3152efc" class="outline-2">
+<h2 id="org3152efc">我的键位设置</h2>
+<div class="outline-text-2" id="text-org3152efc">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -134,9 +134,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-org2767c61" class="outline-3">
-<h3 id="org2767c61">General</h3>
-<div class="outline-text-3" id="text-org2767c61">
+<div id="outline-container-org26a0e07" class="outline-3">
+<h3 id="org26a0e07">General</h3>
+<div class="outline-text-3" id="text-org26a0e07">
 <p>
 除去 vim 模式和 Emacs 本身占用的键位，可以自定义的其实不多，我觉得比较合适的是 <code>m</code> , <code>r</code> , <code>,</code> , <code>.</code> , <code>/</code> , <code>;</code> , <code>'</code> , <code>[</code> , <code>]</code>
 </p>
@@ -162,7 +162,11 @@ vim 里的 f，w，e，b，再加上 Emacs 里自带的 <code>forward-sexp</code
 </p>
 
 <p>
-在 vim 里，快速删除前后的内容可以使用 d 加上方向导航键位，例如 dl,dw,db,de，也可以使用 c 在删除之后直接进入 insert。但问题就是在 insert 模式的时候，我可能误触了，只想简单的删除光标前后的一个字符，又需要退回到 normal 模式，这种场景下我觉得组合键的优势是很明显的，也更符合直觉。当然习惯了也都差不多，多一次 jk 也不麻烦，但有时候就是觉得有点膈应。
+在 vim 里，快速删除前后的内容可以使用 d 加上方向导航键位，例如 dl,dw,db,de，也可以使用 c 在删除之后直接进入 insert。但在一些 insert 模式场景的编辑不那么便利。
+</p>
+
+<p>
+最恶心的就是在输出各种成对出现的 <code>()</code> , <code>{}</code> , <code>""</code> 的时候，这偏偏又是代码里频率很高的。输入完括号内的内容之后，移动光标到括号外再输入，这个过程在 vim 里要先退出 insert，移动光标，再进入 insert，而组合键只需要一次移动光标的操作（Emacs 里是 Ctrl+f,Ctrl+b），这种场景下我觉得组合键的优势是很明显的，也更符合直觉。当然习惯了也都差不多，多一次 jk 也不麻烦，但有时候就是觉得有点膈应。
 </p>
 
 <p>
@@ -182,9 +186,9 @@ Vim 最核心设计的就是它的三个编辑模式，我觉得便利的移动�
 </p>
 </div>
 </div>
-<div id="outline-container-org01b7c65" class="outline-3">
-<h3 id="org01b7c65">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org01b7c65">
+<div id="outline-container-orgce83888" class="outline-3">
+<h3 id="orgce83888">mark &amp; move</h3>
+<div class="outline-text-3" id="text-orgce83888">
 <p>
 包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -264,9 +268,9 @@ Vim 最核心设计的就是它的三个编辑模式，我觉得便利的移动�
 </div>
 </div>
 </div>
-<div id="outline-container-orga8b5b20" class="outline-3">
-<h3 id="orga8b5b20">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-orga8b5b20">
+<div id="outline-container-org0da7479" class="outline-3">
+<h3 id="org0da7479">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org0da7479">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -312,9 +316,9 @@ Vim 最核心设计的就是它的三个编辑模式，我觉得便利的移动�
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf28c51" class="outline-3">
-<h3 id="orgcf28c51">Misc</h3>
-<div class="outline-text-3" id="text-orgcf28c51">
+<div id="outline-container-orgdfabb3c" class="outline-3">
+<h3 id="orgdfabb3c">Misc</h3>
+<div class="outline-text-3" id="text-orgdfabb3c">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>
