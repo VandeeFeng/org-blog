@@ -1,0 +1,280 @@
+#+title: 我的 Emacs 键位设置
+#+date: <2025-12-01 13:37>
+#+description: 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
+#+filetags: Emacs
+
+
+* TL;DR
+我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
+
+* 组合快捷键 VS 序列快捷键
+组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -> C。
+
+- 组合快捷键的优势: 相应更快，需要执行键位操作的绝对次数更少，按一次组合键视为一次键位操作。
+- 序列快捷键的优势: 键位的设置更加灵活，手指更轻松。但是需要执行的按键操作的绝对次数更多，同样按一次按键视为依次键位操作。
+
+我认为它们对应着两种思维模式:
+
+- 组合快捷键里的 Ctrl、Alt、Shift、Command 是附加键，这些不同的附加键位映射不同的功能。在 window 里，和应用窗口相关的菜单操作通常是 Alt，和系统相关的通常是 Win。也就是说，它是常规按键+功能的叠加组合。Mac 里的 Option 和 Command 同理。
+
+- 序列快捷键则是设定一个 leader key 作为功能的入口，例如 Nvim 里通常 Space 作为 leader key，Space -> f，表示和 file 文件相关的，Space -> f -> r，表示浏览最近的文件 recent files。它是一种递进的层级设计。不同的功能选择不同的 leader key，vim 里的 g 也就是一个 leader key。
+
+在 Emacs 里，C-x(Ctrl+x) 是和 window 窗口相关的快捷键，这个组合键实际上也是一个 leader key。由于 Emacs 和通常的文字编辑器里没有 vim 的输入模式的区分，都是按键直接输入文字，因此必须得加上 Ctrl 这个功能附加键避免输入字符。
+
+Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移动，visual 对应区域选定，insert 对应输入。按 v 进入 visual，i、a、s、c 都可以进入 insert，jk 快速连按则是退出 insert。jkhl 分别对应光标的下上左右移动，其他的就不展开了。Vim 这套设计逻辑实现了不依赖鼠标的全键盘文本编辑器里的光标移动，页面滚动，快速更改，删除，查找。
+
+* 我的键位设置
+现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
+
+按键的设置和设计，往大了说，这些键位的映射也是个人的思维和逻辑习惯的映射。编程是一种表达的艺术，类比绘画，键位的编辑器设置就是画笔笔触的个人艺术风格。
+
+对于编辑代码的人来说，这些快捷键设置就像一个搞影像编辑的人的 Photoshop 的自定义动作一样，每个人都有自己的思维习惯和操作习惯。让一个程序员失去编程能力只需要一步：换掉他的键盘，然后配置另一个人的按键配置🤣 。
+
+所以后面也只是简单说明一些配置按键用到的 Emacs 包和键位设置的思路。
+
+Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
+
+** General
+
+除去 vim 模式和 Emacs 本身占用的键位，可以自定义的其实不多，我觉得比较合适的是 ~m~ , ~r~ , ~,~ , ~.~ , ~/~ , ~;~ , ~'~ , ~[~ , ~]~
+
+它们既可以作为 leader key ，还可以和 Ctrl 等附加键作为组合键。Emacs 和 vim 里它们都没有绑定很核心的功能或是空缺的设置。
+
+在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 ~-~ 链接起来，ctrl+c 记作 ~C-c~ 。
+
+现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又很不方便。把 m 绑定在了 Emacs 的 ~mark-sexp~ 上，现在 mm 就可以连续 mark 了。
+
+vim 里的 f，w，e，b，再加上 Emacs 里自带的 ~forward-sexp~ , ~backward-sexp~ ,在代码行内的移动就很方便了。
+
+想过其他许多方式来减少 vim 模式切换的操作，但是实际体验下来还是多切换更省事。移动的时候还是退回到 normal，极少数情况下也用 Ctrl 组合键在 insert 模式下移动光标。
+
+在这几年的使用中，逐渐形成了下面的这些按键配置和习惯。我很讨厌 evil 里很多默认自带的快捷键，所以能取消的都取消了。感觉这些快捷键的设置上还是比较符合直觉的。
+
+下面是一些具体的配置片段和常用的自定义功能:
+
+** mark & move
+包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
+
+#+begin_src elisp
+;; https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-editing-utils.el
+;; Mark & edit
+(global-set-key (kbd "M-m") 'set-mark-command)
+
+(with-eval-after-load 'evil
+  (define-prefix-command 'my/mark-map)
+  (define-key evil-normal-state-map (kbd "m") 'my/mark-map)
+  (define-key evil-motion-state-map (kbd ";") nil)
+  (evil-define-key '(normal visual) 'global
+    "gc" #'comment-dwim)
+
+  ;; this keybindings only use not in insert mode
+  (dolist (binding '(("m" . mark-sexp)
+                     ("p" . set-pin-mark) ; 这是自己实现的 init-mark.el
+                     ("g" . goto-pin-mark) ; 简化版的 bookmark
+                     ("d" . mark-defun)
+                     (";" . comment-indent)
+                     ;; (";" . comment-dwim) ; use gc instead
+                     ("k" . move-dup-move-lines-up)
+                     ("j" . move-dup-move-lines-down)
+                     ("u" . upcase-dwim) ; equal to g U in vim
+                     ("s" . thing-copy-symbol)
+                     ("S" . thing-cut-symbol)
+                     ("w" . thing-copy-word)
+                     ("W" . thing-cut-word)
+                     ("-" . thing-copy-to-line-end)
+                     ("_" . thing-cut-to-line-end)
+                     ("0" . thing-copy-to-line-beginning)
+                     (")" . thing-cut-to-line-beginning)))
+    (define-key my/mark-map (kbd (car binding)) (cdr binding)))
+  )
+
+(with-eval-after-load 'evil
+  ;; normal, visual, insert
+  (dolist (binding '(("C-s" . backward-kill-sexp)
+                     ("C-S-s" . kill-back-to-indentation)
+                     ("C-d" . kill-sexp)
+                     ("C-k" . kill-visual-line)
+                     ("C-y" . clipboard-yank)
+                     ("C-a" . beginning-of-line)
+                     ("C-e" . end-of-line)
+                     ("C-b" . backward-char) ;; 覆盖 evil 的键位，回归 Emacs 默认键位
+                     ("C-f" . forward-char) ;; 覆盖 evil 的键位，回归 Emacs 默认键位
+                     ("C-n" . next-line) ;; 覆盖 evil 的键位，回归 Emacs 默认键位
+                     ("C-p" . previous-line) ;; 覆盖 evil 的键位，回归 Emacs 默认键位
+                     ))
+    (dolist (state '(normal visual insert))
+      (evil-global-set-key state (kbd (car binding)) (cdr binding))))
+
+  ;; ;; visual, insert
+  ;; (dolist (binding '(("C-h" . backward-char)
+  ;;                    ("C-l" . forward-char)
+  ;;                    ("C-j" . next-line)
+  ;;                    ("C-k" . previous-line)))
+  ;;   (dolist (state '(visual insert))
+  ;;     (evil-global-set-key state (kbd (car binding)) (cdr binding))))
+
+  ;; normal visual
+  (dolist (binding '(("-" . end-of-line)
+                     ("<" . beginning-of-defun)
+                     (">" . end-of-defun)
+                     ("," . backward-sexp)
+                     ("." . forward-sexp)
+                     ))
+    (dolist (state '(normal visual))
+      (evil-global-set-key state (kbd (car binding)) (cdr binding))))
+
+  (define-key evil-motion-state-map (kbd "C-v") nil)
+  (global-unset-key (kbd "C-v"))
+  (global-set-key (kbd "S-<backspace>") 'delete-char))
+#+end_src
+
+** hydra & general
+由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
+
+我有时候也用 Nvim，所以还是用 SPC 作为 leader key：
+
+#+begin_src elisp
+;; https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-hydra.el
+;; general 设置 leader key SPC
+(general-define-key
+ :states '(normal motion visual)
+ :keymaps 'override
+ :prefix "SPC"
+ "" '(hydra-leader/body :wk "hydra leader"))
+
+;; 不同模式的常用快捷键设置
+;; Mode-specific hydra bindings
+(define-key evil-normal-state-map (kbd "C-.") nil)
+(defun hydra-mode-setup ()
+  "Setup hydra bindings for specific modes."
+  (cond
+   ((eq major-mode 'dired-mode)
+    (local-set-key (kbd "C-.") 'hydra-dired/body))
+
+   ((eq major-mode 'org-mode)
+    (local-set-key (kbd "C-.") 'hydra-org/body))
+
+   ((eq major-mode 'magit-status-mode)
+    (local-set-key (kbd "C-.") 'hydra-magit/body))
+
+   ((derived-mode-p 'prog-mode)
+    (local-set-key (kbd "C-.") 'hydra-code/body))))
+
+;; Add mode-specific setup to hooks
+(add-hook 'dired-mode-hook 'hydra-mode-setup)
+(add-hook 'org-mode-hook 'hydra-mode-setup)
+(add-hook 'magit-status-mode-hook 'hydra-mode-setup)
+(add-hook 'prog-mode-hook 'hydra-mode-setup)
+
+#+end_src
+
+** Misc
+其他自定义函数在：https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el
+
+jk 退出 insert：
+
+#+begin_src elisp
+;; jk 退出 insert
+(with-eval-after-load 'evil
+  (use-package key-chord
+    :ensure t
+    :config
+    (key-chord-mode 1)
+    (setq key-chord-two-keys-delay 0.3) ;; 版本更新之后，默认j k 的判断时间变少了
+    (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)))
+#+end_src
+
+compile grep search：
+
+这是我用的最多的一个搜索。可以用 grep 搜索当前文件目录下关键字。用 Emacs 里的 compile 模式的好处是，它会在搜索结果的 minibuffer 里显示对应的文件的跳转链接，直接点击就跳转了。
+
+#+begin_src elisp
+;; compile grep
+(defun my/compile-grep-rn (pattern)
+  "Run `grep -irn` with the given PATTERN in the current directory."
+  (interactive "sGrep pattern: ")
+  (compile (format "grep -irn '%s' ." pattern)))
+#+end_src
+
+
+org-backlink:
+
+同样也是用 grep 搜索当前 org 笔记的反链
+
+#+begin_src elisp
+
+(defun my/org-backlink ()
+  "Find all org files in the current directory that link to the current file.
+The search is performed using `rgrep` for the specific pattern
+'filename.org][filename]]'."
+  (interactive)
+  (unless buffer-file-name
+    (error "Current buffer is not visiting a file"))
+
+  (let* ((current-file (file-name-nondirectory buffer-file-name))
+         (current-dir (file-name-directory buffer-file-name))
+         (file-basename (file-name-sans-extension current-file))
+         ;; Search for the literal string "filename.org][filename]]"
+         (search-pattern (concat (regexp-quote current-file)
+                                 "\\]\\["
+                                 (regexp-quote file-basename)
+                                 "\\]\\]")))
+    (rgrep search-pattern "*.org" current-dir)))
+#+end_src
+
+simple claude:
+
+使用 shell，快速运行 Claude Code 执行 ~claude -p~ 指令回答一些简单的问题，把结果输出到单独的 buffer。有时候不想用 gptel 就用这个。可以替换成 Gemini 和 Codex。
+
+#+begin_src elisp
+;; simple claude code shell command
+(defun my/claude-shell-command (prompt)
+  "Execute claude command asynchronously and display the output."
+  (interactive "sClaude prompt: ")
+  (let* ((output-buffer-name "*Claude Output*")
+         (output-buffer (get-buffer-create output-buffer-name))
+         (shell-program (or (getenv "SHELL") shell-file-name))
+         ;; Use shell-quote-argument
+         (command-str (format "claude -p %s" (shell-quote-argument prompt))))
+    (with-current-buffer output-buffer
+      (setq buffer-read-only nil)
+      (erase-buffer)
+      (setq-local header-line-format (format "Claude Output for prompt: %s" prompt)))
+    ;; (display-buffer output-buffer) ; Show the buffer immediately
+    (message "Claude command running asynchronously...")
+    ;; Start the async process
+    (let ((process (start-process "claude-process"
+                                  output-buffer-name
+                                  shell-program
+                                  "-lc"
+                                  command-str)))
+      ;; Set a function to be called when the process finishes
+      (set-process-sentinel process #'my/claude-process-sentinel))))
+
+(defun my/claude-process-sentinel (process _event)
+  "Sentinel for the claude async process. Handles success and error cases."
+  (when (memq (process-status process) '(exit signal))
+    (let* ((buffer (process-buffer process))
+           (exit-code (process-exit-status process)))
+      (cond
+       ;; Case 1: Process failed (non-zero exit code)
+       ((/= exit-code 0)
+        (kill-buffer buffer)
+        (if (= exit-code 127)
+            (message "Error: 'claude' command not found. Please ensure it's in your shell's PATH.")
+          (message "Error: Claude command failed with exit code %d." exit-code)))
+
+       ;; Case 2: Process succeeded but produced no output
+       ((zerop (with-current-buffer buffer (buffer-size)))
+        (kill-buffer buffer)
+        (message "Claude command finished with no output."))
+
+       ;; Case 3: Success
+       (t
+        (with-current-buffer buffer
+          (setq buffer-read-only t)
+          (goto-char (point-min)))
+        (display-buffer buffer)
+        (message "Claude command finished."))))))
+
+#+end_src
