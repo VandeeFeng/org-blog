@@ -36,23 +36,25 @@ Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里�
 
 ** General
 
+现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 ~mark-sexp~ 上，现在 mm 就可以连续 mark 了。
+
+Vim 默认的 f，w，e，b 小范围移动，vi，va 选定函数内部特定的内容，gd 跳转到定义，]] 函数间跳转，再加上自定义的 m 序列按键，Emacs 里自带的 ~forward-sexp~ , ~backward-sexp~ 等函数，日常的代码的选中移动基本可以全键盘覆盖。
+
+Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 vim 的灵魂，弊端就是需要频繁的切换模式。Normal 模式 c，a，i，d，x，s 提供了非常全面、便捷的增添删减方法，但是 insert 模式下就只是 insert（可以临时执行一次 normal 指令）。
+
+在 vim 里，快速删除前后的内容可以使用 d 加上方向导航键位，例如 dl,dw,db,de，也可以使用 c 在删除之后直接进入 insert。但是在 insert 之后再想执行 d 的快捷删除就得退出 insert 模式。
+
+最恶心的就是在输出各种成对出现的 ~()~ , ~{}~ , ~""~ 的时候，这偏偏又是代码里频率很高的。输入完括号内的内容之后，移动光标到括号外再输入，这个过程在 vim 里要先退出 insert，移动光标，再进入 insert，而组合键只需要一次移动光标的操作（Emacs 里是 Ctrl+f,Ctrl+b。箭头方向键在一般的键盘里都太远了），这种场景下我觉得组合键的优势是很明显的，也更符合直觉。当然习惯了也都差不多，多一次 jk 也不麻烦，但有时候就是觉得有点膈应。
+
+想过其他许多方式来减少 vim 模式切换的操作，但是实际体验下来还是多切换更省事。移动的时候还是退回到 normal，极少数情况下也用 Ctrl 组合键在 insert 模式下移动光标。复制粘贴删除的操作原则上都在 normal 模式里进行，m 键位的设置也是在 normal 模式下的，极少数编辑操作（快速删除到行尾，快速删除当前光标到单词的末尾，快速删除当前光标到单词的开头等）使用 Ctrl 组合键在 insert 模式下使用。
+
+因此在 Emacs 里补足 insert 模式就好了。
+
 除去 vim 模式和 Emacs 本身占用的键位，可以自定义的其实不多，我觉得比较合适的是 ~m~ , ~r~ , ~,~ , ~.~ , ~/~ , ~;~ , ~'~ , ~[~ , ~]~
 
 它们既可以作为 leader key ，还可以和 Ctrl 等附加键作为组合键。Emacs 和 vim 里它们都没有绑定很核心的功能或是空缺的设置。
 
-在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 ~-~ 链接起来，ctrl+c 记作 ~C-c~ 。
-
-Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 vim 的灵魂，弊端就是需要频繁的切换模式。Normal 模式 c，a，i，d，x，s 提供了非常全面、便捷的增添删减方法，但是 insert 模式下就只是 insert（可以临时执行一次 normal 指令）。因此在 Emacs 里补足 insert 模式就好了。
-
-现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 ~mark-sexp~ 上，现在 mm 就可以连续 mark 了。
-
-Vim 里的 f，w，e，b 小范围移动，vi，va 选定函数内部特定的内容，gd 跳转到定义，再加上自定义的 m 序列按键，Emacs 里自带的 ~forward-sexp~ , ~backward-sexp~ 等函数，日常的代码的选中移动基本可以全键盘覆盖。
-
-想过其他许多方式来减少 vim 模式切换的操作，但是实际体验下来还是多切换更省事。移动的时候还是退回到 normal，极少数情况下也用 Ctrl 组合键在 insert 模式下移动光标。复制粘贴删除的操作原则上都在 normal 模式里进行，m 键位的设置也是在 normal 模式下的，极少数编辑操作（快速删除到行尾，快速删除当前光标到单词的末尾，快速删除当前光标到单词的开头等）使用 Ctrl 组合键在 insert 模式下使用。
-
-在 vim 里，快速删除前后的内容可以使用 d 加上方向导航键位，例如 dl,dw,db,de，也可以使用 c 在删除之后直接进入 insert。但在一些 insert 模式场景的编辑不那么便利。
-
-最恶心的就是在输出各种成对出现的 ~()~ , ~{}~ , ~""~ 的时候，这偏偏又是代码里频率很高的。输入完括号内的内容之后，移动光标到括号外再输入，这个过程在 vim 里要先退出 insert，移动光标，再进入 insert，而组合键只需要一次移动光标的操作（Emacs 里是 Ctrl+f,Ctrl+b。箭头方向键在一般的键盘里都太远了），这种场景下我觉得组合键的优势是很明显的，也更符合直觉。当然习惯了也都差不多，多一次 jk 也不麻烦，但有时候就是觉得有点膈应。
+在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 ~-~ 链接起来，ctrl+c 记作 ~C-c~ 。Emacs 可以单独自定义 major mode，用 hook 在不同的编程语言里激活不同的自定义 major mode，相同的快捷键就可以实现不同的功能了。
 
 在这几年的使用中，逐渐形成了下面的这些按键配置和习惯。Evil 里有许多完全不常用的功能会占用快捷键的键位，许多默认键位和原生的 vim 也不相同，所以能取消的都取消了，在函数的选择上也尽量使用 Emacs 原生的函数，Emacs 有的就不用 evil 的了。
 
@@ -126,8 +128,6 @@ Vim 里的 f，w，e，b 小范围移动，vi，va 选定函数内部特定的�
 
   ;; normal visual
   (dolist (binding '(("-" . end-of-line)
-                     ("<" . beginning-of-defun)
-                     (">" . end-of-defun)
                      ("," . backward-sexp)
                      ("." . forward-sexp)
                      ))
