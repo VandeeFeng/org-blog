@@ -54,7 +54,7 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 
 它们既可以作为 leader key ，还可以和 Ctrl 等附加键作为组合键。Emacs 和 vim 里它们都没有绑定很核心的功能或是空缺的设置。
 
-在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 ~-~ 链接起来，ctrl+c 记作 ~C-c~ 。Emacs 可以单独自定义 major mode，用 hook 在不同的编程语言里激活不同的自定义 major mode，相同的快捷键就可以实现不同的功能了。
+在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 ~-~ 链接起来，ctrl+c 记作 ~C-c~ 。Emacs 可以自定义 minor mode，用 hook 在不同的编程语言里激活不同的自定义 minor mode，各自的 mode map 又可以设置不同的快捷键，相同的快捷键就可以实现不同的功能了。
 
 在这几年的使用中，逐渐形成了下面的这些按键配置和习惯。Evil 里有许多完全不常用的功能会占用快捷键的键位，许多默认键位和原生的 vim 也不相同，所以能取消的都取消了，在函数的选择上也尽量使用 Emacs 原生的函数，Emacs 有的就不用 evil 的了。
 

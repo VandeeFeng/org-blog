@@ -59,30 +59,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org467bc9c">TL;DR</a></li>
-<li><a href="#org8212db3">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#orgfaca74b">我的键位设置</a>
+<li><a href="#orgae5bba8">TL;DR</a></li>
+<li><a href="#org5b917f7">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#orga2359d7">我的键位设置</a>
 <ul>
-<li><a href="#org69728b4">General</a></li>
-<li><a href="#org2f62123">mark &amp; move</a></li>
-<li><a href="#org4f3c1a2">hydra &amp; general</a></li>
-<li><a href="#orgf8c365c">Misc</a></li>
+<li><a href="#orgf589b7e">General</a></li>
+<li><a href="#org9471da3">mark &amp; move</a></li>
+<li><a href="#org6b7c0a4">hydra &amp; general</a></li>
+<li><a href="#orga2195f0">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org467bc9c" class="outline-2">
-<h2 id="org467bc9c">TL;DR</h2>
-<div class="outline-text-2" id="text-org467bc9c">
+<div id="outline-container-orgae5bba8" class="outline-2">
+<h2 id="orgae5bba8">TL;DR</h2>
+<div class="outline-text-2" id="text-orgae5bba8">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org8212db3" class="outline-2">
-<h2 id="org8212db3">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org8212db3">
+<div id="outline-container-org5b917f7" class="outline-2">
+<h2 id="org5b917f7">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-org5b917f7">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -111,9 +111,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-orgfaca74b" class="outline-2">
-<h2 id="orgfaca74b">我的键位设置</h2>
-<div class="outline-text-2" id="text-orgfaca74b">
+<div id="outline-container-orga2359d7" class="outline-2">
+<h2 id="orga2359d7">我的键位设置</h2>
+<div class="outline-text-2" id="text-orga2359d7">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -134,9 +134,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-org69728b4" class="outline-3">
-<h3 id="org69728b4">General</h3>
-<div class="outline-text-3" id="text-org69728b4">
+<div id="outline-container-orgf589b7e" class="outline-3">
+<h3 id="orgf589b7e">General</h3>
+<div class="outline-text-3" id="text-orgf589b7e">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -174,7 +174,7 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 
 <p>
-在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 <code>-</code> 链接起来，ctrl+c 记作 <code>C-c</code> 。Emacs 可以单独自定义 major mode，用 hook 在不同的编程语言里激活不同的自定义 major mode，相同的快捷键就可以实现不同的功能了。
+在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 <code>-</code> 链接起来，ctrl+c 记作 <code>C-c</code> 。Emacs 可以自定义 minor mode，用 hook 在不同的编程语言里激活不同的自定义 minor mode，各自的 mode map 又可以设置不同的快捷键，相同的快捷键就可以实现不同的功能了。
 </p>
 
 <p>
@@ -190,9 +190,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-org2f62123" class="outline-3">
-<h3 id="org2f62123">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org2f62123">
+<div id="outline-container-org9471da3" class="outline-3">
+<h3 id="org9471da3">mark &amp; move</h3>
+<div class="outline-text-3" id="text-org9471da3">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -274,9 +274,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org4f3c1a2" class="outline-3">
-<h3 id="org4f3c1a2">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org4f3c1a2">
+<div id="outline-container-org6b7c0a4" class="outline-3">
+<h3 id="org6b7c0a4">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org6b7c0a4">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -322,9 +322,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-orgf8c365c" class="outline-3">
-<h3 id="orgf8c365c">Misc</h3>
-<div class="outline-text-3" id="text-orgf8c365c">
+<div id="outline-container-orga2195f0" class="outline-3">
+<h3 id="orga2195f0">Misc</h3>
+<div class="outline-text-3" id="text-orga2195f0">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>
