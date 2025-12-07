@@ -59,30 +59,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgae5bba8">TL;DR</a></li>
-<li><a href="#org5b917f7">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#orga2359d7">我的键位设置</a>
+<li><a href="#orga6bd49d">TL;DR</a></li>
+<li><a href="#org0eea9c1">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#org45932f7">我的键位设置</a>
 <ul>
-<li><a href="#orgf589b7e">General</a></li>
-<li><a href="#org9471da3">mark &amp; move</a></li>
-<li><a href="#org6b7c0a4">hydra &amp; general</a></li>
-<li><a href="#orga2195f0">Misc</a></li>
+<li><a href="#org2655106">General</a></li>
+<li><a href="#orgd693f47">mark &amp; move</a></li>
+<li><a href="#org9c7b111">hydra &amp; general</a></li>
+<li><a href="#org90fe271">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgae5bba8" class="outline-2">
-<h2 id="orgae5bba8">TL;DR</h2>
-<div class="outline-text-2" id="text-orgae5bba8">
+<div id="outline-container-orga6bd49d" class="outline-2">
+<h2 id="orga6bd49d">TL;DR</h2>
+<div class="outline-text-2" id="text-orga6bd49d">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org5b917f7" class="outline-2">
-<h2 id="org5b917f7">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org5b917f7">
+<div id="outline-container-org0eea9c1" class="outline-2">
+<h2 id="org0eea9c1">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-org0eea9c1">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -111,9 +111,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-orga2359d7" class="outline-2">
-<h2 id="orga2359d7">我的键位设置</h2>
-<div class="outline-text-2" id="text-orga2359d7">
+<div id="outline-container-org45932f7" class="outline-2">
+<h2 id="org45932f7">我的键位设置</h2>
+<div class="outline-text-2" id="text-org45932f7">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -134,9 +134,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-orgf589b7e" class="outline-3">
-<h3 id="orgf589b7e">General</h3>
-<div class="outline-text-3" id="text-orgf589b7e">
+<div id="outline-container-org2655106" class="outline-3">
+<h3 id="org2655106">General</h3>
+<div class="outline-text-3" id="text-org2655106">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -156,6 +156,22 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 <p>
 最恶心的就是在输出各种成对出现的 <code>()</code> , <code>{}</code> , <code>""</code> 的时候，这偏偏又是代码里频率很高的。输入完括号内的内容之后，移动光标到括号外再输入，这个过程在 vim 里要先退出 insert，移动光标，再进入 insert，而组合键只需要一次移动光标的操作（Emacs 里是 Ctrl+f,Ctrl+b。箭头方向键在一般的键盘里都太远了），这种场景下我觉得组合键的优势是很明显的，也更符合直觉。当然习惯了也都差不多，多一次 jk 也不麻烦，但有时候就是觉得有点膈应。
 </p>
+
+<p>
+2025-12-07 added：
+</p>
+
+<p>
+这个问题原来很多插件都可以解决。在输入完()之后，只需要再按一次相应成对符号右边的符号就可以移动到成对符号外了。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">when</span> <span style="color: #93a8c6;">(</span>fboundp <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> electric-pair-pairs <span style="color: #b0b1a3;">(</span>append electric-pair-pairs <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>?\{ . ?\}<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>?\<span style="color: #FFA657;">'</span> <span style="color: #95a99f;">.</span> ?\<span style="color: #FFA657;">'</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-indent-mode</span><span style="color: #8c8c8c;">)</span>
+</pre>
+</div>
 
 <p>
 想过其他许多方式来减少 vim 模式切换的操作，但是实际体验下来还是多切换更省事。移动的时候还是退回到 normal，极少数情况下也用 Ctrl 组合键在 insert 模式下移动光标。复制粘贴删除的操作原则上都在 normal 模式里进行，m 键位的设置也是在 normal 模式下的，极少数编辑操作（快速删除到行尾，快速删除当前光标到单词的末尾，快速删除当前光标到单词的开头等）使用 Ctrl 组合键在 insert 模式下使用。
@@ -190,9 +206,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-org9471da3" class="outline-3">
-<h3 id="org9471da3">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org9471da3">
+<div id="outline-container-orgd693f47" class="outline-3">
+<h3 id="orgd693f47">mark &amp; move</h3>
+<div class="outline-text-3" id="text-orgd693f47">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -274,9 +290,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org6b7c0a4" class="outline-3">
-<h3 id="org6b7c0a4">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org6b7c0a4">
+<div id="outline-container-org9c7b111" class="outline-3">
+<h3 id="org9c7b111">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org9c7b111">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -322,9 +338,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-orga2195f0" class="outline-3">
-<h3 id="orga2195f0">Misc</h3>
-<div class="outline-text-3" id="text-orga2195f0">
+<div id="outline-container-org90fe271" class="outline-3">
+<h3 id="org90fe271">Misc</h3>
+<div class="outline-text-3" id="text-org90fe271">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>

@@ -46,6 +46,17 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 
 最恶心的就是在输出各种成对出现的 ~()~ , ~{}~ , ~""~ 的时候，这偏偏又是代码里频率很高的。输入完括号内的内容之后，移动光标到括号外再输入，这个过程在 vim 里要先退出 insert，移动光标，再进入 insert，而组合键只需要一次移动光标的操作（Emacs 里是 Ctrl+f,Ctrl+b。箭头方向键在一般的键盘里都太远了），这种场景下我觉得组合键的优势是很明显的，也更符合直觉。当然习惯了也都差不多，多一次 jk 也不麻烦，但有时候就是觉得有点膈应。
 
+2025-12-07 added：
+
+这个问题原来很多插件都可以解决。在输入完()之后，只需要再按一次相应成对符号右边的符号就可以移动到成对符号外了。
+
+#+begin_src elisp
+(when (fboundp 'electric-pair-mode)
+  (setq electric-pair-pairs (append electric-pair-pairs '((?\{ . ?\}) (?\' . ?\'))))
+  (add-hook 'after-init-hook 'electric-pair-mode))
+(add-hook 'after-init-hook 'electric-indent-mode)
+#+end_src
+
 想过其他许多方式来减少 vim 模式切换的操作，但是实际体验下来还是多切换更省事。移动的时候还是退回到 normal，极少数情况下也用 Ctrl 组合键在 insert 模式下移动光标。复制粘贴删除的操作原则上都在 normal 模式里进行，m 键位的设置也是在 normal 模式下的，极少数编辑操作（快速删除到行尾，快速删除当前光标到单词的末尾，快速删除当前光标到单词的开头等）使用 Ctrl 组合键在 insert 模式下使用。
 
 因此在 Emacs 里补足 insert 模式就好了。
