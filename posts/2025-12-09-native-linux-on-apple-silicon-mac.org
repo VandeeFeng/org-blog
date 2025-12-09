@@ -1,0 +1,174 @@
+#+title: Native Linux on Apple Silicon Mac
+#+date: <2025-12-09 11:03>
+#+description: 整理了一下我在 mac 上安装 Linux 的过程，分享给想入坑 Linux 的轻度玩家。
+#+filetags: Linux
+
+* TL;DR
+在几个月之前在我的 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
+
+这几个月 windows 持续的一些负面新闻，让 Linux 有一波小热度。整理了一下我在 mac 上安装 Linux 的过程，分享给想入坑 Linux 的轻度玩家。
+
+大佬请直接关闭页面。
+
+* Why Linux
+买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
+
+使用 Mac 的普通用户大多数都是因为精致设计感的 UI，苹果的品牌效应，我也是如此。但是这几年 Mac 的发展实在是让我很没有期待，今年更是大便一坨。
+
+苹果的品牌效应 90% 来自乔帮主的个人魅力，我觉得一点也不为过。如今苹果的老本快被吃完了，创新的东西有，但是灵魂我觉得早已不在。
+
+之前都是在虚拟机上使用 Linux，最初也没有想完全入坑 Linux。转折点就是 Linus 的自传《Just For Fun》，我有太多想法和 Linus 不谋而合。在苹果没有了乔布斯的个人魅力之后，它能吸引我的越来越少，Linux 对我的吸引越来越大。
+
+当个人电脑 PC 对我来说不再只是一个工具，而是一个伙伴的时候，Linux 就是现在最适合我的操作系统，[[https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html][Linux 太自由了]] 。
+
+* Asahi Alarm
+
+#+attr_html: :alt :class img :width 70% :height 70%
+https://pic.vandee.art/images/2025-08-12_16-18.png
+
+最开始我尝试的是 Asahi Linux，按照这个视频很快就搞定了： [[https://www.youtube.com/watch?v=u_kcXg00R2g][「黑貓」Asahi Linux！M1 Mac 原生運行 Linux 雙系統，簡單流暢！ - YouTube]]
+
+Asahi Linux 预装的是 Fedora，初始化安装到进入图形界面都没问题，但是当我执行更新，安装了一些包之后，再重启，总是会遇到各种系统崩溃问题，尝试了数次之后，就没有再折腾了。
+
+也是巧了，正在我发愁的时候：[[https://omarchy.org/][Omarchy — Beautiful, Modern & Opinionated Linux by DHH]] 出现了。
+
+Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基于 Arch Linux 的 Linux 发行版。
+
+但是我不太喜欢它默认的主题，和过多的快捷键设置，还有许多我不需要的预安装。尝试了几天之后也否定了这个方案。
+
+然后发现宝藏：[[https://asahi-alarm.org/][Asahi Alarm]] , https://github.com/basecamp/omarchy/discussions/155
+
+完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
+** 初始化安装
+它就是一个裸的 Arch Linux。
+
+在 mac 上打开 terminal，运行 ~curl https://asahi-alarm.org/installer-bootstrap.sh | sh~ ，基本就全自动安装了，具体的安装过程和  [[https://www.youtube.com/watch?v=u_kcXg00R2g][「黑貓」Asahi Linux！M1 Mac 原生運行 Linux 雙系統，簡單流暢！ - YouTube]] 是一样的。
+
+需要科学上网。
+
+安装完成之后，就可以进入到 Asahi Alarm 了，这个时候还没有图形界面，可以命令行安装一些基础的包。
+
+Pacman 是 Arch Linux 默认的包管理器 ，[[https://github.com/Morganamilo/paru][Morganamilo/paru]] 是 Rust 版本的 yay AUR 包管理器。
+
+** WM & DM
+接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 [[https://wiki.archlinux.org/title/Wayland][Wayland]] + [[https://swaywm.org/][Sway]] ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
+
+创建好 Linux 用户之后 ~sudo pacman -S wayland sway~ 安装就 OK 了。
+
+输入 sway 就可以进入到图形界面了。想自动进入图形界面，Linux 里需要安装 DM（display managers）
+
+DM 我选择的是 [[https://github.com/coastalwhite/lemurs][Lemurs]] 也是因为它足够简单。
+
+** App launcher
+[[https://codeberg.org/dnkl/fuzzel][dnkl/fuzzel]]
+
+因为之前在 i3 里使用 dmenu，fuzzel 足够简洁。和 sway 的匹配度也很高。
+
+Vicinae 也挺好用，和 raycast 挺像: https://github.com/vicinaehq/vicinae/
+
+** Theme
+[[https://github.com/vinceliuice/Qogir-theme][vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK]]
+
+- 统一 gtk 和 qt 主题：sudo pacman -S --noconfirm lxappearance qt5ct qt6ct kvantum
+
+- lxappearance 来配置主题，可能需要安装：sudo pacman -S gtk-engine-murrine gnome-themes-extra gtk-engines
+  theme 文件可以在 ~/.themes/, 或者 /usr/share/themes
+
+  wayland 里用 nwg-look
+
+** Bluetooth && Wi-Fi
+- impala: 🛜 TUI for managing wifi on Linux
+  https://github.com/pythops/impala
+
+- bluetui: 🛜 TUI for managing bluetooth on Linux
+  https://github.com/pythops/bluetui
+** Fcitx && Rime 输入法
+参考：[[https://manateelazycat.github.io/2025/08/31/fcitx-best-config/][Fcitx 最佳配置实践 2025-08-31]]
+
+Rime + 双拼实在是太巴适了。
+
+Rime 推荐使用：[[https://github.com/rime/plum][rime/plum: 東風破 ]] 安装。
+
+输入法：[[https://github.com/iDvel/rime-ice][iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库]]
+** Obs Studio
+Asahi Alarm 里，pacman 没有 obs studio 的 ARM 版本。
+
+安装 CMake 自己手动编译:
+
+下载源代码：
+
+~git clone --depth 1 https://github.com/obsproject/obs-studio.git~
+
+我在编译的时候提示缺少头文件，因此:
+
+~sudo pacman -S qt6-xcb-private-headers~
+
+然后成功编译：
+
+~cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_BROWSER=OFF -DENABLE_VLC=ON -DENABLE_AJA=OFF..~
+
+如果 PipeWire 选项缺失: wlrobs 是一个 OBS 插件，专为 Wayland 提供屏幕捕获支持，尤其在 Hyprland 或 River 等合成器下有效。paru -S wlrobs-hg。
+
+* Settings
+其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
+
+下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
+
+** Sway
+sway 会初始化一个配置文件在 ~.config/sway/config~ ，在配置文件里修改就好了。
+
+分辨率设置：如果不放大，字就跟蚂蚁一样小
+
+Asahi Alarm 由于苹果硬件的限制，只能缩放，更改不了分辨率，也可能是我没有找对方法。常规设置分辨率的方法不管用。
+
+~exec --no-startup-id xrandr --output eDP-1 --scale 1.5x1.5~
+
+截图:
+
+使用 grim + swappy ,由于之前缩放的原因，flameshot 在截图的时候调用 grim 截图也是放大的，而且有兼容性问题。
+
+~bindsym $mod+s exec --no-startup-id sh -c 'grim -g "$(slurp)" -s 1 - | swappy -f -'~
+
+加上了 -s 1 参数，就可以解决截图放大的问题了。
+
+OCR: 需要安装 [[https://github.com/tesseract-ocr/tesseract][tesseract-ocr/tesseract]] 并下载相应语言的包
+
+~bindsym $mod+Shift+s exec --no-startup-id ~/MyScripts/screenshot_ocr.sh~
+
+这个脚本就是一个很简单的创建 tmp 截图文件，用 tesseract 识别保存到系统剪贴板。
+
+设置系统音量：我耳朵被炸了好几次。。。
+
+~exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ 55%~
+
+设置系统显示器亮度：
+
+~exec --no-startup-id brightnessctl set 20%~
+
+和音量一样，如果不设置它会有一个默认的值，每次重启就需要重新设置。
+
+设置壁纸：
+
+~output * bg /home/vandee/Pictures/create.jpg fill~
+
+剪贴板：
+~exec wl-paste --watch cliphist store~
+** Others
+- 调整对比度
+
+  ~sudo pacman -S xorg-xgamma~
+
+  ~xgamma -gamma 0.8~
+- 设置屏幕亮度
+
+  ~brightnessctl set 20%~
+- 解决 macbooks 无法播放音频的问题：
+
+  ~sudo pacman -S asahi-audio~
+- opensnatch 因为 eBPF 报错
+
+  修改 ~/etc/opensnitchd/default-config.json~
+
+  把 procmonitormethod 更改成 proc
+
+- 音量控制：sudo pacman -S pavucontrol ，更轻量化的：sudo pacman -S volumeicon
