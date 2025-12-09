@@ -1256,7 +1256,11 @@ Github: https://github.com/TilmanGriesel/chipper
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 
-另见：[[https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html][PKM（个人知识管理）构建手册 - Nvim]]
+另见：
+
+- [[https://www.vandee.art/blog/2025-12-01-my-emacs-keybindings.html][我的 Emacs 键位设置]]
+- [[https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html][PKM（个人知识管理）构建手册 - Nvim]]
+- [[https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html][PKM（个人知识管理）构建手册 - with AI]]
 
 这里是我日常使用的实用小工具： [[https://www.vandee.art/blog/2024-07-26-useful-tools-recommended.html][实用小玩意收集]]
 

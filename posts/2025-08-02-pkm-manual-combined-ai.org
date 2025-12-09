@@ -116,6 +116,116 @@ PKM 的迭代一定要有表达和输出。[[https://wiki.vandee.art/#%E5%A6%82%
 我挺喜欢汪峰的 [[https://www.bilibili.com/video/BV1TJ411T7qa/][存在]] ，名字和自我介绍从我们出生开始，到最后刻在墓碑上，没有多少人给了自己这个问题很好的答案：我该如何存在。
 
 希望在 AI 的帮助下，我能够找到我的答案。
+*** 自定义 Emacs 函数
+simple claude:
+
+使用 shell，快速运行 Claude Code 执行 ~claude -p~ 指令回答一些简单的问题，把结果输出到单独的 buffer。有时候不想用 gptel 就用这个。可以替换成 Gemini 和 Codex。
+
+#+begin_src elisp
+;; simple claude code shell command
+(defun my/claude-shell-command (prompt)
+  "Execute claude command asynchronously and display the output."
+  (interactive "sClaude prompt: ")
+  (let* ((output-buffer-name "*Claude Output*")
+         (output-buffer (get-buffer-create output-buffer-name))
+         (shell-program (or (getenv "SHELL") shell-file-name))
+         ;; Use shell-quote-argument
+         (command-str (format "claude -p %s" (shell-quote-argument prompt))))
+    (with-current-buffer output-buffer
+      (setq buffer-read-only nil)
+      (erase-buffer)
+      (setq-local header-line-format (format "Claude Output for prompt: %s" prompt)))
+    ;; (display-buffer output-buffer) ; Show the buffer immediately
+    (message "Claude command running asynchronously...")
+    ;; Start the async process
+    (let ((process (start-process "claude-process"
+                                  output-buffer-name
+                                  shell-program
+                                  "-lc"
+                                  command-str)))
+      ;; Set a function to be called when the process finishes
+      (set-process-sentinel process #'my/claude-process-sentinel))))
+
+(defun my/claude-process-sentinel (process _event)
+  "Sentinel for the claude async process. Handles success and error cases."
+  (when (memq (process-status process) '(exit signal))
+    (let* ((buffer (process-buffer process))
+           (exit-code (process-exit-status process)))
+      (cond
+       ;; Case 1: Process failed (non-zero exit code)
+       ((/= exit-code 0)
+        (kill-buffer buffer)
+        (if (= exit-code 127)
+            (message "Error: 'claude' command not found. Please ensure it's in your shell's PATH.")
+          (message "Error: Claude command failed with exit code %d." exit-code)))
+
+       ;; Case 2: Process succeeded but produced no output
+       ((zerop (with-current-buffer buffer (buffer-size)))
+        (kill-buffer buffer)
+        (message "Claude command finished with no output."))
+
+       ;; Case 3: Success
+       (t
+        (with-current-buffer buffer
+          (setq buffer-read-only t)
+          (goto-char (point-min)))
+        (display-buffer buffer)
+        (message "Claude command finished."))))))
+
+#+end_src
+
+浏览器划词提问：
+
+利用 org-protocol 和 JavaScript 对浏览器页面里的特定内容在 Emacs 里用 gptel 提问
+
+#+begin_src elisp
+;; gptel + org-protocol integration
+(require 'org-protocol)
+(require 'gptel)
+
+;; Enable org-protocol server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+;; Handler for gptel queries from browser
+(defun my/gptel-org-protocol-handler (info)
+  "Handle gptel query from org-protocol.
+INFO is the data passed by org-protocol."
+  (let ((text (plist-get info :text)))
+    (when (and text (not (string-empty-p text)))
+      (let ((query (decode-coding-string (url-unhex-string text) 'utf-8)))
+        (message "Received gptel query: %s" query)
+        ;; Create or switch to gptel buffer
+        (let ((buffer (get-buffer-create "*gptel-browser*")))
+          (with-current-buffer buffer
+            (unless (eq major-mode 'gptel-default-mode)
+              (funcall gptel-default-mode))
+            (gptel-mode 1)
+            (goto-char (point-max))
+            (insert "\n\n--- From Browser ---\n")
+            (insert query)
+            (insert "\n")
+            (goto-char (point-max))
+            ;; Send the query to gptel
+            (gptel-send)
+            (display-buffer buffer)))))))
+
+;; Register the protocol handler
+(setq org-protocol-protocol-alist
+      (append org-protocol-protocol-alist
+              '(("gptel-browser"
+                 :protocol "gptel"
+                 :function my/gptel-org-protocol-handler))))
+
+;; JavaScript bookmarklet for browser (copy this as bookmark URL):
+;; Basic version:
+;; javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\nSelected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+
+;; Enhanced version with prompt for question:
+;; javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+
+#+end_src
 
 * Thanks
 如果这些内容对你有所帮助，我会很开心。
@@ -123,6 +233,7 @@ PKM 的迭代一定要有表达和输出。[[https://wiki.vandee.art/#%E5%A6%82%
 AI 带来的便利性一定会让人变懒。变懒可以，但变笨不行。
 
 另见:
+- [[https://www.vandee.art/blog/2025-12-01-my-emacs-keybindings.html][我的 Emacs 键位设置]]
 - [[https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#org8655a2e][PKM（个人知识管理）构建手册 - Emacs]]
 - [[https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html][PKM（个人知识管理）构建手册 - Nvim]]
 - [[https://www.vandee.art/blog/2025-01-20-fragmented-knowledge-learning-with-ai.html][碎片知识学习 - with AI]]

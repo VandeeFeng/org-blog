@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Tue, 09 Dec 2025 16:38:41 +0800</lastBuildDate>
+<lastBuildDate>Tue, 09 Dec 2025 21:29:04 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Native Linux on Apple Silicon Mac]]></title>
   <description><![CDATA[
@@ -435,30 +435,30 @@ opensnatch 因为 eBPF 报错
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga6bd49d">TL;DR</a></li>
-<li><a href="#org0eea9c1">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#org45932f7">我的键位设置</a>
+<li><a href="#org6b8210b">TL;DR</a></li>
+<li><a href="#orgcfa6a24">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#org16d7d81">我的键位设置</a>
 <ul>
-<li><a href="#org2655106">General</a></li>
-<li><a href="#orgd693f47">mark &amp; move</a></li>
-<li><a href="#org9c7b111">hydra &amp; general</a></li>
-<li><a href="#org90fe271">Misc</a></li>
+<li><a href="#org8b2135d">General</a></li>
+<li><a href="#org4b3e270">mark &amp; move</a></li>
+<li><a href="#org6c59737">hydra &amp; general</a></li>
+<li><a href="#orgcdea579">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orga6bd49d" class="outline-2">
-<h2 id="orga6bd49d">TL;DR</h2>
-<div class="outline-text-2" id="text-orga6bd49d">
+<div id="outline-container-org6b8210b" class="outline-2">
+<h2 id="org6b8210b">TL;DR</h2>
+<div class="outline-text-2" id="text-org6b8210b">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org0eea9c1" class="outline-2">
-<h2 id="org0eea9c1">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org0eea9c1">
+<div id="outline-container-orgcfa6a24" class="outline-2">
+<h2 id="orgcfa6a24">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-orgcfa6a24">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -487,9 +487,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-org45932f7" class="outline-2">
-<h2 id="org45932f7">我的键位设置</h2>
-<div class="outline-text-2" id="text-org45932f7">
+<div id="outline-container-org16d7d81" class="outline-2">
+<h2 id="org16d7d81">我的键位设置</h2>
+<div class="outline-text-2" id="text-org16d7d81">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -510,9 +510,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-org2655106" class="outline-3">
-<h3 id="org2655106">General</h3>
-<div class="outline-text-3" id="text-org2655106">
+<div id="outline-container-org8b2135d" class="outline-3">
+<h3 id="org8b2135d">General</h3>
+<div class="outline-text-3" id="text-org8b2135d">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -582,9 +582,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-orgd693f47" class="outline-3">
-<h3 id="orgd693f47">mark &amp; move</h3>
-<div class="outline-text-3" id="text-orgd693f47">
+<div id="outline-container-org4b3e270" class="outline-3">
+<h3 id="org4b3e270">mark &amp; move</h3>
+<div class="outline-text-3" id="text-org4b3e270">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -666,9 +666,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org9c7b111" class="outline-3">
-<h3 id="org9c7b111">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org9c7b111">
+<div id="outline-container-org6c59737" class="outline-3">
+<h3 id="org6c59737">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org6c59737">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -714,9 +714,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org90fe271" class="outline-3">
-<h3 id="org90fe271">Misc</h3>
-<div class="outline-text-3" id="text-org90fe271">
+<div id="outline-container-orgcdea579" class="outline-3">
+<h3 id="orgcdea579">Misc</h3>
+<div class="outline-text-3" id="text-orgcdea579">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>
@@ -844,6 +844,62 @@ simple claude:
         <span style="color: #b0b0b3;">(</span>display-buffer buffer<span style="color: #b0b0b3;">)</span>
         <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
+</pre>
+</div>
+
+<p>
+浏览器划词提问：
+</p>
+
+<p>
+利用 org-protocol 和 JavaScript 对浏览器页面里的特定内容在 Emacs 里用 gptel 提问
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-protocol</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">server</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #93a8c6;">(</span>server-running-p<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>server-start<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Handler for gptel queries from browser
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/gptel-org-protocol-handler</span> <span style="color: #93a8c6;">(</span>info<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">"Handle gptel query from org-protocol.
+INFO is the data passed by org-protocol."</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>text <span style="color: #aebed8;">(</span>plist-get info <span style="color: #79C0FF;">:text</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">when</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">and</span> text <span style="color: #aebed8;">(</span>not <span style="color: #b0b0b3;">(</span>string-empty-p text<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>query <span style="color: #90a890;">(</span>decode-coding-string <span style="color: #a2b6da;">(</span>url-unhex-string text<span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">utf-8</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>message <span style="color: #A1D08E;">"Received gptel query: %s"</span> query<span style="color: #aebed8;">)</span>
+        <span style="color: #787878;">;; </span><span style="color: #787878;">Create or switch to gptel buffer
+</span>        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>buffer <span style="color: #a2b6da;">(</span>get-buffer-create <span style="color: #A1D08E;">"*gptel-browser*"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
+            <span style="color: #90a890;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #a2b6da;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel-default-mode</span><span style="color: #a2b6da;">)</span>
+              <span style="color: #a2b6da;">(</span>funcall gptel-default-mode<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>gptel-mode 1<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">--- From Browser ---</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert query<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #787878;">;; </span><span style="color: #787878;">Send the query to gptel
+</span>            <span style="color: #90a890;">(</span>gptel-send<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>display-buffer buffer<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Register the protocol handler
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-protocol-protocol-alist
+      <span style="color: #93a8c6;">(</span>append org-protocol-protocol-alist
+              <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">"gptel-browser"</span>
+                 <span style="color: #79C0FF;">:protocol</span> <span style="color: #A1D08E;">"gptel"</span>
+                 <span style="color: #79C0FF;">:function</span> my/gptel-org-protocol-handler<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">JavaScript bookmarklet for browser (copy this as bookmark URL):
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">Basic version:
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\nSelected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+</span>
+<span style="color: #787878;">;; </span><span style="color: #787878;">Enhanced version with prompt for question:
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+</span>
 </pre>
 </div>
 </div>
@@ -2160,27 +2216,28 @@ Linux 就是我会一直使用下去的操作系统, <a href="https://www.vandee
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc1f3b53">Intro</a></li>
-<li><a href="#org0f7de2c">Manual</a>
+<li><a href="#org96c20ae">Intro</a></li>
+<li><a href="#orga2f2811">Manual</a>
 <ul>
-<li><a href="#org0ecacae">Prerequisites</a></li>
-<li><a href="#org83b529e">Principles</a></li>
-<li><a href="#orgbf6c24e">Methods</a>
+<li><a href="#org23a3eda">Prerequisites</a></li>
+<li><a href="#org793d11c">Principles</a></li>
+<li><a href="#org7fdfcf0">Methods</a>
 <ul>
-<li><a href="#org3084899">信息获取 - 输入</a></li>
-<li><a href="#org99b8ecf">文档、知识管理 - 迭代</a></li>
-<li><a href="#orgfd96c82">笔记和写作 - 输出</a></li>
+<li><a href="#org83f7b16">信息获取 - 输入</a></li>
+<li><a href="#org52ce2d8">文档、知识管理 - 迭代</a></li>
+<li><a href="#org0c137fb">笔记和写作 - 输出</a></li>
+<li><a href="#org2f5f5bb">自定义 Emacs 函数</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org37f248d">Thanks</a></li>
+<li><a href="#org7d935f3">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgc1f3b53" class="outline-2">
-<h2 id="orgc1f3b53">Intro</h2>
-<div class="outline-text-2" id="text-orgc1f3b53">
+<div id="outline-container-org96c20ae" class="outline-2">
+<h2 id="org96c20ae">Intro</h2>
+<div class="outline-text-2" id="text-org96c20ae">
 <p>
 距离 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> 居然已经一年多了。里面关于 PKM 和 AI 结合的部分许多已经过时了，今年也有了新的思路。
 </p>
@@ -2242,24 +2299,24 @@ via: <a href="https://elroy.bot/blog/2025/07/29/ai-is-a-floor-raiser-not-a-ceili
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org0f7de2c" class="outline-2">
-<h2 id="org0f7de2c">Manual</h2>
-<div class="outline-text-2" id="text-org0f7de2c">
+<div id="outline-container-orga2f2811" class="outline-2">
+<h2 id="orga2f2811">Manual</h2>
+<div class="outline-text-2" id="text-orga2f2811">
 <p>
 这个手册的重点是分享一些思路，我选择的这些实现只是参考，找到适合自己的方法才是这个手册的目的。PKM 基本的构建思路都在 <a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#top">PKM（个人知识管理）构建手册 - Emacs</a> ，这个手册侧重和 AI 的整合。
 </p>
 </div>
-<div id="outline-container-org0ecacae" class="outline-3">
-<h3 id="org0ecacae">Prerequisites</h3>
-<div class="outline-text-3" id="text-org0ecacae">
+<div id="outline-container-org23a3eda" class="outline-3">
+<h3 id="org23a3eda">Prerequisites</h3>
+<div class="outline-text-3" id="text-org23a3eda">
 <p>
 LLM API KEY，终端或 IDE，AI 和编程的基础知识，还涉及到一点 self-hosting。
 </p>
 </div>
 </div>
-<div id="outline-container-org83b529e" class="outline-3">
-<h3 id="org83b529e">Principles</h3>
-<div class="outline-text-3" id="text-org83b529e">
+<div id="outline-container-org793d11c" class="outline-3">
+<h3 id="org793d11c">Principles</h3>
+<div class="outline-text-3" id="text-org793d11c">
 <p>
 基于 transformer 架构的 LLM 本质上就是一个概率生成器，因此 PKM with AI 总体的原则就是：让 LLM 提升自己的能力，帮助自己找到实现目标的最大可能性方案。
 </p>
@@ -2272,9 +2329,9 @@ LLM API KEY，终端或 IDE，AI 和编程的基础知识，还涉及到一点 s
 </ul>
 </div>
 </div>
-<div id="outline-container-orgbf6c24e" class="outline-3">
-<h3 id="orgbf6c24e">Methods</h3>
-<div class="outline-text-3" id="text-orgbf6c24e">
+<div id="outline-container-org7fdfcf0" class="outline-3">
+<h3 id="org7fdfcf0">Methods</h3>
+<div class="outline-text-3" id="text-org7fdfcf0">
 <p>
 Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，但我始终认为这种层面的知识管理和交互并不能很有效的提升思维。
 </p>
@@ -2304,9 +2361,9 @@ Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，�
 用 Dify、n8n 构建 Workflow 也是很不错的选择，但是对于 PKM 我不太想增加太多的中间流程，也不想花太多时间为了 PKM 去学它们。
 </p>
 </div>
-<div id="outline-container-org3084899" class="outline-4">
-<h4 id="org3084899">信息获取 - 输入</h4>
-<div class="outline-text-4" id="text-org3084899">
+<div id="outline-container-org83f7b16" class="outline-4">
+<h4 id="org83f7b16">信息获取 - 输入</h4>
+<div class="outline-text-4" id="text-org83f7b16">
 <p>
 获取零散信息、新闻我一直通过 RSS，<a href="https://www.vandee.art/blog/2024-11-10-database-of-flowing-knowledge.html">ReadWise</a> 今年不打算续订了，转向了 <a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">Hoarder</a> 。修改了一下 <a href="https://github.com/VandeeFeng/obsidian-clipper">obsidian-clipper</a> 用来在网页里高亮阅读保存到 Hoarder。在 Emacs 里写了一个小脚本，用来同步 Hoarder 的高亮和笔记到本地。还搞了个小玩意 <a href="https://github.com/VandeeFeng/RSS-CLI">RSS-CLI</a> 。
 </p>
@@ -2328,13 +2385,13 @@ Google NotebookLM 是 AI 和知识、文档交互的一个很完美的实现，�
 </p>
 </div>
 </div>
-<div id="outline-container-org99b8ecf" class="outline-4">
-<h4 id="org99b8ecf">文档、知识管理 - 迭代</h4>
-<div class="outline-text-4" id="text-org99b8ecf">
+<div id="outline-container-org52ce2d8" class="outline-4">
+<h4 id="org52ce2d8">文档、知识管理 - 迭代</h4>
+<div class="outline-text-4" id="text-org52ce2d8">
 </div>
 <ul class="org-ul">
-<li><a id="org3a991c4"></a>笔记编辑器选择<br>
-<div class="outline-text-5" id="text-org3a991c4">
+<li><a id="org99b3f27"></a>笔记编辑器选择<br>
+<div class="outline-text-5" id="text-org99b3f27">
 <p>
 Notion 其实一直是一个很不错的选择，特别是现在的 AI 功能挺好用的，上手也没有什么门槛。obsidian 也不用多说，现在有很多很好用的 AI 插件，obsidian 的生态是真的活跃。
 </p>
@@ -2364,8 +2421,8 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 </p>
 </div>
 </li>
-<li><a id="orgaafd27d"></a>迭代<br>
-<div class="outline-text-5" id="text-orgaafd27d">
+<li><a id="org4603df2"></a>迭代<br>
+<div class="outline-text-5" id="text-org4603df2">
 <p>
 每个星期我会让 LLM 总结一下 PKM 里新增的内容，用 python 写了一个小脚本获取我 GitHub 仓库的 git diff，可以选日期范围，指定的仓库。PKM 丢在了 GitHub ，脚本会生成一个 MD 文档，包含 git commit 新增的内容，把文档丢给 LLM，让它提出几个相关的深度思考问题。
 </p>
@@ -2383,8 +2440,8 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 </p>
 </div>
 </li>
-<li><a id="orgf870b10"></a>其他和 AI 交互的工具<br>
-<div class="outline-text-5" id="text-orgf870b10">
+<li><a id="orgfc7c517"></a>其他和 AI 交互的工具<br>
+<div class="outline-text-5" id="text-orgfc7c517">
 <p>
 一个 Gemini CLI 管理笔记的例子：Gemini CLI 在半小时内整理了 400 个笔记，在各个主题之间建立了有意义的联系，重命名、整理，合理构建笔记集合，via: <a href="https://x.com/karminski3/status/1939502900503355669">https://x.com/karminski3/status/1939502900503355669</a>
 </p>
@@ -2400,9 +2457,9 @@ Emacs 里的 org 文档作为初始笔记，高度原子化之后整理到 tiddl
 </li>
 </ul>
 </div>
-<div id="outline-container-orgfd96c82" class="outline-4">
-<h4 id="orgfd96c82">笔记和写作 - 输出</h4>
-<div class="outline-text-4" id="text-orgfd96c82">
+<div id="outline-container-org0c137fb" class="outline-4">
+<h4 id="org0c137fb">笔记和写作 - 输出</h4>
+<div class="outline-text-4" id="text-org0c137fb">
 <p>
 PKM 知识管理只是学习的方法，永远不是目的。做知识管理很容易就会做成了管理知识，变成了折腾各种笔记工具，学习各种笔记软件，甚至被笔记软件或平台捆绑。这也是 Nonotes 想避免的，笔记不应该被笔记软件或者笔记载体局限甚至捆绑。
 </p>
@@ -2432,11 +2489,135 @@ PKM 的迭代一定要有表达和输出。<a href="https://wiki.vandee.art/#%E5
 </p>
 </div>
 </div>
+<div id="outline-container-org2f5f5bb" class="outline-4">
+<h4 id="org2f5f5bb">自定义 Emacs 函数</h4>
+<div class="outline-text-4" id="text-org2f5f5bb">
+<p>
+simple claude:
+</p>
+
+<p>
+使用 shell，快速运行 Claude Code 执行 <code>claude -p</code> 指令回答一些简单的问题，把结果输出到单独的 buffer。有时候不想用 gptel 就用这个。可以替换成 Gemini 和 Codex。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">simple claude code shell command
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/claude-shell-command</span> <span style="color: #93a8c6;">(</span>prompt<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">"Execute claude command asynchronously and display the output."</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span> <span style="color: #A1D08E;">"sClaude prompt: "</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>output-buffer-name <span style="color: #A1D08E;">"*Claude Output*"</span><span style="color: #97b098;">)</span>
+         <span style="color: #97b098;">(</span>output-buffer <span style="color: #aebed8;">(</span>get-buffer-create output-buffer-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+         <span style="color: #97b098;">(</span>shell-program <span style="color: #aebed8;">(</span><span style="color: #FFA657;">or</span> <span style="color: #b0b0b3;">(</span>getenv <span style="color: #A1D08E;">"SHELL"</span><span style="color: #b0b0b3;">)</span> shell-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+         <span style="color: #787878;">;; </span><span style="color: #787878;">Use shell-quote-argument
+</span>         <span style="color: #97b098;">(</span>command-str <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"claude -p %s"</span> <span style="color: #b0b0b3;">(</span>shell-quote-argument prompt<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">with-current-buffer</span> output-buffer
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">setq</span> buffer-read-only nil<span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span>erase-buffer<span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">setq-local</span> header-line-format <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"Claude Output for prompt: %s"</span> prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #787878;">;; </span><span style="color: #787878;">(display-buffer output-buffer) ; Show the buffer immediately
+</span>    <span style="color: #b0b1a3;">(</span>message <span style="color: #A1D08E;">"Claude command running asynchronously..."</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #787878;">;; </span><span style="color: #787878;">Start the async process
+</span>    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>process <span style="color: #b0b0b3;">(</span>start-process <span style="color: #A1D08E;">"claude-process"</span>
+                                  output-buffer-name
+                                  shell-program
+                                  <span style="color: #A1D08E;">"-lc"</span>
+                                  command-str<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #787878;">;; </span><span style="color: #787878;">Set a function to be called when the process finishes
+</span>      <span style="color: #97b098;">(</span>set-process-sentinel process <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">my/claude-process-sentinel</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/claude-process-sentinel</span> <span style="color: #93a8c6;">(</span>process _event<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">"Sentinel for the claude async process. Handles success and error cases."</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">when</span> <span style="color: #b0b1a3;">(</span>memq <span style="color: #97b098;">(</span>process-status process<span style="color: #97b098;">)</span> <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span>exit signal<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>buffer <span style="color: #b0b0b3;">(</span>process-buffer process<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+           <span style="color: #aebed8;">(</span>exit-code <span style="color: #b0b0b3;">(</span>process-exit-status process<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">cond</span>
+       <span style="color: #787878;">;; </span><span style="color: #787878;">Case 1: Process failed (non-zero exit code)
+</span>       <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>/= exit-code 0<span style="color: #b0b0b3;">)</span>
+        <span style="color: #b0b0b3;">(</span>kill-buffer buffer<span style="color: #b0b0b3;">)</span>
+        <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">if</span> <span style="color: #90a890;">(</span>= exit-code 127<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>message <span style="color: #A1D08E;">"Error: '</span><span style="color: #95a99f;">claude</span><span style="color: #A1D08E;">' command not found. Please ensure it's in your shell's PATH."</span><span style="color: #90a890;">)</span>
+          <span style="color: #90a890;">(</span>message <span style="color: #A1D08E;">"Error: Claude command failed with exit code %d."</span> exit-code<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+
+       <span style="color: #787878;">;; </span><span style="color: #787878;">Case 2: Process succeeded but produced no output
+</span>       <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>zerop <span style="color: #90a890;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer <span style="color: #a2b6da;">(</span>buffer-size<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+        <span style="color: #b0b0b3;">(</span>kill-buffer buffer<span style="color: #b0b0b3;">)</span>
+        <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished with no output."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+
+       <span style="color: #787878;">;; </span><span style="color: #787878;">Case 3: Success
+</span>       <span style="color: #aebed8;">(</span>t
+        <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
+          <span style="color: #90a890;">(</span><span style="color: #FFA657;">setq</span> buffer-read-only t<span style="color: #90a890;">)</span>
+          <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-min<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+        <span style="color: #b0b0b3;">(</span>display-buffer buffer<span style="color: #b0b0b3;">)</span>
+        <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+</pre>
+</div>
+
+<p>
+浏览器划词提问：
+</p>
+
+<p>
+利用 org-protocol 和 JavaScript 对浏览器页面里的特定内容在 Emacs 里用 gptel 提问
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">gptel + org-protocol integration
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-protocol</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Enable org-protocol server
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">server</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #93a8c6;">(</span>server-running-p<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>server-start<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Handler for gptel queries from browser
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/gptel-org-protocol-handler</span> <span style="color: #93a8c6;">(</span>info<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">"Handle gptel query from org-protocol.
+INFO is the data passed by org-protocol."</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>text <span style="color: #aebed8;">(</span>plist-get info <span style="color: #79C0FF;">:text</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">when</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">and</span> text <span style="color: #aebed8;">(</span>not <span style="color: #b0b0b3;">(</span>string-empty-p text<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>query <span style="color: #90a890;">(</span>decode-coding-string <span style="color: #a2b6da;">(</span>url-unhex-string text<span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">utf-8</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>message <span style="color: #A1D08E;">"Received gptel query: %s"</span> query<span style="color: #aebed8;">)</span>
+        <span style="color: #787878;">;; </span><span style="color: #787878;">Create or switch to gptel buffer
+</span>        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>buffer <span style="color: #a2b6da;">(</span>get-buffer-create <span style="color: #A1D08E;">"*gptel-browser*"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
+            <span style="color: #90a890;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #a2b6da;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel-default-mode</span><span style="color: #a2b6da;">)</span>
+              <span style="color: #a2b6da;">(</span>funcall gptel-default-mode<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>gptel-mode 1<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">--- From Browser ---</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert query<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #787878;">;; </span><span style="color: #787878;">Send the query to gptel
+</span>            <span style="color: #90a890;">(</span>gptel-send<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>display-buffer buffer<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Register the protocol handler
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-protocol-protocol-alist
+      <span style="color: #93a8c6;">(</span>append org-protocol-protocol-alist
+              <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">"gptel-browser"</span>
+                 <span style="color: #79C0FF;">:protocol</span> <span style="color: #A1D08E;">"gptel"</span>
+                 <span style="color: #79C0FF;">:function</span> my/gptel-org-protocol-handler<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">JavaScript bookmarklet for browser (copy this as bookmark URL):
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">Basic version:
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\nSelected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+</span>
+<span style="color: #787878;">;; </span><span style="color: #787878;">Enhanced version with prompt for question:
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+</span>
+</pre>
 </div>
 </div>
-<div id="outline-container-org37f248d" class="outline-2">
-<h2 id="org37f248d">Thanks</h2>
-<div class="outline-text-2" id="text-org37f248d">
+</div>
+</div>
+</div>
+<div id="outline-container-org7d935f3" class="outline-2">
+<h2 id="org7d935f3">Thanks</h2>
+<div class="outline-text-2" id="text-org7d935f3">
 <p>
 如果这些内容对你有所帮助，我会很开心。
 </p>
@@ -2449,6 +2630,7 @@ AI 带来的便利性一定会让人变懒。变懒可以，但变笨不行。
 另见:
 </p>
 <ul class="org-ul">
+<li><a href="https://www.vandee.art/blog/2025-12-01-my-emacs-keybindings.html">我的 Emacs 键位设置</a></li>
 <li><a href="https://www.vandee.art/blog/2024-05-22-org-pkm-manual.html#org8655a2e">PKM（个人知识管理）构建手册 - Emacs</a></li>
 <li><a href="https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html">PKM（个人知识管理）构建手册 - Nvim</a></li>
 <li><a href="https://www.vandee.art/blog/2025-01-20-fragmented-knowledge-learning-with-ai.html">碎片知识学习 - with AI</a></li>
@@ -10602,36 +10784,36 @@ PDF转Markdown 方案
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org30a22e8">Intro</a></li>
-<li><a href="#org83c5da5">Manual</a>
+<li><a href="#orge85b408">Intro</a></li>
+<li><a href="#orgf3b8b53">Manual</a>
 <ul>
-<li><a href="#org72697d5">Prerequisites</a></li>
-<li><a href="#orgc327375">PKM</a>
+<li><a href="#orgdca6a85">Prerequisites</a></li>
+<li><a href="#org72832bb">PKM</a>
 <ul>
-<li><a href="#org8dc21a1">Principles</a></li>
-<li><a href="#orgb9f8398">Methods</a></li>
+<li><a href="#orgb2739cd">Principles</a></li>
+<li><a href="#org9185358">Methods</a></li>
 </ul>
 </li>
-<li><a href="#org0c88275">PKM with LLM</a>
+<li><a href="#orgdc916a1">PKM with LLM</a>
 <ul>
-<li><a href="#org999f1b5">Ollama</a></li>
-<li><a href="#orgcb61592">Open WebUI</a></li>
-<li><a href="#org17aabb8">Aider</a></li>
-<li><a href="#org32ea0b9">gptel</a></li>
-<li><a href="#org63fc611">Kotaemon</a></li>
-<li><a href="#org30d0a8d">Chipper</a></li>
+<li><a href="#orgf26e358">Ollama</a></li>
+<li><a href="#orgf3045b9">Open WebUI</a></li>
+<li><a href="#org83755fd">Aider</a></li>
+<li><a href="#orgda65b58">gptel</a></li>
+<li><a href="#org57f86d6">Kotaemon</a></li>
+<li><a href="#orgb22b339">Chipper</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orge8f5412">ChangeLog</a></li>
-<li><a href="#org4f5858c">Thanks</a></li>
+<li><a href="#orgdb81b52">ChangeLog</a></li>
+<li><a href="#org689fb5a">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org30a22e8" class="outline-2">
-<h2 id="org30a22e8">Intro</h2>
-<div class="outline-text-2" id="text-org30a22e8">
+<div id="outline-container-orge85b408" class="outline-2">
+<h2 id="orge85b408">Intro</h2>
+<div class="outline-text-2" id="text-orge85b408">
 <blockquote>
 <p>
 For me, taking notes helps make sure that I’m really thinking hard about what’s in there. If I disagree with the book, sometimes it takes a long time to read the books because I’m writing so much in the margin. <a href="https://youtu.be/eTFy8RnUkoU?t=11">Bill Gates</a>
@@ -10671,9 +10853,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 </p>
 </div>
 </div>
-<div id="outline-container-org83c5da5" class="outline-2">
-<h2 id="org83c5da5">Manual</h2>
-<div class="outline-text-2" id="text-org83c5da5">
+<div id="outline-container-orgf3b8b53" class="outline-2">
+<h2 id="orgf3b8b53">Manual</h2>
+<div class="outline-text-2" id="text-orgf3b8b53">
 <p>
 这是一个以 <a href="https://zh.wikipedia.org/wiki/Emacs">Emacs</a> 为基础编辑器、文件管理的Org-mode本地笔记PKM。
 </p>
@@ -10692,9 +10874,9 @@ For me, taking notes helps make sure that I’m really thinking hard about what�
 <li>PKM-with-LLM：PKM和大语言模型结合的使用</li>
 </ul>
 </div>
-<div id="outline-container-org72697d5" class="outline-3">
-<h3 id="org72697d5">Prerequisites</h3>
-<div class="outline-text-3" id="text-org72697d5">
+<div id="outline-container-orgdca6a85" class="outline-3">
+<h3 id="orgdca6a85">Prerequisites</h3>
+<div class="outline-text-3" id="text-orgdca6a85">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://www.gnu.org/software/emacs/">GNU Emacs</a> ,<a href="https://orgmode.org/">Org mode for GNU Emacs</a>，<a href="https://github.com/protesilaos/denote">denote</a>。
 </p>
@@ -10758,15 +10940,15 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://w
 </p>
 
 
-<figure id="orgf1350cb">
+<figure id="org9dba696">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/new-emacs3.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-orgc327375" class="outline-3">
-<h3 id="orgc327375">PKM</h3>
-<div class="outline-text-3" id="text-orgc327375">
+<div id="outline-container-org72832bb" class="outline-3">
+<h3 id="org72832bb">PKM</h3>
+<div class="outline-text-3" id="text-org72832bb">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -10784,7 +10966,7 @@ Januarys用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="org42f69d1">
+<figure id="orgd58c4a7">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/January.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -10817,9 +10999,9 @@ Stay foolish，stay simple。
 本地笔记没有在线笔记软件方便的地方就是多端同步与预览。我的本地笔记已经上传到了GitHub仓库，通过Git同步。临时需要修改的直接在GitHub仓库里就修改了。预览方面，我的笔记输出到了 <a href="https://wiki.vandee.art">Vandee — Wiki</a>
 </p>
 </div>
-<div id="outline-container-org8dc21a1" class="outline-4">
-<h4 id="org8dc21a1">Principles</h4>
-<div class="outline-text-4" id="text-org8dc21a1">
+<div id="outline-container-orgb2739cd" class="outline-4">
+<h4 id="orgb2739cd">Principles</h4>
+<div class="outline-text-4" id="text-orgb2739cd">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -10857,9 +11039,9 @@ Stay foolish，stay simple。
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgb9f8398" class="outline-4">
-<h4 id="orgb9f8398">Methods</h4>
-<div class="outline-text-4" id="text-orgb9f8398">
+<div id="outline-container-org9185358" class="outline-4">
+<h4 id="org9185358">Methods</h4>
+<div class="outline-text-4" id="text-org9185358">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -10894,14 +11076,14 @@ Emacs，org-roam，模板创建Daily和note：
 </p>
 
 
-<figure id="org7932bf6">
+<figure id="org8261a6b">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 <ul class="org-ul">
-<li><a id="orgf5fd3ce"></a>双链（反链）<br>
-<div class="outline-text-5" id="text-orgf5fd3ce">
+<li><a id="org9dba7c4"></a>双链（反链）<br>
+<div class="outline-text-5" id="text-org9dba7c4">
 <p>
 2025-11-16 added
 </p>
@@ -10956,8 +11138,8 @@ The search is performed using `rgrep` for the specific pattern
 </p>
 </div>
 </li>
-<li><a id="org16f83ce"></a>denote<br>
-<div class="outline-text-5" id="text-org16f83ce">
+<li><a id="org47be6b0"></a>denote<br>
+<div class="outline-text-5" id="text-org47be6b0">
 <p>
 2025-06-28 added
 </p>
@@ -10996,8 +11178,8 @@ Ref:
 </ul>
 </div>
 </li>
-<li><a id="org1ac41f9"></a>Org-tag<br>
-<div class="outline-text-5" id="text-org1ac41f9">
+<li><a id="orgfa91015"></a>Org-tag<br>
+<div class="outline-text-5" id="text-orgfa91015">
 <p>
 org里的标签功能也很全面，支持多个分组，可以自动补全，还支持自定义标签的快捷键。这很好的保证了之前所说的 <b>标签的统一性</b> ，大小写或者单复数不统一会很麻烦。
 </p>
@@ -11125,8 +11307,8 @@ Ref:
 </ul>
 </div>
 </li>
-<li><a id="org7cc78e7"></a>Org-agenda<br>
-<div class="outline-text-5" id="text-org7cc78e7">
+<li><a id="org1993256"></a>Org-agenda<br>
+<div class="outline-text-5" id="text-org1993256">
 <p>
 最开始是不打算用org-agenda的，因为没有太多TODO要去管理。用 <code>#TODO</code> 来标注TODO搜索也并不麻烦。但是考虑到时间久了，agenda也可以通过标注时间戳来回顾非TODO项，还是启用了。和org-roam配合，可以很清晰的回顾一个星期内重要的笔记。以后需要清除掉这些时间戳也很方便，一个正则搞定。
 </p>
@@ -11155,14 +11337,14 @@ Ref:
 这是现在的样子：
 </p>
 
-<figure id="org68e5a63">
+<figure id="org0ac18e1">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/%E6%88%AA%E5%B1%8F2024-06-15%2011.28.09.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </li>
-<li><a id="orgac338ca"></a>TODOs<br>
-<div class="outline-text-5" id="text-orgac338ca">
+<li><a id="org80d11ea"></a>TODOs<br>
+<div class="outline-text-5" id="text-org80d11ea">
 <ul class="org-ul">
 <li><p>
 你可以通过在TODO项目下新建一个大纲树，并在子树上标记子任务来实现这个功能。为了能对已经完成的任务有个大致的了解，你可以在标题的任何地方插入 <code>[/]</code> 或者 <code>[%]</code> 。当每个子任务的状态变化时，或者当你在标记上按 C-c C-c时，这些标记状态也会随之更新。
@@ -11275,8 +11457,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="orgea02099"></a>Org-capture<br>
-<div class="outline-text-5" id="text-orgea02099">
+<li><a id="orgda1baac"></a>Org-capture<br>
+<div class="outline-text-5" id="text-orgda1baac">
 <p>
 <a href="https://orgmode.org/manual/Capture.html">Org-capture</a> 是org-mode做笔记比较核心的功能，结合capture-templates可以在不离开当前buffer的情况下，快速记录、捕捉特定的内容到特定的文件和位置。加上时间戳还可以在agenda里以时间线回顾。
 </p>
@@ -11379,14 +11561,14 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org3411f09"></a>Org-roam<br>
-<div class="outline-text-5" id="text-org3411f09">
+<li><a id="org0de08f8"></a>Org-roam<br>
+<div class="outline-text-5" id="text-org0de08f8">
 <p>
 <a href="https://www.orgroam.com/">Org-roam</a> 是 Emacs的一个包，可以简单的实现双链，通过org-roam-ui直观的预览。
 </p>
 
 
-<figure id="org220edd0">
+<figure id="orga1c381f">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/org-roam-ui-2024-05-22%2013.31.40.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -11502,8 +11684,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org803efa1"></a>Org-export<br>
-<div class="outline-text-5" id="text-org803efa1">
+<li><a id="orge9a807d"></a>Org-export<br>
+<div class="outline-text-5" id="text-orge9a807d">
 <p>
 单独导出成MD、HTML或其他格式，Org-mode里就可以，也可以使用这些<a href="https://orgmode.org/zh-CN/tools.html">工具</a> 。批量导出，由于每个人的排版和格式习惯不同，还是自己用自己熟悉的语言，写几个正则，搞个脚本。
 </p>
@@ -11563,8 +11745,8 @@ Ref：<a href="https://orgmode.org/manual/Exporting.html">Exporting (The Org Man
 </p>
 </div>
 </li>
-<li><a id="org74f73de"></a>Org with Zotero<br>
-<div class="outline-text-5" id="text-org74f73de">
+<li><a id="orgcecd717"></a>Org with Zotero<br>
+<div class="outline-text-5" id="text-orgcecd717">
 <p>
 书和论文的PDF文件，我现在全部放在<a href="https://www.zotero.org/">Zotero</a>。快速复制单个笔记到org-mode也挺简单：
 </p>
@@ -11626,8 +11808,8 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="org584a861"></a>Org-mode美化<br>
-<div class="outline-text-5" id="text-org584a861">
+<li><a id="org5f94afc"></a>Org-mode美化<br>
+<div class="outline-text-5" id="text-org5f94afc">
 <p>
 我觉得原生的就挺好看，可读性也还好。
 </p>
@@ -11671,8 +11853,8 @@ Ref：
 </div>
 </div>
 </li>
-<li><a id="org9d63745"></a>Org-protocol<br>
-<div class="outline-text-5" id="text-org9d63745">
+<li><a id="orgfb4a456"></a>Org-protocol<br>
+<div class="outline-text-5" id="text-orgfb4a456">
 <p>
 Org-protocol可以在Emacs里更方便的剪藏网页内容，做after reading。也不是必须，多切换一次窗口也还好。
 </p>
@@ -11724,8 +11906,8 @@ Firefox这个反骨仔，经常不适配各种系统。比如不支持mac的appl
 </ul>
 </div>
 </li>
-<li><a id="orgccbfebf"></a>网页摘录和 after-reading<br>
-<div class="outline-text-5" id="text-orgccbfebf">
+<li><a id="org7865da7"></a>网页摘录和 after-reading<br>
+<div class="outline-text-5" id="text-org7865da7">
 <p>
 after-reading 转入 hoarder 了：<a href="https://www.vandee.art/blog/2025-07-04-after-reading-emacs-hoarder.html">稍后阅读新方案 Emacs-Hoarder</a> 。<a href="https://github.com/obsidianmd/obsidian-clipper">Obsidian Web Clipper</a> 这个开源的浏览器插件内置一个阅读器，清除网页样式，瞬间清爽，实在太好用了。沉浸式翻译爆雷之后，改用 <a href="https://github.com/Bistutu/FluentRead">流畅阅读 (FluentRead)</a> , <a href="https://github.com/OwO-Network/DeepLX">DeepLX</a> 和 openrouter 免费的 API 日常翻译基本够用了。
 </p>
@@ -11735,7 +11917,7 @@ after-reading 转入 hoarder 了：<a href="https://www.vandee.art/blog/2025-07-
 </p>
 
 
-<figure id="org77621a2">
+<figure id="org69f62bd">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clip.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -11751,8 +11933,8 @@ after-reading 转入 hoarder 了：<a href="https://www.vandee.art/blog/2025-07-
 </div>
 </div>
 <ul class="org-ul">
-<li><a id="org02fd20d"></a>tools<br>
-<div class="outline-text-6" id="text-org02fd20d">
+<li><a id="org6eb1bd0"></a>tools<br>
+<div class="outline-text-6" id="text-org6eb1bd0">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -11803,15 +11985,15 @@ Reader does two things:
 </li>
 </ul>
 </li>
-<li><a id="org34bf609"></a>输入法设置<br>
-<div class="outline-text-5" id="text-org34bf609">
+<li><a id="orgf993bbc"></a>输入法设置<br>
+<div class="outline-text-5" id="text-orgf993bbc">
 <p>
 由于使用了evil，如果使用系统的输入法，每次在 <code>:w</code> 保存的时候，需要来回切换中英。推荐两种解决方案：SIS和pyim。
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgd2df1ce"></a>SIS<br>
-<div class="outline-text-6" id="text-orgd2df1ce">
+<li><a id="orgff26293"></a>SIS<br>
+<div class="outline-text-6" id="text-orgff26293">
 <p>
 <a href="https://github.com/laishulu/emacs-smart-input-source">emacs-smart-input-source</a> 是一个可以自动切换输入法的Emacs包。
 </p>
@@ -11853,8 +12035,8 @@ Reader does two things:
 </div>
 </div>
 </li>
-<li><a id="org10bc41c"></a>pyim<br>
-<div class="outline-text-6" id="text-org10bc41c">
+<li><a id="org761fc2c"></a>pyim<br>
+<div class="outline-text-6" id="text-org761fc2c">
 <p>
 <a href="https://github.com/tumashu/pyim">pyim</a> 也可以达到相同的效果。只是这个输入法是Emacs内置的。
 </p>
@@ -11940,10 +12122,10 @@ Ref：
 </ul>
 </div>
 </li>
-<li><a id="orgbac2718"></a>RIME<br>
-<div class="outline-text-6" id="text-orgbac2718">
+<li><a id="org86d2ab6"></a>RIME<br>
+<div class="outline-text-6" id="text-org86d2ab6">
 
-<figure id="orga6c5d0a">
+<figure id="orga76d20e">
 <img src="https://pic.vandee.art/images/rime.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -12050,8 +12232,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 </li>
 </ul>
 </li>
-<li><a id="org4d0508a"></a>Others<br>
-<div class="outline-text-5" id="text-org4d0508a">
+<li><a id="org60114b1"></a>Others<br>
+<div class="outline-text-5" id="text-org60114b1">
 <ul class="org-ul">
 <li><a href="https://github.com/lijigang/100-questions-about-orgmode">lijigang/100-questions-about-orgmode: It's all about <b>orgmode</b> !</a></li>
 
@@ -12128,9 +12310,9 @@ Emacs里的其他笔记相关使用包
 </ul>
 </div>
 </div>
-<div id="outline-container-org0c88275" class="outline-3">
-<h3 id="org0c88275">PKM with LLM</h3>
-<div class="outline-text-3" id="text-org0c88275">
+<div id="outline-container-orgdc916a1" class="outline-3">
+<h3 id="orgdc916a1">PKM with LLM</h3>
+<div class="outline-text-3" id="text-orgdc916a1">
 <p>
 2025-11-15 added: 和 AI 相关的整理到了 <a href="https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html">PKM（个人知识管理）构建手册 - with AI</a> 。关于 RAG 和各类知识文档管理聚合项目，我目前的想法是，如果没有成千上万的笔记，或者专业学习和科研，普通的 tag+关键字检索 足够用了，对笔记和知识有了适合自己的管理方法，AI 的检索其实不那么必须，通过传统检索方法找到相关的，再结合 AI 更简单高效，AI 和 RAG 的相关性也会高很多。再一个，我个人还是习惯自己完成最原始的笔记，AI 帮助我发散思考，而不是生成笔记。
 </p>
@@ -12156,7 +12338,7 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="org5bb7083">
+<figure id="orgcee0a54">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -12166,14 +12348,14 @@ Emacs里的其他笔记相关使用包
 </p>
 
 
-<figure id="org73cc440">
+<figure id="org8992ad3">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
-<div id="outline-container-org999f1b5" class="outline-4">
-<h4 id="org999f1b5">Ollama</h4>
-<div class="outline-text-4" id="text-org999f1b5">
+<div id="outline-container-orgf26e358" class="outline-4">
+<h4 id="orgf26e358">Ollama</h4>
+<div class="outline-text-4" id="text-orgf26e358">
 <p>
 <a href="https://ollama.com/">Ollama</a> 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
 </p>
@@ -12195,9 +12377,9 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcb61592" class="outline-4">
-<h4 id="orgcb61592">Open WebUI</h4>
-<div class="outline-text-4" id="text-orgcb61592">
+<div id="outline-container-orgf3045b9" class="outline-4">
+<h4 id="orgf3045b9">Open WebUI</h4>
+<div class="outline-text-4" id="text-orgf3045b9">
 <p>
 <a href="https://github.com/open-webui/open-webui">Open WebUI</a> 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
 </p>
@@ -12211,13 +12393,13 @@ Open WebUI 在2024-10-06的版本中<a href="https://github.com/open-webui/open-
 </p>
 
 
-<figure id="org8e589e9">
+<figure id="org2680606">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-03.png" class="img" width="50%" height="50%">
 
 </figure>
 
 
-<figure id="orgb53fd3d">
+<figure id="org461cfc3">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-41.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -12292,9 +12474,9 @@ Ref：<a href="https://docs.openwebui.com/">Open WebUI 官方手册</a>
 </p>
 </div>
 </div>
-<div id="outline-container-org17aabb8" class="outline-4">
-<h4 id="org17aabb8">Aider</h4>
-<div class="outline-text-4" id="text-org17aabb8">
+<div id="outline-container-org83755fd" class="outline-4">
+<h4 id="org83755fd">Aider</h4>
+<div class="outline-text-4" id="text-org83755fd">
 <p>
 <a href="https://github.com/Aider-AI/aider">Aider</a> 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个<a href="https://github.com/tninja/aider.el">aider.el</a>。
 </p>
@@ -12350,15 +12532,15 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 </div>
 </div>
-<div id="outline-container-org32ea0b9" class="outline-4">
-<h4 id="org32ea0b9">gptel</h4>
-<div class="outline-text-4" id="text-org32ea0b9">
+<div id="outline-container-orgda65b58" class="outline-4">
+<h4 id="orgda65b58">gptel</h4>
+<div class="outline-text-4" id="text-orgda65b58">
 <p>
 <a href="https://github.com/karthink/gptel">gptel: A simple LLM client for Emacs</a> 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
 </p>
 
 
-<figure id="org00d49e9">
+<figure id="org3d96f9d">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/ollama-emacs.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -12368,7 +12550,7 @@ Ref：<a href="https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15">抛�
 </p>
 
 
-<figure id="org2cda771">
+<figure id="org2493087">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/gptel-summary.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -12461,9 +12643,9 @@ MCP 需要安装 <a href="https://github.com/lizqwerscott/mcp.el">lizqwerscott/m
 </p>
 </div>
 </div>
-<div id="outline-container-org63fc611" class="outline-4">
-<h4 id="org63fc611">Kotaemon</h4>
-<div class="outline-text-4" id="text-org63fc611">
+<div id="outline-container-org57f86d6" class="outline-4">
+<h4 id="org57f86d6">Kotaemon</h4>
+<div class="outline-text-4" id="text-org57f86d6">
 <p>
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
 </p>
@@ -12500,9 +12682,9 @@ This project serves as a functional RAG UI for both end users who want to do QA 
 </ul>
 </div>
 </div>
-<div id="outline-container-org30d0a8d" class="outline-4">
-<h4 id="org30d0a8d">Chipper</h4>
-<div class="outline-text-4" id="text-org30d0a8d">
+<div id="outline-container-orgb22b339" class="outline-4">
+<h4 id="orgb22b339">Chipper</h4>
+<div class="outline-text-4" id="text-orgb22b339">
 <p>
 Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/TilmanGriesel/chipper</a>
 </p>
@@ -12518,9 +12700,9 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </div>
 </div>
 </div>
-<div id="outline-container-orge8f5412" class="outline-2">
-<h2 id="orge8f5412">ChangeLog</h2>
-<div class="outline-text-2" id="text-orge8f5412">
+<div id="outline-container-orgdb81b52" class="outline-2">
+<h2 id="orgdb81b52">ChangeLog</h2>
+<div class="outline-text-2" id="text-orgdb81b52">
 <ul class="org-ul">
 <li><p>
 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如<a href="https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el">dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs</a>这是一个把org-roam和Logseq联用的el。
@@ -12550,16 +12732,22 @@ Github: <a href="https://github.com/TilmanGriesel/chipper">https://github.com/Ti
 </ul>
 </div>
 </div>
-<div id="outline-container-org4f5858c" class="outline-2">
-<h2 id="org4f5858c">Thanks</h2>
-<div class="outline-text-2" id="text-org4f5858c">
+<div id="outline-container-org689fb5a" class="outline-2">
+<h2 id="org689fb5a">Thanks</h2>
+<div class="outline-text-2" id="text-org689fb5a">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>
 
 <p>
-另见：<a href="https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html">PKM（个人知识管理）构建手册 - Nvim</a>
+另见：
 </p>
+
+<ul class="org-ul">
+<li><a href="https://www.vandee.art/blog/2025-12-01-my-emacs-keybindings.html">我的 Emacs 键位设置</a></li>
+<li><a href="https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html">PKM（个人知识管理）构建手册 - Nvim</a></li>
+<li><a href="https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html">PKM（个人知识管理）构建手册 - with AI</a></li>
+</ul>
 
 <p>
 这里是我日常使用的实用小工具： <a href="https://www.vandee.art/blog/2024-07-26-useful-tools-recommended.html">实用小玩意收集</a>

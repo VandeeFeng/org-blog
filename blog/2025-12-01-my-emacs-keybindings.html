@@ -59,30 +59,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga6bd49d">TL;DR</a></li>
-<li><a href="#org0eea9c1">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#org45932f7">我的键位设置</a>
+<li><a href="#org6b8210b">TL;DR</a></li>
+<li><a href="#orgcfa6a24">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#org16d7d81">我的键位设置</a>
 <ul>
-<li><a href="#org2655106">General</a></li>
-<li><a href="#orgd693f47">mark &amp; move</a></li>
-<li><a href="#org9c7b111">hydra &amp; general</a></li>
-<li><a href="#org90fe271">Misc</a></li>
+<li><a href="#org8b2135d">General</a></li>
+<li><a href="#org4b3e270">mark &amp; move</a></li>
+<li><a href="#org6c59737">hydra &amp; general</a></li>
+<li><a href="#orgcdea579">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orga6bd49d" class="outline-2">
-<h2 id="orga6bd49d">TL;DR</h2>
-<div class="outline-text-2" id="text-orga6bd49d">
+<div id="outline-container-org6b8210b" class="outline-2">
+<h2 id="org6b8210b">TL;DR</h2>
+<div class="outline-text-2" id="text-org6b8210b">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org0eea9c1" class="outline-2">
-<h2 id="org0eea9c1">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org0eea9c1">
+<div id="outline-container-orgcfa6a24" class="outline-2">
+<h2 id="orgcfa6a24">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-orgcfa6a24">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -111,9 +111,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-org45932f7" class="outline-2">
-<h2 id="org45932f7">我的键位设置</h2>
-<div class="outline-text-2" id="text-org45932f7">
+<div id="outline-container-org16d7d81" class="outline-2">
+<h2 id="org16d7d81">我的键位设置</h2>
+<div class="outline-text-2" id="text-org16d7d81">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -134,9 +134,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-org2655106" class="outline-3">
-<h3 id="org2655106">General</h3>
-<div class="outline-text-3" id="text-org2655106">
+<div id="outline-container-org8b2135d" class="outline-3">
+<h3 id="org8b2135d">General</h3>
+<div class="outline-text-3" id="text-org8b2135d">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -206,9 +206,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-orgd693f47" class="outline-3">
-<h3 id="orgd693f47">mark &amp; move</h3>
-<div class="outline-text-3" id="text-orgd693f47">
+<div id="outline-container-org4b3e270" class="outline-3">
+<h3 id="org4b3e270">mark &amp; move</h3>
+<div class="outline-text-3" id="text-org4b3e270">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -290,9 +290,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org9c7b111" class="outline-3">
-<h3 id="org9c7b111">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org9c7b111">
+<div id="outline-container-org6c59737" class="outline-3">
+<h3 id="org6c59737">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org6c59737">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -338,9 +338,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org90fe271" class="outline-3">
-<h3 id="org90fe271">Misc</h3>
-<div class="outline-text-3" id="text-org90fe271">
+<div id="outline-container-orgcdea579" class="outline-3">
+<h3 id="orgcdea579">Misc</h3>
+<div class="outline-text-3" id="text-orgcdea579">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>
@@ -468,6 +468,62 @@ simple claude:
         <span style="color: #b0b0b3;">(</span>display-buffer buffer<span style="color: #b0b0b3;">)</span>
         <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
+</pre>
+</div>
+
+<p>
+浏览器划词提问：
+</p>
+
+<p>
+利用 org-protocol 和 JavaScript 对浏览器页面里的特定内容在 Emacs 里用 gptel 提问
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-protocol</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">server</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #93a8c6;">(</span>server-running-p<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>server-start<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Handler for gptel queries from browser
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/gptel-org-protocol-handler</span> <span style="color: #93a8c6;">(</span>info<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">"Handle gptel query from org-protocol.
+INFO is the data passed by org-protocol."</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>text <span style="color: #aebed8;">(</span>plist-get info <span style="color: #79C0FF;">:text</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">when</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">and</span> text <span style="color: #aebed8;">(</span>not <span style="color: #b0b0b3;">(</span>string-empty-p text<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>query <span style="color: #90a890;">(</span>decode-coding-string <span style="color: #a2b6da;">(</span>url-unhex-string text<span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">utf-8</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>message <span style="color: #A1D08E;">"Received gptel query: %s"</span> query<span style="color: #aebed8;">)</span>
+        <span style="color: #787878;">;; </span><span style="color: #787878;">Create or switch to gptel buffer
+</span>        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>buffer <span style="color: #a2b6da;">(</span>get-buffer-create <span style="color: #A1D08E;">"*gptel-browser*"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
+            <span style="color: #90a890;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #a2b6da;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel-default-mode</span><span style="color: #a2b6da;">)</span>
+              <span style="color: #a2b6da;">(</span>funcall gptel-default-mode<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>gptel-mode 1<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">--- From Browser ---</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert query<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+            <span style="color: #787878;">;; </span><span style="color: #787878;">Send the query to gptel
+</span>            <span style="color: #90a890;">(</span>gptel-send<span style="color: #90a890;">)</span>
+            <span style="color: #90a890;">(</span>display-buffer buffer<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Register the protocol handler
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-protocol-protocol-alist
+      <span style="color: #93a8c6;">(</span>append org-protocol-protocol-alist
+              <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">"gptel-browser"</span>
+                 <span style="color: #79C0FF;">:protocol</span> <span style="color: #A1D08E;">"gptel"</span>
+                 <span style="color: #79C0FF;">:function</span> my/gptel-org-protocol-handler<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">JavaScript bookmarklet for browser (copy this as bookmark URL):
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">Basic version:
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\nSelected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+</span>
+<span style="color: #787878;">;; </span><span style="color: #787878;">Enhanced version with prompt for question:
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+</span>
 </pre>
 </div>
 </div>
