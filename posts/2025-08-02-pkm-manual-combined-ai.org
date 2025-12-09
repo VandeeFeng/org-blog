@@ -179,11 +179,9 @@ simple claude:
 利用 org-protocol 和 JavaScript 对浏览器页面里的特定内容在 Emacs 里用 gptel 提问
 
 #+begin_src elisp
-;; gptel + org-protocol integration
 (require 'org-protocol)
 (require 'gptel)
 
-;; Enable org-protocol server
 (require 'server)
 (unless (server-running-p)
   (server-start))

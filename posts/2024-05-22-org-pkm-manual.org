@@ -1207,6 +1207,59 @@ gptel 现在支持自己设计 tool，也支持 MCP 了。
 tool 和 function calling 的设置可以参考：https://github.com/karthink/gptel/issues/514
 
 MCP 需要安装 [[https://github.com/lizqwerscott/mcp.el][lizqwerscott/mcp.el: An Mcp client inside Emacs]] 。但是 mcp.el Need Emacs 30 or higher version。
+
+2025-12-09 added：
+
+浏览器划词提问：
+
+利用 org-protocol 和 JavaScript 对浏览器页面里的特定内容在 Emacs 里用 gptel 提问
+
+#+begin_src elisp
+(require 'org-protocol)
+(require 'gptel)
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+;; Handler for gptel queries from browser
+(defun my/gptel-org-protocol-handler (info)
+  "Handle gptel query from org-protocol.
+INFO is the data passed by org-protocol."
+  (let ((text (plist-get info :text)))
+    (when (and text (not (string-empty-p text)))
+      (let ((query (decode-coding-string (url-unhex-string text) 'utf-8)))
+        (message "Received gptel query: %s" query)
+        ;; Create or switch to gptel buffer
+        (let ((buffer (get-buffer-create "*gptel-browser*")))
+          (with-current-buffer buffer
+            (unless (eq major-mode 'gptel-default-mode)
+              (funcall gptel-default-mode))
+            (gptel-mode 1)
+            (goto-char (point-max))
+            (insert "\n\n--- From Browser ---\n")
+            (insert query)
+            (insert "\n")
+            (goto-char (point-max))
+            ;; Send the query to gptel
+            (gptel-send)
+            (display-buffer buffer)))))))
+
+;; Register the protocol handler
+(setq org-protocol-protocol-alist
+      (append org-protocol-protocol-alist
+              '(("gptel-browser"
+                 :protocol "gptel"
+                 :function my/gptel-org-protocol-handler))))
+
+;; JavaScript bookmarklet for browser (copy this as bookmark URL):
+;; Basic version:
+;; javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\nSelected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+
+;; Enhanced version with prompt for question:
+;; javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
+
+#+end_src
 *** Kotaemon
 
 从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
@@ -1252,6 +1305,7 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2025-06-28: 增加 denote。
 - 2025-11-15：增加 org-hover
 - 2025-11-16: 增加双链的介绍，把 org-hover 加进去了。更新网页摘录和 after-reading
+- 2025-12-09: 增加链接和一个 gptel 里的小函数用来浏览器提问
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
