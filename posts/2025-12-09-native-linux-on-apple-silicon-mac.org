@@ -4,16 +4,16 @@
 #+filetags: Linux
 
 * TL;DR
-在几个月之前在我的 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
+几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 
-这几个月 windows 持续的一些负面新闻，让 Linux 有一波小热度。整理了一下我在 mac 上安装 Linux 的过程，分享给想入坑 Linux 的轻度玩家。
+这几个月 Windows 持续的一些负面新闻，让 Linux 有一波小热度。整理了一下我在 Mac 上安装 Linux 的过程，分享给想入坑 Linux 的轻度玩家。
 
 大佬请直接关闭页面。
 
 * Why Linux
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 
-使用 Mac 的普通用户大多数都是因为精致设计感的 UI，苹果的品牌效应，我也是如此。但是这几年 Mac 的发展实在是让我很没有期待，今年更是大便一坨。
+使用 Mac 的普通用户大多数都是因为精致设计感的 UI，苹果的品牌效应，我也是如此。但是这几年苹果的发展实在是让我很没有期待，今年更是大便一坨。
 
 苹果的品牌效应 90% 来自乔帮主的个人魅力，我觉得一点也不为过。如今苹果的老本快被吃完了，创新的东西有，但是灵魂我觉得早已不在。
 
@@ -34,7 +34,7 @@ Asahi Linux 预装的是 Fedora，初始化安装到进入图形界面都没问�
 
 Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基于 Arch Linux 的 Linux 发行版。
 
-但是我不太喜欢它默认的主题，和过多的快捷键设置，还有许多我不需要的预安装。尝试了几天之后也否定了这个方案。
+但是我不太喜欢它默认的主题，默认快捷键设置也和我的习惯很不一样，还有许多我不需要的预安装。尝试了几天之后也否定了这个方案。
 
 然后发现宝藏：[[https://asahi-alarm.org/][Asahi Alarm]] , https://github.com/basecamp/omarchy/discussions/155
 
@@ -42,7 +42,7 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 ** 初始化安装
 它就是一个裸的 Arch Linux。
 
-在 mac 上打开 terminal，运行 ~curl https://asahi-alarm.org/installer-bootstrap.sh | sh~ ，基本就全自动安装了，具体的安装过程和  [[https://www.youtube.com/watch?v=u_kcXg00R2g][「黑貓」Asahi Linux！M1 Mac 原生運行 Linux 雙系統，簡單流暢！ - YouTube]] 是一样的。
+在 Mac 上打开 terminal，运行 ~curl https://asahi-alarm.org/installer-bootstrap.sh | sh~ ，基本就全自动安装了，具体的安装过程和 Asahi Linux 是一样的。
 
 需要科学上网。
 
@@ -53,34 +53,37 @@ Pacman 是 Arch Linux 默认的包管理器 ，[[https://github.com/Morganamilo/
 ** WM & DM
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 [[https://wiki.archlinux.org/title/Wayland][Wayland]] + [[https://swaywm.org/][Sway]] ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 
-创建好 Linux 用户之后 ~sudo pacman -S wayland sway~ 安装就 OK 了。
+创建好 Linux 用户之后 ~sudo pacman -S wayland sway~ 安装。
 
-输入 sway 就可以进入到图形界面了。想自动进入图形界面，Linux 里需要安装 DM（display managers）
+输入 sway 就可以进入到图形界面了。想自动进入图形界面，Linux 里可以安装 DM（display managers）
 
 DM 我选择的是 [[https://github.com/coastalwhite/lemurs][Lemurs]] 也是因为它足够简单。
 
 ** App launcher
 [[https://codeberg.org/dnkl/fuzzel][dnkl/fuzzel]]
 
-因为之前在 i3 里使用 dmenu，fuzzel 足够简洁。和 sway 的匹配度也很高。
+因为之前在 i3 里使用 dmenu，fuzzel 也足够简洁，和 sway 的匹配度也很高。
 
 Vicinae 也挺好用，和 raycast 挺像: https://github.com/vicinaehq/vicinae/
 
 ** Theme
 [[https://github.com/vinceliuice/Qogir-theme][vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK]]
 
+theme 文件可以在 ~/.themes/, 或者 /usr/share/themes
+
 - 统一 gtk 和 qt 主题：sudo pacman -S --noconfirm lxappearance qt5ct qt6ct kvantum
 
 - lxappearance 来配置主题，可能需要安装：sudo pacman -S gtk-engine-murrine gnome-themes-extra gtk-engines
-  theme 文件可以在 ~/.themes/, 或者 /usr/share/themes
 
   wayland 里用 nwg-look
 
 ** Bluetooth && Wi-Fi
 - impala: 🛜 TUI for managing wifi on Linux
+
   https://github.com/pythops/impala
 
 - bluetui: 🛜 TUI for managing bluetooth on Linux
+
   https://github.com/pythops/bluetui
 ** Fcitx && Rime 输入法
 参考：[[https://manateelazycat.github.io/2025/08/31/fcitx-best-config/][Fcitx 最佳配置实践 2025-08-31]]
@@ -91,13 +94,13 @@ Rime 推荐使用：[[https://github.com/rime/plum][rime/plum: 東風破 ]] 安�
 
 输入法：[[https://github.com/iDvel/rime-ice][iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库]]
 ** Obs Studio
-Asahi Alarm 里，pacman 没有 obs studio 的 ARM 版本。
+Asahi Alarm 里， ~sudo pacman -S obs-studio~ 显示没有这个包。
 
 安装 CMake 自己手动编译:
 
 下载源代码：
 
-~git clone --depth 1 https://github.com/obsproject/obs-studio.git~
+~git clone --depth 1 --recurse --shallow-submodules https://github.com/obsproject/obs-studio.git~
 
 我在编译的时候提示缺少头文件，因此:
 
@@ -115,7 +118,7 @@ Asahi Alarm 里，pacman 没有 obs studio 的 ARM 版本。
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 
 ** Sway
-sway 会初始化一个配置文件在 ~.config/sway/config~ ，在配置文件里修改就好了。
+Sway 会初始化一个配置文件在 ~~/.config/sway/config~ ，在配置文件里修改就好了。
 
 分辨率设置：如果不放大，字就跟蚂蚁一样小
 
@@ -171,4 +174,6 @@ OCR: 需要安装 [[https://github.com/tesseract-ocr/tesseract][tesseract-ocr/te
 
   把 procmonitormethod 更改成 proc
 
-- 音量控制：sudo pacman -S pavucontrol ，更轻量化的：sudo pacman -S volumeicon
+- 音量控制：sudo pacman -S pavucontrol
+
+  更轻量化的：sudo pacman -S volumeicon
