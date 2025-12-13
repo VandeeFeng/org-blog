@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Wed, 10 Dec 2025 16:48:01 +0800</lastBuildDate>
+<lastBuildDate>Sat, 13 Dec 2025 22:29:09 +0800</lastBuildDate>
 <item>
   <title><![CDATA[2025 - 益]]></title>
   <description><![CDATA[
@@ -247,31 +247,31 @@ Just believe ，and believe in yourself！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd09aa23">TL;DR</a></li>
-<li><a href="#org92cf6cd">Why Linux</a></li>
-<li><a href="#org31530e9">Asahi Alarm</a>
+<li><a href="#org320c245">TL;DR</a></li>
+<li><a href="#org00e7613">Why Linux</a></li>
+<li><a href="#org468644e">Asahi Alarm</a>
 <ul>
-<li><a href="#org9ca1afc">初始化安装</a></li>
-<li><a href="#org6cf406b">WM &amp; DM</a></li>
-<li><a href="#org49e6a85">App launcher</a></li>
-<li><a href="#org4c35237">Theme</a></li>
-<li><a href="#orgf60eb7e">Bluetooth &amp;&amp; Wi-Fi</a></li>
-<li><a href="#orgedf9b28">Fcitx &amp;&amp; Rime 输入法</a></li>
-<li><a href="#orgb0cc282">Obs Studio</a></li>
+<li><a href="#orgd6b9dab">初始化安装</a></li>
+<li><a href="#orga1d62f0">WM &amp; DM</a></li>
+<li><a href="#org2cda9d2">App launcher</a></li>
+<li><a href="#org3f358c9">Theme</a></li>
+<li><a href="#orgcfb3bbf">Bluetooth &amp;&amp; Wi-Fi</a></li>
+<li><a href="#org1a26ff5">Fcitx &amp;&amp; Rime 输入法</a></li>
+<li><a href="#org07dc7a0">Obs Studio</a></li>
 </ul>
 </li>
-<li><a href="#orgf9b4a36">Settings</a>
+<li><a href="#orgfc2eff1">Settings</a>
 <ul>
-<li><a href="#org7920ac4">Sway</a></li>
-<li><a href="#org9c4e16d">Others</a></li>
+<li><a href="#org9ecc728">Sway</a></li>
+<li><a href="#orga7cf43e">Others</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgd09aa23" class="outline-2">
-<h2 id="orgd09aa23">TL;DR</h2>
-<div class="outline-text-2" id="text-orgd09aa23">
+<div id="outline-container-org320c245" class="outline-2">
+<h2 id="org320c245">TL;DR</h2>
+<div class="outline-text-2" id="text-org320c245">
 <p>
 几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 </p>
@@ -285,9 +285,9 @@ Just believe ，and believe in yourself！
 </p>
 </div>
 </div>
-<div id="outline-container-org92cf6cd" class="outline-2">
-<h2 id="org92cf6cd">Why Linux</h2>
-<div class="outline-text-2" id="text-org92cf6cd">
+<div id="outline-container-org00e7613" class="outline-2">
+<h2 id="org00e7613">Why Linux</h2>
+<div class="outline-text-2" id="text-org00e7613">
 <p>
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 </p>
@@ -309,12 +309,12 @@ Just believe ，and believe in yourself！
 </p>
 </div>
 </div>
-<div id="outline-container-org31530e9" class="outline-2">
-<h2 id="org31530e9">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-org31530e9">
+<div id="outline-container-org468644e" class="outline-2">
+<h2 id="org468644e">Asahi Alarm</h2>
+<div class="outline-text-2" id="text-org468644e">
 
-<figure id="orga8c9750">
-<img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="70%" height="70%">
+<figure id="org7701fbc">
+<img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
 
 </figure>
 
@@ -346,9 +346,9 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
 </p>
 </div>
-<div id="outline-container-org9ca1afc" class="outline-3">
-<h3 id="org9ca1afc">初始化安装</h3>
-<div class="outline-text-3" id="text-org9ca1afc">
+<div id="outline-container-orgd6b9dab" class="outline-3">
+<h3 id="orgd6b9dab">初始化安装</h3>
+<div class="outline-text-3" id="text-orgd6b9dab">
 <p>
 它就是一个裸的 Arch Linux。
 </p>
@@ -370,9 +370,9 @@ Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morga
 </p>
 </div>
 </div>
-<div id="outline-container-org6cf406b" class="outline-3">
-<h3 id="org6cf406b">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-org6cf406b">
+<div id="outline-container-orga1d62f0" class="outline-3">
+<h3 id="orga1d62f0">WM &amp; DM</h3>
+<div class="outline-text-3" id="text-orga1d62f0">
 <p>
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 </p>
@@ -390,9 +390,9 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 </p>
 </div>
 </div>
-<div id="outline-container-org49e6a85" class="outline-3">
-<h3 id="org49e6a85">App launcher</h3>
-<div class="outline-text-3" id="text-org49e6a85">
+<div id="outline-container-org2cda9d2" class="outline-3">
+<h3 id="org2cda9d2">App launcher</h3>
+<div class="outline-text-3" id="text-org2cda9d2">
 <p>
 <a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
 </p>
@@ -406,9 +406,9 @@ Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq
 </p>
 </div>
 </div>
-<div id="outline-container-org4c35237" class="outline-3">
-<h3 id="org4c35237">Theme</h3>
-<div class="outline-text-3" id="text-org4c35237">
+<div id="outline-container-org3f358c9" class="outline-3">
+<h3 id="org3f358c9">Theme</h3>
+<div class="outline-text-3" id="text-org3f358c9">
 <p>
 <a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
 </p>
@@ -430,9 +430,9 @@ wayland 里用 nwg-look
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf60eb7e" class="outline-3">
-<h3 id="orgf60eb7e">Bluetooth &amp;&amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-orgf60eb7e">
+<div id="outline-container-orgcfb3bbf" class="outline-3">
+<h3 id="orgcfb3bbf">Bluetooth &amp;&amp; Wi-Fi</h3>
+<div class="outline-text-3" id="text-orgcfb3bbf">
 <ul class="org-ul">
 <li><p>
 impala: 🛜 TUI for managing wifi on Linux
@@ -452,9 +452,9 @@ bluetui: 🛜 TUI for managing bluetooth on Linux
 </ul>
 </div>
 </div>
-<div id="outline-container-orgedf9b28" class="outline-3">
-<h3 id="orgedf9b28">Fcitx &amp;&amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-orgedf9b28">
+<div id="outline-container-org1a26ff5" class="outline-3">
+<h3 id="org1a26ff5">Fcitx &amp;&amp; Rime 输入法</h3>
+<div class="outline-text-3" id="text-org1a26ff5">
 <p>
 参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
 </p>
@@ -472,9 +472,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </p>
 </div>
 </div>
-<div id="outline-container-orgb0cc282" class="outline-3">
-<h3 id="orgb0cc282">Obs Studio</h3>
-<div class="outline-text-3" id="text-orgb0cc282">
+<div id="outline-container-org07dc7a0" class="outline-3">
+<h3 id="org07dc7a0">Obs Studio</h3>
+<div class="outline-text-3" id="text-org07dc7a0">
 <p>
 Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包。
 </p>
@@ -513,9 +513,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 </div>
 </div>
 </div>
-<div id="outline-container-orgf9b4a36" class="outline-2">
-<h2 id="orgf9b4a36">Settings</h2>
-<div class="outline-text-2" id="text-orgf9b4a36">
+<div id="outline-container-orgfc2eff1" class="outline-2">
+<h2 id="orgfc2eff1">Settings</h2>
+<div class="outline-text-2" id="text-orgfc2eff1">
 <p>
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
 </p>
@@ -524,9 +524,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 </p>
 </div>
-<div id="outline-container-org7920ac4" class="outline-3">
-<h3 id="org7920ac4">Sway</h3>
-<div class="outline-text-3" id="text-org7920ac4">
+<div id="outline-container-org9ecc728" class="outline-3">
+<h3 id="org9ecc728">Sway</h3>
+<div class="outline-text-3" id="text-org9ecc728">
 <p>
 Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
 </p>
@@ -605,9 +605,9 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 </p>
 </div>
 </div>
-<div id="outline-container-org9c4e16d" class="outline-3">
-<h3 id="org9c4e16d">Others</h3>
-<div class="outline-text-3" id="text-org9c4e16d">
+<div id="outline-container-orga7cf43e" class="outline-3">
+<h3 id="orga7cf43e">Others</h3>
+<div class="outline-text-3" id="text-orga7cf43e">
 <ul class="org-ul">
 <li><p>
 调整对比度

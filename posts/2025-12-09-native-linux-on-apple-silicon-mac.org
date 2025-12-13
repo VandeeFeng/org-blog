@@ -24,7 +24,7 @@
 * Asahi Alarm
 
 #+attr_html: :alt :class img :width 70% :height 70%
-https://pic.vandee.art/images/2025-08-12_16-18.png
+https://pic.vandee.art/images/20251213_maclinux.png
 
 最开始我尝试的是 Asahi Linux，按照这个视频很快就搞定了： [[https://www.youtube.com/watch?v=u_kcXg00R2g][「黑貓」Asahi Linux！M1 Mac 原生運行 Linux 雙系統，簡單流暢！ - YouTube]]
 
