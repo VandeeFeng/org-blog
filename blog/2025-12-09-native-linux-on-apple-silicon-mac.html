@@ -59,31 +59,31 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org320c245">TL;DR</a></li>
-<li><a href="#org00e7613">Why Linux</a></li>
-<li><a href="#org468644e">Asahi Alarm</a>
+<li><a href="#org6985016">TL;DR</a></li>
+<li><a href="#org40bcbd8">Why Linux</a></li>
+<li><a href="#org7d22e46">Asahi Alarm</a>
 <ul>
-<li><a href="#orgd6b9dab">初始化安装</a></li>
-<li><a href="#orga1d62f0">WM &amp; DM</a></li>
-<li><a href="#org2cda9d2">App launcher</a></li>
-<li><a href="#org3f358c9">Theme</a></li>
-<li><a href="#orgcfb3bbf">Bluetooth &amp;&amp; Wi-Fi</a></li>
-<li><a href="#org1a26ff5">Fcitx &amp;&amp; Rime 输入法</a></li>
-<li><a href="#org07dc7a0">Obs Studio</a></li>
+<li><a href="#org45dd9de">初始化安装</a></li>
+<li><a href="#orgc595a85">WM &amp; DM</a></li>
+<li><a href="#orgd76080e">App launcher</a></li>
+<li><a href="#org38973e0">Theme</a></li>
+<li><a href="#orge4a4abb">Bluetooth &amp;&amp; Wi-Fi</a></li>
+<li><a href="#org073f494">Fcitx &amp;&amp; Rime 输入法</a></li>
+<li><a href="#org6331512">Obs Studio</a></li>
 </ul>
 </li>
-<li><a href="#orgfc2eff1">Settings</a>
+<li><a href="#org4a38a65">Settings</a>
 <ul>
-<li><a href="#org9ecc728">Sway</a></li>
-<li><a href="#orga7cf43e">Others</a></li>
+<li><a href="#orgfe01e51">Sway</a></li>
+<li><a href="#orgd2a67b4">Others</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org320c245" class="outline-2">
-<h2 id="org320c245">TL;DR</h2>
-<div class="outline-text-2" id="text-org320c245">
+<div id="outline-container-org6985016" class="outline-2">
+<h2 id="org6985016">TL;DR</h2>
+<div class="outline-text-2" id="text-org6985016">
 <p>
 几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 </p>
@@ -97,9 +97,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org00e7613" class="outline-2">
-<h2 id="org00e7613">Why Linux</h2>
-<div class="outline-text-2" id="text-org00e7613">
+<div id="outline-container-org40bcbd8" class="outline-2">
+<h2 id="org40bcbd8">Why Linux</h2>
+<div class="outline-text-2" id="text-org40bcbd8">
 <p>
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 </p>
@@ -121,11 +121,11 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org468644e" class="outline-2">
-<h2 id="org468644e">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-org468644e">
+<div id="outline-container-org7d22e46" class="outline-2">
+<h2 id="org7d22e46">Asahi Alarm</h2>
+<div class="outline-text-2" id="text-org7d22e46">
 
-<figure id="org7701fbc">
+<figure id="org32ec6ee">
 <img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
 
 </figure>
@@ -158,9 +158,9 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
 </p>
 </div>
-<div id="outline-container-orgd6b9dab" class="outline-3">
-<h3 id="orgd6b9dab">初始化安装</h3>
-<div class="outline-text-3" id="text-orgd6b9dab">
+<div id="outline-container-org45dd9de" class="outline-3">
+<h3 id="org45dd9de">初始化安装</h3>
+<div class="outline-text-3" id="text-org45dd9de">
 <p>
 它就是一个裸的 Arch Linux。
 </p>
@@ -182,9 +182,9 @@ Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morga
 </p>
 </div>
 </div>
-<div id="outline-container-orga1d62f0" class="outline-3">
-<h3 id="orga1d62f0">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-orga1d62f0">
+<div id="outline-container-orgc595a85" class="outline-3">
+<h3 id="orgc595a85">WM &amp; DM</h3>
+<div class="outline-text-3" id="text-orgc595a85">
 <p>
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 </p>
@@ -202,9 +202,9 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 </p>
 </div>
 </div>
-<div id="outline-container-org2cda9d2" class="outline-3">
-<h3 id="org2cda9d2">App launcher</h3>
-<div class="outline-text-3" id="text-org2cda9d2">
+<div id="outline-container-orgd76080e" class="outline-3">
+<h3 id="orgd76080e">App launcher</h3>
+<div class="outline-text-3" id="text-orgd76080e">
 <p>
 <a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
 </p>
@@ -216,11 +216,15 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 <p>
 Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq/vicinae/">https://github.com/vicinaehq/vicinae/</a>
 </p>
+
+<p>
+还有 Rofi：<a href="https://github.com/davatorium/rofi">https://github.com/davatorium/rofi</a>
+</p>
 </div>
 </div>
-<div id="outline-container-org3f358c9" class="outline-3">
-<h3 id="org3f358c9">Theme</h3>
-<div class="outline-text-3" id="text-org3f358c9">
+<div id="outline-container-org38973e0" class="outline-3">
+<h3 id="org38973e0">Theme</h3>
+<div class="outline-text-3" id="text-org38973e0">
 <p>
 <a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
 </p>
@@ -242,9 +246,9 @@ wayland 里用 nwg-look
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcfb3bbf" class="outline-3">
-<h3 id="orgcfb3bbf">Bluetooth &amp;&amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-orgcfb3bbf">
+<div id="outline-container-orge4a4abb" class="outline-3">
+<h3 id="orge4a4abb">Bluetooth &amp;&amp; Wi-Fi</h3>
+<div class="outline-text-3" id="text-orge4a4abb">
 <ul class="org-ul">
 <li><p>
 impala: 🛜 TUI for managing wifi on Linux
@@ -264,9 +268,9 @@ bluetui: 🛜 TUI for managing bluetooth on Linux
 </ul>
 </div>
 </div>
-<div id="outline-container-org1a26ff5" class="outline-3">
-<h3 id="org1a26ff5">Fcitx &amp;&amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-org1a26ff5">
+<div id="outline-container-org073f494" class="outline-3">
+<h3 id="org073f494">Fcitx &amp;&amp; Rime 输入法</h3>
+<div class="outline-text-3" id="text-org073f494">
 <p>
 参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
 </p>
@@ -284,9 +288,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </p>
 </div>
 </div>
-<div id="outline-container-org07dc7a0" class="outline-3">
-<h3 id="org07dc7a0">Obs Studio</h3>
-<div class="outline-text-3" id="text-org07dc7a0">
+<div id="outline-container-org6331512" class="outline-3">
+<h3 id="org6331512">Obs Studio</h3>
+<div class="outline-text-3" id="text-org6331512">
 <p>
 Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包。
 </p>
@@ -325,9 +329,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc2eff1" class="outline-2">
-<h2 id="orgfc2eff1">Settings</h2>
-<div class="outline-text-2" id="text-orgfc2eff1">
+<div id="outline-container-org4a38a65" class="outline-2">
+<h2 id="org4a38a65">Settings</h2>
+<div class="outline-text-2" id="text-org4a38a65">
 <p>
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
 </p>
@@ -336,9 +340,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 </p>
 </div>
-<div id="outline-container-org9ecc728" class="outline-3">
-<h3 id="org9ecc728">Sway</h3>
-<div class="outline-text-3" id="text-org9ecc728">
+<div id="outline-container-orgfe01e51" class="outline-3">
+<h3 id="orgfe01e51">Sway</h3>
+<div class="outline-text-3" id="text-orgfe01e51">
 <p>
 Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
 </p>
@@ -417,12 +421,12 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 </p>
 </div>
 </div>
-<div id="outline-container-orga7cf43e" class="outline-3">
-<h3 id="orga7cf43e">Others</h3>
-<div class="outline-text-3" id="text-orga7cf43e">
+<div id="outline-container-orgd2a67b4" class="outline-3">
+<h3 id="orgd2a67b4">Others</h3>
+<div class="outline-text-3" id="text-orgd2a67b4">
 <ul class="org-ul">
 <li><p>
-调整对比度
+调整对比度(X11)
 </p>
 
 <p>

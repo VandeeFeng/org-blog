@@ -18,6 +18,16 @@
 
 那些爻辞解析，我粗略的看过许多版本之后，就完全丢在一旁了。有这 64 个卦象就足够了。
 
+2025-12-16 added:
+
+2025 年度词汇：Slop - 由人工智能以大量方式生产的大量低质量数字内容。
+
+via: https://www.merriam-webster.com/wordplay/word-of-the-year
+
+#+begin_quote
+Merriam-Webster’s human editors have chosen /slop/ as the 2025 Word of the Year. We define [[https://www.merriam-webster.com/dictionary/slop][slop]] as “digital content of low quality that is produced usually in quantity by means of artificial intelligence.” All that stuff dumped on our screens, captured in just four letters: the English language came through again.
+#+end_quote
+
 * 黑客帝国
 不知道从什么时候开始，每年都会在不确定的时间看至少一次《黑客帝国》，从结果来看，这个现象勉强可以被描述为习惯。
 

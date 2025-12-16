@@ -66,6 +66,8 @@ DM 我选择的是 [[https://github.com/coastalwhite/lemurs][Lemurs]] 也是因�
 
 Vicinae 也挺好用，和 raycast 挺像: https://github.com/vicinaehq/vicinae/
 
+还有 Rofi：https://github.com/davatorium/rofi
+
 ** Theme
 [[https://github.com/vinceliuice/Qogir-theme][vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK]]
 
@@ -157,7 +159,7 @@ OCR: 需要安装 [[https://github.com/tesseract-ocr/tesseract][tesseract-ocr/te
 剪贴板：
 ~exec wl-paste --watch cliphist store~
 ** Others
-- 调整对比度
+- 调整对比度(X11)
 
   ~sudo pacman -S xorg-xgamma~
 
