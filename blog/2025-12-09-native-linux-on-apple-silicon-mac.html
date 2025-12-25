@@ -59,31 +59,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6985016">TL;DR</a></li>
-<li><a href="#org40bcbd8">Why Linux</a></li>
-<li><a href="#org7d22e46">Asahi Alarm</a>
+<li><a href="#org8a710ec">TL;DR</a></li>
+<li><a href="#org05018bb">Why Linux</a></li>
+<li><a href="#org10290eb">Asahi Alarm</a>
 <ul>
-<li><a href="#org45dd9de">初始化安装</a></li>
-<li><a href="#orgc595a85">WM &amp; DM</a></li>
-<li><a href="#orgd76080e">App launcher</a></li>
-<li><a href="#org38973e0">Theme</a></li>
-<li><a href="#orge4a4abb">Bluetooth &amp;&amp; Wi-Fi</a></li>
-<li><a href="#org073f494">Fcitx &amp;&amp; Rime 输入法</a></li>
-<li><a href="#org6331512">Obs Studio</a></li>
+<li><a href="#org697e615">初始化安装</a></li>
+<li><a href="#org6da2549">WM &amp; DM</a></li>
+<li><a href="#org636cd0c">App launcher</a></li>
+<li><a href="#org9539bd2">Theme</a></li>
+<li><a href="#orgb545cae">Bluetooth &amp;&amp; Wi-Fi</a></li>
+<li><a href="#org87dff15">Fcitx &amp;&amp; Rime 输入法</a></li>
+<li><a href="#org15b4b12">Obs Studio</a></li>
 </ul>
 </li>
-<li><a href="#org4a38a65">Settings</a>
+<li><a href="#org82ec638">Settings</a>
 <ul>
-<li><a href="#orgfe01e51">Sway</a></li>
-<li><a href="#orgd2a67b4">Others</a></li>
+<li><a href="#org14e4562">Sway</a></li>
+<li><a href="#orgd47b8e9">充电提示音</a></li>
+<li><a href="#orgee6598d">Others</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org6985016" class="outline-2">
-<h2 id="org6985016">TL;DR</h2>
-<div class="outline-text-2" id="text-org6985016">
+<div id="outline-container-org8a710ec" class="outline-2">
+<h2 id="org8a710ec">TL;DR</h2>
+<div class="outline-text-2" id="text-org8a710ec">
 <p>
 几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 </p>
@@ -97,9 +98,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org40bcbd8" class="outline-2">
-<h2 id="org40bcbd8">Why Linux</h2>
-<div class="outline-text-2" id="text-org40bcbd8">
+<div id="outline-container-org05018bb" class="outline-2">
+<h2 id="org05018bb">Why Linux</h2>
+<div class="outline-text-2" id="text-org05018bb">
 <p>
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 </p>
@@ -121,11 +122,11 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org7d22e46" class="outline-2">
-<h2 id="org7d22e46">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-org7d22e46">
+<div id="outline-container-org10290eb" class="outline-2">
+<h2 id="org10290eb">Asahi Alarm</h2>
+<div class="outline-text-2" id="text-org10290eb">
 
-<figure id="org32ec6ee">
+<figure id="org676efde">
 <img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
 
 </figure>
@@ -158,9 +159,9 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
 </p>
 </div>
-<div id="outline-container-org45dd9de" class="outline-3">
-<h3 id="org45dd9de">初始化安装</h3>
-<div class="outline-text-3" id="text-org45dd9de">
+<div id="outline-container-org697e615" class="outline-3">
+<h3 id="org697e615">初始化安装</h3>
+<div class="outline-text-3" id="text-org697e615">
 <p>
 它就是一个裸的 Arch Linux。
 </p>
@@ -182,9 +183,9 @@ Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morga
 </p>
 </div>
 </div>
-<div id="outline-container-orgc595a85" class="outline-3">
-<h3 id="orgc595a85">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-orgc595a85">
+<div id="outline-container-org6da2549" class="outline-3">
+<h3 id="org6da2549">WM &amp; DM</h3>
+<div class="outline-text-3" id="text-org6da2549">
 <p>
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 </p>
@@ -202,9 +203,9 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 </p>
 </div>
 </div>
-<div id="outline-container-orgd76080e" class="outline-3">
-<h3 id="orgd76080e">App launcher</h3>
-<div class="outline-text-3" id="text-orgd76080e">
+<div id="outline-container-org636cd0c" class="outline-3">
+<h3 id="org636cd0c">App launcher</h3>
+<div class="outline-text-3" id="text-org636cd0c">
 <p>
 <a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
 </p>
@@ -222,9 +223,9 @@ Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq
 </p>
 </div>
 </div>
-<div id="outline-container-org38973e0" class="outline-3">
-<h3 id="org38973e0">Theme</h3>
-<div class="outline-text-3" id="text-org38973e0">
+<div id="outline-container-org9539bd2" class="outline-3">
+<h3 id="org9539bd2">Theme</h3>
+<div class="outline-text-3" id="text-org9539bd2">
 <p>
 <a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
 </p>
@@ -246,9 +247,9 @@ wayland 里用 nwg-look
 </ul>
 </div>
 </div>
-<div id="outline-container-orge4a4abb" class="outline-3">
-<h3 id="orge4a4abb">Bluetooth &amp;&amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-orge4a4abb">
+<div id="outline-container-orgb545cae" class="outline-3">
+<h3 id="orgb545cae">Bluetooth &amp;&amp; Wi-Fi</h3>
+<div class="outline-text-3" id="text-orgb545cae">
 <ul class="org-ul">
 <li><p>
 impala: 🛜 TUI for managing wifi on Linux
@@ -268,9 +269,9 @@ bluetui: 🛜 TUI for managing bluetooth on Linux
 </ul>
 </div>
 </div>
-<div id="outline-container-org073f494" class="outline-3">
-<h3 id="org073f494">Fcitx &amp;&amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-org073f494">
+<div id="outline-container-org87dff15" class="outline-3">
+<h3 id="org87dff15">Fcitx &amp;&amp; Rime 输入法</h3>
+<div class="outline-text-3" id="text-org87dff15">
 <p>
 参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
 </p>
@@ -288,9 +289,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </p>
 </div>
 </div>
-<div id="outline-container-org6331512" class="outline-3">
-<h3 id="org6331512">Obs Studio</h3>
-<div class="outline-text-3" id="text-org6331512">
+<div id="outline-container-org15b4b12" class="outline-3">
+<h3 id="org15b4b12">Obs Studio</h3>
+<div class="outline-text-3" id="text-org15b4b12">
 <p>
 Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包。
 </p>
@@ -329,9 +330,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 </div>
 </div>
 </div>
-<div id="outline-container-org4a38a65" class="outline-2">
-<h2 id="org4a38a65">Settings</h2>
-<div class="outline-text-2" id="text-org4a38a65">
+<div id="outline-container-org82ec638" class="outline-2">
+<h2 id="org82ec638">Settings</h2>
+<div class="outline-text-2" id="text-org82ec638">
 <p>
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
 </p>
@@ -340,9 +341,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 </p>
 </div>
-<div id="outline-container-orgfe01e51" class="outline-3">
-<h3 id="orgfe01e51">Sway</h3>
-<div class="outline-text-3" id="text-orgfe01e51">
+<div id="outline-container-org14e4562" class="outline-3">
+<h3 id="org14e4562">Sway</h3>
+<div class="outline-text-3" id="text-org14e4562">
 <p>
 Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
 </p>
@@ -421,9 +422,86 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 </p>
 </div>
 </div>
-<div id="outline-container-orgd2a67b4" class="outline-3">
-<h3 id="orgd2a67b4">Others</h3>
-<div class="outline-text-3" id="text-orgd2a67b4">
+<div id="outline-container-orgd47b8e9" class="outline-3">
+<h3 id="orgd47b8e9">充电提示音</h3>
+<div class="outline-text-3" id="text-orgd47b8e9">
+<p>
+Asahi Linux 判断电池是通过 <code>/sys/class/power_supply/macsmc-ac</code>
+</p>
+
+<p>
+udev 的方式在我的电脑上不管用，所以用了一个笨办法。
+</p>
+
+<p>
+用 systemd 监控它的状态，处于充电状态的时候播放提示音，把这个 script 设置为 systemd service：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
+</span>
+<span style="color: #787878;"># </span><span style="color: #787878;">Charger plug/unplug sound effect script
+</span><span style="color: #787878;"># </span><span style="color: #787878;">Monitors /sys/class/power_supply/macsmc-ac/online and plays appropriate sounds
+</span>
+<span style="color: #f4f4ff;">POWER_SUPPLY_PATH</span>=<span style="color: #A1D08E;">"/sys/class/power_supply/macsmc-ac/online"</span>
+<span style="color: #f4f4ff;">POWER_PLUG_SOUND</span>=<span style="color: #A1D08E;">"/usr/share/sounds/freedesktop/stereo/power-plug.oga"</span>
+<span style="color: #f4f4ff;">POWER_UNPLUG_SOUND</span>=<span style="color: #A1D08E;">"/usr/share/sounds/freedesktop/stereo/power-unplug.oga"</span>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Check if required files exist
+</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_SUPPLY_PATH"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: Power supply path not found: $POWER_SUPPLY_PATH"</span>
+    <span style="color: #FFA657;">exit</span> 1
+<span style="color: #FFA657;">fi</span>
+
+<span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span> || <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: Sound files not found"</span>
+    <span style="color: #FFA657;">exit</span> 1
+<span style="color: #FFA657;">fi</span>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Function to play sound
+</span><span style="color: #96a6c8;">play_sound</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #79C0FF;">local</span> <span style="color: #f4f4ff;">sound_file</span>=<span style="color: #A1D08E;">"$1"</span>
+    <span style="color: #787878;"># </span><span style="color: #787878;">Try different audio players
+</span>    <span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v paplay &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
+        paplay --volume=78643 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
+    <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v aplay &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
+        aplay -v 15 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
+    <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v mplayer &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
+        mplayer -really-quiet -volume 150 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
+    <span style="color: #FFA657;">else</span>
+        <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: No suitable audio player found (paplay, aplay, or mplayer)"</span>
+        <span style="color: #FFA657;">exit</span> 1
+    <span style="color: #FFA657;">fi</span>
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Get initial state
+</span><span style="color: #f4f4ff;">previous_state</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$POWER_SUPPLY_PATH"</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Initial charger state: $previous_state"</span>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Monitor for changes
+</span><span style="color: #FFA657;">while</span> true; <span style="color: #FFA657;">do</span>
+    <span style="color: #f4f4ff;">current_state</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$POWER_SUPPLY_PATH"</span><span style="color: #8c8c8c;">)</span>
+
+    <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$current_state"</span> != <span style="color: #A1D08E;">"$previous_state"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$current_state"</span> == <span style="color: #A1D08E;">"1"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+            <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Charger plugged in"</span>
+            play_sound <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span>
+        <span style="color: #FFA657;">else</span>
+            <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Charger unplugged"</span>
+            play_sound <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span>
+        <span style="color: #FFA657;">fi</span>
+        <span style="color: #f4f4ff;">previous_state</span>=<span style="color: #A1D08E;">"$current_state"</span>
+    <span style="color: #FFA657;">fi</span>
+
+    sleep 1
+<span style="color: #FFA657;">done</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgee6598d" class="outline-3">
+<h3 id="orgee6598d">Others</h3>
+<div class="outline-text-3" id="text-orgee6598d">
 <ul class="org-ul">
 <li><p>
 调整对比度(X11)

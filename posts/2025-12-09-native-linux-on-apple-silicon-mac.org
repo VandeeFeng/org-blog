@@ -158,6 +158,74 @@ OCR: 需要安装 [[https://github.com/tesseract-ocr/tesseract][tesseract-ocr/te
 
 剪贴板：
 ~exec wl-paste --watch cliphist store~
+
+** 充电提示音
+Asahi Linux 判断电池是通过 ~/sys/class/power_supply/macsmc-ac~
+
+udev 的方式在我的电脑上不管用，所以用了一个笨办法。
+
+用 systemd 监控它的状态，处于充电状态的时候播放提示音，把这个 script 设置为 systemd service：
+
+#+begin_src bash
+#!/bin/bash
+
+# Charger plug/unplug sound effect script
+# Monitors /sys/class/power_supply/macsmc-ac/online and plays appropriate sounds
+
+POWER_SUPPLY_PATH="/sys/class/power_supply/macsmc-ac/online"
+POWER_PLUG_SOUND="/usr/share/sounds/freedesktop/stereo/power-plug.oga"
+POWER_UNPLUG_SOUND="/usr/share/sounds/freedesktop/stereo/power-unplug.oga"
+
+# Check if required files exist
+if [[ ! -f "$POWER_SUPPLY_PATH" ]]; then
+    echo "Error: Power supply path not found: $POWER_SUPPLY_PATH"
+    exit 1
+fi
+
+if [[ ! -f "$POWER_PLUG_SOUND" ]] || [[ ! -f "$POWER_UNPLUG_SOUND" ]]; then
+    echo "Error: Sound files not found"
+    exit 1
+fi
+
+# Function to play sound
+play_sound() {
+    local sound_file="$1"
+    # Try different audio players
+    if command -v paplay >/dev/null 2>&1; then
+        paplay --volume=78643 "$sound_file" >/dev/null 2>&1 &
+    elif command -v aplay >/dev/null 2>&1; then
+        aplay -v 15 "$sound_file" >/dev/null 2>&1 &
+    elif command -v mplayer >/dev/null 2>&1; then
+        mplayer -really-quiet -volume 150 "$sound_file" >/dev/null 2>&1 &
+    else
+        echo "Error: No suitable audio player found (paplay, aplay, or mplayer)"
+        exit 1
+    fi
+}
+
+# Get initial state
+previous_state=$(cat "$POWER_SUPPLY_PATH")
+echo "Initial charger state: $previous_state"
+
+# Monitor for changes
+while true; do
+    current_state=$(cat "$POWER_SUPPLY_PATH")
+
+    if [[ "$current_state" != "$previous_state" ]]; then
+        if [[ "$current_state" == "1" ]]; then
+            echo "Charger plugged in"
+            play_sound "$POWER_PLUG_SOUND"
+        else
+            echo "Charger unplugged"
+            play_sound "$POWER_UNPLUG_SOUND"
+        fi
+        previous_state="$current_state"
+    fi
+
+    sleep 1
+done
+#+end_src
+
 ** Others
 - 调整对比度(X11)
 
