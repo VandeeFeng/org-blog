@@ -59,30 +59,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6b8210b">TL;DR</a></li>
-<li><a href="#orgcfa6a24">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#org16d7d81">我的键位设置</a>
+<li><a href="#orgf382524">TL;DR</a></li>
+<li><a href="#org8fead67">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#orgaefbc2b">我的键位设置</a>
 <ul>
-<li><a href="#org8b2135d">General</a></li>
-<li><a href="#org4b3e270">mark &amp; move</a></li>
-<li><a href="#org6c59737">hydra &amp; general</a></li>
-<li><a href="#orgcdea579">Misc</a></li>
+<li><a href="#org7a0ba35">General</a></li>
+<li><a href="#orga3554ad">mark &amp; move</a></li>
+<li><a href="#org308fdc9">hydra &amp; general</a></li>
+<li><a href="#org9953df0">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org6b8210b" class="outline-2">
-<h2 id="org6b8210b">TL;DR</h2>
-<div class="outline-text-2" id="text-org6b8210b">
+<div id="outline-container-orgf382524" class="outline-2">
+<h2 id="orgf382524">TL;DR</h2>
+<div class="outline-text-2" id="text-orgf382524">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-orgcfa6a24" class="outline-2">
-<h2 id="orgcfa6a24">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-orgcfa6a24">
+<div id="outline-container-org8fead67" class="outline-2">
+<h2 id="org8fead67">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-org8fead67">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -111,9 +111,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-org16d7d81" class="outline-2">
-<h2 id="org16d7d81">我的键位设置</h2>
-<div class="outline-text-2" id="text-org16d7d81">
+<div id="outline-container-orgaefbc2b" class="outline-2">
+<h2 id="orgaefbc2b">我的键位设置</h2>
+<div class="outline-text-2" id="text-orgaefbc2b">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -134,9 +134,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-org8b2135d" class="outline-3">
-<h3 id="org8b2135d">General</h3>
-<div class="outline-text-3" id="text-org8b2135d">
+<div id="outline-container-org7a0ba35" class="outline-3">
+<h3 id="org7a0ba35">General</h3>
+<div class="outline-text-3" id="text-org7a0ba35">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -206,9 +206,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-org4b3e270" class="outline-3">
-<h3 id="org4b3e270">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org4b3e270">
+<div id="outline-container-orga3554ad" class="outline-3">
+<h3 id="orga3554ad">mark &amp; move</h3>
+<div class="outline-text-3" id="text-orga3554ad">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -290,9 +290,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org6c59737" class="outline-3">
-<h3 id="org6c59737">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org6c59737">
+<div id="outline-container-org308fdc9" class="outline-3">
+<h3 id="org308fdc9">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org308fdc9">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -338,9 +338,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-orgcdea579" class="outline-3">
-<h3 id="orgcdea579">Misc</h3>
-<div class="outline-text-3" id="text-orgcdea579">
+<div id="outline-container-org9953df0" class="outline-3">
+<h3 id="org9953df0">Misc</h3>
+<div class="outline-text-3" id="text-org9953df0">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>
@@ -378,13 +378,28 @@ compile grep search：
 </pre>
 </div>
 
+<p>
+compile 指令执行之后自动聚焦 compilation buffer：
+</p>
+
+<p>
+默认情况下，执行完 compile 指令，弹出 compilation buffer 的时候，光标还是在原来的 buffer，每次都要移动一次，很烦。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">Auto switch to compilation buffer after compile finishes
+</span><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">compilation-finish-functions</span>
+          <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b1a3;">(</span>buffer _status<span style="color: #b0b1a3;">)</span>
+            <span style="color: #b0b1a3;">(</span>select-window <span style="color: #97b098;">(</span>get-buffer-window buffer<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
+</div>
 
 <p>
 org-backlink:
 </p>
 
 <p>
-同样也是用 grep 搜索当前 org 笔记的反链
+同样也是用 grep 搜索当前 org 笔记的反链，可以结合 embark 添加后续功能。
 </p>
 
 <div class="org-src-container">

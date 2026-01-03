@@ -218,10 +218,20 @@ compile grep search：
   (compile (format "grep -irn '%s' ." pattern)))
 #+end_src
 
+compile 指令执行之后自动聚焦 compilation buffer：
+
+默认情况下，执行完 compile 指令，弹出 compilation buffer 的时候，光标还是在原来的 buffer，每次都要移动一次，很烦。
+
+#+begin_src elisp
+;; Auto switch to compilation buffer after compile finishes
+(add-hook 'compilation-finish-functions
+          (lambda (buffer _status)
+            (select-window (get-buffer-window buffer))))
+#+end_src
 
 org-backlink:
 
-同样也是用 grep 搜索当前 org 笔记的反链
+同样也是用 grep 搜索当前 org 笔记的反链，可以结合 embark 添加后续功能。
 
 #+begin_src elisp
 
