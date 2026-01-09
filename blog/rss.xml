@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Mon, 05 Jan 2026 15:18:09 +0800</lastBuildDate>
+<lastBuildDate>Fri, 09 Jan 2026 13:15:58 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Vibe Coding is kind of like borrowing]]></title>
   <description><![CDATA[
@@ -12,14 +12,15 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc23b8d1">TL;DR</a></li>
-<li><a href="#org39ac537">结果还是过程？</a></li>
+<li><a href="#org527f676">TL;DR</a></li>
+<li><a href="#orga1c3c61">结果还是过程？</a></li>
+<li><a href="#orgea8826c">我不喜欢 LLM 代码生成</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgc23b8d1" class="outline-2">
-<h2 id="orgc23b8d1">TL;DR</h2>
-<div class="outline-text-2" id="text-orgc23b8d1">
+<div id="outline-container-org527f676" class="outline-2">
+<h2 id="org527f676">TL;DR</h2>
+<div class="outline-text-2" id="text-org527f676">
 <p>
 Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
@@ -29,9 +30,9 @@ Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
 </div>
 </div>
-<div id="outline-container-org39ac537" class="outline-2">
-<h2 id="org39ac537">结果还是过程？</h2>
-<div class="outline-text-2" id="text-org39ac537">
+<div id="outline-container-orga1c3c61" class="outline-2">
+<h2 id="orga1c3c61">结果还是过程？</h2>
+<div class="outline-text-2" id="text-orga1c3c61">
 <blockquote>
 <p>
 对于这样的现象，我先下一个结论：软件开发向来是为了解决问题（Problem Solving），重要的是解决问题的结果，而不是解决的方式。
@@ -77,19 +78,7 @@ via: <a href="https://simonwillison.net/2026/Jan/2/ben-werdmuller/">https://simo
 </p>
 
 <p>
-把编程当作是一个爱好、技能，和做软件开放搞工程，是完全不一样的心态。
-</p>
-
-<p>
-本质上，编程就是自动化，把需要实现的结果，用代码固定下来，编译好让机器自动化执行。AI（大语言模型）则通过神经网络，让自然语言成为了代码的“解释器”。
-</p>
-
-<p>
-但 AI 生成和 AI 自动化有本质上的区别，用 AI 生产内容和用 AI 来管理流程是两码事。
-</p>
-
-<p>
-LLM 生成代码这个过程中，它始终是一个概率结果。传统自动化工具指向一个确定的结果，而 LLM 生成得到的始终是一个随机区间，即使这个随机区间对于简单的代码复制、修剪工作来说，很小，很稳定；即使通过高超的 prompt 技巧、炉火纯青的 AI 技术，得到非常准确的代码。概率性是 LLM 生成始终无法回避的问题。
+编程作为一个爱好、技能，和软件工程、软件开发，是完全不一样的心态。
 </p>
 
 <p>
@@ -99,9 +88,43 @@ LLM 生成代码这个过程中，它始终是一个概率结果。传统自动�
 <p>
 软件开发，团队项目是靠产品说话的，这些更注重结果。就像现在的大语言模型和 Claude Code，产出让用户觉得好用的产品才是第一位的。至于这个大语言模型是如何训练出来的，Claude Code 是如何实现的，普通用户其实并不关心，比竞品好用用户就会选择。
 </p>
-
+</div>
+</div>
+<div id="outline-container-orgea8826c" class="outline-2">
+<h2 id="orgea8826c">我不喜欢 LLM 代码生成</h2>
+<div class="outline-text-2" id="text-orgea8826c">
 <p>
 但对于 Vibe Coding 和 LLM 代码生成，我始终不太喜欢。
+</p>
+
+<blockquote>
+<p>
+I think the job of being paid money to type code into a computer will go the same way as punching punch cards [&#x2026;] in six years time, I do not think anyone will be paid to just to do the thing where you type the code. I think software engineering will still be an enormous career. I just think the software engineers won’t be spending multiple hours of their day in a text editor typing out syntax.
+</p>
+
+<p>
+我认为，作为一份工作，拿钱在电脑上输入代码的工作将在六年后与打孔卡一样消失，我认为到那时不会有人仅仅为了输入代码而获得报酬。我认为软件工程仍将是一个巨大的职业。我只是认为软件工程师不会花费多小时在文本编辑器中输入语法。
+</p>
+
+<p>
+via: <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/">https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/</a>
+</p>
+</blockquote>
+
+<p>
+对于工作，我赞同 Simon 大佬的这个言论，但我认为 LLM 代码生成绝对和打孔卡的取代不是一回事。手拿普通锯子（打孔卡），手拿电锯（现代编程语言），电锯自己动（LLM 生成），这之间的区别不是明摆着的么?
+</p>
+
+<p>
+本质上，编程就是自动化，把需要实现的结果，用代码固定下来，编译好让机器自动化执行。AI（大语言模型）则通过神经网络，让自然语言成为了代码的“解释器”。
+</p>
+
+<p>
+但AI 生成和 AI 自动化有本质上的区别，用 AI 生产内容和用 AI 来管理流程是两码事。
+</p>
+
+<p>
+LLM 生成代码这个过程中，它始终是一个概率结果。传统自动化工具指向一个确定的结果，而 LLM 生成得到的始终是一个随机区间，即使这个随机区间对于简单的代码复制、修剪工作来说，很小，很稳定；即使通过高超的 prompt 技巧、炉火纯青的 AI 技术，得到非常准确的代码。概率性是 LLM 生成始终无法回避的问题。
 </p>
 
 <p>
@@ -109,7 +132,7 @@ LLM 生成代码这个过程中，它始终是一个概率结果。传统自动�
 </p>
 
 <p>
-把这些交给 AI 来生成给我一个结果，不是我想要的，也很不“自我”。啪啪啪，生成了一些质量也不错的代码，但这太不好玩了，带给不了我什么乐趣。我很享受敲代码的时候键盘敲击的声音，像弹吉他一样，思维和想象力的轨迹在指尖流走，具象化的表现出来。
+把这些交给 AI 来生成给我一个结果，不是我想要的，也很不“自我”。啪啪啪，生成了一些质量也不错的代码，但这太不好玩了，带给不了我什么乐趣。我很享受敲代码的时候键盘敲击的声音，像弹吉他一样，思维和想象力的轨迹在指尖游走，具象化的表现出来。
 </p>
 
 <p>
@@ -121,11 +144,23 @@ LLM 生成代码这个过程中，它始终是一个概率结果。传统自动�
 </p>
 
 <p>
-为什么现在许多软件开发者，甚至是行业大佬，本身代码能力就很强，但是都会在 AI 代码生成上过于夸大其词，甚至是炫耀高超的 AI 生成技巧，好像是在追逐创造一种流行趋势和潮流。值得拿出来炫耀的不应是自己本身就有的编程能力么？
+为什么现在许多软件开发者，甚至是行业大佬，本身代码能力就很强，但还是会在 AI 代码生成上过于夸大其词，甚至是炫耀高超的 AI 生成技巧，好像是在追逐创造一种流行趋势和潮流。值得拿出来炫耀的不应是自己本身就有的编程能力么？
 </p>
 
 <p>
-我觉得这才是真正的 skill，而不是变成了写 prompt、文档和各种 AGENTS.md 来安排 AI 的“架构师”。能用自然语言来编码绝对不是一个值得这么高兴的事情。
+我觉得这才是真正的 SKILL，而不是变成了写 prompt、文档和各种 AGENTS.md 来安排 AI 的“架构师”。能用自然语言来编码绝对不是一个值得这么高兴的事情。
+</p>
+
+<p>
+对于代码能力本身很强的人来说，AI 能解放双手，同一时间可以并行构建多个项目。确实现在还是如此，代码能力能纠正 LLM 生成的代码，没有 AI 也还是能写出高质量的代码。
+</p>
+
+<p>
+当 AI 生成的代码比自己还要好的时候，当自己已经无法理解 AI 生成的可运行物件的时候，又该如何？还会觉得这些是在自己的思维主导下创造出来的么？自己不写代码了，还怎么去评判 AI 代码的质量和品味？
+</p>
+
+<p>
+当 LLM 生成的代码质量像现在的工业制造一样，品质可控，误差降低到非常低，软件开发进入 AI 工业时代，现在声称的编程和代码品味还存在么？
 </p>
 
 <p>
@@ -145,11 +180,27 @@ LLM 生成代码这个过程中，它始终是一个概率结果。传统自动�
 </p>
 
 <p>
+用电子画笔画画，算法摄影，这些虽然都有科技技术的融合，但是他们和 AI 生成还是很不一样，这些带有思维创造比重较大的行为，在工具技术的加成下，还是人在主导，它们还是工具。
+</p>
+
+<p>
+再强大的电子画笔，不会画画还是画不出来；再昂贵的相机，没有审美还是拍不出好照片。
+</p>
+
+<p>
 我不会把 AI 生成完全当作是自己思维的创造，这些生成的内容依靠的是模型和神经网络完成的概率计算，它是概率结果，它无法复现，更不是一种技能。
 </p>
 
 <p>
 它们就像贷款，让 AI 帮自己做的越多，将来要还的就越多。
+</p>
+
+<p>
+即使现在的数码摄影如此发达了，胶片仍然有它独特的味道和价值。
+</p>
+
+<p>
+我相信编程里这些无法被替代的东西会有人继续坚持下去，当狂潮退去，能让内心继续跟随的只有热爱。
 </p>
 </div>
 </div>
