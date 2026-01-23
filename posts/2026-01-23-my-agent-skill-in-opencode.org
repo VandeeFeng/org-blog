@@ -112,7 +112,48 @@ SKILL: Planning with Files https://github.com/OthmanAdi/planning-with-files
 1. Use the `session-info` tool to retrieve the current conversation's [session-title]
 2. Run `date +%Y%m%d-%H%M%S` command to get the [YYYYMMDD-HHMMSS timestamp]
    Create the `session folder`: `mkdir -p $HOME/.MemoryMD/$(basename $(git rev-parse --show-toplevel))/[YYYYMMDD-HHMMSS timestamp]-[session-title]`
-3. All generated markdown files should be created in that `session folder` you created in the project root directory.
+3. All generated markdown files should be created in that `session folder`.
+#+end_src
+
+session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 session 信息，生成文件夹：
+
+~tools/session-info.ts~
+
+#+begin_src js
+import { tool } from "@opencode-ai/plugin"
+import { execSync } from "child_process"
+import { homedir } from "os"
+
+export default tool({
+  description: "Get current session information including title",
+  args: {},
+  async execute(args, context) {
+    const { sessionID, agent } = context
+
+    const sessionDir = `${homedir()}/.local/share/opencode/storage/session`
+
+    try {
+      const result = execSync(`find ${sessionDir} -name "${sessionID}.json" 2>/dev/null | head -1`, { encoding: "utf-8" })
+
+      if (!result.trim()) {
+        throw new Error("Session file not found")
+      }
+
+      const sessionFile = result.trim()
+      const sessionData = JSON.parse(require("fs").readFileSync(sessionFile, "utf-8"))
+
+      return JSON.stringify({
+        sessionID,
+        agent,
+        title: sessionData.title || null,
+        directory: sessionData.directory || null,
+        time: sessionData.time || null,
+      }, null, 2)
+    } catch (error) {
+      return JSON.stringify({ error: error.message, sessionID, agent }, null, 2)
+    }
+  },
+})
 #+end_src
 
 ** Handoff when stucked
