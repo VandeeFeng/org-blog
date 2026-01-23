@@ -60,7 +60,7 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 
 我虽然不喜欢 vibe，但是需要实现一些原型假设的时候，vibe 还是极好的。
 
-更何况，都不了解 vibe 又怎么能说自己不喜欢呢？
+再一个，不了解 vibe 又怎么能说自己不喜欢呢？
 
 ** Core Rules
 Just files and loops!
@@ -115,9 +115,11 @@ SKILL: Planning with Files https://github.com/OthmanAdi/planning-with-files
 3. All generated markdown files should be created in that `session folder`.
 #+end_src
 
-session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 session 信息，生成文件夹：
+没有选择在项目根目录下创建是为了多个 session 和 git-worktree 并行场景下，方便共享。
 
-~tools/session-info.ts~
+session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 session 信息，生成上面提到的文件夹：
+
+~tools/session-info.ts~ :
 
 #+begin_src js
 import { tool } from "@opencode-ai/plugin"
@@ -528,7 +530,6 @@ User: Save the event sourcing pattern we used
 ## Integration with Other Skills
 
 This skill works well with:
-- **session-info**: For retrieving session metadata
 - **memory-md**: For accessing related patterns from past sessions
 - **skill-creator**: For creating more complex, bundled skills
 #+end_src
