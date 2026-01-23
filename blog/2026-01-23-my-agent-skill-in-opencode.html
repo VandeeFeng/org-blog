@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。一个好的 SKILL 里可以学到工程师的经验、逻辑，以及精炼的 prompt。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>My Agent Skill in OpenCode</title>
+<meta property="og:title" content="My Agent Skill in OpenCode">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。一个好的 SKILL 里可以学到工程师的经验、逻辑，以及精炼的 prompt。">
+<meta property="og:url" content="https://www.vandee.art/blog/2026-01-23-my-agent-skill-in-opencode.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", () => {
+           pangu.autoSpacingPage();
+         });
+       </script>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="projects.html">Projects</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="ri-search-line ri-xl"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">23 Jan 2026</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2026-01-23-my-agent-skill-in-opencode.html">My Agent Skill in OpenCode</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org667703e">TL;DR</a></li>
+<li><a href="#org934364a">Agent Skills</a>
+<ul>
+<li><a href="#orgc079a10">简介</a></li>
+<li><a href="#org0c2287a">SKILL 解决了什么问题</a></li>
+<li><a href="#orgcad3ac9">编写 SKILL 是在干什么</a></li>
+</ul>
+</li>
+<li><a href="#org0bff7be">My Agent Conf</a>
+<ul>
+<li><a href="#orgafc5cc4">Core Rules</a></li>
+<li><a href="#orgb1cd5c2">Maintain a hierarchical codebase map</a></li>
+<li><a href="#org4938cb2">Prepared with clear purpose</a></li>
+<li><a href="#orga566291">Just files and loops, no more complicated</a></li>
+<li><a href="#org7bd188c">Handoff when stucked</a></li>
+<li><a href="#org3af23e6">Maintain memory</a></li>
+<li><a href="#org19ad567">Maintain useful patterns</a></li>
+<li><a href="#orgebf49a2">Maintain code quality and style</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org667703e" class="outline-2">
+<h2 id="org667703e">TL;DR</h2>
+<div class="outline-text-2" id="text-org667703e">
+<p>
+虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
+</p>
+
+<p>
+一个好的 SKILL 里可以学到工程师的经验、逻辑，以及精炼的 prompt。
+</p>
+
+<p>
+Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口，SKILL 是专家技能文档。
+</p>
+</div>
+</div>
+<div id="outline-container-org934364a" class="outline-2">
+<h2 id="org934364a">Agent Skills</h2>
+<div class="outline-text-2" id="text-org934364a">
+</div>
+<div id="outline-container-orgc079a10" class="outline-3">
+<h3 id="orgc079a10">简介</h3>
+<div class="outline-text-3" id="text-orgc079a10">
+<p>
+<a href="https://github.com/agentskills/agentskills">agentskills/agentskills</a> 是前段时间 <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)</a> Claude 开源的。
+</p>
+
+<p>
+在这之前 SKILL 就已经出现了。
+</p>
+
+<blockquote>
+<p>
+Agent Skills are a simple, open format for giving agents new capabilities and expertise.
+</p>
+
+<p>
+Skills are folders of instructions, scripts, and resources that agents can discover and use to perform better at specific tasks. Write once, use everywhere.
+</p>
+
+<p>
+via: <a href="https://github.com/agentskills/agentskills">https://github.com/agentskills/agentskills</a>
+</p>
+</blockquote>
+
+<p>
+SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、templates，提供 agent 一个专业领域的专业技能。
+</p>
+
+<p>
+这样说，听起来还是有点抽象。我也不想展开说明 SKILL 的概念，自己上手是理解它最好的方式。
+</p>
+
+<p>
+<a href="https://www.vandee.art/blog/2025-11-04-minimal-C-reimplementation-of-claude-skills.html">用 C 极简复现 Claude Skills</a> 里是我之前用 C 实现的简化版的 SKILL 逻辑。
+</p>
+
+<p>
+这两个网站里有很多 SKILL 可以探索学习：<a href="https://skillsmp.com/">https://skillsmp.com/</a>， <a href="https://skills.sh/">https://skills.sh/</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org0c2287a" class="outline-3">
+<h3 id="org0c2287a">SKILL 解决了什么问题</h3>
+<div class="outline-text-3" id="text-org0c2287a">
+<p>
+MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
+</p>
+
+<p>
+在 <code>SKILL.md</code> YAML 部分的 description 是对这个 SKILL 的介绍。当 agent 运行的时候，只会预加载这部分内容，当 agent 判断需要使用到的时候，才会加载完整的 <code>SKILL.md</code> 。
+</p>
+
+<p>
+如果说 MCP 是通用工具，那么 SKILL 就是可以高度自定义的 local tool。
+</p>
+</div>
+</div>
+<div id="outline-container-orgcad3ac9" class="outline-3">
+<h3 id="orgcad3ac9">编写 SKILL 是在干什么</h3>
+<div class="outline-text-3" id="text-orgcad3ac9">
+<p>
+当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
+</p>
+
+<p>
+能够把这个问题以及解决问题的办法完整的抽象成一个 SKILL，也变相的说明了自己已经掌握了一种处理问题的方法。
+</p>
+
+<p>
+所以，我虽然不喜欢 vibe coding，但是很喜欢看 SKILL。
+</p>
+
+<p>
+一个好的 SKILL 里，可以看到优秀工程师对问题处理、抽象的能力。更不用说里面涵盖了 prompt 提示词工程发展到现在的经验和技巧，这么好的学习资源，在以往是付费都很难看到的。
+</p>
+
+<p>
+大厂放出来的官方 SKILL 那都是门面啊，还是有很多干货的。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0bff7be" class="outline-2">
+<h2 id="org0bff7be">My Agent Conf</h2>
+<div class="outline-text-2" id="text-org0bff7be">
+<p>
+下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
+</p>
+
+<p>
+从 Claude Code 转到 OpenCode，感觉一切良好。
+</p>
+
+<p>
+我不是程序员，也不需要高质量的代码。我更喜欢 OpenCode 的一些设计理念，Claude Code 限制太多，也公开表示不让我们用，那就不用好了。
+</p>
+
+<p>
+在 OpenCode 里 vibe 一些小玩意还是很够用的。
+</p>
+
+<p>
+我虽然不喜欢 vibe，但是需要实现一些原型假设的时候，vibe 还是极好的。
+</p>
+
+<p>
+更何况，都不了解 vibe 又怎么能说自己不喜欢呢？
+</p>
+</div>
+<div id="outline-container-orgafc5cc4" class="outline-3">
+<h3 id="orgafc5cc4">Core Rules</h3>
+<div class="outline-text-3" id="text-orgafc5cc4">
+<p>
+Just files and loops!
+</p>
+
+<p>
+Provide specific <code>Best Practices</code>, <code>Pros &amp; Cons</code>, <code>Red Flags</code>
+</p>
+
+<p>
+Keep it simple!
+</p>
+
+<p>
+GitHub：<a href="https://github.com/VandeeFeng/agent-conf">https://github.com/VandeeFeng/agent-conf</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb1cd5c2" class="outline-3">
+<h3 id="orgb1cd5c2">Maintain a hierarchical codebase map</h3>
+<div class="outline-text-3" id="text-orgb1cd5c2">
+<blockquote>
+<p>
+Your best engineers don’t grep randomly. They have a mental map:
+</p>
+<ul class="org-ul">
+<li>What each folder owns</li>
+<li>What breaks if you touch it wrong</li>
+<li>Where the real logic lives</li>
+</ul>
+
+<p>
+via: <a href="https://www.railly.dev/blog/intent-layer/">https://www.railly.dev/blog/intent-layer/</a>
+</p>
+</blockquote>
+
+<p>
+SKILL: intent-layer <a href="https://github.com/crafter-station/skills">https://github.com/crafter-station/skills</a>
+</p>
+
+<p>
+如果每次都让 agent 探索一次项目代码，又不方便，又浪费时间。
+</p>
+
+<p>
+给项目代码提供一个持续更新的 codebase map 还是很必要的。
+</p>
+
+<p>
+这让 agent 在每次对话的时候在 context 里包含项目的基本信息和架构。
+</p>
+
+<p>
+also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/update-codemaps.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/update-codemaps.md</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org4938cb2" class="outline-3">
+<h3 id="org4938cb2">Prepared with clear purpose</h3>
+<div class="outline-text-3" id="text-org4938cb2">
+<p>
+SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
+</p>
+
+<p>
+在开始具体的任务之前，给予 agent 明确的目标以及要涉及到的具体文件。
+</p>
+
+<p>
+明确清晰的描述自己的需求非常重要。DO and DONOT.
+</p>
+
+<p>
+对于大部分模型，英文 prompt 效果比中文好。
+</p>
+</div>
+</div>
+<div id="outline-container-orga566291" class="outline-3">
+<h3 id="orga566291">Just files and loops, no more complicated</h3>
+<div class="outline-text-3" id="text-orga566291">
+<p>
+SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a>
+</p>
+
+<p>
+在 agent 执行具体任务的时候，planning with files 这个框架的设计很值得学习。
+</p>
+
+<p>
+它用三个文件记录和规划 agent 的 task plan，非常简洁，效果拔群。
+</p>
+
+<p>
+结合我在 opencode 里的使用，我加上了 memory 部分：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">1. Use the `session-info` tool to retrieve the current conversation's [session-title]
+2. Run `date +%Y%m%d-%H%M%S` command to get the [YYYYMMDD-HHMMSS timestamp]
+   Create the `session folder`: `mkdir -p $HOME/.MemoryMD/$(basename $(git rev-parse --show-toplevel))/[YYYYMMDD-HHMMSS timestamp]-[session-title]`
+3. All generated markdown files should be created in that `session folder` you created in the project root directory.
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7bd188c" class="outline-3">
+<h3 id="org7bd188c">Handoff when stucked</h3>
+<div class="outline-text-3" id="text-org7bd188c">
+<p>
+SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a>
+</p>
+
+<p>
+有时候 agent 会卡住，陷入死循环，果断 handoff 重开，不用浪费时间。
+</p>
+</div>
+</div>
+<div id="outline-container-org3af23e6" class="outline-3">
+<h3 id="org3af23e6">Maintain memory</h3>
+<div class="outline-text-3" id="text-org3af23e6">
+<p>
+我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
+</p>
+
+<p>
+memory-md skill: <a href="https://github.com/VandeeFeng/agent-conf/tree/main/skill/memory-md">https://github.com/VandeeFeng/agent-conf/tree/main/skill/memory-md</a>
+</p>
+
+<p>
+现在有许多针对 agent 的 memory 项目，但是我感觉这个概念本身也才刚出来，今年应该有更成熟的实现。
+</p>
+
+<p>
+暂时就用这个简单方案过渡一下。
+</p>
+</div>
+</div>
+<div id="outline-container-org19ad567" class="outline-3">
+<h3 id="org19ad567">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-org19ad567">
+<p>
+SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
+</p>
+
+<p>
+在解决实际的代码问题的时候，有许多方案是可以固定下来复用的。
+</p>
+
+<p>
+根据这个 SKILL，我设计了一个 learned skill。这个 SKILL 实际上是一个索引，在 description 部分加上 learned 的描述信息。
+</p>
+
+<p>
+learn skill 会根据当前会话的 session 固定下来有价值的 pattern，生成 skill，自动添加到 learned skill 的 description 部分，这样 agent 在加载的时候就可以知道有哪些 learned skill 了。
+</p>
+
+<p>
+不选择把 learned skill 生成单独的 skill 文件夹是因为它们的普遍性不强，也经常要更新和修改，不能完全当作 SKILL 来设计。
+</p>
+
+<p>
+Learn skill：<a href="https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/SKILL.md">https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/SKILL.md</a>
+</p>
+
+<p>
+Learnd skill：<a href="https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/templates/SKILL.md">https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/templates/SKILL.md</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgebf49a2" class="outline-3">
+<h3 id="orgebf49a2">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-orgebf49a2">
+<p>
+SKILL: code-simplifier: <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
+</p>
+
+<p>
+LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，很容易犯病，编写重复性的代码，这是因为上下文多了，准确性下降。
+</p>
+
+<p>
+在每次 agent 写完代码之后进行代码审查和代码优化。
+</p>
+
+<p>
+在 prompt 上，亲测加上：这是别人的代码，效果会更好🤣。LLM 拍马屁的概率大幅下降。
+</p>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="ri-arrow-up-double-line ri-3x"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>

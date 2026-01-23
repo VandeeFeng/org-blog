@@ -1,0 +1,156 @@
+#+title: My Agent Skill in OpenCode
+#+date: <2026-01-23 11:11>
+#+description: 虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。一个好的 SKILL 里可以学到工程师的经验、逻辑，以及精炼的 prompt。
+#+filetags: Coding
+
+* TL;DR
+虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
+
+一个好的 SKILL 里可以学到工程师的经验、逻辑，以及精炼的 prompt。
+
+Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口，SKILL 是专家技能文档。
+* Agent Skills
+** 简介
+[[https://github.com/agentskills/agentskills][agentskills/agentskills]] 是前段时间 [[https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation][Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)]] Claude 开源的。
+
+在这之前 SKILL 就已经出现了。
+
+#+begin_quote
+Agent Skills are a simple, open format for giving agents new capabilities and expertise.
+
+Skills are folders of instructions, scripts, and resources that agents can discover and use to perform better at specific tasks. Write once, use everywhere.
+
+via: https://github.com/agentskills/agentskills
+#+end_quote
+
+SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、templates，提供 agent 一个专业领域的专业技能。
+
+这样说，听起来还是有点抽象。我也不想展开说明 SKILL 的概念，自己上手是理解它最好的方式。
+
+[[https://www.vandee.art/blog/2025-11-04-minimal-C-reimplementation-of-claude-skills.html][用 C 极简复现 Claude Skills]] 里是我之前用 C 实现的简化版的 SKILL 逻辑。
+
+这两个网站里有很多 SKILL 可以探索学习：https://skillsmp.com/， https://skills.sh/
+
+** SKILL 解决了什么问题
+MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
+
+在 ~SKILL.md~ YAML 部分的 description 是对这个 SKILL 的介绍。当 agent 运行的时候，只会预加载这部分内容，当 agent 判断需要使用到的时候，才会加载完整的 ~SKILL.md~ 。
+
+如果说 MCP 是通用工具，那么 SKILL 就是可以高度自定义的 local tool。
+
+** 编写 SKILL 是在干什么
+当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
+
+能够把这个问题以及解决问题的办法完整的抽象成一个 SKILL，也变相的说明了自己已经掌握了一种处理问题的方法。
+
+所以，我虽然不喜欢 vibe coding，但是很喜欢看 SKILL。
+
+一个好的 SKILL 里，可以看到优秀工程师对问题处理、抽象的能力。更不用说里面涵盖了 prompt 提示词工程发展到现在的经验和技巧，这么好的学习资源，在以往是付费都很难看到的。
+
+大厂放出来的官方 SKILL 那都是门面啊，还是有很多干货的。
+
+* My Agent Conf
+下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
+
+从 Claude Code 转到 OpenCode，感觉一切良好。
+
+我不是程序员，也不需要高质量的代码。我更喜欢 OpenCode 的一些设计理念，Claude Code 限制太多，也公开表示不让我们用，那就不用好了。
+
+在 OpenCode 里 vibe 一些小玩意还是很够用的。
+
+我虽然不喜欢 vibe，但是需要实现一些原型假设的时候，vibe 还是极好的。
+
+更何况，都不了解 vibe 又怎么能说自己不喜欢呢？
+
+** Core Rules
+Just files and loops!
+
+Provide specific ~Best Practices~, ~Pros & Cons~, ~Red Flags~
+
+Keep it simple!
+
+GitHub：https://github.com/VandeeFeng/agent-conf
+
+** Maintain a hierarchical codebase map
+
+#+begin_quote
+Your best engineers don’t grep randomly. They have a mental map:
+- What each folder owns
+- What breaks if you touch it wrong
+- Where the real logic lives
+
+via: https://www.railly.dev/blog/intent-layer/
+#+end_quote
+
+SKILL: intent-layer https://github.com/crafter-station/skills
+
+如果每次都让 agent 探索一次项目代码，又不方便，又浪费时间。
+
+给项目代码提供一个持续更新的 codebase map 还是很必要的。
+
+这让 agent 在每次对话的时候在 context 里包含项目的基本信息和架构。
+
+also: https://github.com/affaan-m/everything-claude-code/blob/main/commands/update-codemaps.md
+
+** Prepared with clear purpose
+SKILL: Onboard https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md
+
+在开始具体的任务之前，给予 agent 明确的目标以及要涉及到的具体文件。
+
+明确清晰的描述自己的需求非常重要。DO and DONOT.
+
+对于大部分模型，英文 prompt 效果比中文好。
+
+** Just files and loops, no more complicated
+SKILL: Planning with Files https://github.com/OthmanAdi/planning-with-files
+
+在 agent 执行具体任务的时候，planning with files 这个框架的设计很值得学习。
+
+它用三个文件记录和规划 agent 的 task plan，非常简洁，效果拔群。
+
+结合我在 opencode 里的使用，我加上了 memory 部分：
+
+#+begin_src
+1. Use the `session-info` tool to retrieve the current conversation's [session-title]
+2. Run `date +%Y%m%d-%H%M%S` command to get the [YYYYMMDD-HHMMSS timestamp]
+   Create the `session folder`: `mkdir -p $HOME/.MemoryMD/$(basename $(git rev-parse --show-toplevel))/[YYYYMMDD-HHMMSS timestamp]-[session-title]`
+3. All generated markdown files should be created in that `session folder` you created in the project root directory.
+#+end_src
+
+** Handoff when stucked
+SKILL: handoff https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md
+
+有时候 agent 会卡住，陷入死循环，果断 handoff 重开，不用浪费时间。
+
+** Maintain memory
+我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
+
+memory-md skill: https://github.com/VandeeFeng/agent-conf/tree/main/skill/memory-md
+
+现在有许多针对 agent 的 memory 项目，但是我感觉这个概念本身也才刚出来，今年应该有更成熟的实现。
+
+暂时就用这个简单方案过渡一下。
+
+** Maintain useful patterns
+SKILL: https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md
+
+在解决实际的代码问题的时候，有许多方案是可以固定下来复用的。
+
+根据这个 SKILL，我设计了一个 learned skill。这个 SKILL 实际上是一个索引，在 description 部分加上 learned 的描述信息。
+
+learn skill 会根据当前会话的 session 固定下来有价值的 pattern，生成 skill，自动添加到 learned skill 的 description 部分，这样 agent 在加载的时候就可以知道有哪些 learned skill 了。
+
+不选择把 learned skill 生成单独的 skill 文件夹是因为它们的普遍性不强，也经常要更新和修改，不能完全当作 SKILL 来设计。
+
+Learn skill：https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/SKILL.md
+
+Learnd skill：https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/templates/SKILL.md
+
+** Maintain code quality and style
+SKILL: code-simplifier: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md
+
+LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，很容易犯病，编写重复性的代码，这是因为上下文多了，准确性下降。
+
+在每次 agent 写完代码之后进行代码审查和代码优化。
+
+在 prompt 上，亲测加上：这是别人的代码，效果会更好🤣。LLM 拍马屁的概率大幅下降。
