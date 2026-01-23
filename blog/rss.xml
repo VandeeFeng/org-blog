@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Fri, 23 Jan 2026 13:08:26 +0800</lastBuildDate>
+<lastBuildDate>Fri, 23 Jan 2026 15:00:48 +0800</lastBuildDate>
 <item>
   <title><![CDATA[My Agent Skill in OpenCode]]></title>
   <description><![CDATA[
@@ -12,32 +12,32 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org667703e">TL;DR</a></li>
-<li><a href="#org934364a">Agent Skills</a>
+<li><a href="#org9992a37">TL;DR</a></li>
+<li><a href="#orgad95aa2">Agent Skills</a>
 <ul>
-<li><a href="#orgc079a10">简介</a></li>
-<li><a href="#org0c2287a">SKILL 解决了什么问题</a></li>
-<li><a href="#orgcad3ac9">编写 SKILL 是在干什么</a></li>
+<li><a href="#org3a9c120">简介</a></li>
+<li><a href="#org9e1a72d">SKILL 解决了什么问题</a></li>
+<li><a href="#org55ec5c1">编写 SKILL 是在干什么</a></li>
 </ul>
 </li>
-<li><a href="#org0bff7be">My Agent Conf</a>
+<li><a href="#orgeb844ea">My Agent Conf</a>
 <ul>
-<li><a href="#orgafc5cc4">Core Rules</a></li>
-<li><a href="#orgb1cd5c2">Maintain a hierarchical codebase map</a></li>
-<li><a href="#org4938cb2">Prepared with clear purpose</a></li>
-<li><a href="#orga566291">Just files and loops, no more complicated</a></li>
-<li><a href="#org7bd188c">Handoff when stucked</a></li>
-<li><a href="#org3af23e6">Maintain memory</a></li>
-<li><a href="#org19ad567">Maintain useful patterns</a></li>
-<li><a href="#orgebf49a2">Maintain code quality and style</a></li>
+<li><a href="#org3cf1d4d">Core Rules</a></li>
+<li><a href="#org0f9eca0">Maintain a hierarchical codebase map</a></li>
+<li><a href="#org570c3b8">Prepared with clear purpose</a></li>
+<li><a href="#orge475a40">Just files and loops, no more complicated</a></li>
+<li><a href="#org4377307">Handoff when stucked</a></li>
+<li><a href="#orgd30c9c1">Maintain memory</a></li>
+<li><a href="#org58f891b">Maintain useful patterns</a></li>
+<li><a href="#org7fa3430">Maintain code quality and style</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org667703e" class="outline-2">
-<h2 id="org667703e">TL;DR</h2>
-<div class="outline-text-2" id="text-org667703e">
+<div id="outline-container-org9992a37" class="outline-2">
+<h2 id="org9992a37">TL;DR</h2>
+<div class="outline-text-2" id="text-org9992a37">
 <p>
 虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
 </p>
@@ -51,13 +51,13 @@ Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口�
 </p>
 </div>
 </div>
-<div id="outline-container-org934364a" class="outline-2">
-<h2 id="org934364a">Agent Skills</h2>
-<div class="outline-text-2" id="text-org934364a">
+<div id="outline-container-orgad95aa2" class="outline-2">
+<h2 id="orgad95aa2">Agent Skills</h2>
+<div class="outline-text-2" id="text-orgad95aa2">
 </div>
-<div id="outline-container-orgc079a10" class="outline-3">
-<h3 id="orgc079a10">简介</h3>
-<div class="outline-text-3" id="text-orgc079a10">
+<div id="outline-container-org3a9c120" class="outline-3">
+<h3 id="org3a9c120">简介</h3>
+<div class="outline-text-3" id="text-org3a9c120">
 <p>
 <a href="https://github.com/agentskills/agentskills">agentskills/agentskills</a> 是前段时间 <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)</a> Claude 开源的。
 </p>
@@ -97,9 +97,9 @@ SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、tem
 </p>
 </div>
 </div>
-<div id="outline-container-org0c2287a" class="outline-3">
-<h3 id="org0c2287a">SKILL 解决了什么问题</h3>
-<div class="outline-text-3" id="text-org0c2287a">
+<div id="outline-container-org9e1a72d" class="outline-3">
+<h3 id="org9e1a72d">SKILL 解决了什么问题</h3>
+<div class="outline-text-3" id="text-org9e1a72d">
 <p>
 MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
 </p>
@@ -113,9 +113,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </p>
 </div>
 </div>
-<div id="outline-container-orgcad3ac9" class="outline-3">
-<h3 id="orgcad3ac9">编写 SKILL 是在干什么</h3>
-<div class="outline-text-3" id="text-orgcad3ac9">
+<div id="outline-container-org55ec5c1" class="outline-3">
+<h3 id="org55ec5c1">编写 SKILL 是在干什么</h3>
+<div class="outline-text-3" id="text-org55ec5c1">
 <p>
 当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
 </p>
@@ -138,9 +138,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </div>
 </div>
 </div>
-<div id="outline-container-org0bff7be" class="outline-2">
-<h2 id="org0bff7be">My Agent Conf</h2>
-<div class="outline-text-2" id="text-org0bff7be">
+<div id="outline-container-orgeb844ea" class="outline-2">
+<h2 id="orgeb844ea">My Agent Conf</h2>
+<div class="outline-text-2" id="text-orgeb844ea">
 <p>
 下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
 </p>
@@ -165,9 +165,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 更何况，都不了解 vibe 又怎么能说自己不喜欢呢？
 </p>
 </div>
-<div id="outline-container-orgafc5cc4" class="outline-3">
-<h3 id="orgafc5cc4">Core Rules</h3>
-<div class="outline-text-3" id="text-orgafc5cc4">
+<div id="outline-container-org3cf1d4d" class="outline-3">
+<h3 id="org3cf1d4d">Core Rules</h3>
+<div class="outline-text-3" id="text-org3cf1d4d">
 <p>
 Just files and loops!
 </p>
@@ -179,15 +179,11 @@ Provide specific <code>Best Practices</code>, <code>Pros &amp; Cons</code>, <cod
 <p>
 Keep it simple!
 </p>
-
-<p>
-GitHub：<a href="https://github.com/VandeeFeng/agent-conf">https://github.com/VandeeFeng/agent-conf</a>
-</p>
 </div>
 </div>
-<div id="outline-container-orgb1cd5c2" class="outline-3">
-<h3 id="orgb1cd5c2">Maintain a hierarchical codebase map</h3>
-<div class="outline-text-3" id="text-orgb1cd5c2">
+<div id="outline-container-org0f9eca0" class="outline-3">
+<h3 id="org0f9eca0">Maintain a hierarchical codebase map</h3>
+<div class="outline-text-3" id="text-org0f9eca0">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -208,7 +204,7 @@ SKILL: intent-layer <a href="https://github.com/crafter-station/skills">https://
 </p>
 
 <p>
-如果每次都让 agent 探索一次项目代码，又不方便，又浪费时间。
+如果每次新的 session 都让 agent 探索一次项目代码，又不方便，又浪费时间。
 </p>
 
 <p>
@@ -224,9 +220,9 @@ also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/comm
 </p>
 </div>
 </div>
-<div id="outline-container-org4938cb2" class="outline-3">
-<h3 id="org4938cb2">Prepared with clear purpose</h3>
-<div class="outline-text-3" id="text-org4938cb2">
+<div id="outline-container-org570c3b8" class="outline-3">
+<h3 id="org570c3b8">Prepared with clear purpose</h3>
+<div class="outline-text-3" id="text-org570c3b8">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -244,9 +240,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </p>
 </div>
 </div>
-<div id="outline-container-orga566291" class="outline-3">
-<h3 id="orga566291">Just files and loops, no more complicated</h3>
-<div class="outline-text-3" id="text-orga566291">
+<div id="outline-container-orge475a40" class="outline-3">
+<h3 id="orge475a40">Just files and loops, no more complicated</h3>
+<div class="outline-text-3" id="text-orge475a40">
 <p>
 SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a>
 </p>
@@ -272,9 +268,9 @@ SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-f
 </div>
 </div>
 </div>
-<div id="outline-container-org7bd188c" class="outline-3">
-<h3 id="org7bd188c">Handoff when stucked</h3>
-<div class="outline-text-3" id="text-org7bd188c">
+<div id="outline-container-org4377307" class="outline-3">
+<h3 id="org4377307">Handoff when stucked</h3>
+<div class="outline-text-3" id="text-org4377307">
 <p>
 SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a>
 </p>
@@ -284,15 +280,11 @@ SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/comma
 </p>
 </div>
 </div>
-<div id="outline-container-org3af23e6" class="outline-3">
-<h3 id="org3af23e6">Maintain memory</h3>
-<div class="outline-text-3" id="text-org3af23e6">
+<div id="outline-container-orgd30c9c1" class="outline-3">
+<h3 id="orgd30c9c1">Maintain memory</h3>
+<div class="outline-text-3" id="text-orgd30c9c1">
 <p>
 我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
-</p>
-
-<p>
-memory-md skill: <a href="https://github.com/VandeeFeng/agent-conf/tree/main/skill/memory-md">https://github.com/VandeeFeng/agent-conf/tree/main/skill/memory-md</a>
 </p>
 
 <p>
@@ -302,11 +294,148 @@ memory-md skill: <a href="https://github.com/VandeeFeng/agent-conf/tree/main/ski
 <p>
 暂时就用这个简单方案过渡一下。
 </p>
+
+<div class="org-src-container">
+<pre class="src src-nil">---
+name: memory-md
+description: Memory management system for storing and retrieving conversation history and context.When user ask anything about project's memory, automatically use this skill.
+---
+
+Memory management system for storing and retrieving conversation history and context.
+
+
+## Parse guide
+
+Parse [quest] as follows:
+
+1. **List command**: If [quest] starts with `-l` or `--list`
+   - List recent memory files
+
+2. **Search command**: If [quest] starts with `-s` or `--search`
+   - All remaining arguments are search keywords (comma-separated or space-separated)
+   - Example: `-s apple,banana` or `-s apple banana` → keywords: ["apple", "banana"]
+
+3. **Default search**: If no flags provided, treat entire [quest] as search keywords
+   - Example: `authentication jwt` → keywords: ["authentication", "jwt"]
+
+4. **No results**: If no keywords provided in [quest] after parsing
+   - Ask user: "What keywords are you searching for?"
+
+## Memory File Location
+
+Memory files are stored in `$HOME/.MemoryMD/` with the following structure:
+
+```
+$HOME/.MemoryMD/
+├── [project-name]/                     # Project folders
+│   ├── YYYYMMDD-HHMMSS-[session-title]/  # Session folders
+│   │   ├── task_plan.md                # Task planning document
+│   │   ├── findings.md                 # Research findings
+│   │   └── progress.md                 # Progress tracking
+└── handoffs/                           # Handoff summaries
+    └── YYYYMMDD-HHMMSS-[slug].md      # Session handoff files
+```
+
+Examples:
+- `agent-conf/20250120-143025-implement-auth/` - Session folder
+- `handoffs/20250120-143025-fix-issue-42.md` - Handoff file
+
+## Commands
+
+### --list or -l
+
+List the 20 most recent memory folders/files, sorted by timestamp (newest first).
+
+**Bash command:**
+```bash
+memory_dir="$HOME/.MemoryMD"
+
+# List session folders grouped by project (sorted newest first)
+find "$memory_dir" -maxdepth 2 -type d -name "????????-??????-*" | sort -r | head -20 | awk -F/ '{
+    project = $(NF-1)
+    foldername = $NF
+    timestamp = substr(foldername, 1, 15)
+    title = substr(foldername, 17)
+    if (project != prev_project) {
+        if (prev_project != "") print ""
+        print "**" project "**"
+        prev_project = project
+    }
+    print "  [" timestamp "] " title
+}'
+
+# List handoff files (sorted newest first)
+echo ""
+echo "Recent handoffs:"
+find "$memory_dir/handoffs" -maxdepth 1 -type f -name "*.md" | sort -r | head -20 | while read file; do
+    filename=$(basename "$file")
+    title=${filename#*-}
+    title=${title%.md}
+    echo "$title - $filename"
+done
+```
+
+**Output format:**
+```
+**agent-conf:**
+  [20250120-143025] implement-auth
+  [20250119-091530] fix-issue-42
+
+**another-project:**
+  [20250118-1530] api-handler
+
+Recent handoffs:
+  fix-issue-42 - 20250120-143025-fix-issue-42.md
+  implement-auth - 20250119-091530-implement-auth.md
+```
+
+### --search or -s
+
+Search memory files for keywords in both Chinese and English.
+
+Use your Glob and Grep tools first.
+
+First perform exact keyword search. If no results found, search for related similar keywords.
+
+If still no results after all searches, ask user: "What keywords are you searching for?"
+
+**Output Examples:**
+
+```md
+Search query: [keywords]
+
+## Found in: agent-conf/20250120-143025-implement-auth/task_plan.md
+[summary of your findings]
+
+## Found in: agent-conf/20250120-143025-implement-auth/findings.md
+[summary of your findings]
+```
+
+Bash commands below serve as auxiliary reference:
+
+**Bash command:**
+```bash
+memory_dir="$HOME/.MemoryMD"
+
+# Search for keywords in all markdown files
+rg -i -t md "$keywords" "$memory_dir" --follow
+
+# Alternative: Search with context (2 lines before and after matches)
+rg -i -C 2 -t md "$keywords" "$memory_dir" --follow
+```
+
+**Options:**
+- `-i`: Case-insensitive search
+- `-C N`: Show N lines of context before and after matches
+- `-t md`: Search only markdown files
+- `--follow`: Follow symbolic links
+</pre>
 </div>
 </div>
-<div id="outline-container-org19ad567" class="outline-3">
-<h3 id="org19ad567">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-org19ad567">
+</div>
+<div id="outline-container-org58f891b" class="outline-3">
+<h3 id="org58f891b">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-org58f891b">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -328,17 +457,269 @@ learn skill 会根据当前会话的 session 固定下来有价值的 pattern，
 </p>
 
 <p>
-Learn skill：<a href="https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/SKILL.md">https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/SKILL.md</a>
+Learn skill：
 </p>
 
+<div class="org-src-container">
+<pre class="src src-nil">---
+name: learn
+description: &gt;
+  Extract reusable patterns from sessions and create dynamic skills. Use when you need to save learned patterns, error resolutions, debugging techniques, or project-specific knowledge to ~/.config/opencode/skill/learned/.
+  Trigger, User asks to extract learning, save patterns, or run /learn command.
+  All learned skills in `~/.config/opencode/skill/learned/` are automatically discoverable
+  `~/.config/opencode/skill/learned/SKILL.md` is the index off all learned skills
+---
+
+# Learn Skill
+
+Dynamically extract and store reusable patterns as skills.
+
+## Quick Start
+
+When user wants to extract learning from current session:
+
+1. Review session context for extractable patterns
+2. Identify the most valuable/reusable insight,list them
+3. Ask user for confirmation before creating skill file
+4. Create `~/.config/opencode/skill/learned/[skill-name].md` - Use [templates/learned-skill-template.md](templates/learned-skill-template.md) as reference
+5. Update `~/.config/opencode/skill/learned/SKILL.md` to include the new skill - Use  [templates/SKILL.md](templates/SKILL.md) as reference
+6. Run `ls -1 ~/.config/opencode/skill/learned/*.md 2&gt;/dev/null | grep -v SKILL.md | wc -l`, update the total skills number.
+
+## What to Extract
+
+### 1. Error Resolution Patterns
+- What error occurred?
+- What was the root cause?
+- What fixed it?
+- Is this reusable for similar errors?
+
+### 2. Debugging Techniques
+- Non-obvious debugging steps
+- Tool combinations that worked
+- Diagnostic patterns
+
+### 3. Workarounds
+- Library quirks
+- API limitations
+- Version-specific fixes
+
+### 4. Project-Specific Patterns
+- Codebase conventions discovered
+- Architecture decisions made
+- Integration patterns
+
+## Quality Guidelines
+
+### DO Extract:
+- Error patterns that occur more than once
+- Non-obvious debugging techniques
+- Workarounds for library quirks
+- Architecture decisions and their rationale
+- Integration patterns across services/tools
+
+### DO NOT Extract:
+- Trivial fixes (typos, simple syntax errors)
+- One-time issues (specific API outages, temporary glitches)
+- Obvious solutions (standard library usage without special context)
+- Information already well-documented elsewhere
+
+### Tips for Quality Skills
+1. **Be Specific**: Narrow trigger conditions = better matching
+2. **Include Examples**: Code snippets make patterns actionable
+3. **Document Why**: Explain the problem, not just the solution
+4. **Keep Focused**: One pattern per skill
+5. **Use Descriptive Names**: Names should indicate what the skill solves
+
+
+## Skill File Format
+
+### Individual Skill Files
+
+Use the template file [templates/learned-skill-template.md](templates/learned-skill-template.md) as the base for all learned skills.
+
+Key sections:
+- **Frontmatter**: name and description (critical for skill discovery)
+- **Problem**: What specific issue this solves
+- **Solution**: Actionable steps to implement
+- **Example**: Code snippet if applicable
+- **When to Use**: Trigger conditions for activation
+- **Related Patterns**: Cross-references to other skills
+
+### SKILL.md
+
+Use the template file [templates/SKILL.md](templates/SKILL.md) as the base for maintaining the learned skills index.
+
+Purpose:
+- Provides a categorized listing of all learned skills
+- Enables easy browsing and discovery of patterns
+- Tracks skill count and update timestamp
+
+Update SKILL.md whenever saving a new skill.
+
+## Extraction Process
+
+### Step 1: Review Session Context
+
+Use `session-info` tool to get session details if needed.
+
+Use `memory-md` skill to find relevant memories.
+
+Look for:
+- Repeated error fixes
+- Non-obvious solutions
+- Workarounds discovered
+- Best practices learned
+
+### Step 2: Identify Pattern
+
+Ask yourself:
+- Is this reusable? (Will save time in future sessions)
+- Is this non-trivial? (Not typos or simple syntax errors)
+- Is this generalizable? (Not one-time issues)
+
+Prioritize patterns that:
+- Solve common problems
+- Apply across multiple projects
+- Document non-obvious solutions
+
+### Step 3: Draft Skill
+
+Use the skill file format above.
+
+**Naming Convention:**
+- Use kebab-case for skill names
+- Make names descriptive but concise
+- Example: `async-error-handling-pattern`, `docker-volume-permission-fix`
+
+**Frontmatter:**
+```yaml
+---
+name: [skill-name]
+description: Use when [trigger conditions]. Covers [specific problem/solution].
+---
+```
+
+The description is critical - it's what helps the skill system know when to load this skill.
+
+### Step 4: Validate
+
+Before presenting to user:
+- Check that the skill has clear trigger conditions
+- Ensure the solution is actionable
+- Verify code examples are correct
+- Confirm the pattern is truly reusable
+
+### Step 5: Present and Save
+
+Show the user:
+1. Pattern name
+2. Brief description of what was extracted
+3. Why it's valuable
+
+Ask: "Save this pattern to learned skills? (y/n)"
+
+If yes, save to `~/.config/opencode/skill/learned/[skill-name].md`
+
+### Step 6: Update `learned/SKILL.md`
+
+1. Update the description of the new learned skill.Append this part: [name of learned skill 1] - [description of learned skill 1]
+
+example YAML of `learned/SKILL.md`:
+
+```md
+---
+name: learned
+description: &gt;
+  learned skill is a collection of learned skill user create.It's a index of all learned skills.
+  We have these learned skill below:
+  [name of learned skill 1] - [description of learned skill 1]
+  [name of learned skill 1] - [description of learned skill 2]
+---
+```
+
+2. Update the new skill to the index section.
+
+## Common Use Cases
+
+### User runs /learn command
+```
+User: /learn
+```
+1. Review session for extractable patterns
+2. Present candidate patterns to user
+3. Ask which to save
+4. Save selected patterns
+
+### User asks to extract specific topic
+```
+User: Extract what we learned about async error handling
+```
+1. Search session context for async/error patterns
+2. Compile findings
+3. Generate skill file
+4. Present and save
+
+### User wants to capture architecture decision
+```
+User: Save the event sourcing pattern we used
+```
+1. Extract the pattern details
+2. Document rationale and trade-offs
+3. Create skill with example code
+4. Present and save
+
+## Integration with Other Skills
+
+This skill works well with:
+- **session-info**: For retrieving session metadata
+- **memory-md**: For accessing related patterns from past sessions
+- **skill-creator**: For creating more complex, bundled skills
+</pre>
+</div>
+
 <p>
-Learnd skill：<a href="https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/templates/SKILL.md">https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/templates/SKILL.md</a>
+Learnd skill：
 </p>
+
+<div class="org-src-container">
+<pre class="src src-nil">---
+name: learned
+description: &gt;
+  learned skill is a collection of learned skill user create.It's a index of all learned skills.
+  We have these learned skill below:
+  [name of learned skill 1] - [description of learned skill 1]
+  [name of learned skill 1] - [description of learned skill 2]
+---
+
+# Learned Skills Index
+
+You can read the skill file to load the skill you need.
+
+Treat these skill file below as `learned skill`'s references.
+
+## Error Patterns
+- [skill-1.md](skill-1.md)
+- [skill-2.md](skill-2.md)
+
+## Debugging Techniques
+- [skill-3.md](skill-3.md)
+
+## Workarounds
+- [skill-4.md](skill-4.md)
+
+## Project-Specific
+- [skill-5.md](skill-5.md)
+
+# Statistics
+Total skills: [count]
+Last updated: [date]
+</pre>
 </div>
 </div>
-<div id="outline-container-orgebf49a2" class="outline-3">
-<h3 id="orgebf49a2">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-orgebf49a2">
+</div>
+<div id="outline-container-org7fa3430" class="outline-3">
+<h3 id="org7fa3430">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org7fa3430">
 <p>
 SKILL: code-simplifier: <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
 </p>

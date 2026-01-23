@@ -69,8 +69,6 @@ Provide specific ~Best Practices~, ~Pros & Cons~, ~Red Flags~
 
 Keep it simple!
 
-GitHub：https://github.com/VandeeFeng/agent-conf
-
 ** Maintain a hierarchical codebase map
 
 #+begin_quote
@@ -84,7 +82,7 @@ via: https://www.railly.dev/blog/intent-layer/
 
 SKILL: intent-layer https://github.com/crafter-station/skills
 
-如果每次都让 agent 探索一次项目代码，又不方便，又浪费时间。
+如果每次新的 session 都让 agent 探索一次项目代码，又不方便，又浪费时间。
 
 给项目代码提供一个持续更新的 codebase map 还是很必要的。
 
@@ -125,11 +123,145 @@ SKILL: handoff https://github.com/mitsuhiko/agent-stuff/blob/main/commands/hando
 ** Maintain memory
 我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
 
-memory-md skill: https://github.com/VandeeFeng/agent-conf/tree/main/skill/memory-md
-
 现在有许多针对 agent 的 memory 项目，但是我感觉这个概念本身也才刚出来，今年应该有更成熟的实现。
 
 暂时就用这个简单方案过渡一下。
+
+#+begin_src
+---
+name: memory-md
+description: Memory management system for storing and retrieving conversation history and context.When user ask anything about project's memory, automatically use this skill.
+---
+
+Memory management system for storing and retrieving conversation history and context.
+
+
+## Parse guide
+
+Parse [quest] as follows:
+
+1. **List command**: If [quest] starts with `-l` or `--list`
+   - List recent memory files
+
+2. **Search command**: If [quest] starts with `-s` or `--search`
+   - All remaining arguments are search keywords (comma-separated or space-separated)
+   - Example: `-s apple,banana` or `-s apple banana` → keywords: ["apple", "banana"]
+
+3. **Default search**: If no flags provided, treat entire [quest] as search keywords
+   - Example: `authentication jwt` → keywords: ["authentication", "jwt"]
+
+4. **No results**: If no keywords provided in [quest] after parsing
+   - Ask user: "What keywords are you searching for?"
+
+## Memory File Location
+
+Memory files are stored in `$HOME/.MemoryMD/` with the following structure:
+
+```
+$HOME/.MemoryMD/
+├── [project-name]/                     # Project folders
+│   ├── YYYYMMDD-HHMMSS-[session-title]/  # Session folders
+│   │   ├── task_plan.md                # Task planning document
+│   │   ├── findings.md                 # Research findings
+│   │   └── progress.md                 # Progress tracking
+└── handoffs/                           # Handoff summaries
+    └── YYYYMMDD-HHMMSS-[slug].md      # Session handoff files
+```
+
+Examples:
+- `agent-conf/20250120-143025-implement-auth/` - Session folder
+- `handoffs/20250120-143025-fix-issue-42.md` - Handoff file
+
+## Commands
+
+### --list or -l
+
+List the 20 most recent memory folders/files, sorted by timestamp (newest first).
+
+**Bash command:**
+```bash
+memory_dir="$HOME/.MemoryMD"
+
+# List session folders grouped by project (sorted newest first)
+find "$memory_dir" -maxdepth 2 -type d -name "????????-??????-*" | sort -r | head -20 | awk -F/ '{
+    project = $(NF-1)
+    foldername = $NF
+    timestamp = substr(foldername, 1, 15)
+    title = substr(foldername, 17)
+    if (project != prev_project) {
+        if (prev_project != "") print ""
+        print "**" project "**"
+        prev_project = project
+    }
+    print "  [" timestamp "] " title
+}'
+
+# List handoff files (sorted newest first)
+echo ""
+echo "Recent handoffs:"
+find "$memory_dir/handoffs" -maxdepth 1 -type f -name "*.md" | sort -r | head -20 | while read file; do
+    filename=$(basename "$file")
+    title=${filename#*-}
+    title=${title%.md}
+    echo "$title - $filename"
+done
+```
+
+**Output format:**
+```
+**agent-conf:**
+  [20250120-143025] implement-auth
+  [20250119-091530] fix-issue-42
+
+**another-project:**
+  [20250118-1530] api-handler
+
+Recent handoffs:
+  fix-issue-42 - 20250120-143025-fix-issue-42.md
+  implement-auth - 20250119-091530-implement-auth.md
+```
+
+### --search or -s
+
+Search memory files for keywords in both Chinese and English.
+
+Use your Glob and Grep tools first.
+
+First perform exact keyword search. If no results found, search for related similar keywords.
+
+If still no results after all searches, ask user: "What keywords are you searching for?"
+
+**Output Examples:**
+
+```md
+Search query: [keywords]
+
+## Found in: agent-conf/20250120-143025-implement-auth/task_plan.md
+[summary of your findings]
+
+## Found in: agent-conf/20250120-143025-implement-auth/findings.md
+[summary of your findings]
+```
+
+Bash commands below serve as auxiliary reference:
+
+**Bash command:**
+```bash
+memory_dir="$HOME/.MemoryMD"
+
+# Search for keywords in all markdown files
+rg -i -t md "$keywords" "$memory_dir" --follow
+
+# Alternative: Search with context (2 lines before and after matches)
+rg -i -C 2 -t md "$keywords" "$memory_dir" --follow
+```
+
+**Options:**
+- `-i`: Case-insensitive search
+- `-C N`: Show N lines of context before and after matches
+- `-t md`: Search only markdown files
+- `--follow`: Follow symbolic links
+#+end_src
 
 ** Maintain useful patterns
 SKILL: https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md
@@ -142,9 +274,259 @@ learn skill 会根据当前会话的 session 固定下来有价值的 pattern，
 
 不选择把 learned skill 生成单独的 skill 文件夹是因为它们的普遍性不强，也经常要更新和修改，不能完全当作 SKILL 来设计。
 
-Learn skill：https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/SKILL.md
+Learn skill：
 
-Learnd skill：https://github.com/VandeeFeng/agent-conf/blob/main/skill/learn/templates/SKILL.md
+#+begin_src
+---
+name: learn
+description: >
+  Extract reusable patterns from sessions and create dynamic skills. Use when you need to save learned patterns, error resolutions, debugging techniques, or project-specific knowledge to ~/.config/opencode/skill/learned/.
+  Trigger, User asks to extract learning, save patterns, or run /learn command.
+  All learned skills in `~/.config/opencode/skill/learned/` are automatically discoverable
+  `~/.config/opencode/skill/learned/SKILL.md` is the index off all learned skills
+---
+
+# Learn Skill
+
+Dynamically extract and store reusable patterns as skills.
+
+## Quick Start
+
+When user wants to extract learning from current session:
+
+1. Review session context for extractable patterns
+2. Identify the most valuable/reusable insight,list them
+3. Ask user for confirmation before creating skill file
+4. Create `~/.config/opencode/skill/learned/[skill-name].md` - Use [templates/learned-skill-template.md](templates/learned-skill-template.md) as reference
+5. Update `~/.config/opencode/skill/learned/SKILL.md` to include the new skill - Use  [templates/SKILL.md](templates/SKILL.md) as reference
+6. Run `ls -1 ~/.config/opencode/skill/learned/*.md 2>/dev/null | grep -v SKILL.md | wc -l`, update the total skills number.
+
+## What to Extract
+
+### 1. Error Resolution Patterns
+- What error occurred?
+- What was the root cause?
+- What fixed it?
+- Is this reusable for similar errors?
+
+### 2. Debugging Techniques
+- Non-obvious debugging steps
+- Tool combinations that worked
+- Diagnostic patterns
+
+### 3. Workarounds
+- Library quirks
+- API limitations
+- Version-specific fixes
+
+### 4. Project-Specific Patterns
+- Codebase conventions discovered
+- Architecture decisions made
+- Integration patterns
+
+## Quality Guidelines
+
+### DO Extract:
+- Error patterns that occur more than once
+- Non-obvious debugging techniques
+- Workarounds for library quirks
+- Architecture decisions and their rationale
+- Integration patterns across services/tools
+
+### DO NOT Extract:
+- Trivial fixes (typos, simple syntax errors)
+- One-time issues (specific API outages, temporary glitches)
+- Obvious solutions (standard library usage without special context)
+- Information already well-documented elsewhere
+
+### Tips for Quality Skills
+1. **Be Specific**: Narrow trigger conditions = better matching
+2. **Include Examples**: Code snippets make patterns actionable
+3. **Document Why**: Explain the problem, not just the solution
+4. **Keep Focused**: One pattern per skill
+5. **Use Descriptive Names**: Names should indicate what the skill solves
+
+
+## Skill File Format
+
+### Individual Skill Files
+
+Use the template file [templates/learned-skill-template.md](templates/learned-skill-template.md) as the base for all learned skills.
+
+Key sections:
+- **Frontmatter**: name and description (critical for skill discovery)
+- **Problem**: What specific issue this solves
+- **Solution**: Actionable steps to implement
+- **Example**: Code snippet if applicable
+- **When to Use**: Trigger conditions for activation
+- **Related Patterns**: Cross-references to other skills
+
+### SKILL.md
+
+Use the template file [templates/SKILL.md](templates/SKILL.md) as the base for maintaining the learned skills index.
+
+Purpose:
+- Provides a categorized listing of all learned skills
+- Enables easy browsing and discovery of patterns
+- Tracks skill count and update timestamp
+
+Update SKILL.md whenever saving a new skill.
+
+## Extraction Process
+
+### Step 1: Review Session Context
+
+Use `session-info` tool to get session details if needed.
+
+Use `memory-md` skill to find relevant memories.
+
+Look for:
+- Repeated error fixes
+- Non-obvious solutions
+- Workarounds discovered
+- Best practices learned
+
+### Step 2: Identify Pattern
+
+Ask yourself:
+- Is this reusable? (Will save time in future sessions)
+- Is this non-trivial? (Not typos or simple syntax errors)
+- Is this generalizable? (Not one-time issues)
+
+Prioritize patterns that:
+- Solve common problems
+- Apply across multiple projects
+- Document non-obvious solutions
+
+### Step 3: Draft Skill
+
+Use the skill file format above.
+
+**Naming Convention:**
+- Use kebab-case for skill names
+- Make names descriptive but concise
+- Example: `async-error-handling-pattern`, `docker-volume-permission-fix`
+
+**Frontmatter:**
+```yaml
+---
+name: [skill-name]
+description: Use when [trigger conditions]. Covers [specific problem/solution].
+---
+```
+
+The description is critical - it's what helps the skill system know when to load this skill.
+
+### Step 4: Validate
+
+Before presenting to user:
+- Check that the skill has clear trigger conditions
+- Ensure the solution is actionable
+- Verify code examples are correct
+- Confirm the pattern is truly reusable
+
+### Step 5: Present and Save
+
+Show the user:
+1. Pattern name
+2. Brief description of what was extracted
+3. Why it's valuable
+
+Ask: "Save this pattern to learned skills? (y/n)"
+
+If yes, save to `~/.config/opencode/skill/learned/[skill-name].md`
+
+### Step 6: Update `learned/SKILL.md`
+
+1. Update the description of the new learned skill.Append this part: [name of learned skill 1] - [description of learned skill 1]
+
+example YAML of `learned/SKILL.md`:
+
+```md
+---
+name: learned
+description: >
+  learned skill is a collection of learned skill user create.It's a index of all learned skills.
+  We have these learned skill below:
+  [name of learned skill 1] - [description of learned skill 1]
+  [name of learned skill 1] - [description of learned skill 2]
+---
+```
+
+2. Update the new skill to the index section.
+
+## Common Use Cases
+
+### User runs /learn command
+```
+User: /learn
+```
+1. Review session for extractable patterns
+2. Present candidate patterns to user
+3. Ask which to save
+4. Save selected patterns
+
+### User asks to extract specific topic
+```
+User: Extract what we learned about async error handling
+```
+1. Search session context for async/error patterns
+2. Compile findings
+3. Generate skill file
+4. Present and save
+
+### User wants to capture architecture decision
+```
+User: Save the event sourcing pattern we used
+```
+1. Extract the pattern details
+2. Document rationale and trade-offs
+3. Create skill with example code
+4. Present and save
+
+## Integration with Other Skills
+
+This skill works well with:
+- **session-info**: For retrieving session metadata
+- **memory-md**: For accessing related patterns from past sessions
+- **skill-creator**: For creating more complex, bundled skills
+#+end_src
+
+Learnd skill：
+
+#+begin_src
+---
+name: learned
+description: >
+  learned skill is a collection of learned skill user create.It's a index of all learned skills.
+  We have these learned skill below:
+  [name of learned skill 1] - [description of learned skill 1]
+  [name of learned skill 1] - [description of learned skill 2]
+---
+
+# Learned Skills Index
+
+You can read the skill file to load the skill you need.
+
+Treat these skill file below as `learned skill`'s references.
+
+## Error Patterns
+- [skill-1.md](skill-1.md)
+- [skill-2.md](skill-2.md)
+
+## Debugging Techniques
+- [skill-3.md](skill-3.md)
+
+## Workarounds
+- [skill-4.md](skill-4.md)
+
+## Project-Specific
+- [skill-5.md](skill-5.md)
+
+# Statistics
+Total skills: [count]
+Last updated: [date]
+#+end_src
 
 ** Maintain code quality and style
 SKILL: code-simplifier: https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md
