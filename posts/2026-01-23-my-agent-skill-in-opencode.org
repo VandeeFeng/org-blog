@@ -578,3 +578,105 @@ LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，�
 在每次 agent 写完代码之后进行代码审查和代码优化。
 
 在 prompt 上，亲测加上：这是别人的代码，效果会更好🤣。LLM 拍马屁的概率大幅下降。
+
+* OpenCode in Emacs
+在 Emacs 里现在和 OpenCode 交互最方便的就是 [[https://github.com/xenodium/agent-shell][agent-shell]] 了。
+
+在终端里用 OpenCode 最不方便的就是不能直接选择文本，agent-shell 解决了这个问题:
+
+~agent-shell-send-dwim~ 、 ~agent-shell-send-file~ 、 ~agent-shell-send-region~ 、 ~agent-shell-insert-file~ 这几个原生的指令配置好快捷键就 OK 了。
+
+slash command 通过 Emacs 的自动补全，基本是无感切换。
+
+不足的地方就是，agent-shell 不会列出 OpenCode 的 subagent。
+
+所以我加了一些补丁来显示 subagent：
+
+#+begin_src elisp
+(use-package agent-shell
+  :after evil
+  :config
+  (setq agent-shell-opencode-authentication
+        (agent-shell-opencode-make-authentication :none t))
+  ;; disable creating transcript file
+  (setq agent-shell-transcript-file-path-function nil)
+
+  ;; Evil state-specific RET behavior: insert mode = newline, normal mode = send
+  (evil-define-key 'insert agent-shell-mode-map (kbd "RET") #'newline)
+  (evil-define-key 'normal agent-shell-mode-map (kbd "RET") #'comint-send-input)
+  (evil-define-key 'normal agent-shell-mode-map (kbd "@") #'agent-shell-set-session-mode)
+
+  ;; Configure *agent-shell-diff* buffers to start in Emacs state
+  (add-hook 'diff-mode-hook
+            (lambda ()
+              (when (string-match-p "\\*agent-shell-diff\\*" (buffer-name))
+                (evil-emacs-state)))))
+
+;; Show subagents in available modes
+(defun agent-shell-opencode--get-subagent-description (agent-name)
+  "Get description for subagent AGENT-NAME from its config file."
+  (let* ((config-file (expand-file-name (format "%s.md" agent-name) "~/.config/opencode/agents/"))
+         (description
+          (when (file-exists-p config-file)
+            (with-temp-buffer
+              (insert-file-contents config-file)
+              (goto-char (point-min))
+              (when (re-search-forward "^description: \\(.*\\)$" nil t)
+                (match-string 1))))))
+    (or description "Subagent")))
+
+(defun agent-shell-opencode--list-subagents ()
+  "List all subagents using opencode agent list command.
+ Returns list of agent alists with :id, :name, :description."
+  (let* ((output (shell-command-to-string "opencode agent list"))
+         (lines (split-string output "\n"))
+         agents)
+    (dolist (line lines)
+      (when (string-match "^\\([^\s]+\\) (subagent)$" line)
+        (let* ((name (match-string 1 line))
+               (id name)
+               (description (agent-shell-opencode--get-subagent-description name)))
+          (push `((:id . ,id)
+                  (:name . ,name)
+                  (:description . ,description))
+                agents))))
+    (nreverse agents)))
+
+(defun agent-shell-opencode--merge-subagents-delayed ()
+  "Merge subagents into session modes after delay."
+  (run-with-timer
+   0.5 nil
+   (lambda ()
+     (when-let ((subagents (agent-shell-opencode--list-subagents))
+                ((> (length subagents) 0)))
+       (when-let ((session (map-elt agent-shell--state :session))
+                  (session-modes (map-elt session :modes)))
+         (let* ((subagent-modes (mapcar (lambda (a)
+                                          `((:id . ,(map-elt a :id))
+                                            (:name . ,(map-elt a :name))
+                                            (:description . ,(map-elt a :description))))
+                                        subagents))
+                (merged-modes (vconcat session-modes subagent-modes)))
+           (map-put! agent-shell--state :session
+                     (cons (cons :modes merged-modes)
+                           (assq-delete-all :modes session)))
+           (when (fboundp 'agent-shell--update-fragment)
+             (agent-shell--update-fragment
+              :state agent-shell--state
+              :block-id "available_modes"
+              :label-left (propertize "Available modes" 'font-lock-face 'font-lock-doc-markup-face)
+              :body (agent-shell--format-available-modes merged-modes)))))))))
+
+(defun agent-shell-opencode--around-initiate-session (orig-fun &rest args)
+  "Around advice for agent-shell--initiate-session."
+  (let* ((plist args)
+         (on-session-init (plist-get plist :on-session-init))
+         (new-on-session-init
+          (lambda ()
+            (funcall on-session-init)
+            (agent-shell-opencode--merge-subagents-delayed))))
+    (plist-put plist :on-session-init new-on-session-init)
+    (apply orig-fun plist)))
+
+(advice-add 'agent-shell--initiate-session :around #'agent-shell-opencode--around-initiate-session)
+#+end_src
