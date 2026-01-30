@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Fri, 30 Jan 2026 15:14:37 +0800</lastBuildDate>
+<lastBuildDate>Fri, 30 Jan 2026 20:07:25 +0800</lastBuildDate>
 <item>
   <title><![CDATA[My Agent Skill in OpenCode]]></title>
   <description><![CDATA[
@@ -12,33 +12,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org924dba0">TL;DR</a></li>
-<li><a href="#orgf5a0db1">Agent Skills</a>
+<li><a href="#org08035bd">TL;DR</a></li>
+<li><a href="#orgb4056ac">Agent Skills</a>
 <ul>
-<li><a href="#orgc808ed8">简介</a></li>
-<li><a href="#orgfe2ddb1">SKILL 解决了什么问题</a></li>
-<li><a href="#org679535e">编写 SKILL 是在干什么</a></li>
+<li><a href="#orgfa85c6b">简介</a></li>
+<li><a href="#org8b9d005">SKILL 解决了什么问题</a></li>
+<li><a href="#orgb62e01b">编写 SKILL 是在干什么</a></li>
 </ul>
 </li>
-<li><a href="#org79c36cb">My Agent Conf</a>
+<li><a href="#org684c210">My Agent Conf</a>
 <ul>
-<li><a href="#org317be93">Core Rules</a></li>
-<li><a href="#orgb0224f6">Maintain a hierarchical codebase map</a></li>
-<li><a href="#org08895b2">Prepared with clear purpose</a></li>
-<li><a href="#org41828c0">Just files and loops, no more complicated</a></li>
-<li><a href="#orge5478ca">Handoff when stucked</a></li>
-<li><a href="#org22658de">Maintain memory</a></li>
-<li><a href="#org449e222">Maintain useful patterns</a></li>
-<li><a href="#orgce41dbe">Maintain code quality and style</a></li>
+<li><a href="#orgac58cac">Core Rules</a></li>
+<li><a href="#org7a49b3d">Maintain a hierarchical codebase map</a></li>
+<li><a href="#orgca79ffb">Prepared with clear purpose</a></li>
+<li><a href="#org65e621d">Just files and loops, no more complicated</a></li>
+<li><a href="#orge63837e">Handoff when stucked</a></li>
+<li><a href="#org36659af">Maintain memory</a></li>
+<li><a href="#orga5abcad">Maintain useful patterns</a></li>
+<li><a href="#org3565d34">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#orge328cab">OpenCode in Emacs</a></li>
+<li><a href="#orgc2d61a3">OpenCode in Emacs</a></li>
+<li><a href="#org0c83527">Bubblewrap Sandbox</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org924dba0" class="outline-2">
-<h2 id="org924dba0">TL;DR</h2>
-<div class="outline-text-2" id="text-org924dba0">
+<div id="outline-container-org08035bd" class="outline-2">
+<h2 id="org08035bd">TL;DR</h2>
+<div class="outline-text-2" id="text-org08035bd">
 <p>
 虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
 </p>
@@ -52,13 +53,13 @@ Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口�
 </p>
 </div>
 </div>
-<div id="outline-container-orgf5a0db1" class="outline-2">
-<h2 id="orgf5a0db1">Agent Skills</h2>
-<div class="outline-text-2" id="text-orgf5a0db1">
+<div id="outline-container-orgb4056ac" class="outline-2">
+<h2 id="orgb4056ac">Agent Skills</h2>
+<div class="outline-text-2" id="text-orgb4056ac">
 </div>
-<div id="outline-container-orgc808ed8" class="outline-3">
-<h3 id="orgc808ed8">简介</h3>
-<div class="outline-text-3" id="text-orgc808ed8">
+<div id="outline-container-orgfa85c6b" class="outline-3">
+<h3 id="orgfa85c6b">简介</h3>
+<div class="outline-text-3" id="text-orgfa85c6b">
 <p>
 <a href="https://github.com/agentskills/agentskills">agentskills/agentskills</a> 是前段时间 <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)</a> Claude 开源的。
 </p>
@@ -98,9 +99,9 @@ SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、tem
 </p>
 </div>
 </div>
-<div id="outline-container-orgfe2ddb1" class="outline-3">
-<h3 id="orgfe2ddb1">SKILL 解决了什么问题</h3>
-<div class="outline-text-3" id="text-orgfe2ddb1">
+<div id="outline-container-org8b9d005" class="outline-3">
+<h3 id="org8b9d005">SKILL 解决了什么问题</h3>
+<div class="outline-text-3" id="text-org8b9d005">
 <p>
 MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
 </p>
@@ -114,9 +115,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </p>
 </div>
 </div>
-<div id="outline-container-org679535e" class="outline-3">
-<h3 id="org679535e">编写 SKILL 是在干什么</h3>
-<div class="outline-text-3" id="text-org679535e">
+<div id="outline-container-orgb62e01b" class="outline-3">
+<h3 id="orgb62e01b">编写 SKILL 是在干什么</h3>
+<div class="outline-text-3" id="text-orgb62e01b">
 <p>
 当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
 </p>
@@ -139,9 +140,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </div>
 </div>
 </div>
-<div id="outline-container-org79c36cb" class="outline-2">
-<h2 id="org79c36cb">My Agent Conf</h2>
-<div class="outline-text-2" id="text-org79c36cb">
+<div id="outline-container-org684c210" class="outline-2">
+<h2 id="org684c210">My Agent Conf</h2>
+<div class="outline-text-2" id="text-org684c210">
 <p>
 下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
 </p>
@@ -166,9 +167,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 再一个，不了解 vibe 又怎么能说自己不喜欢呢？
 </p>
 </div>
-<div id="outline-container-org317be93" class="outline-3">
-<h3 id="org317be93">Core Rules</h3>
-<div class="outline-text-3" id="text-org317be93">
+<div id="outline-container-orgac58cac" class="outline-3">
+<h3 id="orgac58cac">Core Rules</h3>
+<div class="outline-text-3" id="text-orgac58cac">
 <p>
 Just files and loops!
 </p>
@@ -182,9 +183,9 @@ Keep it simple!
 </p>
 </div>
 </div>
-<div id="outline-container-orgb0224f6" class="outline-3">
-<h3 id="orgb0224f6">Maintain a hierarchical codebase map</h3>
-<div class="outline-text-3" id="text-orgb0224f6">
+<div id="outline-container-org7a49b3d" class="outline-3">
+<h3 id="org7a49b3d">Maintain a hierarchical codebase map</h3>
+<div class="outline-text-3" id="text-org7a49b3d">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -221,9 +222,9 @@ also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/comm
 </p>
 </div>
 </div>
-<div id="outline-container-org08895b2" class="outline-3">
-<h3 id="org08895b2">Prepared with clear purpose</h3>
-<div class="outline-text-3" id="text-org08895b2">
+<div id="outline-container-orgca79ffb" class="outline-3">
+<h3 id="orgca79ffb">Prepared with clear purpose</h3>
+<div class="outline-text-3" id="text-orgca79ffb">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -241,9 +242,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </p>
 </div>
 </div>
-<div id="outline-container-org41828c0" class="outline-3">
-<h3 id="org41828c0">Just files and loops, no more complicated</h3>
-<div class="outline-text-3" id="text-org41828c0">
+<div id="outline-container-org65e621d" class="outline-3">
+<h3 id="org65e621d">Just files and loops, no more complicated</h3>
+<div class="outline-text-3" id="text-org65e621d">
 <p>
 SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a>
 </p>
@@ -319,9 +320,9 @@ session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 ses
 </div>
 </div>
 </div>
-<div id="outline-container-orge5478ca" class="outline-3">
-<h3 id="orge5478ca">Handoff when stucked</h3>
-<div class="outline-text-3" id="text-orge5478ca">
+<div id="outline-container-orge63837e" class="outline-3">
+<h3 id="orge63837e">Handoff when stucked</h3>
+<div class="outline-text-3" id="text-orge63837e">
 <p>
 SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a>
 </p>
@@ -331,9 +332,9 @@ SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/comma
 </p>
 </div>
 </div>
-<div id="outline-container-org22658de" class="outline-3">
-<h3 id="org22658de">Maintain memory</h3>
-<div class="outline-text-3" id="text-org22658de">
+<div id="outline-container-org36659af" class="outline-3">
+<h3 id="org36659af">Maintain memory</h3>
+<div class="outline-text-3" id="text-org36659af">
 <p>
 我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
 </p>
@@ -484,9 +485,9 @@ rg -i -C 2 -t md "$keywords" "$memory_dir" --follow
 </div>
 </div>
 </div>
-<div id="outline-container-org449e222" class="outline-3">
-<h3 id="org449e222">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-org449e222">
+<div id="outline-container-orga5abcad" class="outline-3">
+<h3 id="orga5abcad">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-orga5abcad">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -767,9 +768,9 @@ Last updated: [date]
 </div>
 </div>
 </div>
-<div id="outline-container-orgce41dbe" class="outline-3">
-<h3 id="orgce41dbe">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-orgce41dbe">
+<div id="outline-container-org3565d34" class="outline-3">
+<h3 id="org3565d34">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org3565d34">
 <p>
 SKILL: code-simplifier: <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
 </p>
@@ -788,9 +789,9 @@ LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，�
 </div>
 </div>
 </div>
-<div id="outline-container-orge328cab" class="outline-2">
-<h2 id="orge328cab">OpenCode in Emacs</h2>
-<div class="outline-text-2" id="text-orge328cab">
+<div id="outline-container-orgc2d61a3" class="outline-2">
+<h2 id="orgc2d61a3">OpenCode in Emacs</h2>
+<div class="outline-text-2" id="text-orgc2d61a3">
 <p>
 在 Emacs 里现在和 OpenCode 交互最方便的就是 <a href="https://github.com/xenodium/agent-shell">agent-shell</a> 了。
 </p>
@@ -902,6 +903,79 @@ slash command 通过 Emacs 的自动补全，基本是无感切换。
     <span style="color: #b0b1a3;">(</span>apply orig-fun plist<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #8c8c8c;">(</span>advice-add <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell--initiate-session</span> <span style="color: #79C0FF;">:around</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--around-initiate-session</span><span style="color: #8c8c8c;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0c83527" class="outline-2">
+<h2 id="org0c83527">Bubblewrap Sandbox</h2>
+<div class="outline-text-2" id="text-org0c83527">
+<p>
+Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了许多针对性的优化。
+</p>
+
+<p>
+让 LLM 生成了一个 bash 脚本在 bubblewrap sandbox 里运行 OpenCode：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
+</span><span style="color: #787878;"># </span><span style="color: #787878;">opencode bubblewrap sandbox script
+</span><span style="color: #787878;"># </span><span style="color: #787878;">https://patrickmccanna.net/a-better-way-to-limit-claude-code-and-other-coding-agents-access-to-secrets/
+</span><span style="color: #787878;"># </span><span style="color: #787878;">https://www.luiscardoso.dev/blog/sandboxes-for-ai
+</span>
+<span style="color: #79C0FF;">set</span> -euo pipefail
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Configuration
+</span><span style="color: #f4f4ff;">PROJECT_DIR</span>=<span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">pwd</span><span style="color: #A1D08E;">)"</span>
+<span style="color: #f4f4ff;">OPENCODE_BIN</span>=<span style="color: #A1D08E;">"$HOME/.npm-global/bin/opencode"</span>
+<span style="color: #f4f4ff;">OPENCODE_CONFIG</span>=<span style="color: #A1D08E;">"$HOME/.config/opencode"</span>
+<span style="color: #f4f4ff;">NPM_BIN</span>=<span style="color: #A1D08E;">"$HOME/.npm-global"</span>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Validate paths
+</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> ! -x <span style="color: #A1D08E;">"$OPENCODE_BIN"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: opencode binary not found or not executable: $OPENCODE_BIN"</span>
+  <span style="color: #FFA657;">exit</span> 1
+<span style="color: #FFA657;">fi</span>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Check if we need to allow network access (default: yes for opencode's MCP servers)
+</span><span style="color: #f4f4ff;">SHARE_NET</span>=<span style="color: #A1D08E;">"--share-net"</span>
+
+<span style="color: #787878;"># </span><span style="color: #787878;">Run opencode in bubblewrap sandbox
+</span>bwrap <span style="color: #A1D08E;">\</span>
+  --ro-bind /usr /usr <span style="color: #A1D08E;">\</span>
+  --ro-bind /lib /lib <span style="color: #A1D08E;">\</span>
+  --ro-bind /bin /bin <span style="color: #A1D08E;">\</span>
+  --ro-bind /etc/resolv.conf /etc/resolv.conf <span style="color: #A1D08E;">\</span>
+  --ro-bind /etc/hosts /etc/hosts <span style="color: #A1D08E;">\</span>
+  --ro-bind /etc/ssl /etc/ssl <span style="color: #A1D08E;">\</span>
+  --ro-bind /etc/passwd /etc/passwd <span style="color: #A1D08E;">\</span>
+  --ro-bind /etc/group /etc/group <span style="color: #A1D08E;">\</span>
+  --ro-bind <span style="color: #A1D08E;">"$NPM_BIN"</span> <span style="color: #A1D08E;">"$NPM_BIN"</span> <span style="color: #A1D08E;">\</span>
+  $<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">for env_file in "$PROJECT_DIR"/.env*; do </span><span style="color: #93a8c6;">[</span><span style="color: #ff4f58;"> -e "$env_file" </span><span style="color: #93a8c6;">]</span><span style="color: #ff4f58;"> &amp;&amp; echo "--ro-bind /dev/null \"$env_file\""; done</span><span style="color: #8c8c8c;">)</span> <span style="color: #A1D08E;">\</span>
+  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.aws"</span> <span style="color: #A1D08E;">\</span>
+  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.ssh"</span> <span style="color: #A1D08E;">\</span>
+  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.gnupg"</span> <span style="color: #A1D08E;">\</span>
+  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.config/gcloud"</span> <span style="color: #A1D08E;">\</span>
+  --bind <span style="color: #A1D08E;">"$OPENCODE_CONFIG"</span> <span style="color: #A1D08E;">"$OPENCODE_CONFIG"</span> <span style="color: #A1D08E;">\</span>
+  --bind <span style="color: #A1D08E;">"$PROJECT_DIR"</span> <span style="color: #A1D08E;">"$PROJECT_DIR"</span> <span style="color: #A1D08E;">\</span>
+  --bind <span style="color: #A1D08E;">"$HOME/.npm-global/"</span> <span style="color: #A1D08E;">"$HOME/.npm-global/"</span> <span style="color: #A1D08E;">\</span>
+  --bind <span style="color: #A1D08E;">"$HOME/.local/share/opencode"</span> <span style="color: #A1D08E;">"$HOME/.local/share/opencode"</span> <span style="color: #A1D08E;">\</span>
+  --bind <span style="color: #A1D08E;">"$HOME/.MemoryMD/"</span> <span style="color: #A1D08E;">"$HOME/.MemoryMD/"</span> <span style="color: #A1D08E;">\</span>
+  --bind <span style="color: #A1D08E;">"$HOME/.cache/opencode/"</span> <span style="color: #A1D08E;">"$HOME/.cache/opencode/"</span> <span style="color: #A1D08E;">\</span>
+  --tmpfs /tmp <span style="color: #A1D08E;">\</span>
+  --proc /proc <span style="color: #A1D08E;">\</span>
+  --dev /dev <span style="color: #A1D08E;">\</span>
+  $<span style="color: #f4f4ff;">SHARE_NET</span> <span style="color: #A1D08E;">\</span>
+  --unshare-pid <span style="color: #A1D08E;">\</span>
+  --unshare-ipc <span style="color: #A1D08E;">\</span>
+  --unshare-uts <span style="color: #A1D08E;">\</span>
+  --die-with-parent <span style="color: #A1D08E;">\</span>
+  --new-session <span style="color: #A1D08E;">\</span>
+  --chdir <span style="color: #A1D08E;">"$PROJECT_DIR"</span> <span style="color: #A1D08E;">\</span>
+  --setenv HOME <span style="color: #A1D08E;">"$HOME"</span> <span style="color: #A1D08E;">\</span>
+  --setenv USER <span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">whoami</span><span style="color: #A1D08E;">)"</span> <span style="color: #A1D08E;">\</span>
+  <span style="color: #A1D08E;">"$OPENCODE_BIN"</span> <span style="color: #A1D08E;">"$@"</span>
 </pre>
 </div>
 </div>

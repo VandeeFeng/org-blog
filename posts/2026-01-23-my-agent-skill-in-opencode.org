@@ -680,3 +680,68 @@ slash command 通过 Emacs 的自动补全，基本是无感切换。
 
 (advice-add 'agent-shell--initiate-session :around #'agent-shell-opencode--around-initiate-session)
 #+end_src
+
+* Bubblewrap Sandbox
+Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了许多针对性的优化。
+
+让 LLM 生成了一个 bash 脚本在 bubblewrap sandbox 里运行 OpenCode：
+
+#+begin_src shell
+#!/bin/bash
+# opencode bubblewrap sandbox script
+# https://patrickmccanna.net/a-better-way-to-limit-claude-code-and-other-coding-agents-access-to-secrets/
+# https://www.luiscardoso.dev/blog/sandboxes-for-ai
+
+set -euo pipefail
+
+# Configuration
+PROJECT_DIR="$(pwd)"
+OPENCODE_BIN="$HOME/.npm-global/bin/opencode"
+OPENCODE_CONFIG="$HOME/.config/opencode"
+NPM_BIN="$HOME/.npm-global"
+
+# Validate paths
+if [ ! -x "$OPENCODE_BIN" ]; then
+  echo "Error: opencode binary not found or not executable: $OPENCODE_BIN"
+  exit 1
+fi
+
+# Check if we need to allow network access (default: yes for opencode's MCP servers)
+SHARE_NET="--share-net"
+
+# Run opencode in bubblewrap sandbox
+bwrap \
+  --ro-bind /usr /usr \
+  --ro-bind /lib /lib \
+  --ro-bind /bin /bin \
+  --ro-bind /etc/resolv.conf /etc/resolv.conf \
+  --ro-bind /etc/hosts /etc/hosts \
+  --ro-bind /etc/ssl /etc/ssl \
+  --ro-bind /etc/passwd /etc/passwd \
+  --ro-bind /etc/group /etc/group \
+  --ro-bind "$NPM_BIN" "$NPM_BIN" \
+  $(for env_file in "$PROJECT_DIR"/.env*; do [ -e "$env_file" ] && echo "--ro-bind /dev/null \"$env_file\""; done) \
+  --ro-bind /dev/null "$HOME/.aws" \
+  --ro-bind /dev/null "$HOME/.ssh" \
+  --ro-bind /dev/null "$HOME/.gnupg" \
+  --ro-bind /dev/null "$HOME/.config/gcloud" \
+  --bind "$OPENCODE_CONFIG" "$OPENCODE_CONFIG" \
+  --bind "$PROJECT_DIR" "$PROJECT_DIR" \
+  --bind "$HOME/.npm-global/" "$HOME/.npm-global/" \
+  --bind "$HOME/.local/share/opencode" "$HOME/.local/share/opencode" \
+  --bind "$HOME/.MemoryMD/" "$HOME/.MemoryMD/" \
+  --bind "$HOME/.cache/opencode/" "$HOME/.cache/opencode/" \
+  --tmpfs /tmp \
+  --proc /proc \
+  --dev /dev \
+  $SHARE_NET \
+  --unshare-pid \
+  --unshare-ipc \
+  --unshare-uts \
+  --die-with-parent \
+  --new-session \
+  --chdir "$PROJECT_DIR" \
+  --setenv HOME "$HOME" \
+  --setenv USER "$(whoami)" \
+  "$OPENCODE_BIN" "$@"
+#+end_src
