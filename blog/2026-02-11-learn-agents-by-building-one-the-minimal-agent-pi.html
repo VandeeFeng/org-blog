@@ -59,11 +59,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1da1f6c">Pi-mono</a></li>
-<li><a href="#orgf20bca2">Pi-mono Extension</a>
+<li><a href="#orgd9b64a1">Pi-mono</a></li>
+<li><a href="#orgecadee4">Pi-mono Extension</a>
 <ul>
-<li><a href="#org902c4a6">Command Rule</a></li>
-<li><a href="#orge9b2a45">Subagent</a></li>
+<li><a href="#orgd6a062a">Command Rule</a></li>
+<li><a href="#org316d5c1">Subagent</a></li>
 </ul>
 </li>
 </ul>
@@ -80,9 +80,9 @@
 <p>
 大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。
 </p>
-<div id="outline-container-org1da1f6c" class="outline-2">
-<h2 id="org1da1f6c">Pi-mono</h2>
-<div class="outline-text-2" id="text-org1da1f6c">
+<div id="outline-container-orgd9b64a1" class="outline-2">
+<h2 id="orgd9b64a1">Pi-mono</h2>
+<div class="outline-text-2" id="text-orgd9b64a1">
 <p>
 pi-mono 的 agent 设计的极为简洁：只有 read，bash，edit，write 四个基础工具，system prompt 也设计的非常简洁。AI agent ≈ Tools + loops.
 </p>
@@ -132,16 +132,16 @@ Documentation:
 </p>
 </div>
 </div>
-<div id="outline-container-orgf20bca2" class="outline-2">
-<h2 id="orgf20bca2">Pi-mono Extension</h2>
-<div class="outline-text-2" id="text-orgf20bca2">
+<div id="outline-container-orgecadee4" class="outline-2">
+<h2 id="orgecadee4">Pi-mono Extension</h2>
+<div class="outline-text-2" id="text-orgecadee4">
 <p>
 前段时间刚开始深入一点折腾和看 OpenCode 的源码，想实现一些自定义的功能，但是这个项目已经做的太大了，pi-mono 更适合个人折腾。
 </p>
 </div>
-<div id="outline-container-org902c4a6" class="outline-3">
-<h3 id="org902c4a6">Command Rule</h3>
-<div class="outline-text-3" id="text-org902c4a6">
+<div id="outline-container-orgd6a062a" class="outline-3">
+<h3 id="orgd6a062a">Command Rule</h3>
+<div class="outline-text-3" id="text-orgd6a062a">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
 </p>
@@ -443,9 +443,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-orge9b2a45" class="outline-3">
-<h3 id="orge9b2a45">Subagent</h3>
-<div class="outline-text-3" id="text-orge9b2a45">
+<div id="outline-container-org316d5c1" class="outline-3">
+<h3 id="org316d5c1">Subagent</h3>
+<div class="outline-text-3" id="text-org316d5c1">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -467,20 +467,20 @@ tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux �
 </p>
 
 
-<figure id="org50b6411">
+<figure id="orgf3b539d">
 <img src="https://pic.vandee.art/images/20260211_125004-agent1.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org2f361ca">
-<img src="https://pic.vandee.art/images/20260211_125004-agent2.png" class="img" width="60%" height="60%">
+<figure id="org1d1c0ff">
+<img src="https://pic.vandee.art/images/20260211_125302-agent2.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org9f4dd42">
-<img src="https://pic.vandee.art/images/20260211_125004-agent3.png" class="img" width="60%" height="60%">
+<figure id="orgeacea63">
+<img src="https://pic.vandee.art/images/20260211_125325-agent3.png" class="img" width="60%" height="60%">
 
 </figure>
 

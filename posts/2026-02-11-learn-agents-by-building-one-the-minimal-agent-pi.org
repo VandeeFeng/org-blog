@@ -362,10 +362,10 @@ tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux �
 https://pic.vandee.art/images/20260211_125004-agent1.png
 
 #+attr_html: :alt :class img :width 60% :height 60%
-https://pic.vandee.art/images/20260211_125004-agent2.png
+https://pic.vandee.art/images/20260211_125302-agent2.png
 
 #+attr_html: :alt :class img :width 60% :height 60%
-https://pic.vandee.art/images/20260211_125004-agent3.png
+https://pic.vandee.art/images/20260211_125325-agent3.png
 
 #+begin_src typescript
 /**
