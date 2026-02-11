@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>Learn Agents by Building One: The Minimal Agent pi</title>
+<meta property="og:title" content="Learn Agents by Building One: The Minimal Agent pi">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。">
+<meta property="og:url" content="https://www.vandee.art/blog/2026-02-11-learn-agents-by-building-one-the-minimal-agent-pi.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", () => {
+           pangu.autoSpacingPage();
+         });
+       </script>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="projects.html">Projects</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="ri-search-line ri-xl"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">11 Feb 2026</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2026-02-11-learn-agents-by-building-one-the-minimal-agent-pi.html">Learn Agents by Building One: The Minimal Agent pi</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org1da1f6c">Pi-mono</a></li>
+<li><a href="#orgf20bca2">Pi-mono Extension</a>
+<ul>
+<li><a href="#org902c4a6">Command Rule</a></li>
+<li><a href="#orge9b2a45">Subagent</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<p>
+这段时间小龙虾 OpenClaw 突然就病毒式的爆火了，它背后的 agent 框架就是 <a href="https://github.com/badlogic/pi-mono">pi-mono</a>.
+</p>
+
+<p>
+<a href="https://mariozechner.at/posts/2025-11-30-pi-coding-agent/">What I learned building an opinionated and minimal coding agent</a> pi-mono 作者的这篇 blog 详细解释了他构建 pi-mono 的初衷和思路。
+</p>
+
+<p>
+大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。
+</p>
+<div id="outline-container-org1da1f6c" class="outline-2">
+<h2 id="org1da1f6c">Pi-mono</h2>
+<div class="outline-text-2" id="text-org1da1f6c">
+<p>
+pi-mono 的 agent 设计的极为简洁：只有 read，bash，edit，write 四个基础工具，system prompt 也设计的非常简洁。AI agent ≈ Tools + loops.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">You are an expert coding assistant. You help users with coding tasks by reading files, executing commands, editing code, and writing new files.
+
+Available tools:
+- read: Read file contents
+- bash: Execute bash commands
+- edit: Make surgical edits to files
+- write: Create or overwrite files
+
+Guidelines:
+- Use bash for file operations like ls, grep, find
+- Use read to examine files before editing
+- Use edit for precise changes (old text must match exactly)
+- Use write only for new files or complete rewrites
+- When summarizing your actions, output plain text directly - do NOT use cat or bash to display what you did
+- Be concise in your responses
+- Show file paths clearly when working with files
+
+Documentation:
+- Your own documentation (including custom model setup and theme creation) is at: /path/to/README.md
+- Read it when users ask about features, configuration, or setup, and especially if the user asks you to add a custom model or provider, or create a custom theme.
+</pre>
+</div>
+
+<p>
+在大语言模型的能力越来越强之后，简洁的 prompt 反而可以发挥更好的效果。以前模型能力不足，所以需要详细的 prompt 来指导 agent，现在反过来了，模型能力很强，只需要提供简洁的 guide rules，让 agent 能够自主发挥。我觉得这是 pi-mono 能够在现有模型基础上实现很好的执行效果，很重要的一个原因。
+</p>
+
+<p>
+没想到，KISS原则（Keep It Simple, Stupid），Unix 系统的一切皆是文件的设计哲学现在也深深的影响了 agent 的能力。现阶段训练出来的模型，天然的就会对文件操作比较熟悉，LLM 更喜欢这些基础的 shell 指令，更喜欢和文件打交道。这也是为什么 Claude Code 放弃使用 Cursor 的 RAG 方案，而使用 grep 来让 agent 直接搜索和查找文件，这也是为什么 AGENTS.md 最终使用 md 这个格式文本来作为 agent 的指导文件。
+</p>
+
+<p>
+<a href="https://lucumr.pocoo.org/2026/1/31/pi/">Pi: The Minimal Agent Within OpenClaw | Armin Ronacher's Thoughts and Writings</a> pi-mono 提供了非常方便的 extension 扩展系统，能够调用 API 实现高度自定义的功能，这实在是 awesome！
+</p>
+
+<p>
+比起那些复杂的 agent 框架，各种概念、论文和复杂的抽象层，pi-mono 对新手来说是在太友好了，源码里还有大量的 example 和 docs。
+</p>
+
+<p>
+从 Claude Code 到 OpenCode，再到 OpenClaw 和 pi-mono，我觉得，本地自部署模型+自定义 agent 一定是未来的趋势。人人都能够有一个自己自定义版本的 AI agent，最后变成一个 USB 即插即用。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf20bca2" class="outline-2">
+<h2 id="orgf20bca2">Pi-mono Extension</h2>
+<div class="outline-text-2" id="text-orgf20bca2">
+<p>
+前段时间刚开始深入一点折腾和看 OpenCode 的源码，想实现一些自定义的功能，但是这个项目已经做的太大了，pi-mono 更适合个人折腾。
+</p>
+</div>
+<div id="outline-container-org902c4a6" class="outline-3">
+<h3 id="org902c4a6">Command Rule</h3>
+<div class="outline-text-3" id="text-org902c4a6">
+<p>
+pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #787878;">/**</span><span style="color: #787878;">
+ * Command Permissions Extension
+ *
+ * Ported from opencode command permissions configuration.
+ * Supports wildcard patterns and ask/allow/deny actions.
+ *
+ * Configuration in settings.json:
+ * {
+ *   "permission": {
+ *     "YOLO": true,
+ *     "nonInteractiveAsk": "deny",
+ *     "read": { ".env": "deny", "*.md": "allow" },
+ *     "bash": { "git push *": "ask", "rm -rf *": "deny" }
+ *   }
+ * }
+ *
+ * Config files (</span><span style="color: #f4f4ff;">merged</span><span style="color: #787878;">, project takes </span><span style="color: #f4f4ff;">precedence</span><span style="color: #787878;">):
+ * - ~/.pi/agent/settings.</span><span style="color: #96a6c8;">json</span><span style="color: #787878;"> (global)
+ * - &lt;cwd&gt;/.pi/settings.</span><span style="color: #96a6c8;">json</span><span style="color: #787878;"> (project-local)
+ */</span>
+
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> existsSync, readFileSync <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:fs"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> homedir <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:os"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> join <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:path"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #FFA657;">type</span> <span style="color: #8c8c8c;">{</span> ExtensionAPI <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-coding-agent"</span>;
+
+<span style="color: #787878;">// </span><span style="color: #787878;">Simple glob-to-regex converter for command matching
+</span><span style="color: #787878;">// </span><span style="color: #787878;">Matches opencode's wildcard implementation
+</span><span style="color: #787878;">// </span><span style="color: #787878;">* matches any characters (including /)
+</span><span style="color: #787878;">// </span><span style="color: #787878;">? matches any single character
+</span><span style="color: #787878;">// </span><span style="color: #787878;">Pattern ending with " *" makes trailing part optional
+</span><span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">globToRegex</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">pattern</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">RegExp</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">escaped</span> = pattern
+        .<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/[.+^${}()|[\]\\]/</span>g, <span style="color: #A1D08E;">'\\$&amp;'</span><span style="color: #93a8c6;">)</span> <span style="color: #787878;">// </span><span style="color: #787878;">escape special regex </span><span style="color: #f4f4ff;">chars</span><span style="color: #787878;">
+</span>        .<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/\*/</span>g, <span style="color: #A1D08E;">'.*'</span><span style="color: #93a8c6;">)</span> <span style="color: #787878;">// </span><span style="color: #787878;">* becomes .*
+</span>        .<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/\?/</span>g, <span style="color: #A1D08E;">'.'</span><span style="color: #93a8c6;">)</span>; <span style="color: #787878;">// </span><span style="color: #787878;">? becomes .
+</span>
+    <span style="color: #787878;">// </span><span style="color: #787878;">If pattern ends with " *" (space + wildcard), make the trailing part optional
+</span>    <span style="color: #787878;">// </span><span style="color: #787878;">This allows "ls *" to match both "ls" and "ls -la"
+</span>    <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>escaped.<span style="color: #96a6c8;">endsWith</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">' .*'</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+        escaped = escaped.<span style="color: #96a6c8;">slice</span><span style="color: #b0b1a3;">(</span>0, -3<span style="color: #b0b1a3;">)</span> + <span style="color: #A1D08E;">'( .*)?'</span>;
+    <span style="color: #93a8c6;">}</span>
+
+    <span style="color: #FFA657;">return</span> <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">RegExp</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">`^</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">escaped</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">$`</span>, <span style="color: #A1D08E;">'s'</span><span style="color: #93a8c6;">)</span>; <span style="color: #787878;">// </span><span style="color: #787878;">'s' </span><span style="color: #f4f4ff;">flag</span><span style="color: #787878;">: . matches </span><span style="color: #f4f4ff;">newlines</span><span style="color: #787878;">
+</span><span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">minimatch</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">str</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">pattern</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">boolean</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #96a6c8;">globToRegex</span><span style="color: #93a8c6;">(</span>pattern<span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">test</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">str</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">DEFAULT_YOLO</span> = <span style="color: #95a99f;">true</span>;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">DEFAULT_NON_INTERACTIVE_ASK</span>: <span style="color: #A1D08E;">"allow"</span> | <span style="color: #A1D08E;">"deny"</span> = <span style="color: #A1D08E;">"deny"</span>;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">VALID_ACTIONS</span> = <span style="color: #8c8c8c;">[</span><span style="color: #A1D08E;">"ask"</span>, <span style="color: #A1D08E;">"allow"</span>, <span style="color: #A1D08E;">"deny"</span><span style="color: #8c8c8c;">]</span> <span style="color: #FFA657;">as</span> <span style="color: #FFA657;">const</span>;
+<span style="color: #FFA657;">type</span> <span style="color: #95a99f;">Action</span> = <span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">typeof</span> VALID_ACTIONS<span style="color: #8c8c8c;">)[</span><span style="color: #FFA657;">number</span><span style="color: #8c8c8c;">]</span>;
+
+<span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">PermissionRule</span> <span style="color: #8c8c8c;">{</span>
+    pattern: <span style="color: #FFA657;">string</span>;
+    action: <span style="color: #95a99f;">Action</span>;
+    isWildcard: <span style="color: #FFA657;">boolean</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">PermissionConfig</span> <span style="color: #8c8c8c;">{</span>
+    permission?: <span style="color: #93a8c6;">{</span>
+        YOLO?: <span style="color: #FFA657;">boolean</span>;
+        nonInteractiveAsk?: <span style="color: #A1D08E;">"allow"</span> | <span style="color: #A1D08E;">"deny"</span>;
+        read?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt;;
+        bash?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt;;
+        write?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt;;
+        edit?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span>;
+        grep?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span>;
+        find?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span>;
+        ls?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span>;
+        glob?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span>;
+        list?: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span>;
+        <span style="color: #b0b1a3;">[</span>key: <span style="color: #FFA657;">string</span><span style="color: #b0b1a3;">]</span>: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span> | <span style="color: #FFA657;">boolean</span> | <span style="color: #95a99f;">undefined</span>;
+    <span style="color: #93a8c6;">}</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #787878;">// </span><span style="color: #787878;">Tool config mapping (handles aliases)
+</span><span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">TOOL_CONFIGS</span>: <span style="color: #95a99f;">Array</span>&lt;<span style="color: #8c8c8c;">{</span>
+    tools: <span style="color: #FFA657;">string</span><span style="color: #93a8c6;">[]</span>;
+    aliases: <span style="color: #FFA657;">string</span><span style="color: #93a8c6;">[]</span>;
+    getInput: <span style="color: #93a8c6;">(</span>input: <span style="color: #FFA657;">any</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #FFA657;">string</span>;
+<span style="color: #8c8c8c;">}</span>&gt; = <span style="color: #8c8c8c;">[</span>
+    <span style="color: #93a8c6;">{</span> tools: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"read"</span><span style="color: #b0b1a3;">]</span>, aliases: <span style="color: #b0b1a3;">[]</span>, getInput: <span style="color: #b0b1a3;">(</span>i<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> i.path <span style="color: #93a8c6;">}</span>,
+    <span style="color: #93a8c6;">{</span> tools: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"bash"</span><span style="color: #b0b1a3;">]</span>, aliases: <span style="color: #b0b1a3;">[]</span>, getInput: <span style="color: #b0b1a3;">(</span>i<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> i.command <span style="color: #93a8c6;">}</span>,
+    <span style="color: #93a8c6;">{</span> tools: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"write"</span><span style="color: #b0b1a3;">]</span>, aliases: <span style="color: #b0b1a3;">[]</span>, getInput: <span style="color: #b0b1a3;">(</span>i<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> i.path <span style="color: #93a8c6;">}</span>,
+    <span style="color: #93a8c6;">{</span> tools: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"edit"</span><span style="color: #b0b1a3;">]</span>, aliases: <span style="color: #b0b1a3;">[]</span>, getInput: <span style="color: #b0b1a3;">(</span>i<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> i.path <span style="color: #93a8c6;">}</span>,
+    <span style="color: #93a8c6;">{</span> tools: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"grep"</span><span style="color: #b0b1a3;">]</span>, aliases: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"glob"</span><span style="color: #b0b1a3;">]</span>, getInput: <span style="color: #b0b1a3;">(</span>i<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> i.pattern <span style="color: #93a8c6;">}</span>,
+    <span style="color: #93a8c6;">{</span> tools: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"find"</span><span style="color: #b0b1a3;">]</span>, aliases: <span style="color: #b0b1a3;">[]</span>, getInput: <span style="color: #b0b1a3;">(</span>i<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> i.pattern <span style="color: #93a8c6;">}</span>,
+    <span style="color: #93a8c6;">{</span> tools: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"ls"</span><span style="color: #b0b1a3;">]</span>, aliases: <span style="color: #b0b1a3;">[</span><span style="color: #A1D08E;">"list"</span><span style="color: #b0b1a3;">]</span>, getInput: <span style="color: #b0b1a3;">(</span>i<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> i.path || <span style="color: #A1D08E;">"."</span> <span style="color: #93a8c6;">}</span>,
+<span style="color: #8c8c8c;">]</span>;
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">loadSettings</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">cwd</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">PermissionConfig</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">loadFile</span> = <span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">path</span>: <span style="color: #FFA657;">string</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #93a8c6;">{</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!<span style="color: #96a6c8;">existsSync</span><span style="color: #97b098;">(</span>path<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #b0b1a3;">{}</span>;
+        <span style="color: #FFA657;">try</span> <span style="color: #b0b1a3;">{</span>
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">content</span> = <span style="color: #96a6c8;">readFileSync</span><span style="color: #97b098;">(</span>path, <span style="color: #A1D08E;">"utf-8"</span><span style="color: #97b098;">)</span>;
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">parsed</span> = JSON.<span style="color: #96a6c8;">parse</span><span style="color: #97b098;">(</span>content<span style="color: #97b098;">)</span>;
+            <span style="color: #FFA657;">return</span> parsed.permission || <span style="color: #97b098;">{}</span>;
+        <span style="color: #b0b1a3;">}</span> <span style="color: #FFA657;">catch</span> <span style="color: #b0b1a3;">(</span>err<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+            <span style="color: #95a99f;">console</span>.<span style="color: #96a6c8;">error</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">`Failed to load permissions from </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">path</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">err</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span><span style="color: #97b098;">)</span>;
+            <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{}</span>;
+        <span style="color: #b0b1a3;">}</span>
+    <span style="color: #93a8c6;">}</span>;
+
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">globalPerm</span> = <span style="color: #96a6c8;">loadFile</span><span style="color: #93a8c6;">(</span><span style="color: #96a6c8;">join</span><span style="color: #b0b1a3;">(</span><span style="color: #96a6c8;">homedir</span><span style="color: #97b098;">()</span>, <span style="color: #A1D08E;">".pi"</span>, <span style="color: #A1D08E;">"agent"</span>, <span style="color: #A1D08E;">"settings.json"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">projectPerm</span> = <span style="color: #96a6c8;">loadFile</span><span style="color: #93a8c6;">(</span><span style="color: #96a6c8;">join</span><span style="color: #b0b1a3;">(</span>cwd, <span style="color: #A1D08E;">".pi"</span>, <span style="color: #A1D08E;">"settings.json"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+
+    <span style="color: #FFA657;">return</span> <span style="color: #93a8c6;">{</span> permission: <span style="color: #b0b1a3;">{</span> ...globalPerm, ...projectPerm <span style="color: #b0b1a3;">}</span> <span style="color: #93a8c6;">}</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">parseRules</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">config</span>: <span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span> | <span style="color: #95a99f;">undefined</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">PermissionRule</span><span style="color: #8c8c8c;">[]</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">typeof</span> config === <span style="color: #A1D08E;">"string"</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+        <span style="color: #FFA657;">return</span> VALID_ACTIONS.<span style="color: #96a6c8;">includes</span><span style="color: #b0b1a3;">(</span>config <span style="color: #FFA657;">as</span> Action<span style="color: #b0b1a3;">)</span>
+            ? <span style="color: #b0b1a3;">[</span><span style="color: #97b098;">{</span> pattern: <span style="color: #A1D08E;">"*"</span>, action: config <span style="color: #FFA657;">as</span> Action, isWildcard: <span style="color: #95a99f;">true</span> <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">]</span>
+            : <span style="color: #b0b1a3;">[]</span>;
+    <span style="color: #93a8c6;">}</span>
+
+    <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>!config || <span style="color: #FFA657;">typeof</span> config !== <span style="color: #A1D08E;">"object"</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #93a8c6;">[]</span>;
+
+    <span style="color: #FFA657;">return</span> Object.<span style="color: #96a6c8;">entries</span><span style="color: #93a8c6;">(</span>config<span style="color: #93a8c6;">)</span>
+        .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>, action<span style="color: #97b098;">]</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #95a99f;">VALID</span>_ACTIONS.<span style="color: #96a6c8;">includes</span><span style="color: #b0b1a3;">(</span>action <span style="color: #FFA657;">as</span> Action<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+        .<span style="color: #96a6c8;">map</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>pattern, action<span style="color: #97b098;">]</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">{</span>
+            pattern,
+            action: action <span style="color: #FFA657;">as</span> Action,
+            isWildcard: pattern.<span style="color: #96a6c8;">includes</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"*"</span><span style="color: #aebed8;">)</span> || pattern.<span style="color: #96a6c8;">includes</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"?"</span><span style="color: #aebed8;">)</span>,
+        <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">matchInput</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">input</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">rules</span>: <span style="color: #95a99f;">PermissionRule</span><span style="color: #93a8c6;">[]</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">PermissionRule</span> | <span style="color: #95a99f;">null</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">normalized</span> = input.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/\s+/</span><span style="color: #f4f4ff;">g</span>, <span style="color: #A1D08E;">" "</span><span style="color: #93a8c6;">)</span>;
+
+    <span style="color: #787878;">// </span><span style="color: #787878;">Find the LAST matching rule (later rules override earlier ones, like opencode)
+</span>    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">matchingRule</span> = <span style="color: #93a8c6;">[</span>...rules<span style="color: #93a8c6;">]</span>.<span style="color: #96a6c8;">reverse</span><span style="color: #93a8c6;">()</span>.<span style="color: #96a6c8;">find</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">r</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!r.isWildcard<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+            <span style="color: #FFA657;">return</span> r.pattern === normalized;
+        <span style="color: #97b098;">}</span>
+        <span style="color: #FFA657;">return</span> <span style="color: #96a6c8;">minimatch</span><span style="color: #97b098;">(</span>normalized, r.pattern<span style="color: #97b098;">)</span>;
+    <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+    <span style="color: #FFA657;">return</span> matchingRule || <span style="color: #95a99f;">null</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">splitCommands</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">command</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">[]</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">result</span>: <span style="color: #FFA657;">string</span><span style="color: #93a8c6;">[]</span> = <span style="color: #93a8c6;">[]</span>;
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">current</span> = <span style="color: #A1D08E;">""</span>;
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">inSingle</span> = <span style="color: #95a99f;">false</span>;
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">inDouble</span> = <span style="color: #95a99f;">false</span>;
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">escape</span> = <span style="color: #95a99f;">false</span>;
+
+    <span style="color: #FFA657;">for</span> <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">i</span> = 0; i &lt; <span style="color: #95a99f;">command</span>.<span style="color: #95a99f;">length</span>; <span style="color: #95a99f;">i</span>++<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">char</span> = command<span style="color: #b0b1a3;">[</span>i<span style="color: #b0b1a3;">]</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">next</span> = command<span style="color: #b0b1a3;">[</span>i + 1<span style="color: #b0b1a3;">]</span>;
+
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>escape<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+            current += char;
+            escape = <span style="color: #95a99f;">false</span>;
+            <span style="color: #FFA657;">continue</span>;
+        <span style="color: #b0b1a3;">}</span>
+
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>char === <span style="color: #A1D08E;">"\\"</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+            escape = <span style="color: #95a99f;">true</span>;
+            current += char;
+            <span style="color: #FFA657;">continue</span>;
+        <span style="color: #b0b1a3;">}</span>
+
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>char === <span style="color: #A1D08E;">"'"</span> &amp;&amp; !inDouble<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span> inSingle = !inSingle; current += char; <span style="color: #FFA657;">continue</span>; <span style="color: #b0b1a3;">}</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>char === <span style="color: #A1D08E;">'"'</span> &amp;&amp; !inSingle<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span> inDouble = !inDouble; current += char; <span style="color: #FFA657;">continue</span>; <span style="color: #b0b1a3;">}</span>
+
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!inSingle &amp;&amp; !inDouble<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+            <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>char === <span style="color: #A1D08E;">"&amp;"</span> || char === <span style="color: #A1D08E;">"|"</span><span style="color: #b0b0b3;">)</span> &amp;&amp; next === char<span style="color: #aebed8;">)</span> || char === <span style="color: #A1D08E;">";"</span> || char === <span style="color: #A1D08E;">"|"</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">trimmed</span> = current.<span style="color: #96a6c8;">trim</span><span style="color: #aebed8;">()</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>trimmed<span style="color: #aebed8;">)</span> result.<span style="color: #96a6c8;">push</span><span style="color: #aebed8;">(</span><span style="color: #f4f4ff;">trimmed</span><span style="color: #aebed8;">)</span>;
+                current = <span style="color: #A1D08E;">""</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>next === char<span style="color: #aebed8;">)</span> i++;
+                <span style="color: #FFA657;">continue</span>;
+            <span style="color: #97b098;">}</span>
+        <span style="color: #b0b1a3;">}</span>
+
+        current += char;
+    <span style="color: #93a8c6;">}</span>
+
+    <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>current.<span style="color: #96a6c8;">trim</span><span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">)</span> result.<span style="color: #96a6c8;">push</span><span style="color: #93a8c6;">(</span>current.<span style="color: #96a6c8;">trim</span><span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">)</span>;
+    <span style="color: #FFA657;">return</span> result;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">export</span> <span style="color: #FFA657;">default</span> <span style="color: #FFA657;">function</span> <span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">pi</span>: <span style="color: #95a99f;">ExtensionAPI</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">rules</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Map</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #95a99f;">PermissionRule</span><span style="color: #93a8c6;">[]</span>&gt;<span style="color: #93a8c6;">()</span>;
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">yoloMode</span> = DEFAULT_YOLO;
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">nonInteractiveAsk</span> = DEFAULT_NON_INTERACTIVE_ASK;
+
+    <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">loadPermissions</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">cwd</span>: <span style="color: #FFA657;">string</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">config</span> = <span style="color: #96a6c8;">loadSettings</span><span style="color: #b0b1a3;">(</span>cwd<span style="color: #b0b1a3;">)</span>.permission || <span style="color: #b0b1a3;">{}</span>;
+        yoloMode = config.YOLO ?? DEFAULT_YOLO;
+        nonInteractiveAsk = config.nonInteractiveAsk ?? DEFAULT_NON_INTERACTIVE_ASK;
+
+        TOOL_CONFIGS.<span style="color: #96a6c8;">forEach</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">{</span> <span style="color: #f4f4ff;">tools</span>, aliases <span style="color: #aebed8;">}</span><span style="color: #97b098;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #97b098;">{</span>
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">tool</span> = tools<span style="color: #aebed8;">[</span>0<span style="color: #aebed8;">]</span>;
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">toolConfig</span> = tools.<span style="color: #96a6c8;">concat</span><span style="color: #aebed8;">(</span>aliases<span style="color: #aebed8;">)</span>.<span style="color: #96a6c8;">reduce</span><span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>acc, t<span style="color: #b0b0b3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">{</span>
+                ...acc,
+                ...<span style="color: #a2b6da;">(</span>config<span style="color: #9cb6ad;">[</span>t <span style="color: #FFA657;">as</span> <span style="color: #FFA657;">keyof</span> <span style="color: #FFA657;">typeof</span> config<span style="color: #9cb6ad;">]</span> || <span style="color: #9cb6ad;">{}</span><span style="color: #a2b6da;">)</span>,
+            <span style="color: #90a890;">}</span><span style="color: #b0b0b3;">)</span>, <span style="color: #b0b0b3;">{}</span><span style="color: #aebed8;">)</span>;
+
+            rules.<span style="color: #96a6c8;">set</span><span style="color: #aebed8;">(</span>tool, <span style="color: #96a6c8;">parseRules</span><span style="color: #b0b0b3;">(</span>toolConfig <span style="color: #FFA657;">as</span> Record&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">string</span>&gt; | <span style="color: #FFA657;">string</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>;
+        <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>;
+    <span style="color: #93a8c6;">}</span>
+
+    <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">message</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">ctx</span>: <span style="color: #FFA657;">any</span><span style="color: #93a8c6;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #FFA657;">boolean</span>&gt; <span style="color: #93a8c6;">{</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!ctx.hasUI<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+            <span style="color: #FFA657;">return</span> nonInteractiveAsk === <span style="color: #A1D08E;">"allow"</span>;
+        <span style="color: #b0b1a3;">}</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">choice</span> = <span style="color: #FFA657;">await</span> ctx.ui.<span style="color: #96a6c8;">select</span><span style="color: #b0b1a3;">(</span>message, <span style="color: #97b098;">[</span><span style="color: #A1D08E;">"Yes"</span>, <span style="color: #A1D08E;">"No"</span><span style="color: #97b098;">]</span><span style="color: #b0b1a3;">)</span>;
+        <span style="color: #FFA657;">return</span> choice === <span style="color: #A1D08E;">"Yes"</span>;
+    <span style="color: #93a8c6;">}</span>
+
+    <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">checkPermission</span><span style="color: #93a8c6;">(</span>
+        <span style="color: #f4f4ff;">toolName</span>: <span style="color: #FFA657;">string</span>,
+        <span style="color: #f4f4ff;">input</span>: <span style="color: #FFA657;">string</span>,
+        <span style="color: #f4f4ff;">toolRules</span>: <span style="color: #95a99f;">PermissionRule</span><span style="color: #b0b1a3;">[]</span>,
+        <span style="color: #f4f4ff;">ctx</span>: <span style="color: #FFA657;">any</span>,
+    <span style="color: #93a8c6;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #93a8c6;">{</span> block: <span style="color: #95a99f;">true</span>; reason: <span style="color: #FFA657;">string</span> <span style="color: #93a8c6;">}</span> | <span style="color: #95a99f;">undefined</span>&gt; <span style="color: #93a8c6;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">rule</span> = <span style="color: #96a6c8;">matchInput</span><span style="color: #b0b1a3;">(</span>input, toolRules<span style="color: #b0b1a3;">)</span>;
+
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!rule<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+            <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>yoloMode<span style="color: #97b098;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #97b098;">(</span>
+                <span style="color: #A1D08E;">`&#9888;&#65039; No permission rule </span><span style="color: #d1d5db; background-color: #1D1F21;">for</span><span style="color: #A1D08E;">:\n\n  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">input</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
+                ctx,
+            <span style="color: #97b098;">)</span>;
+            <span style="color: #FFA657;">return</span> allowed ? <span style="color: #95a99f;">undefined</span> : <span style="color: #97b098;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #97b098;">}</span>;
+        <span style="color: #b0b1a3;">}</span>
+
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>rule.action === <span style="color: #A1D08E;">"allow"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>rule.action === <span style="color: #A1D08E;">"deny"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #b0b1a3;">{</span> <span style="color: #f4f4ff;">block</span>: <span style="color: #95a99f;">true</span>, <span style="color: #f4f4ff;">reason</span>: <span style="color: #A1D08E;">`Blocked by permission </span><span style="color: #f4f4ff;">rules</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span> <span style="color: #b0b1a3;">}</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #b0b1a3;">(</span>
+            <span style="color: #A1D08E;">`&#9888;&#65039; Permission required:\n\n  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">input</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
+            ctx,
+        <span style="color: #b0b1a3;">)</span>;
+        <span style="color: #FFA657;">return</span> allowed ? <span style="color: #95a99f;">undefined</span> : <span style="color: #b0b1a3;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #b0b1a3;">}</span>;
+    <span style="color: #93a8c6;">}</span>
+
+    pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"session_start"</span>, <span style="color: #FFA657;">async</span> <span style="color: #b0b1a3;">(</span>_event, ctx<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #96a6c8;">loadPermissions</span><span style="color: #b0b1a3;">(</span>ctx.cwd<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+
+    pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"tool_call"</span>, <span style="color: #FFA657;">async</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">event</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #97b098;">{</span> toolName, input <span style="color: #97b098;">}</span> = event;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">toolConfig</span> = TOOL_CONFIGS.<span style="color: #96a6c8;">find</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>t<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> t.tools.<span style="color: #96a6c8;">includes</span><span style="color: #aebed8;">(</span>toolName<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>;
+        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!toolConfig<span style="color: #97b098;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">toolRules</span> = rules.<span style="color: #96a6c8;">get</span><span style="color: #97b098;">(</span>toolName<span style="color: #97b098;">)</span> || <span style="color: #97b098;">[]</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">inputStr</span> = toolConfig.<span style="color: #96a6c8;">getInput</span><span style="color: #97b098;">(</span>input<span style="color: #97b098;">)</span>;
+
+        <span style="color: #787878;">// </span><span style="color: #787878;">Special handling for bash compound commands
+</span>        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>toolName === <span style="color: #A1D08E;">"bash"</span> &amp;&amp; toolRules.length &gt; 0<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">subCommands</span> = <span style="color: #96a6c8;">splitCommands</span><span style="color: #aebed8;">(</span>inputStr<span style="color: #aebed8;">)</span>;
+
+            <span style="color: #FFA657;">for</span> <span style="color: #aebed8;">(</span><span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">subCmd</span> <span style="color: #FFA657;">of</span> subCommands<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">rule</span> = <span style="color: #96a6c8;">matchInput</span><span style="color: #b0b0b3;">(</span>subCmd, toolRules<span style="color: #b0b0b3;">)</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>!rule || rule.action === <span style="color: #A1D08E;">"allow"</span><span style="color: #b0b0b3;">)</span> <span style="color: #FFA657;">continue</span>;
+
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>rule.action === <span style="color: #A1D08E;">"deny"</span><span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                    <span style="color: #FFA657;">return</span> <span style="color: #90a890;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">`Blocked by permission rules: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">subCmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span> <span style="color: #90a890;">}</span>;
+                <span style="color: #b0b0b3;">}</span>
+
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">display</span> = subCommands.length &gt; 1
+                    ? <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">subCmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">  (</span><span style="color: #d1d5db; background-color: #1D1F21;">in</span><span style="color: #A1D08E;">: "</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">inputStr</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">")`</span>
+                    : inputStr;
+
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #b0b0b3;">(</span>
+                    <span style="color: #A1D08E;">`&#9888;&#65039; Permission required:\n\n  bash: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">display</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
+                    ctx,
+                <span style="color: #b0b0b3;">)</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>!allowed<span style="color: #b0b0b3;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #b0b0b3;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #b0b0b3;">}</span>;
+            <span style="color: #aebed8;">}</span>
+            <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+        <span style="color: #97b098;">}</span>
+
+        <span style="color: #787878;">// </span><span style="color: #787878;">No rules configured
+</span>        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>toolRules.length === 0<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+            <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>yoloMode<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #aebed8;">(</span>
+                <span style="color: #A1D08E;">`&#9888;&#65039; No permission rules for </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">:\n\n  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">inputStr</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
+                ctx,
+            <span style="color: #aebed8;">)</span>;
+            <span style="color: #FFA657;">return</span> allowed ? <span style="color: #95a99f;">undefined</span> : <span style="color: #aebed8;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #aebed8;">}</span>;
+        <span style="color: #97b098;">}</span>
+
+        <span style="color: #FFA657;">return</span> <span style="color: #96a6c8;">checkPermission</span><span style="color: #97b098;">(</span>toolName, inputStr, toolRules, ctx<span style="color: #97b098;">)</span>;
+    <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge9b2a45" class="outline-3">
+<h3 id="orge9b2a45">Subagent</h3>
+<div class="outline-text-3" id="text-orge9b2a45">
+<p>
+pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
+</p>
+
+<p>
+<a href="https://github.com/nicobailon/pi-subagents">Nico’s subagent extension</a> , <a href="https://www.npmjs.com/package/pi-interactive-shell">interactive-shell</a> 这两个 pi 的插件实现了类似的功能，但是对我来说有些复杂。
+</p>
+
+<p>
+现阶段我的方式就是新开一个 tmux 返回一个 tmux session 的 txt 文本记录完整的 LLM 输出。
+</p>
+
+<p>
+在 pi 的 TUI 里，通过 `/agent` 来调用这些 subagent，并实现了两个模式：当前会话和 tmux 后台运行。
+</p>
+
+<p>
+tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux 指令就可以和这个 subagent session 交互了。在 subagent session 完成之后会使用 pi 的 notify 通知显示 txt 文本的输出路径，主 agent 就可以阅读了。
+</p>
+
+
+<figure id="org50b6411">
+<img src="https://pic.vandee.art/images/20260211_125004-agent1.png" class="img" width="60%" height="60%">
+
+</figure>
+
+
+<figure id="org2f361ca">
+<img src="https://pic.vandee.art/images/20260211_125004-agent2.png" class="img" width="60%" height="60%">
+
+</figure>
+
+
+<figure id="org9f4dd42">
+<img src="https://pic.vandee.art/images/20260211_125004-agent3.png" class="img" width="60%" height="60%">
+
+</figure>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #787878;">/**</span><span style="color: #787878;">
+ * Agents Select Extension
+ *
+ * Provides interactive agent selection and invocation via /agents command
+ * and direct @agent-name invocation with task input.
+ */</span>
+
+<span style="color: #FFA657;">import</span> * <span style="color: #FFA657;">as</span> fs <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:fs"</span>;
+<span style="color: #FFA657;">import</span> * <span style="color: #FFA657;">as</span> os <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:os"</span>;
+<span style="color: #FFA657;">import</span> * <span style="color: #FFA657;">as</span> path <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:path"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> exec <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:child_process"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> spawn <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:child_process"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> promisify <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:util"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #FFA657;">type</span> <span style="color: #8c8c8c;">{</span> ExtensionAPI <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-coding-agent"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> parseFrontmatter, DynamicBorder <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-coding-agent"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> Container, Editor, Input, SelectList, Text, Spacer, matchesKey, Key, CombinedAutocompleteProvider <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-tui"</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">execAsync</span> = <span style="color: #96a6c8;">promisify</span><span style="color: #8c8c8c;">(</span>exec<span style="color: #8c8c8c;">)</span>;
+
+<span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">AgentConfig</span> <span style="color: #8c8c8c;">{</span>
+        name: <span style="color: #FFA657;">string</span>;
+        description: <span style="color: #FFA657;">string</span>;
+        source: <span style="color: #A1D08E;">"user"</span> | <span style="color: #A1D08E;">"project"</span>;
+        filePath: <span style="color: #FFA657;">string</span>;
+        systemPrompt: <span style="color: #FFA657;">string</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">USER_AGENTS_DIR</span> = path.<span style="color: #96a6c8;">join</span><span style="color: #8c8c8c;">(</span>os.<span style="color: #96a6c8;">homedir</span><span style="color: #93a8c6;">()</span>, <span style="color: #A1D08E;">".pi"</span>, <span style="color: #A1D08E;">"agent"</span>, <span style="color: #A1D08E;">"agents"</span><span style="color: #8c8c8c;">)</span>;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">PROJECT_AGENTS_DIR_NAME</span> = path.<span style="color: #96a6c8;">join</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">".pi"</span>, <span style="color: #A1D08E;">"agents"</span><span style="color: #8c8c8c;">)</span>;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">AGENT_FILE_EXTENSION</span> = <span style="color: #A1D08E;">".md"</span>;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">AGENT_NAME_PATTERN</span> = <span style="color: #A1D08E;">/^@([a-zA-Z0-9_-]+)\s+(.+)$/</span>s;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">PROCESS_STARTUP_WAIT_MS</span> = 1500;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">STOPWORDS</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Set</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">"the"</span>, <span style="color: #A1D08E;">"for"</span>, <span style="color: #A1D08E;">"with"</span>, <span style="color: #A1D08E;">"from"</span>, <span style="color: #A1D08E;">"into"</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">MAX_KEYWORDS</span> = 3;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">MIN_KEYWORD_LENGTH</span> = 3;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">TMUX_PI_SCRIPT</span> = path.<span style="color: #96a6c8;">join</span><span style="color: #8c8c8c;">(</span>os.<span style="color: #96a6c8;">homedir</span><span style="color: #93a8c6;">()</span>, <span style="color: #A1D08E;">".pi/agent/skills/tmux-pi/scripts/run-pi-monitored.sh"</span><span style="color: #8c8c8c;">)</span>;
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">generateSessionName</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">agentName</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">task</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">cleanAgentName</span> = agentName.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^@/</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">words</span> = task
+                .<span style="color: #96a6c8;">toLowerCase</span><span style="color: #93a8c6;">()</span>
+                .<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/[^\w\s]/</span>g, <span style="color: #A1D08E;">" "</span><span style="color: #93a8c6;">)</span>
+                .<span style="color: #96a6c8;">split</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/\s+/</span><span style="color: #93a8c6;">)</span>
+                .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>w<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> w.length &gt; MIN_KEYWORD_LENGTH &amp;&amp; !STOPWORDS.<span style="color: #96a6c8;">has</span><span style="color: #b0b1a3;">(</span>w<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">keywordStr</span> = words.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>0, MAX_KEYWORDS<span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">join</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"-"</span><span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`pi-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">cleanAgentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">keywordStr</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">checkSessionExists</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">sessionName</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #FFA657;">boolean</span>&gt; <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">try</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">execAsync</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">`tmux list-sessions -F "#{session_name}" 2&gt;/dev/null | grep -q "^</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">sessionName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">$"`</span><span style="color: #b0b1a3;">)</span>;
+                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">true</span>;
+        <span style="color: #93a8c6;">}</span> <span style="color: #FFA657;">catch</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">false</span>;
+        <span style="color: #93a8c6;">}</span>
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">runSubagentSession</span><span style="color: #8c8c8c;">(</span>
+        <span style="color: #f4f4ff;">agentName</span>: <span style="color: #FFA657;">string</span>,
+        <span style="color: #f4f4ff;">task</span>: <span style="color: #FFA657;">string</span>,
+        <span style="color: #f4f4ff;">cwd</span>: <span style="color: #FFA657;">string</span>
+<span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #8c8c8c;">{</span> sessionName: <span style="color: #FFA657;">string</span>; outputFile: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">}</span>&gt; <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionName</span> = <span style="color: #96a6c8;">generateSessionName</span><span style="color: #93a8c6;">(</span>agentName, task<span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">outputFile</span> = <span style="color: #A1D08E;">`/tmp/pi-conversation-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">sessionName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">Date.now()</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">.txt`</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">command</span> = <span style="color: #A1D08E;">`@</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">agentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">task</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">proc</span> = <span style="color: #96a6c8;">spawn</span><span style="color: #93a8c6;">(</span>
+                <span style="color: #A1D08E;">"bash"</span>,
+                <span style="color: #b0b1a3;">[</span>TMUX_PI_SCRIPT, <span style="color: #A1D08E;">"-n"</span>, sessionName, <span style="color: #A1D08E;">"-d"</span>, cwd, <span style="color: #A1D08E;">"-c"</span>, command, <span style="color: #A1D08E;">"-o"</span>, outputFile, <span style="color: #A1D08E;">"-v"</span><span style="color: #b0b1a3;">]</span>,
+                <span style="color: #b0b1a3;">{</span> detached: <span style="color: #95a99f;">true</span>, stdio: <span style="color: #97b098;">[</span><span style="color: #A1D08E;">"ignore"</span>, <span style="color: #A1D08E;">"pipe"</span>, <span style="color: #A1D08E;">"pipe"</span><span style="color: #97b098;">]</span> <span style="color: #b0b1a3;">}</span>
+        <span style="color: #93a8c6;">)</span>;
+
+        proc.<span style="color: #96a6c8;">unref</span><span style="color: #93a8c6;">()</span>;
+        proc.stderr?.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"data"</span>, <span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">()</span> <span style="color: #b0b1a3;">{}</span><span style="color: #93a8c6;">)</span>;
+
+        <span style="color: #FFA657;">await</span> <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Promise</span><span style="color: #93a8c6;">(</span><span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">resolve</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                <span style="color: #96a6c8;">setTimeout</span><span style="color: #97b098;">(</span>resolve, PROCESS_STARTUP_WAIT_MS<span style="color: #97b098;">)</span>;
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+        <span style="color: #FFA657;">try</span> <span style="color: #93a8c6;">{</span>
+                process.<span style="color: #96a6c8;">kill</span><span style="color: #b0b1a3;">(</span>proc.pid <span style="color: #FFA657;">as</span> <span style="color: #FFA657;">number</span>, 0<span style="color: #b0b1a3;">)</span>;
+                <span style="color: #FFA657;">return</span> <span style="color: #b0b1a3;">{</span> sessionName, outputFile <span style="color: #b0b1a3;">}</span>;
+        <span style="color: #93a8c6;">}</span> <span style="color: #FFA657;">catch</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">throw</span> <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Error</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">`Process exited. Check /tmp/pi-startup-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">sessionName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">.log`</span><span style="color: #b0b1a3;">)</span>;
+        <span style="color: #93a8c6;">}</span>
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">loadAgentsFromDir</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">dir</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">source</span>: <span style="color: #A1D08E;">"user"</span> | <span style="color: #A1D08E;">"project"</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">AgentConfig</span><span style="color: #8c8c8c;">[]</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>!fs.<span style="color: #96a6c8;">existsSync</span><span style="color: #b0b1a3;">(</span>dir<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">return</span> <span style="color: #b0b1a3;">[]</span>;
+        <span style="color: #93a8c6;">}</span>
+
+        <span style="color: #FFA657;">return</span> fs.<span style="color: #96a6c8;">readdirSync</span><span style="color: #93a8c6;">(</span>dir, <span style="color: #b0b1a3;">{</span> withFileTypes: <span style="color: #95a99f;">true</span> <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
+                .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">entry</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                        <span style="color: #FFA657;">return</span> entry.name.<span style="color: #96a6c8;">endsWith</span><span style="color: #97b098;">(</span>AGENT_FILE_EXTENSION<span style="color: #97b098;">)</span> &amp;&amp; <span style="color: #97b098;">(</span>entry.<span style="color: #96a6c8;">isFile</span><span style="color: #aebed8;">()</span> || entry.<span style="color: #96a6c8;">isSymbolicLink</span><span style="color: #aebed8;">()</span><span style="color: #97b098;">)</span>;
+                <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
+                .<span style="color: #96a6c8;">map</span><span style="color: #93a8c6;">(</span><span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">entry</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">filePath</span> = path.<span style="color: #96a6c8;">join</span><span style="color: #97b098;">(</span>dir, entry.name<span style="color: #97b098;">)</span>;
+                        <span style="color: #FFA657;">const</span> <span style="color: #97b098;">{</span> frontmatter, body <span style="color: #97b098;">}</span> = <span style="color: #96a6c8;">parseFrontmatter</span>&lt;<span style="color: #95a99f;">Record</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">unknown</span>&gt;&gt;<span style="color: #97b098;">(</span>fs.<span style="color: #96a6c8;">readFileSync</span><span style="color: #aebed8;">(</span>filePath, <span style="color: #A1D08E;">"utf-8"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>;
+
+                        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!frontmatter.name || !frontmatter.description<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
+                        <span style="color: #97b098;">}</span>
+
+                        <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span>
+                                name: <span style="color: #95a99f;">String</span><span style="color: #aebed8;">(</span>frontmatter.name<span style="color: #aebed8;">)</span>,
+                                description: <span style="color: #95a99f;">String</span><span style="color: #aebed8;">(</span>frontmatter.description<span style="color: #aebed8;">)</span>,
+                                source,
+                                filePath,
+                                systemPrompt: body.<span style="color: #96a6c8;">trim</span><span style="color: #aebed8;">()</span>,
+                        <span style="color: #97b098;">}</span>;
+                <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
+                .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>config<span style="color: #b0b1a3;">)</span>: <span style="color: #f4f4ff;">config</span> <span style="color: #FFA657;">is</span> <span style="color: #95a99f;">AgentConfig</span> <span style="color: #FFA657;">=&gt;</span> config !== <span style="color: #95a99f;">null</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">findNearestProjectAgentsDir</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">cwd</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> | <span style="color: #95a99f;">null</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">currentDir</span> = cwd;
+
+        <span style="color: #FFA657;">while</span> <span style="color: #93a8c6;">(</span>currentDir !== path.<span style="color: #96a6c8;">dirname</span><span style="color: #b0b1a3;">(</span>currentDir<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">candidate</span> = path.<span style="color: #96a6c8;">join</span><span style="color: #b0b1a3;">(</span>currentDir, PROJECT_AGENTS_DIR_NAME<span style="color: #b0b1a3;">)</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>fs.<span style="color: #96a6c8;">existsSync</span><span style="color: #97b098;">(</span>candidate<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                        <span style="color: #FFA657;">return</span> candidate;
+                <span style="color: #b0b1a3;">}</span>
+                currentDir = path.<span style="color: #96a6c8;">dirname</span><span style="color: #b0b1a3;">(</span>currentDir<span style="color: #b0b1a3;">)</span>;
+        <span style="color: #93a8c6;">}</span>
+
+        <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">discoverAgents</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">cwd</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">AgentConfig</span><span style="color: #8c8c8c;">[]</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">projectAgentsDir</span> = <span style="color: #96a6c8;">findNearestProjectAgentsDir</span><span style="color: #93a8c6;">(</span>cwd<span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">userAgents</span> = <span style="color: #96a6c8;">loadAgentsFromDir</span><span style="color: #93a8c6;">(</span>USER_AGENTS_DIR, <span style="color: #A1D08E;">"user"</span><span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">projectAgents</span> = projectAgentsDir ? <span style="color: #96a6c8;">loadAgentsFromDir</span><span style="color: #93a8c6;">(</span>projectAgentsDir, <span style="color: #A1D08E;">"project"</span><span style="color: #93a8c6;">)</span> : <span style="color: #93a8c6;">[]</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agentMap</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Map</span><span style="color: #93a8c6;">(</span>userAgents.<span style="color: #96a6c8;">map</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>a<span style="color: #97b098;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #97b098;">[</span>a.name, a<span style="color: #97b098;">]</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+        projectAgents.<span style="color: #96a6c8;">forEach</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>a<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> agentMap.<span style="color: #96a6c8;">set</span><span style="color: #b0b1a3;">(</span>a.name, a<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+
+        <span style="color: #FFA657;">return</span> Array.<span style="color: #96a6c8;">from</span><span style="color: #93a8c6;">(</span>agentMap.<span style="color: #96a6c8;">values</span><span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">NAVIGATION_KEYS</span> = <span style="color: #8c8c8c;">[</span>Key.up, Key.down, Key.enter, Key.escape<span style="color: #8c8c8c;">]</span>;
+
+<span style="color: #FFA657;">export</span> <span style="color: #FFA657;">default</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">agentAtDiscovery</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">pi</span>: <span style="color: #95a99f;">ExtensionAPI</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">void</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">activeAgent</span>: <span style="color: #95a99f;">AgentConfig</span> | <span style="color: #95a99f;">null</span> = <span style="color: #95a99f;">null</span>;
+        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">cachedAgents</span>: <span style="color: #95a99f;">AgentConfig</span><span style="color: #93a8c6;">[]</span> | <span style="color: #95a99f;">null</span> = <span style="color: #95a99f;">null</span>;
+        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">subagentTasks</span>: <span style="color: #95a99f;">Array</span>&lt;<span style="color: #93a8c6;">{</span> agentName: <span style="color: #FFA657;">string</span>; sessionName: <span style="color: #FFA657;">string</span>; outputFile: <span style="color: #FFA657;">string</span>; task: <span style="color: #FFA657;">string</span>; startTime: <span style="color: #FFA657;">number</span>; ctx: <span style="color: #FFA657;">any</span> <span style="color: #93a8c6;">}</span>&gt; = <span style="color: #93a8c6;">[]</span>;
+
+        <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">formatElapsed</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">seconds</span>: <span style="color: #FFA657;">number</span><span style="color: #93a8c6;">)</span>: <span style="color: #FFA657;">string</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>seconds &lt; 60<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                        <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">seconds</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">s`</span>;
+                <span style="color: #b0b1a3;">}</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">minutes</span> = Math.<span style="color: #96a6c8;">floor</span><span style="color: #b0b1a3;">(</span>seconds / 60<span style="color: #b0b1a3;">)</span>;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">remainingSeconds</span> = seconds % 60;
+                <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">minutes</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">m</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">remainingSeconds</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">s`</span>;
+        <span style="color: #93a8c6;">}</span>
+
+        <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">updateSubagentStatus</span><span style="color: #93a8c6;">()</span>: <span style="color: #FFA657;">void</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>subagentTasks.length === 0<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                        <span style="color: #FFA657;">return</span>;
+                <span style="color: #b0b1a3;">}</span>
+
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">task</span> = subagentTasks<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span>;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">elapsed</span> = Math.<span style="color: #96a6c8;">floor</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>Date.<span style="color: #96a6c8;">now</span><span style="color: #aebed8;">()</span> - task.startTime<span style="color: #97b098;">)</span> / 1000<span style="color: #b0b1a3;">)</span>;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">theme</span> = task.ctx.ui.theme;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">status</span> = theme.<span style="color: #96a6c8;">fg</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"dim"</span>, <span style="color: #A1D08E;">`@</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">task.agentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> | tmux-session: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">task.sessionName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> | &#9201;&#65039; </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">formatElapsed(elapsed)</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span><span style="color: #b0b1a3;">)</span>;
+                task.ctx.ui.<span style="color: #96a6c8;">setWidget</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"subagent-status"</span>, <span style="color: #97b098;">[</span>status<span style="color: #97b098;">]</span>, <span style="color: #97b098;">{</span> placement: <span style="color: #A1D08E;">"belowEditor"</span> <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>;
+        <span style="color: #93a8c6;">}</span>
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">STATUS_CHECK_INTERVAL_MS</span> = 5000;
+
+        <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">checkTaskStatus</span><span style="color: #93a8c6;">()</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #FFA657;">void</span>&gt; <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">stillRunning</span>: <span style="color: #FFA657;">typeof</span> subagentTasks = <span style="color: #b0b1a3;">[]</span>;
+
+                <span style="color: #FFA657;">for</span> <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">task</span> <span style="color: #FFA657;">of</span> subagentTasks<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionRunning</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">checkSessionExists</span><span style="color: #97b098;">(</span>task.sessionName<span style="color: #97b098;">)</span>;
+
+                        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!sessionRunning &amp;&amp; fs.<span style="color: #96a6c8;">existsSync</span><span style="color: #aebed8;">(</span>task.outputFile<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                                task.ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`&#10003; Task completed: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">task.sessionName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>, <span style="color: #A1D08E;">"success"</span><span style="color: #aebed8;">)</span>;
+                                task.ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`&#128196; Results: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">task.outputFile</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>, <span style="color: #A1D08E;">"info"</span><span style="color: #aebed8;">)</span>;
+                                task.ctx.ui.<span style="color: #96a6c8;">setWidget</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"subagent-status"</span>, <span style="color: #95a99f;">undefined</span><span style="color: #aebed8;">)</span>;
+                                <span style="color: #FFA657;">continue</span>;
+                        <span style="color: #97b098;">}</span>
+                        stillRunning.<span style="color: #96a6c8;">push</span><span style="color: #97b098;">(</span>task<span style="color: #97b098;">)</span>;
+                <span style="color: #b0b1a3;">}</span>
+
+                subagentTasks = stillRunning;
+                <span style="color: #96a6c8;">updateSubagentStatus</span><span style="color: #b0b1a3;">()</span>;
+
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>subagentTasks.length &gt; 0<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                        <span style="color: #96a6c8;">setTimeout</span><span style="color: #97b098;">(</span>checkTaskStatus, STATUS_CHECK_INTERVAL_MS<span style="color: #97b098;">)</span>;
+                <span style="color: #b0b1a3;">}</span>
+        <span style="color: #93a8c6;">}</span>
+
+        pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"session_start"</span>, <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">_event</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                cachedAgents = <span style="color: #96a6c8;">discoverAgents</span><span style="color: #97b098;">(</span>ctx.cwd<span style="color: #97b098;">)</span>;
+                ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">`Loaded </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">cachedAgents.length</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> agents. Use /agents or @agent-name`</span>, <span style="color: #A1D08E;">"info"</span><span style="color: #97b098;">)</span>;
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+        pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"before_agent_start"</span>, <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">event</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!activeAgent<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                        <span style="color: #FFA657;">return</span> <span style="color: #aebed8;">{}</span>;
+                <span style="color: #97b098;">}</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">fullPrompt</span> = event.systemPrompt + <span style="color: #A1D08E;">"\n\n"</span> + activeAgent.systemPrompt;
+                <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span> systemPrompt: fullPrompt <span style="color: #97b098;">}</span>;
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+        pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"agent_end"</span>, <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">()</span> <span style="color: #b0b1a3;">{</span>
+                activeAgent = <span style="color: #95a99f;">null</span>;
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+        pi.<span style="color: #96a6c8;">registerCommand</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"agents"</span>, <span style="color: #b0b1a3;">{</span>
+                description: <span style="color: #A1D08E;">"Select an agent and provide a task"</span>,
+                handler: <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #97b098;">(</span><span style="color: #f4f4ff;">_args</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agents</span> = cachedAgents ?? <span style="color: #96a6c8;">discoverAgents</span><span style="color: #aebed8;">(</span>ctx.cwd<span style="color: #aebed8;">)</span>;
+
+                        <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>agents.length === 0<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
+                                ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"No agents found. Create .md files in ~/.pi/agent/agents/ or .pi/agents/"</span>, <span style="color: #A1D08E;">"warning"</span><span style="color: #b0b0b3;">)</span>;
+                                <span style="color: #FFA657;">return</span>;
+                        <span style="color: #aebed8;">}</span>
+
+                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">result</span> = <span style="color: #FFA657;">await</span> ctx.ui.<span style="color: #96a6c8;">custom</span>&lt;<span style="color: #aebed8;">{</span> agentName: <span style="color: #FFA657;">string</span>; task: <span style="color: #FFA657;">string</span>; subagentMode?: <span style="color: #FFA657;">boolean</span> <span style="color: #aebed8;">}</span> | <span style="color: #95a99f;">null</span>&gt;<span style="color: #aebed8;">(</span>
+                                <span style="color: #FFA657;">function</span> <span style="color: #b0b0b3;">(</span><span style="color: #f4f4ff;">tui</span>, <span style="color: #f4f4ff;">theme</span>, <span style="color: #f4f4ff;">_kb</span>, <span style="color: #f4f4ff;">done</span><span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">searchInput</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Input</span><span style="color: #90a890;">()</span>;
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">accentBorder</span> = <span style="color: #90a890;">(</span>s: <span style="color: #FFA657;">string</span><span style="color: #90a890;">)</span> <span style="color: #FFA657;">=&gt;</span> theme.<span style="color: #96a6c8;">fg</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">"accent"</span>, s<span style="color: #90a890;">)</span>;
+
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">selectListTheme</span> = <span style="color: #90a890;">{</span>
+                                                selectedPrefix: accentBorder,
+                                                selectedText: accentBorder,
+                                                description: <span style="color: #a2b6da;">(</span>t: <span style="color: #FFA657;">string</span><span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">=&gt;</span> theme.<span style="color: #96a6c8;">fg</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"muted"</span>, t<span style="color: #a2b6da;">)</span>,
+                                                scrollInfo: <span style="color: #a2b6da;">(</span>t: <span style="color: #FFA657;">string</span><span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">=&gt;</span> theme.<span style="color: #96a6c8;">fg</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"dim"</span>, t<span style="color: #a2b6da;">)</span>,
+                                                noMatch: <span style="color: #a2b6da;">(</span>t: <span style="color: #FFA657;">string</span><span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">=&gt;</span> theme.<span style="color: #96a6c8;">fg</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"warning"</span>, t<span style="color: #a2b6da;">)</span>,
+                                        <span style="color: #90a890;">}</span>;
+
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">editorTheme</span> = <span style="color: #90a890;">{</span> borderColor: accentBorder, selectList: selectListTheme <span style="color: #90a890;">}</span>;
+
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">taskInput</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Editor</span><span style="color: #90a890;">(</span>tui, editorTheme, <span style="color: #a2b6da;">{</span> paddingX: 1 <span style="color: #a2b6da;">}</span><span style="color: #90a890;">)</span>;
+                                        taskInput.<span style="color: #96a6c8;">setAutocompleteProvider</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">CombinedAutocompleteProvider</span><span style="color: #a2b6da;">(</span><span style="color: #9cb6ad;">[]</span>, ctx.cwd, <span style="color: #A1D08E;">"fd"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">selectList</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">SelectList</span><span style="color: #90a890;">(</span>
+                                                agents.<span style="color: #96a6c8;">map</span><span style="color: #a2b6da;">(</span><span style="color: #9cb6ad;">(</span>a<span style="color: #9cb6ad;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #9cb6ad;">(</span><span style="color: #8c8c8c;">{</span> value: a.name, label: a.name, description: a.description <span style="color: #8c8c8c;">}</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>,
+                                                Math.<span style="color: #96a6c8;">min</span><span style="color: #a2b6da;">(</span>agents.length, 10<span style="color: #a2b6da;">)</span>,
+                                                selectListTheme
+                                        <span style="color: #90a890;">)</span>;
+
+                                        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">selectedAgent</span>: <span style="color: #FFA657;">string</span> | <span style="color: #95a99f;">null</span> = <span style="color: #95a99f;">null</span>;
+                                        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">showTaskInput</span> = <span style="color: #95a99f;">false</span>;
+                                        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">subagentMode</span> = <span style="color: #95a99f;">false</span>;
+
+                                        selectList.onSelect = <span style="color: #FFA657;">function</span> <span style="color: #90a890;">(</span><span style="color: #f4f4ff;">item</span><span style="color: #90a890;">)</span> <span style="color: #90a890;">{</span>
+                                                selectedAgent = item.value;
+                                                searchInput.<span style="color: #96a6c8;">setValue</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">""</span><span style="color: #a2b6da;">)</span>;
+                                                showTaskInput = <span style="color: #95a99f;">true</span>;
+                                                tui.<span style="color: #96a6c8;">requestRender</span><span style="color: #a2b6da;">()</span>;
+                                        <span style="color: #90a890;">}</span>;
+
+                                        selectList.onCancel = <span style="color: #FFA657;">function</span> <span style="color: #90a890;">()</span> <span style="color: #90a890;">{</span>
+                                                <span style="color: #96a6c8;">done</span><span style="color: #a2b6da;">(</span><span style="color: #95a99f;">null</span><span style="color: #a2b6da;">)</span>;
+                                        <span style="color: #90a890;">}</span>;
+
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agentSelectionContainer</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Container</span><span style="color: #90a890;">()</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">DynamicBorder</span><span style="color: #a2b6da;">(</span>accentBorder<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Text</span><span style="color: #a2b6da;">(</span>theme.<span style="color: #96a6c8;">fg</span><span style="color: #9cb6ad;">(</span><span style="color: #A1D08E;">"accent"</span>, theme.<span style="color: #96a6c8;">bold</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"Select Agent"</span><span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span>, 1, 0<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span>searchInput<span style="color: #90a890;">)</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Spacer</span><span style="color: #a2b6da;">(</span>1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span>selectList<span style="color: #90a890;">)</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Spacer</span><span style="color: #a2b6da;">(</span>1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Text</span><span style="color: #a2b6da;">(</span>theme.<span style="color: #96a6c8;">fg</span><span style="color: #9cb6ad;">(</span><span style="color: #A1D08E;">"dim"</span>, <span style="color: #A1D08E;">"type to filter &#8226; &#8593;&#8595; navigate &#8226; enter select &#8226; esc cancel"</span><span style="color: #9cb6ad;">)</span>, 1, 0<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        agentSelectionContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">DynamicBorder</span><span style="color: #a2b6da;">(</span>accentBorder<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">taskContainer</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Container</span><span style="color: #90a890;">()</span>;
+                                        taskContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">DynamicBorder</span><span style="color: #a2b6da;">(</span>accentBorder<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        taskContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Text</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">""</span>, 1, 0<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        taskContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Spacer</span><span style="color: #a2b6da;">(</span>1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        taskContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span>taskInput<span style="color: #90a890;">)</span>;
+                                        taskContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Spacer</span><span style="color: #a2b6da;">(</span>1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        taskContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Text</span><span style="color: #a2b6da;">(</span>theme.<span style="color: #96a6c8;">fg</span><span style="color: #9cb6ad;">(</span><span style="color: #A1D08E;">"dim"</span>, <span style="color: #A1D08E;">"@file autocomplete &#8226; ctrl+up toggle subagent &#8226; enter confirm &#8226; esc cancel"</span><span style="color: #9cb6ad;">)</span>, 1, 0<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                                        taskContainer.<span style="color: #96a6c8;">addChild</span><span style="color: #90a890;">(</span><span style="color: #FFA657;">new</span> <span style="color: #95a99f;">DynamicBorder</span><span style="color: #a2b6da;">(</span>accentBorder<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+
+                                        <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">updateTaskHeader</span><span style="color: #90a890;">()</span>: <span style="color: #FFA657;">void</span> <span style="color: #90a890;">{</span>
+                                                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">subagentState</span> = subagentMode ? <span style="color: #A1D08E;">"ON"</span> : <span style="color: #A1D08E;">"OFF"</span>;
+                                                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">subagentColor</span> = subagentMode ? <span style="color: #A1D08E;">"success"</span> : <span style="color: #A1D08E;">"dim"</span>;
+                                                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">header</span> =
+                                                        theme.<span style="color: #96a6c8;">fg</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"accent"</span>, theme.<span style="color: #96a6c8;">bold</span><span style="color: #9cb6ad;">(</span><span style="color: #A1D08E;">`Task for @</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">selectedAgent</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span> +
+                                                        <span style="color: #A1D08E;">" "</span> +
+                                                        theme.<span style="color: #96a6c8;">fg</span><span style="color: #a2b6da;">(</span>subagentColor, theme.<span style="color: #96a6c8;">bold</span><span style="color: #9cb6ad;">(</span><span style="color: #A1D08E;">`[Subagent: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">subagentState</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">]`</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>;
+                                                taskContainer.children<span style="color: #a2b6da;">[</span>1<span style="color: #a2b6da;">]</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Text</span><span style="color: #a2b6da;">(</span>header, 1, 0<span style="color: #a2b6da;">)</span>;
+                                        <span style="color: #90a890;">}</span>
+
+                                        <span style="color: #FFA657;">return</span> <span style="color: #90a890;">{</span>
+                                                <span style="color: #96a6c8;">render</span><span style="color: #a2b6da;">(</span>width: <span style="color: #FFA657;">number</span><span style="color: #a2b6da;">)</span> <span style="color: #a2b6da;">{</span>
+                                                        <span style="color: #FFA657;">if</span> <span style="color: #9cb6ad;">(</span>showTaskInput<span style="color: #9cb6ad;">)</span> <span style="color: #9cb6ad;">{</span>
+                                                                <span style="color: #96a6c8;">updateTaskHeader</span><span style="color: #8c8c8c;">()</span>;
+                                                                <span style="color: #FFA657;">return</span> taskContainer.<span style="color: #96a6c8;">render</span><span style="color: #8c8c8c;">(</span>width<span style="color: #8c8c8c;">)</span>;
+                                                        <span style="color: #9cb6ad;">}</span>
+                                                        <span style="color: #FFA657;">return</span> agentSelectionContainer.<span style="color: #96a6c8;">render</span><span style="color: #9cb6ad;">(</span>width<span style="color: #9cb6ad;">)</span>;
+                                                <span style="color: #a2b6da;">}</span>,
+                                                <span style="color: #96a6c8;">invalidate</span><span style="color: #a2b6da;">()</span> <span style="color: #a2b6da;">{</span>
+                                                        agentSelectionContainer.<span style="color: #96a6c8;">invalidate</span><span style="color: #9cb6ad;">()</span>;
+                                                        taskContainer.<span style="color: #96a6c8;">invalidate</span><span style="color: #9cb6ad;">()</span>;
+                                                        searchInput.<span style="color: #96a6c8;">invalidate</span><span style="color: #9cb6ad;">()</span>;
+                                                <span style="color: #a2b6da;">}</span>,
+                                                <span style="color: #96a6c8;">handleInput</span><span style="color: #a2b6da;">(</span>data: <span style="color: #FFA657;">string</span><span style="color: #a2b6da;">)</span> <span style="color: #a2b6da;">{</span>
+                                                        <span style="color: #FFA657;">if</span> <span style="color: #9cb6ad;">(</span>showTaskInput<span style="color: #9cb6ad;">)</span> <span style="color: #9cb6ad;">{</span>
+                                                                <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span><span style="color: #96a6c8;">matchesKey</span><span style="color: #93a8c6;">(</span>data, Key.escape<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+                                                                        showTaskInput = <span style="color: #95a99f;">false</span>;
+                                                                        selectedAgent = <span style="color: #95a99f;">null</span>;
+                                                                        taskInput.<span style="color: #96a6c8;">setText</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>;
+                                                                        subagentMode = <span style="color: #95a99f;">false</span>;
+                                                                <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">else</span> <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span><span style="color: #96a6c8;">matchesKey</span><span style="color: #93a8c6;">(</span>data, Key.<span style="color: #96a6c8;">ctrl</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"up"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+                                                                        subagentMode = !subagentMode;
+                                                                <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">else</span> <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span><span style="color: #96a6c8;">matchesKey</span><span style="color: #93a8c6;">(</span>data, Key.enter<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+                                                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">task</span> = taskInput.<span style="color: #96a6c8;">getText</span><span style="color: #93a8c6;">()</span>;
+                                                                        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>task.<span style="color: #96a6c8;">trim</span><span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+                                                                                <span style="color: #96a6c8;">done</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">{</span> agentName: selectedAgent!, task: task.<span style="color: #96a6c8;">trim</span><span style="color: #aebed8;">()</span>, subagentMode <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>;
+                                                                                <span style="color: #FFA657;">return</span>;
+                                                                        <span style="color: #93a8c6;">}</span>
+                                                                <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">else</span> <span style="color: #8c8c8c;">{</span>
+                                                                        taskInput.<span style="color: #96a6c8;">handleInput</span><span style="color: #93a8c6;">(</span>data<span style="color: #93a8c6;">)</span>;
+                                                                <span style="color: #8c8c8c;">}</span>
+                                                        <span style="color: #9cb6ad;">}</span> <span style="color: #FFA657;">else</span> <span style="color: #9cb6ad;">{</span>
+                                                                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isNavKey</span> = NAVIGATION_KEYS.<span style="color: #96a6c8;">some</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">(</span>k<span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #96a6c8;">matchesKey</span><span style="color: #93a8c6;">(</span>data, k<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>;
+                                                                <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span>isNavKey<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+                                                                        selectList.<span style="color: #96a6c8;">handleInput</span><span style="color: #93a8c6;">(</span>data<span style="color: #93a8c6;">)</span>;
+                                                                <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">else</span> <span style="color: #8c8c8c;">{</span>
+                                                                        searchInput.<span style="color: #96a6c8;">handleInput</span><span style="color: #93a8c6;">(</span>data<span style="color: #93a8c6;">)</span>;
+                                                                        selectList.<span style="color: #96a6c8;">setFilter</span><span style="color: #93a8c6;">(</span>searchInput.<span style="color: #96a6c8;">getValue</span><span style="color: #b0b1a3;">()</span><span style="color: #93a8c6;">)</span>;
+                                                                <span style="color: #8c8c8c;">}</span>
+                                                        <span style="color: #9cb6ad;">}</span>
+                                                        tui.<span style="color: #96a6c8;">requestRender</span><span style="color: #9cb6ad;">()</span>;
+                                                <span style="color: #a2b6da;">}</span>,
+                                        <span style="color: #90a890;">}</span>;
+                                <span style="color: #b0b0b3;">}</span>
+                        <span style="color: #aebed8;">)</span>;
+
+                        <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>!result<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">return</span>;
+
+                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">selectedAgentConfig</span> = agents.<span style="color: #96a6c8;">find</span><span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>a<span style="color: #b0b0b3;">)</span> <span style="color: #FFA657;">=&gt;</span> a.name === result.agentName<span style="color: #aebed8;">)</span>;
+
+                        <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>!selectedAgentConfig<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
+                                ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">`Agent "</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">result.agentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">" not found`</span>, <span style="color: #A1D08E;">"error"</span><span style="color: #b0b0b3;">)</span>;
+                                <span style="color: #FFA657;">return</span>;
+                        <span style="color: #aebed8;">}</span>
+
+                        <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>result.subagentMode<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
+                                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionName</span> = <span style="color: #96a6c8;">generateSessionName</span><span style="color: #b0b0b3;">(</span>selectedAgentConfig.name, result.task<span style="color: #b0b0b3;">)</span>;
+
+                                <span style="color: #FFA657;">try</span> <span style="color: #b0b0b3;">{</span>
+                                        <span style="color: #FFA657;">const</span> <span style="color: #90a890;">{</span> outputFile <span style="color: #90a890;">}</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">runSubagentSession</span><span style="color: #90a890;">(</span>selectedAgentConfig.name, result.task, ctx.cwd<span style="color: #90a890;">)</span>;
+                                        subagentTasks.<span style="color: #96a6c8;">push</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">{</span>
+                                                agentName: selectedAgentConfig.name,
+                                                sessionName,
+                                                outputFile,
+                                                task: result.task,
+                                                startTime: <span style="color: #95a99f;">Date</span>.<span style="color: #96a6c8;">now</span><span style="color: #9cb6ad;">()</span>,
+                                                ctx,
+                                        <span style="color: #a2b6da;">}</span><span style="color: #90a890;">)</span>;
+                                        <span style="color: #96a6c8;">updateSubagentStatus</span><span style="color: #90a890;">()</span>;
+
+                                        <span style="color: #FFA657;">if</span> <span style="color: #90a890;">(</span>subagentTasks.length === 1<span style="color: #90a890;">)</span> <span style="color: #90a890;">{</span>
+                                                <span style="color: #96a6c8;">setTimeout</span><span style="color: #a2b6da;">(</span>checkTaskStatus, STATUS_CHECK_INTERVAL_MS<span style="color: #a2b6da;">)</span>;
+                                        <span style="color: #90a890;">}</span>
+
+                                        ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">`&#129302; Start agent @</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">selectedAgentConfig.name</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> for background task: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">sessionName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>, <span style="color: #A1D08E;">"success"</span><span style="color: #90a890;">)</span>;
+                                        <span style="color: #FFA657;">return</span>;
+                                <span style="color: #b0b0b3;">}</span> <span style="color: #FFA657;">catch</span> <span style="color: #b0b0b3;">(</span>err: <span style="color: #FFA657;">unknown</span><span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">message</span> = err <span style="color: #FFA657;">instanceof</span> <span style="color: #95a99f;">Error</span> ? err.message : <span style="color: #A1D08E;">"Unknown error"</span>;
+                                        ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">`&#10007; Failed: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">message</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>, <span style="color: #A1D08E;">"error"</span><span style="color: #90a890;">)</span>;
+                                        <span style="color: #FFA657;">return</span>;
+                                <span style="color: #b0b0b3;">}</span>
+                        <span style="color: #aebed8;">}</span>
+
+                        activeAgent = selectedAgentConfig;
+                        ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`&#129302; Start agent @</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">selectedAgentConfig.name</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>, <span style="color: #A1D08E;">"info"</span><span style="color: #aebed8;">)</span>;
+                        pi.<span style="color: #96a6c8;">sendUserMessage</span><span style="color: #aebed8;">(</span>result.task, <span style="color: #b0b0b3;">{</span> deliverAs: <span style="color: #A1D08E;">"steer"</span> <span style="color: #b0b0b3;">}</span><span style="color: #aebed8;">)</span>;
+                <span style="color: #97b098;">}</span>,
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+        pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"input"</span>, <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">event</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>event.source === <span style="color: #A1D08E;">"extension"</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                        <span style="color: #FFA657;">return</span> <span style="color: #aebed8;">{</span> action: <span style="color: #A1D08E;">"continue"</span> <span style="color: #aebed8;">}</span>;
+                <span style="color: #97b098;">}</span>
+
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">match</span> = event.text.<span style="color: #96a6c8;">trim</span><span style="color: #97b098;">()</span>.<span style="color: #96a6c8;">match</span><span style="color: #97b098;">(</span>AGENT_NAME_PATTERN<span style="color: #97b098;">)</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!match<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                        <span style="color: #FFA657;">return</span> <span style="color: #aebed8;">{</span> action: <span style="color: #A1D08E;">"continue"</span> <span style="color: #aebed8;">}</span>;
+                <span style="color: #97b098;">}</span>
+
+                <span style="color: #FFA657;">const</span> <span style="color: #97b098;">[</span>, <span style="color: #f4f4ff;">agentName</span>, <span style="color: #f4f4ff;">task</span><span style="color: #97b098;">]</span> = match;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agents</span> = cachedAgents ?? <span style="color: #96a6c8;">discoverAgents</span><span style="color: #97b098;">(</span>ctx.cwd<span style="color: #97b098;">)</span>;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agent</span> = agents.<span style="color: #96a6c8;">find</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>a<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> a.name === agentName<span style="color: #97b098;">)</span>;
+
+                <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!agent<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                        ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`Unknown agent "@</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">agentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">". Use /agents to list available agents.`</span>, <span style="color: #A1D08E;">"error"</span><span style="color: #aebed8;">)</span>;
+                        <span style="color: #FFA657;">return</span> <span style="color: #aebed8;">{</span> action: <span style="color: #A1D08E;">"handled"</span> <span style="color: #aebed8;">}</span>;
+                <span style="color: #97b098;">}</span>
+
+                activeAgent = agent;
+                ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">`Activating agent @</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">agentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">...`</span>, <span style="color: #A1D08E;">"info"</span><span style="color: #97b098;">)</span>;
+
+                <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span> action: <span style="color: #A1D08E;">"transform"</span>, text: task <span style="color: #97b098;">}</span>;
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-llm.html">LLM</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="ri-arrow-up-double-line ri-3x"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>

@@ -1,0 +1,774 @@
+#+title: Learn Agents by Building One: The Minimal Agent pi
+#+date: <2026-02-11 11:58>
+#+description: 大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。
+#+filetags: LLM
+
+这段时间小龙虾 OpenClaw 突然就病毒式的爆火了，它背后的 agent 框架就是 [[https://github.com/badlogic/pi-mono][pi-mono]].
+
+[[https://mariozechner.at/posts/2025-11-30-pi-coding-agent/][What I learned building an opinionated and minimal coding agent]] pi-mono 作者的这篇 blog 详细解释了他构建 pi-mono 的初衷和思路。
+
+大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。
+
+* Pi-mono
+pi-mono 的 agent 设计的极为简洁：只有 read，bash，edit，write 四个基础工具，system prompt 也设计的非常简洁。AI agent ≈ Tools + loops.
+
+#+begin_src
+You are an expert coding assistant. You help users with coding tasks by reading files, executing commands, editing code, and writing new files.
+
+Available tools:
+- read: Read file contents
+- bash: Execute bash commands
+- edit: Make surgical edits to files
+- write: Create or overwrite files
+
+Guidelines:
+- Use bash for file operations like ls, grep, find
+- Use read to examine files before editing
+- Use edit for precise changes (old text must match exactly)
+- Use write only for new files or complete rewrites
+- When summarizing your actions, output plain text directly - do NOT use cat or bash to display what you did
+- Be concise in your responses
+- Show file paths clearly when working with files
+
+Documentation:
+- Your own documentation (including custom model setup and theme creation) is at: /path/to/README.md
+- Read it when users ask about features, configuration, or setup, and especially if the user asks you to add a custom model or provider, or create a custom theme.
+#+end_src
+
+在大语言模型的能力越来越强之后，简洁的 prompt 反而可以发挥更好的效果。以前模型能力不足，所以需要详细的 prompt 来指导 agent，现在反过来了，模型能力很强，只需要提供简洁的 guide rules，让 agent 能够自主发挥。我觉得这是 pi-mono 能够在现有模型基础上实现很好的执行效果，很重要的一个原因。
+
+没想到，KISS原则（Keep It Simple, Stupid），Unix 系统的一切皆是文件的设计哲学现在也深深的影响了 agent 的能力。现阶段训练出来的模型，天然的就会对文件操作比较熟悉，LLM 更喜欢这些基础的 shell 指令，更喜欢和文件打交道。这也是为什么 Claude Code 放弃使用 Cursor 的 RAG 方案，而使用 grep 来让 agent 直接搜索和查找文件，这也是为什么 AGENTS.md 最终使用 md 这个格式文本来作为 agent 的指导文件。
+
+[[https://lucumr.pocoo.org/2026/1/31/pi/][Pi: The Minimal Agent Within OpenClaw | Armin Ronacher's Thoughts and Writings]] pi-mono 提供了非常方便的 extension 扩展系统，能够调用 API 实现高度自定义的功能，这实在是 awesome！
+
+比起那些复杂的 agent 框架，各种概念、论文和复杂的抽象层，pi-mono 对新手来说是在太友好了，源码里还有大量的 example 和 docs。
+
+从 Claude Code 到 OpenCode，再到 OpenClaw 和 pi-mono，我觉得，本地自部署模型+自定义 agent 一定是未来的趋势。人人都能够有一个自己自定义版本的 AI agent，最后变成一个 USB 即插即用。
+
+* Pi-mono Extension
+前段时间刚开始深入一点折腾和看 OpenCode 的源码，想实现一些自定义的功能，但是这个项目已经做的太大了，pi-mono 更适合个人折腾。
+
+** Command Rule
+pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
+
+#+begin_src typescript
+/**
+ * Command Permissions Extension
+ *
+ * Ported from opencode command permissions configuration.
+ * Supports wildcard patterns and ask/allow/deny actions.
+ *
+ * Configuration in settings.json:
+ * {
+ *   "permission": {
+ *     "YOLO": true,
+ *     "nonInteractiveAsk": "deny",
+ *     "read": { ".env": "deny", "*.md": "allow" },
+ *     "bash": { "git push *": "ask", "rm -rf *": "deny" }
+ *   }
+ * }
+ *
+ * Config files (merged, project takes precedence):
+ * - ~/.pi/agent/settings.json (global)
+ * - <cwd>/.pi/settings.json (project-local)
+ */
+
+import { existsSync, readFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { join } from "node:path";
+import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+
+// Simple glob-to-regex converter for command matching
+// Matches opencode's wildcard implementation
+// * matches any characters (including /)
+// ? matches any single character
+// Pattern ending with " *" makes trailing part optional
+function globToRegex(pattern: string): RegExp {
+    let escaped = pattern
+        .replace(/[.+^${}()|[\]\\]/g, '\\$&') // escape special regex chars
+        .replace(/\*/g, '.*') // * becomes .*
+        .replace(/\?/g, '.'); // ? becomes .
+
+    // If pattern ends with " *" (space + wildcard), make the trailing part optional
+    // This allows "ls *" to match both "ls" and "ls -la"
+    if (escaped.endsWith(' .*')) {
+        escaped = escaped.slice(0, -3) + '( .*)?';
+    }
+
+    return new RegExp(`^${escaped}$`, 's'); // 's' flag: . matches newlines
+}
+
+function minimatch(str: string, pattern: string): boolean {
+    return globToRegex(pattern).test(str);
+}
+
+const DEFAULT_YOLO = true;
+const DEFAULT_NON_INTERACTIVE_ASK: "allow" | "deny" = "deny";
+const VALID_ACTIONS = ["ask", "allow", "deny"] as const;
+type Action = (typeof VALID_ACTIONS)[number];
+
+interface PermissionRule {
+    pattern: string;
+    action: Action;
+    isWildcard: boolean;
+}
+
+interface PermissionConfig {
+    permission?: {
+        YOLO?: boolean;
+        nonInteractiveAsk?: "allow" | "deny";
+        read?: Record<string, string>;
+        bash?: Record<string, string>;
+        write?: Record<string, string>;
+        edit?: Record<string, string> | string;
+        grep?: Record<string, string> | string;
+        find?: Record<string, string> | string;
+        ls?: Record<string, string> | string;
+        glob?: Record<string, string> | string;
+        list?: Record<string, string> | string;
+        [key: string]: Record<string, string> | string | boolean | undefined;
+    };
+}
+
+// Tool config mapping (handles aliases)
+const TOOL_CONFIGS: Array<{
+    tools: string[];
+    aliases: string[];
+    getInput: (input: any) => string;
+}> = [
+    { tools: ["read"], aliases: [], getInput: (i) => i.path },
+    { tools: ["bash"], aliases: [], getInput: (i) => i.command },
+    { tools: ["write"], aliases: [], getInput: (i) => i.path },
+    { tools: ["edit"], aliases: [], getInput: (i) => i.path },
+    { tools: ["grep"], aliases: ["glob"], getInput: (i) => i.pattern },
+    { tools: ["find"], aliases: [], getInput: (i) => i.pattern },
+    { tools: ["ls"], aliases: ["list"], getInput: (i) => i.path || "." },
+];
+
+function loadSettings(cwd: string): PermissionConfig {
+    const loadFile = (path: string) => {
+        if (!existsSync(path)) return {};
+        try {
+            const content = readFileSync(path, "utf-8");
+            const parsed = JSON.parse(content);
+            return parsed.permission || {};
+        } catch (err) {
+            console.error(`Failed to load permissions from ${path}: ${err}`);
+            return {};
+        }
+    };
+
+    const globalPerm = loadFile(join(homedir(), ".pi", "agent", "settings.json"));
+    const projectPerm = loadFile(join(cwd, ".pi", "settings.json"));
+
+    return { permission: { ...globalPerm, ...projectPerm } };
+}
+
+function parseRules(config: Record<string, string> | string | undefined): PermissionRule[] {
+    if (typeof config === "string") {
+        return VALID_ACTIONS.includes(config as Action)
+            ? [{ pattern: "*", action: config as Action, isWildcard: true }]
+            : [];
+    }
+
+    if (!config || typeof config !== "object") return [];
+
+    return Object.entries(config)
+        .filter(([, action]) => VALID_ACTIONS.includes(action as Action))
+        .map(([pattern, action]) => ({
+            pattern,
+            action: action as Action,
+            isWildcard: pattern.includes("*") || pattern.includes("?"),
+        }));
+}
+
+function matchInput(input: string, rules: PermissionRule[]): PermissionRule | null {
+    const normalized = input.trim().replace(/\s+/g, " ");
+
+    // Find the LAST matching rule (later rules override earlier ones, like opencode)
+    const matchingRule = [...rules].reverse().find((r) => {
+        if (!r.isWildcard) {
+            return r.pattern === normalized;
+        }
+        return minimatch(normalized, r.pattern);
+    });
+
+    return matchingRule || null;
+}
+
+function splitCommands(command: string): string[] {
+    const result: string[] = [];
+    let current = "";
+    let inSingle = false;
+    let inDouble = false;
+    let escape = false;
+
+    for (let i = 0; i < command.length; i++) {
+        const char = command[i];
+        const next = command[i + 1];
+
+        if (escape) {
+            current += char;
+            escape = false;
+            continue;
+        }
+
+        if (char === "\\") {
+            escape = true;
+            current += char;
+            continue;
+        }
+
+        if (char === "'" && !inDouble) { inSingle = !inSingle; current += char; continue; }
+        if (char === '"' && !inSingle) { inDouble = !inDouble; current += char; continue; }
+
+        if (!inSingle && !inDouble) {
+            if (((char === "&" || char === "|") && next === char) || char === ";" || char === "|") {
+                const trimmed = current.trim();
+                if (trimmed) result.push(trimmed);
+                current = "";
+                if (next === char) i++;
+                continue;
+            }
+        }
+
+        current += char;
+    }
+
+    if (current.trim()) result.push(current.trim());
+    return result;
+}
+
+export default function (pi: ExtensionAPI) {
+    const rules = new Map<string, PermissionRule[]>();
+    let yoloMode = DEFAULT_YOLO;
+    let nonInteractiveAsk = DEFAULT_NON_INTERACTIVE_ASK;
+
+    function loadPermissions(cwd: string) {
+        const config = loadSettings(cwd).permission || {};
+        yoloMode = config.YOLO ?? DEFAULT_YOLO;
+        nonInteractiveAsk = config.nonInteractiveAsk ?? DEFAULT_NON_INTERACTIVE_ASK;
+
+        TOOL_CONFIGS.forEach(({ tools, aliases }) => {
+            const tool = tools[0];
+            const toolConfig = tools.concat(aliases).reduce((acc, t) => ({
+                ...acc,
+                ...(config[t as keyof typeof config] || {}),
+            }), {});
+
+            rules.set(tool, parseRules(toolConfig as Record<string, string> | string));
+        });
+    }
+
+    async function askPermission(message: string, ctx: any): Promise<boolean> {
+        if (!ctx.hasUI) {
+            return nonInteractiveAsk === "allow";
+        }
+        const choice = await ctx.ui.select(message, ["Yes", "No"]);
+        return choice === "Yes";
+    }
+
+    async function checkPermission(
+        toolName: string,
+        input: string,
+        toolRules: PermissionRule[],
+        ctx: any,
+    ): Promise<{ block: true; reason: string } | undefined> {
+        const rule = matchInput(input, toolRules);
+
+        if (!rule) {
+            if (yoloMode) return undefined;
+            const allowed = await askPermission(
+                `⚠️ No permission rule for:\n\n  ${toolName}: ${input}\n\nAllow?`,
+                ctx,
+            );
+            return allowed ? undefined : { block: true, reason: "Blocked by user" };
+        }
+
+        if (rule.action === "allow") return undefined;
+        if (rule.action === "deny") return { block: true, reason: `Blocked by permission rules: ${toolName}` };
+
+        const allowed = await askPermission(
+            `⚠️ Permission required:\n\n  ${toolName}: ${input}\n\nAllow?`,
+            ctx,
+        );
+        return allowed ? undefined : { block: true, reason: "Blocked by user" };
+    }
+
+    pi.on("session_start", async (_event, ctx) => loadPermissions(ctx.cwd));
+
+    pi.on("tool_call", async (event, ctx) => {
+        const { toolName, input } = event;
+
+        const toolConfig = TOOL_CONFIGS.find((t) => t.tools.includes(toolName));
+        if (!toolConfig) return undefined;
+
+        const toolRules = rules.get(toolName) || [];
+        const inputStr = toolConfig.getInput(input);
+
+        // Special handling for bash compound commands
+        if (toolName === "bash" && toolRules.length > 0) {
+            const subCommands = splitCommands(inputStr);
+
+            for (const subCmd of subCommands) {
+                const rule = matchInput(subCmd, toolRules);
+                if (!rule || rule.action === "allow") continue;
+
+                if (rule.action === "deny") {
+                    return { block: true, reason: `Blocked by permission rules: ${subCmd}` };
+                }
+
+                const display = subCommands.length > 1
+                    ? `${subCmd}  (in: "${inputStr}")`
+                    : inputStr;
+
+                const allowed = await askPermission(
+                    `⚠️ Permission required:\n\n  bash: ${display}\n\nAllow?`,
+                    ctx,
+                );
+                if (!allowed) return { block: true, reason: "Blocked by user" };
+            }
+            return undefined;
+        }
+
+        // No rules configured
+        if (toolRules.length === 0) {
+            if (yoloMode) return undefined;
+            const allowed = await askPermission(
+                `⚠️ No permission rules for ${toolName}:\n\n  ${inputStr}\n\nAllow?`,
+                ctx,
+            );
+            return allowed ? undefined : { block: true, reason: "Blocked by user" };
+        }
+
+        return checkPermission(toolName, inputStr, toolRules, ctx);
+    });
+}
+#+end_src
+
+
+** Subagent
+pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
+
+[[https://github.com/nicobailon/pi-subagents][Nico’s subagent extension]] , [[https://www.npmjs.com/package/pi-interactive-shell][interactive-shell]] 这两个 pi 的插件实现了类似的功能，但是对我来说有些复杂。
+
+现阶段我的方式就是新开一个 tmux 返回一个 tmux session 的 txt 文本记录完整的 LLM 输出。
+
+在 pi 的 TUI 里，通过 `/agent` 来调用这些 subagent，并实现了两个模式：当前会话和 tmux 后台运行。
+
+tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux 指令就可以和这个 subagent session 交互了。在 subagent session 完成之后会使用 pi 的 notify 通知显示 txt 文本的输出路径，主 agent 就可以阅读了。
+
+#+attr_html: :alt :class img :width 60% :height 60%
+https://pic.vandee.art/images/20260211_125004-agent1.png
+
+#+attr_html: :alt :class img :width 60% :height 60%
+https://pic.vandee.art/images/20260211_125004-agent2.png
+
+#+attr_html: :alt :class img :width 60% :height 60%
+https://pic.vandee.art/images/20260211_125004-agent3.png
+
+#+begin_src typescript
+/**
+ * Agents Select Extension
+ *
+ * Provides interactive agent selection and invocation via /agents command
+ * and direct @agent-name invocation with task input.
+ */
+
+import * as fs from "node:fs";
+import * as os from "node:os";
+import * as path from "node:path";
+import { exec } from "node:child_process";
+import { spawn } from "node:child_process";
+import { promisify } from "node:util";
+import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import { parseFrontmatter, DynamicBorder } from "@mariozechner/pi-coding-agent";
+import { Container, Editor, Input, SelectList, Text, Spacer, matchesKey, Key, CombinedAutocompleteProvider } from "@mariozechner/pi-tui";
+
+const execAsync = promisify(exec);
+
+interface AgentConfig {
+        name: string;
+        description: string;
+        source: "user" | "project";
+        filePath: string;
+        systemPrompt: string;
+}
+
+const USER_AGENTS_DIR = path.join(os.homedir(), ".pi", "agent", "agents");
+const PROJECT_AGENTS_DIR_NAME = path.join(".pi", "agents");
+const AGENT_FILE_EXTENSION = ".md";
+const AGENT_NAME_PATTERN = /^@([a-zA-Z0-9_-]+)\s+(.+)$/s;
+const PROCESS_STARTUP_WAIT_MS = 1500;
+const STOPWORDS = new Set(["the", "for", "with", "from", "into"]);
+const MAX_KEYWORDS = 3;
+const MIN_KEYWORD_LENGTH = 3;
+
+const TMUX_PI_SCRIPT = path.join(os.homedir(), ".pi/agent/skills/tmux-pi/scripts/run-pi-monitored.sh");
+
+function generateSessionName(agentName: string, task: string): string {
+        const cleanAgentName = agentName.replace(/^@/, "");
+        const words = task
+                .toLowerCase()
+                .replace(/[^\w\s]/g, " ")
+                .split(/\s+/)
+                .filter((w) => w.length > MIN_KEYWORD_LENGTH && !STOPWORDS.has(w));
+        const keywordStr = words.slice(0, MAX_KEYWORDS).join("-");
+        return `pi-${cleanAgentName}-${keywordStr}`;
+}
+
+async function checkSessionExists(sessionName: string): Promise<boolean> {
+        try {
+                await execAsync(`tmux list-sessions -F "#{session_name}" 2>/dev/null | grep -q "^${sessionName}$"`);
+                return true;
+        } catch {
+                return false;
+        }
+}
+
+async function runSubagentSession(
+        agentName: string,
+        task: string,
+        cwd: string
+): Promise<{ sessionName: string; outputFile: string }> {
+        const sessionName = generateSessionName(agentName, task);
+        const outputFile = `/tmp/pi-conversation-${sessionName}-${Date.now()}.txt`;
+        const command = `@${agentName} ${task}`;
+
+        const proc = spawn(
+                "bash",
+                [TMUX_PI_SCRIPT, "-n", sessionName, "-d", cwd, "-c", command, "-o", outputFile, "-v"],
+                { detached: true, stdio: ["ignore", "pipe", "pipe"] }
+        );
+
+        proc.unref();
+        proc.stderr?.on("data", function () {});
+
+        await new Promise(function (resolve) {
+                setTimeout(resolve, PROCESS_STARTUP_WAIT_MS);
+        });
+
+        try {
+                process.kill(proc.pid as number, 0);
+                return { sessionName, outputFile };
+        } catch {
+                throw new Error(`Process exited. Check /tmp/pi-startup-${sessionName}.log`);
+        }
+}
+
+function loadAgentsFromDir(dir: string, source: "user" | "project"): AgentConfig[] {
+        if (!fs.existsSync(dir)) {
+                return [];
+        }
+
+        return fs.readdirSync(dir, { withFileTypes: true })
+                .filter(function (entry) {
+                        return entry.name.endsWith(AGENT_FILE_EXTENSION) && (entry.isFile() || entry.isSymbolicLink());
+                })
+                .map(function (entry) {
+                        const filePath = path.join(dir, entry.name);
+                        const { frontmatter, body } = parseFrontmatter<Record<string, unknown>>(fs.readFileSync(filePath, "utf-8"));
+
+                        if (!frontmatter.name || !frontmatter.description) {
+                                return null;
+                        }
+
+                        return {
+                                name: String(frontmatter.name),
+                                description: String(frontmatter.description),
+                                source,
+                                filePath,
+                                systemPrompt: body.trim(),
+                        };
+                })
+                .filter((config): config is AgentConfig => config !== null);
+}
+
+function findNearestProjectAgentsDir(cwd: string): string | null {
+        let currentDir = cwd;
+
+        while (currentDir !== path.dirname(currentDir)) {
+                const candidate = path.join(currentDir, PROJECT_AGENTS_DIR_NAME);
+                if (fs.existsSync(candidate)) {
+                        return candidate;
+                }
+                currentDir = path.dirname(currentDir);
+        }
+
+        return null;
+}
+
+function discoverAgents(cwd: string): AgentConfig[] {
+        const projectAgentsDir = findNearestProjectAgentsDir(cwd);
+        const userAgents = loadAgentsFromDir(USER_AGENTS_DIR, "user");
+        const projectAgents = projectAgentsDir ? loadAgentsFromDir(projectAgentsDir, "project") : [];
+
+        const agentMap = new Map(userAgents.map((a) => [a.name, a]));
+        projectAgents.forEach((a) => agentMap.set(a.name, a));
+
+        return Array.from(agentMap.values());
+}
+
+const NAVIGATION_KEYS = [Key.up, Key.down, Key.enter, Key.escape];
+
+export default function agentAtDiscovery(pi: ExtensionAPI): void {
+        let activeAgent: AgentConfig | null = null;
+        let cachedAgents: AgentConfig[] | null = null;
+        let subagentTasks: Array<{ agentName: string; sessionName: string; outputFile: string; task: string; startTime: number; ctx: any }> = [];
+
+        function formatElapsed(seconds: number): string {
+                if (seconds < 60) {
+                        return `${seconds}s`;
+                }
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                return `${minutes}m${remainingSeconds}s`;
+        }
+
+        function updateSubagentStatus(): void {
+                if (subagentTasks.length === 0) {
+                        return;
+                }
+
+                const task = subagentTasks[0];
+                const elapsed = Math.floor((Date.now() - task.startTime) / 1000);
+                const theme = task.ctx.ui.theme;
+                const status = theme.fg("dim", `@${task.agentName} | tmux-session: ${task.sessionName} | ⏱️ ${formatElapsed(elapsed)}`);
+                task.ctx.ui.setWidget("subagent-status", [status], { placement: "belowEditor" });
+        }
+
+        const STATUS_CHECK_INTERVAL_MS = 5000;
+
+        async function checkTaskStatus(): Promise<void> {
+                const stillRunning: typeof subagentTasks = [];
+
+                for (const task of subagentTasks) {
+                        const sessionRunning = await checkSessionExists(task.sessionName);
+
+                        if (!sessionRunning && fs.existsSync(task.outputFile)) {
+                                task.ctx.ui.notify(`✓ Task completed: ${task.sessionName}`, "success");
+                                task.ctx.ui.notify(`📄 Results: ${task.outputFile}`, "info");
+                                task.ctx.ui.setWidget("subagent-status", undefined);
+                                continue;
+                        }
+                        stillRunning.push(task);
+                }
+
+                subagentTasks = stillRunning;
+                updateSubagentStatus();
+
+                if (subagentTasks.length > 0) {
+                        setTimeout(checkTaskStatus, STATUS_CHECK_INTERVAL_MS);
+                }
+        }
+
+        pi.on("session_start", async function (_event, ctx) {
+                cachedAgents = discoverAgents(ctx.cwd);
+                ctx.ui.notify(`Loaded ${cachedAgents.length} agents. Use /agents or @agent-name`, "info");
+        });
+
+        pi.on("before_agent_start", async function (event) {
+                if (!activeAgent) {
+                        return {};
+                }
+                const fullPrompt = event.systemPrompt + "\n\n" + activeAgent.systemPrompt;
+                return { systemPrompt: fullPrompt };
+        });
+
+        pi.on("agent_end", async function () {
+                activeAgent = null;
+        });
+
+        pi.registerCommand("agents", {
+                description: "Select an agent and provide a task",
+                handler: async function (_args, ctx) {
+                        const agents = cachedAgents ?? discoverAgents(ctx.cwd);
+
+                        if (agents.length === 0) {
+                                ctx.ui.notify("No agents found. Create .md files in ~/.pi/agent/agents/ or .pi/agents/", "warning");
+                                return;
+                        }
+
+                        const result = await ctx.ui.custom<{ agentName: string; task: string; subagentMode?: boolean } | null>(
+                                function (tui, theme, _kb, done) {
+                                        const searchInput = new Input();
+                                        const accentBorder = (s: string) => theme.fg("accent", s);
+
+                                        const selectListTheme = {
+                                                selectedPrefix: accentBorder,
+                                                selectedText: accentBorder,
+                                                description: (t: string) => theme.fg("muted", t),
+                                                scrollInfo: (t: string) => theme.fg("dim", t),
+                                                noMatch: (t: string) => theme.fg("warning", t),
+                                        };
+
+                                        const editorTheme = { borderColor: accentBorder, selectList: selectListTheme };
+
+                                        const taskInput = new Editor(tui, editorTheme, { paddingX: 1 });
+                                        taskInput.setAutocompleteProvider(new CombinedAutocompleteProvider([], ctx.cwd, "fd"));
+
+                                        const selectList = new SelectList(
+                                                agents.map((a) => ({ value: a.name, label: a.name, description: a.description })),
+                                                Math.min(agents.length, 10),
+                                                selectListTheme
+                                        );
+
+                                        let selectedAgent: string | null = null;
+                                        let showTaskInput = false;
+                                        let subagentMode = false;
+
+                                        selectList.onSelect = function (item) {
+                                                selectedAgent = item.value;
+                                                searchInput.setValue("");
+                                                showTaskInput = true;
+                                                tui.requestRender();
+                                        };
+
+                                        selectList.onCancel = function () {
+                                                done(null);
+                                        };
+
+                                        const agentSelectionContainer = new Container();
+                                        agentSelectionContainer.addChild(new DynamicBorder(accentBorder));
+                                        agentSelectionContainer.addChild(new Text(theme.fg("accent", theme.bold("Select Agent")), 1, 0));
+                                        agentSelectionContainer.addChild(searchInput);
+                                        agentSelectionContainer.addChild(new Spacer(1));
+                                        agentSelectionContainer.addChild(selectList);
+                                        agentSelectionContainer.addChild(new Spacer(1));
+                                        agentSelectionContainer.addChild(new Text(theme.fg("dim", "type to filter • ↑↓ navigate • enter select • esc cancel"), 1, 0));
+                                        agentSelectionContainer.addChild(new DynamicBorder(accentBorder));
+
+                                        const taskContainer = new Container();
+                                        taskContainer.addChild(new DynamicBorder(accentBorder));
+                                        taskContainer.addChild(new Text("", 1, 0));
+                                        taskContainer.addChild(new Spacer(1));
+                                        taskContainer.addChild(taskInput);
+                                        taskContainer.addChild(new Spacer(1));
+                                        taskContainer.addChild(new Text(theme.fg("dim", "@file autocomplete • ctrl+up toggle subagent • enter confirm • esc cancel"), 1, 0));
+                                        taskContainer.addChild(new DynamicBorder(accentBorder));
+
+                                        function updateTaskHeader(): void {
+                                                const subagentState = subagentMode ? "ON" : "OFF";
+                                                const subagentColor = subagentMode ? "success" : "dim";
+                                                const header =
+                                                        theme.fg("accent", theme.bold(`Task for @${selectedAgent}`)) +
+                                                        " " +
+                                                        theme.fg(subagentColor, theme.bold(`[Subagent: ${subagentState}]`));
+                                                taskContainer.children[1] = new Text(header, 1, 0);
+                                        }
+
+                                        return {
+                                                render(width: number) {
+                                                        if (showTaskInput) {
+                                                                updateTaskHeader();
+                                                                return taskContainer.render(width);
+                                                        }
+                                                        return agentSelectionContainer.render(width);
+                                                },
+                                                invalidate() {
+                                                        agentSelectionContainer.invalidate();
+                                                        taskContainer.invalidate();
+                                                        searchInput.invalidate();
+                                                },
+                                                handleInput(data: string) {
+                                                        if (showTaskInput) {
+                                                                if (matchesKey(data, Key.escape)) {
+                                                                        showTaskInput = false;
+                                                                        selectedAgent = null;
+                                                                        taskInput.setText("");
+                                                                        subagentMode = false;
+                                                                } else if (matchesKey(data, Key.ctrl("up"))) {
+                                                                        subagentMode = !subagentMode;
+                                                                } else if (matchesKey(data, Key.enter)) {
+                                                                        const task = taskInput.getText();
+                                                                        if (task.trim()) {
+                                                                                done({ agentName: selectedAgent!, task: task.trim(), subagentMode });
+                                                                                return;
+                                                                        }
+                                                                } else {
+                                                                        taskInput.handleInput(data);
+                                                                }
+                                                        } else {
+                                                                const isNavKey = NAVIGATION_KEYS.some((k) => matchesKey(data, k));
+                                                                if (isNavKey) {
+                                                                        selectList.handleInput(data);
+                                                                } else {
+                                                                        searchInput.handleInput(data);
+                                                                        selectList.setFilter(searchInput.getValue());
+                                                                }
+                                                        }
+                                                        tui.requestRender();
+                                                },
+                                        };
+                                }
+                        );
+
+                        if (!result) return;
+
+                        const selectedAgentConfig = agents.find((a) => a.name === result.agentName);
+
+                        if (!selectedAgentConfig) {
+                                ctx.ui.notify(`Agent "${result.agentName}" not found`, "error");
+                                return;
+                        }
+
+                        if (result.subagentMode) {
+                                const sessionName = generateSessionName(selectedAgentConfig.name, result.task);
+
+                                try {
+                                        const { outputFile } = await runSubagentSession(selectedAgentConfig.name, result.task, ctx.cwd);
+                                        subagentTasks.push({
+                                                agentName: selectedAgentConfig.name,
+                                                sessionName,
+                                                outputFile,
+                                                task: result.task,
+                                                startTime: Date.now(),
+                                                ctx,
+                                        });
+                                        updateSubagentStatus();
+
+                                        if (subagentTasks.length === 1) {
+                                                setTimeout(checkTaskStatus, STATUS_CHECK_INTERVAL_MS);
+                                        }
+
+                                        ctx.ui.notify(`🤖 Start agent @${selectedAgentConfig.name} for background task: ${sessionName}`, "success");
+                                        return;
+                                } catch (err: unknown) {
+                                        const message = err instanceof Error ? err.message : "Unknown error";
+                                        ctx.ui.notify(`✗ Failed: ${message}`, "error");
+                                        return;
+                                }
+                        }
+
+                        activeAgent = selectedAgentConfig;
+                        ctx.ui.notify(`🤖 Start agent @${selectedAgentConfig.name}`, "info");
+                        pi.sendUserMessage(result.task, { deliverAs: "steer" });
+                },
+        });
+
+        pi.on("input", async function (event, ctx) {
+                if (event.source === "extension") {
+                        return { action: "continue" };
+                }
+
+                const match = event.text.trim().match(AGENT_NAME_PATTERN);
+                if (!match) {
+                        return { action: "continue" };
+                }
+
+                const [, agentName, task] = match;
+                const agents = cachedAgents ?? discoverAgents(ctx.cwd);
+                const agent = agents.find((a) => a.name === agentName);
+
+                if (!agent) {
+                        ctx.ui.notify(`Unknown agent "@${agentName}". Use /agents to list available agents.`, "error");
+                        return { action: "handled" };
+                }
+
+                activeAgent = agent;
+                ctx.ui.notify(`Activating agent @${agentName}...`, "info");
+
+                return { action: "transform", text: task };
+        });
+}
+#+end_src
