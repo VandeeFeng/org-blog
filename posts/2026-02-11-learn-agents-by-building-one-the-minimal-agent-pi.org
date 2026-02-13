@@ -43,6 +43,16 @@ Documentation:
 
 比起那些复杂的 agent 框架，各种概念、论文和复杂的抽象层，pi-mono 对新手来说是在太友好了，源码里还有大量的 example 和 docs。
 
+另外 pi-mono 的 TUI 设计是我更喜欢的，OpenCode 采用的是 server+client 的架构，最直观的反映就是输出显示上会比 Claude Code、Codex 感觉慢一些。
+
+#+begin_quote
+The second approach is to just write to the terminal like any CLI program, appending content to the scrollback buffer, only occasionally moving the "rendering cursor" back up a little within the visible viewport to redraw things like animated spinners or a text edit field. It's not exactly that simple, but you get the idea. This is what Claude Code, Codex, and Droid do.
+第二种方法就是像任何 CLI 程序一样直接写入终端，将内容追加到滚动缓冲区中，只偶尔将“渲染光标”在可见视口内向上移动一点，以重绘诸如动画加载指示器或文本编辑字段之类的东西。它并没有那么简单，但你明白这个意思。Claude Code、Codex 和 Droid 就是这么做的。
+
+Coding agents have this nice property that they're basically a chat interface. The user writes a prompt, followed by replies from the agent and tool calls and their results. Everything is nicely linear, which lends itself well to working with the "native" terminal emulator. You get to use all the built-in functionality like natural scrolling and search within the scrollback buffer. It also limits what your TUI can do to some degree, which I find charming because constraints make for minimal programs that just do what they're supposed to do without superfluous fluff. This is the direction I picked for pi-tui.
+编码代理具有这个很好的特性，它们基本上就是一个聊天界面。用户编写一个提示，然后是代理的回复、工具调用及其结果。一切都非常线性，这非常适合与“原生”终端仿真器合作。你可以使用所有内置功能，比如自然滚动和在滚动缓冲区中搜索。它也在一定程度上限制了你的 TUI 能做什么，我觉得这很迷人，因为约束能造就出最小化程序，它们只做该做的事，没有多余的赘饰。这就是我为 pi-tui 选择的开发方向。
+#+end_quote
+
 从 Claude Code 到 OpenCode，再到 OpenClaw 和 pi-mono，我觉得，本地自部署模型+自定义 agent 一定是未来的趋势。人人都能够有一个自己自定义版本的 AI agent，最后变成一个 USB 即插即用。
 
 * Pi-mono Extension

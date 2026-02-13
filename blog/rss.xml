@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Wed, 11 Feb 2026 13:04:10 +0800</lastBuildDate>
+<lastBuildDate>Fri, 13 Feb 2026 12:45:46 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Learn Agents by Building One: The Minimal Agent pi]]></title>
   <description><![CDATA[
@@ -12,11 +12,11 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd9b64a1">Pi-mono</a></li>
-<li><a href="#orgecadee4">Pi-mono Extension</a>
+<li><a href="#orgf906730">Pi-mono</a></li>
+<li><a href="#org8c97b08">Pi-mono Extension</a>
 <ul>
-<li><a href="#orgd6a062a">Command Rule</a></li>
-<li><a href="#org316d5c1">Subagent</a></li>
+<li><a href="#orgf96c111">Command Rule</a></li>
+<li><a href="#orgd2d1139">Subagent</a></li>
 </ul>
 </li>
 </ul>
@@ -33,9 +33,9 @@
 <p>
 大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。
 </p>
-<div id="outline-container-orgd9b64a1" class="outline-2">
-<h2 id="orgd9b64a1">Pi-mono</h2>
-<div class="outline-text-2" id="text-orgd9b64a1">
+<div id="outline-container-orgf906730" class="outline-2">
+<h2 id="orgf906730">Pi-mono</h2>
+<div class="outline-text-2" id="text-orgf906730">
 <p>
 pi-mono 的 agent 设计的极为简洁：只有 read，bash，edit，write 四个基础工具，system prompt 也设计的非常简洁。AI agent ≈ Tools + loops.
 </p>
@@ -81,20 +81,36 @@ Documentation:
 </p>
 
 <p>
+另外 pi-mono 的 TUI 设计是我更喜欢的，OpenCode 采用的是 server+client 的架构，最直观的反映就是输出显示上会比 Claude Code、Codex 感觉慢一些。
+</p>
+
+<blockquote>
+<p>
+The second approach is to just write to the terminal like any CLI program, appending content to the scrollback buffer, only occasionally moving the "rendering cursor" back up a little within the visible viewport to redraw things like animated spinners or a text edit field. It's not exactly that simple, but you get the idea. This is what Claude Code, Codex, and Droid do.
+第二种方法就是像任何 CLI 程序一样直接写入终端，将内容追加到滚动缓冲区中，只偶尔将“渲染光标”在可见视口内向上移动一点，以重绘诸如动画加载指示器或文本编辑字段之类的东西。它并没有那么简单，但你明白这个意思。Claude Code、Codex 和 Droid 就是这么做的。
+</p>
+
+<p>
+Coding agents have this nice property that they're basically a chat interface. The user writes a prompt, followed by replies from the agent and tool calls and their results. Everything is nicely linear, which lends itself well to working with the "native" terminal emulator. You get to use all the built-in functionality like natural scrolling and search within the scrollback buffer. It also limits what your TUI can do to some degree, which I find charming because constraints make for minimal programs that just do what they're supposed to do without superfluous fluff. This is the direction I picked for pi-tui.
+编码代理具有这个很好的特性，它们基本上就是一个聊天界面。用户编写一个提示，然后是代理的回复、工具调用及其结果。一切都非常线性，这非常适合与“原生”终端仿真器合作。你可以使用所有内置功能，比如自然滚动和在滚动缓冲区中搜索。它也在一定程度上限制了你的 TUI 能做什么，我觉得这很迷人，因为约束能造就出最小化程序，它们只做该做的事，没有多余的赘饰。这就是我为 pi-tui 选择的开发方向。
+</p>
+</blockquote>
+
+<p>
 从 Claude Code 到 OpenCode，再到 OpenClaw 和 pi-mono，我觉得，本地自部署模型+自定义 agent 一定是未来的趋势。人人都能够有一个自己自定义版本的 AI agent，最后变成一个 USB 即插即用。
 </p>
 </div>
 </div>
-<div id="outline-container-orgecadee4" class="outline-2">
-<h2 id="orgecadee4">Pi-mono Extension</h2>
-<div class="outline-text-2" id="text-orgecadee4">
+<div id="outline-container-org8c97b08" class="outline-2">
+<h2 id="org8c97b08">Pi-mono Extension</h2>
+<div class="outline-text-2" id="text-org8c97b08">
 <p>
 前段时间刚开始深入一点折腾和看 OpenCode 的源码，想实现一些自定义的功能，但是这个项目已经做的太大了，pi-mono 更适合个人折腾。
 </p>
 </div>
-<div id="outline-container-orgd6a062a" class="outline-3">
-<h3 id="orgd6a062a">Command Rule</h3>
-<div class="outline-text-3" id="text-orgd6a062a">
+<div id="outline-container-orgf96c111" class="outline-3">
+<h3 id="orgf96c111">Command Rule</h3>
+<div class="outline-text-3" id="text-orgf96c111">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
 </p>
@@ -396,9 +412,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-org316d5c1" class="outline-3">
-<h3 id="org316d5c1">Subagent</h3>
-<div class="outline-text-3" id="text-org316d5c1">
+<div id="outline-container-orgd2d1139" class="outline-3">
+<h3 id="orgd2d1139">Subagent</h3>
+<div class="outline-text-3" id="text-orgd2d1139">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -420,19 +436,19 @@ tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux �
 </p>
 
 
-<figure id="orgf3b539d">
+<figure id="org5fe049d">
 <img src="https://pic.vandee.art/images/20260211_125004-agent1.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org1d1c0ff">
+<figure id="orgdccd6ef">
 <img src="https://pic.vandee.art/images/20260211_125302-agent2.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="orgeacea63">
+<figure id="orgcc74bcb">
 <img src="https://pic.vandee.art/images/20260211_125325-agent3.png" class="img" width="60%" height="60%">
 
 </figure>
