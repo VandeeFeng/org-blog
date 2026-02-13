@@ -1,0 +1,101 @@
+[
+  {
+    "description": "An alternative to Memos  depending on github issues and supabase",
+    "language": "TypeScript",
+    "name": "gitmemos",
+    "owner": "VandeeFeng",
+    "repo": "gitmemos",
+    "stars": 11,
+    "url": "https://github.com/VandeeFeng/gitmemos"
+  },
+  {
+    "description": "Simple org-mode blog site builder with built-in parser and customizable templates",
+    "language": "C",
+    "name": "C-blorg",
+    "owner": "VandeeFeng",
+    "repo": "C-blorg",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/C-blorg"
+  },
+  {
+    "description": "A tiny bilibili TUI client without AD and algorithm",
+    "language": "Rust",
+    "name": "bili-tui",
+    "owner": "VandeeFeng",
+    "repo": "bili-tui",
+    "stars": 1,
+    "url": "https://github.com/VandeeFeng/bili-tui"
+  },
+  {
+    "description": "command with AI suggestion in bash ",
+    "language": "C",
+    "name": "smart-cmd",
+    "owner": "VandeeFeng",
+    "repo": "smart-cmd",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/smart-cmd"
+  },
+  {
+    "description": "",
+    "language": "Rust",
+    "name": "promptheus",
+    "owner": "VandeeFeng",
+    "repo": "promptheus",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/promptheus"
+  },
+  {
+    "description": "GitNano is a mini, experiment implementation of Git.",
+    "language": "C",
+    "name": "GitNano",
+    "owner": "VandeeFeng",
+    "repo": "GitNano",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/GitNano"
+  },
+  {
+    "description": "Sync Hoarder bookmarks to local Org-mode or Markdown files",
+    "language": "Emacs Lisp",
+    "name": "Emacs-Hoarder",
+    "owner": "VandeeFeng",
+    "repo": "Emacs-Hoarder",
+    "stars": 3,
+    "url": "https://github.com/VandeeFeng/Emacs-Hoarder"
+  },
+  {
+    "description": "provides hover preview functionality for org links.",
+    "language": "Emacs Lisp",
+    "name": "org-hover",
+    "owner": "VandeeFeng",
+    "repo": "org-hover",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/org-hover"
+  },
+  {
+    "description": "A bookmark with github-actions and mdbook.  Thanks to : https://github.com/jerrylususu/bookmark-summary",
+    "language": "TypeScript",
+    "name": "bookmark-summary",
+    "owner": "VandeeFeng",
+    "repo": "bookmark-summary",
+    "stars": 5,
+    "url": "https://github.com/VandeeFeng/bookmark-summary"
+  },
+  {
+    "description": "",
+    "language": "Python",
+    "name": "RSS-CLI",
+    "owner": "VandeeFeng",
+    "repo": "RSS-CLI",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/RSS-CLI"
+  },
+  {
+    "description": "Note as HTML , a tiny tiddlywiki",
+    "language": "HTML",
+    "name": "nash",
+    "owner": "VandeeFeng",
+    "repo": "nash",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/nash"
+  }
+]
