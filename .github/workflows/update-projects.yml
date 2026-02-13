@@ -1,0 +1,74 @@
+name: Update Projects Data
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch GitHub repo data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REPOS=(
+            "VandeeFeng/gitmemos"
+            "VandeeFeng/C-blorg"
+            "VandeeFeng/bili-tui"
+            "VandeeFeng/smart-cmd"
+            "VandeeFeng/promptheus"
+            "VandeeFeng/GitNano"
+            "VandeeFeng/Emacs-Hoarder"
+            "VandeeFeng/org-hover"
+            "VandeeFeng/bookmark-summary"
+            "VandeeFeng/RSS-CLI"
+            "VandeeFeng/nash"
+          )
+
+          OUTPUT="blog/assets/projects.json"
+          echo "[" > "$OUTPUT"
+
+          for i in "${!REPOS[@]}"; do
+            REPO="${REPOS[$i]}"
+            echo "Fetching $REPO..."
+
+            DATA=$(gh repo view "$REPO" --json name,description,url,primaryLanguage,stargazerCount --jq '{
+              name: .name,
+              description: (.description // "No description, website, or topics provided."),
+              url: .url,
+              language: (.primaryLanguage.name // "Unknown"),
+              stars: .stargazerCount,
+              owner: "'${REPO%/*}'",
+              repo: "'${REPO##*/}'"
+            }')
+
+            echo "$DATA" | jq '.'
+
+            if [ $i -gt 0 ]; then
+              echo "," >> "$OUTPUT"
+            fi
+            echo "$DATA" >> "$OUTPUT"
+
+            sleep 0.5
+          done
+
+          echo "]" >> "$OUTPUT"
+
+          jq '.' "$OUTPUT" > "${OUTPUT}.tmp"
+          mv "${OUTPUT}.tmp" "$OUTPUT"
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add blog/assets/projects.json
+          git diff --staged --quiet || git commit -m "chore: update projects data [skip ci]"
+          git push
