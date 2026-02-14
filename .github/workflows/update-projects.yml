@@ -69,8 +69,12 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add blog/assets/projects.json
-          if ! git diff --staged --quiet; then
+
+          OLD_HASH=$(git rev-parse HEAD:blog/assets/projects.json 2>/dev/null || echo "")
+          NEW_HASH=$(git hash-object blog/assets/projects.json)
+
+          if [ "$OLD_HASH" != "$NEW_HASH" ]; then
+            git add blog/assets/projects.json
             git commit -m "chore: update projects data [skip ci]"
             git push
           fi
