@@ -1,0 +1,246 @@
+#+title: 我的 Agent Memory 极简管理方案
+#+date: <2026-02-17 12:07>
+#+description: 我觉得对于现阶段的 agent 来说, shell command + file 就是一个不会错的通用组合。
+#+filetags: LLM
+
+第一次使用 [[https://github.com/OthmanAdi/planning-with-files][OthmanAdi/planning-with-files]] 的时候，我体会到了现在的 agent 和文件结合起来能实现多么良好的效果。刚开始的时候，planning-with-files 就是三个模板文件加上一个 SKILL.md，现在已经 14k stars 了。
+
+我觉得对于现阶段的 agent 来说, ~shell command~ + ~file~ 就是一个不会错的通用组合。
+
+对于 agent memory 和项目 issue、task 管理，[[https://github.com/steveyegge/beads][steveyegge/beads: Beads]] 是 Steve Yegge 大佬的一个实现方案，相类似的还有 [[https://github.com/dmmulroy/overseer][dmmulroy/overseer]].这类实现里，主要的思路是利用 git VCS 来管理 agent 的 memory。
+
+前几天看到 letta 的一篇文章：[[https://www.letta.com/blog/context-repositories][Introducing Context Repositories: Git-based Memory for Coding Agents | Letta]]
+
+我觉得这就是现阶段最适合我的实践方案：VCS(git) + file
+
+我没有那么多 issue 和 task 需要用 beads 来管理，所以 beads 的核心功能其实我都用不上。
+
+* Pi-memory-md
+[[https://github.com/VandeeFeng/pi-memory-md][VandeeFeng/pi-memory-md]]: 根据 letta 的核心实现，在 pi 里做了一个 pi 包来管理项目的 memory。
+
+~pi install npm:pi-memory-md~ 安装。
+
+pi-memory-md 提供了六个内置的工具 memory_init、memory_sync、memory_read、memory_write、memory_list、memroy_search。
+
+在 pi 里注册这些工具而不是让 agent 调用 bash 或 script 是考虑到这样可以减少随机性也更直接，agent 可以直接使用这些 native tools。并且在 pi 的 TUI 里也更方便自定义实现这些过程的展示。
+
+执行 ~/memory-init~ 指令会初始化创建当前项目的 memory folder：
+
+#+begin_src
+~/.pi/memory-md/
+└── project-name/
+    ├── core/
+    │   ├── user/           # Your preferences
+    │   │   ├── identity.md
+    │   │   └── prefer.md
+    │   └── project/        # Project context
+    │       └── tech-stack.md
+    └── reference/          # On-demand docs
+#+end_src
+
+在一个 pi session 开始的时候，会检索当前项目 memory 文件夹里的 core 文件夹，提取这些 md 文件的 YAML 头部的 description 部分，使用 XML 格式整合生成成一段 prompt，作为这个项目 memory 的 index 索引。节省 token 的同时，效果也挺不错。
+
+在 memory 注入的方式上，pi-memory-md 提供两种方式： ~message-append~ 和 ~system-prompt~ 。
+
+message-append 模式只会在 user 发送第一个消息的时候，添加到当前 session 的 message 里，并在 TUI 里隐藏显示具体的内容，只显示一个 pi 的 notify 消息，提示有多少 memory 已经注入。也就是自动多发送了一个不显示在 TUI 里的 message。
+
+system-prompt 模式则是会把 memory index 直接添加到 agent 的 system prompt。这样效果可能会更好，但是更消耗 token，更适合大型项目。
+
+prefer.md 里可以自定义自己的代码风格和各种偏好。project 文件夹里是关于项目的信息，例如项目架构，核心实现，api 等等。
+
+core 文件夹之外的内容不会被添加到 memory 索引，可以用在对话里选择性的让 agent 来读取。
+
+pi-memory-md 也内置了 [[https://github.com/VandeeFeng/pi-memory-md/tree/main/skills][skill]] 指导 agent 管理 memory。安装之后 pi 就能自动识别，但是不会复制到 pi 的本地 skill 配置文件夹，不会污染现有配置。
+
+memory 文件通过 GitHub 仓库来管理，在 session 开始的时候会自动 pull 保持最新的状态。
+
+在 pi 的 setting.json 里添加配置：
+
+#+begin_src json
+  "pi-memory-md": {
+    "enabled": true,
+    "repoUrl": "git@github.com:username/repo.git",
+    "localPath": "~/.pi/memory-md",
+    "injection": "message-append",
+    "autoSync": {
+      "onSessionStart": true
+    }
+  }
+#+end_src
+
+所有功能都使用 pi 原生的 API 和 Node.js 的内置方法，没有大型框架和库，只有 tool，file，skill。
+
+正常的进行对话，agent 就能自动获取到项目相关的 memory 了，还是挺无感挺丝滑的。
+
+其他细节实现让 agent 阅读阅读源码就 OK。
+
+* 我现在的 memory 架构
+除了 pi-memory-md，我还有两个管理 memory 的部分：handoff 和 planning-with-files。
+
+planning-with-files 把文件的保存目录设置为了 pi-memory-md 的项目目录下的 plan 文件夹，方便回顾一些复杂实现做了些什么，再用 learn skill 把有价值的部分生成可复用的 learnd skills。
+
+** handoff
+handoff 是 copy 的 https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md ，但是作者现在已经删除了这个文件。
+
+当 agent 卡住的时候，果断 handoff，保存为一个 md 文件。
+
+handoff slash command:
+
+#+begin_src markdown
+---
+description: Creates a detailed handoff plan of the conversation for continuing the work in a new session.
+argument-hint: [purpose]
+---
+
+Creates a detailed handoff plan of the conversation for continuing the work in a new session.
+
+The user specified purpose:
+
+<purpose>$ARGUMENTS</purpose>
+
+You are creating a summary specifically so that it can be continued by another agent.  For this to work you MUST have a purpose.  If no specified purpose was provided in the `<purpose>...</purpose>` tag you must STOP IMMEDIATELY and ask the user what the purpose is.
+
+Do not continue before asking for the purpose as you will otherwise not understand the instructions and do not assume a purpose!
+
+## Goal
+
+Your task is to create a detailed summary of the conversation so far, paying close attention to the user's explicit purpose for the next steps.
+This handoff plan should be thorough in capturing technical details, code patterns, and architectural decisions that will be essential for continuing development work without losing context.
+
+## Process
+
+Before providing your final plan, wrap your analysis in <analysis> tags to organize your thoughts and ensure you've covered all necessary points. In your analysis process:
+
+1. Chronologically analyze each message and section of the conversation. For each section thoroughly identify:
+   - The user's explicit requests and intents
+   - Your approach to addressing the user's requests
+   - Key decisions, technical concepts and code patterns
+   - Specific details like file names, full code snippets, function signatures, file edits, etc
+2. Double-check for technical accuracy and completeness, addressing each required element thoroughly.
+
+Your plan should include the following sections:
+
+1. **Primary Request and Intent**: Capture all of the user's explicit requests and intents in detail
+2. **Key Technical Concepts**: List all important technical concepts, technologies, and frameworks discussed.
+3. **Files and Code Sections**: Enumerate specific files and code sections examined, modified, or created. Pay special attention to the most recent messages and include full code snippets where applicable and include a summary of why this file read or edit is important.
+4. **Problem Solving**: Document problems solved and any ongoing troubleshooting efforts.
+5. **Pending Tasks**: Outline any pending tasks that you have explicitly been asked to work on.
+6. **Current Work**: Describe in detail precisely what was being worked on immediately before this handoff request, paying special attention to the most recent messages from both user and assistant. Include file names and code snippets where applicable.
+7. **Optional Next Step**: List the next step that you will take that is related to the most recent work you were doing. IMPORTANT: ensure that this step is DIRECTLY in line with the user's explicit requests, and the task you were working on immediately before this handoff request. If your last task was concluded, then only list next steps if they are explicitly in line with the users request. Do not start on tangential requests without confirming with the user first.
+
+Additionally create a "slug" for this handoff.  The "slug" is how we will refer to it later in a few places.  Examples:
+
+ * current-user-api-handler
+ * implement-auth
+ * fix-issue-42
+
+Together with the slug create a "Readable Summary".  Examples:
+
+ * Implement Currnet User API Handler
+ * Implement Authentication
+ * Fix Issue #42
+
+## Output Structure
+
+Here's an example of how your output should be structured:
+
+```markdown
+# Readable Summary
+
+<analysis>
+[Your thought process, ensuring all points are covered thoroughly and accurately]
+</analysis>
+
+<plan>
+# Session Handoff Plan
+
+## 1. Primary Request and Intent
+[Detailed description of all user requests and intents]
+
+## 2. Key Technical Concepts
+- [Concept 1]
+- [Concept 2]
+- [...]
+
+## 3. Files and Code Sections
+### [File Name 1]
+- **Why important**: [Summary of why this file is important]
+- **Changes made**: [Summary of the changes made to this file, if any]
+- **Code snippet**:
+```language
+[Important Code Snippet]
+```
+
+### [File Name 2]
+- **Code snippet**:
+```language
+[Important Code Snippet]
+```
+
+[...]
+
+## 4. Problem Solving
+[Description of solved problems and ongoing troubleshooting]
+
+## 5. Next Step
+[Required next step to take, directly aligned with user's explicit handoff purpose]
+</plan>
+```
+
+## Final Step
+
+After providing your analysis and summary, write the handoff summary to a markdown file:
+1. Get `pi-memory-md.localPath` from pi settings (default: `~/.pi/memory-md`), expand `~` to `$HOME`
+2. Get current project name: `basename $(git rev-parse --show-toplevel)`
+3. Write to: `[localPath]/[project-name]/handoffs/[timestamp]-[slug].md`
+
+Where [timestamp] is the current date in format YYYYMMDD-HHMMSS and the slug is what we defined before.
+
+Then tell the user about this file and that they can use `/pickup FILENAME` to continue.
+
+#+end_src
+
+pickup slash command:
+
+#+begin_src markdown
+---
+description: Resumes work from a previous handoff session
+argument-hint: [name of handoff]
+---
+
+Resumes work from a previous handoff session.
+
+The handoff folder might not exist if there are none.
+
+Requested handoff file: `$ARGUMENTS`
+
+## Process
+
+### 1. Check handoff file
+
+If no handoff file was provided, list them all. First get the handoff directory:
+
+1. Get `pi-memory-md.localPath` from pi settings (default: `~/.pi/memory-md`), expand `~` to `$HOME`
+2. Get current project name: `basename $(git rev-parse --show-toplevel)`
+3. Handoff directory: `[localPath]/[project-name]/handoffs`
+
+Then list the handoffs:
+
+```
+echo "## Available Handoffs"
+echo ""
+for file in [localPath]/[project-name]/handoffs/*.md; do
+  if [ -f "$file" ]; then
+    title=$(grep -m 1 "^# " "$file" | sed 's/^# //')
+    basename=$(basename "$file")
+    echo "* \`$basename\`: $title"
+  fi
+done
+echo ""
+echo "To pickup a handoff, use: /pickup <filename>"
+```
+
+### 2. List handoff file
+
+If a handoff file was provided, locate it in `[localPath]/[project-name]/handoffs` and read it. Note that this file might be misspelled or the user might have only partially listed it. If there are multiple matches, ask the user which one they want to continue with. The file contains the instructions for how you should continue.
+#+end_src

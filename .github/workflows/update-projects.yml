@@ -21,6 +21,7 @@ jobs:
         run: |
           REPOS=(
             "VandeeFeng/gitmemos"
+            "VandeeFeng/pi-memory-md"
             "VandeeFeng/C-blorg"
             "VandeeFeng/bili-tui"
             "VandeeFeng/smart-cmd"

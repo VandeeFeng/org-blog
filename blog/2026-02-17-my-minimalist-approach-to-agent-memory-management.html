@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="我觉得对于现阶段的 agent 来说, shell command + file 就是一个不会错的通用组合。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>我的 Agent Memory 极简管理方案</title>
+<meta property="og:title" content="我的 Agent Memory 极简管理方案">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="我觉得对于现阶段的 agent 来说, shell command + file 就是一个不会错的通用组合。">
+<meta property="og:url" content="https://www.vandee.art/blog/2026-02-17-my-minimalist-approach-to-agent-memory-management.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", () => {
+           pangu.autoSpacingPage();
+         });
+       </script>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="projects.html">Projects</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="ri-search-line ri-xl"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">17 Feb 2026</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2026-02-17-my-minimalist-approach-to-agent-memory-management.html">我的 Agent Memory 极简管理方案</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org24f4b7b">Pi-memory-md</a></li>
+<li><a href="#org2f94674">我现在的 memory 架构</a>
+<ul>
+<li><a href="#org9185b20">handoff</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<p>
+第一次使用 <a href="https://github.com/OthmanAdi/planning-with-files">OthmanAdi/planning-with-files</a> 的时候，我体会到了现在的 agent 和文件结合起来能实现多么良好的效果。刚开始的时候，planning-with-files 就是三个模板文件加上一个 SKILL.md，现在已经 14k stars 了。
+</p>
+
+<p>
+我觉得对于现阶段的 agent 来说, <code>shell command</code> + <code>file</code> 就是一个不会错的通用组合。
+</p>
+
+<p>
+对于 agent memory 和项目 issue、task 管理，<a href="https://github.com/steveyegge/beads">steveyegge/beads: Beads</a> 是 Steve Yegge 大佬的一个实现方案，相类似的还有 <a href="https://github.com/dmmulroy/overseer">dmmulroy/overseer</a>.这类实现里，主要的思路是利用 git VCS 来管理 agent 的 memory。
+</p>
+
+<p>
+前几天看到 letta 的一篇文章：<a href="https://www.letta.com/blog/context-repositories">Introducing Context Repositories: Git-based Memory for Coding Agents | Letta</a>
+</p>
+
+<p>
+我觉得这就是现阶段最适合我的实践方案：VCS(git) + file
+</p>
+
+<p>
+我没有那么多 issue 和 task 需要用 beads 来管理，所以 beads 的核心功能其实我都用不上。
+</p>
+<div id="outline-container-org24f4b7b" class="outline-2">
+<h2 id="org24f4b7b">Pi-memory-md</h2>
+<div class="outline-text-2" id="text-org24f4b7b">
+<p>
+<a href="https://github.com/VandeeFeng/pi-memory-md">VandeeFeng/pi-memory-md</a>: 根据 letta 的核心实现，在 pi 里做了一个 pi 包来管理项目的 memory。
+</p>
+
+<p>
+<code>pi install npm:pi-memory-md</code> 安装。
+</p>
+
+<p>
+pi-memory-md 提供了六个内置的工具 memory_init、memory_sync、memory_read、memory_write、memory_list、memroy_search。
+</p>
+
+<p>
+在 pi 里注册这些工具而不是让 agent 调用 bash 或 script 是考虑到这样可以减少随机性也更直接，agent 可以直接使用这些 native tools。并且在 pi 的 TUI 里也更方便自定义实现这些过程的展示。
+</p>
+
+<p>
+执行 <code>/memory-init</code> 指令会初始化创建当前项目的 memory folder：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">~/.pi/memory-md/
+└── project-name/
+    ├── core/
+    │   ├── user/           # Your preferences
+    │   │   ├── identity.md
+    │   │   └── prefer.md
+    │   └── project/        # Project context
+    │       └── tech-stack.md
+    └── reference/          # On-demand docs
+</pre>
+</div>
+
+<p>
+在一个 pi session 开始的时候，会检索当前项目 memory 文件夹里的 core 文件夹，提取这些 md 文件的 YAML 头部的 description 部分，使用 XML 格式整合生成成一段 prompt，作为这个项目 memory 的 index 索引。节省 token 的同时，效果也挺不错。
+</p>
+
+<p>
+在 memory 注入的方式上，pi-memory-md 提供两种方式： <code>message-append</code> 和 <code>system-prompt</code> 。
+</p>
+
+<p>
+message-append 模式只会在 user 发送第一个消息的时候，添加到当前 session 的 message 里，并在 TUI 里隐藏显示具体的内容，只显示一个 pi 的 notify 消息，提示有多少 memory 已经注入。也就是自动多发送了一个不显示在 TUI 里的 message。
+</p>
+
+<p>
+system-prompt 模式则是会把 memory index 直接添加到 agent 的 system prompt。这样效果可能会更好，但是更消耗 token，更适合大型项目。
+</p>
+
+<p>
+prefer.md 里可以自定义自己的代码风格和各种偏好。project 文件夹里是关于项目的信息，例如项目架构，核心实现，api 等等。
+</p>
+
+<p>
+core 文件夹之外的内容不会被添加到 memory 索引，可以用在对话里选择性的让 agent 来读取。
+</p>
+
+<p>
+pi-memory-md 也内置了 <a href="https://github.com/VandeeFeng/pi-memory-md/tree/main/skills">skill</a> 指导 agent 管理 memory。安装之后 pi 就能自动识别，但是不会复制到 pi 的本地 skill 配置文件夹，不会污染现有配置。
+</p>
+
+<p>
+memory 文件通过 GitHub 仓库来管理，在 session 开始的时候会自动 pull 保持最新的状态。
+</p>
+
+<p>
+在 pi 的 setting.json 里添加配置：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-json">  <span style="color: #FFA657;">"pi-memory-md"</span>: <span style="color: #8c8c8c;">{</span>
+    <span style="color: #FFA657;">"enabled"</span>: <span style="color: #95a99f;">true</span>,
+    <span style="color: #FFA657;">"repoUrl"</span>: <span style="color: #A1D08E;">"git@github.com:username/repo.git"</span>,
+    <span style="color: #FFA657;">"localPath"</span>: <span style="color: #A1D08E;">"~/.pi/memory-md"</span>,
+    <span style="color: #FFA657;">"injection"</span>: <span style="color: #A1D08E;">"message-append"</span>,
+    <span style="color: #FFA657;">"autoSync"</span>: <span style="color: #93a8c6;">{</span>
+      <span style="color: #FFA657;">"onSessionStart"</span>: <span style="color: #95a99f;">true</span>
+    <span style="color: #93a8c6;">}</span>
+  <span style="color: #8c8c8c;">}</span>
+</pre>
+</div>
+
+<p>
+所有功能都使用 pi 原生的 API 和 Node.js 的内置方法，没有大型框架和库，只有 tool，file，skill。
+</p>
+
+<p>
+正常的进行对话，agent 就能自动获取到项目相关的 memory 了。
+</p>
+
+<p>
+其他细节实现让 agent 阅读阅读源码就 OK 了。
+</p>
+</div>
+</div>
+<div id="outline-container-org2f94674" class="outline-2">
+<h2 id="org2f94674">我现在的 memory 架构</h2>
+<div class="outline-text-2" id="text-org2f94674">
+<p>
+除了 pi-memory-md，我还有两个管理 memory 的部分：handoff 和 planning-with-files。
+</p>
+
+<p>
+planning-with-files 把文件的保存目录设置为了 pi-memory-md 的项目目录下的 plan 文件夹，方便回顾一些复杂实现做了些什么，再用 learn skill 把有价值的部分生成可复用的 learnd skills。
+</p>
+</div>
+<div id="outline-container-org9185b20" class="outline-3">
+<h3 id="org9185b20">handoff</h3>
+<div class="outline-text-3" id="text-org9185b20">
+<p>
+handoff 是 copy 的 <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a> ，但是作者现在已经删除了这个文件。
+</p>
+
+<p>
+当 agent 卡住的时候，果断 handoff，保存为一个 md 文件。
+</p>
+
+<p>
+handoff slash command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-markdown"><span style="color: #b3b3b3;">---</span>
+<span style="color: #f4f4ff;">description</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">Creates a detailed handoff plan of the conversation for continuing the work in a new session.</span>
+<span style="color: #f4f4ff;">argument-hint</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">[purpose]</span>
+<span style="color: #b3b3b3;">---</span>
+
+Creates a detailed handoff plan of the conversation for continuing the work in a new session.
+
+The user specified purpose:
+
+<span style="color: #b3b3b3;">&lt;</span><span style="color: #95a99f;">purpose</span><span style="color: #b3b3b3;">&gt;</span>$ARGUMENTS<span style="color: #b3b3b3;">&lt;/</span><span style="color: #95a99f;">purpose</span><span style="color: #b3b3b3;">&gt;</span>
+
+You are creating a summary specifically so that it can be continued by another agent.  For this to work you MUST have a purpose.  If no specified purpose was provided in the <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">&lt;purpose&gt;...&lt;/purpose&gt;</span><span style="color: #b3b3b3;">`</span> tag you must STOP IMMEDIATELY and ask the user what the purpose is.
+
+Do not continue before asking for the purpose as you will otherwise not understand the instructions and do not assume a purpose!
+
+<span style="color: #b3b3b3;">## </span><span style="color: #96a6c8; font-weight: bold;">Goal</span>
+
+Your task is to create a detailed summary of the conversation so far, paying close attention to the user's explicit purpose for the next steps.
+This handoff plan should be thorough in capturing technical details, code patterns, and architectural decisions that will be essential for continuing development work without losing context.
+
+<span style="color: #b3b3b3;">## </span><span style="color: #96a6c8; font-weight: bold;">Process</span>
+
+Before providing your final plan, wrap your analysis in <span style="color: #b3b3b3;">&lt;</span><span style="color: #95a99f;">analysis</span><span style="color: #b3b3b3;">&gt;</span> tags to organize your thoughts and ensure you've covered all necessary points. In your analysis process:
+
+<span style="color: #b3b3b3;">1.</span> Chronologically analyze each message and section of the conversation. For each section thoroughly identify:
+   <span style="color: #b3b3b3;">-</span> The user's explicit requests and intents
+   <span style="color: #b3b3b3;">-</span> Your approach to addressing the user's requests
+   <span style="color: #b3b3b3;">-</span> Key decisions, technical concepts and code patterns
+   <span style="color: #b3b3b3;">-</span> Specific details like file names, full code snippets, function signatures, file edits, etc
+<span style="color: #b3b3b3;">2.</span> Double-check for technical accuracy and completeness, addressing each required element thoroughly.
+
+Your plan should include the following sections:
+
+<span style="color: #b3b3b3;">1.</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Primary Request and Intent</span><span style="color: #b3b3b3;">**</span>: Capture all of the user's explicit requests and intents in detail
+<span style="color: #b3b3b3;">2.</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Key Technical Concepts</span><span style="color: #b3b3b3;">**</span>: List all important technical concepts, technologies, and frameworks discussed.
+<span style="color: #b3b3b3;">3.</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Files and Code Sections</span><span style="color: #b3b3b3;">**</span>: Enumerate specific files and code sections examined, modified, or created. Pay special attention to the most recent messages and include full code snippets where applicable and include a summary of why this file read or edit is important.
+<span style="color: #b3b3b3;">4.</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Problem Solving</span><span style="color: #b3b3b3;">**</span>: Document problems solved and any ongoing troubleshooting efforts.
+<span style="color: #b3b3b3;">5.</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Pending Tasks</span><span style="color: #b3b3b3;">**</span>: Outline any pending tasks that you have explicitly been asked to work on.
+<span style="color: #b3b3b3;">6.</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Current Work</span><span style="color: #b3b3b3;">**</span>: Describe in detail precisely what was being worked on immediately before this handoff request, paying special attention to the most recent messages from both user and assistant. Include file names and code snippets where applicable.
+<span style="color: #b3b3b3;">7.</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Optional Next Step</span><span style="color: #b3b3b3;">**</span>: List the next step that you will take that is related to the most recent work you were doing. IMPORTANT: ensure that this step is DIRECTLY in line with the user's explicit requests, and the task you were working on immediately before this handoff request. If your last task was concluded, then only list next steps if they are explicitly in line with the users request. Do not start on tangential requests without confirming with the user first.
+
+Additionally create a "slug" for this handoff.  The "slug" is how we will refer to it later in a few places.  Examples:
+
+ <span style="color: #b3b3b3;">*</span> current-user-api-handler
+ <span style="color: #b3b3b3;">*</span> implement-auth
+ <span style="color: #b3b3b3;">*</span> fix-issue-42
+
+Together with the slug create a "Readable Summary".  Examples:
+
+ <span style="color: #b3b3b3;">*</span> Implement Currnet User API Handler
+ <span style="color: #b3b3b3;">*</span> Implement Authentication
+ <span style="color: #b3b3b3;">*</span> Fix Issue #42
+
+<span style="color: #b3b3b3;">## </span><span style="color: #96a6c8; font-weight: bold;">Output Structure</span>
+
+Here's an example of how your output should be structured:
+
+<span style="color: #b3b3b3;">```</span><span style="color: #95a99f;">markdown</span>
+<span style="color: #95a99f;"># Readable Summary
+
+&lt;analysis&gt;
+[Your thought process, ensuring all points are covered thoroughly and accurately]
+&lt;/analysis&gt;
+
+&lt;plan&gt;
+# Session Handoff Plan
+
+## 1. Primary Request and Intent
+[Detailed description of all user requests and intents]
+
+## 2. Key Technical Concepts
+- [Concept 1]
+- [Concept 2]
+- [...]
+
+## 3. Files and Code Sections
+### [File Name 1]
+- **Why important**: [Summary of why this file is important]
+- **Changes made**: [Summary of the changes made to this file, if any]
+- **Code snippet**:
+```language
+[Important Code Snippet]
+</span><span style="color: #b3b3b3;">```</span>
+
+<span style="color: #b3b3b3;">### </span><span style="color: #96a6c8; font-weight: bold;">[File Name 2]</span>
+<span style="color: #b3b3b3;">-</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Code snippet</span><span style="color: #b3b3b3;">**</span>:
+<span style="color: #b3b3b3;">```</span><span style="color: #95a99f;">language</span>
+<span style="color: #95a99f;">[Important Code Snippet]
+</span><span style="color: #b3b3b3;">```</span>
+
+[...]
+
+<span style="color: #b3b3b3;">## </span><span style="color: #96a6c8; font-weight: bold;">4. Problem Solving</span>
+[Description of solved problems and ongoing troubleshooting]
+
+<span style="color: #b3b3b3;">## </span><span style="color: #96a6c8; font-weight: bold;">5. Next Step</span>
+[Required next step to take, directly aligned with user's explicit handoff purpose]
+<span style="color: #b3b3b3;">&lt;/</span><span style="color: #95a99f;">plan</span><span style="color: #b3b3b3;">&gt;</span>
+<span style="color: #b3b3b3;">```</span>
+
+<span style="color: #b3b3b3;">## </span><span style="color: #96a6c8; font-weight: bold;">Final Step</span>
+
+After providing your analysis and summary, write the handoff summary to a markdown file:
+<span style="color: #b3b3b3;">1.</span> Get <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">pi-memory-md.localPath</span><span style="color: #b3b3b3;">`</span> from pi settings (default: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">~/.pi/memory-md</span><span style="color: #b3b3b3;">`</span>), expand <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">~</span><span style="color: #b3b3b3;">`</span> to <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">$HOME</span><span style="color: #b3b3b3;">`</span>
+<span style="color: #b3b3b3;">2.</span> Get current project name: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">basename $(git rev-parse --show-toplevel)</span><span style="color: #b3b3b3;">`</span>
+<span style="color: #b3b3b3;">3.</span> Write to: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">[localPath]/[project-name]/handoffs/[timestamp]-[slug].md</span><span style="color: #b3b3b3;">`</span>
+
+Where [timestamp] is the current date in format YYYYMMDD-HHMMSS and the slug is what we defined before.
+
+Then tell the user about this file and that they can use <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">/pickup FILENAME</span><span style="color: #b3b3b3;">`</span> to continue.
+
+</pre>
+</div>
+
+<p>
+pickup slash command:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-markdown"><span style="color: #b3b3b3;">---</span>
+<span style="color: #f4f4ff;">description</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">Resumes work from a previous handoff session</span>
+<span style="color: #f4f4ff;">argument-hint</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">[name of handoff]</span>
+<span style="color: #b3b3b3;">---</span>
+
+Resumes work from a previous handoff session.
+
+The handoff folder might not exist if there are none.
+
+Requested handoff file: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">$ARGUMENTS</span><span style="color: #b3b3b3;">`</span>
+
+<span style="color: #b3b3b3;">## </span><span style="color: #96a6c8; font-weight: bold;">Process</span>
+
+<span style="color: #b3b3b3;">### </span><span style="color: #96a6c8; font-weight: bold;">1. Check handoff file</span>
+
+If no handoff file was provided, list them all. First get the handoff directory:
+
+<span style="color: #b3b3b3;">1.</span> Get <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">pi-memory-md.localPath</span><span style="color: #b3b3b3;">`</span> from pi settings (default: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">~/.pi/memory-md</span><span style="color: #b3b3b3;">`</span>), expand <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">~</span><span style="color: #b3b3b3;">`</span> to <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">$HOME</span><span style="color: #b3b3b3;">`</span>
+<span style="color: #b3b3b3;">2.</span> Get current project name: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">basename $(git rev-parse --show-toplevel)</span><span style="color: #b3b3b3;">`</span>
+<span style="color: #b3b3b3;">3.</span> Handoff directory: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">[localPath]/[project-name]/handoffs</span><span style="color: #b3b3b3;">`</span>
+
+Then list the handoffs:
+
+<span style="color: #b3b3b3;">```</span>
+<span style="color: #95a99f;">echo "## Available Handoffs"
+echo ""
+for file in [localPath]/[project-name]/handoffs/*.md; do
+  if [ -f "$file" ]; then
+    title=$(grep -m 1 "^# " "$file" | sed 's/^# //')
+    basename=$(basename "$file")
+    echo "* \`$basename\`: $title"
+  fi
+done
+echo ""
+echo "To pickup a handoff, use: /pickup &lt;filename&gt;"
+</span><span style="color: #b3b3b3;">```</span>
+
+<span style="color: #b3b3b3;">### </span><span style="color: #96a6c8; font-weight: bold;">2. List handoff file</span>
+
+If a handoff file was provided, locate it in <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">[localPath]/[project-name]/handoffs</span><span style="color: #b3b3b3;">`</span> and read it. Note that this file might be misspelled or the user might have only partially listed it. If there are multiple matches, ask the user which one they want to continue with. The file contains the instructions for how you should continue.
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-llm.html">LLM</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="ri-arrow-up-double-line ri-3x"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>
