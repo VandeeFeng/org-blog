@@ -43,6 +43,8 @@ Documentation:
 
 比起那些复杂的 agent 框架，各种概念、论文和复杂的抽象层，pi-mono 对新手来说是在太友好了，源码里还有大量的 example 和 docs。
 
+pi 在启动的时候如果安装的 pi 包没有指定版本就会检查更新，这会带来 1-2 秒的延迟，解决的版本就是在安装的时候加上版本号: ~pi install npm: pi-package@1.1.1~ --2026-02-20 add
+
 另外 pi-mono 的 TUI 设计是我更喜欢的，OpenCode 采用的是 server+client 的架构，最直观的反映就是输出显示上会比 Claude Code、Codex 感觉慢一些。
 
 #+begin_quote
