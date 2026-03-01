@@ -9,6 +9,15 @@
     "url": "https://github.com/VandeeFeng/gitmemos"
   },
   {
+    "description": "",
+    "language": "TypeScript",
+    "name": "pi-memory-md",
+    "owner": "VandeeFeng",
+    "repo": "pi-memory-md",
+    "stars": 1,
+    "url": "https://github.com/VandeeFeng/pi-memory-md"
+  },
+  {
     "description": "Simple org-mode blog site builder with built-in parser and customizable templates",
     "language": "C",
     "name": "C-blorg",
@@ -54,7 +63,7 @@
     "url": "https://github.com/VandeeFeng/GitNano"
   },
   {
-    "description": "Sync Hoarder bookmarks to local Org-mode or Markdown files",
+    "description": "Sync Karakeep (Hoarder) bookmarks to local Org-mode or Markdown files",
     "language": "Emacs Lisp",
     "name": "Emacs-Hoarder",
     "owner": "VandeeFeng",
