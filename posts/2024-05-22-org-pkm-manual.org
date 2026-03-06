@@ -954,6 +954,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 其他可以参考下面的文章:
 
+- [[https://manateelazycat.github.io/2026/01/06/fcitx-best-config/][Fcitx 最佳配置实践 2026-01-06]]
+
 - [[https://sspai.com/post/84373#!][自由输入法 RIME 简明配置指南 - 少数派]]
 
 - [[https://sspai.com/post/89281][RIME + 雾凇拼音，打造绝佳的开源文字输入体验 - 少数派]]
