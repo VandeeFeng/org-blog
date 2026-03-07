@@ -59,11 +59,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5fe6066">Pi-mono</a></li>
-<li><a href="#orgf909869">Pi-mono Extension</a>
+<li><a href="#orge761497">Pi-mono</a></li>
+<li><a href="#org0124d11">Pi-mono Extension</a>
 <ul>
-<li><a href="#org34eeaeb">Command Rule</a></li>
-<li><a href="#org6a0d1fc">Subagent</a></li>
+<li><a href="#org80d2a38">Command Rule</a></li>
+<li><a href="#org6083baf">Subagent</a></li>
+<li><a href="#org1ec9130">Rtk command proxy</a></li>
 </ul>
 </li>
 </ul>
@@ -80,9 +81,9 @@
 <p>
 大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。
 </p>
-<div id="outline-container-org5fe6066" class="outline-2">
-<h2 id="org5fe6066">Pi-mono</h2>
-<div class="outline-text-2" id="text-org5fe6066">
+<div id="outline-container-orge761497" class="outline-2">
+<h2 id="orge761497">Pi-mono</h2>
+<div class="outline-text-2" id="text-orge761497">
 <p>
 pi-mono 的 agent 设计的极为简洁：只有 read，bash，edit，write 四个基础工具，system prompt 也设计的非常简洁。AI agent ≈ Tools + loops.
 </p>
@@ -152,16 +153,16 @@ Coding agents have this nice property that they're basically a chat interface. T
 </p>
 </div>
 </div>
-<div id="outline-container-orgf909869" class="outline-2">
-<h2 id="orgf909869">Pi-mono Extension</h2>
-<div class="outline-text-2" id="text-orgf909869">
+<div id="outline-container-org0124d11" class="outline-2">
+<h2 id="org0124d11">Pi-mono Extension</h2>
+<div class="outline-text-2" id="text-org0124d11">
 <p>
 前段时间刚开始深入一点折腾和看 OpenCode 的源码，想实现一些自定义的功能，但是这个项目已经做的太大了，pi-mono 更适合个人折腾。
 </p>
 </div>
-<div id="outline-container-org34eeaeb" class="outline-3">
-<h3 id="org34eeaeb">Command Rule</h3>
-<div class="outline-text-3" id="text-org34eeaeb">
+<div id="outline-container-org80d2a38" class="outline-3">
+<h3 id="org80d2a38">Command Rule</h3>
+<div class="outline-text-3" id="text-org80d2a38">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
 </p>
@@ -463,9 +464,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-org6a0d1fc" class="outline-3">
-<h3 id="org6a0d1fc">Subagent</h3>
-<div class="outline-text-3" id="text-org6a0d1fc">
+<div id="outline-container-org6083baf" class="outline-3">
+<h3 id="org6083baf">Subagent</h3>
+<div class="outline-text-3" id="text-org6083baf">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -487,19 +488,19 @@ tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux �
 </p>
 
 
-<figure id="org3744063">
+<figure id="org6bb0257">
 <img src="https://pic.vandee.art/images/20260211_125004-agent1.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="orgcf5f6fe">
+<figure id="orgd7ab58a">
 <img src="https://pic.vandee.art/images/20260211_125302-agent2.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org6726dc4">
+<figure id="org389f7d4">
 <img src="https://pic.vandee.art/images/20260211_125325-agent3.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -907,6 +908,214 @@ tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux �
 
                 <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span> action: <span style="color: #A1D08E;">"transform"</span>, text: task <span style="color: #97b098;">}</span>;
         <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1ec9130" class="outline-3">
+<h3 id="org1ec9130">Rtk command proxy</h3>
+<div class="outline-text-3" id="text-org1ec9130">
+<p>
+<a href="https://github.com/rtk-ai/rtk">GitHub - rtk-ai/rtk</a> 这个项目可以简化常用 bash 指令的输出结果，长期使用可以节省许多 token。
+</p>
+
+<p>
+原项目可以一键和 Claude Code 的 hook 配合，因为 Claude Code 是直接调用的 bash 指令，rtk 在 shell 层面直接用 bash hook 拦截原指令。
+</p>
+
+<p>
+但 pi 里 bash 指令是 工具函数 bash("command") 通过 Node.js child_process 执行，所以我们要监听 pi 的 tool_call 事件来拦截。
+</p>
+
+<p>
+rtk-integration.ts:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #787878;">/**</span><span style="color: #787878;">
+ * RTK Integration Extension for Pi
+ *
+ * Automatically rewrites common CLI commands to their RTK equivalents for token optimization.
+ * Based on: https://github.com/rtk-ai/rtk
+ */</span>
+
+<span style="color: #FFA657;">import</span> <span style="color: #FFA657;">type</span> <span style="color: #8c8c8c;">{</span> ExtensionAPI <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-coding-agent"</span>;
+
+<span style="color: #FFA657;">type</span> <span style="color: #95a99f;">CommandPattern</span> = <span style="color: #8c8c8c;">{</span> prefix: <span style="color: #FFA657;">string</span>; exact?: <span style="color: #FFA657;">boolean</span> <span style="color: #8c8c8c;">}</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">READ_COMMANDS</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Set</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">"cat"</span>, <span style="color: #A1D08E;">"head"</span>, <span style="color: #A1D08E;">"tail"</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>;
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">GREP_COMMANDS</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Set</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">"rg"</span>, <span style="color: #A1D08E;">"ripgrep"</span><span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">)</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">RTK_COMMANDS</span>: <span style="color: #95a99f;">CommandPattern</span><span style="color: #8c8c8c;">[]</span> = <span style="color: #8c8c8c;">[</span>
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"git"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"gh"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"cargo"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"pnpm"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"pip"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"npm"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"vitest"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"jest"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"pytest"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"tsc"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"next"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"eslint"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"biome"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"prettier"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"ruff"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"mypy"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"golangci-lint"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"go"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"docker"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"kubectl"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"grep"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"rg"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"ripgrep"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"cat"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"head"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"tail"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"ls"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"tree"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"find"</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"curl"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"wget"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"psql"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+  <span style="color: #93a8c6;">{</span> prefix: <span style="color: #A1D08E;">"gt"</span>, exact: <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span>,
+<span style="color: #8c8c8c;">]</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">RTK_BLACKLIST</span> = <span style="color: #8c8c8c;">[</span>
+  <span style="color: #A1D08E;">"rtk "</span>,
+  <span style="color: #A1D08E;">"git remote"</span>,
+  <span style="color: #A1D08E;">"git config"</span>,
+  <span style="color: #A1D08E;">"man "</span>,
+  <span style="color: #A1D08E;">"vim "</span>,
+  <span style="color: #A1D08E;">"nano "</span>,
+  <span style="color: #A1D08E;">"code "</span>,
+  <span style="color: #A1D08E;">"less "</span>,
+  <span style="color: #A1D08E;">"more "</span>,
+<span style="color: #8c8c8c;">]</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">HEREDOC_PATTERNS</span> = <span style="color: #8c8c8c;">[</span><span style="color: #A1D08E;">"&lt;&lt;"</span>, <span style="color: #A1D08E;">"&lt;&lt;&lt;"</span><span style="color: #8c8c8c;">]</span>;
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">shouldRewriteToRtk</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">command</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">boolean</span> <span style="color: #8c8c8c;">{</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">trimmedCmd</span> = command.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>;
+
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>RTK_BLACKLIST.<span style="color: #96a6c8;">some</span><span style="color: #b0b1a3;">(</span>pattern <span style="color: #FFA657;">=&gt;</span> trimmedCmd.<span style="color: #96a6c8;">startsWith</span><span style="color: #97b098;">(</span>pattern<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">false</span>;
+  <span style="color: #93a8c6;">}</span>
+
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>HEREDOC_PATTERNS.<span style="color: #96a6c8;">some</span><span style="color: #b0b1a3;">(</span>pattern <span style="color: #FFA657;">=&gt;</span> trimmedCmd.<span style="color: #96a6c8;">includes</span><span style="color: #97b098;">(</span>pattern<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">false</span>;
+  <span style="color: #93a8c6;">}</span>
+
+  <span style="color: #FFA657;">return</span> RTK_COMMANDS.<span style="color: #96a6c8;">some</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">{</span> prefix, exact <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span>
+    exact ? <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">RegExp</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">`^</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">prefix</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">(\\s|$)`</span><span style="color: #b0b1a3;">)</span>.<span style="color: #96a6c8;">test</span><span style="color: #b0b1a3;">(</span>trimmedCmd<span style="color: #b0b1a3;">)</span> : trimmedCmd.<span style="color: #96a6c8;">startsWith</span><span style="color: #b0b1a3;">(</span>prefix<span style="color: #b0b1a3;">)</span>
+  <span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">extractBaseCommand</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">command</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">{</span>
+  <span style="color: #FFA657;">return</span> command.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>.<span style="color: #96a6c8;">split</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/\s+/</span><span style="color: #93a8c6;">)[</span>0<span style="color: #93a8c6;">]</span> || <span style="color: #A1D08E;">""</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">rewriteToRtk</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">command</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">{</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">trimmedCmd</span> = command.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">baseCmd</span> = <span style="color: #96a6c8;">extractBaseCommand</span><span style="color: #93a8c6;">(</span>trimmedCmd<span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">args</span> = trimmedCmd.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>baseCmd.length<span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>;
+
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>READ_COMMANDS.<span style="color: #96a6c8;">has</span><span style="color: #b0b1a3;">(</span>baseCmd<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`rtk read </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">args</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+  <span style="color: #93a8c6;">}</span>
+
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>GREP_COMMANDS.<span style="color: #96a6c8;">has</span><span style="color: #b0b1a3;">(</span>baseCmd<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`rtk grep </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">args</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+  <span style="color: #93a8c6;">}</span>
+
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^npm (test|run test)|^npx vitest/</span>.<span style="color: #96a6c8;">test</span><span style="color: #b0b1a3;">(</span>trimmedCmd<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`rtk test </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">trimmedCmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+  <span style="color: #93a8c6;">}</span>
+
+  <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`rtk </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">trimmedCmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">export</span> <span style="color: #FFA657;">default</span> <span style="color: #FFA657;">function</span> <span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">pi</span>: <span style="color: #95a99f;">ExtensionAPI</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">void</span> <span style="color: #8c8c8c;">{</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">stats</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Map</span>&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">number</span>&gt;<span style="color: #93a8c6;">()</span>;
+
+  pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"tool_call"</span>, <span style="color: #FFA657;">async</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">event</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>event.toolName !== <span style="color: #A1D08E;">"bash"</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+    <span style="color: #97b098;">}</span>
+
+    <span style="color: #FFA657;">const</span> <span style="color: #97b098;">{</span> command <span style="color: #97b098;">}</span> = event.input || <span style="color: #97b098;">{}</span>;
+    <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!command || <span style="color: #FFA657;">typeof</span> command !== <span style="color: #A1D08E;">"string"</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+    <span style="color: #97b098;">}</span>
+
+    <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!<span style="color: #96a6c8;">shouldRewriteToRtk</span><span style="color: #aebed8;">(</span>command<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
+    <span style="color: #97b098;">}</span>
+
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">baseCmd</span> = <span style="color: #96a6c8;">extractBaseCommand</span><span style="color: #97b098;">(</span>command<span style="color: #97b098;">)</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">rewritten</span> = <span style="color: #96a6c8;">rewriteToRtk</span><span style="color: #97b098;">(</span>command<span style="color: #97b098;">)</span>;
+
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">count</span> = <span style="color: #97b098;">(</span>stats.<span style="color: #96a6c8;">get</span><span style="color: #aebed8;">(</span>baseCmd<span style="color: #aebed8;">)</span> || 0<span style="color: #97b098;">)</span> + 1;
+    stats.<span style="color: #96a6c8;">set</span><span style="color: #97b098;">(</span>baseCmd, count<span style="color: #97b098;">)</span>;
+
+    <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>count === 1<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`RTK: Rewriting "</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">baseCmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">" &#8594; "</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">rewritten</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">"`</span>, <span style="color: #A1D08E;">"info"</span><span style="color: #aebed8;">)</span>;
+    <span style="color: #97b098;">}</span>
+
+    <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span>
+      input: <span style="color: #aebed8;">{</span>
+        ...event.input,
+        command: rewritten,
+      <span style="color: #aebed8;">}</span>,
+    <span style="color: #97b098;">}</span>;
+  <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+  pi.<span style="color: #96a6c8;">registerCommand</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"rtk-stats"</span>, <span style="color: #b0b1a3;">{</span>
+    description: <span style="color: #A1D08E;">"Show RTK token savings statistics"</span>,
+    handler: <span style="color: #FFA657;">async</span> <span style="color: #97b098;">(</span><span style="color: #f4f4ff;">_args</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #97b098;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #97b098;">{</span>
+      <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">formatSessionStats</span><span style="color: #aebed8;">()</span>: <span style="color: #FFA657;">string</span> <span style="color: #aebed8;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">lines</span> = <span style="color: #b0b0b3;">[</span>
+          <span style="color: #A1D08E;">"&#128202; RTK Session Statistics"</span>,
+          <span style="color: #A1D08E;">"&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;"</span>,
+        <span style="color: #b0b0b3;">]</span>;
+
+        <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>stats.size &gt; 0<span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+          lines.<span style="color: #96a6c8;">push</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">"Commands rewritten:"</span><span style="color: #90a890;">)</span>;
+          Array.<span style="color: #96a6c8;">from</span><span style="color: #90a890;">(</span>stats.<span style="color: #96a6c8;">entries</span><span style="color: #a2b6da;">()</span><span style="color: #90a890;">)</span>
+            .<span style="color: #96a6c8;">sort</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span>a, b<span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">=&gt;</span> b<span style="color: #a2b6da;">[</span>1<span style="color: #a2b6da;">]</span> - a<span style="color: #a2b6da;">[</span>1<span style="color: #a2b6da;">]</span><span style="color: #90a890;">)</span>
+            .<span style="color: #96a6c8;">forEach</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span><span style="color: #9cb6ad;">[</span><span style="color: #f4f4ff;">cmd</span>, count<span style="color: #9cb6ad;">]</span><span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #a2b6da;">{</span>
+            lines.<span style="color: #96a6c8;">push</span><span style="color: #9cb6ad;">(</span><span style="color: #A1D08E;">`  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">cmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">count</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span><span style="color: #9cb6ad;">)</span>;
+          <span style="color: #a2b6da;">}</span><span style="color: #90a890;">)</span>;
+        <span style="color: #b0b0b3;">}</span> <span style="color: #FFA657;">else</span> <span style="color: #b0b0b3;">{</span>
+          lines.<span style="color: #96a6c8;">push</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">"(No commands rewritten yet in this session)"</span><span style="color: #90a890;">)</span>;
+        <span style="color: #b0b0b3;">}</span>
+
+        <span style="color: #FFA657;">return</span> lines.<span style="color: #96a6c8;">join</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"\n"</span><span style="color: #b0b0b3;">)</span>;
+      <span style="color: #aebed8;">}</span>
+
+      <span style="color: #FFA657;">try</span> <span style="color: #aebed8;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #b0b0b3;">{</span> execSync <span style="color: #b0b0b3;">}</span> = <span style="color: #96a6c8;">require</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"node:child_process"</span><span style="color: #b0b0b3;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">globalOutput</span> = <span style="color: #96a6c8;">execSync</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"rtk gain"</span>, <span style="color: #90a890;">{</span>
+          encoding: <span style="color: #A1D08E;">"utf-8"</span>,
+          maxBuffer: 10 * 1024 * 1024,
+        <span style="color: #90a890;">}</span><span style="color: #b0b0b3;">)</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">output</span> = <span style="color: #b0b0b3;">[</span><span style="color: #96a6c8;">formatSessionStats</span><span style="color: #90a890;">()</span>, <span style="color: #A1D08E;">""</span>, globalOutput.<span style="color: #96a6c8;">trim</span><span style="color: #90a890;">()</span><span style="color: #b0b0b3;">]</span>.<span style="color: #96a6c8;">join</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"\n"</span><span style="color: #b0b0b3;">)</span>;
+        ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #b0b0b3;">(</span>output, <span style="color: #A1D08E;">"success"</span><span style="color: #b0b0b3;">)</span>;
+      <span style="color: #aebed8;">}</span> <span style="color: #FFA657;">catch</span> <span style="color: #aebed8;">{</span>
+        ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #b0b0b3;">(</span><span style="color: #96a6c8;">formatSessionStats</span><span style="color: #90a890;">()</span>, <span style="color: #A1D08E;">"success"</span><span style="color: #b0b0b3;">)</span>;
+      <span style="color: #aebed8;">}</span>
+    <span style="color: #97b098;">}</span>,
+  <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+  pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"session_start"</span>, <span style="color: #FFA657;">async</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">_event</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+    ctx.ui.<span style="color: #96a6c8;">notify</span><span style="color: #97b098;">(</span>
+      <span style="color: #A1D08E;">"RTK Integration loaded. Commands will be auto-rewritten for token savings."</span>,
+      <span style="color: #A1D08E;">"info"</span>
+    <span style="color: #97b098;">)</span>;
+  <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
 <span style="color: #8c8c8c;">}</span>
 </pre>
 </div>

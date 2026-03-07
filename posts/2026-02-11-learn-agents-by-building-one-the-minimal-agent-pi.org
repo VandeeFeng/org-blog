@@ -784,3 +784,200 @@ export default function agentAtDiscovery(pi: ExtensionAPI): void {
         });
 }
 #+end_src
+
+
+** Rtk command proxy
+[[https://github.com/rtk-ai/rtk][GitHub - rtk-ai/rtk]] 这个项目可以简化常用 bash 指令的输出结果，长期使用可以节省许多 token。
+
+原项目可以一键和 Claude Code 的 hook 配合，因为 Claude Code 是直接调用的 bash 指令，rtk 在 shell 层面直接用 bash hook 拦截原指令。
+
+但 pi 里 bash 指令是 工具函数 bash("command") 通过 Node.js child_process 执行，所以我们要监听 pi 的 tool_call 事件来拦截。
+
+rtk-integration.ts:
+
+#+begin_src typescript
+/**
+ * RTK Integration Extension for Pi
+ *
+ * Automatically rewrites common CLI commands to their RTK equivalents for token optimization.
+ * Based on: https://github.com/rtk-ai/rtk
+ */
+
+import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+
+type CommandPattern = { prefix: string; exact?: boolean };
+
+const READ_COMMANDS = new Set(["cat", "head", "tail"]);
+const GREP_COMMANDS = new Set(["rg", "ripgrep"]);
+
+const RTK_COMMANDS: CommandPattern[] = [
+  { prefix: "git", exact: true },
+  { prefix: "gh", exact: true },
+  { prefix: "cargo", exact: true },
+  { prefix: "pnpm", exact: true },
+  { prefix: "pip", exact: true },
+  { prefix: "npm", exact: true },
+  { prefix: "vitest", exact: true },
+  { prefix: "jest", exact: true },
+  { prefix: "pytest", exact: true },
+  { prefix: "tsc", exact: true },
+  { prefix: "next", exact: true },
+  { prefix: "eslint", exact: true },
+  { prefix: "biome", exact: true },
+  { prefix: "prettier", exact: true },
+  { prefix: "ruff", exact: true },
+  { prefix: "mypy", exact: true },
+  { prefix: "golangci-lint", exact: true },
+  { prefix: "go", exact: true },
+  { prefix: "docker", exact: true },
+  { prefix: "kubectl", exact: true },
+  { prefix: "grep", exact: true },
+  { prefix: "rg", exact: true },
+  { prefix: "ripgrep", exact: true },
+  { prefix: "cat", exact: true },
+  { prefix: "head", exact: true },
+  { prefix: "tail", exact: true },
+  { prefix: "ls", exact: true },
+  { prefix: "tree", exact: true },
+  { prefix: "find" },
+  { prefix: "curl", exact: true },
+  { prefix: "wget", exact: true },
+  { prefix: "psql", exact: true },
+  { prefix: "gt", exact: true },
+];
+
+const RTK_BLACKLIST = [
+  "rtk ",
+  "git remote",
+  "git config",
+  "man ",
+  "vim ",
+  "nano ",
+  "code ",
+  "less ",
+  "more ",
+];
+
+const HEREDOC_PATTERNS = ["<<", "<<<"];
+
+function shouldRewriteToRtk(command: string): boolean {
+  const trimmedCmd = command.trim();
+
+  if (RTK_BLACKLIST.some(pattern => trimmedCmd.startsWith(pattern))) {
+    return false;
+  }
+
+  if (HEREDOC_PATTERNS.some(pattern => trimmedCmd.includes(pattern))) {
+    return false;
+  }
+
+  return RTK_COMMANDS.some(({ prefix, exact }) =>
+    exact ? new RegExp(`^${prefix}(\\s|$)`).test(trimmedCmd) : trimmedCmd.startsWith(prefix)
+  );
+}
+
+function extractBaseCommand(command: string): string {
+  return command.trim().split(/\s+/)[0] || "";
+}
+
+function rewriteToRtk(command: string): string {
+  const trimmedCmd = command.trim();
+  const baseCmd = extractBaseCommand(trimmedCmd);
+  const args = trimmedCmd.slice(baseCmd.length).trim();
+
+  if (READ_COMMANDS.has(baseCmd)) {
+    return `rtk read ${args}`;
+  }
+
+  if (GREP_COMMANDS.has(baseCmd)) {
+    return `rtk grep ${args}`;
+  }
+
+  if (/^npm (test|run test)|^npx vitest/.test(trimmedCmd)) {
+    return `rtk test ${trimmedCmd}`;
+  }
+
+  return `rtk ${trimmedCmd}`;
+}
+
+export default function (pi: ExtensionAPI): void {
+  const stats = new Map<string, number>();
+
+  pi.on("tool_call", async (event, ctx) => {
+    if (event.toolName !== "bash") {
+      return undefined;
+    }
+
+    const { command } = event.input || {};
+    if (!command || typeof command !== "string") {
+      return undefined;
+    }
+
+    if (!shouldRewriteToRtk(command)) {
+      return undefined;
+    }
+
+    const baseCmd = extractBaseCommand(command);
+    const rewritten = rewriteToRtk(command);
+
+    const count = (stats.get(baseCmd) || 0) + 1;
+    stats.set(baseCmd, count);
+
+    if (count === 1) {
+      ctx.ui.notify(`RTK: Rewriting "${baseCmd}" → "${rewritten}"`, "info");
+    }
+
+    return {
+      input: {
+        ...event.input,
+        command: rewritten,
+      },
+    };
+  });
+
+  pi.registerCommand("rtk-stats", {
+    description: "Show RTK token savings statistics",
+    handler: async (_args, ctx) => {
+      function formatSessionStats(): string {
+        const lines = [
+          "📊 RTK Session Statistics",
+          "──────────────────────────────────────────────────",
+        ];
+
+        if (stats.size > 0) {
+          lines.push("Commands rewritten:");
+          Array.from(stats.entries())
+            .sort((a, b) => b[1] - a[1])
+            .forEach(([cmd, count]) => {
+            lines.push(`  ${cmd}: ${count}`);
+          });
+        } else {
+          lines.push("(No commands rewritten yet in this session)");
+        }
+
+        return lines.join("\n");
+      }
+
+      try {
+        const { execSync } = require("node:child_process");
+        const globalOutput = execSync("rtk gain", {
+          encoding: "utf-8",
+          maxBuffer: 10 * 1024 * 1024,
+        });
+
+        const output = [formatSessionStats(), "", globalOutput.trim()].join("\n");
+        ctx.ui.notify(output, "success");
+      } catch {
+        ctx.ui.notify(formatSessionStats(), "success");
+      }
+    },
+  });
+
+  pi.on("session_start", async (_event, ctx) => {
+    ctx.ui.notify(
+      "RTK Integration loaded. Commands will be auto-rewritten for token savings.",
+      "info"
+    );
+  });
+}
+#+end_src
