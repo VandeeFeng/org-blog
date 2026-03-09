@@ -791,148 +791,185 @@ export default function agentAtDiscovery(pi: ExtensionAPI): void {
 
 原项目可以一键和 Claude Code 的 hook 配合，因为 Claude Code 是直接调用的 bash 指令，rtk 在 shell 层面直接用 bash hook 拦截原指令。
 
-但 pi 里 bash 指令是 工具函数 bash("command") 通过 Node.js child_process 执行，所以我们要监听 pi 的 tool_call 事件来拦截。
+但 pi 里 bash 指令是 工具函数 bash("command") 通过 Node.js child_process 执行，所以我们用 pi.registerTool() 重新注册 bash tool，用 spawnHook 来修改 bash 指令。
 
-rtk-integration.ts:
+还注册了一个 ~/rtk-status~ 指令来查看 bash 指令的 rewrite 情况还有 token 的节省统计。
+
+command-integration.ts:
 
 #+begin_src typescript
 /**
- * RTK Integration Extension for Pi
+ * RTK + UV Integration Extension for Pi
  *
- * Automatically rewrites common CLI commands to their RTK equivalents for token optimization.
- * Based on: https://github.com/rtk-ai/rtk
+ * Combines two integrations:
+ * 1. RTK: Automatically rewrites common CLI commands to their RTK equivalents
+ *    for token optimization using RTK's built-in `rtk rewrite` command.
+ * 2. UV: Redirects Python tooling (pip, poetry, python) to uv equivalents.
+ *
+ * Based on:
+ * - RTK: https://github.com/rtk-ai/rtk
+ * - UV: https://github.com/astral-sh/uv
+ *
+ * This extension replaces the default bash tool with one that uses a spawnHook
+ * to intercept and rewrite commands before execution.
  */
 
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import { createBashTool } from "@mariozechner/pi-coding-agent";
+import { execSync } from "node:child_process";
 
-type CommandPattern = { prefix: string; exact?: boolean };
+const stats = new Map<string, number>();
+let rtkAvailable = false;
+let uvAvailable = false;
 
-const READ_COMMANDS = new Set(["cat", "head", "tail"]);
-const GREP_COMMANDS = new Set(["rg", "ripgrep"]);
-
-const RTK_COMMANDS: CommandPattern[] = [
-  { prefix: "git", exact: true },
-  { prefix: "gh", exact: true },
-  { prefix: "cargo", exact: true },
-  { prefix: "pnpm", exact: true },
-  { prefix: "pip", exact: true },
-  { prefix: "npm", exact: true },
-  { prefix: "vitest", exact: true },
-  { prefix: "jest", exact: true },
-  { prefix: "pytest", exact: true },
-  { prefix: "tsc", exact: true },
-  { prefix: "next", exact: true },
-  { prefix: "eslint", exact: true },
-  { prefix: "biome", exact: true },
-  { prefix: "prettier", exact: true },
-  { prefix: "ruff", exact: true },
-  { prefix: "mypy", exact: true },
-  { prefix: "golangci-lint", exact: true },
-  { prefix: "go", exact: true },
-  { prefix: "docker", exact: true },
-  { prefix: "kubectl", exact: true },
-  { prefix: "grep", exact: true },
-  { prefix: "rg", exact: true },
-  { prefix: "ripgrep", exact: true },
-  { prefix: "cat", exact: true },
-  { prefix: "head", exact: true },
-  { prefix: "tail", exact: true },
-  { prefix: "ls", exact: true },
-  { prefix: "tree", exact: true },
-  { prefix: "find" },
-  { prefix: "curl", exact: true },
-  { prefix: "wget", exact: true },
-  { prefix: "psql", exact: true },
-  { prefix: "gt", exact: true },
-];
-
-const RTK_BLACKLIST = [
-  "rtk ",
-  "git remote",
-  "git config",
-  "man ",
-  "vim ",
-  "nano ",
-  "code ",
-  "less ",
-  "more ",
-];
-
-const HEREDOC_PATTERNS = ["<<", "<<<"];
-
-function shouldRewriteToRtk(command: string): boolean {
-  const trimmedCmd = command.trim();
-
-  if (RTK_BLACKLIST.some(pattern => trimmedCmd.startsWith(pattern))) {
+function checkToolAvailable(tool: string): boolean {
+  try {
+    execSync(`${tool} --version`, { encoding: "utf-8", stdio: "pipe" });
+    return true;
+  } catch {
     return false;
   }
-
-  if (HEREDOC_PATTERNS.some(pattern => trimmedCmd.includes(pattern))) {
-    return false;
-  }
-
-  return RTK_COMMANDS.some(({ prefix, exact }) =>
-    exact ? new RegExp(`^${prefix}(\\s|$)`).test(trimmedCmd) : trimmedCmd.startsWith(prefix)
-  );
 }
 
-function extractBaseCommand(command: string): string {
-  return command.trim().split(/\s+/)[0] || "";
+/**
+ * Handle UV command interception and rewriting.
+ * Returns the rewritten command, or throws an error with a helpful
+   message.
+ */
+function handleUvCommand(command: string): string {
+  const trimmed = command.trim();
+  const parts = trimmed.split(/\s+/);
+  const baseCmd = parts[0];
+
+  const pipMessage =
+    "Error: pip is disabled. Use uv instead:\n\n" +
+      "  To install a package for a script: uv run --with PACKAGE python script.py\n" +
+      "  To add a dependency to the project: uv add PACKAGE\n";
+
+  const venvMessage =
+    "Error: 'python -m venv' is disabled. Use uv instead:\n\n" +
+      "  To create a virtual environment: uv venv\n";
+
+  if (baseCmd === "pip" || baseCmd === "pip3") {
+    throw new Error(pipMessage);
+  }
+
+  if (baseCmd === "poetry") {
+    throw new Error("Error: Use uv instead of poetry (uv init, uv add, uv sync, uv run)");
+  }
+
+  if (baseCmd === "python" || baseCmd === "python3") {
+    for (let i = 0; i < parts.length; i++) {
+      const arg = parts[i];
+
+      if (arg === "-m" && i + 1 < parts.length) {
+        const nextArg = parts[i + 1];
+        if (nextArg === "pip" || nextArg.startsWith("pip")) {
+          throw new Error(pipMessage);
+        }
+        if (nextArg === "venv" || nextArg.startsWith("venv")) {
+          throw new Error(venvMessage);
+        }
+      }
+
+      if (arg.startsWith("-mpip") || arg === "-m\\pip") {
+        throw new Error(pipMessage);
+      }
+      if (arg.startsWith("-mvenv") || arg === "-m\\venv") {
+        throw new Error(venvMessage);
+      }
+    }
+
+    return `uv run ${trimmed}`;
+  }
+
+  return trimmed;
 }
 
-function rewriteToRtk(command: string): string {
-  const trimmedCmd = command.trim();
-  const baseCmd = extractBaseCommand(trimmedCmd);
-  const args = trimmedCmd.slice(baseCmd.length).trim();
 
-  if (READ_COMMANDS.has(baseCmd)) {
-    return `rtk read ${args}`;
+// rewrite commands
+const UV_COMMANDS = ["pip", "pip3", "poetry", "python", "python3"];
+
+function rewriteCommand(command: string): { command: string; error?: string } {
+  const trimmed = command.trim();
+  if (!trimmed) {
+    return { command };
   }
 
-  if (GREP_COMMANDS.has(baseCmd)) {
-    return `rtk grep ${args}`;
+  // Step 1: UV interception
+  if (uvAvailable) {
+    const baseCmd = trimmed.split(/\s+/)[0];
+    if (UV_COMMANDS.includes(baseCmd)) {
+      try {
+        const rewritten = handleUvCommand(trimmed);
+        if (rewritten !== trimmed) {
+          return { command: rewritten };
+        }
+      } catch (err) {
+        if (err instanceof Error) {
+          return { command: trimmed, error: err.message };
+        }
+      }
+    }
   }
 
-  if (/^npm (test|run test)|^npx vitest/.test(trimmedCmd)) {
-    return `rtk test ${trimmedCmd}`;
+  // Step 2: RTK rewriting
+  if (rtkAvailable && !trimmed.startsWith("rtk ") && trimmed !== "rtk") {
+    if (!trimmed.includes("<<") && !trimmed.includes("$((")) {
+      try {
+        const rewritten = execSync(`rtk rewrite ${JSON.stringify(trimmed)}`, {
+          encoding: "utf-8",
+          stdio: ["pipe", "pipe", "pipe"],
+          maxBuffer: 1024 * 1024,
+        }).trim();
+
+        if (rewritten && rewritten !== trimmed) {
+          return { command: rewritten };
+        }
+      } catch {
+        // Command not supported by RTK - continue with original
+      }
+    }
   }
 
-  return `rtk ${trimmedCmd}`;
+  return { command: trimmed };
 }
 
 export default function (pi: ExtensionAPI): void {
-  const stats = new Map<string, number>();
+  rtkAvailable = checkToolAvailable("rtk");
+  uvAvailable = checkToolAvailable("uv");
 
-  pi.on("tool_call", async (event, ctx) => {
-    if (event.toolName !== "bash") {
-      return undefined;
-    }
+  const cwd = process.cwd();
 
-    const { command } = event.input || {};
-    if (!command || typeof command !== "string") {
-      return undefined;
-    }
+  const bashTool = createBashTool(cwd, {
+    spawnHook: ({ command, cwd, env }) => {
+      const { command: rewritten, error } = rewriteCommand(command);
 
-    if (!shouldRewriteToRtk(command)) {
-      return undefined;
-    }
+      if (rewritten !== command) {
+        const baseCmd = command.trim().split(/\s+/)[0] || "";
+        if (baseCmd) {
+          const count = (stats.get(baseCmd) || 0) + 1;
+          stats.set(baseCmd, count);
+        }
+      }
 
-    const baseCmd = extractBaseCommand(command);
-    const rewritten = rewriteToRtk(command);
+      if (error) {
+        return {
+          command: `echo '${error.replace(/'/g, "'\\''")}' >&2 && false`,
+          cwd,
+          env,
+        };
+      }
 
-    const count = (stats.get(baseCmd) || 0) + 1;
-    stats.set(baseCmd, count);
+      return { command: rewritten, cwd, env };
+    },
+  });
 
-    if (count === 1) {
-      ctx.ui.notify(`RTK: Rewriting "${baseCmd}" → "${rewritten}"`, "info");
-    }
-
-    return {
-      input: {
-        ...event.input,
-        command: rewritten,
-      },
-    };
+  pi.registerTool({
+    ...bashTool,
+    execute: async (id, params, signal, onUpdate, _ctx) => {
+      return bashTool.execute(id, params, signal, onUpdate);
+    },
   });
 
   pi.registerCommand("rtk-stats", {
@@ -944,10 +981,21 @@ export default function (pi: ExtensionAPI): void {
           "──────────────────────────────────────────────────",
         ];
 
+        if (!rtkAvailable) {
+          lines.push("⚠️  RTK is not installed or not available in PATH");
+          lines.push("");
+          lines.push("Install RTK: https://github.com/rtk-ai/rtk");
+          return lines.join("\n");
+        }
+
         if (stats.size > 0) {
-          lines.push("Commands rewritten:");
+          const totalRewrites = Array.from(stats.values()).reduce((sum, count) => sum + count, 0);
+          lines.push(`Commands rewritten this session: ${totalRewrites}`);
+          lines.push("");
+          lines.push("Top commands:");
           Array.from(stats.entries())
             .sort((a, b) => b[1] - a[1])
+            .slice(0, 10)
             .forEach(([cmd, count]) => {
             lines.push(`  ${cmd}: ${count}`);
           });
@@ -959,13 +1007,19 @@ export default function (pi: ExtensionAPI): void {
       }
 
       try {
-        const { execSync } = require("node:child_process");
         const globalOutput = execSync("rtk gain", {
           encoding: "utf-8",
+          stdio: "pipe",
           maxBuffer: 10 * 1024 * 1024,
         });
 
-        const output = [formatSessionStats(), "", globalOutput.trim()].join("\n");
+        const output = [
+          formatSessionStats(),
+          "",
+          "📈 Global Statistics",
+          "──────────────────────────────────────────────────",
+          globalOutput.trim(),
+        ].join("\n");
         ctx.ui.notify(output, "success");
       } catch {
         ctx.ui.notify(formatSessionStats(), "success");
@@ -974,10 +1028,22 @@ export default function (pi: ExtensionAPI): void {
   });
 
   pi.on("session_start", async (_event, ctx) => {
-    ctx.ui.notify(
-      "RTK Integration loaded. Commands will be auto-rewritten for token savings.",
-      "info"
-    );
+    const messages = [];
+
+    if (uvAvailable) {
+      messages.push("✓ UV integration: pip/poetry/python redirected to uv");
+    } else {
+      messages.push("⚠ UV not available. Python tools won't be redirected.");
+    }
+
+    if (rtkAvailable) {
+      messages.push("✓ RTK integration: Commands auto-rewritten for token savings");
+    } else {
+      messages.push("⚠ RTK not available. Install from https://github.com/rtk-ai/rtk");
+    }
+
+    ctx.ui.notify(messages.join("\n"), "info");
   });
 }
+
 #+end_src
