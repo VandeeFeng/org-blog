@@ -59,30 +59,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf382524">TL;DR</a></li>
-<li><a href="#org8fead67">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#orgaefbc2b">我的键位设置</a>
+<li><a href="#org98886a9">TL;DR</a></li>
+<li><a href="#org2044cb1">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#org6c2776b">我的键位设置</a>
 <ul>
-<li><a href="#org7a0ba35">General</a></li>
-<li><a href="#orga3554ad">mark &amp; move</a></li>
-<li><a href="#org308fdc9">hydra &amp; general</a></li>
-<li><a href="#org9953df0">Misc</a></li>
+<li><a href="#orgcb95c7e">General</a></li>
+<li><a href="#org1f6fe3d">mark &amp; move</a></li>
+<li><a href="#org589b34f">hydra &amp; general</a></li>
+<li><a href="#org88a7249">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgf382524" class="outline-2">
-<h2 id="orgf382524">TL;DR</h2>
-<div class="outline-text-2" id="text-orgf382524">
+<div id="outline-container-org98886a9" class="outline-2">
+<h2 id="org98886a9">TL;DR</h2>
+<div class="outline-text-2" id="text-org98886a9">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org8fead67" class="outline-2">
-<h2 id="org8fead67">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org8fead67">
+<div id="outline-container-org2044cb1" class="outline-2">
+<h2 id="org2044cb1">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-org2044cb1">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -111,9 +111,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-orgaefbc2b" class="outline-2">
-<h2 id="orgaefbc2b">我的键位设置</h2>
-<div class="outline-text-2" id="text-orgaefbc2b">
+<div id="outline-container-org6c2776b" class="outline-2">
+<h2 id="org6c2776b">我的键位设置</h2>
+<div class="outline-text-2" id="text-org6c2776b">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -134,9 +134,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-org7a0ba35" class="outline-3">
-<h3 id="org7a0ba35">General</h3>
-<div class="outline-text-3" id="text-org7a0ba35">
+<div id="outline-container-orgcb95c7e" class="outline-3">
+<h3 id="orgcb95c7e">General</h3>
+<div class="outline-text-3" id="text-orgcb95c7e">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -206,9 +206,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-orga3554ad" class="outline-3">
-<h3 id="orga3554ad">mark &amp; move</h3>
-<div class="outline-text-3" id="text-orga3554ad">
+<div id="outline-container-org1f6fe3d" class="outline-3">
+<h3 id="org1f6fe3d">mark &amp; move</h3>
+<div class="outline-text-3" id="text-org1f6fe3d">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -290,9 +290,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org308fdc9" class="outline-3">
-<h3 id="org308fdc9">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org308fdc9">
+<div id="outline-container-org589b34f" class="outline-3">
+<h3 id="org589b34f">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org589b34f">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -338,9 +338,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org9953df0" class="outline-3">
-<h3 id="org9953df0">Misc</h3>
-<div class="outline-text-3" id="text-org9953df0">
+<div id="outline-container-org88a7249" class="outline-3">
+<h3 id="org88a7249">Misc</h3>
+<div class="outline-text-3" id="text-org88a7249">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>

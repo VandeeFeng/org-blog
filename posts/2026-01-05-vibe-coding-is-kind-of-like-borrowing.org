@@ -126,3 +126,44 @@ antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: [[https://simon
 即使现在的数码摄影如此发达了，胶片仍然有它独特的味道和价值。
 
 我相信编程里这些无法被替代的东西会有人继续坚持下去，当狂潮退去，能让内心继续跟随的只有热爱。
+
+* 2026-03-24 add
+https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/ 这篇文章说的挺好：
+
+#+begin_quote
+Speaking as a developer, this becomes obvious the moment you step outside the romantic framing. I have been doing this for years, and the hardest parts of the job were never about typing out code. I have always struggled most with understanding systems, debugging things that made no sense, designing architectures that wouldn't collapse under heavy load, and making decisions that would save months of pain later.
+
+作为一名开发者，这一点在你走出浪漫的框架时变得显而易见。我已经做了多年这项工作，工作中最困难的部分从来不是敲代码。我一直最难的地方在于理解系统，调试那些毫无意义的东西，设计在重负载下不会崩溃的架构，以及做出能够节省后续数月痛苦的决策。
+
+None of these problems can be solved LLMs. They can suggest code, help with boilerplate, sometimes can act as a sounding board. But they don't understand the system, they don't carry context in their "minds", and they certianly don't know why a decision is right or wrong.
+
+这些问题都无法通过大型语言模型解决。它们可以建议代码，帮助处理样板，有时可以充当一个讨论的对象。但它们并不理解系统，它们的“思维”中没有上下文，而且它们当然不知道一个决定是对还是错。
+
+And the most importantly, they don't choose. That part is still yours. The real work of software development, the part that makes someone valuable, is knowing what should exist in the first place, and why.
+
+最重要的是，他们不做选择。那部分仍然是你的。软件开发的真正工作，决定一个人有价值的部分，是知道什么应该存在，以及为什么。
+
+If you reduce yourself to "the one who types code," then yes, you should feel obsolete. But don't fool yourself any further: typing code that was never the essence of the craft.
+
+如果你把自己简化为“那个打代码的人”，那么是的，你应该感到过时。但不要再自欺欺人了：打代码从来就不是这门手艺的本质。
+
+The idea that LLMs are "taking away" coding is the same illusion as the woodworker. Just as higher level languages didn't destroy programming, nad compilers didn't destroy engineering, and cloud didn't destroy infrastructure work, LLMs do not destroy coding.
+
+大型语言模型（LLMs）"夺走"编码的想法与木匠的幻觉是一样的。正如高级语言并没有摧毁编程，编译器并没有摧毁工程，云计算也没有摧毁基础设施工作，大型语言模型并不会摧毁编码。
+
+The real danger is that people stop thinking. The actual trap is engineers letting the tool carry the cognitive load they were meant to build -- The abdication of reason from within.
+
+真正的危险在于人们停止思考。真正的陷阱是工程师让工具承担他们本应构建的认知负担——理性的放弃。
+
+I don't see any of this as a tragedy. Because the capacity for good craftsmaship remains. The same tools that let someone drift into shallow work are the tools that let someone else build at a level that was previously impossible.
+
+我不认为这一切是悲剧。因为良好工艺的能力依然存在。让某人陷入肤浅工作的同样工具，也让其他人能够在以前不可能的水平上进行构建。
+
+The domain of what can be built is growing and leverage of human reason is increasing. And that creates a split -- not between "alienated" and "fulfilled," but between those who adapt their thinking and those who retreat into anemoia.
+
+可以构建的领域正在扩大，人类理性的杠杆作用也在增加。这造成了一种分裂——不是在“疏离”和“满足”之间，而是在那些适应思维的人和那些退缩到怀旧情绪中的人之间。
+
+No matter what tools arrive, no matter how powerful they become, they will always remain tools. They won't replace our reason nor values. You will still choose what is worth building. And as long you reason, nothing essential has been lost.
+
+无论什么工具到来，无论它们变得多么强大，它们始终只是工具。它们不会取代我们的理智和价值观。你仍然会选择值得构建的东西。只要你在思考，任何本质的东西都没有丢失。
+#+end_quote
