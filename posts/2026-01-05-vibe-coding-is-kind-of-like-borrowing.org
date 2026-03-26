@@ -128,7 +128,7 @@ antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: [[https://simon
 我相信编程里这些无法被替代的东西会有人继续坚持下去，当狂潮退去，能让内心继续跟随的只有热爱。
 
 * 2026-03-24 add
-https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/ 这篇文章说的挺好：
+https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/ 这篇文章的这部分说的挺好，但对马克思和资本主义之间的那些观点在我看来有些片面甚至理解偏差了：
 
 #+begin_quote
 Speaking as a developer, this becomes obvious the moment you step outside the romantic framing. I have been doing this for years, and the hardest parts of the job were never about typing out code. I have always struggled most with understanding systems, debugging things that made no sense, designing architectures that wouldn't collapse under heavy load, and making decisions that would save months of pain later.
