@@ -11,7 +11,7 @@ https://github.com/instructkr/claw-code 的 star 已经到了 79.4K，Claude cod
 
 在 Claude Code 公开火了之后，各大 LLM 厂商也陆续推出了自己的 Coding CLI。
 
-你要说 Claude Code 的 CLI 和其他的比起来，在交互上有哪些非常特别的地方，我觉得也没有这么夸张，大家都是 TUI。Claude Code 比其他 CLI 好用的感觉，大头还是来自 Claude 模型本身以及 TUI 背后 agent framework 的设计理念。而这些方面，泄露之前对 Claude 的研究也都挖掘的很深了，只是没有公开。
+你要说 Claude Code 和其他的比起来，在交互上有哪些非常特别的地方，我觉得也没有这么夸张，大家都是 TUI。Claude Code 好用的感觉，大头还是来自 Claude 模型本身以及 TUI 背后 agent framework 的设计理念。而这些方面，泄露之前对 Claude 的研究也都挖掘的很深了，只是没有公开。
 
 我觉得关注的重点不应该完全放在 Claude Code 具体是如何实现的，更值得往下思考的是：AI 交互的 interface。
 
