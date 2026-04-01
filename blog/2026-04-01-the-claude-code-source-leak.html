@@ -59,8 +59,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org5744090">源码之外</a></li>
-<li><a href="#org42b5506">Agent Interaction Interface</a></li>
+<li><a href="#orge4f8e8d">源码之外</a></li>
+<li><a href="#orge2b5acf">Agent Interaction Interface</a></li>
 </ul>
 </div>
 </nav>
@@ -71,15 +71,15 @@
 <p>
 但其实对 Claude Code 各方面的逆向其实就从来没有停止过。在愚人节前后放出来，让我觉得这可能不是巧合，Hacker 是最喜欢这种玩笑了。
 </p>
-<div id="outline-container-org5744090" class="outline-2">
-<h2 id="org5744090">源码之外</h2>
-<div class="outline-text-2" id="text-org5744090">
+<div id="outline-container-orge4f8e8d" class="outline-2">
+<h2 id="orge4f8e8d">源码之外</h2>
+<div class="outline-text-2" id="text-orge4f8e8d">
 <p>
 在 Claude Code 公开火了之后，各大 LLM 厂商也陆续推出了自己的 Coding CLI。
 </p>
 
 <p>
-你要说 Claude Code 和其他的比起来，在交互上有哪些非常特别的地方，我觉得也没有这么夸张，大家都是 TUI。Claude Code 好用的感觉，大头还是来自 Claude 模型本身以及 TUI 背后 agent framework 的设计理念。而这些方面，泄露之前对 Claude 的研究也都挖掘的很深了，只是没有公开。
+你要说 Claude Code 和其他的比起来，在交互上有哪些非常特别的地方，我觉得也没有这么夸张，大家都是 TUI。Claude Code 更好用的感觉，大头还是来自 Claude 模型本身以及 TUI 背后 agent framework 的设计理念。而这些方面，泄露之前对 Claude 的研究也都挖掘的很深了，只是没有公开。
 </p>
 
 <p>
@@ -95,13 +95,13 @@
 </p>
 
 <p>
-今年热度比较高的应该是聚焦安全的 agent sandbox 以及聚焦效率编排的 parallel agent。就我了解到的，parallel agent 相关的项目里，interface 还是 TUI 和 CLI 的居多。LLM 天然对 shell command 和文本的适应性好，交互也成本更低，CLI 作为和 LLM 交互的接口其实是很自然而然的一个结果。MCP 到现在其实也从侧面验证了 CLI 是更合适的，例如最近 GitHub 上比较热门的 <a href="https://github.com/jackwener/opencli/">opencli</a> 。
+今年热度比较高的应该是聚焦安全的 agent sandbox 以及聚焦效率编排的 parallel agent。就我了解到的，parallel agent 相关的项目里，interface 还是 TUI 和 CLI 的居多。LLM 天然对 shell command 和文本的适应性好，交互成本也更低，CLI 作为和 LLM 交互的接口其实是很自然而然的一个结果。MCP 到现在其实也从侧面验证了 CLI 是更合适的，例如最近 GitHub 上比较热门的 <a href="https://github.com/jackwener/opencli/">opencli</a> 。
 </p>
 </div>
 </div>
-<div id="outline-container-org42b5506" class="outline-2">
-<h2 id="org42b5506">Agent Interaction Interface</h2>
-<div class="outline-text-2" id="text-org42b5506">
+<div id="outline-container-orge2b5acf" class="outline-2">
+<h2 id="orge2b5acf">Agent Interaction Interface</h2>
+<div class="outline-text-2" id="text-orge2b5acf">
 <p>
 模型能力卷到现在互相蒸馏，我感觉其实已经翻不出什么大的浪花了，各大厂有的没的隔一段时间就更新一个模型，在 benchmark 上刷刷数据。反倒是 interface 这块，由于 Claude Code 的这次泄露，今年下半年可能会百花齐放了。
 </p>

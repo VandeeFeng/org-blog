@@ -11,7 +11,7 @@ https://github.com/instructkr/claw-code 的 star 已经到了 79.4K，Claude cod
 
 在 Claude Code 公开火了之后，各大 LLM 厂商也陆续推出了自己的 Coding CLI。
 
-你要说 Claude Code 和其他的比起来，在交互上有哪些非常特别的地方，我觉得也没有这么夸张，大家都是 TUI。Claude Code 好用的感觉，大头还是来自 Claude 模型本身以及 TUI 背后 agent framework 的设计理念。而这些方面，泄露之前对 Claude 的研究也都挖掘的很深了，只是没有公开。
+你要说 Claude Code 和其他的比起来，在交互上有哪些非常特别的地方，我觉得也没有这么夸张，大家都是 TUI。Claude Code 更好用的感觉，大头还是来自 Claude 模型本身以及 TUI 背后 agent framework 的设计理念。而这些方面，泄露之前对 Claude 的研究也都挖掘的很深了，只是没有公开。
 
 我觉得关注的重点不应该完全放在 Claude Code 具体是如何实现的，更值得往下思考的是：AI 交互的 interface。
 
@@ -19,7 +19,7 @@ https://github.com/instructkr/claw-code 的 star 已经到了 79.4K，Claude cod
 
 这两年 AI 领域的事实也证明，CLI 就是现在 AI 更合适的交互方式。所以我觉得 Claude Code 更大的意义在于，把 “现阶段我们和 agent 最合适的交互方式是 CLI” 这个结论验证了。在这之前，AI 领域的热门的是各种 agent framework。
 
-今年热度比较高的应该是聚焦安全的 agent sandbox 以及聚焦效率编排的 parallel agent。就我了解到的，parallel agent 相关的项目里，interface 还是 TUI 和 CLI 的居多。LLM 天然对 shell command 和文本的适应性好，交互也成本更低，CLI 作为和 LLM 交互的接口其实是很自然而然的一个结果。MCP 到现在其实也从侧面验证了 CLI 是更合适的，例如最近 GitHub 上比较热门的 [[https://github.com/jackwener/opencli/][opencli]] 。
+今年热度比较高的应该是聚焦安全的 agent sandbox 以及聚焦效率编排的 parallel agent。就我了解到的，parallel agent 相关的项目里，interface 还是 TUI 和 CLI 的居多。LLM 天然对 shell command 和文本的适应性好，交互成本也更低，CLI 作为和 LLM 交互的接口其实是很自然而然的一个结果。MCP 到现在其实也从侧面验证了 CLI 是更合适的，例如最近 GitHub 上比较热门的 [[https://github.com/jackwener/opencli/][opencli]] 。
 
 * Agent Interaction Interface
 模型能力卷到现在互相蒸馏，我感觉其实已经翻不出什么大的浪花了，各大厂有的没的隔一段时间就更新一个模型，在 benchmark 上刷刷数据。反倒是 interface 这块，由于 Claude Code 的这次泄露，今年下半年可能会百花齐放了。
