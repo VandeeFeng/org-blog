@@ -1,0 +1,89 @@
+#+title: Claude Code Source Leak 的一些想法
+#+date: <2026-04-01 13:36>
+#+description: 人人有书读，人人有功练。Claude Code “开源” 了。
+#+filetags: Ramble
+
+https://github.com/instructkr/claw-code 的 star 已经到了 79.4K，Claude code “开源” 了。这下真的是人人有书读，人人有功练了（出自周星驰电影《破坏之王》）。
+
+但其实对 Claude Code 各方面的逆向其实就从来没有停止过。在愚人节前后放出来，让我觉得这可能不是巧合，Hacker 是最喜欢这种玩笑了。
+
+* 源码之外
+
+在 Claude Code 公开火了之后，各大 LLM 厂商也陆续推出了自己的 Coding CLI。
+
+你要说 Claude Code 的 CLI 和其他的比起来，在交互上有哪些非常特别的地方，我觉得也没有这么夸张，大家都是 TUI。Claude Code 比其他 CLI 好用的感觉，大头还是来自 Claude 模型本身以及 TUI 背后 agent framework 的设计理念。而这些方面，泄露之前对 Claude 的研究也都挖掘的很深了，只是没有公开。
+
+我觉得关注的重点不应该完全放在 Claude Code 具体是如何实现的，更值得往下思考的是：AI 交互的 interface。
+
+从 ChatGPT 到 Claude Code 大火之前，我们和 AI 的交互方式一直是 chat，现在其实也依然还是，无论是面向用户的客户端产品还是开发界面。对于开发者和 hacker 来说，类 Claude Code coding CLI 提供了一个更直接的 interface，这差不多干死了传统的 IDE。
+
+这两年 AI 领域的事实也证明，CLI 就是现在 AI 更合适的交互方式。所以我觉得 Claude Code 更大的意义在于，把 “现阶段我们和 agent 最合适的交互方式是 CLI” 这个结论验证了。在这之前，AI 领域的热门的是各种 agent framework。
+
+今年热度比较高的应该是聚焦安全的 agent sandbox 以及聚焦效率编排的 parallel agent。就我了解到的，parallel agent 相关的项目里，interface 还是 TUI 和 CLI 的居多。LLM 天然对 shell command 和文本的适应性好，交互也成本更低，CLI 作为和 LLM 交互的接口其实是很自然而然的一个结果。MCP 到现在其实也从侧面验证了 CLI 是更合适的，例如最近 GitHub 上比较热门的 [[https://github.com/jackwener/opencli/][opencli]] 。
+
+* Agent Interaction Interface
+模型能力卷到现在互相蒸馏，我感觉其实已经翻不出什么大的浪花了，各大厂有的没的隔一段时间就更新一个模型，在 benchmark 上刷刷数据。反倒是 interface 这块，由于 Claude Code 的这次泄露，今年下半年可能会百花齐放了。
+
+[[https://interconnected.org/home/2025/11/28/plumbing][Context plumbing (Interconnected)]] 这篇文章里提到了一个概念：intent 意图。用文字输入和语音作为和 AI 交互的 interface，我觉得只能说是中规中矩，还是缺少了一点想象力。
+
+从 context engineering 到 agent memory，AI 变得更懂用户了，从 AI 眼镜和其他穿戴式 AI 产品再到前段时间爆火的 OpenClaw，在面向用户的产品方面，各种概念是层出不穷，但其实还没有出现一个让我觉得是 AI 时代那个颠覆性的 “iPhone” 时刻。
+
+就算是家用人形机器人普及了，我们和 AI 的交互形式还是局限在了对话上，还是在用传统的思维方式在设计和想象，我们真的需要开口或输入么？都 AI 时代了，就不能来点更有想象力的交互实现么？例如三体人的意念沟通，例如把量子力学接入生活:预测我未来一个星期可能发生的事。
+
+我期待的 AI，它不应该是以产品的形式出现，也不用像脑机接口那样搞得挺吓人的。
+
+它应该是无感的，应该是自然融入到我们正常生活当中的。而不是一种需要额外学习成本才能上手的技能或产品。从毛笔到圆珠笔到水性笔，我们不用重新学习用笔和写字，触屏的 iPhone 第一次出现我们上手就能交互。
+
+设计是为用户创造正确的心理模型:
+
+#+begin_quote
+Don Norman wrote The Design of Everyday Things (1988), much loved by web designers, and popularised “user-centred design.”
+
+唐·诺曼写了《日常事物的设计》（1988），深受网页设计师喜爱，并推广了“以用户为中心的设计”。
+
+Norman also brought into design the term affordance from cognitive psychology. As coined by J J Gibson: "to perceive something is also to perceive how to approach it and what to do about it" (as previously discussed).
+
+诺曼还将认知心理学中的“可供性”一词引入设计。正如J J 吉布森所创造的：感知某物也意味着感知如何接近它以及该如何处理它（如前所述）。
+
+The best way to notice affordances is to notice where they go wrong! Norman doors:
+
+注意可供性最好的方法是注意它们出错的地方！诺曼门：
+
+    Some doors require printed instructions to operate, while others are so poorly designed that they lead people to do the exact opposite of what they need to in order to open them. Their shapes or details may suggest that pushing should work, when in fact pulling is required (or the other way around).
+
+    有些门需要打印的操作说明，而其他门则设计得如此糟糕，以至于导致人们做出与打开它们所需的完全相反的行为。它们的形状或细节可能暗示推门应该有效，但实际上需要拉门（或反之亦然）。
+
+Whenever you see a PUSH label stuck on as an extra, it’s papering over a Norman door.
+
+每当你看到一个额外贴上的“推”标签时，它是在掩盖一个诺曼门。
+
+via: https://interconnected.org/home/2026/03/28/architecture
+#+end_quote
+
+和 AI 的交互形式也是我这几年思考的最多的，在我的想象里，它应该是这样：
+
+- 数据上，它有拥有我的个人 memory。可以根据我最近的事情，在回答上更有相关性，这点现在已经实现的挺不错了。
+
+- 使用上，它应该像互联网一样 （token≈流量），发展成他们现在承诺的那种真正的公共基础设施，让用户无感的使用，而不只是以 chat 为基础的交互。
+
+- 格式上，模型有统一通用的文件格式: ~.model~ , let's say Jarvis.model. 我的数据、自定义模型、自定义配置都在这个 ~.model~ 文件里（可以想象为是数据库和模型文件格式的结合），就像文本编辑器打开 ~.txt~ 文件一样，所有的操作系统都兼容这个模型格式，用户可以直接打开。第一次使用的时候，有引导，让用户设置个性化选项并保存到 ~.model~ 文件。模型成为一个半透明的黑匣子，可以直接可视化编辑，并轻松在本地或云端上提供简单的量化或再训练。
+
+还有最重要的一点：我可以主动选择关闭它（daily diss：垃圾 Windows！）。
+
+以电脑终端为例，想象一下这个使用体验：
+
+我今天在拥抱脸（一个模型平台）上发现了一个挺喜欢的模型 agent，比如说：苏格拉底 plus。下载到计算机，马上就可以让任何模型的 API 调用它作为辅助 agent。
+
+在电脑里打开 AI 开关，桌面主题自动变成我喜欢的颜色，系统通知栏里立即提示我的日程计划、备忘录、还有上次的交互进度。我点击系统通知栏里的备忘录，立即就用我设置里默认的软件打开，我可以继续上次的工作。关闭电脑之前，系统提示保存 ~.model~ 文件，所有的进度和记忆都一并保存，我也可以导出到 U 盘里备份。
+
+AI 和 模型在这里不依赖软件，不是传统的文字和语音输入，而是人和场景、需求交互的中间纽带，它和操作系统是一体了。
+
+Karpathy 在去年的一个演讲里提到了软件 2.0 的概念，这个主要是针对软件开发的。这几年实际出来的产品和软件，从使用者的感受，我觉得思路还是有点局限，感觉就像传统的软件穿上了 AI 这个衣服。
+
+以 Photoshop 为例，作为一个创作者，我不希望我点击了一个 AI 按钮，它就直接生成好了，然后我再一次次的用 prompt 或者调参数去修正它，这不是理想的交互，这种不断试错的成本其实是很高的。它应该是根据我作图的 intent 分析现在存在的问题，提供建议，提供过程实现而不是结果实现。这样才能真正的在和 AI 的交互中提升自己的能力，而不是变成了学习怎么使用 AI，变成了要适应工具的特性。
+
+模型一更新，参数一变，之前和 AI 磨合的经验就又不管用了，我又要看各种模型分析、模型评测、prompt 设计，这不就反向变成了 AI 的劳动力了么？
+
+简单来说，我期待中的 AI 交互应该是像上面提到的触屏 iPhone 一样，它只是让用户更方便的操作手机，以更便利的方式满足了用户的需求。而不是接管了用户的过程，只是呈现一个结果。
+
+标题就是蹭热度，但内容是我这段时间一直在思考的。
