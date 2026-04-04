@@ -652,6 +652,11 @@ ol {
   margin-bottom: 0.5em;
 }
 
+/* TOC list indentation */
+#text-table-of-contents ul ul {
+  padding-left: 20px;
+}
+
 li {
   overflow-wrap: break-word;
   word-wrap: break-word;
