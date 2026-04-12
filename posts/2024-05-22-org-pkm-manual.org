@@ -965,6 +965,10 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 - [[https://github.com/gshang2017/rime-dict][gshang2017/rime-dict: RIME输入法(拼音)自用词库(包含英语，基础，维基，搜狗等词库)，词频基于腾讯AI向量词库逆序生成。]]  自建词库，导入专业领域词汇
 
 **** Others
+- [[https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/][Stealing from the Best Emacs Configs | Emacs Redux]]
+  这篇文章里提到的 Emacs 配置技巧非常实用
+  一看就是天天都用的人
+  2026-04-12 added
 
 - [[https://github.com/lijigang/100-questions-about-orgmode][lijigang/100-questions-about-orgmode: It's all about *orgmode* !]]
 
