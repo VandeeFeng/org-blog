@@ -368,11 +368,11 @@ pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种
 
 [[https://github.com/nicobailon/pi-subagents][Nico’s subagent extension]] , [[https://www.npmjs.com/package/pi-interactive-shell][interactive-shell]] 这两个 pi 的插件实现了类似的功能，但是对我来说有些复杂。
 
-现阶段我的方式就是新开一个 tmux 返回一个 tmux session 的 txt 文本记录完整的 LLM 输出。
+现阶段我的方式就是新开一个 tmux session，在完成之后解析 对应 pi session 的 jsonl 文件里最后一个 assistant 的内容，并作为一个 `follow-up` message 返回给主 session 的 agent。
 
-在 pi 的 TUI 里，通过 `/agent` 来调用这些 subagent，并实现了两个模式：当前会话和 tmux 后台运行。
+在 pi 的 TUI 里，通过 `@agent` 来调用这些 subagent，并实现了两个模式：当前会话和 tmux 后台运行。tmux 后台运行通过 `@@agent` 调用。支持自动补全 agent 的名称。
 
-tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux 指令就可以和这个 subagent session 交互了。在 subagent session 完成之后会使用 pi 的 notify 通知显示 txt 文本的输出路径，主 agent 就可以阅读了。
+tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux 指令就可以直接打开这个 subagent pi session 。(下面的图片是之前的)
 
 #+attr_html: :alt :class img :width 60% :height 60%
 https://pic.vandee.art/images/20260211_125004-agent1.png
@@ -383,25 +383,22 @@ https://pic.vandee.art/images/20260211_125302-agent2.png
 #+attr_html: :alt :class img :width 60% :height 60%
 https://pic.vandee.art/images/20260211_125325-agent3.png
 
+agent-buff.ts:
+
 #+begin_src typescript
 /**
- * Agents Select Extension
+ * Agents Buff Extension
  *
- * Provides interactive agent selection and invocation via /agents command
- * and direct @agent-name invocation with task input.
+ * Provides direct @agent-name invocation with task input and
+ * @@agent-name invocation for background subagent execution.
  */
-
 import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
-import { exec } from "node:child_process";
-import { spawn } from "node:child_process";
-import { promisify } from "node:util";
+import { randomUUID } from "node:crypto";
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { parseFrontmatter, DynamicBorder } from "@mariozechner/pi-coding-agent";
-import { Container, Editor, Input, SelectList, Text, Spacer, matchesKey, Key, CombinedAutocompleteProvider } from "@mariozechner/pi-tui";
-
-const execAsync = promisify(exec);
+import { parseFrontmatter } from "@mariozechner/pi-coding-agent";
+import { Box, Editor, CombinedAutocompleteProvider, Text, type AutocompleteItem, type AutocompleteSuggestions } from "@mariozechner/pi-tui";
 
 interface AgentConfig {
         name: string;
@@ -415,61 +412,440 @@ const USER_AGENTS_DIR = path.join(os.homedir(), ".pi", "agent", "agents");
 const PROJECT_AGENTS_DIR_NAME = path.join(".pi", "agents");
 const AGENT_FILE_EXTENSION = ".md";
 const AGENT_NAME_PATTERN = /^@([a-zA-Z0-9_-]+)\s+(.+)$/s;
-const PROCESS_STARTUP_WAIT_MS = 1500;
+const BACKGROUND_AGENT_NAME_PATTERN = /^@@([a-zA-Z0-9_-]+)\s+(.+)$/s;
 const STOPWORDS = new Set(["the", "for", "with", "from", "into"]);
 const MAX_KEYWORDS = 3;
 const MIN_KEYWORD_LENGTH = 3;
+const STATUS_CHECK_INTERVAL_MS = 4000;
+const BACKGROUND_STATUS_WIDGET_ID = "subagent-status";
+const MAX_COMPLETION_CHARS = 14000;
+const SESSION_FILE_TAIL_READ_BYTES = 256 * 1024;
+const TMUX_STATUS_KEY_PREFIX = "PI_BG_STATUS_";
+const TMUX_EXIT_CODE_KEY_PREFIX = "PI_BG_EXIT_";
+const BACKGROUND_SESSION_META_ENV_KEY = "PI_BG_SESSION_META_PATH";
+const BACKGROUND_SESSION_META_WAIT_MS = 5000;
+const BACKGROUND_SESSION_META_POLL_INTERVAL_MS = 120;
+const BACKGROUND_SESSION_START_WAIT_MS = 5000;
+const BACKGROUND_SESSION_START_POLL_INTERVAL_MS = 120;
+const PENDING_FOREGROUND_AGENT_TTL_MS = 5 * 60 * 1000;
+const MAX_PENDING_FOREGROUND_AGENTS = 20;
+const AGENT_AUTOCOMPLETE_STATE_KEY = "__piAgentsBuffAutocompleteState";
 
-const TMUX_PI_SCRIPT = path.join(os.homedir(), ".pi/agent/skills/tmux-pi/scripts/run-pi-monitored.sh");
+interface AgentAutocompleteState {
+        getAgents: () => AgentConfig[];
+}
 
-function generateSessionName(agentName: string, task: string): string {
-        const cleanAgentName = agentName.replace(/^@/, "");
+function getAgentAutocompleteState(): AgentAutocompleteState {
+        const globalState = globalThis as Record<string, unknown>;
+        const existing = globalState[AGENT_AUTOCOMPLETE_STATE_KEY] as AgentAutocompleteState | undefined;
+        if (existing) {
+                return existing;
+        }
+
+        const state: AgentAutocompleteState = { getAgents: () => [] };
+        globalState[AGENT_AUTOCOMPLETE_STATE_KEY] = state;
+        return state;
+}
+
+function normalizeAgentName(name: string): string {
+        return name.trim().replace(/^@/, "");
+}
+
+function extractAgentAutocompletePrefix(textBeforeCursor: string): string | null {
+        if (/(?:^|\s)@@?"[^"]*$/.test(textBeforeCursor)) {
+                return null;
+        }
+
+        const match = textBeforeCursor.match(/(?:^|\s)(@@?[^\s"']*)$/);
+        if (!match || !match[1]) {
+                return null;
+        }
+
+        const prefix = match[1];
+        const candidate = prefix.startsWith("@@") ? prefix.slice(2) : prefix.slice(1);
+        if (candidate.includes("/") || candidate.includes("\\") || candidate.startsWith(".") || candidate.startsWith("~")) {
+                return null;
+        }
+
+        return prefix;
+}
+
+function buildAgentAutocompleteItems(prefix: string, agents: AgentConfig[]): AutocompleteItem[] {
+        const isBackgroundPrefix = prefix.startsWith("@@");
+        const query = prefix.replace(/^@@?/, "").toLowerCase();
+
+        return agents
+                .map((agent) => ({ ...agent, normalizedName: normalizeAgentName(agent.name) }))
+                .filter((agent) => {
+                        if (!agent.normalizedName) {
+                                return false;
+                        }
+                        if (!query) {
+                                return true;
+                        }
+                        const lowerName = agent.normalizedName.toLowerCase();
+                        return lowerName.startsWith(query) || lowerName.includes(query);
+                })
+                .sort((a, b) => {
+                        const aLower = a.normalizedName.toLowerCase();
+                        const bLower = b.normalizedName.toLowerCase();
+                        if (query) {
+                                const aStarts = aLower.startsWith(query);
+                                const bStarts = bLower.startsWith(query);
+                                if (aStarts !== bStarts) {
+                                        return aStarts ? -1 : 1;
+                                }
+                        }
+                        return aLower.localeCompare(bLower);
+                })
+                .map((agent) => {
+                        const invocationPrefix = isBackgroundPrefix ? "@@" : "@";
+                        return {
+                                value: `${invocationPrefix}${agent.normalizedName}`,
+                                label: `${invocationPrefix}${agent.normalizedName}`,
+                                description: `[agent] ${agent.description}`,
+                        };
+                });
+}
+
+function installDoubleAtAutocompleteTriggerPatch(): void {
+        const editorPrototype = Editor.prototype as Editor & { __doubleAtAutocompletePatched?: boolean };
+        if (editorPrototype.__doubleAtAutocompletePatched) {
+                return;
+        }
+
+        const originalHandleInput = editorPrototype.handleInput;
+        if (typeof originalHandleInput !== "function") {
+                return;
+        }
+
+        editorPrototype.handleInput = function (data: string): void {
+                let shouldForceAutocomplete = false;
+
+                if (data === "@") {
+                        const cursor = this.getCursor();
+                        const line = this.getLines()[cursor.line] ?? "";
+                        const previousChar = cursor.col > 0 ? line[cursor.col - 1] : "";
+                        const charBeforePrevious = cursor.col > 1 ? line[cursor.col - 2] : "";
+                        const isSecondAt = previousChar === "@";
+                        const firstAtHasValidBoundary = cursor.col <= 1 || charBeforePrevious === " " || charBeforePrevious === "\t";
+                        shouldForceAutocomplete = isSecondAt && firstAtHasValidBoundary;
+                }
+
+                originalHandleInput.call(this, data);
+
+                if (!shouldForceAutocomplete) {
+                        return;
+                }
+
+                const triggerAutocomplete = (this as unknown as { tryTriggerAutocomplete?: () => void }).tryTriggerAutocomplete;
+                if (typeof triggerAutocomplete === "function") {
+                        triggerAutocomplete.call(this);
+                }
+        };
+
+        editorPrototype.__doubleAtAutocompletePatched = true;
+}
+
+function installAgentAutocompletePatch(getAgents: () => AgentConfig[]): void {
+        const state = getAgentAutocompleteState();
+        state.getAgents = getAgents;
+
+        const prototype = CombinedAutocompleteProvider.prototype as CombinedAutocompleteProvider & {
+                __agentAutocompletePatched?: boolean;
+        };
+
+        if (prototype.__agentAutocompletePatched) {
+                return;
+        }
+
+        const originalGetSuggestions = prototype.getSuggestions;
+        if (typeof originalGetSuggestions !== "function") {
+                return;
+        }
+
+        prototype.getSuggestions = async function (
+                lines: string[],
+                cursorLine: number,
+                cursorCol: number,
+                options: { signal: AbortSignal; force?: boolean }
+        ): Promise<AutocompleteSuggestions | null> {
+                const baseSuggestions = await originalGetSuggestions.call(this, lines, cursorLine, cursorCol, options);
+
+                const currentLine = lines[cursorLine] ?? "";
+                const textBeforeCursor = currentLine.slice(0, cursorCol);
+                const agentPrefix = extractAgentAutocompletePrefix(textBeforeCursor);
+                if (!agentPrefix) {
+                        return baseSuggestions;
+                }
+
+                const agentItems = buildAgentAutocompleteItems(agentPrefix, state.getAgents());
+                if (agentItems.length === 0) {
+                        return baseSuggestions;
+                }
+
+                if (!baseSuggestions) {
+                        return { items: agentItems, prefix: agentPrefix };
+                }
+
+                if (baseSuggestions.prefix !== agentPrefix) {
+                        return baseSuggestions;
+                }
+
+                const existingValues = new Set(baseSuggestions.items.map((item) => item.value));
+                const mergedItems = [...agentItems.filter((item) => !existingValues.has(item.value)), ...baseSuggestions.items];
+                return { items: mergedItems, prefix: baseSuggestions.prefix };
+        };
+
+        prototype.__agentAutocompletePatched = true;
+}
+
+function generateSessionName(agentName: string, task: string, sessionId: string): string {
+        const cleanAgentName = agentName.replace(/^@/, "").replace(/[^a-zA-Z0-9_-]/g, "");
         const words = task
                 .toLowerCase()
                 .replace(/[^\w\s]/g, " ")
                 .split(/\s+/)
                 .filter((w) => w.length > MIN_KEYWORD_LENGTH && !STOPWORDS.has(w));
-        const keywordStr = words.slice(0, MAX_KEYWORDS).join("-");
-        return `pi-${cleanAgentName}-${keywordStr}`;
+        const keywordStr = words.slice(0, MAX_KEYWORDS).join("-") || "task";
+        const base = `pi-${cleanAgentName}-${keywordStr}-${sessionId}`;
+        return base.slice(0, 60);
 }
 
-async function checkSessionExists(sessionName: string): Promise<boolean> {
-        try {
-                await execAsync(`tmux list-sessions -F "#{session_name}" 2>/dev/null | grep -q "^${sessionName}$"`);
-                return true;
-        } catch {
-                return false;
-        }
+type BackgroundSessionStatus = "starting" | "running" | "completed" | "failed";
+
+interface BackgroundAgentSession {
+        id: string;
+        agentName: string;
+        task: string;
+        tmuxSessionName: string;
+        originSessionId: string;
+        sessionId?: string;
+        sessionFile?: string;
+        status: BackgroundSessionStatus;
+        startedAt: number;
+        statusKey: string;
+        exitCodeKey: string;
+        error?: string;
+        notified?: boolean;
+        cleanedUp?: boolean;
 }
 
-async function runSubagentSession(
+interface BackgroundSessionMetadata {
+        sessionId: string;
+        sessionFile: string;
+}
+
+interface AssistantTextSnapshot {
+        text: string;
+        entryId?: string;
+        timestamp?: string;
+}
+
+interface PendingForegroundAgentRequest {
+        agent: AgentConfig;
+        prompt: string;
+        createdAt: number;
+}
+
+function createTaskId(): string {
+        return randomUUID().slice(0, 8);
+}
+
+function shellQuote(value: string): string {
+        return `'${value.replace(/'/g, `'"'"'`)}'`;
+}
+
+function sleep(ms: number): Promise<void> {
+        return new Promise(function (resolve) {
+                setTimeout(resolve, ms);
+        });
+}
+
+function buildBackgroundPiCommand(
         agentName: string,
         task: string,
-        cwd: string
-): Promise<{ sessionName: string; outputFile: string }> {
-        const sessionName = generateSessionName(agentName, task);
-        const outputFile = `/tmp/pi-conversation-${sessionName}-${Date.now()}.txt`;
-        const command = `@${agentName} ${task}`;
+        statusKey: string,
+        exitCodeKey: string,
+        sessionMetaPath: string
+): string {
+        const delegatedPrompt = ` @${agentName} ${task}`;
+        const script = [
+                "finalized=0",
+                "finalize() {",
+                "  if [ \"$finalized\" -eq 1 ]; then return; fi",
+                "  finalized=1",
+                "  exit_code=${1:-$?}",
+                `  tmux set-environment -g ${shellQuote(exitCodeKey)} \"$exit_code\"`,
+                `  if [ \"$exit_code\" -eq 0 ]; then tmux set-environment -g ${shellQuote(statusKey)} completed; else tmux set-environment -g ${shellQuote(statusKey)} failed; fi`,
+                "}",
+                "trap 'finalize 130; exit 130' INT",
+                "trap 'finalize 143; exit 143' TERM HUP",
+                `tmux set-environment -g ${shellQuote(statusKey)} running`,
+                `export ${BACKGROUND_SESSION_META_ENV_KEY}=${shellQuote(sessionMetaPath)}`,
+                `pi -p ${shellQuote(delegatedPrompt)}`,
+                "exit_code=$?",
+                "finalize \"$exit_code\"",
+                "exec bash",
+        ].join("\n");
 
-        const proc = spawn(
-                "bash",
-                [TMUX_PI_SCRIPT, "-n", sessionName, "-d", cwd, "-c", command, "-o", outputFile, "-v"],
-                { detached: true, stdio: ["ignore", "pipe", "pipe"] }
-        );
+        return `bash -lc ${shellQuote(script)}`;
+}
 
-        proc.unref();
-        proc.stderr?.on("data", function () {});
+function trimToMaxChars(text: string, maxChars: number): string {
+        if (text.length <= maxChars) {
+                return text;
+        }
+        return text.slice(text.length - maxChars);
+}
 
-        await new Promise(function (resolve) {
-                setTimeout(resolve, PROCESS_STARTUP_WAIT_MS);
-        });
+function extractCustomMessageText(content: string | Array<{ type: string; text?: string }>): string {
+        if (typeof content === "string") {
+                return content;
+        }
+        return content
+                .filter((block): block is { type: "text"; text: string } => block.type === "text" && typeof block.text === "string")
+                .map((block) => block.text)
+                .join("\n")
+                .trim();
+}
+
+function parseBackgroundSessionMetadata(raw: string): BackgroundSessionMetadata | null {
+        try {
+                const parsed = JSON.parse(raw) as Record<string, unknown>;
+                const sessionId = typeof parsed.sessionId === "string" ? parsed.sessionId.trim() : "";
+                const sessionFile = typeof parsed.sessionFile === "string" ? parsed.sessionFile.trim() : "";
+                if (!sessionId || !sessionFile) {
+                        return null;
+                }
+                return { sessionId, sessionFile };
+        } catch {
+                return null;
+        }
+}
+
+function readBackgroundSessionMetadata(metaPath: string): BackgroundSessionMetadata | null {
+        if (!fs.existsSync(metaPath)) {
+                return null;
+        }
+        try {
+                const raw = fs.readFileSync(metaPath, "utf-8");
+                return parseBackgroundSessionMetadata(raw);
+        } catch {
+                return null;
+        }
+}
+
+async function waitForBackgroundSessionMetadata(metaPath: string, timeoutMs: number): Promise<BackgroundSessionMetadata | null> {
+        const deadline = Date.now() + timeoutMs;
+        while (Date.now() <= deadline) {
+                const metadata = readBackgroundSessionMetadata(metaPath);
+                if (metadata) {
+                        return metadata;
+                }
+                await sleep(BACKGROUND_SESSION_META_POLL_INTERVAL_MS);
+        }
+        return readBackgroundSessionMetadata(metaPath);
+}
+
+function findLatestAssistantTextInLines(lines: string[]): AssistantTextSnapshot | null {
+        for (let i = lines.length - 1; i >= 0; i -= 1) {
+                const line = lines[i].trim();
+                if (!line) {
+                        continue;
+                }
+
+                let entry: Record<string, unknown>;
+                try {
+                        entry = JSON.parse(line) as Record<string, unknown>;
+                } catch {
+                        continue;
+                }
+
+                if (entry.type !== "message") {
+                        continue;
+                }
+
+                const message = entry.message as Record<string, unknown> | undefined;
+                if (!message || message.role !== "assistant") {
+                        continue;
+                }
+
+                const content = Array.isArray(message.content) ? message.content : [];
+                const textBlocks = content
+                        .filter((block): block is Record<string, unknown> => typeof block === "object" && block !== null)
+                        .filter((block) => block.type === "text" && typeof block.text === "string")
+                        .map((block) => String(block.text).trim())
+                        .filter((text) => text.length > 0);
+
+                if (textBlocks.length === 0) {
+                        continue;
+                }
+
+                return {
+                        text: textBlocks.join("\n\n"),
+                        entryId: typeof entry.id === "string" ? entry.id : undefined,
+                        timestamp: typeof entry.timestamp === "string" ? entry.timestamp : undefined,
+                };
+        }
+
+        return null;
+}
+
+function readSessionFileTail(sessionFile: string, maxBytes: number): { raw: string; truncated: boolean } | null {
+        try {
+                const stat = fs.statSync(sessionFile);
+                const size = stat.size;
+                const start = Math.max(0, size - maxBytes);
+                const bytesToRead = size - start;
+                const fd = fs.openSync(sessionFile, "r");
+                const buffer = Buffer.alloc(bytesToRead);
+                try {
+                        fs.readSync(fd, buffer, 0, bytesToRead, start);
+                } finally {
+                        fs.closeSync(fd);
+                }
+
+                let raw = buffer.toString("utf-8");
+                if (start > 0) {
+                        const firstNewline = raw.indexOf("\n");
+                        raw = firstNewline === -1 ? "" : raw.slice(firstNewline + 1);
+                }
+                return { raw, truncated: start > 0 };
+        } catch {
+                return null;
+        }
+}
+
+function findLatestAssistantText(sessionFile: string): AssistantTextSnapshot | null {
+        if (!fs.existsSync(sessionFile)) {
+                return null;
+        }
+
+        const tail = readSessionFileTail(sessionFile, SESSION_FILE_TAIL_READ_BYTES);
+        if (!tail) {
+                return null;
+        }
+
+        const tailSnapshot = findLatestAssistantTextInLines(tail.raw.split("\n"));
+        if (tailSnapshot || !tail.truncated) {
+                return tailSnapshot;
+        }
 
         try {
-                process.kill(proc.pid as number, 0);
-                return { sessionName, outputFile };
+                const raw = fs.readFileSync(sessionFile, "utf-8");
+                return findLatestAssistantTextInLines(raw.split("\n"));
         } catch {
-                throw new Error(`Process exited. Check /tmp/pi-startup-${sessionName}.log`);
+                return null;
         }
+}
+
+function buildAssistantHistoryCommands(sessionFile: string): { rg: string; grep: string } {
+        const quoted = shellQuote(sessionFile);
+        return {
+                rg: `rg '\"type\":\"message\".*\"role\":\"assistant\"' ${quoted} | rg '\"type\":\"text\"' | rg -v '\"stopReason\":\"aborted\"'`,
+                grep: `grep -E '\"type\":\"message\".*\"role\":\"assistant\"' ${quoted} | grep '\"type\":\"text\"' | grep -v '\"stopReason\":\"aborted\"'`,
+        };
 }
 
 function loadAgentsFromDir(dir: string, source: "user" | "project"): AgentConfig[] {
@@ -483,19 +859,30 @@ function loadAgentsFromDir(dir: string, source: "user" | "project"): AgentConfig
                 })
                 .map(function (entry) {
                         const filePath = path.join(dir, entry.name);
-                        const { frontmatter, body } = parseFrontmatter<Record<string, unknown>>(fs.readFileSync(filePath, "utf-8"));
 
-                        if (!frontmatter.name || !frontmatter.description) {
+                        try {
+                                const { frontmatter, body } = parseFrontmatter<Record<string, unknown>>(fs.readFileSync(filePath, "utf-8"));
+                                if (!frontmatter.name || !frontmatter.description) {
+                                        return null;
+                                }
+
+                                const name = normalizeAgentName(String(frontmatter.name));
+                                if (!name) {
+                                        return null;
+                                }
+
+                                return {
+                                        name,
+                                        description: String(frontmatter.description),
+                                        source,
+                                        filePath,
+                                        systemPrompt: body.trim(),
+                                };
+                        } catch (error) {
+                                const message = error instanceof Error ? error.message : String(error);
+                                console.warn(`[agents-buff] Failed to load agent file ${filePath}: ${message}`);
                                 return null;
                         }
-
-                        return {
-                                name: String(frontmatter.name),
-                                description: String(frontmatter.description),
-                                source,
-                                filePath,
-                                systemPrompt: body.trim(),
-                        };
                 })
                 .filter((config): config is AgentConfig => config !== null);
 }
@@ -506,7 +893,13 @@ function findNearestProjectAgentsDir(cwd: string): string | null {
         while (currentDir !== path.dirname(currentDir)) {
                 const candidate = path.join(currentDir, PROJECT_AGENTS_DIR_NAME);
                 if (fs.existsSync(candidate)) {
-                        return candidate;
+                        try {
+                                if (fs.statSync(candidate).isDirectory()) {
+                                        return candidate;
+                                }
+                        } catch {
+                                // Ignore invalid paths and continue walking up.
+                        }
                 }
                 currentDir = path.dirname(currentDir);
         }
@@ -525,12 +918,97 @@ function discoverAgents(cwd: string): AgentConfig[] {
         return Array.from(agentMap.values());
 }
 
-const NAVIGATION_KEYS = [Key.up, Key.down, Key.enter, Key.escape];
-
-export default function agentAtDiscovery(pi: ExtensionAPI): void {
-        let activeAgent: AgentConfig | null = null;
+export default function agentsBuffExtension(pi: ExtensionAPI): void {
+        const pendingForegroundAgents: PendingForegroundAgentRequest[] = [];
         let cachedAgents: AgentConfig[] | null = null;
-        let subagentTasks: Array<{ agentName: string; sessionName: string; outputFile: string; task: string; startTime: number; ctx: any }> = [];
+        let sessionCwd = process.cwd();
+        let runtimeCtx: any = null;
+        const runtimeCtxBySessionId = new Map<string, any>();
+        const backgroundSessions = new Map<string, BackgroundAgentSession>();
+        let lastBackgroundSessionId: string | null = null;
+        let statusTimer: ReturnType<typeof setTimeout> | null = null;
+
+        installDoubleAtAutocompleteTriggerPatch();
+        installAgentAutocompletePatch(() => cachedAgents ?? discoverAgents(sessionCwd));
+
+        pi.registerMessageRenderer("agents-buff-background-result", (message, { expanded }, theme) => {
+                const text = extractCustomMessageText(message.content);
+                const box = new Box(1, 1, (value) => theme.bg("customMessageBg", value));
+                const label = theme.fg("customMessageLabel", `\x1b[1m[${message.customType}]\x1b[22m`);
+
+                if (!expanded) {
+                        const lines = text.split("\n");
+                        const firstLine = lines.find((line) => line.trim().length > 0) ?? "background result";
+                        const remainingLines = Math.max(lines.length - 1, 0);
+                        const summary = remainingLines > 0 ? `... (${remainingLines} more lines, ctrl+o to expand)` : "";
+                        box.addChild(new Text(`${label} ${theme.fg("customMessageText", firstLine)}`, 0, 0));
+                        if (summary) {
+                                box.addChild(new Text(theme.fg("dim", summary), 0, 0));
+                        }
+                        return box;
+                }
+
+                box.addChild(new Text(label, 0, 0));
+                box.addChild(new Text(theme.fg("customMessageText", text || "(no content)"), 0, 0));
+                return box;
+        });
+
+        function rememberRuntimeCtx(ctx: any): void {
+                runtimeCtx = ctx;
+                const sessionId = ctx?.sessionManager?.getSessionId?.();
+                if (typeof sessionId === "string" && sessionId.length > 0) {
+                        runtimeCtxBySessionId.set(sessionId, ctx);
+                }
+        }
+
+        function getRuntimeCtxForSession(sessionId: string): any | null {
+                return runtimeCtxBySessionId.get(sessionId) ?? runtimeCtx;
+        }
+
+        function prunePendingForegroundAgents(): void {
+                const threshold = Date.now() - PENDING_FOREGROUND_AGENT_TTL_MS;
+                for (let i = pendingForegroundAgents.length - 1; i >= 0; i -= 1) {
+                        if (pendingForegroundAgents[i].createdAt < threshold) {
+                                pendingForegroundAgents.splice(i, 1);
+                        }
+                }
+        }
+
+        function enqueuePendingForegroundAgent(agent: AgentConfig, prompt: string): void {
+                prunePendingForegroundAgents();
+                pendingForegroundAgents.push({ agent, prompt, createdAt: Date.now() });
+                if (pendingForegroundAgents.length > MAX_PENDING_FOREGROUND_AGENTS) {
+                        pendingForegroundAgents.splice(0, pendingForegroundAgents.length - MAX_PENDING_FOREGROUND_AGENTS);
+                }
+        }
+
+        function dequeuePendingForegroundAgent(prompt: string): AgentConfig | null {
+                prunePendingForegroundAgents();
+                const index = pendingForegroundAgents.findIndex((entry) => entry.prompt === prompt);
+                if (index === -1) {
+                        return null;
+                }
+                const [entry] = pendingForegroundAgents.splice(index, 1);
+                return entry?.agent ?? null;
+        }
+
+        function getLatestActiveBackgroundSession(): BackgroundAgentSession | null {
+                let latest: BackgroundAgentSession | null = null;
+                for (const session of backgroundSessions.values()) {
+                        if (!isBackgroundSessionActive(session)) {
+                                continue;
+                        }
+                        if (!latest || session.startedAt > latest.startedAt) {
+                                latest = session;
+                        }
+                }
+                return latest;
+        }
+
+        function getMostRecentActiveSessionId(): string | null {
+                const latest = getLatestActiveBackgroundSession();
+                return latest?.id ?? null;
+        }
 
         function formatElapsed(seconds: number): string {
                 if (seconds < 60) {
@@ -541,248 +1019,419 @@ export default function agentAtDiscovery(pi: ExtensionAPI): void {
                 return `${minutes}m${remainingSeconds}s`;
         }
 
-        function updateSubagentStatus(): void {
-                if (subagentTasks.length === 0) {
+        function getLastBackgroundSession(): BackgroundAgentSession | null {
+                if (lastBackgroundSessionId) {
+                        const session = backgroundSessions.get(lastBackgroundSessionId);
+                        if (session) {
+                                return session;
+                        }
+                }
+
+                lastBackgroundSessionId = getMostRecentActiveSessionId();
+                if (!lastBackgroundSessionId) {
+                        return null;
+                }
+                return backgroundSessions.get(lastBackgroundSessionId) ?? null;
+        }
+
+        async function execTmux(args: string[], cwd?: string): Promise<{ code: number; stdout: string; stderr: string }> {
+                const result = await pi.exec("tmux", args, cwd ? { cwd } : undefined);
+                return {
+                        code: result.code,
+                        stdout: result.stdout ?? "",
+                        stderr: result.stderr ?? "",
+                };
+        }
+
+        async function clearTmuxEnvironmentKeys(keys: string[]): Promise<void> {
+                for (const key of keys) {
+                        await execTmux(["set-environment", "-gu", key]);
+                }
+        }
+
+        async function tmuxSessionExists(sessionName: string): Promise<boolean> {
+                const result = await execTmux(["has-session", "-t", sessionName]);
+                return result.code === 0;
+        }
+
+        async function getTmuxEnvironmentValue(key: string): Promise<string | null> {
+                const result = await execTmux(["show-environment", "-g", key]);
+                if (result.code !== 0) {
+                        return null;
+                }
+
+                const line = result.stdout.trim();
+                const prefix = `${key}=`;
+                if (!line.startsWith(prefix)) {
+                        return null;
+                }
+                return line.slice(prefix.length);
+        }
+
+        function isBackgroundSessionActive(session: BackgroundAgentSession): boolean {
+                return session.status === "starting" || session.status === "running";
+        }
+
+        function updateBackgroundWidget(): void {
+                if (!runtimeCtx) {
                         return;
                 }
 
-                const task = subagentTasks[0];
-                const elapsed = Math.floor((Date.now() - task.startTime) / 1000);
-                const theme = task.ctx.ui.theme;
-                const status = theme.fg("dim", `@${task.agentName} | tmux-session: ${task.sessionName} | ⏱️ ${formatElapsed(elapsed)}`);
-                task.ctx.ui.setWidget("subagent-status", [status], { placement: "belowEditor" });
+                const latest = getLatestActiveBackgroundSession();
+                if (!latest) {
+                        runtimeCtx.ui.setWidget(BACKGROUND_STATUS_WIDGET_ID, undefined);
+                        return;
+                }
+
+                const activeCount = Array.from(backgroundSessions.values()).filter(isBackgroundSessionActive).length;
+                const elapsed = Math.floor((Date.now() - latest.startedAt) / 1000);
+                const theme = runtimeCtx.ui.theme;
+                const text = `@@${latest.agentName} | id: ${latest.id} | tmux: ${latest.tmuxSessionName} | active: ${activeCount} | ⏱️ ${formatElapsed(elapsed)}`;
+                runtimeCtx.ui.setWidget(BACKGROUND_STATUS_WIDGET_ID, [theme.fg("dim", text)], { placement: "belowEditor" });
         }
 
-        const STATUS_CHECK_INTERVAL_MS = 5000;
+        async function cleanupFinishedBackgroundSession(session: BackgroundAgentSession): Promise<void> {
+                if (session.cleanedUp) {
+                        return;
+                }
+                session.cleanedUp = true;
 
-        async function checkTaskStatus(): Promise<void> {
-                const stillRunning: typeof subagentTasks = [];
+                await execTmux(["kill-session", "-t", session.tmuxSessionName]);
+                await clearTmuxEnvironmentKeys([session.statusKey, session.exitCodeKey]);
+        }
 
-                for (const task of subagentTasks) {
-                        const sessionRunning = await checkSessionExists(task.sessionName);
+        function setSessionCompleted(session: BackgroundAgentSession): void {
+                session.status = "completed";
+                session.error = undefined;
+        }
 
-                        if (!sessionRunning && fs.existsSync(task.outputFile)) {
-                                task.ctx.ui.notify(`✓ Task completed: ${task.sessionName}`, "success");
-                                task.ctx.ui.notify(`📄 Results: ${task.outputFile}`, "info");
-                                task.ctx.ui.setWidget("subagent-status", undefined);
-                                continue;
+        function setSessionFailed(session: BackgroundAgentSession, error: string): void {
+                session.status = "failed";
+                session.error = error;
+        }
+
+        function resolveSessionFromExitCode(session: BackgroundAgentSession, exitCode: number | null, fallbackError: string): void {
+                if (exitCode === 0) {
+                        setSessionCompleted(session);
+                        return;
+                }
+                if (exitCode !== null) {
+                        setSessionFailed(session, `background pi command returned exit code ${exitCode}`);
+                        return;
+                }
+                setSessionFailed(session, fallbackError);
+        }
+
+        function parseEnvironmentExitCode(rawExitCode: string | null): number | null {
+                if (rawExitCode === null) {
+                        return null;
+                }
+                const parsed = Number.parseInt(rawExitCode, 10);
+                return Number.isNaN(parsed) ? null : parsed;
+        }
+
+        function sendBackgroundCompletionToMainSession(session: BackgroundAgentSession): boolean {
+                if (!session.sessionFile) {
+                        return false;
+                }
+
+                const assistantSnapshot = findLatestAssistantText(session.sessionFile);
+                const statusText = session.status === "completed" ? "completed" : "failed";
+                const commands = buildAssistantHistoryCommands(session.sessionFile);
+                const fallbackText =
+                        session.status === "completed"
+                                ? "Background session completed, but no assistant text block was found in session JSONL."
+                                : "Background session failed before assistant text content was available in session JSONL.";
+                const outputText = assistantSnapshot?.text ?? fallbackText;
+                const trimmedOutput = trimToMaxChars(outputText, MAX_COMPLETION_CHARS);
+                const truncated = trimmedOutput.length < outputText.length;
+                const truncatedNote = truncated ? " (truncated)" : "";
+                const message = [
+                        `Background @@${session.agentName} ${statusText}.`,
+                        `sessionId: ${session.sessionId ?? "unknown"}`,
+                        `sessionFile: ${session.sessionFile}`,
+                        `task: ${session.task}`,
+                        session.error ? `error: ${session.error}` : undefined,
+                        "",
+                        `Last assistant structured text result${truncatedNote}:`,
+                        "```text",
+                        trimmedOutput,
+                        "```",
+                        "",
+                        `For more conversation details, read ${session.sessionFile}.`,
+                        "Filter other assistant text messages in this session:",
+                        `rg: ${commands.rg}`,
+                        `grep: ${commands.grep}`,
+                ]
+                        .filter((line): line is string => typeof line === "string" && line.length > 0)
+                        .join("\n");
+
+                pi.sendMessage(
+                        {
+                                customType: "agents-buff-background-result",
+                                content: message,
+                                display: true,
+                        },
+                        { triggerTurn: true, deliverAs: "followUp" }
+                );
+                return true;
+        }
+
+        function notifyIfFinished(session: BackgroundAgentSession): void {
+                if (session.notified) {
+                        return;
+                }
+
+                session.notified = true;
+                void cleanupFinishedBackgroundSession(session);
+                const sentToMainSession = sendBackgroundCompletionToMainSession(session);
+                backgroundSessions.delete(session.id);
+                if (lastBackgroundSessionId === session.id) {
+                        lastBackgroundSessionId = getMostRecentActiveSessionId();
+                }
+
+                const targetCtx = getRuntimeCtxForSession(session.originSessionId);
+                if (!targetCtx) {
+                        return;
+                }
+
+                const sentSuffix = sentToMainSession ? " and synced to main session" : "";
+                if (session.status === "completed") {
+                        targetCtx.ui.notify(`✓ Background agent finished: ${session.tmuxSessionName}${sentSuffix}`, "success");
+                        return;
+                }
+
+                const reason = session.error ? ` (${session.error})` : "";
+                targetCtx.ui.notify(`✗ Background agent failed: ${session.tmuxSessionName}${reason}${sentSuffix}`, "error");
+        }
+
+        async function pollBackgroundSession(session: BackgroundAgentSession): Promise<void> {
+                const envStatus = await getTmuxEnvironmentValue(session.statusKey);
+                const envExitCode = parseEnvironmentExitCode(await getTmuxEnvironmentValue(session.exitCodeKey));
+                const exists = await tmuxSessionExists(session.tmuxSessionName);
+
+                if (envStatus === "completed") {
+                        setSessionCompleted(session);
+                        notifyIfFinished(session);
+                        return;
+                }
+
+                if (envStatus === "failed") {
+                        resolveSessionFromExitCode(session, envExitCode, "background pi command returned non-zero exit code");
+                        notifyIfFinished(session);
+                        return;
+                }
+
+                if (!exists) {
+                        const fallbackError =
+                                envStatus === "running" ? "tmux session ended before completion status update" : "tmux session not found";
+                        resolveSessionFromExitCode(session, envExitCode, fallbackError);
+                        notifyIfFinished(session);
+                        return;
+                }
+
+                session.status = envStatus === "running" ? "running" : "starting";
+        }
+
+        async function pollBackgroundSessions(): Promise<void> {
+                const activeSessions = Array.from(backgroundSessions.values()).filter(isBackgroundSessionActive);
+                await Promise.all(activeSessions.map((session) => pollBackgroundSession(session)));
+
+                updateBackgroundWidget();
+                if (Array.from(backgroundSessions.values()).some(isBackgroundSessionActive)) {
+                        scheduleStatusPolling();
+                        return;
+                }
+                clearStatusPolling();
+        }
+
+        function scheduleStatusPolling(): void {
+                if (statusTimer !== null) {
+                        return;
+                }
+
+                statusTimer = setTimeout(() => {
+                        statusTimer = null;
+                        void pollBackgroundSessions();
+                }, STATUS_CHECK_INTERVAL_MS);
+        }
+
+        function clearStatusPolling(): void {
+                if (statusTimer === null) {
+                        return;
+                }
+                clearTimeout(statusTimer);
+                statusTimer = null;
+        }
+
+        async function waitForTmuxSessionStartup(sessionName: string, timeoutMs: number): Promise<boolean> {
+                const deadline = Date.now() + timeoutMs;
+                while (Date.now() <= deadline) {
+                        if (await tmuxSessionExists(sessionName)) {
+                                return true;
                         }
-                        stillRunning.push(task);
+                        await sleep(BACKGROUND_SESSION_START_POLL_INTERVAL_MS);
+                }
+                return tmuxSessionExists(sessionName);
+        }
+
+        async function startBackgroundAgentSession(
+                agent: AgentConfig,
+                task: string,
+                cwd: string,
+                originSessionId: string
+        ): Promise<BackgroundAgentSession> {
+                const id = createTaskId();
+                const tmuxSessionName = generateSessionName(agent.name, task, id);
+                const statusKey = `${TMUX_STATUS_KEY_PREFIX}${id}`;
+                const exitCodeKey = `${TMUX_EXIT_CODE_KEY_PREFIX}${id}`;
+                const sessionMetaPath = path.join(os.tmpdir(), `pi-bg-session-meta-${id}.json`);
+                const command = buildBackgroundPiCommand(agent.name, task, statusKey, exitCodeKey, sessionMetaPath);
+
+                try {
+                        fs.unlinkSync(sessionMetaPath);
+                } catch {
+                        // Ignore stale metadata file cleanup errors.
                 }
 
-                subagentTasks = stillRunning;
-                updateSubagentStatus();
+                await clearTmuxEnvironmentKeys([statusKey, exitCodeKey]);
 
-                if (subagentTasks.length > 0) {
-                        setTimeout(checkTaskStatus, STATUS_CHECK_INTERVAL_MS);
+                const result = await execTmux(["new-session", "-d", "-s", tmuxSessionName, "-c", cwd, command], cwd);
+                if (result.code !== 0) {
+                        throw new Error(result.stderr || `failed to start tmux session ${tmuxSessionName}`);
                 }
+
+                const exists = await waitForTmuxSessionStartup(tmuxSessionName, BACKGROUND_SESSION_START_WAIT_MS);
+                if (!exists) {
+                        throw new Error(`tmux session did not start: ${tmuxSessionName}`);
+                }
+
+                const metadata = await waitForBackgroundSessionMetadata(sessionMetaPath, BACKGROUND_SESSION_META_WAIT_MS);
+                try {
+                        fs.unlinkSync(sessionMetaPath);
+                } catch {
+                        // Ignore metadata cleanup errors.
+                }
+
+                return {
+                        id,
+                        agentName: agent.name,
+                        task,
+                        tmuxSessionName,
+                        originSessionId,
+                        sessionId: metadata?.sessionId,
+                        sessionFile: metadata?.sessionFile,
+                        status: "starting",
+                        startedAt: Date.now(),
+                        statusKey,
+                        exitCodeKey,
+                };
+        }
+
+        async function startBackgroundAgentTask(agent: AgentConfig, task: string, ctx: any): Promise<void> {
+                try {
+                        rememberRuntimeCtx(ctx);
+                        const originSessionId = ctx.sessionManager.getSessionId();
+                        const session = await startBackgroundAgentSession(agent, task, ctx.cwd, originSessionId);
+                        backgroundSessions.set(session.id, session);
+                        lastBackgroundSessionId = session.id;
+                        updateBackgroundWidget();
+                        scheduleStatusPolling();
+                        ctx.ui.notify(`🤖 Started @@${agent.name} in tmux session: ${session.tmuxSessionName}`, "success");
+                        ctx.ui.notify(`Attach with: tmux attach -t ${session.tmuxSessionName}`, "info");
+                        if (!session.sessionFile) {
+                                ctx.ui.notify("Background session metadata not available yet; result sync may be skipped.", "warning");
+                        }
+                } catch (err: unknown) {
+                        const message = err instanceof Error ? err.message : "unknown error";
+                        ctx.ui.notify(`✗ Failed to start background agent: ${message}`, "error");
+                }
+        }
+
+        function findAgentByName(agents: AgentConfig[], agentName: string, ctx: any): AgentConfig | null {
+                const agent = agents.find((candidate) => candidate.name === agentName);
+                if (agent) {
+                        return agent;
+                }
+                ctx.ui.notify(`Unknown agent "@${agentName}". Type @ to autocomplete available agents.`, "error");
+                return null;
         }
 
         pi.on("session_start", async function (_event, ctx) {
+                rememberRuntimeCtx(ctx);
+                sessionCwd = ctx.cwd;
                 cachedAgents = discoverAgents(ctx.cwd);
-                ctx.ui.notify(`Loaded ${cachedAgents.length} agents. Use /agents or @agent-name`, "info");
+
+                const sessionMetaPath = process.env[BACKGROUND_SESSION_META_ENV_KEY];
+                if (sessionMetaPath) {
+                        try {
+                                const sessionInfo = {
+                                        sessionId: ctx.sessionManager.getSessionId(),
+                                        sessionFile: ctx.sessionManager.getSessionFile(),
+                                };
+                                fs.writeFileSync(sessionMetaPath, JSON.stringify(sessionInfo), "utf-8");
+                        } catch {
+                                // Ignore metadata write failures in child sessions.
+                        }
+                }
+
+                if (ctx.hasUI) {
+                        ctx.ui.notify(`Loaded ${cachedAgents.length} agents. Use @agent-name or @@agent-name`, "info");
+                }
+        });
+
+        pi.on("session_shutdown", async function (_event, ctx) {
+                const sessionId = ctx.sessionManager.getSessionId();
+                runtimeCtxBySessionId.delete(sessionId);
+                if (runtimeCtxBySessionId.size === 0) {
+                        runtimeCtx = null;
+                        clearStatusPolling();
+                }
         });
 
         pi.on("before_agent_start", async function (event) {
-                if (!activeAgent) {
+                const queuedAgent = dequeuePendingForegroundAgent(event.prompt);
+                if (!queuedAgent) {
                         return {};
                 }
-                const fullPrompt = event.systemPrompt + "\n\n" + activeAgent.systemPrompt;
+                const fullPrompt = event.systemPrompt + "\n\n" + queuedAgent.systemPrompt;
                 return { systemPrompt: fullPrompt };
         });
 
-        pi.on("agent_end", async function () {
-                activeAgent = null;
-        });
-
-        pi.registerCommand("agents", {
-                description: "Select an agent and provide a task",
-                handler: async function (_args, ctx) {
-                        const agents = cachedAgents ?? discoverAgents(ctx.cwd);
-
-                        if (agents.length === 0) {
-                                ctx.ui.notify("No agents found. Create .md files in ~/.pi/agent/agents/ or .pi/agents/", "warning");
-                                return;
-                        }
-
-                        const result = await ctx.ui.custom<{ agentName: string; task: string; subagentMode?: boolean } | null>(
-                                function (tui, theme, _kb, done) {
-                                        const searchInput = new Input();
-                                        const accentBorder = (s: string) => theme.fg("accent", s);
-
-                                        const selectListTheme = {
-                                                selectedPrefix: accentBorder,
-                                                selectedText: accentBorder,
-                                                description: (t: string) => theme.fg("muted", t),
-                                                scrollInfo: (t: string) => theme.fg("dim", t),
-                                                noMatch: (t: string) => theme.fg("warning", t),
-                                        };
-
-                                        const editorTheme = { borderColor: accentBorder, selectList: selectListTheme };
-
-                                        const taskInput = new Editor(tui, editorTheme, { paddingX: 1 });
-                                        taskInput.setAutocompleteProvider(new CombinedAutocompleteProvider([], ctx.cwd, "fd"));
-
-                                        const selectList = new SelectList(
-                                                agents.map((a) => ({ value: a.name, label: a.name, description: a.description })),
-                                                Math.min(agents.length, 10),
-                                                selectListTheme
-                                        );
-
-                                        let selectedAgent: string | null = null;
-                                        let showTaskInput = false;
-                                        let subagentMode = false;
-
-                                        selectList.onSelect = function (item) {
-                                                selectedAgent = item.value;
-                                                searchInput.setValue("");
-                                                showTaskInput = true;
-                                                tui.requestRender();
-                                        };
-
-                                        selectList.onCancel = function () {
-                                                done(null);
-                                        };
-
-                                        const agentSelectionContainer = new Container();
-                                        agentSelectionContainer.addChild(new DynamicBorder(accentBorder));
-                                        agentSelectionContainer.addChild(new Text(theme.fg("accent", theme.bold("Select Agent")), 1, 0));
-                                        agentSelectionContainer.addChild(searchInput);
-                                        agentSelectionContainer.addChild(new Spacer(1));
-                                        agentSelectionContainer.addChild(selectList);
-                                        agentSelectionContainer.addChild(new Spacer(1));
-                                        agentSelectionContainer.addChild(new Text(theme.fg("dim", "type to filter • ↑↓ navigate • enter select • esc cancel"), 1, 0));
-                                        agentSelectionContainer.addChild(new DynamicBorder(accentBorder));
-
-                                        const taskContainer = new Container();
-                                        taskContainer.addChild(new DynamicBorder(accentBorder));
-                                        taskContainer.addChild(new Text("", 1, 0));
-                                        taskContainer.addChild(new Spacer(1));
-                                        taskContainer.addChild(taskInput);
-                                        taskContainer.addChild(new Spacer(1));
-                                        taskContainer.addChild(new Text(theme.fg("dim", "@file autocomplete • ctrl+up toggle subagent • enter confirm • esc cancel"), 1, 0));
-                                        taskContainer.addChild(new DynamicBorder(accentBorder));
-
-                                        function updateTaskHeader(): void {
-                                                const subagentState = subagentMode ? "ON" : "OFF";
-                                                const subagentColor = subagentMode ? "success" : "dim";
-                                                const header =
-                                                        theme.fg("accent", theme.bold(`Task for @${selectedAgent}`)) +
-                                                        " " +
-                                                        theme.fg(subagentColor, theme.bold(`[Subagent: ${subagentState}]`));
-                                                taskContainer.children[1] = new Text(header, 1, 0);
-                                        }
-
-                                        return {
-                                                render(width: number) {
-                                                        if (showTaskInput) {
-                                                                updateTaskHeader();
-                                                                return taskContainer.render(width);
-                                                        }
-                                                        return agentSelectionContainer.render(width);
-                                                },
-                                                invalidate() {
-                                                        agentSelectionContainer.invalidate();
-                                                        taskContainer.invalidate();
-                                                        searchInput.invalidate();
-                                                },
-                                                handleInput(data: string) {
-                                                        if (showTaskInput) {
-                                                                if (matchesKey(data, Key.escape)) {
-                                                                        showTaskInput = false;
-                                                                        selectedAgent = null;
-                                                                        taskInput.setText("");
-                                                                        subagentMode = false;
-                                                                } else if (matchesKey(data, Key.ctrl("up"))) {
-                                                                        subagentMode = !subagentMode;
-                                                                } else if (matchesKey(data, Key.enter)) {
-                                                                        const task = taskInput.getText();
-                                                                        if (task.trim()) {
-                                                                                done({ agentName: selectedAgent!, task: task.trim(), subagentMode });
-                                                                                return;
-                                                                        }
-                                                                } else {
-                                                                        taskInput.handleInput(data);
-                                                                }
-                                                        } else {
-                                                                const isNavKey = NAVIGATION_KEYS.some((k) => matchesKey(data, k));
-                                                                if (isNavKey) {
-                                                                        selectList.handleInput(data);
-                                                                } else {
-                                                                        searchInput.handleInput(data);
-                                                                        selectList.setFilter(searchInput.getValue());
-                                                                }
-                                                        }
-                                                        tui.requestRender();
-                                                },
-                                        };
-                                }
-                        );
-
-                        if (!result) return;
-
-                        const selectedAgentConfig = agents.find((a) => a.name === result.agentName);
-
-                        if (!selectedAgentConfig) {
-                                ctx.ui.notify(`Agent "${result.agentName}" not found`, "error");
-                                return;
-                        }
-
-                        if (result.subagentMode) {
-                                const sessionName = generateSessionName(selectedAgentConfig.name, result.task);
-
-                                try {
-                                        const { outputFile } = await runSubagentSession(selectedAgentConfig.name, result.task, ctx.cwd);
-                                        subagentTasks.push({
-                                                agentName: selectedAgentConfig.name,
-                                                sessionName,
-                                                outputFile,
-                                                task: result.task,
-                                                startTime: Date.now(),
-                                                ctx,
-                                        });
-                                        updateSubagentStatus();
-
-                                        if (subagentTasks.length === 1) {
-                                                setTimeout(checkTaskStatus, STATUS_CHECK_INTERVAL_MS);
-                                        }
-
-                                        ctx.ui.notify(`🤖 Start agent @${selectedAgentConfig.name} for background task: ${sessionName}`, "success");
-                                        return;
-                                } catch (err: unknown) {
-                                        const message = err instanceof Error ? err.message : "Unknown error";
-                                        ctx.ui.notify(`✗ Failed: ${message}`, "error");
-                                        return;
-                                }
-                        }
-
-                        activeAgent = selectedAgentConfig;
-                        ctx.ui.notify(`🤖 Start agent @${selectedAgentConfig.name}`, "info");
-                        pi.sendUserMessage(result.task, { deliverAs: "steer" });
-                },
-        });
-
         pi.on("input", async function (event, ctx) {
+                rememberRuntimeCtx(ctx);
                 if (event.source === "extension") {
                         return { action: "continue" };
                 }
 
-                const match = event.text.trim().match(AGENT_NAME_PATTERN);
+                const text = event.text.trim();
+                const agents = cachedAgents ?? discoverAgents(ctx.cwd);
+
+                const backgroundMatch = text.match(BACKGROUND_AGENT_NAME_PATTERN);
+                if (backgroundMatch) {
+                        const [, agentName, task] = backgroundMatch;
+                        const agent = findAgentByName(agents, agentName, ctx);
+                        if (!agent) {
+                                return { action: "handled" };
+                        }
+
+                        await startBackgroundAgentTask(agent, task, ctx);
+                        return { action: "handled" };
+                }
+
+                const match = text.match(AGENT_NAME_PATTERN);
                 if (!match) {
                         return { action: "continue" };
                 }
 
                 const [, agentName, task] = match;
-                const agents = cachedAgents ?? discoverAgents(ctx.cwd);
-                const agent = agents.find((a) => a.name === agentName);
-
+                const agent = findAgentByName(agents, agentName, ctx);
                 if (!agent) {
-                        ctx.ui.notify(`Unknown agent "@${agentName}". Use /agents to list available agents.`, "error");
                         return { action: "handled" };
                 }
 
-                activeAgent = agent;
-                ctx.ui.notify(`Activating agent @${agentName}...`, "info");
+                enqueuePendingForegroundAgent(agent, task);
+                ctx.ui.notify(`🤖 Start agent @${agentName}`, "info");
 
                 return { action: "transform", text: task };
         });
@@ -919,6 +1568,12 @@ function rewriteCommand(command: string): { command: string; error?: string } {
 
   // Step 2: RTK rewriting
   if (rtkAvailable && !trimmed.startsWith("rtk ") && trimmed !== "rtk") {
+    // Skip RTK rewriting for find command
+    const baseCmd = trimmed.split(/\s+/)[0];
+    if (baseCmd === "find") {
+      return { command: trimmed };
+    }
+
     if (!trimmed.includes("<<") && !trimmed.includes("$((")) {
       try {
         const rewritten = execSync(`rtk rewrite ${JSON.stringify(trimmed)}`, {
@@ -1046,8 +1701,7 @@ export default function (pi: ExtensionAPI): void {
       messages.push("⚠ RTK not available. Install from https://github.com/rtk-ai/rtk");
     }
 
-    ctx.ui.notify(messages.join("\n"), "info");
+    // ctx.ui.notify(messages.join("\n"), "info");
   });
 }
-
 #+end_src
