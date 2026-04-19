@@ -59,18 +59,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org34081a6">TL;DR</a></li>
-<li><a href="#org63e4294">Pimacs</a></li>
-<li><a href="#org2b62844">My Pi Extensions</a>
+<li><a href="#org6aa8afb">TL;DR</a></li>
+<li><a href="#orgde7ac46">Pimacs</a></li>
+<li><a href="#org9d5c359">My Pi Extensions</a>
 <ul>
-<li><a href="#org3a9226f">Command Rule</a></li>
-<li><a href="#org05d08be">Subagent</a></li>
-<li><a href="#org2fdec89">Rtk Command Proxy</a></li>
-<li><a href="#orgfbd9541">File Explore</a></li>
-<li><a href="#org860351e">Others</a></li>
+<li><a href="#org1e59994">Command Rule</a></li>
+<li><a href="#org6cf606b">Subagent</a></li>
+<li><a href="#org92c830c">Rtk Command Proxy</a></li>
+<li><a href="#org5135f70">File Explore</a></li>
+<li><a href="#org98eae02">Others</a></li>
 </ul>
 </li>
-<li><a href="#org0052096">Custom Emacs Functions</a></li>
+<li><a href="#org8a66b7a">Custom Emacs Functions</a></li>
 </ul>
 </div>
 </nav>
@@ -93,9 +93,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 <p>
 我看了一下最近的几个版本 release，有一部分是为了 OpenClaw。
 </p>
-<div id="outline-container-org34081a6" class="outline-2">
-<h2 id="org34081a6">TL;DR</h2>
-<div class="outline-text-2" id="text-org34081a6">
+<div id="outline-container-org6aa8afb" class="outline-2">
+<h2 id="org6aa8afb">TL;DR</h2>
+<div class="outline-text-2" id="text-org6aa8afb">
 <p>
 记录一下现在在 Emacs 里使用 pi 的配置。
 </p>
@@ -105,9 +105,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 </p>
 </div>
 </div>
-<div id="outline-container-org63e4294" class="outline-2">
-<h2 id="org63e4294">Pimacs</h2>
-<div class="outline-text-2" id="text-org63e4294">
+<div id="outline-container-orgde7ac46" class="outline-2">
+<h2 id="orgde7ac46">Pimacs</h2>
+<div class="outline-text-2" id="text-orgde7ac46">
 <p>
 <a href="https://github.com/VandeeFeng/pimacs">VandeeFeng/pimacs: Emacs frontend for the pi coding agent</a> forked from <a href="https://github.com/dnouri/pi-coding-agent">https://github.com/dnouri/pi-coding-agent</a> ，后面就叫他 pimacs。
 </p>
@@ -191,9 +191,9 @@ insert region:
 </ul>
 </div>
 </div>
-<div id="outline-container-org2b62844" class="outline-2">
-<h2 id="org2b62844">My Pi Extensions</h2>
-<div class="outline-text-2" id="text-org2b62844">
+<div id="outline-container-org9d5c359" class="outline-2">
+<h2 id="org9d5c359">My Pi Extensions</h2>
+<div class="outline-text-2" id="text-org9d5c359">
 <p>
 <a href="https://www.vandee.art/blog/2026-02-17-my-minimalist-approach-to-agent-memory-management.html">我的 Agent Memory 极简管理方案</a> 之前在这里已经列出了几个，统一再这里补充一下。
 </p>
@@ -202,9 +202,9 @@ insert region:
 后面有更新就只在这里更新了，自己看起来也方便一点。
 </p>
 </div>
-<div id="outline-container-org3a9226f" class="outline-3">
-<h3 id="org3a9226f">Command Rule</h3>
-<div class="outline-text-3" id="text-org3a9226f">
+<div id="outline-container-org1e59994" class="outline-3">
+<h3 id="org1e59994">Command Rule</h3>
+<div class="outline-text-3" id="text-org1e59994">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
 </p>
@@ -506,9 +506,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-org05d08be" class="outline-3">
-<h3 id="org05d08be">Subagent</h3>
-<div class="outline-text-3" id="text-org05d08be">
+<div id="outline-container-org6cf606b" class="outline-3">
+<h3 id="org6cf606b">Subagent</h3>
+<div class="outline-text-3" id="text-org6cf606b">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -549,11 +549,11 @@ agent-buff.ts:
 <span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> Box, Editor, CombinedAutocompleteProvider, Text, <span style="color: #FFA657;">type</span> <span style="color: #95a99f;">AutocompleteItem</span>, <span style="color: #FFA657;">type</span> <span style="color: #95a99f;">AutocompleteSuggestions</span> <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-tui"</span>;
 
 <span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">AgentConfig</span> <span style="color: #8c8c8c;">{</span>
-        name: <span style="color: #FFA657;">string</span>;
-        description: <span style="color: #FFA657;">string</span>;
-        source: <span style="color: #A1D08E;">"user"</span> | <span style="color: #A1D08E;">"project"</span>;
-        filePath: <span style="color: #FFA657;">string</span>;
-        systemPrompt: <span style="color: #FFA657;">string</span>;
+  name: <span style="color: #FFA657;">string</span>;
+  description: <span style="color: #FFA657;">string</span>;
+  source: <span style="color: #A1D08E;">"user"</span> | <span style="color: #A1D08E;">"project"</span>;
+  filePath: <span style="color: #FFA657;">string</span>;
+  systemPrompt: <span style="color: #FFA657;">string</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">USER_AGENTS_DIR</span> = path.<span style="color: #96a6c8;">join</span><span style="color: #8c8c8c;">(</span>os.<span style="color: #96a6c8;">homedir</span><span style="color: #93a8c6;">()</span>, <span style="color: #A1D08E;">".pi"</span>, <span style="color: #A1D08E;">"agent"</span>, <span style="color: #A1D08E;">"agents"</span><span style="color: #8c8c8c;">)</span>;
@@ -580,1017 +580,1017 @@ agent-buff.ts:
 <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">AGENT_AUTOCOMPLETE_STATE_KEY</span> = <span style="color: #A1D08E;">"__piAgentsBuffAutocompleteState"</span>;
 
 <span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">AgentAutocompleteState</span> <span style="color: #8c8c8c;">{</span>
-        getAgents: <span style="color: #93a8c6;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #95a99f;">AgentConfig</span><span style="color: #93a8c6;">[]</span>;
+  getAgents: <span style="color: #93a8c6;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #95a99f;">AgentConfig</span><span style="color: #93a8c6;">[]</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">getAgentAutocompleteState</span><span style="color: #8c8c8c;">()</span>: <span style="color: #95a99f;">AgentAutocompleteState</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">globalState</span> = globalThis <span style="color: #FFA657;">as</span> Record&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">unknown</span>&gt;;
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">existing</span> = globalState<span style="color: #93a8c6;">[</span>AGENT_AUTOCOMPLETE_STATE_KEY<span style="color: #93a8c6;">]</span> <span style="color: #FFA657;">as</span> AgentAutocompleteState | <span style="color: #95a99f;">undefined</span>;
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>existing<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span> existing;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">globalState</span> = globalThis <span style="color: #FFA657;">as</span> Record&lt;<span style="color: #FFA657;">string</span>, <span style="color: #FFA657;">unknown</span>&gt;;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">existing</span> = globalState<span style="color: #93a8c6;">[</span>AGENT_AUTOCOMPLETE_STATE_KEY<span style="color: #93a8c6;">]</span> <span style="color: #FFA657;">as</span> AgentAutocompleteState | <span style="color: #95a99f;">undefined</span>;
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>existing<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> existing;
+  <span style="color: #93a8c6;">}</span>
 
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">state</span>: <span style="color: #95a99f;">AgentAutocompleteState</span> = <span style="color: #93a8c6;">{</span> getAgents: <span style="color: #b0b1a3;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">[]</span> <span style="color: #93a8c6;">}</span>;
-        globalState<span style="color: #93a8c6;">[</span>AGENT_AUTOCOMPLETE_STATE_KEY<span style="color: #93a8c6;">]</span> = state;
-        <span style="color: #FFA657;">return</span> state;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">state</span>: <span style="color: #95a99f;">AgentAutocompleteState</span> = <span style="color: #93a8c6;">{</span> getAgents: <span style="color: #b0b1a3;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">[]</span> <span style="color: #93a8c6;">}</span>;
+  globalState<span style="color: #93a8c6;">[</span>AGENT_AUTOCOMPLETE_STATE_KEY<span style="color: #93a8c6;">]</span> = state;
+  <span style="color: #FFA657;">return</span> state;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">normalizeAgentName</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">name</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">return</span> name.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^@/</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">return</span> name.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^@/</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">extractAgentAutocompletePrefix</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">textBeforeCursor</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> | <span style="color: #95a99f;">null</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/(?:^|\s)@@?"[^"]*$/</span>.<span style="color: #96a6c8;">test</span><span style="color: #b0b1a3;">(</span>textBeforeCursor<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/(?:^|\s)@@?"[^"]*$/</span>.<span style="color: #96a6c8;">test</span><span style="color: #b0b1a3;">(</span>textBeforeCursor<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
+  <span style="color: #93a8c6;">}</span>
 
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">match</span> = textBeforeCursor.<span style="color: #96a6c8;">match</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/(?:^|\s)(@@?[^\s"']*)$/</span><span style="color: #93a8c6;">)</span>;
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>!match || !match<span style="color: #b0b1a3;">[</span>1<span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">match</span> = textBeforeCursor.<span style="color: #96a6c8;">match</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/(?:^|\s)(@@?[^\s"']*)$/</span><span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>!match || !match<span style="color: #b0b1a3;">[</span>1<span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
+  <span style="color: #93a8c6;">}</span>
 
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">prefix</span> = match<span style="color: #93a8c6;">[</span>1<span style="color: #93a8c6;">]</span>;
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">candidate</span> = prefix.<span style="color: #96a6c8;">startsWith</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"@@"</span><span style="color: #93a8c6;">)</span> ? prefix.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>2<span style="color: #93a8c6;">)</span> : prefix.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>1<span style="color: #93a8c6;">)</span>;
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>candidate.<span style="color: #96a6c8;">includes</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"/"</span><span style="color: #b0b1a3;">)</span> || candidate.<span style="color: #96a6c8;">includes</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"\\"</span><span style="color: #b0b1a3;">)</span> || candidate.<span style="color: #96a6c8;">startsWith</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"."</span><span style="color: #b0b1a3;">)</span> || candidate.<span style="color: #96a6c8;">startsWith</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"~"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">prefix</span> = match<span style="color: #93a8c6;">[</span>1<span style="color: #93a8c6;">]</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">candidate</span> = prefix.<span style="color: #96a6c8;">startsWith</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"@@"</span><span style="color: #93a8c6;">)</span> ? prefix.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>2<span style="color: #93a8c6;">)</span> : prefix.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>1<span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>candidate.<span style="color: #96a6c8;">includes</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"/"</span><span style="color: #b0b1a3;">)</span> || candidate.<span style="color: #96a6c8;">includes</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"\\"</span><span style="color: #b0b1a3;">)</span> || candidate.<span style="color: #96a6c8;">startsWith</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"."</span><span style="color: #b0b1a3;">)</span> || candidate.<span style="color: #96a6c8;">startsWith</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"~"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
+  <span style="color: #93a8c6;">}</span>
 
-        <span style="color: #FFA657;">return</span> prefix;
+  <span style="color: #FFA657;">return</span> prefix;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">buildAgentAutocompleteItems</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">prefix</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">agents</span>: <span style="color: #95a99f;">AgentConfig</span><span style="color: #93a8c6;">[]</span><span style="color: #8c8c8c;">)</span>: <span style="color: #95a99f;">AutocompleteItem</span><span style="color: #8c8c8c;">[]</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isBackgroundPrefix</span> = prefix.<span style="color: #96a6c8;">startsWith</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"@@"</span><span style="color: #93a8c6;">)</span>;
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">query</span> = prefix.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^@@?/</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #93a8c6;">()</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isBackgroundPrefix</span> = prefix.<span style="color: #96a6c8;">startsWith</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"@@"</span><span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">query</span> = prefix.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^@@?/</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #93a8c6;">()</span>;
 
-        <span style="color: #FFA657;">return</span> agents
-                .<span style="color: #96a6c8;">map</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>agent<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">{</span> ...agent, normalizedName: <span style="color: #96a6c8;">normalizeAgentName</span><span style="color: #aebed8;">(</span>agent.name<span style="color: #aebed8;">)</span> <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-                .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">agent</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!agent.normalizedName<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
-                                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">false</span>;
-                        <span style="color: #97b098;">}</span>
-                        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!query<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
-                                <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">true</span>;
-                        <span style="color: #97b098;">}</span>
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">lowerName</span> = agent.normalizedName.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #97b098;">()</span>;
-                        <span style="color: #FFA657;">return</span> lowerName.<span style="color: #96a6c8;">startsWith</span><span style="color: #97b098;">(</span>query<span style="color: #97b098;">)</span> || lowerName.<span style="color: #96a6c8;">includes</span><span style="color: #97b098;">(</span>query<span style="color: #97b098;">)</span>;
-                <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
-                .<span style="color: #96a6c8;">sort</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">a</span>, <span style="color: #f4f4ff;">b</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">aLower</span> = a.normalizedName.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #97b098;">()</span>;
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">bLower</span> = b.normalizedName.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #97b098;">()</span>;
-                        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>query<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
-                                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">aStarts</span> = aLower.<span style="color: #96a6c8;">startsWith</span><span style="color: #aebed8;">(</span>query<span style="color: #aebed8;">)</span>;
-                                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">bStarts</span> = bLower.<span style="color: #96a6c8;">startsWith</span><span style="color: #aebed8;">(</span>query<span style="color: #aebed8;">)</span>;
-                                <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>aStarts !== bStarts<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
-                                        <span style="color: #FFA657;">return</span> aStarts ? -1 : 1;
-                                <span style="color: #aebed8;">}</span>
-                        <span style="color: #97b098;">}</span>
-                        <span style="color: #FFA657;">return</span> aLower.<span style="color: #96a6c8;">localeCompare</span><span style="color: #97b098;">(</span>bLower<span style="color: #97b098;">)</span>;
-                <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
-                .<span style="color: #96a6c8;">map</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">agent</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">invocationPrefix</span> = isBackgroundPrefix ? <span style="color: #A1D08E;">"@@"</span> : <span style="color: #A1D08E;">"@"</span>;
-                        <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span>
-                                value: <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">invocationPrefix</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">${agent.normalizedName}`</span>,
-                                label: <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">invocationPrefix</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">${agent.normalizedName}`</span>,
-                                description: <span style="color: #A1D08E;">`[agent] </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">agent.description</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>,
-                        <span style="color: #97b098;">}</span>;
-                <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">return</span> agents
+    .<span style="color: #96a6c8;">map</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>agent<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">{</span> ...agent, normalizedName: <span style="color: #96a6c8;">normalizeAgentName</span><span style="color: #aebed8;">(</span>agent.name<span style="color: #aebed8;">)</span> <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+    .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">agent</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!agent.normalizedName<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">false</span>;
+    <span style="color: #97b098;">}</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!query<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">true</span>;
+    <span style="color: #97b098;">}</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">lowerName</span> = agent.normalizedName.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #97b098;">()</span>;
+    <span style="color: #FFA657;">return</span> lowerName.<span style="color: #96a6c8;">startsWith</span><span style="color: #97b098;">(</span>query<span style="color: #97b098;">)</span> || lowerName.<span style="color: #96a6c8;">includes</span><span style="color: #97b098;">(</span>query<span style="color: #97b098;">)</span>;
+  <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
+    .<span style="color: #96a6c8;">sort</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">a</span>, <span style="color: #f4f4ff;">b</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">aLower</span> = a.normalizedName.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #97b098;">()</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">bLower</span> = b.normalizedName.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #97b098;">()</span>;
+    <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>query<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">aStarts</span> = aLower.<span style="color: #96a6c8;">startsWith</span><span style="color: #aebed8;">(</span>query<span style="color: #aebed8;">)</span>;
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">bStarts</span> = bLower.<span style="color: #96a6c8;">startsWith</span><span style="color: #aebed8;">(</span>query<span style="color: #aebed8;">)</span>;
+      <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>aStarts !== bStarts<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
+        <span style="color: #FFA657;">return</span> aStarts ? -1 : 1;
+      <span style="color: #aebed8;">}</span>
+    <span style="color: #97b098;">}</span>
+    <span style="color: #FFA657;">return</span> aLower.<span style="color: #96a6c8;">localeCompare</span><span style="color: #97b098;">(</span>bLower<span style="color: #97b098;">)</span>;
+  <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
+    .<span style="color: #96a6c8;">map</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">agent</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">invocationPrefix</span> = isBackgroundPrefix ? <span style="color: #A1D08E;">"@@"</span> : <span style="color: #A1D08E;">"@"</span>;
+    <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span>
+      value: <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">invocationPrefix</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">${agent.normalizedName}`</span>,
+      label: <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">invocationPrefix</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">${agent.normalizedName}`</span>,
+      description: <span style="color: #A1D08E;">`[agent] </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">agent.description</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>,
+    <span style="color: #97b098;">}</span>;
+  <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">installDoubleAtAutocompleteTriggerPatch</span><span style="color: #8c8c8c;">()</span>: <span style="color: #FFA657;">void</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">editorPrototype</span> = Editor.<span style="color: #95a99f;">prototype</span> <span style="color: #FFA657;">as</span> Editor &amp; <span style="color: #93a8c6;">{</span> __doubleAtAutocompletePatched?: <span style="color: #FFA657;">boolean</span> <span style="color: #93a8c6;">}</span>;
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>editorPrototype.__doubleAtAutocompletePatched<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span>;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">editorPrototype</span> = Editor.<span style="color: #95a99f;">prototype</span> <span style="color: #FFA657;">as</span> Editor &amp; <span style="color: #93a8c6;">{</span> __doubleAtAutocompletePatched?: <span style="color: #FFA657;">boolean</span> <span style="color: #93a8c6;">}</span>;
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>editorPrototype.__doubleAtAutocompletePatched<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span>;
+  <span style="color: #93a8c6;">}</span>
 
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">originalHandleInput</span> = editorPrototype.handleInput;
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">typeof</span> originalHandleInput !== <span style="color: #A1D08E;">"function"</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span>;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">originalHandleInput</span> = editorPrototype.handleInput;
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">typeof</span> originalHandleInput !== <span style="color: #A1D08E;">"function"</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span>;
+  <span style="color: #93a8c6;">}</span>
 
-        editorPrototype.handleInput = <span style="color: #FFA657;">function</span> <span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">data</span>: <span style="color: #FFA657;">string</span><span style="color: #93a8c6;">)</span>: <span style="color: #FFA657;">void</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">shouldForceAutocomplete</span> = <span style="color: #95a99f;">false</span>;
+  editorPrototype.handleInput = <span style="color: #FFA657;">function</span> <span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">data</span>: <span style="color: #FFA657;">string</span><span style="color: #93a8c6;">)</span>: <span style="color: #FFA657;">void</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">shouldForceAutocomplete</span> = <span style="color: #95a99f;">false</span>;
 
-                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>data === <span style="color: #A1D08E;">"@"</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">cursor</span> = <span style="color: #FFA657;">this</span>.<span style="color: #96a6c8;">getCursor</span><span style="color: #97b098;">()</span>;
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">line</span> = <span style="color: #FFA657;">this</span>.<span style="color: #96a6c8;">getLines</span><span style="color: #97b098;">()[</span>cursor.line<span style="color: #97b098;">]</span> ?? <span style="color: #A1D08E;">""</span>;
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">previousChar</span> = cursor.col &gt; 0 ? line<span style="color: #97b098;">[</span>cursor.col - 1<span style="color: #97b098;">]</span> : <span style="color: #A1D08E;">""</span>;
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">charBeforePrevious</span> = cursor.col &gt; 1 ? line<span style="color: #97b098;">[</span>cursor.col - 2<span style="color: #97b098;">]</span> : <span style="color: #A1D08E;">""</span>;
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isSecondAt</span> = previousChar === <span style="color: #A1D08E;">"@"</span>;
-                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">firstAtHasValidBoundary</span> = cursor.col &lt;= 1 || charBeforePrevious === <span style="color: #A1D08E;">" "</span> || charBeforePrevious === <span style="color: #A1D08E;">"\t"</span>;
-                        shouldForceAutocomplete = isSecondAt &amp;&amp; firstAtHasValidBoundary;
-                <span style="color: #b0b1a3;">}</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>data === <span style="color: #A1D08E;">"@"</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">cursor</span> = <span style="color: #FFA657;">this</span>.<span style="color: #96a6c8;">getCursor</span><span style="color: #97b098;">()</span>;
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">line</span> = <span style="color: #FFA657;">this</span>.<span style="color: #96a6c8;">getLines</span><span style="color: #97b098;">()[</span>cursor.line<span style="color: #97b098;">]</span> ?? <span style="color: #A1D08E;">""</span>;
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">previousChar</span> = cursor.col &gt; 0 ? line<span style="color: #97b098;">[</span>cursor.col - 1<span style="color: #97b098;">]</span> : <span style="color: #A1D08E;">""</span>;
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">charBeforePrevious</span> = cursor.col &gt; 1 ? line<span style="color: #97b098;">[</span>cursor.col - 2<span style="color: #97b098;">]</span> : <span style="color: #A1D08E;">""</span>;
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isSecondAt</span> = previousChar === <span style="color: #A1D08E;">"@"</span>;
+      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">firstAtHasValidBoundary</span> = cursor.col &lt;= 1 || charBeforePrevious === <span style="color: #A1D08E;">" "</span> || charBeforePrevious === <span style="color: #A1D08E;">"\t"</span>;
+      shouldForceAutocomplete = isSecondAt &amp;&amp; firstAtHasValidBoundary;
+    <span style="color: #b0b1a3;">}</span>
 
-                originalHandleInput.<span style="color: #96a6c8;">call</span><span style="color: #b0b1a3;">(</span><span style="color: #95a99f;">this</span>, data<span style="color: #b0b1a3;">)</span>;
+    originalHandleInput.<span style="color: #96a6c8;">call</span><span style="color: #b0b1a3;">(</span><span style="color: #95a99f;">this</span>, data<span style="color: #b0b1a3;">)</span>;
 
-                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!shouldForceAutocomplete<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">return</span>;
-                <span style="color: #b0b1a3;">}</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!shouldForceAutocomplete<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+      <span style="color: #FFA657;">return</span>;
+    <span style="color: #b0b1a3;">}</span>
 
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">triggerAutocomplete</span> = <span style="color: #b0b1a3;">(</span><span style="color: #95a99f;">this</span> <span style="color: #FFA657;">as</span> <span style="color: #FFA657;">unknown</span> <span style="color: #FFA657;">as</span> <span style="color: #97b098;">{</span> tryTriggerAutocomplete?: <span style="color: #aebed8;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #FFA657;">void</span> <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>.tryTriggerAutocomplete;
-                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">typeof</span> triggerAutocomplete === <span style="color: #A1D08E;">"function"</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-                        triggerAutocomplete.<span style="color: #96a6c8;">call</span><span style="color: #97b098;">(</span><span style="color: #95a99f;">this</span><span style="color: #97b098;">)</span>;
-                <span style="color: #b0b1a3;">}</span>
-        <span style="color: #93a8c6;">}</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">triggerAutocomplete</span> = <span style="color: #b0b1a3;">(</span><span style="color: #95a99f;">this</span> <span style="color: #FFA657;">as</span> <span style="color: #FFA657;">unknown</span> <span style="color: #FFA657;">as</span> <span style="color: #97b098;">{</span> tryTriggerAutocomplete?: <span style="color: #aebed8;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #FFA657;">void</span> <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>.tryTriggerAutocomplete;
+    <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">typeof</span> triggerAutocomplete === <span style="color: #A1D08E;">"function"</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+      triggerAutocomplete.<span style="color: #96a6c8;">call</span><span style="color: #97b098;">(</span><span style="color: #95a99f;">this</span><span style="color: #97b098;">)</span>;
+    <span style="color: #b0b1a3;">}</span>
+  <span style="color: #93a8c6;">}</span>;
 
-        editorPrototype.__doubleAtAutocompletePatched = <span style="color: #95a99f;">true</span>;
+  editorPrototype.__doubleAtAutocompletePatched = <span style="color: #95a99f;">true</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">installAgentAutocompletePatch</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">getAgents</span>: <span style="color: #93a8c6;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #95a99f;">AgentConfig</span><span style="color: #93a8c6;">[]</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">void</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">state</span> = <span style="color: #96a6c8;">getAgentAutocompleteState</span><span style="color: #93a8c6;">()</span>;
-        state.getAgents = getAgents;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">state</span> = <span style="color: #96a6c8;">getAgentAutocompleteState</span><span style="color: #93a8c6;">()</span>;
+  state.getAgents = getAgents;
 
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">prototype</span> = CombinedAutocompleteProvider.<span style="color: #95a99f;">prototype</span> <span style="color: #FFA657;">as</span> CombinedAutocompleteProvider &amp; <span style="color: #93a8c6;">{</span>
-                __agentAutocompletePatched?: <span style="color: #FFA657;">boolean</span>;
-        <span style="color: #93a8c6;">}</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">prototype</span> = CombinedAutocompleteProvider.<span style="color: #95a99f;">prototype</span> <span style="color: #FFA657;">as</span> CombinedAutocompleteProvider &amp; <span style="color: #93a8c6;">{</span>
+    __agentAutocompletePatched?: <span style="color: #FFA657;">boolean</span>;
+  <span style="color: #93a8c6;">}</span>;
 
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>prototype.__agentAutocompletePatched<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span>;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>prototype.__agentAutocompletePatched<span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span>;
+  <span style="color: #93a8c6;">}</span>
 
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">originalGetSuggestions</span> = prototype.getSuggestions;
-        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">typeof</span> originalGetSuggestions !== <span style="color: #A1D08E;">"function"</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">return</span>;
-        <span style="color: #93a8c6;">}</span>
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">originalGetSuggestions</span> = prototype.getSuggestions;
+  <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">typeof</span> originalGetSuggestions !== <span style="color: #A1D08E;">"function"</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">return</span>;
+  <span style="color: #93a8c6;">}</span>
 
-        prototype.getSuggestions = <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #93a8c6;">(</span>
-                <span style="color: #f4f4ff;">lines</span>: <span style="color: #FFA657;">string</span><span style="color: #b0b1a3;">[]</span>,
-                <span style="color: #f4f4ff;">cursorLine</span>: <span style="color: #FFA657;">number</span>,
-                <span style="color: #f4f4ff;">cursorCol</span>: <span style="color: #FFA657;">number</span>,
-                <span style="color: #f4f4ff;">options</span>: <span style="color: #b0b1a3;">{</span> signal: <span style="color: #95a99f;">AbortSignal</span>; force?: <span style="color: #FFA657;">boolean</span> <span style="color: #b0b1a3;">}</span>
-        <span style="color: #93a8c6;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #95a99f;">AutocompleteSuggestions</span> | <span style="color: #95a99f;">null</span>&gt; <span style="color: #93a8c6;">{</span>
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">baseSuggestions</span> = <span style="color: #FFA657;">await</span> originalGetSuggestions.<span style="color: #96a6c8;">call</span><span style="color: #b0b1a3;">(</span><span style="color: #95a99f;">this</span>, lines, cursorLine, cursorCol, options<span style="color: #b0b1a3;">)</span>;
+  prototype.getSuggestions = <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #93a8c6;">(</span>
+    <span style="color: #f4f4ff;">lines</span>: <span style="color: #FFA657;">string</span><span style="color: #b0b1a3;">[]</span>,
+    <span style="color: #f4f4ff;">cursorLine</span>: <span style="color: #FFA657;">number</span>,
+    <span style="color: #f4f4ff;">cursorCol</span>: <span style="color: #FFA657;">number</span>,
+    <span style="color: #f4f4ff;">options</span>: <span style="color: #b0b1a3;">{</span> signal: <span style="color: #95a99f;">AbortSignal</span>; force?: <span style="color: #FFA657;">boolean</span> <span style="color: #b0b1a3;">}</span>
+  <span style="color: #93a8c6;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #95a99f;">AutocompleteSuggestions</span> | <span style="color: #95a99f;">null</span>&gt; <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">baseSuggestions</span> = <span style="color: #FFA657;">await</span> originalGetSuggestions.<span style="color: #96a6c8;">call</span><span style="color: #b0b1a3;">(</span><span style="color: #95a99f;">this</span>, lines, cursorLine, cursorCol, options<span style="color: #b0b1a3;">)</span>;
 
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">currentLine</span> = lines<span style="color: #b0b1a3;">[</span>cursorLine<span style="color: #b0b1a3;">]</span> ?? <span style="color: #A1D08E;">""</span>;
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">textBeforeCursor</span> = currentLine.<span style="color: #96a6c8;">slice</span><span style="color: #b0b1a3;">(</span>0, cursorCol<span style="color: #b0b1a3;">)</span>;
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agentPrefix</span> = <span style="color: #96a6c8;">extractAgentAutocompletePrefix</span><span style="color: #b0b1a3;">(</span>textBeforeCursor<span style="color: #b0b1a3;">)</span>;
-                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!agentPrefix<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">return</span> baseSuggestions;
-                <span style="color: #b0b1a3;">}</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">currentLine</span> = lines<span style="color: #b0b1a3;">[</span>cursorLine<span style="color: #b0b1a3;">]</span> ?? <span style="color: #A1D08E;">""</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">textBeforeCursor</span> = currentLine.<span style="color: #96a6c8;">slice</span><span style="color: #b0b1a3;">(</span>0, cursorCol<span style="color: #b0b1a3;">)</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agentPrefix</span> = <span style="color: #96a6c8;">extractAgentAutocompletePrefix</span><span style="color: #b0b1a3;">(</span>textBeforeCursor<span style="color: #b0b1a3;">)</span>;
+    <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!agentPrefix<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+      <span style="color: #FFA657;">return</span> baseSuggestions;
+    <span style="color: #b0b1a3;">}</span>
 
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agentItems</span> = <span style="color: #96a6c8;">buildAgentAutocompleteItems</span><span style="color: #b0b1a3;">(</span>agentPrefix, state.<span style="color: #96a6c8;">getAgents</span><span style="color: #97b098;">()</span><span style="color: #b0b1a3;">)</span>;
-                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>agentItems.length === 0<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">return</span> baseSuggestions;
-                <span style="color: #b0b1a3;">}</span>
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">agentItems</span> = <span style="color: #96a6c8;">buildAgentAutocompleteItems</span><span style="color: #b0b1a3;">(</span>agentPrefix, state.<span style="color: #96a6c8;">getAgents</span><span style="color: #97b098;">()</span><span style="color: #b0b1a3;">)</span>;
+    <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>agentItems.length === 0<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+      <span style="color: #FFA657;">return</span> baseSuggestions;
+    <span style="color: #b0b1a3;">}</span>
 
-                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!baseSuggestions<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span> items: agentItems, prefix: agentPrefix <span style="color: #97b098;">}</span>;
-                <span style="color: #b0b1a3;">}</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!baseSuggestions<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+      <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span> items: agentItems, prefix: agentPrefix <span style="color: #97b098;">}</span>;
+    <span style="color: #b0b1a3;">}</span>
 
-                <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>baseSuggestions.prefix !== agentPrefix<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-                        <span style="color: #FFA657;">return</span> baseSuggestions;
-                <span style="color: #b0b1a3;">}</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>baseSuggestions.prefix !== agentPrefix<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+      <span style="color: #FFA657;">return</span> baseSuggestions;
+    <span style="color: #b0b1a3;">}</span>
 
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">existingValues</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Set</span><span style="color: #b0b1a3;">(</span>baseSuggestions.items.<span style="color: #96a6c8;">map</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>item<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> item.value<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>;
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">mergedItems</span> = <span style="color: #b0b1a3;">[</span>...agentItems.<span style="color: #96a6c8;">filter</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>item<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> !existingValues.<span style="color: #96a6c8;">has</span><span style="color: #aebed8;">(</span>item.value<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>, ...baseSuggestions.items<span style="color: #b0b1a3;">]</span>;
-                <span style="color: #FFA657;">return</span> <span style="color: #b0b1a3;">{</span> items: mergedItems, prefix: baseSuggestions.prefix <span style="color: #b0b1a3;">}</span>;
-        <span style="color: #93a8c6;">}</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">existingValues</span> = <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Set</span><span style="color: #b0b1a3;">(</span>baseSuggestions.items.<span style="color: #96a6c8;">map</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>item<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> item.value<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>;
+    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">mergedItems</span> = <span style="color: #b0b1a3;">[</span>...agentItems.<span style="color: #96a6c8;">filter</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>item<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> !existingValues.<span style="color: #96a6c8;">has</span><span style="color: #aebed8;">(</span>item.value<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>, ...baseSuggestions.items<span style="color: #b0b1a3;">]</span>;
+    <span style="color: #FFA657;">return</span> <span style="color: #b0b1a3;">{</span> items: mergedItems, prefix: baseSuggestions.prefix <span style="color: #b0b1a3;">}</span>;
+  <span style="color: #93a8c6;">}</span>;
 
-        prototype.__agentAutocompletePatched = <span style="color: #95a99f;">true</span>;
+  prototype.__agentAutocompletePatched = <span style="color: #95a99f;">true</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">generateSessionName</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">agentName</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">task</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">sessionId</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">cleanAgentName</span> = agentName.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^@/</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/[^a-zA-Z0-9_-]/</span><span style="color: #f4f4ff;">g</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>;
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">words</span> = task
-                .<span style="color: #96a6c8;">toLowerCase</span><span style="color: #93a8c6;">()</span>
-                .<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/[^\w\s]/</span>g, <span style="color: #A1D08E;">" "</span><span style="color: #93a8c6;">)</span>
-                .<span style="color: #96a6c8;">split</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/\s+/</span><span style="color: #93a8c6;">)</span>
-                .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>w<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> w.length &gt; MIN_KEYWORD_LENGTH &amp;&amp; !STOPWORDS.<span style="color: #96a6c8;">has</span><span style="color: #b0b1a3;">(</span>w<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">keywordStr</span> = words.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>0, MAX_KEYWORDS<span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">join</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"-"</span><span style="color: #93a8c6;">)</span> || <span style="color: #A1D08E;">"task"</span>;
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">base</span> = <span style="color: #A1D08E;">`pi-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">cleanAgentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">keywordStr</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">sessionId</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
-        <span style="color: #FFA657;">return</span> base.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>0, 60<span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">cleanAgentName</span> = agentName.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/^@/</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/[^a-zA-Z0-9_-]/</span><span style="color: #f4f4ff;">g</span>, <span style="color: #A1D08E;">""</span><span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">words</span> = task
+    .<span style="color: #96a6c8;">toLowerCase</span><span style="color: #93a8c6;">()</span>
+    .<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/[^\w\s]/</span>g, <span style="color: #A1D08E;">" "</span><span style="color: #93a8c6;">)</span>
+    .<span style="color: #96a6c8;">split</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">/\s+/</span><span style="color: #93a8c6;">)</span>
+    .<span style="color: #96a6c8;">filter</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>w<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> w.length &gt; MIN_KEYWORD_LENGTH &amp;&amp; !STOPWORDS.<span style="color: #96a6c8;">has</span><span style="color: #b0b1a3;">(</span>w<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">keywordStr</span> = words.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>0, MAX_KEYWORDS<span style="color: #93a8c6;">)</span>.<span style="color: #96a6c8;">join</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"-"</span><span style="color: #93a8c6;">)</span> || <span style="color: #A1D08E;">"task"</span>;
+  <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">base</span> = <span style="color: #A1D08E;">`pi-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">cleanAgentName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">keywordStr</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">-</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">sessionId</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+  <span style="color: #FFA657;">return</span> base.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>0, 60<span style="color: #93a8c6;">)</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">type</span> <span style="color: #95a99f;">BackgroundSessionStatus</span> = <span style="color: #A1D08E;">"starting"</span> | <span style="color: #A1D08E;">"running"</span> | <span style="color: #A1D08E;">"completed"</span> | <span style="color: #A1D08E;">"failed"</span>;
 
 <span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">BackgroundAgentSession</span> <span style="color: #8c8c8c;">{</span>
-        id: <span style="color: #FFA657;">string</span>;
-        agentName: <span style="color: #FFA657;">string</span>;
-        task: <span style="color: #FFA657;">string</span>;
-        tmuxSessionName: <span style="color: #FFA657;">string</span>;
-        originSessionId: <span style="color: #FFA657;">string</span>;
-        sessionId?: <span style="color: #FFA657;">string</span>;
-        sessionFile?: <span style="color: #FFA657;">string</span>;
-        status: <span style="color: #95a99f;">BackgroundSessionStatus</span>;
-        startedAt: <span style="color: #FFA657;">number</span>;
-        statusKey: <span style="color: #FFA657;">string</span>;
-        exitCodeKey: <span style="color: #FFA657;">string</span>;
-        error?: <span style="color: #FFA657;">string</span>;
-        notified?: <span style="color: #FFA657;">boolean</span>;
-        cleanedUp?: <span style="color: #FFA657;">boolean</span>;
+  id: <span style="color: #FFA657;">string</span>;
+  agentName: <span style="color: #FFA657;">string</span>;
+  task: <span style="color: #FFA657;">string</span>;
+  tmuxSessionName: <span style="color: #FFA657;">string</span>;
+  originSessionId: <span style="color: #FFA657;">string</span>;
+  sessionId?: <span style="color: #FFA657;">string</span>;
+  sessionFile?: <span style="color: #FFA657;">string</span>;
+  status: <span style="color: #95a99f;">BackgroundSessionStatus</span>;
+  startedAt: <span style="color: #FFA657;">number</span>;
+  statusKey: <span style="color: #FFA657;">string</span>;
+  exitCodeKey: <span style="color: #FFA657;">string</span>;
+  error?: <span style="color: #FFA657;">string</span>;
+  notified?: <span style="color: #FFA657;">boolean</span>;
+  cleanedUp?: <span style="color: #FFA657;">boolean</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">BackgroundSessionMetadata</span> <span style="color: #8c8c8c;">{</span>
-        sessionId: <span style="color: #FFA657;">string</span>;
-        sessionFile: <span style="color: #FFA657;">string</span>;
+  sessionId: <span style="color: #FFA657;">string</span>;
+  sessionFile: <span style="color: #FFA657;">string</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">AssistantTextSnapshot</span> <span style="color: #8c8c8c;">{</span>
-        text: <span style="color: #FFA657;">string</span>;
-        entryId?: <span style="color: #FFA657;">string</span>;
-        timestamp?: <span style="color: #FFA657;">string</span>;
+  text: <span style="color: #FFA657;">string</span>;
+  entryId?: <span style="color: #FFA657;">string</span>;
+  timestamp?: <span style="color: #FFA657;">string</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">interface</span> <span style="color: #95a99f;">PendingForegroundAgentRequest</span> <span style="color: #8c8c8c;">{</span>
-        agent: <span style="color: #95a99f;">AgentConfig</span>;
-        prompt: <span style="color: #FFA657;">string</span>;
-        createdAt: <span style="color: #FFA657;">number</span>;
+  agent: <span style="color: #95a99f;">AgentConfig</span>;
+  prompt: <span style="color: #FFA657;">string</span>;
+  createdAt: <span style="color: #FFA657;">number</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">createTaskId</span><span style="color: #8c8c8c;">()</span>: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">return</span> <span style="color: #96a6c8;">randomUUID</span><span style="color: #93a8c6;">()</span>.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>0, 8<span style="color: #93a8c6;">)</span>;
+  <span style="color: #FFA657;">return</span> <span style="color: #96a6c8;">randomUUID</span><span style="color: #93a8c6;">()</span>.<span style="color: #96a6c8;">slice</span><span style="color: #93a8c6;">(</span>0, 8<span style="color: #93a8c6;">)</span>;
 <span style="color: #8c8c8c;">}</span>
 
 <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">shellQuote</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">value</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> <span style="color: #8c8c8c;">{</span>
-        <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`'${value.</span><span style="color: #96a6c8;">replace</span><span style="color: #A1D08E;">(/'/</span><span style="color: #f4f4ff;">g</span><span style="color: #A1D08E;">, `'"'"'`)}'`;
+  <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`'${value.</span><span style="color: #96a6c8;">replace</span><span style="color: #A1D08E;">(/'/</span><span style="color: #f4f4ff;">g</span><span style="color: #A1D08E;">, `'"'"'`)}'`;
 }
 
 function sleep(</span><span style="color: #f4f4ff;">ms</span><span style="color: #A1D08E;">: number): Promise&lt;void&gt; {
-        return new Promise(function (</span><span style="color: #f4f4ff;">resolve</span><span style="color: #A1D08E;">) {
-                setTimeout(resolve, ms);
-        });
+  return new Promise(function (</span><span style="color: #f4f4ff;">resolve</span><span style="color: #A1D08E;">) {
+    setTimeout(resolve, ms);
+  });
 }
 
 function buildBackgroundPiCommand(
-        </span><span style="color: #f4f4ff;">agentName</span><span style="color: #A1D08E;">: string,
-        </span><span style="color: #f4f4ff;">task</span><span style="color: #A1D08E;">: string,
-        </span><span style="color: #f4f4ff;">statusKey</span><span style="color: #A1D08E;">: string,
-        </span><span style="color: #f4f4ff;">exitCodeKey</span><span style="color: #A1D08E;">: string,
-        </span><span style="color: #f4f4ff;">sessionMetaPath</span><span style="color: #A1D08E;">: string
+  </span><span style="color: #f4f4ff;">agentName</span><span style="color: #A1D08E;">: string,
+  </span><span style="color: #f4f4ff;">task</span><span style="color: #A1D08E;">: string,
+  </span><span style="color: #f4f4ff;">statusKey</span><span style="color: #A1D08E;">: string,
+  </span><span style="color: #f4f4ff;">exitCodeKey</span><span style="color: #A1D08E;">: string,
+  </span><span style="color: #f4f4ff;">sessionMetaPath</span><span style="color: #A1D08E;">: string
 ): string {
-        const delegatedPrompt = ` @${agentName} ${task}`;
-        const script = [
-                "</span>finalized=0<span style="color: #A1D08E;">",
-                "</span><span style="color: #96a6c8;">finalize</span><span style="color: #93a8c6;">()</span> <span style="color: #93a8c6;">{</span><span style="color: #A1D08E;">",
-                "</span>  <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">[</span> \"$finalized\" -eq 1 <span style="color: #b0b1a3;">]</span>; then <span style="color: #FFA657;">return</span>; fi<span style="color: #A1D08E;">",
-                "</span>  finalized=1<span style="color: #A1D08E;">",
-                "</span>  exit_code=$<span style="color: #b0b1a3;">{</span>1:-$?<span style="color: #b0b1a3;">}</span><span style="color: #A1D08E;">",
-                `  tmux set-environment -g ${shellQuote(exitCodeKey)} \"$exit_code\"`,
-                `  if [ \"$exit_code\" -eq 0 ]; then tmux set-environment -g ${shellQuote(statusKey)} completed; else tmux set-environment -g ${shellQuote(</span><span style="color: #f4f4ff;">statusKey</span><span style="color: #A1D08E;">)} failed; fi`,
-                "</span><span style="color: #93a8c6;">}</span><span style="color: #A1D08E;">",
-                "</span>trap <span style="color: #A1D08E;">'finalize 130; exit 130'</span> INT<span style="color: #A1D08E;">",
-                "</span>trap <span style="color: #A1D08E;">'finalize 143; exit 143'</span> TERM HUP<span style="color: #A1D08E;">",
-                `tmux set-environment -g ${shellQuote(statusKey)} running`,
-                `export ${BACKGROUND_SESSION_META_ENV_KEY}=${shellQuote(sessionMetaPath)}`,
-                `pi -p ${shellQuote(delegatedPrompt)}`,
-                "</span>exit_code=$?<span style="color: #A1D08E;">",
-                "</span>finalize \"$exit_code\"<span style="color: #A1D08E;">",
-                "</span>exec bash<span style="color: #A1D08E;">",
-        ].</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
+  const delegatedPrompt = ` @${agentName} ${task}`;
+  const script = [
+    "</span>finalized=0<span style="color: #A1D08E;">",
+    "</span><span style="color: #96a6c8;">finalize</span><span style="color: #93a8c6;">()</span> <span style="color: #93a8c6;">{</span><span style="color: #A1D08E;">",
+    "</span>  <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">[</span> \"$finalized\" -eq 1 <span style="color: #b0b1a3;">]</span>; then <span style="color: #FFA657;">return</span>; fi<span style="color: #A1D08E;">",
+    "</span>  finalized=1<span style="color: #A1D08E;">",
+    "</span>  exit_code=$<span style="color: #b0b1a3;">{</span>1:-$?<span style="color: #b0b1a3;">}</span><span style="color: #A1D08E;">",
+    `  tmux set-environment -g ${shellQuote(exitCodeKey)} \"$exit_code\"`,
+    `  if [ \"$exit_code\" -eq 0 ]; then tmux set-environment -g ${shellQuote(statusKey)} completed; else tmux set-environment -g ${shellQuote(</span><span style="color: #f4f4ff;">statusKey</span><span style="color: #A1D08E;">)} failed; fi`,
+    "</span><span style="color: #93a8c6;">}</span><span style="color: #A1D08E;">",
+    "</span>trap <span style="color: #A1D08E;">'finalize 130; exit 130'</span> INT<span style="color: #A1D08E;">",
+    "</span>trap <span style="color: #A1D08E;">'finalize 143; exit 143'</span> TERM HUP<span style="color: #A1D08E;">",
+    `tmux set-environment -g ${shellQuote(statusKey)} running`,
+    `export ${BACKGROUND_SESSION_META_ENV_KEY}=${shellQuote(sessionMetaPath)}`,
+    `pi ${shellQuote(delegatedPrompt)}`,
+    "</span>exit_code=$?<span style="color: #A1D08E;">",
+    "</span>finalize \"$exit_code\"<span style="color: #A1D08E;">",
+    "</span>exec bash<span style="color: #A1D08E;">",
+  ].</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
 
-        return `bash -lc ${shellQuote(script)}`;
+  return `bash -lc ${shellQuote(script)}`;
 }
 
 function trimToMaxChars(</span><span style="color: #f4f4ff;">text</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">maxChars</span><span style="color: #A1D08E;">: number): string {
-        if (text.length &lt;= </span><span style="color: #f4f4ff;">maxChars</span><span style="color: #A1D08E;">) {
-                return text;
-        }
-        return text.</span><span style="color: #96a6c8;">slice</span><span style="color: #A1D08E;">(text.length - maxChars);
+  if (text.length &lt;= </span><span style="color: #f4f4ff;">maxChars</span><span style="color: #A1D08E;">) {
+    return text;
+  }
+  return text.</span><span style="color: #96a6c8;">slice</span><span style="color: #A1D08E;">(text.length - maxChars);
 }
 
 function extractCustomMessageText(</span><span style="color: #f4f4ff;">content</span><span style="color: #A1D08E;">: string | Array&lt;{ </span><span style="color: #d1d5db; background-color: #1D1F21;">type</span><span style="color: #A1D08E;">: string; text?: string }&gt;): string {
-        if (typeof content === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">") {
-                return content;
-        }
-        return content
-                .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((block): block is { </span><span style="color: #d1d5db; background-color: #1D1F21;">type</span><span style="color: #A1D08E;">: "</span>text<span style="color: #A1D08E;">"; text: string } =&gt; block.type === "</span>text<span style="color: #A1D08E;">" &amp;&amp; typeof block.text === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">")
-                .</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((block) =&gt; block.text)
-                .</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">")
-                .</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
+  if (typeof content === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">") {
+    return content;
+  }
+  return content
+    .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((block): block is { </span><span style="color: #d1d5db; background-color: #1D1F21;">type</span><span style="color: #A1D08E;">: "</span>text<span style="color: #A1D08E;">"; text: string } =&gt; block.type === "</span>text<span style="color: #A1D08E;">" &amp;&amp; typeof block.text === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">")
+    .</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((block) =&gt; block.text)
+    .</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">")
+    .</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
 }
 
 function parseBackgroundSessionMetadata(</span><span style="color: #f4f4ff;">raw</span><span style="color: #A1D08E;">: string): BackgroundSessionMetadata | null {
-        try {
-                const parsed = JSON.</span><span style="color: #96a6c8;">parse</span><span style="color: #A1D08E;">(raw) as Record&lt;</span><span style="color: #f4f4ff;">string</span><span style="color: #A1D08E;">, unknown&gt;;
-                const sessionId = typeof parsed.sessionId === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? parsed.sessionId.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">() : "";
-                const sessionFile = typeof parsed.sessionFile === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? parsed.sessionFile.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">() : "";
-                if (!sessionId || !</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">) {
-                        return null;
-                }
-                return { sessionId, sessionFile };
-        } catch {
-                return null;
-        }
+  try {
+    const parsed = JSON.</span><span style="color: #96a6c8;">parse</span><span style="color: #A1D08E;">(raw) as Record&lt;</span><span style="color: #f4f4ff;">string</span><span style="color: #A1D08E;">, unknown&gt;;
+    const sessionId = typeof parsed.sessionId === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? parsed.sessionId.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">() : "";
+    const sessionFile = typeof parsed.sessionFile === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? parsed.sessionFile.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">() : "";
+    if (!sessionId || !</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">) {
+      return null;
+    }
+    return { sessionId, sessionFile };
+  } catch {
+    return null;
+  }
 }
 
 function readBackgroundSessionMetadata(</span><span style="color: #f4f4ff;">metaPath</span><span style="color: #A1D08E;">: string): BackgroundSessionMetadata | null {
-        if (!fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">metaPath</span><span style="color: #A1D08E;">)) {
-                return null;
-        }
-        try {
-                const raw = fs.</span><span style="color: #96a6c8;">readFileSync</span><span style="color: #A1D08E;">(metaPath, "</span>utf-8<span style="color: #A1D08E;">");
-                return parseBackgroundSessionMetadata(raw);
-        } catch {
-                return null;
-        }
+  if (!fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">metaPath</span><span style="color: #A1D08E;">)) {
+    return null;
+  }
+  try {
+    const raw = fs.</span><span style="color: #96a6c8;">readFileSync</span><span style="color: #A1D08E;">(metaPath, "</span>utf-8<span style="color: #A1D08E;">");
+    return parseBackgroundSessionMetadata(raw);
+  } catch {
+    return null;
+  }
 }
 
 async function waitForBackgroundSessionMetadata(</span><span style="color: #f4f4ff;">metaPath</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">timeoutMs</span><span style="color: #A1D08E;">: number): Promise&lt;BackgroundSessionMetadata | null&gt; {
-        const deadline = Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() + timeoutMs;
-        while (Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() &lt;= </span><span style="color: #f4f4ff;">deadline</span><span style="color: #A1D08E;">) {
-                const metadata = readBackgroundSessionMetadata(metaPath);
-                if (</span><span style="color: #f4f4ff;">metadata</span><span style="color: #A1D08E;">) {
-                        return metadata;
-                }
-                await sleep(BACKGROUND_SESSION_META_POLL_INTERVAL_MS);
-        }
-        return readBackgroundSessionMetadata(metaPath);
+  const deadline = Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() + timeoutMs;
+  while (Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() &lt;= </span><span style="color: #f4f4ff;">deadline</span><span style="color: #A1D08E;">) {
+    const metadata = readBackgroundSessionMetadata(metaPath);
+    if (</span><span style="color: #f4f4ff;">metadata</span><span style="color: #A1D08E;">) {
+      return metadata;
+    }
+    await sleep(BACKGROUND_SESSION_META_POLL_INTERVAL_MS);
+  }
+  return readBackgroundSessionMetadata(metaPath);
 }
 
 function findLatestAssistantTextInLines(</span><span style="color: #f4f4ff;">lines</span><span style="color: #A1D08E;">: string[]): AssistantTextSnapshot | null {
-        for (let i = lines.length - 1; i &gt;= 0; i -= 1) {
-                const line = lines[i].</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
-                if (!</span><span style="color: #f4f4ff;">line</span><span style="color: #A1D08E;">) {
-                        continue;
-                }
+  for (let i = lines.length - 1; i &gt;= 0; i -= 1) {
+    const line = lines[i].</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
+    if (!</span><span style="color: #f4f4ff;">line</span><span style="color: #A1D08E;">) {
+      continue;
+    }
 
-                let entry: Record&lt;string, unknown&gt;;
-                try {
-                        entry = JSON.</span><span style="color: #96a6c8;">parse</span><span style="color: #A1D08E;">(line) as Record&lt;</span><span style="color: #f4f4ff;">string</span><span style="color: #A1D08E;">, unknown&gt;;
-                } catch {
-                        continue;
-                }
+    let entry: Record&lt;string, unknown&gt;;
+    try {
+      entry = JSON.</span><span style="color: #96a6c8;">parse</span><span style="color: #A1D08E;">(line) as Record&lt;</span><span style="color: #f4f4ff;">string</span><span style="color: #A1D08E;">, unknown&gt;;
+    } catch {
+      continue;
+    }
 
-                if (entry.type !== "</span>message<span style="color: #A1D08E;">") {
-                        continue;
-                }
+    if (entry.type !== "</span>message<span style="color: #A1D08E;">") {
+      continue;
+    }
 
-                const message = entry.message as Record&lt;string, unknown&gt; | undefined;
-                if (!message || message.role !== "</span>assistant<span style="color: #A1D08E;">") {
-                        continue;
-                }
+    const message = entry.message as Record&lt;string, unknown&gt; | undefined;
+    if (!message || message.role !== "</span>assistant<span style="color: #A1D08E;">") {
+      continue;
+    }
 
-                const content = Array.</span><span style="color: #96a6c8;">isArray</span><span style="color: #A1D08E;">(message.content) ? message.</span><span style="color: #f4f4ff;">content</span><span style="color: #A1D08E;"> : [];
-                const textBlocks = content
-                        .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((block): block is Record&lt;string, unknown&gt; =&gt; typeof block === "</span><span style="color: #FFA657;">object</span><span style="color: #A1D08E;">" &amp;&amp; block !== null)
-                        .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((block) =&gt; block.type === "</span>text<span style="color: #A1D08E;">" &amp;&amp; typeof block.text === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">")
-                        .</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((block) =&gt; String(block.text).</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">())
-                        .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((text) =&gt; text.length &gt; 0);
+    const content = Array.</span><span style="color: #96a6c8;">isArray</span><span style="color: #A1D08E;">(message.content) ? message.</span><span style="color: #f4f4ff;">content</span><span style="color: #A1D08E;"> : [];
+    const textBlocks = content
+      .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((block): block is Record&lt;string, unknown&gt; =&gt; typeof block === "</span><span style="color: #FFA657;">object</span><span style="color: #A1D08E;">" &amp;&amp; block !== null)
+      .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((block) =&gt; block.type === "</span>text<span style="color: #A1D08E;">" &amp;&amp; typeof block.text === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">")
+      .</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((block) =&gt; String(block.text).</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">())
+      .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((text) =&gt; text.length &gt; 0);
 
-                if (textBlocks.length === 0) {
-                        continue;
-                }
+    if (textBlocks.length === 0) {
+      continue;
+    }
 
-                return {
-                        text: textBlocks.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n\n<span style="color: #A1D08E;">"),
-                        entryId: typeof entry.id === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? entry.id : undefined,
-                        timestamp: typeof entry.timestamp === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? entry.timestamp : undefined,
-                };
-        }
+    return {
+      text: textBlocks.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n\n<span style="color: #A1D08E;">"),
+      entryId: typeof entry.id === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? entry.id : undefined,
+      timestamp: typeof entry.timestamp === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" ? entry.timestamp : undefined,
+    };
+  }
 
-        return null;
+  return null;
 }
 
 function readSessionFileTail(</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">maxBytes</span><span style="color: #A1D08E;">: number): { raw: string; truncated: boolean } | null {
-        try {
-                const stat = fs.</span><span style="color: #96a6c8;">statSync</span><span style="color: #A1D08E;">(sessionFile);
-                const size = stat.size;
-                const start = Math.</span><span style="color: #96a6c8;">max</span><span style="color: #A1D08E;">(0, size - maxBytes);
-                const bytesToRead = size - start;
-                const fd = fs.</span><span style="color: #96a6c8;">openSync</span><span style="color: #A1D08E;">(sessionFile, "</span>r<span style="color: #A1D08E;">");
-                const buffer = Buffer.</span><span style="color: #96a6c8;">alloc</span><span style="color: #A1D08E;">(bytesToRead);
-                try {
-                        fs.</span><span style="color: #96a6c8;">readSync</span><span style="color: #A1D08E;">(fd, buffer, 0, bytesToRead, start);
-                } finally {
-                        fs.</span><span style="color: #96a6c8;">closeSync</span><span style="color: #A1D08E;">(fd);
-                }
+  try {
+    const stat = fs.</span><span style="color: #96a6c8;">statSync</span><span style="color: #A1D08E;">(sessionFile);
+    const size = stat.size;
+    const start = Math.</span><span style="color: #96a6c8;">max</span><span style="color: #A1D08E;">(0, size - maxBytes);
+    const bytesToRead = size - start;
+    const fd = fs.</span><span style="color: #96a6c8;">openSync</span><span style="color: #A1D08E;">(sessionFile, "</span>r<span style="color: #A1D08E;">");
+    const buffer = Buffer.</span><span style="color: #96a6c8;">alloc</span><span style="color: #A1D08E;">(bytesToRead);
+    try {
+      fs.</span><span style="color: #96a6c8;">readSync</span><span style="color: #A1D08E;">(fd, buffer, 0, bytesToRead, start);
+    } finally {
+      fs.</span><span style="color: #96a6c8;">closeSync</span><span style="color: #A1D08E;">(fd);
+    }
 
-                let raw = buffer.</span><span style="color: #96a6c8;">toString</span><span style="color: #A1D08E;">("</span>utf-8<span style="color: #A1D08E;">");
-                if (start &gt; 0) {
-                        const firstNewline = raw.</span><span style="color: #96a6c8;">indexOf</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
-                        raw = firstNewline === -1 ? "" : raw.</span><span style="color: #96a6c8;">slice</span><span style="color: #A1D08E;">(firstNewline + 1);
-                }
-                return { raw, truncated: start &gt; 0 };
-        } catch {
-                return null;
-        }
+    let raw = buffer.</span><span style="color: #96a6c8;">toString</span><span style="color: #A1D08E;">("</span>utf-8<span style="color: #A1D08E;">");
+    if (start &gt; 0) {
+      const firstNewline = raw.</span><span style="color: #96a6c8;">indexOf</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
+      raw = firstNewline === -1 ? "" : raw.</span><span style="color: #96a6c8;">slice</span><span style="color: #A1D08E;">(firstNewline + 1);
+    }
+    return { raw, truncated: start &gt; 0 };
+  } catch {
+    return null;
+  }
 }
 
 function findLatestAssistantText(</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">: string): AssistantTextSnapshot | null {
-        if (!fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">)) {
-                return null;
-        }
+  if (!fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">)) {
+    return null;
+  }
 
-        const tail = readSessionFileTail(sessionFile, SESSION_FILE_TAIL_READ_BYTES);
-        if (!</span><span style="color: #f4f4ff;">tail</span><span style="color: #A1D08E;">) {
-                return null;
-        }
+  const tail = readSessionFileTail(sessionFile, SESSION_FILE_TAIL_READ_BYTES);
+  if (!</span><span style="color: #f4f4ff;">tail</span><span style="color: #A1D08E;">) {
+    return null;
+  }
 
-        const tailSnapshot = findLatestAssistantTextInLines(tail.raw.</span><span style="color: #96a6c8;">split</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">"));
-        if (tailSnapshot || !tail.</span><span style="color: #f4f4ff;">truncated</span><span style="color: #A1D08E;">) {
-                return tailSnapshot;
-        }
+  const tailSnapshot = findLatestAssistantTextInLines(tail.raw.</span><span style="color: #96a6c8;">split</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">"));
+  if (tailSnapshot || !tail.</span><span style="color: #f4f4ff;">truncated</span><span style="color: #A1D08E;">) {
+    return tailSnapshot;
+  }
 
-        try {
-                const raw = fs.</span><span style="color: #96a6c8;">readFileSync</span><span style="color: #A1D08E;">(sessionFile, "</span>utf-8<span style="color: #A1D08E;">");
-                return findLatestAssistantTextInLines(raw.</span><span style="color: #96a6c8;">split</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">"));
-        } catch {
-                return null;
-        }
+  try {
+    const raw = fs.</span><span style="color: #96a6c8;">readFileSync</span><span style="color: #A1D08E;">(sessionFile, "</span>utf-8<span style="color: #A1D08E;">");
+    return findLatestAssistantTextInLines(raw.</span><span style="color: #96a6c8;">split</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">"));
+  } catch {
+    return null;
+  }
 }
 
 function buildAssistantHistoryCommands(</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">: string): { rg: string; grep: string } {
-        const quoted = shellQuote(sessionFile);
-        return {
-                rg: `rg '\"type\":\"message\".*\"role\":\"assistant\"' ${quoted} | rg '\"type\":\"text\"' | rg -v '\"stopReason\":\"aborted\"'`,
-                grep: `grep -E '\"type\":\"message\".*\"role\":\"assistant\"' ${quoted} | grep '\"type\":\"text\"' | grep -v '\"stopReason\":\"aborted\"'`,
-        };
+  const quoted = shellQuote(sessionFile);
+  return {
+    rg: `rg '\"type\":\"message\".*\"role\":\"assistant\"' ${quoted} | rg '\"type\":\"text\"' | rg -v '\"stopReason\":\"aborted\"'`,
+    grep: `grep -E '\"type\":\"message\".*\"role\":\"assistant\"' ${quoted} | grep '\"type\":\"text\"' | grep -v '\"stopReason\":\"aborted\"'`,
+  };
 }
 
 function loadAgentsFromDir(</span><span style="color: #f4f4ff;">dir</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">source</span><span style="color: #A1D08E;">: "</span>user<span style="color: #A1D08E;">" | "</span>project<span style="color: #A1D08E;">"): AgentConfig[] {
-        if (!fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">dir</span><span style="color: #A1D08E;">)) {
-                return [];
-        }
+  if (!fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">dir</span><span style="color: #A1D08E;">)) {
+    return [];
+  }
 
-        return fs.</span><span style="color: #96a6c8;">readdirSync</span><span style="color: #A1D08E;">(dir, { withFileTypes: true })
-                .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">(function (</span><span style="color: #f4f4ff;">entry</span><span style="color: #A1D08E;">) {
-                        return entry.name.</span><span style="color: #96a6c8;">endsWith</span><span style="color: #A1D08E;">(AGENT_FILE_EXTENSION) &amp;&amp; (entry.</span><span style="color: #96a6c8;">isFile</span><span style="color: #A1D08E;">() || entry.</span><span style="color: #96a6c8;">isSymbolicLink</span><span style="color: #A1D08E;">());
-                })
-                .</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">(function (</span><span style="color: #f4f4ff;">entry</span><span style="color: #A1D08E;">) {
-                        const filePath = path.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">(dir, entry.name);
+  return fs.</span><span style="color: #96a6c8;">readdirSync</span><span style="color: #A1D08E;">(dir, { withFileTypes: true })
+    .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">(function (</span><span style="color: #f4f4ff;">entry</span><span style="color: #A1D08E;">) {
+    return entry.name.</span><span style="color: #96a6c8;">endsWith</span><span style="color: #A1D08E;">(AGENT_FILE_EXTENSION) &amp;&amp; (entry.</span><span style="color: #96a6c8;">isFile</span><span style="color: #A1D08E;">() || entry.</span><span style="color: #96a6c8;">isSymbolicLink</span><span style="color: #A1D08E;">());
+  })
+    .</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">(function (</span><span style="color: #f4f4ff;">entry</span><span style="color: #A1D08E;">) {
+    const filePath = path.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">(dir, entry.name);
 
-                        try {
-                                const { frontmatter, body } = parseFrontmatter&lt;Record&lt;string, unknown&gt;&gt;(fs.</span><span style="color: #96a6c8;">readFileSync</span><span style="color: #A1D08E;">(filePath, "</span>utf-8<span style="color: #A1D08E;">"));
-                                if (!frontmatter.name || !frontmatter.description) {
-                                        return null;
-                                }
+    try {
+      const { frontmatter, body } = parseFrontmatter&lt;Record&lt;string, unknown&gt;&gt;(fs.</span><span style="color: #96a6c8;">readFileSync</span><span style="color: #A1D08E;">(filePath, "</span>utf-8<span style="color: #A1D08E;">"));
+      if (!frontmatter.name || !frontmatter.description) {
+        return null;
+      }
 
-                                const name = normalizeAgentName(String(frontmatter.name));
-                                if (!name) {
-                                        return null;
-                                }
+      const name = normalizeAgentName(String(frontmatter.name));
+      if (!name) {
+        return null;
+      }
 
-                                return {
-                                        name,
-                                        description: String(frontmatter.description),
-                                        source,
-                                        filePath,
-                                        systemPrompt: body.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">(),
-                                };
-                        } catch (error) {
-                                const message = error instanceof Error ? error.message : String(error);
-                                console.</span><span style="color: #96a6c8;">warn</span><span style="color: #A1D08E;">(`[agents-buff] Failed to load agent file ${filePath}: ${message}`);
-                                return null;
-                        }
-                })
-                .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((config): config is AgentConfig =&gt; config !== null);
+      return {
+        name,
+        description: String(frontmatter.description),
+        source,
+        filePath,
+        systemPrompt: body.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">(),
+      };
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.</span><span style="color: #96a6c8;">warn</span><span style="color: #A1D08E;">(`[agents-buff] Failed to load agent file ${filePath}: ${message}`);
+      return null;
+    }
+  })
+    .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((config): config is AgentConfig =&gt; config !== null);
 }
 
 function findNearestProjectAgentsDir(</span><span style="color: #f4f4ff;">cwd</span><span style="color: #A1D08E;">: string): string | null {
-        let currentDir = cwd;
+  let currentDir = cwd;
 
-        while (currentDir !== path.</span><span style="color: #96a6c8;">dirname</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">currentDir</span><span style="color: #A1D08E;">)) {
-                const candidate = path.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">(currentDir, PROJECT_AGENTS_DIR_NAME);
-                if (fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">candidate</span><span style="color: #A1D08E;">)) {
-                        try {
-                                if (fs.</span><span style="color: #96a6c8;">statSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">candidate</span><span style="color: #A1D08E;">).</span><span style="color: #96a6c8;">isDirectory</span><span style="color: #A1D08E;">()) {
-                                        return candidate;
-                                }
-                        } catch {
-                                // Ignore invalid paths and continue walking up.
-                        }
-                }
-                currentDir = path.</span><span style="color: #96a6c8;">dirname</span><span style="color: #A1D08E;">(currentDir);
+  while (currentDir !== path.</span><span style="color: #96a6c8;">dirname</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">currentDir</span><span style="color: #A1D08E;">)) {
+    const candidate = path.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">(currentDir, PROJECT_AGENTS_DIR_NAME);
+    if (fs.</span><span style="color: #96a6c8;">existsSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">candidate</span><span style="color: #A1D08E;">)) {
+      try {
+        if (fs.</span><span style="color: #96a6c8;">statSync</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">candidate</span><span style="color: #A1D08E;">).</span><span style="color: #96a6c8;">isDirectory</span><span style="color: #A1D08E;">()) {
+          return candidate;
         }
+      } catch {
+        // Ignore invalid paths and continue walking up.
+      }
+    }
+    currentDir = path.</span><span style="color: #96a6c8;">dirname</span><span style="color: #A1D08E;">(currentDir);
+  }
 
-        return null;
+  return null;
 }
 
 function discoverAgents(</span><span style="color: #f4f4ff;">cwd</span><span style="color: #A1D08E;">: string): AgentConfig[] {
-        const projectAgentsDir = findNearestProjectAgentsDir(cwd);
-        const userAgents = loadAgentsFromDir(USER_AGENTS_DIR, "</span>user<span style="color: #A1D08E;">");
-        const projectAgents = projectAgentsDir ? loadAgentsFromDir(projectAgentsDir, "</span>project<span style="color: #A1D08E;">") : [];
+  const projectAgentsDir = findNearestProjectAgentsDir(cwd);
+  const userAgents = loadAgentsFromDir(USER_AGENTS_DIR, "</span>user<span style="color: #A1D08E;">");
+  const projectAgents = projectAgentsDir ? loadAgentsFromDir(projectAgentsDir, "</span>project<span style="color: #A1D08E;">") : [];
 
-        const agentMap = new Map(userAgents.</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((a) =&gt; [a.name, a]));
-        projectAgents.</span><span style="color: #96a6c8;">forEach</span><span style="color: #A1D08E;">((a) =&gt; agentMap.</span><span style="color: #96a6c8;">set</span><span style="color: #A1D08E;">(a.name, a));
+  const agentMap = new Map(userAgents.</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((a) =&gt; [a.name, a]));
+  projectAgents.</span><span style="color: #96a6c8;">forEach</span><span style="color: #A1D08E;">((a) =&gt; agentMap.</span><span style="color: #96a6c8;">set</span><span style="color: #A1D08E;">(a.name, a));
 
-        return Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(agentMap.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">());
+  return Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(agentMap.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">());
 }
 
 export default function agentsBuffExtension(</span><span style="color: #f4f4ff;">pi</span><span style="color: #A1D08E;">: ExtensionAPI): void {
-        const pendingForegroundAgents: PendingForegroundAgentRequest[] = [];
-        let cachedAgents: AgentConfig[] | null = null;
-        let sessionCwd = process.</span><span style="color: #96a6c8;">cwd</span><span style="color: #A1D08E;">();
-        let runtimeCtx: any = null;
-        const runtimeCtxBySessionId = new Map&lt;string, any&gt;();
-        const backgroundSessions = new Map&lt;string, BackgroundAgentSession&gt;();
-        let lastBackgroundSessionId: string | null = null;
-        let statusTimer: ReturnType&lt;typeof setTimeout&gt; | null = null;
-
-        installDoubleAtAutocompleteTriggerPatch();
-        installAgentAutocompletePatch(() =&gt; cachedAgents ?? discoverAgents(sessionCwd));
-
-        pi.</span><span style="color: #96a6c8;">registerMessageRenderer</span><span style="color: #A1D08E;">("</span>agents-buff-background-result<span style="color: #A1D08E;">", (</span><span style="color: #f4f4ff;">message</span><span style="color: #A1D08E;">, { expanded }, </span><span style="color: #f4f4ff;">theme</span><span style="color: #A1D08E;">) =&gt; {
-                const text = extractCustomMessageText(message.content);
-                const box = new Box(1, 1, (value) =&gt; theme.</span><span style="color: #96a6c8;">bg</span><span style="color: #A1D08E;">("</span>customMessageBg<span style="color: #A1D08E;">", value));
-                const label = theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>customMessageLabel<span style="color: #A1D08E;">", `\x1b[1m[${message.customType}]\x1b[22m`);
-
-                if (!expanded) {
-                        const lines = text.</span><span style="color: #96a6c8;">split</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
-                        const firstLine = lines.</span><span style="color: #96a6c8;">find</span><span style="color: #A1D08E;">((line) =&gt; line.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">().length &gt; 0) ?? "</span>background result<span style="color: #A1D08E;">";
-                        const remainingLines = Math.</span><span style="color: #96a6c8;">max</span><span style="color: #A1D08E;">(lines.length - 1, 0);
-                        const summary = remainingLines &gt; 0 ? `... (${remainingLines} more lines, ctrl+o to expand)` : "";
-                        box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(`${label} ${theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>customMessageText<span style="color: #A1D08E;">", firstLine)}`, 0, 0));
-                        if (summary) {
-                                box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>dim<span style="color: #A1D08E;">", summary), 0, 0));
-                        }
-                        return box;
-                }
-
-                box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(label, 0, 0));
-                box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>customMessageText<span style="color: #A1D08E;">", text || "</span><span style="color: #93a8c6;">(</span>no content<span style="color: #93a8c6;">)</span><span style="color: #A1D08E;">"), 0, 0));
-                return box;
-        });
-
-        function rememberRuntimeCtx(</span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">: any): void {
-                runtimeCtx = ctx;
-                const sessionId = ctx?.sessionManager?.getSessionId?.();
-                if (typeof sessionId === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" &amp;&amp; sessionId.length &gt; 0) {
-                        runtimeCtxBySessionId.</span><span style="color: #96a6c8;">set</span><span style="color: #A1D08E;">(sessionId, ctx);
-                }
-        }
-
-        function getRuntimeCtxForSession(</span><span style="color: #f4f4ff;">sessionId</span><span style="color: #A1D08E;">: string): any | null {
-                return runtimeCtxBySessionId.</span><span style="color: #96a6c8;">get</span><span style="color: #A1D08E;">(sessionId) ?? runtimeCtx;
-        }
-
-        function prunePendingForegroundAgents(): void {
-                const threshold = Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() - PENDING_FOREGROUND_AGENT_TTL_MS;
-                for (let i = pendingForegroundAgents.length - 1; i &gt;= 0; i -= 1) {
-                        if (pendingForegroundAgents[i].createdAt &lt; </span><span style="color: #f4f4ff;">threshold</span><span style="color: #A1D08E;">) {
-                                pendingForegroundAgents.</span><span style="color: #96a6c8;">splice</span><span style="color: #A1D08E;">(i, 1);
-                        }
-                }
-        }
-
-        function enqueuePendingForegroundAgent(</span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">: AgentConfig, </span><span style="color: #f4f4ff;">prompt</span><span style="color: #A1D08E;">: string): void {
-                prunePendingForegroundAgents();
-                pendingForegroundAgents.</span><span style="color: #96a6c8;">push</span><span style="color: #A1D08E;">({ agent, prompt, createdAt: Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() });
-                if (pendingForegroundAgents.length &gt; </span><span style="color: #f4f4ff;">MAX_PENDING_FOREGROUND_AGENTS</span><span style="color: #A1D08E;">) {
-                        pendingForegroundAgents.</span><span style="color: #96a6c8;">splice</span><span style="color: #A1D08E;">(0, pendingForegroundAgents.length - MAX_PENDING_FOREGROUND_AGENTS);
-                }
-        }
-
-        function dequeuePendingForegroundAgent(</span><span style="color: #f4f4ff;">prompt</span><span style="color: #A1D08E;">: string): AgentConfig | null {
-                prunePendingForegroundAgents();
-                const index = pendingForegroundAgents.</span><span style="color: #96a6c8;">findIndex</span><span style="color: #A1D08E;">((entry) =&gt; entry.prompt === prompt);
-                if (index === -1) {
-                        return null;
-                }
-                const [entry] = pendingForegroundAgents.</span><span style="color: #96a6c8;">splice</span><span style="color: #A1D08E;">(index, 1);
-                return entry?.agent ?? null;
-        }
-
-        function getLatestActiveBackgroundSession(): BackgroundAgentSession | null {
-                let latest: BackgroundAgentSession | null = null;
-                for (const session of backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()) {
-                        if (!isBackgroundSessionActive(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">)) {
-                                continue;
-                        }
-                        if (!latest || session.startedAt &gt; latest.</span><span style="color: #f4f4ff;">startedAt</span><span style="color: #A1D08E;">) {
-                                latest = session;
-                        }
-                }
-                return latest;
-        }
-
-        function getMostRecentActiveSessionId(): string | null {
-                const latest = getLatestActiveBackgroundSession();
-                return latest?.id ?? null;
-        }
-
-        function formatElapsed(</span><span style="color: #f4f4ff;">seconds</span><span style="color: #A1D08E;">: number): string {
-                if (seconds &lt; 60) {
-                        return `${seconds}s`;
-                }
-                const minutes = Math.</span><span style="color: #96a6c8;">floor</span><span style="color: #A1D08E;">(seconds / 60);
-                const remainingSeconds = seconds % 60;
-                return `${minutes}m${remainingSeconds}s`;
-        }
-
-        function getLastBackgroundSession(): BackgroundAgentSession | null {
-                if (</span><span style="color: #f4f4ff;">lastBackgroundSessionId</span><span style="color: #A1D08E;">) {
-                        const session = backgroundSessions.</span><span style="color: #96a6c8;">get</span><span style="color: #A1D08E;">(lastBackgroundSessionId);
-                        if (</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">) {
-                                return session;
-                        }
-                }
-
-                lastBackgroundSessionId = getMostRecentActiveSessionId();
-                if (!</span><span style="color: #f4f4ff;">lastBackgroundSessionId</span><span style="color: #A1D08E;">) {
-                        return null;
-                }
-                return backgroundSessions.</span><span style="color: #96a6c8;">get</span><span style="color: #A1D08E;">(lastBackgroundSessionId) ?? null;
-        }
-
-        async function execTmux(</span><span style="color: #f4f4ff;">args</span><span style="color: #A1D08E;">: string[], </span><span style="color: #f4f4ff;">cwd?</span><span style="color: #A1D08E;">: string): Promise&lt;{ code: number; stdout: string; stderr: string }&gt; {
-                const result = await pi.</span><span style="color: #96a6c8;">exec</span><span style="color: #A1D08E;">("</span>tmux<span style="color: #A1D08E;">", args, cwd ? { cwd } : undefined);
-                return {
-                        code: result.code,
-                        stdout: result.stdout ?? "",
-                        stderr: result.stderr ?? "",
-                };
-        }
-
-        async function clearTmuxEnvironmentKeys(</span><span style="color: #f4f4ff;">keys</span><span style="color: #A1D08E;">: string[]): Promise&lt;void&gt; {
-                for (const key of </span><span style="color: #f4f4ff;">keys</span><span style="color: #A1D08E;">) {
-                        await execTmux(["</span><span style="color: #FFA657;">set</span>-environment<span style="color: #A1D08E;">", "</span>-gu<span style="color: #A1D08E;">", key]);
-                }
-        }
-
-        async function tmuxSessionExists(</span><span style="color: #f4f4ff;">sessionName</span><span style="color: #A1D08E;">: string): Promise&lt;boolean&gt; {
-                const result = await execTmux(["</span>has-session<span style="color: #A1D08E;">", "</span>-t<span style="color: #A1D08E;">", sessionName]);
-                return result.code === 0;
-        }
-
-        async function getTmuxEnvironmentValue(</span><span style="color: #f4f4ff;">key</span><span style="color: #A1D08E;">: string): Promise&lt;string | null&gt; {
-                const result = await execTmux(["</span>show-environment<span style="color: #A1D08E;">", "</span>-g<span style="color: #A1D08E;">", key]);
-                if (result.code !== 0) {
-                        return null;
-                }
-
-                const line = result.stdout.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
-                const prefix = `${key}=`;
-                if (!line.</span><span style="color: #96a6c8;">startsWith</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">prefix</span><span style="color: #A1D08E;">)) {
-                        return null;
-                }
-                return line.</span><span style="color: #96a6c8;">slice</span><span style="color: #A1D08E;">(prefix.length);
-        }
-
-        function isBackgroundSessionActive(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): boolean {
-                return session.status === "</span>starting<span style="color: #A1D08E;">" || session.status === "</span>running<span style="color: #A1D08E;">";
-        }
-
-        function updateBackgroundWidget(): void {
-                if (!</span><span style="color: #f4f4ff;">runtimeCtx</span><span style="color: #A1D08E;">) {
-                        return;
-                }
-
-                const latest = getLatestActiveBackgroundSession();
-                if (!</span><span style="color: #f4f4ff;">latest</span><span style="color: #A1D08E;">) {
-                        runtimeCtx.ui.</span><span style="color: #96a6c8;">setWidget</span><span style="color: #A1D08E;">(BACKGROUND_STATUS_WIDGET_ID, undefined);
-                        return;
-                }
-
-                const activeCount = Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()).</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">isBackgroundSessionActive</span><span style="color: #A1D08E;">).length;
-                const elapsed = Math.</span><span style="color: #96a6c8;">floor</span><span style="color: #A1D08E;">((Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() - latest.startedAt) / 1000);
-                const theme = runtimeCtx.ui.theme;
-                const text = `@@${latest.agentName} | id: ${latest.id} | tmux: ${latest.tmuxSessionName} | active: ${activeCount} | &#9201;&#65039; ${formatElapsed(elapsed)}`;
-                runtimeCtx.ui.</span><span style="color: #96a6c8;">setWidget</span><span style="color: #A1D08E;">(BACKGROUND_STATUS_WIDGET_ID, [theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>dim<span style="color: #A1D08E;">", text)], { placement: "</span>belowEditor<span style="color: #A1D08E;">" });
-        }
-
-        async function cleanupFinishedBackgroundSession(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): Promise&lt;void&gt; {
-                if (session.</span><span style="color: #f4f4ff;">cleanedUp</span><span style="color: #A1D08E;">) {
-                        return;
-                }
-                session.cleanedUp = true;
-
-                await execTmux(["</span>kill-session<span style="color: #A1D08E;">", "</span>-t<span style="color: #A1D08E;">", session.tmuxSessionName]);
-                await clearTmuxEnvironmentKeys([session.statusKey, session.exitCodeKey]);
-        }
-
-        function setSessionCompleted(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): void {
-                session.status = "</span>completed<span style="color: #A1D08E;">";
-                session.error = undefined;
-        }
-
-        function setSessionFailed(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession, </span><span style="color: #f4f4ff;">error</span><span style="color: #A1D08E;">: string): void {
-                session.status = "</span>failed<span style="color: #A1D08E;">";
-                session.error = error;
-        }
-
-        function resolveSessionFromExitCode(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession, </span><span style="color: #f4f4ff;">exitCode</span><span style="color: #A1D08E;">: number | null, </span><span style="color: #f4f4ff;">fallbackError</span><span style="color: #A1D08E;">: string): void {
-                if (exitCode === 0) {
-                        setSessionCompleted(session);
-                        return;
-                }
-                if (exitCode !== </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
-                        setSessionFailed(session, `background pi command returned exit code ${exitCode}`);
-                        return;
-                }
-                setSessionFailed(session, fallbackError);
-        }
-
-        function parseEnvironmentExitCode(</span><span style="color: #f4f4ff;">rawExitCode</span><span style="color: #A1D08E;">: string | null): number | null {
-                if (rawExitCode === </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
-                        return null;
-                }
-                const parsed = Number.</span><span style="color: #96a6c8;">parseInt</span><span style="color: #A1D08E;">(rawExitCode, 10);
-                return Number.</span><span style="color: #96a6c8;">isNaN</span><span style="color: #A1D08E;">(parsed) ? </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;"> : parsed;
-        }
-
-        function sendBackgroundCompletionToMainSession(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): boolean {
-                if (!session.</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">) {
-                        return false;
-                }
-
-                const assistantSnapshot = findLatestAssistantText(session.sessionFile);
-                const statusText = session.status === "</span>completed<span style="color: #A1D08E;">" ? "</span>completed<span style="color: #A1D08E;">" : "</span>failed<span style="color: #A1D08E;">";
-                const commands = buildAssistantHistoryCommands(session.sessionFile);
-                const fallbackText =
-                        session.status === "</span>completed<span style="color: #A1D08E;">"
-                                ? "</span>Background session completed, but no assistant text block was found <span style="color: #FFA657;">in</span> session JSONL.<span style="color: #A1D08E;">"
-                                : "</span>Background session failed before assistant text content was available <span style="color: #FFA657;">in</span> session JSONL.<span style="color: #A1D08E;">";
-                const outputText = assistantSnapshot?.text ?? fallbackText;
-                const trimmedOutput = trimToMaxChars(outputText, MAX_COMPLETION_CHARS);
-                const truncated = trimmedOutput.length &lt; outputText.length;
-                const truncatedNote = truncated ? "</span> <span style="color: #93a8c6;">(</span>truncated<span style="color: #93a8c6;">)</span><span style="color: #A1D08E;">" : "";
-                const message = [
-                        `Background @@${session.agentName} ${statusText}.`,
-                        `sessionId: ${session.sessionId ?? "</span><span style="color: #FFA657;">unknown</span><span style="color: #A1D08E;">"}`,
-                        `sessionFile: ${session.sessionFile}`,
-                        `task: ${session.task}`,
-                        session.error ? `error: ${session.error}` : undefined,
-                        "",
-                        `Last assistant structured text result${truncatedNote}:`,
-                        "```text",
-                        trimmedOutput,
-                        "```",
-                        "",
-                        `For more conversation details, read ${session.sessionFile}.`,
-                        "</span>Filter other assistant text messages <span style="color: #FFA657;">in</span> <span style="color: #95a99f;">this</span> session:<span style="color: #A1D08E;">",
-                        `rg: ${commands.rg}`,
-                        `grep: ${commands.grep}`,
-                ]
-                        .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((line): line is string =&gt; typeof line === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" &amp;&amp; line.length &gt; 0)
-                        .</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
-
-                pi.</span><span style="color: #96a6c8;">sendMessage</span><span style="color: #A1D08E;">(
-                        {
-                                customType: "</span>agents-buff-background-result<span style="color: #A1D08E;">",
-                                content: message,
-                                display: true,
-                        },
-                        { triggerTurn: true, deliverAs: "</span>followUp<span style="color: #A1D08E;">" }
-                );
-                return true;
-        }
-
-        function notifyIfFinished(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): void {
-                if (session.</span><span style="color: #f4f4ff;">notified</span><span style="color: #A1D08E;">) {
-                        return;
-                }
-
-                session.notified = true;
-                void cleanupFinishedBackgroundSession(session);
-                const sentToMainSession = sendBackgroundCompletionToMainSession(session);
-                backgroundSessions.</span><span style="color: #96a6c8;">delete</span><span style="color: #A1D08E;">(session.id);
-                if (lastBackgroundSessionId === session.</span><span style="color: #f4f4ff;">id</span><span style="color: #A1D08E;">) {
-                        lastBackgroundSessionId = getMostRecentActiveSessionId();
-                }
-
-                const targetCtx = getRuntimeCtxForSession(session.originSessionId);
-                if (!</span><span style="color: #f4f4ff;">targetCtx</span><span style="color: #A1D08E;">) {
-                        return;
-                }
-
-                const sentSuffix = sentToMainSession ? "</span> and synced to main session<span style="color: #A1D08E;">" : "";
-                if (session.status === "</span>completed<span style="color: #A1D08E;">") {
-                        targetCtx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#10003; Background agent finished: ${session.tmuxSessionName}${sentSuffix}`, "</span>success<span style="color: #A1D08E;">");
-                        return;
-                }
-
-                const reason = session.error ? ` (${session.error})` : "";
-                targetCtx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#10007; Background agent failed: ${session.tmuxSessionName}${reason}${sentSuffix}`, "</span>error<span style="color: #A1D08E;">");
-        }
-
-        async function pollBackgroundSession(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): Promise&lt;void&gt; {
-                const envStatus = await getTmuxEnvironmentValue(session.statusKey);
-                const envExitCode = parseEnvironmentExitCode(await getTmuxEnvironmentValue(session.exitCodeKey));
-                const exists = await tmuxSessionExists(session.tmuxSessionName);
-
-                if (envStatus === "</span>completed<span style="color: #A1D08E;">") {
-                        setSessionCompleted(session);
-                        notifyIfFinished(session);
-                        return;
-                }
-
-                if (envStatus === "</span>failed<span style="color: #A1D08E;">") {
-                        resolveSessionFromExitCode(session, envExitCode, "</span>background pi command returned non-zero exit code<span style="color: #A1D08E;">");
-                        notifyIfFinished(session);
-                        return;
-                }
-
-                if (!</span><span style="color: #f4f4ff;">exists</span><span style="color: #A1D08E;">) {
-                        const fallbackError =
-                                envStatus === "</span>running<span style="color: #A1D08E;">" ? "</span>tmux session ended before completion status update<span style="color: #A1D08E;">" : "</span>tmux session not found<span style="color: #A1D08E;">";
-                        resolveSessionFromExitCode(session, envExitCode, fallbackError);
-                        notifyIfFinished(session);
-                        return;
-                }
-
-                session.status = envStatus === "</span>running<span style="color: #A1D08E;">" ? "</span>running<span style="color: #A1D08E;">" : "</span>starting<span style="color: #A1D08E;">";
-        }
-
-        async function pollBackgroundSessions(): Promise&lt;void&gt; {
-                const activeSessions = Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()).</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">isBackgroundSessionActive</span><span style="color: #A1D08E;">);
-                await Promise.</span><span style="color: #96a6c8;">all</span><span style="color: #A1D08E;">(activeSessions.</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((session) =&gt; pollBackgroundSession(session)));
-
-                updateBackgroundWidget();
-                if (Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()).</span><span style="color: #96a6c8;">some</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">isBackgroundSessionActive</span><span style="color: #A1D08E;">)) {
-                        scheduleStatusPolling();
-                        return;
-                }
-                clearStatusPolling();
-        }
-
-        function scheduleStatusPolling(): void {
-                if (statusTimer !== </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
-                        return;
-                }
-
-                statusTimer = setTimeout(() =&gt; {
-                        statusTimer = null;
-                        void pollBackgroundSessions();
-                }, STATUS_CHECK_INTERVAL_MS);
-        }
-
-        function clearStatusPolling(): void {
-                if (statusTimer === </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
-                        return;
-                }
-                clearTimeout(statusTimer);
-                statusTimer = null;
-        }
-
-        async function waitForTmuxSessionStartup(</span><span style="color: #f4f4ff;">sessionName</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">timeoutMs</span><span style="color: #A1D08E;">: number): Promise&lt;boolean&gt; {
-                const deadline = Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() + timeoutMs;
-                while (Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() &lt;= </span><span style="color: #f4f4ff;">deadline</span><span style="color: #A1D08E;">) {
-                        if (await tmuxSessionExists(</span><span style="color: #f4f4ff;">sessionName</span><span style="color: #A1D08E;">)) {
-                                return true;
-                        }
-                        await sleep(BACKGROUND_SESSION_START_POLL_INTERVAL_MS);
-                }
-                return tmuxSessionExists(sessionName);
-        }
-
-        async function startBackgroundAgentSession(
-                </span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">: AgentConfig,
-                </span><span style="color: #f4f4ff;">task</span><span style="color: #A1D08E;">: string,
-                </span><span style="color: #f4f4ff;">cwd</span><span style="color: #A1D08E;">: string,
-                </span><span style="color: #f4f4ff;">originSessionId</span><span style="color: #A1D08E;">: string
-        ): Promise&lt;BackgroundAgentSession&gt; {
-                const id = createTaskId();
-                const tmuxSessionName = generateSessionName(agent.name, task, id);
-                const statusKey = `${TMUX_STATUS_KEY_PREFIX}${id}`;
-                const exitCodeKey = `${TMUX_EXIT_CODE_KEY_PREFIX}${id}`;
-                const sessionMetaPath = path.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">(os.</span><span style="color: #96a6c8;">tmpdir</span><span style="color: #A1D08E;">(), `pi-bg-session-meta-${id}.json`);
-                const command = buildBackgroundPiCommand(agent.name, task, statusKey, exitCodeKey, sessionMetaPath);
-
-                try {
-                        fs.</span><span style="color: #96a6c8;">unlinkSync</span><span style="color: #A1D08E;">(sessionMetaPath);
-                } catch {
-                        // Ignore stale metadata file cleanup errors.
-                }
-
-                await clearTmuxEnvironmentKeys([statusKey, exitCodeKey]);
-
-                const result = await execTmux(["</span><span style="color: #FFA657;">new</span>-session<span style="color: #A1D08E;">", "</span>-d<span style="color: #A1D08E;">", "</span>-s<span style="color: #A1D08E;">", tmuxSessionName, "</span>-c<span style="color: #A1D08E;">", cwd, command], cwd);
-                if (result.code !== 0) {
-                        throw new Error(result.stderr || `failed to start tmux session ${tmuxSessionName}`);
-                }
-
-                const exists = await waitForTmuxSessionStartup(tmuxSessionName, BACKGROUND_SESSION_START_WAIT_MS);
-                if (!</span><span style="color: #f4f4ff;">exists</span><span style="color: #A1D08E;">) {
-                        throw new Error(`tmux session did not start: ${tmuxSessionName}`);
-                }
-
-                const metadata = await waitForBackgroundSessionMetadata(sessionMetaPath, BACKGROUND_SESSION_META_WAIT_MS);
-                try {
-                        fs.</span><span style="color: #96a6c8;">unlinkSync</span><span style="color: #A1D08E;">(sessionMetaPath);
-                } catch {
-                        // Ignore metadata cleanup errors.
-                }
-
-                return {
-                        id,
-                        agentName: agent.name,
-                        task,
-                        tmuxSessionName,
-                        originSessionId,
-                        sessionId: metadata?.sessionId,
-                        sessionFile: metadata?.sessionFile,
-                        status: "</span>starting<span style="color: #A1D08E;">",
-                        startedAt: Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">(),
-                        statusKey,
-                        exitCodeKey,
-                };
-        }
-
-        async function startBackgroundAgentTask(</span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">: AgentConfig, </span><span style="color: #f4f4ff;">task</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">: any): Promise&lt;void&gt; {
-                try {
-                        rememberRuntimeCtx(ctx);
-                        const originSessionId = ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionId</span><span style="color: #A1D08E;">();
-                        const session = await startBackgroundAgentSession(agent, task, ctx.cwd, originSessionId);
-                        backgroundSessions.</span><span style="color: #96a6c8;">set</span><span style="color: #A1D08E;">(session.id, session);
-                        lastBackgroundSessionId = session.id;
-                        updateBackgroundWidget();
-                        scheduleStatusPolling();
-                        ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#129302; Started @@${agent.name} in tmux session: ${session.tmuxSessionName}`, "</span>success<span style="color: #A1D08E;">");
-                        ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`Attach with: tmux attach -t ${session.tmuxSessionName}`, "</span>info<span style="color: #A1D08E;">");
-                        if (!session.</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">) {
-                                ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">("</span>Background session metadata not available yet; result sync may be skipped.<span style="color: #A1D08E;">", "</span>warning<span style="color: #A1D08E;">");
-                        }
-                } catch (</span><span style="color: #f4f4ff;">err</span><span style="color: #A1D08E;">: unknown) {
-                        const message = err instanceof Error ? err.message : "</span><span style="color: #FFA657;">unknown</span> error<span style="color: #A1D08E;">";
-                        ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#10007; Failed to start background agent: ${message}`, "</span>error<span style="color: #A1D08E;">");
-                }
-        }
-
-        function findAgentByName(</span><span style="color: #f4f4ff;">agents</span><span style="color: #A1D08E;">: AgentConfig[], </span><span style="color: #f4f4ff;">agentName</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">: any): AgentConfig | null {
-                const agent = agents.</span><span style="color: #96a6c8;">find</span><span style="color: #A1D08E;">((candidate) =&gt; candidate.name === agentName);
-                if (</span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">) {
-                        return agent;
-                }
-                ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`Unknown agent "</span><span style="color: #96a6c8;">@$</span><span style="color: #93a8c6;">{</span>agentName<span style="color: #93a8c6;">}</span><span style="color: #A1D08E;">". Type @ to autocomplete available agents.`, "</span>error<span style="color: #A1D08E;">");
-                return null;
-        }
-
-        pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>session_start<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">_event</span><span style="color: #A1D08E;">, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">) {
-                rememberRuntimeCtx(ctx);
-                sessionCwd = ctx.cwd;
-                cachedAgents = discoverAgents(ctx.cwd);
-
-                const sessionMetaPath = process.env[BACKGROUND_SESSION_META_ENV_KEY];
-                if (sessionMetaPath) {
-                        try {
-                                const sessionInfo = {
-                                        sessionId: ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionId</span><span style="color: #A1D08E;">(),
-                                        sessionFile: ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionFile</span><span style="color: #A1D08E;">(),
-                                };
-                                fs.</span><span style="color: #96a6c8;">writeFileSync</span><span style="color: #A1D08E;">(sessionMetaPath, JSON.</span><span style="color: #96a6c8;">stringify</span><span style="color: #A1D08E;">(sessionInfo), "</span>utf-8<span style="color: #A1D08E;">");
-                        } catch {
-                                // Ignore metadata write failures in child sessions.
-                        }
-                }
-
-                if (ctx.hasUI) {
-                        ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`Loaded ${cachedAgents.length} agents. Use @agent-name or @@agent-name`, "</span>info<span style="color: #A1D08E;">");
-                }
-        });
-
-        pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>session_shutdown<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">_event</span><span style="color: #A1D08E;">, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">) {
-                const sessionId = ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionId</span><span style="color: #A1D08E;">();
-                runtimeCtxBySessionId.</span><span style="color: #96a6c8;">delete</span><span style="color: #A1D08E;">(sessionId);
-                if (runtimeCtxBySessionId.size === 0) {
-                        runtimeCtx = null;
-                        clearStatusPolling();
-                }
-        });
-
-        pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>before_agent_start<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">event</span><span style="color: #A1D08E;">) {
-                const queuedAgent = dequeuePendingForegroundAgent(event.prompt);
-                if (!queuedAgent) {
-                        return {};
-                }
-                const fullPrompt = event.systemPrompt + "</span>\n\n<span style="color: #A1D08E;">" + queuedAgent.systemPrompt;
-                return { systemPrompt: fullPrompt };
-        });
-
-        pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>input<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">event</span><span style="color: #A1D08E;">, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">) {
-                rememberRuntimeCtx(ctx);
-                if (event.source === "</span>extension<span style="color: #A1D08E;">") {
-                        return { action: "</span><span style="color: #FFA657;">continue</span><span style="color: #A1D08E;">" };
-                }
-
-                const text = event.text.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
-                const agents = cachedAgents ?? discoverAgents(ctx.cwd);
-
-                const backgroundMatch = text.</span><span style="color: #96a6c8;">match</span><span style="color: #A1D08E;">(BACKGROUND_AGENT_NAME_PATTERN);
-                if (backgroundMatch) {
-                        const [, agentName, task] = backgroundMatch;
-                        const agent = findAgentByName(agents, agentName, ctx);
-                        if (!agent) {
-                                return { action: "</span>handled<span style="color: #A1D08E;">" };
-                        }
-
-                        await startBackgroundAgentTask(agent, task, ctx);
-                        return { action: "</span>handled<span style="color: #A1D08E;">" };
-                }
-
-                const match = text.</span><span style="color: #96a6c8;">match</span><span style="color: #A1D08E;">(AGENT_NAME_PATTERN);
-                if (!match) {
-                        return { action: "</span><span style="color: #FFA657;">continue</span><span style="color: #A1D08E;">" };
-                }
-
-                const [, agentName, task] = match;
-                const agent = findAgentByName(agents, agentName, ctx);
-                if (!agent) {
-                        return { action: "</span>handled<span style="color: #A1D08E;">" };
-                }
-
-                enqueuePendingForegroundAgent(agent, text);
-                ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#129302; Start agent @${agentName}`, "</span>info<span style="color: #A1D08E;">");
-
-                return { action: "</span>transform<span style="color: #A1D08E;">", text };
-        });
+  const pendingForegroundAgents: PendingForegroundAgentRequest[] = [];
+  let cachedAgents: AgentConfig[] | null = null;
+  let sessionCwd = process.</span><span style="color: #96a6c8;">cwd</span><span style="color: #A1D08E;">();
+  let runtimeCtx: any = null;
+  const runtimeCtxBySessionId = new Map&lt;string, any&gt;();
+  const backgroundSessions = new Map&lt;string, BackgroundAgentSession&gt;();
+  let lastBackgroundSessionId: string | null = null;
+  let statusTimer: ReturnType&lt;typeof setTimeout&gt; | null = null;
+
+  installDoubleAtAutocompleteTriggerPatch();
+  installAgentAutocompletePatch(() =&gt; cachedAgents ?? discoverAgents(sessionCwd));
+
+  pi.</span><span style="color: #96a6c8;">registerMessageRenderer</span><span style="color: #A1D08E;">("</span>agents-buff-background-result<span style="color: #A1D08E;">", (</span><span style="color: #f4f4ff;">message</span><span style="color: #A1D08E;">, { expanded }, </span><span style="color: #f4f4ff;">theme</span><span style="color: #A1D08E;">) =&gt; {
+    const text = extractCustomMessageText(message.content);
+    const box = new Box(1, 1, (value) =&gt; theme.</span><span style="color: #96a6c8;">bg</span><span style="color: #A1D08E;">("</span>customMessageBg<span style="color: #A1D08E;">", value));
+    const label = theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>customMessageLabel<span style="color: #A1D08E;">", `\x1b[1m[${message.customType}]\x1b[22m`);
+
+    if (!expanded) {
+      const lines = text.</span><span style="color: #96a6c8;">split</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
+      const firstLine = lines.</span><span style="color: #96a6c8;">find</span><span style="color: #A1D08E;">((line) =&gt; line.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">().length &gt; 0) ?? "</span>background result<span style="color: #A1D08E;">";
+      const remainingLines = Math.</span><span style="color: #96a6c8;">max</span><span style="color: #A1D08E;">(lines.length - 1, 0);
+      const summary = remainingLines &gt; 0 ? `... (${remainingLines} more lines, ctrl+o to expand)` : "";
+      box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(`${label} ${theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>customMessageText<span style="color: #A1D08E;">", firstLine)}`, 0, 0));
+      if (summary) {
+        box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>dim<span style="color: #A1D08E;">", summary), 0, 0));
+      }
+      return box;
+    }
+
+    box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(label, 0, 0));
+    box.</span><span style="color: #96a6c8;">addChild</span><span style="color: #A1D08E;">(new Text(theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>customMessageText<span style="color: #A1D08E;">", text || "</span><span style="color: #93a8c6;">(</span>no content<span style="color: #93a8c6;">)</span><span style="color: #A1D08E;">"), 0, 0));
+    return box;
+  });
+
+  function rememberRuntimeCtx(</span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">: any): void {
+    runtimeCtx = ctx;
+    const sessionId = ctx?.sessionManager?.getSessionId?.();
+    if (typeof sessionId === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" &amp;&amp; sessionId.length &gt; 0) {
+      runtimeCtxBySessionId.</span><span style="color: #96a6c8;">set</span><span style="color: #A1D08E;">(sessionId, ctx);
+    }
+  }
+
+  function getRuntimeCtxForSession(</span><span style="color: #f4f4ff;">sessionId</span><span style="color: #A1D08E;">: string): any | null {
+    return runtimeCtxBySessionId.</span><span style="color: #96a6c8;">get</span><span style="color: #A1D08E;">(sessionId) ?? runtimeCtx;
+  }
+
+  function prunePendingForegroundAgents(): void {
+    const threshold = Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() - PENDING_FOREGROUND_AGENT_TTL_MS;
+    for (let i = pendingForegroundAgents.length - 1; i &gt;= 0; i -= 1) {
+      if (pendingForegroundAgents[i].createdAt &lt; </span><span style="color: #f4f4ff;">threshold</span><span style="color: #A1D08E;">) {
+        pendingForegroundAgents.</span><span style="color: #96a6c8;">splice</span><span style="color: #A1D08E;">(i, 1);
+      }
+    }
+  }
+
+  function enqueuePendingForegroundAgent(</span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">: AgentConfig, </span><span style="color: #f4f4ff;">prompt</span><span style="color: #A1D08E;">: string): void {
+    prunePendingForegroundAgents();
+    pendingForegroundAgents.</span><span style="color: #96a6c8;">push</span><span style="color: #A1D08E;">({ agent, prompt, createdAt: Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() });
+    if (pendingForegroundAgents.length &gt; </span><span style="color: #f4f4ff;">MAX_PENDING_FOREGROUND_AGENTS</span><span style="color: #A1D08E;">) {
+      pendingForegroundAgents.</span><span style="color: #96a6c8;">splice</span><span style="color: #A1D08E;">(0, pendingForegroundAgents.length - MAX_PENDING_FOREGROUND_AGENTS);
+    }
+  }
+
+  function dequeuePendingForegroundAgent(</span><span style="color: #f4f4ff;">prompt</span><span style="color: #A1D08E;">: string): AgentConfig | null {
+    prunePendingForegroundAgents();
+    const index = pendingForegroundAgents.</span><span style="color: #96a6c8;">findIndex</span><span style="color: #A1D08E;">((entry) =&gt; entry.prompt === prompt);
+    if (index === -1) {
+      return null;
+    }
+    const [entry] = pendingForegroundAgents.</span><span style="color: #96a6c8;">splice</span><span style="color: #A1D08E;">(index, 1);
+    return entry?.agent ?? null;
+  }
+
+  function getLatestActiveBackgroundSession(): BackgroundAgentSession | null {
+    let latest: BackgroundAgentSession | null = null;
+    for (const session of backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()) {
+      if (!isBackgroundSessionActive(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">)) {
+        continue;
+      }
+      if (!latest || session.startedAt &gt; latest.</span><span style="color: #f4f4ff;">startedAt</span><span style="color: #A1D08E;">) {
+        latest = session;
+      }
+    }
+    return latest;
+  }
+
+  function getMostRecentActiveSessionId(): string | null {
+    const latest = getLatestActiveBackgroundSession();
+    return latest?.id ?? null;
+  }
+
+  function formatElapsed(</span><span style="color: #f4f4ff;">seconds</span><span style="color: #A1D08E;">: number): string {
+    if (seconds &lt; 60) {
+      return `${seconds}s`;
+    }
+    const minutes = Math.</span><span style="color: #96a6c8;">floor</span><span style="color: #A1D08E;">(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}m${remainingSeconds}s`;
+  }
+
+  function getLastBackgroundSession(): BackgroundAgentSession | null {
+    if (</span><span style="color: #f4f4ff;">lastBackgroundSessionId</span><span style="color: #A1D08E;">) {
+      const session = backgroundSessions.</span><span style="color: #96a6c8;">get</span><span style="color: #A1D08E;">(lastBackgroundSessionId);
+      if (</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">) {
+        return session;
+      }
+    }
+
+    lastBackgroundSessionId = getMostRecentActiveSessionId();
+    if (!</span><span style="color: #f4f4ff;">lastBackgroundSessionId</span><span style="color: #A1D08E;">) {
+      return null;
+    }
+    return backgroundSessions.</span><span style="color: #96a6c8;">get</span><span style="color: #A1D08E;">(lastBackgroundSessionId) ?? null;
+  }
+
+  async function execTmux(</span><span style="color: #f4f4ff;">args</span><span style="color: #A1D08E;">: string[], </span><span style="color: #f4f4ff;">cwd?</span><span style="color: #A1D08E;">: string): Promise&lt;{ code: number; stdout: string; stderr: string }&gt; {
+    const result = await pi.</span><span style="color: #96a6c8;">exec</span><span style="color: #A1D08E;">("</span>tmux<span style="color: #A1D08E;">", args, cwd ? { cwd } : undefined);
+    return {
+      code: result.code,
+      stdout: result.stdout ?? "",
+      stderr: result.stderr ?? "",
+    };
+  }
+
+  async function clearTmuxEnvironmentKeys(</span><span style="color: #f4f4ff;">keys</span><span style="color: #A1D08E;">: string[]): Promise&lt;void&gt; {
+    for (const key of </span><span style="color: #f4f4ff;">keys</span><span style="color: #A1D08E;">) {
+      await execTmux(["</span><span style="color: #FFA657;">set</span>-environment<span style="color: #A1D08E;">", "</span>-gu<span style="color: #A1D08E;">", key]);
+    }
+  }
+
+  async function tmuxSessionExists(</span><span style="color: #f4f4ff;">sessionName</span><span style="color: #A1D08E;">: string): Promise&lt;boolean&gt; {
+    const result = await execTmux(["</span>has-session<span style="color: #A1D08E;">", "</span>-t<span style="color: #A1D08E;">", sessionName]);
+    return result.code === 0;
+  }
+
+  async function getTmuxEnvironmentValue(</span><span style="color: #f4f4ff;">key</span><span style="color: #A1D08E;">: string): Promise&lt;string | null&gt; {
+    const result = await execTmux(["</span>show-environment<span style="color: #A1D08E;">", "</span>-g<span style="color: #A1D08E;">", key]);
+    if (result.code !== 0) {
+      return null;
+    }
+
+    const line = result.stdout.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
+    const prefix = `${key}=`;
+    if (!line.</span><span style="color: #96a6c8;">startsWith</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">prefix</span><span style="color: #A1D08E;">)) {
+      return null;
+    }
+    return line.</span><span style="color: #96a6c8;">slice</span><span style="color: #A1D08E;">(prefix.length);
+  }
+
+  function isBackgroundSessionActive(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): boolean {
+    return session.status === "</span>starting<span style="color: #A1D08E;">" || session.status === "</span>running<span style="color: #A1D08E;">";
+  }
+
+  function updateBackgroundWidget(): void {
+    if (!</span><span style="color: #f4f4ff;">runtimeCtx</span><span style="color: #A1D08E;">) {
+      return;
+    }
+
+    const latest = getLatestActiveBackgroundSession();
+    if (!</span><span style="color: #f4f4ff;">latest</span><span style="color: #A1D08E;">) {
+      runtimeCtx.ui.</span><span style="color: #96a6c8;">setWidget</span><span style="color: #A1D08E;">(BACKGROUND_STATUS_WIDGET_ID, undefined);
+      return;
+    }
+
+    const activeCount = Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()).</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">isBackgroundSessionActive</span><span style="color: #A1D08E;">).length;
+    const elapsed = Math.</span><span style="color: #96a6c8;">floor</span><span style="color: #A1D08E;">((Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() - latest.startedAt) / 1000);
+    const theme = runtimeCtx.ui.theme;
+    const text = `@@${latest.agentName} | id: ${latest.id} | tmux: ${latest.tmuxSessionName} | active: ${activeCount} | &#9201;&#65039; ${formatElapsed(elapsed)}`;
+    runtimeCtx.ui.</span><span style="color: #96a6c8;">setWidget</span><span style="color: #A1D08E;">(BACKGROUND_STATUS_WIDGET_ID, [theme.</span><span style="color: #96a6c8;">fg</span><span style="color: #A1D08E;">("</span>dim<span style="color: #A1D08E;">", text)], { placement: "</span>belowEditor<span style="color: #A1D08E;">" });
+  }
+
+  async function cleanupFinishedBackgroundSession(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): Promise&lt;void&gt; {
+    if (session.</span><span style="color: #f4f4ff;">cleanedUp</span><span style="color: #A1D08E;">) {
+      return;
+    }
+    session.cleanedUp = true;
+
+    await execTmux(["</span>kill-session<span style="color: #A1D08E;">", "</span>-t<span style="color: #A1D08E;">", session.tmuxSessionName]);
+    await clearTmuxEnvironmentKeys([session.statusKey, session.exitCodeKey]);
+  }
+
+  function setSessionCompleted(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): void {
+    session.status = "</span>completed<span style="color: #A1D08E;">";
+    session.error = undefined;
+  }
+
+  function setSessionFailed(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession, </span><span style="color: #f4f4ff;">error</span><span style="color: #A1D08E;">: string): void {
+    session.status = "</span>failed<span style="color: #A1D08E;">";
+    session.error = error;
+  }
+
+  function resolveSessionFromExitCode(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession, </span><span style="color: #f4f4ff;">exitCode</span><span style="color: #A1D08E;">: number | null, </span><span style="color: #f4f4ff;">fallbackError</span><span style="color: #A1D08E;">: string): void {
+    if (exitCode === 0) {
+      setSessionCompleted(session);
+      return;
+    }
+    if (exitCode !== </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
+      setSessionFailed(session, `background pi command returned exit code ${exitCode}`);
+      return;
+    }
+    setSessionFailed(session, fallbackError);
+  }
+
+  function parseEnvironmentExitCode(</span><span style="color: #f4f4ff;">rawExitCode</span><span style="color: #A1D08E;">: string | null): number | null {
+    if (rawExitCode === </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
+      return null;
+    }
+    const parsed = Number.</span><span style="color: #96a6c8;">parseInt</span><span style="color: #A1D08E;">(rawExitCode, 10);
+    return Number.</span><span style="color: #96a6c8;">isNaN</span><span style="color: #A1D08E;">(parsed) ? </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;"> : parsed;
+  }
+
+  function sendBackgroundCompletionToMainSession(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): boolean {
+    if (!session.</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">) {
+      return false;
+    }
+
+    const assistantSnapshot = findLatestAssistantText(session.sessionFile);
+    const statusText = session.status === "</span>completed<span style="color: #A1D08E;">" ? "</span>completed<span style="color: #A1D08E;">" : "</span>failed<span style="color: #A1D08E;">";
+    const commands = buildAssistantHistoryCommands(session.sessionFile);
+    const fallbackText =
+      session.status === "</span>completed<span style="color: #A1D08E;">"
+        ? "</span>Background session completed, but no assistant text block was found <span style="color: #FFA657;">in</span> session JSONL.<span style="color: #A1D08E;">"
+        : "</span>Background session failed before assistant text content was available <span style="color: #FFA657;">in</span> session JSONL.<span style="color: #A1D08E;">";
+    const outputText = assistantSnapshot?.text ?? fallbackText;
+    const trimmedOutput = trimToMaxChars(outputText, MAX_COMPLETION_CHARS);
+    const truncated = trimmedOutput.length &lt; outputText.length;
+    const truncatedNote = truncated ? "</span> <span style="color: #93a8c6;">(</span>truncated<span style="color: #93a8c6;">)</span><span style="color: #A1D08E;">" : "";
+    const message = [
+      `Background @@${session.agentName} ${statusText}.`,
+      `sessionId: ${session.sessionId ?? "</span><span style="color: #FFA657;">unknown</span><span style="color: #A1D08E;">"}`,
+      `sessionFile: ${session.sessionFile}`,
+      `task: ${session.task}`,
+      session.error ? `error: ${session.error}` : undefined,
+      "",
+      `Last assistant structured text result${truncatedNote}:`,
+      "```text",
+      trimmedOutput,
+      "```",
+      "",
+      `For more conversation details, read ${session.sessionFile}.`,
+      "</span>Filter other assistant text messages <span style="color: #FFA657;">in</span> <span style="color: #95a99f;">this</span> session:<span style="color: #A1D08E;">",
+      `rg: ${commands.rg}`,
+      `grep: ${commands.grep}`,
+    ]
+      .</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">((line): line is string =&gt; typeof line === "</span><span style="color: #FFA657;">string</span><span style="color: #A1D08E;">" &amp;&amp; line.length &gt; 0)
+      .</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">("</span>\n<span style="color: #A1D08E;">");
+
+    pi.</span><span style="color: #96a6c8;">sendMessage</span><span style="color: #A1D08E;">(
+      {
+        customType: "</span>agents-buff-background-result<span style="color: #A1D08E;">",
+        content: message,
+        display: true,
+      },
+      { triggerTurn: true, deliverAs: "</span>followUp<span style="color: #A1D08E;">" }
+    );
+    return true;
+  }
+
+  function notifyIfFinished(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): void {
+    if (session.</span><span style="color: #f4f4ff;">notified</span><span style="color: #A1D08E;">) {
+      return;
+    }
+
+    session.notified = true;
+    void cleanupFinishedBackgroundSession(session);
+    const sentToMainSession = sendBackgroundCompletionToMainSession(session);
+    backgroundSessions.</span><span style="color: #96a6c8;">delete</span><span style="color: #A1D08E;">(session.id);
+    if (lastBackgroundSessionId === session.</span><span style="color: #f4f4ff;">id</span><span style="color: #A1D08E;">) {
+      lastBackgroundSessionId = getMostRecentActiveSessionId();
+    }
+
+    const targetCtx = getRuntimeCtxForSession(session.originSessionId);
+    if (!</span><span style="color: #f4f4ff;">targetCtx</span><span style="color: #A1D08E;">) {
+      return;
+    }
+
+    const sentSuffix = sentToMainSession ? "</span> and synced to main session<span style="color: #A1D08E;">" : "";
+    if (session.status === "</span>completed<span style="color: #A1D08E;">") {
+      targetCtx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#10003; Background agent finished: ${session.tmuxSessionName}${sentSuffix}`, "</span>success<span style="color: #A1D08E;">");
+      return;
+    }
+
+    const reason = session.error ? ` (${session.error})` : "";
+    targetCtx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#10007; Background agent failed: ${session.tmuxSessionName}${reason}${sentSuffix}`, "</span>error<span style="color: #A1D08E;">");
+  }
+
+  async function pollBackgroundSession(</span><span style="color: #f4f4ff;">session</span><span style="color: #A1D08E;">: BackgroundAgentSession): Promise&lt;void&gt; {
+    const envStatus = await getTmuxEnvironmentValue(session.statusKey);
+    const envExitCode = parseEnvironmentExitCode(await getTmuxEnvironmentValue(session.exitCodeKey));
+    const exists = await tmuxSessionExists(session.tmuxSessionName);
+
+    if (envStatus === "</span>completed<span style="color: #A1D08E;">") {
+      setSessionCompleted(session);
+      notifyIfFinished(session);
+      return;
+    }
+
+    if (envStatus === "</span>failed<span style="color: #A1D08E;">") {
+      resolveSessionFromExitCode(session, envExitCode, "</span>background pi command returned non-zero exit code<span style="color: #A1D08E;">");
+      notifyIfFinished(session);
+      return;
+    }
+
+    if (!</span><span style="color: #f4f4ff;">exists</span><span style="color: #A1D08E;">) {
+      const fallbackError =
+        envStatus === "</span>running<span style="color: #A1D08E;">" ? "</span>tmux session ended before completion status update<span style="color: #A1D08E;">" : "</span>tmux session not found<span style="color: #A1D08E;">";
+      resolveSessionFromExitCode(session, envExitCode, fallbackError);
+      notifyIfFinished(session);
+      return;
+    }
+
+    session.status = envStatus === "</span>running<span style="color: #A1D08E;">" ? "</span>running<span style="color: #A1D08E;">" : "</span>starting<span style="color: #A1D08E;">";
+  }
+
+  async function pollBackgroundSessions(): Promise&lt;void&gt; {
+    const activeSessions = Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()).</span><span style="color: #96a6c8;">filter</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">isBackgroundSessionActive</span><span style="color: #A1D08E;">);
+    await Promise.</span><span style="color: #96a6c8;">all</span><span style="color: #A1D08E;">(activeSessions.</span><span style="color: #96a6c8;">map</span><span style="color: #A1D08E;">((session) =&gt; pollBackgroundSession(session)));
+
+    updateBackgroundWidget();
+    if (Array.</span><span style="color: #96a6c8;">from</span><span style="color: #A1D08E;">(backgroundSessions.</span><span style="color: #96a6c8;">values</span><span style="color: #A1D08E;">()).</span><span style="color: #96a6c8;">some</span><span style="color: #A1D08E;">(</span><span style="color: #f4f4ff;">isBackgroundSessionActive</span><span style="color: #A1D08E;">)) {
+      scheduleStatusPolling();
+      return;
+    }
+    clearStatusPolling();
+  }
+
+  function scheduleStatusPolling(): void {
+    if (statusTimer !== </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
+      return;
+    }
+
+    statusTimer = setTimeout(() =&gt; {
+      statusTimer = null;
+      void pollBackgroundSessions();
+    }, STATUS_CHECK_INTERVAL_MS);
+  }
+
+  function clearStatusPolling(): void {
+    if (statusTimer === </span><span style="color: #f4f4ff;">null</span><span style="color: #A1D08E;">) {
+      return;
+    }
+    clearTimeout(statusTimer);
+    statusTimer = null;
+  }
+
+  async function waitForTmuxSessionStartup(</span><span style="color: #f4f4ff;">sessionName</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">timeoutMs</span><span style="color: #A1D08E;">: number): Promise&lt;boolean&gt; {
+    const deadline = Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() + timeoutMs;
+    while (Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">() &lt;= </span><span style="color: #f4f4ff;">deadline</span><span style="color: #A1D08E;">) {
+      if (await tmuxSessionExists(</span><span style="color: #f4f4ff;">sessionName</span><span style="color: #A1D08E;">)) {
+        return true;
+      }
+      await sleep(BACKGROUND_SESSION_START_POLL_INTERVAL_MS);
+    }
+    return tmuxSessionExists(sessionName);
+  }
+
+  async function startBackgroundAgentSession(
+    </span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">: AgentConfig,
+    </span><span style="color: #f4f4ff;">task</span><span style="color: #A1D08E;">: string,
+    </span><span style="color: #f4f4ff;">cwd</span><span style="color: #A1D08E;">: string,
+    </span><span style="color: #f4f4ff;">originSessionId</span><span style="color: #A1D08E;">: string
+  ): Promise&lt;BackgroundAgentSession&gt; {
+    const id = createTaskId();
+    const tmuxSessionName = generateSessionName(agent.name, task, id);
+    const statusKey = `${TMUX_STATUS_KEY_PREFIX}${id}`;
+    const exitCodeKey = `${TMUX_EXIT_CODE_KEY_PREFIX}${id}`;
+    const sessionMetaPath = path.</span><span style="color: #96a6c8;">join</span><span style="color: #A1D08E;">(os.</span><span style="color: #96a6c8;">tmpdir</span><span style="color: #A1D08E;">(), `pi-bg-session-meta-${id}.json`);
+    const command = buildBackgroundPiCommand(agent.name, task, statusKey, exitCodeKey, sessionMetaPath);
+
+    try {
+      fs.</span><span style="color: #96a6c8;">unlinkSync</span><span style="color: #A1D08E;">(sessionMetaPath);
+    } catch {
+      // Ignore stale metadata file cleanup errors.
+    }
+
+    await clearTmuxEnvironmentKeys([statusKey, exitCodeKey]);
+
+    const result = await execTmux(["</span><span style="color: #FFA657;">new</span>-session<span style="color: #A1D08E;">", "</span>-d<span style="color: #A1D08E;">", "</span>-s<span style="color: #A1D08E;">", tmuxSessionName, "</span>-c<span style="color: #A1D08E;">", cwd, command], cwd);
+    if (result.code !== 0) {
+      throw new Error(result.stderr || `failed to start tmux session ${tmuxSessionName}`);
+    }
+
+    const exists = await waitForTmuxSessionStartup(tmuxSessionName, BACKGROUND_SESSION_START_WAIT_MS);
+    if (!</span><span style="color: #f4f4ff;">exists</span><span style="color: #A1D08E;">) {
+      throw new Error(`tmux session did not start: ${tmuxSessionName}`);
+    }
+
+    const metadata = await waitForBackgroundSessionMetadata(sessionMetaPath, BACKGROUND_SESSION_META_WAIT_MS);
+    try {
+      fs.</span><span style="color: #96a6c8;">unlinkSync</span><span style="color: #A1D08E;">(sessionMetaPath);
+    } catch {
+      // Ignore metadata cleanup errors.
+    }
+
+    return {
+      id,
+      agentName: agent.name,
+      task,
+      tmuxSessionName,
+      originSessionId,
+      sessionId: metadata?.sessionId,
+      sessionFile: metadata?.sessionFile,
+      status: "</span>starting<span style="color: #A1D08E;">",
+      startedAt: Date.</span><span style="color: #96a6c8;">now</span><span style="color: #A1D08E;">(),
+      statusKey,
+      exitCodeKey,
+    };
+  }
+
+  async function startBackgroundAgentTask(</span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">: AgentConfig, </span><span style="color: #f4f4ff;">task</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">: any): Promise&lt;void&gt; {
+    try {
+      rememberRuntimeCtx(ctx);
+      const originSessionId = ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionId</span><span style="color: #A1D08E;">();
+      const session = await startBackgroundAgentSession(agent, task, ctx.cwd, originSessionId);
+      backgroundSessions.</span><span style="color: #96a6c8;">set</span><span style="color: #A1D08E;">(session.id, session);
+      lastBackgroundSessionId = session.id;
+      updateBackgroundWidget();
+      scheduleStatusPolling();
+      ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#129302; Started @@${agent.name} in tmux session: ${session.tmuxSessionName}`, "</span>success<span style="color: #A1D08E;">");
+      ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`Attach with: tmux attach -t ${session.tmuxSessionName}`, "</span>info<span style="color: #A1D08E;">");
+      if (!session.</span><span style="color: #f4f4ff;">sessionFile</span><span style="color: #A1D08E;">) {
+        ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">("</span>Background session metadata not available yet; result sync may be skipped.<span style="color: #A1D08E;">", "</span>warning<span style="color: #A1D08E;">");
+      }
+    } catch (</span><span style="color: #f4f4ff;">err</span><span style="color: #A1D08E;">: unknown) {
+      const message = err instanceof Error ? err.message : "</span><span style="color: #FFA657;">unknown</span> error<span style="color: #A1D08E;">";
+      ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#10007; Failed to start background agent: ${message}`, "</span>error<span style="color: #A1D08E;">");
+    }
+  }
+
+  function findAgentByName(</span><span style="color: #f4f4ff;">agents</span><span style="color: #A1D08E;">: AgentConfig[], </span><span style="color: #f4f4ff;">agentName</span><span style="color: #A1D08E;">: string, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">: any): AgentConfig | null {
+    const agent = agents.</span><span style="color: #96a6c8;">find</span><span style="color: #A1D08E;">((candidate) =&gt; candidate.name === agentName);
+    if (</span><span style="color: #f4f4ff;">agent</span><span style="color: #A1D08E;">) {
+      return agent;
+    }
+    ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`Unknown agent "</span><span style="color: #96a6c8;">@$</span><span style="color: #93a8c6;">{</span>agentName<span style="color: #93a8c6;">}</span><span style="color: #A1D08E;">". Type @ to autocomplete available agents.`, "</span>error<span style="color: #A1D08E;">");
+    return null;
+  }
+
+  pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>session_start<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">_event</span><span style="color: #A1D08E;">, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">) {
+    rememberRuntimeCtx(ctx);
+    sessionCwd = ctx.cwd;
+    cachedAgents = discoverAgents(ctx.cwd);
+
+    const sessionMetaPath = process.env[BACKGROUND_SESSION_META_ENV_KEY];
+    if (sessionMetaPath) {
+      try {
+        const sessionInfo = {
+          sessionId: ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionId</span><span style="color: #A1D08E;">(),
+          sessionFile: ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionFile</span><span style="color: #A1D08E;">(),
+        };
+        fs.</span><span style="color: #96a6c8;">writeFileSync</span><span style="color: #A1D08E;">(sessionMetaPath, JSON.</span><span style="color: #96a6c8;">stringify</span><span style="color: #A1D08E;">(sessionInfo), "</span>utf-8<span style="color: #A1D08E;">");
+      } catch {
+        // Ignore metadata write failures in child sessions.
+      }
+    }
+
+    if (ctx.hasUI) {
+      ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`Loaded ${cachedAgents.length} agents. Use @agent-name or @@agent-name`, "</span>info<span style="color: #A1D08E;">");
+    }
+  });
+
+  pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>session_shutdown<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">_event</span><span style="color: #A1D08E;">, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">) {
+    const sessionId = ctx.sessionManager.</span><span style="color: #96a6c8;">getSessionId</span><span style="color: #A1D08E;">();
+    runtimeCtxBySessionId.</span><span style="color: #96a6c8;">delete</span><span style="color: #A1D08E;">(sessionId);
+    if (runtimeCtxBySessionId.size === 0) {
+      runtimeCtx = null;
+      clearStatusPolling();
+    }
+  });
+
+  pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>before_agent_start<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">event</span><span style="color: #A1D08E;">) {
+    const queuedAgent = dequeuePendingForegroundAgent(event.prompt);
+    if (!queuedAgent) {
+      return {};
+    }
+    const fullPrompt = event.systemPrompt + "</span>\n\n<span style="color: #A1D08E;">" + queuedAgent.systemPrompt;
+    return { systemPrompt: fullPrompt };
+  });
+
+  pi.</span><span style="color: #96a6c8;">on</span><span style="color: #A1D08E;">("</span>input<span style="color: #A1D08E;">", async function (</span><span style="color: #f4f4ff;">event</span><span style="color: #A1D08E;">, </span><span style="color: #f4f4ff;">ctx</span><span style="color: #A1D08E;">) {
+    rememberRuntimeCtx(ctx);
+    if (event.source === "</span>extension<span style="color: #A1D08E;">") {
+      return { action: "</span><span style="color: #FFA657;">continue</span><span style="color: #A1D08E;">" };
+    }
+
+    const text = event.text.</span><span style="color: #96a6c8;">trim</span><span style="color: #A1D08E;">();
+    const agents = cachedAgents ?? discoverAgents(ctx.cwd);
+
+    const backgroundMatch = text.</span><span style="color: #96a6c8;">match</span><span style="color: #A1D08E;">(BACKGROUND_AGENT_NAME_PATTERN);
+    if (backgroundMatch) {
+      const [, agentName, task] = backgroundMatch;
+      const agent = findAgentByName(agents, agentName, ctx);
+      if (!agent) {
+        return { action: "</span>handled<span style="color: #A1D08E;">" };
+      }
+
+      await startBackgroundAgentTask(agent, task, ctx);
+      return { action: "</span>handled<span style="color: #A1D08E;">" };
+    }
+
+    const match = text.</span><span style="color: #96a6c8;">match</span><span style="color: #A1D08E;">(AGENT_NAME_PATTERN);
+    if (!match) {
+      return { action: "</span><span style="color: #FFA657;">continue</span><span style="color: #A1D08E;">" };
+    }
+
+    const [, agentName, task] = match;
+    const agent = findAgentByName(agents, agentName, ctx);
+    if (!agent) {
+      return { action: "</span>handled<span style="color: #A1D08E;">" };
+    }
+
+    enqueuePendingForegroundAgent(agent, text);
+    ctx.ui.</span><span style="color: #96a6c8;">notify</span><span style="color: #A1D08E;">(`&#129302; Start agent @${agentName}`, "</span>info<span style="color: #A1D08E;">");
+
+    return { action: "</span>transform<span style="color: #A1D08E;">", text };
+  });
 }</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org2fdec89" class="outline-3">
-<h3 id="org2fdec89">Rtk Command Proxy</h3>
-<div class="outline-text-3" id="text-org2fdec89">
+<div id="outline-container-org92c830c" class="outline-3">
+<h3 id="org92c830c">Rtk Command Proxy</h3>
+<div class="outline-text-3" id="text-org92c830c">
 <p>
 <a href="https://github.com/rtk-ai/rtk">GitHub - rtk-ai/rtk</a> 这个项目可以简化常用 bash 指令的输出结果，长期使用可以节省许多 token。
 </p>
@@ -1869,9 +1869,9 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-orgfbd9541" class="outline-3">
-<h3 id="orgfbd9541">File Explore</h3>
-<div class="outline-text-3" id="text-orgfbd9541">
+<div id="outline-container-org5135f70" class="outline-3">
+<h3 id="org5135f70">File Explore</h3>
+<div class="outline-text-3" id="text-org5135f70">
 <p>
 原始版本是：<a href="https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts">https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts</a>
 </p>
@@ -2978,9 +2978,9 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-org860351e" class="outline-3">
-<h3 id="org860351e">Others</h3>
-<div class="outline-text-3" id="text-org860351e">
+<div id="outline-container-org98eae02" class="outline-3">
+<h3 id="org98eae02">Others</h3>
+<div class="outline-text-3" id="text-org98eae02">
 <p>
 <a href="https://github.com/mitsuhiko/agent-stuff/">https://github.com/mitsuhiko/agent-stuff/</a> 的作者写的这些 extension 都是很好的设计模板。
 </p>
@@ -3013,9 +3013,9 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 </div>
 </div>
 </div>
-<div id="outline-container-org0052096" class="outline-2">
-<h2 id="org0052096">Custom Emacs Functions</h2>
-<div class="outline-text-2" id="text-org0052096">
+<div id="outline-container-org8a66b7a" class="outline-2">
+<h2 id="org8a66b7a">Custom Emacs Functions</h2>
+<div class="outline-text-2" id="text-org8a66b7a">
 <p>
 有时候只是一些简单的小问题，不想打开终端或者 pimacs，就会用到这个在 Emacs 里快速用 <code>pi --no-session -p</code> 提问:
 </p>
