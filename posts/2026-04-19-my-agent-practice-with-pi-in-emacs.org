@@ -29,11 +29,11 @@ pimacs 在 Emacs 里的体验基本和在终端里一致。我挺喜欢这个项
 
 我的 fork 里，主要根据我的习惯添加了两个小功能：
 
-- `@agent` 调用 agent:
+- ~@agent~ 调用 agent:
 
   Pi 的设计原则里是没有 subagent 的，所以没有类似的功能。虽然可以通过 slash command 调用 agent，广义上这些都是 prompt，但是我还是觉得在设计上，还是要区分 agent 和 slash command 分开。这样相同的 slash command 可以调用不同的 agent，区别还是有的。
 
-  输入 `@` 之后就会自动补全在 pi 里自定义的 agent 名称和描述，直接调用。
+  输入 ~@~ 之后就会自动补全在 pi 里自定义的 agent 名称和描述，直接调用。
 
   要实现这个功能，还要依赖后面贴上来的一个 pi extension。这个功能依赖的是 pi 底层的逻辑，在这个 fork 里实现的是和 Emacs 的交互补全逻辑。
 
@@ -48,10 +48,10 @@ pimacs 在 Emacs 里的体验基本和在终端里一致。我挺喜欢这个项
   效果就是这样：
 
   #+begin_src
-    @posts/2026-04-19-my-agent-practice-with-pi-in-emacs.org#L30-L31
-    ````org
-    选中一个区域，直接插入到 pimacs 的输入区。这是我想在 Emacs 里使用 pi 的最大原因。
-    ````
+ @posts/2026-04-19-my-agent-practice-with-pi-in-emacs.org#L30-L31
+ ````org
+ 选中一个区域，直接插入到 pimacs 的输入区。这是我想在 Emacs 里使用 pi 的最大原因。
+ ````
   #+end_src
 
   在终端里每次都要重复 Emacs 之间的切换，时间久了就感觉很麻烦。
