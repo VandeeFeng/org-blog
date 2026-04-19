@@ -21,6 +21,22 @@ https://github.com/instructkr/claw-code 的 star 已经到了 79.4K，Claude cod
 
 今年热度比较高的应该是聚焦安全的 agent sandbox 以及聚焦效率编排的 parallel agent。就我了解到的，parallel agent 相关的项目里，interface 还是 TUI 和 CLI 的居多。LLM 天然对 shell command 和文本的适应性好，交互成本也更低，CLI 作为和 LLM 交互的接口其实是很自然而然的一个结果。MCP 到现在其实也从侧面验证了 CLI 是更合适的，例如最近 GitHub 上比较热门的 [[https://github.com/jackwener/opencli/][opencli]] 。
 
+2026-04-19 add：
+
+#+begin_quote
+It turns out that the best place for personal AIs to run is on a computer. Maybe a virtual computer in the cloud, but ideally your computer. That way they can see the docs that you can see, and use the tools that you can use, and so what they want is not APIs (which connect webservers) but little apps they can use directly. CLI tools are the perfect little apps.
+
+事实证明，个人 AI 运行的最佳地方是在计算机上。也许是在云中的虚拟计算机，但理想情况下是您的计算机。这样它们就可以看到您可以看到的文档，并使用您可以使用的工具，因此它们想要的不是 API（连接网络服务器），而是可以直接使用的小应用程序。CLI 工具就是完美的小应用程序。
+
+[...]
+
+CLIs are composable because they came originally from Unix and that is the [[https://tldp.org/LDP/GNU-Linux-Tools-Summary/html/c1089.htm][Unix tools philosophy]]: tools were designed so that they could operate together.
+
+命令行界面是可组合的，因为它们最初来自 Unix，而这就是 Unix 工具的哲学：工具的设计是为了能够协同工作。
+
+via: https://interconnected.org/home/2026/04/18/headless
+#+end_quote
+
 * Agent Interaction Interface
 模型能力卷到现在互相蒸馏，我感觉其实已经翻不出什么大的浪花了，各大厂有的没的隔一段时间就更新一个模型，在 benchmark 上刷刷数据。反倒是 interface 这块，由于 Claude Code 的这次泄露，今年下半年可能会百花齐放了。
 
