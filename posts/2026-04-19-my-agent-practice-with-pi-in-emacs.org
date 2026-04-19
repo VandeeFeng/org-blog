@@ -371,9 +371,9 @@ pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种
 
 [[https://github.com/nicobailon/pi-subagents][Nico’s subagent extension]] , [[https://www.npmjs.com/package/pi-interactive-shell][interactive-shell]] 这两个 pi 的插件实现了类似的功能，但是对我来说有些复杂。
 
-现阶段我的方式就是新开一个 tmux session，在完成之后解析 对应 pi session 的 jsonl 文件里最后一个 assistant 的内容，并作为一个 `follow-up` message 返回给主 session 的 agent。
+现阶段我的方式就是新开一个 tmux session，在完成之后解析 对应 pi session 的 jsonl 文件里最后一个 assistant 的内容，并作为一个 ~follow-up~ message 返回给主 session 的 agent。
 
-在 pi 的 TUI 里，通过 `@agent` 来调用这些 subagent，并实现了两个模式：当前会话和 tmux 后台运行。tmux 后台运行通过 `@@agent` 调用。支持自动补全 agent 的名称。
+在 pi 的 TUI 里，通过 ~@agent~ 来调用这些 subagent，并实现了两个模式：当前会话和 tmux 后台运行。tmux 后台运行通过 ~@@agent~ 调用。支持自动补全 agent 的名称。
 
 tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux 指令就可以直接打开这个 subagent pi session 。(下面的图片是之前的)
 
