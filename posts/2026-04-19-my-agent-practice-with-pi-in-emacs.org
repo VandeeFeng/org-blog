@@ -375,7 +375,7 @@ pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种
 
 在 pi 的 TUI 里，通过 ~@agent~ 来调用这些 subagent，并实现了两个模式：当前会话和 tmux 后台运行。tmux 后台运行通过 ~@@agent~ 调用。支持自动补全 agent 的名称。
 
-tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux 指令就可以直接打开这个 subagent pi session 。(下面的图片是之前的)
+tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux 指令就可以直接打开这个 subagent pi session 。
 
 agent-buff.ts:
 
@@ -1438,7 +1438,7 @@ export default function agentsBuffExtension(pi: ExtensionAPI): void {
 
 原项目可以一键和 Claude Code 的 hook 配合，因为 Claude Code 是直接调用的 bash 指令，rtk 在 shell 层面直接用 bash hook 拦截原指令。
 
-但 pi 里 bash 指令是 工具函数 bash("command") 通过 Node.js child_process 执行，所以我们用 pi.registerTool() 重新注册 bash tool，用 spawnHook 来修改 bash 指令。
+但 pi 里 bash 指令是 工具函数 bash("command") 通过 Node.js child_process 执行，所以这个 extension 用 pi.registerTool() 重新注册 bash tool，用 spawnHook 来修改 bash 指令。
 
 还注册了一个 ~/rtk-status~ 指令来查看 bash 指令的 rewrite 情况还有 token 的节省统计。
 
