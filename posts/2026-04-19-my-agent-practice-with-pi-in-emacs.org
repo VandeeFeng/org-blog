@@ -5,6 +5,15 @@
 
 Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主动关闭。
 
+加速 Pi 启动 offline 三连：
+
+#+begin_src shell
+# in ~/.bashrc
+export PI_TELEMETRY=0
+export PI_OFFLINE=1
+export PI_SKIP_VERSION_CHECK=1
+#+end_src
+
 https://mariozechner.at/posts/2026-04-08-ive-sold-out/
 
 https://lucumr.pocoo.org/2026/4/8/mario-and-earendil/
@@ -96,6 +105,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import { Key, matchesKey, visibleWidth } from "@mariozechner/pi-tui";
 
 // Simple glob-to-regex converter for command matching
 // Matches opencode's wildcard implementation
@@ -279,12 +289,76 @@ export default function (pi: ExtensionAPI) {
         });
     }
 
-    async function askPermission(message: string, ctx: any): Promise<boolean> {
+    async function askPermission(toolName: string, input: string, ctx: any): Promise<boolean> {
         if (!ctx.hasUI) {
             return nonInteractiveAsk === "allow";
         }
-        const choice = await ctx.ui.select(message, ["Yes", "No"]);
-        return choice === "Yes";
+
+        const choice = await ctx.ui.custom<boolean>((tui, theme, _kb, done) => {
+            let selected = 0;
+            const options = ["Yes", "No"] as const;
+
+            const renderOption = (label: string, isSelected: boolean) => {
+                if (isSelected) {
+                    return theme.bg("selectedBg", theme.fg("text", ` ${label} `));
+                }
+                return theme.fg("dim", ` ${label} `);
+            };
+
+            const handleChoiceInput = (data: string) => {
+                const isLeft =
+                    matchesKey(data, Key.left) ||
+                    matchesKey(data, Key.up) ||
+                    matchesKey(data, Key.shift("tab"));
+                const isRight =
+                    matchesKey(data, Key.right) ||
+                    matchesKey(data, Key.down) ||
+                    matchesKey(data, Key.tab);
+
+                if (isLeft) {
+                    selected = (selected + options.length - 1) % options.length;
+                    tui.requestRender();
+                    return;
+                }
+                if (isRight) {
+                    selected = (selected + 1) % options.length;
+                    tui.requestRender();
+                    return;
+                }
+                if (matchesKey(data, Key.enter) || data.toLowerCase() === "y") {
+                    done(options[selected] === "Yes");
+                    return;
+                }
+                if (matchesKey(data, Key.escape) || matchesKey(data, Key.ctrl("c")) || data.toLowerCase() === "n") {
+                    done(false);
+                }
+            };
+
+            return {
+                render: () => {
+                    const content = [
+                        theme.bold(theme.fg("warning", `⚠️ ${toolName}: ${input}`)),
+                        `${renderOption("Yes", selected === 0)}  ${renderOption("No", selected === 1)}`,
+                        theme.fg("dim", "←→ / tab navigate  enter select  esc cancel"),
+                    ];
+                    const innerWidth = content.reduce((max, line) => Math.max(max, visibleWidth(line)), 0);
+                    const top = theme.fg("dim", `┌${"─".repeat(innerWidth + 2)}┐`);
+                    const bottom = theme.fg("dim", `└${"─".repeat(innerWidth + 2)}┘`);
+                    const lines = content.map((line) => {
+                        const padding = " ".repeat(Math.max(0, innerWidth - visibleWidth(line)));
+                        return `${theme.fg("dim", "│")} ${line}${padding} ${theme.fg("dim", "│")}`;
+                    });
+
+                    return [top, ...lines, bottom];
+                },
+                invalidate: () => {},
+                handleInput: (data: string) => {
+                    handleChoiceInput(data);
+                },
+            };
+        });
+
+        return choice;
     }
 
     async function checkPermission(
@@ -297,20 +371,14 @@ export default function (pi: ExtensionAPI) {
 
         if (!rule) {
             if (yoloMode) return undefined;
-            const allowed = await askPermission(
-                `⚠️ No permission rule for:\n\n  ${toolName}: ${input}\n\nAllow?`,
-                ctx,
-            );
+            const allowed = await askPermission(toolName, input, ctx);
             return allowed ? undefined : { block: true, reason: "Blocked by user" };
         }
 
         if (rule.action === "allow") return undefined;
         if (rule.action === "deny") return { block: true, reason: `Blocked by permission rules: ${toolName}` };
 
-        const allowed = await askPermission(
-            `⚠️ Permission required:\n\n  ${toolName}: ${input}\n\nAllow?`,
-            ctx,
-        );
+        const allowed = await askPermission(toolName, input, ctx);
         return allowed ? undefined : { block: true, reason: "Blocked by user" };
     }
 
@@ -337,14 +405,7 @@ export default function (pi: ExtensionAPI) {
                     return { block: true, reason: `Blocked by permission rules: ${subCmd}` };
                 }
 
-                const display = subCommands.length > 1
-                    ? `${subCmd}  (in: "${inputStr}")`
-                    : inputStr;
-
-                const allowed = await askPermission(
-                    `⚠️ Permission required:\n\n  bash: ${display}\n\nAllow?`,
-                    ctx,
-                );
+                const allowed = await askPermission("bash", inputStr, ctx);
                 if (!allowed) return { block: true, reason: "Blocked by user" };
             }
             return undefined;
@@ -353,10 +414,7 @@ export default function (pi: ExtensionAPI) {
         // No rules configured
         if (toolRules.length === 0) {
             if (yoloMode) return undefined;
-            const allowed = await askPermission(
-                `⚠️ No permission rules for ${toolName}:\n\n  ${inputStr}\n\nAllow?`,
-                ctx,
-            );
+            const allowed = await askPermission(toolName, inputStr, ctx);
             return allowed ? undefined : { block: true, reason: "Blocked by user" };
         }
 
@@ -1697,6 +1755,78 @@ export default function (pi: ExtensionAPI): void {
 
     // ctx.ui.notify(messages.join("\n"), "info");
   });
+}
+#+end_src
+
+
+** @file Improve
+有些模型在 Pi 里会识别不了 ~@file~ 的完整路径，这个插件就只是简单的 transform 了完整的路径到 input：
+
+#+begin_src typescript
+import { existsSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+
+const MENTION_PATTERN = /@([^\s@]+)/g;
+
+const isGptSeriesModel = (modelId: string | undefined) => Boolean(modelId && /^gpt/i.test(modelId));
+
+const toDisplayPath = (value: string) => value.replace(/\\/g, "/");
+
+const toMentionPath = (absolutePath: string) => {
+        const resolvedPath = path.resolve(absolutePath);
+        const home = os.homedir();
+
+        if (resolvedPath === home) return "~";
+        if (resolvedPath.startsWith(`${home}${path.sep}`)) {
+                return `~/${toDisplayPath(resolvedPath.slice(home.length + 1))}`;
+        }
+
+        return toDisplayPath(resolvedPath);
+};
+
+const resolveToAbsolutePath = (cwd: string, target: string): string | null => {
+        const trimmed = target.trim();
+        if (!trimmed) return null;
+
+        const expanded = trimmed === "~" ? os.homedir() : trimmed.startsWith("~/") ? path.join(os.homedir(), trimmed.slice(2)) : trimmed;
+        const absolutePath = path.isAbsolute(expanded) ? expanded : path.resolve(cwd, expanded);
+        if (!existsSync(absolutePath)) return null;
+
+        return path.resolve(absolutePath);
+};
+
+const formatMention = (absolutePath: string) => `@${toMentionPath(absolutePath)}`;
+
+function rewriteMentions(text: string, cwd: string) {
+        let changed = false;
+
+        const rewritten = text.replace(MENTION_PATTERN, (original, rawTarget: string | undefined) => {
+                const absolutePath = resolveToAbsolutePath(cwd, rawTarget ?? "");
+                if (!absolutePath) return original;
+
+                const replacement = formatMention(absolutePath);
+                changed ||= replacement !== original;
+                return replacement;
+        });
+
+        return changed ? rewritten : text;
+}
+
+export default function (pi: ExtensionAPI) {
+        pi.on("input", async (event, ctx) => {
+                if (event.source === "extension" || !event.text.includes("@") || !isGptSeriesModel(ctx.model?.id)) {
+                        return { action: "continue" };
+                }
+
+                const rewritten = rewriteMentions(event.text, ctx.cwd);
+                if (rewritten === event.text) {
+                        return { action: "continue" };
+                }
+
+                return { action: "transform", text: rewritten, images: event.images };
+        });
 }
 #+end_src
 

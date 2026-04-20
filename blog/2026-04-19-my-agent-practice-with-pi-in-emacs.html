@@ -59,24 +59,37 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6aa8afb">TL;DR</a></li>
-<li><a href="#orgde7ac46">Pimacs</a></li>
-<li><a href="#org9d5c359">My Pi Extensions</a>
+<li><a href="#org2be7a19">TL;DR</a></li>
+<li><a href="#org97576f7">Pimacs</a></li>
+<li><a href="#orga331833">My Pi Extensions</a>
 <ul>
-<li><a href="#org1e59994">Command Rule</a></li>
-<li><a href="#org6cf606b">Subagent</a></li>
-<li><a href="#org92c830c">Rtk Command Proxy</a></li>
-<li><a href="#org5135f70">File Explore</a></li>
-<li><a href="#org98eae02">Others</a></li>
+<li><a href="#orgc3b0c27">Command Rule</a></li>
+<li><a href="#org9d0ddbc">Subagent</a></li>
+<li><a href="#org6a75ca1">Rtk Command Proxy</a></li>
+<li><a href="#org45273c9">@file Improve</a></li>
+<li><a href="#org45dac23">File Explore</a></li>
+<li><a href="#org48bfa9d">Others</a></li>
 </ul>
 </li>
-<li><a href="#org8a66b7a">Custom Emacs Functions</a></li>
+<li><a href="#org41db854">Custom Emacs Functions</a></li>
 </ul>
 </div>
 </nav>
 <p>
 Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主动关闭。
 </p>
+
+<p>
+加速 Pi 启动 offline 三连：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #787878;"># </span><span style="color: #787878;">in ~/.bashrc
+</span><span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">PI_TELEMETRY</span>=0
+<span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">PI_OFFLINE</span>=1
+<span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">PI_SKIP_VERSION_CHECK</span>=1
+</pre>
+</div>
 
 <p>
 <a href="https://mariozechner.at/posts/2026-04-08-ive-sold-out/">https://mariozechner.at/posts/2026-04-08-ive-sold-out/</a>
@@ -93,9 +106,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 <p>
 我看了一下最近的几个版本 release，有一部分是为了 OpenClaw。
 </p>
-<div id="outline-container-org6aa8afb" class="outline-2">
-<h2 id="org6aa8afb">TL;DR</h2>
-<div class="outline-text-2" id="text-org6aa8afb">
+<div id="outline-container-org2be7a19" class="outline-2">
+<h2 id="org2be7a19">TL;DR</h2>
+<div class="outline-text-2" id="text-org2be7a19">
 <p>
 记录一下现在在 Emacs 里使用 pi 的配置。
 </p>
@@ -105,9 +118,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 </p>
 </div>
 </div>
-<div id="outline-container-orgde7ac46" class="outline-2">
-<h2 id="orgde7ac46">Pimacs</h2>
-<div class="outline-text-2" id="text-orgde7ac46">
+<div id="outline-container-org97576f7" class="outline-2">
+<h2 id="org97576f7">Pimacs</h2>
+<div class="outline-text-2" id="text-org97576f7">
 <p>
 <a href="https://github.com/VandeeFeng/pimacs">VandeeFeng/pimacs: Emacs frontend for the pi coding agent</a> forked from <a href="https://github.com/dnouri/pi-coding-agent">https://github.com/dnouri/pi-coding-agent</a> ，后面就叫他 pimacs。
 </p>
@@ -191,9 +204,9 @@ insert region:
 </ul>
 </div>
 </div>
-<div id="outline-container-org9d5c359" class="outline-2">
-<h2 id="org9d5c359">My Pi Extensions</h2>
-<div class="outline-text-2" id="text-org9d5c359">
+<div id="outline-container-orga331833" class="outline-2">
+<h2 id="orga331833">My Pi Extensions</h2>
+<div class="outline-text-2" id="text-orga331833">
 <p>
 <a href="https://www.vandee.art/blog/2026-02-17-my-minimalist-approach-to-agent-memory-management.html">我的 Agent Memory 极简管理方案</a> 之前在这里已经列出了几个，统一再这里补充一下。
 </p>
@@ -202,9 +215,9 @@ insert region:
 后面有更新就只在这里更新了，自己看起来也方便一点。
 </p>
 </div>
-<div id="outline-container-org1e59994" class="outline-3">
-<h3 id="org1e59994">Command Rule</h3>
-<div class="outline-text-3" id="text-org1e59994">
+<div id="outline-container-orgc3b0c27" class="outline-3">
+<h3 id="orgc3b0c27">Command Rule</h3>
+<div class="outline-text-3" id="text-orgc3b0c27">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
 </p>
@@ -235,6 +248,7 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 <span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> homedir <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:os"</span>;
 <span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> join <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:path"</span>;
 <span style="color: #FFA657;">import</span> <span style="color: #FFA657;">type</span> <span style="color: #8c8c8c;">{</span> ExtensionAPI <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-coding-agent"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> Key, matchesKey, visibleWidth <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-tui"</span>;
 
 <span style="color: #787878;">// </span><span style="color: #787878;">Simple glob-to-regex converter for command matching
 </span><span style="color: #787878;">// </span><span style="color: #787878;">Matches opencode's wildcard implementation
@@ -418,12 +432,76 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
         <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>;
     <span style="color: #93a8c6;">}</span>
 
-    <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">message</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">ctx</span>: <span style="color: #FFA657;">any</span><span style="color: #93a8c6;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #FFA657;">boolean</span>&gt; <span style="color: #93a8c6;">{</span>
+    <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">toolName</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">input</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">ctx</span>: <span style="color: #FFA657;">any</span><span style="color: #93a8c6;">)</span>: <span style="color: #95a99f;">Promise</span>&lt;<span style="color: #FFA657;">boolean</span>&gt; <span style="color: #93a8c6;">{</span>
         <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!ctx.hasUI<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
             <span style="color: #FFA657;">return</span> nonInteractiveAsk === <span style="color: #A1D08E;">"allow"</span>;
         <span style="color: #b0b1a3;">}</span>
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">choice</span> = <span style="color: #FFA657;">await</span> ctx.ui.<span style="color: #96a6c8;">select</span><span style="color: #b0b1a3;">(</span>message, <span style="color: #97b098;">[</span><span style="color: #A1D08E;">"Yes"</span>, <span style="color: #A1D08E;">"No"</span><span style="color: #97b098;">]</span><span style="color: #b0b1a3;">)</span>;
-        <span style="color: #FFA657;">return</span> choice === <span style="color: #A1D08E;">"Yes"</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">choice</span> = <span style="color: #FFA657;">await</span> ctx.ui.<span style="color: #96a6c8;">custom</span>&lt;<span style="color: #FFA657;">boolean</span>&gt;<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #f4f4ff;">tui</span>, <span style="color: #f4f4ff;">theme</span>, <span style="color: #f4f4ff;">_kb</span>, <span style="color: #f4f4ff;">done</span><span style="color: #97b098;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #97b098;">{</span>
+            <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">selected</span> = 0;
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">options</span> = <span style="color: #aebed8;">[</span><span style="color: #A1D08E;">"Yes"</span>, <span style="color: #A1D08E;">"No"</span><span style="color: #aebed8;">]</span> <span style="color: #FFA657;">as</span> <span style="color: #FFA657;">const</span>;
+
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">renderOption</span> = <span style="color: #aebed8;">(</span><span style="color: #f4f4ff;">label</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">isSelected</span>: <span style="color: #FFA657;">boolean</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #aebed8;">{</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>isSelected<span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                    <span style="color: #FFA657;">return</span> theme.<span style="color: #96a6c8;">bg</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">"selectedBg"</span>, theme.<span style="color: #96a6c8;">fg</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"text"</span>, <span style="color: #A1D08E;">` </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">label</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> `</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>;
+                <span style="color: #b0b0b3;">}</span>
+                <span style="color: #FFA657;">return</span> theme.<span style="color: #96a6c8;">fg</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"dim"</span>, <span style="color: #A1D08E;">` </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">label</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> `</span><span style="color: #b0b0b3;">)</span>;
+            <span style="color: #aebed8;">}</span>;
+
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">handleChoiceInput</span> = <span style="color: #aebed8;">(</span><span style="color: #f4f4ff;">data</span>: <span style="color: #FFA657;">string</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #aebed8;">{</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isLeft</span> =
+                    <span style="color: #96a6c8;">matchesKey</span><span style="color: #b0b0b3;">(</span>data, Key.left<span style="color: #b0b0b3;">)</span> ||
+                    <span style="color: #96a6c8;">matchesKey</span><span style="color: #b0b0b3;">(</span>data, Key.up<span style="color: #b0b0b3;">)</span> ||
+                    <span style="color: #96a6c8;">matchesKey</span><span style="color: #b0b0b3;">(</span>data, Key.<span style="color: #96a6c8;">shift</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">"tab"</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isRight</span> =
+                    <span style="color: #96a6c8;">matchesKey</span><span style="color: #b0b0b3;">(</span>data, Key.right<span style="color: #b0b0b3;">)</span> ||
+                    <span style="color: #96a6c8;">matchesKey</span><span style="color: #b0b0b3;">(</span>data, Key.down<span style="color: #b0b0b3;">)</span> ||
+                    <span style="color: #96a6c8;">matchesKey</span><span style="color: #b0b0b3;">(</span>data, Key.tab<span style="color: #b0b0b3;">)</span>;
+
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>isLeft<span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                    selected = <span style="color: #90a890;">(</span>selected + options.length - 1<span style="color: #90a890;">)</span> % options.length;
+                    tui.<span style="color: #96a6c8;">requestRender</span><span style="color: #90a890;">()</span>;
+                    <span style="color: #FFA657;">return</span>;
+                <span style="color: #b0b0b3;">}</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>isRight<span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                    selected = <span style="color: #90a890;">(</span>selected + 1<span style="color: #90a890;">)</span> % options.length;
+                    tui.<span style="color: #96a6c8;">requestRender</span><span style="color: #90a890;">()</span>;
+                    <span style="color: #FFA657;">return</span>;
+                <span style="color: #b0b0b3;">}</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span><span style="color: #96a6c8;">matchesKey</span><span style="color: #90a890;">(</span>data, Key.enter<span style="color: #90a890;">)</span> || data.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #90a890;">()</span> === <span style="color: #A1D08E;">"y"</span><span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                    <span style="color: #96a6c8;">done</span><span style="color: #90a890;">(</span>options<span style="color: #a2b6da;">[</span>selected<span style="color: #a2b6da;">]</span> === <span style="color: #A1D08E;">"Yes"</span><span style="color: #90a890;">)</span>;
+                    <span style="color: #FFA657;">return</span>;
+                <span style="color: #b0b0b3;">}</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span><span style="color: #96a6c8;">matchesKey</span><span style="color: #90a890;">(</span>data, Key.escape<span style="color: #90a890;">)</span> || <span style="color: #96a6c8;">matchesKey</span><span style="color: #90a890;">(</span>data, Key.<span style="color: #96a6c8;">ctrl</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"c"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span> || data.<span style="color: #96a6c8;">toLowerCase</span><span style="color: #90a890;">()</span> === <span style="color: #A1D08E;">"n"</span><span style="color: #b0b0b3;">)</span> <span style="color: #b0b0b3;">{</span>
+                    <span style="color: #96a6c8;">done</span><span style="color: #90a890;">(</span><span style="color: #95a99f;">false</span><span style="color: #90a890;">)</span>;
+                <span style="color: #b0b0b3;">}</span>
+            <span style="color: #aebed8;">}</span>;
+
+            <span style="color: #FFA657;">return</span> <span style="color: #aebed8;">{</span>
+                render: <span style="color: #b0b0b3;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b0b3;">{</span>
+                    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">content</span> = <span style="color: #90a890;">[</span>
+                        theme.<span style="color: #96a6c8;">bold</span><span style="color: #a2b6da;">(</span>theme.<span style="color: #96a6c8;">fg</span><span style="color: #9cb6ad;">(</span><span style="color: #A1D08E;">"warning"</span>, <span style="color: #A1D08E;">`&#9888;&#65039; </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">input</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>,
+                        <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">renderOption("Yes", selected === 0)</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">renderOption("No", selected === 1)</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>,
+                        theme.<span style="color: #96a6c8;">fg</span><span style="color: #a2b6da;">(</span><span style="color: #A1D08E;">"dim"</span>, <span style="color: #A1D08E;">"&#8592;&#8594; / tab navigate  enter select  esc cancel"</span><span style="color: #a2b6da;">)</span>,
+                    <span style="color: #90a890;">]</span>;
+                    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">innerWidth</span> = content.<span style="color: #96a6c8;">reduce</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span>max, line<span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #95a99f;">Math</span>.<span style="color: #96a6c8;">max</span><span style="color: #a2b6da;">(</span>max, <span style="color: #96a6c8;">visibleWidth</span><span style="color: #9cb6ad;">(</span>line<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>, 0<span style="color: #90a890;">)</span>;
+                    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">top</span> = theme.<span style="color: #96a6c8;">fg</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">"dim"</span>, <span style="color: #A1D08E;">`&#9484;</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">"&#9472;".repeat(innerWidth + 2)</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">&#9488;`</span><span style="color: #90a890;">)</span>;
+                    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">bottom</span> = theme.<span style="color: #96a6c8;">fg</span><span style="color: #90a890;">(</span><span style="color: #A1D08E;">"dim"</span>, <span style="color: #A1D08E;">`&#9492;</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">"&#9472;".repeat(innerWidth + 2)</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">&#9496;`</span><span style="color: #90a890;">)</span>;
+                    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">lines</span> = content.<span style="color: #96a6c8;">map</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span><span style="color: #f4f4ff;">line</span><span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #a2b6da;">{</span>
+                        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">padding</span> = <span style="color: #A1D08E;">" "</span>.<span style="color: #96a6c8;">repeat</span><span style="color: #9cb6ad;">(</span>Math.<span style="color: #96a6c8;">max</span><span style="color: #8c8c8c;">(</span>0, innerWidth - <span style="color: #96a6c8;">visibleWidth</span><span style="color: #93a8c6;">(</span>line<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span>;
+                        <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">theme.fg("dim", "&#9474;")</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;"> </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">line</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">${padding} </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">theme.fg("dim", "&#9474;")</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+                    <span style="color: #a2b6da;">}</span><span style="color: #90a890;">)</span>;
+
+                    <span style="color: #FFA657;">return</span> <span style="color: #90a890;">[</span>top, ...lines, bottom<span style="color: #90a890;">]</span>;
+                <span style="color: #b0b0b3;">}</span>,
+                invalidate: <span style="color: #b0b0b3;">()</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b0b3;">{}</span>,
+                handleInput: <span style="color: #b0b0b3;">(</span><span style="color: #f4f4ff;">data</span>: <span style="color: #FFA657;">string</span><span style="color: #b0b0b3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b0b3;">{</span>
+                    <span style="color: #96a6c8;">handleChoiceInput</span><span style="color: #90a890;">(</span>data<span style="color: #90a890;">)</span>;
+                <span style="color: #b0b0b3;">}</span>,
+            <span style="color: #aebed8;">}</span>;
+        <span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>;
+
+        <span style="color: #FFA657;">return</span> choice;
     <span style="color: #93a8c6;">}</span>
 
     <span style="color: #FFA657;">async</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">checkPermission</span><span style="color: #93a8c6;">(</span>
@@ -436,20 +514,14 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 
         <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>!rule<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
             <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>yoloMode<span style="color: #97b098;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
-            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #97b098;">(</span>
-                <span style="color: #A1D08E;">`&#9888;&#65039; No permission rule </span><span style="color: #d1d5db; background-color: #1D1F21;">for</span><span style="color: #A1D08E;">:\n\n  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">input</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
-                ctx,
-            <span style="color: #97b098;">)</span>;
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #97b098;">(</span>toolName, input, ctx<span style="color: #97b098;">)</span>;
             <span style="color: #FFA657;">return</span> allowed ? <span style="color: #95a99f;">undefined</span> : <span style="color: #97b098;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #97b098;">}</span>;
         <span style="color: #b0b1a3;">}</span>
 
         <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>rule.action === <span style="color: #A1D08E;">"allow"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
         <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>rule.action === <span style="color: #A1D08E;">"deny"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #b0b1a3;">{</span> <span style="color: #f4f4ff;">block</span>: <span style="color: #95a99f;">true</span>, <span style="color: #f4f4ff;">reason</span>: <span style="color: #A1D08E;">`Blocked by permission </span><span style="color: #f4f4ff;">rules</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span> <span style="color: #b0b1a3;">}</span>;
 
-        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #b0b1a3;">(</span>
-            <span style="color: #A1D08E;">`&#9888;&#65039; Permission required:\n\n  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">input</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
-            ctx,
-        <span style="color: #b0b1a3;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #b0b1a3;">(</span>toolName, input, ctx<span style="color: #b0b1a3;">)</span>;
         <span style="color: #FFA657;">return</span> allowed ? <span style="color: #95a99f;">undefined</span> : <span style="color: #b0b1a3;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #b0b1a3;">}</span>;
     <span style="color: #93a8c6;">}</span>
 
@@ -476,14 +548,7 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
                     <span style="color: #FFA657;">return</span> <span style="color: #90a890;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">`Blocked by permission rules: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">subCmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span> <span style="color: #90a890;">}</span>;
                 <span style="color: #b0b0b3;">}</span>
 
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">display</span> = subCommands.length &gt; 1
-                    ? <span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">subCmd</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">  (</span><span style="color: #d1d5db; background-color: #1D1F21;">in</span><span style="color: #A1D08E;">: "</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">inputStr</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">")`</span>
-                    : inputStr;
-
-                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #b0b0b3;">(</span>
-                    <span style="color: #A1D08E;">`&#9888;&#65039; Permission required:\n\n  bash: </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">display</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
-                    ctx,
-                <span style="color: #b0b0b3;">)</span>;
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"bash"</span>, inputStr, ctx<span style="color: #b0b0b3;">)</span>;
                 <span style="color: #FFA657;">if</span> <span style="color: #b0b0b3;">(</span>!allowed<span style="color: #b0b0b3;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #b0b0b3;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #b0b0b3;">}</span>;
             <span style="color: #aebed8;">}</span>
             <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
@@ -492,10 +557,7 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
         <span style="color: #787878;">// </span><span style="color: #787878;">No rules configured
 </span>        <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>toolRules.length === 0<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
             <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>yoloMode<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">undefined</span>;
-            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #aebed8;">(</span>
-                <span style="color: #A1D08E;">`&#9888;&#65039; No permission rules for </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toolName</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">:\n\n  </span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">inputStr</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">\n\nAllow?`</span>,
-                ctx,
-            <span style="color: #aebed8;">)</span>;
+            <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">allowed</span> = <span style="color: #FFA657;">await</span> <span style="color: #96a6c8;">askPermission</span><span style="color: #aebed8;">(</span>toolName, inputStr, ctx<span style="color: #aebed8;">)</span>;
             <span style="color: #FFA657;">return</span> allowed ? <span style="color: #95a99f;">undefined</span> : <span style="color: #aebed8;">{</span> block: <span style="color: #95a99f;">true</span>, reason: <span style="color: #A1D08E;">"Blocked by user"</span> <span style="color: #aebed8;">}</span>;
         <span style="color: #97b098;">}</span>
 
@@ -506,9 +568,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-org6cf606b" class="outline-3">
-<h3 id="org6cf606b">Subagent</h3>
-<div class="outline-text-3" id="text-org6cf606b">
+<div id="outline-container-org9d0ddbc" class="outline-3">
+<h3 id="org9d0ddbc">Subagent</h3>
+<div class="outline-text-3" id="text-org9d0ddbc">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -1588,9 +1650,9 @@ export default function agentsBuffExtension(</span><span style="color: #f4f4ff;"
 </div>
 </div>
 </div>
-<div id="outline-container-org92c830c" class="outline-3">
-<h3 id="org92c830c">Rtk Command Proxy</h3>
-<div class="outline-text-3" id="text-org92c830c">
+<div id="outline-container-org6a75ca1" class="outline-3">
+<h3 id="org6a75ca1">Rtk Command Proxy</h3>
+<div class="outline-text-3" id="text-org6a75ca1">
 <p>
 <a href="https://github.com/rtk-ai/rtk">GitHub - rtk-ai/rtk</a> 这个项目可以简化常用 bash 指令的输出结果，长期使用可以节省许多 token。
 </p>
@@ -1869,9 +1931,86 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-org5135f70" class="outline-3">
-<h3 id="org5135f70">File Explore</h3>
-<div class="outline-text-3" id="text-org5135f70">
+<div id="outline-container-org45273c9" class="outline-3">
+<h3 id="org45273c9">@file Improve</h3>
+<div class="outline-text-3" id="text-org45273c9">
+<p>
+有些模型在 Pi 里会识别不了 <code>@file</code> 的完整路径，这个插件就只是简单的 transform 了完整的路径到 input：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> existsSync <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:fs"</span>;
+<span style="color: #FFA657;">import</span> os <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:os"</span>;
+<span style="color: #FFA657;">import</span> path <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"node:path"</span>;
+<span style="color: #FFA657;">import</span> <span style="color: #FFA657;">type</span> <span style="color: #8c8c8c;">{</span> ExtensionAPI <span style="color: #8c8c8c;">}</span> <span style="color: #FFA657;">from</span> <span style="color: #A1D08E;">"@mariozechner/pi-coding-agent"</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">MENTION_PATTERN</span> = <span style="color: #A1D08E;">/@([^\s@]+)/</span>g;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">isGptSeriesModel</span> = <span style="color: #8c8c8c;">(</span>modelId: <span style="color: #FFA657;">string</span> | <span style="color: #95a99f;">undefined</span><span style="color: #8c8c8c;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #95a99f;">Boolean</span><span style="color: #8c8c8c;">(</span>modelId &amp;&amp; <span style="color: #A1D08E;">/^gpt/</span>i.<span style="color: #96a6c8;">test</span><span style="color: #93a8c6;">(</span>modelId<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">toDisplayPath</span> = <span style="color: #8c8c8c;">(</span>value: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span> <span style="color: #FFA657;">=&gt;</span> value.<span style="color: #96a6c8;">replace</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">/\\/</span>g, <span style="color: #A1D08E;">"/"</span><span style="color: #8c8c8c;">)</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">toMentionPath</span> = <span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">absolutePath</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">resolvedPath</span> = path.<span style="color: #96a6c8;">resolve</span><span style="color: #93a8c6;">(</span>absolutePath<span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">home</span> = os.<span style="color: #96a6c8;">homedir</span><span style="color: #93a8c6;">()</span>;
+
+        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>resolvedPath === home<span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">"~"</span>;
+        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>resolvedPath.<span style="color: #96a6c8;">startsWith</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">`</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">home</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">${path.sep}`</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+                <span style="color: #FFA657;">return</span> <span style="color: #A1D08E;">`~/</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toDisplayPath(resolvedPath.slice(home.length + 1))</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+        <span style="color: #93a8c6;">}</span>
+
+        <span style="color: #FFA657;">return</span> <span style="color: #96a6c8;">toDisplayPath</span><span style="color: #93a8c6;">(</span>resolvedPath<span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">resolveToAbsolutePath</span> = <span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">cwd</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">target</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span>: <span style="color: #FFA657;">string</span> | <span style="color: #95a99f;">null</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">trimmed</span> = target.<span style="color: #96a6c8;">trim</span><span style="color: #93a8c6;">()</span>;
+        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>!trimmed<span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">expanded</span> = trimmed === <span style="color: #A1D08E;">"~"</span> ? os.<span style="color: #96a6c8;">homedir</span><span style="color: #93a8c6;">()</span> : trimmed.<span style="color: #96a6c8;">startsWith</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"~/"</span><span style="color: #93a8c6;">)</span> ? path.<span style="color: #96a6c8;">join</span><span style="color: #93a8c6;">(</span>os.<span style="color: #96a6c8;">homedir</span><span style="color: #b0b1a3;">()</span>, trimmed.<span style="color: #96a6c8;">slice</span><span style="color: #b0b1a3;">(</span>2<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> : trimmed;
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">absolutePath</span> = path.<span style="color: #96a6c8;">isAbsolute</span><span style="color: #93a8c6;">(</span>expanded<span style="color: #93a8c6;">)</span> ? <span style="color: #f4f4ff;">expanded</span> : path.<span style="color: #96a6c8;">resolve</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">cwd</span>, <span style="color: #f4f4ff;">expanded</span><span style="color: #93a8c6;">)</span>;
+        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">(</span>!<span style="color: #96a6c8;">existsSync</span><span style="color: #b0b1a3;">(</span>absolutePath<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">return</span> <span style="color: #95a99f;">null</span>;
+
+        <span style="color: #FFA657;">return</span> path.<span style="color: #96a6c8;">resolve</span><span style="color: #93a8c6;">(</span>absolutePath<span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>;
+
+<span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">formatMention</span> = <span style="color: #8c8c8c;">(</span>absolutePath: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #A1D08E;">`@</span><span style="color: #FFA657;">${</span><span style="color: #d1d5db; background-color: #1D1F21;">toMentionPath(absolutePath)</span><span style="color: #FFA657;">}</span><span style="color: #A1D08E;">`</span>;
+
+<span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">rewriteMentions</span><span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">text</span>: <span style="color: #FFA657;">string</span>, <span style="color: #f4f4ff;">cwd</span>: <span style="color: #FFA657;">string</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+        <span style="color: #FFA657;">let</span> <span style="color: #f4f4ff;">changed</span> = <span style="color: #95a99f;">false</span>;
+
+        <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">rewritten</span> = text.<span style="color: #96a6c8;">replace</span><span style="color: #93a8c6;">(</span>MENTION_PATTERN, <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">original</span>, <span style="color: #f4f4ff;">rawTarget</span>: <span style="color: #FFA657;">string</span> | <span style="color: #95a99f;">undefined</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">absolutePath</span> = <span style="color: #96a6c8;">resolveToAbsolutePath</span><span style="color: #97b098;">(</span>cwd, rawTarget ?? <span style="color: #A1D08E;">""</span><span style="color: #97b098;">)</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>!absolutePath<span style="color: #97b098;">)</span> <span style="color: #FFA657;">return</span> original;
+
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">replacement</span> = <span style="color: #96a6c8;">formatMention</span><span style="color: #97b098;">(</span>absolutePath<span style="color: #97b098;">)</span>;
+                changed ||= replacement !== original;
+                <span style="color: #FFA657;">return</span> replacement;
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+
+        <span style="color: #FFA657;">return</span> changed ? rewritten : text;
+<span style="color: #8c8c8c;">}</span>
+
+<span style="color: #FFA657;">export</span> <span style="color: #FFA657;">default</span> <span style="color: #FFA657;">function</span> <span style="color: #8c8c8c;">(</span><span style="color: #f4f4ff;">pi</span>: <span style="color: #95a99f;">ExtensionAPI</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+        pi.<span style="color: #96a6c8;">on</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"input"</span>, <span style="color: #FFA657;">async</span> <span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">event</span>, <span style="color: #f4f4ff;">ctx</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">=&gt;</span> <span style="color: #b0b1a3;">{</span>
+                <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>event.source === <span style="color: #A1D08E;">"extension"</span> || !event.text.<span style="color: #96a6c8;">includes</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"@"</span><span style="color: #aebed8;">)</span> || !<span style="color: #96a6c8;">isGptSeriesModel</span><span style="color: #aebed8;">(</span>ctx.model?.id<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                        <span style="color: #FFA657;">return</span> <span style="color: #aebed8;">{</span> action: <span style="color: #A1D08E;">"continue"</span> <span style="color: #aebed8;">}</span>;
+                <span style="color: #97b098;">}</span>
+
+                <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">rewritten</span> = <span style="color: #96a6c8;">rewriteMentions</span><span style="color: #97b098;">(</span>event.text, ctx.cwd<span style="color: #97b098;">)</span>;
+                <span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>rewritten === event.text<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+                        <span style="color: #FFA657;">return</span> <span style="color: #aebed8;">{</span> action: <span style="color: #A1D08E;">"continue"</span> <span style="color: #aebed8;">}</span>;
+                <span style="color: #97b098;">}</span>
+
+                <span style="color: #FFA657;">return</span> <span style="color: #97b098;">{</span> action: <span style="color: #A1D08E;">"transform"</span>, text: rewritten, images: event.images <span style="color: #97b098;">}</span>;
+        <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>;
+<span style="color: #8c8c8c;">}</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org45dac23" class="outline-3">
+<h3 id="org45dac23">File Explore</h3>
+<div class="outline-text-3" id="text-org45dac23">
 <p>
 原始版本是：<a href="https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts">https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts</a>
 </p>
@@ -2978,9 +3117,9 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-org98eae02" class="outline-3">
-<h3 id="org98eae02">Others</h3>
-<div class="outline-text-3" id="text-org98eae02">
+<div id="outline-container-org48bfa9d" class="outline-3">
+<h3 id="org48bfa9d">Others</h3>
+<div class="outline-text-3" id="text-org48bfa9d">
 <p>
 <a href="https://github.com/mitsuhiko/agent-stuff/">https://github.com/mitsuhiko/agent-stuff/</a> 的作者写的这些 extension 都是很好的设计模板。
 </p>
@@ -3013,9 +3152,9 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 </div>
 </div>
 </div>
-<div id="outline-container-org8a66b7a" class="outline-2">
-<h2 id="org8a66b7a">Custom Emacs Functions</h2>
-<div class="outline-text-2" id="text-org8a66b7a">
+<div id="outline-container-org41db854" class="outline-2">
+<h2 id="org41db854">Custom Emacs Functions</h2>
+<div class="outline-text-2" id="text-org41db854">
 <p>
 有时候只是一些简单的小问题，不想打开终端或者 pimacs，就会用到这个在 Emacs 里快速用 <code>pi --no-session -p</code> 提问:
 </p>
