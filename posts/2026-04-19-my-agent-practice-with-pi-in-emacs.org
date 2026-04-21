@@ -77,7 +77,9 @@ pimacs 在 Emacs 里的体验基本和在终端里一致。我挺喜欢这个项
 后面有更新就只在这里更新了，自己看起来也方便一点。
 
 ** Command Rule
-pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
+pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit。
+
+需要配合 https://github.com/mitsuhiko/agent-stuff/tree/main/intercepted-commands 里的内容。
 
 #+begin_src typescript
 /**
@@ -105,7 +107,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { Key, matchesKey, visibleWidth } from "@mariozechner/pi-tui";
+import { Key, matchesKey, truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
 
 // Simple glob-to-regex converter for command matching
 // Matches opencode's wildcard implementation
@@ -335,13 +337,19 @@ export default function (pi: ExtensionAPI) {
             };
 
             return {
-                render: () => {
+                render: (width: number) => {
+                    const frameWidth = Math.min(Math.max(12, width), 48);
+                    const innerWidth = Math.max(8, frameWidth - 4);
+                    const prefix = `⚠️ ${toolName}: `;
+                    const inputWidth = Math.max(0, innerWidth - visibleWidth(prefix));
+                    const title = theme.bold(
+                        theme.fg("warning", `${prefix}${truncateToWidth(input, inputWidth, "…")}`),
+                    );
                     const content = [
-                        theme.bold(theme.fg("warning", `⚠️ ${toolName}: ${input}`)),
-                        `${renderOption("Yes", selected === 0)}  ${renderOption("No", selected === 1)}`,
-                        theme.fg("dim", "←→ / tab navigate  enter select  esc cancel"),
+                        title,
+                        truncateToWidth(`${renderOption("Yes", selected === 0)}  ${renderOption("No", selected === 1)}`, innerWidth, ""),
+                        truncateToWidth(theme.fg("dim", "←→ / tab navigate  enter select  esc cancel"), innerWidth, "…"),
                     ];
-                    const innerWidth = content.reduce((max, line) => Math.max(max, visibleWidth(line)), 0);
                     const top = theme.fg("dim", `┌${"─".repeat(innerWidth + 2)}┐`);
                     const bottom = theme.fg("dim", `└${"─".repeat(innerWidth + 2)}┘`);
                     const lines = content.map((line) => {
@@ -349,7 +357,7 @@ export default function (pi: ExtensionAPI) {
                         return `${theme.fg("dim", "│")} ${line}${padding} ${theme.fg("dim", "│")}`;
                     });
 
-                    return [top, ...lines, bottom];
+                    return [top, ...lines, bottom].map((line) => truncateToWidth(line, frameWidth, ""));
                 },
                 invalidate: () => {},
                 handleInput: (data: string) => {
@@ -1759,78 +1767,6 @@ export default function (pi: ExtensionAPI): void {
 #+end_src
 
 
-** @file Improve
-有些模型在 Pi 里会识别不了 ~@file~ 的完整路径，这个插件就只是简单的 transform 了完整的路径到 input：
-
-#+begin_src typescript
-import { existsSync } from "node:fs";
-import os from "node:os";
-import path from "node:path";
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-
-const MENTION_PATTERN = /@([^\s@]+)/g;
-
-const isGptSeriesModel = (modelId: string | undefined) => Boolean(modelId && /^gpt/i.test(modelId));
-
-const toDisplayPath = (value: string) => value.replace(/\\/g, "/");
-
-const toMentionPath = (absolutePath: string) => {
-        const resolvedPath = path.resolve(absolutePath);
-        const home = os.homedir();
-
-        if (resolvedPath === home) return "~";
-        if (resolvedPath.startsWith(`${home}${path.sep}`)) {
-                return `~/${toDisplayPath(resolvedPath.slice(home.length + 1))}`;
-        }
-
-        return toDisplayPath(resolvedPath);
-};
-
-const resolveToAbsolutePath = (cwd: string, target: string): string | null => {
-        const trimmed = target.trim();
-        if (!trimmed) return null;
-
-        const expanded = trimmed === "~" ? os.homedir() : trimmed.startsWith("~/") ? path.join(os.homedir(), trimmed.slice(2)) : trimmed;
-        const absolutePath = path.isAbsolute(expanded) ? expanded : path.resolve(cwd, expanded);
-        if (!existsSync(absolutePath)) return null;
-
-        return path.resolve(absolutePath);
-};
-
-const formatMention = (absolutePath: string) => `@${toMentionPath(absolutePath)}`;
-
-function rewriteMentions(text: string, cwd: string) {
-        let changed = false;
-
-        const rewritten = text.replace(MENTION_PATTERN, (original, rawTarget: string | undefined) => {
-                const absolutePath = resolveToAbsolutePath(cwd, rawTarget ?? "");
-                if (!absolutePath) return original;
-
-                const replacement = formatMention(absolutePath);
-                changed ||= replacement !== original;
-                return replacement;
-        });
-
-        return changed ? rewritten : text;
-}
-
-export default function (pi: ExtensionAPI) {
-        pi.on("input", async (event, ctx) => {
-                if (event.source === "extension" || !event.text.includes("@") || !isGptSeriesModel(ctx.model?.id)) {
-                        return { action: "continue" };
-                }
-
-                const rewritten = rewriteMentions(event.text, ctx.cwd);
-                if (rewritten === event.text) {
-                        return { action: "continue" };
-                }
-
-                return { action: "transform", text: rewritten, images: event.images };
-        });
-}
-#+end_src
-
-
 ** File Explore
 
  原始版本是：https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts
@@ -2929,6 +2865,86 @@ export default function (pi: ExtensionAPI): void {
                                 lastTimestamp: 0,
                         });
                 },
+        });
+}
+#+end_src
+
+
+** @file Improve
+有些模型在 Pi 里会识别不了 ~@file~ 的完整路径，这个插件就只是简单的 transform 了完整的路径到 input：
+
+pi 的 [[https://github.com/badlogic/pi-mono/releases/tag/v0.68.0][v0.68.0]] 里的这些改动似乎解决了这个问题：
+
+#+begin_quote
+- Changed SDK and CLI tool selection from cwd-bound built-in tool instances to tool-name allowlists. =createAgentSession({ tools })= now expects =string[]= names such as ="read"= and ="bash"= instead of =Tool[]=, =--tools= now allowlists built-in, extension, and custom tools by name, and =--no-tools= now disables all tools by default rather than only built-ins. Migrate SDK code from =tools: [readTool, bashTool]= to =tools: ["read", "bash"]=  ([[https://github.com/badlogic/pi-mono/issues/2835][#2835]], [[https://github.com/badlogic/pi-mono/issues/3452][#3452]])
+- Removed prebuilt cwd-bound tool and tool-definition exports from =@mariozechner/pi-coding-agent=, including =readTool=, =bashTool=, =editTool=, =writeTool=, =grepTool=, =findTool=, =lsTool=, =readOnlyTools=, =codingTools=, and the corresponding =*ToolDefinition= values. Use the explicit factory exports instead, for example =createReadTool(cwd)=, =createBashTool(cwd)=, =createCodingTools(cwd)=, and =createReadToolDefinition(cwd)=  ([[https://github.com/badlogic/pi-mono/issues/3452][#3452]])
+- Removed ambient =process.cwd()= / default agent-dir fallback behavior from public resource helpers. =DefaultResourceLoader=, =loadProjectContextFiles()=, and =loadSkills()= now require explicit cwd/agent-dir style inputs, and exported system-prompt option types now require an explicit =cwd= . Pass the session or project cwd explicitly instead of relying on process-global defaults ([[https://github.com/badlogic/pi-mono/issues/3452][#3452]])
+#+end_quote
+
+#+begin_src typescript
+import { existsSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+
+const MENTION_PATTERN = /@([^\s@]+)/g;
+
+const isGptSeriesModel = (modelId: string | undefined) => Boolean(modelId && /^gpt/i.test(modelId));
+
+const toDisplayPath = (value: string) => value.replace(/\\/g, "/");
+
+const toMentionPath = (absolutePath: string) => {
+        const resolvedPath = path.resolve(absolutePath);
+        const home = os.homedir();
+
+        if (resolvedPath === home) return "~";
+        if (resolvedPath.startsWith(`${home}${path.sep}`)) {
+                return `~/${toDisplayPath(resolvedPath.slice(home.length + 1))}`;
+        }
+
+        return toDisplayPath(resolvedPath);
+};
+
+const resolveToAbsolutePath = (cwd: string, target: string): string | null => {
+        const trimmed = target.trim();
+        if (!trimmed) return null;
+
+        const expanded = trimmed === "~" ? os.homedir() : trimmed.startsWith("~/") ? path.join(os.homedir(), trimmed.slice(2)) : trimmed;
+        const absolutePath = path.isAbsolute(expanded) ? expanded : path.resolve(cwd, expanded);
+        if (!existsSync(absolutePath)) return null;
+
+        return path.resolve(absolutePath);
+};
+
+const formatMention = (absolutePath: string) => `@${toMentionPath(absolutePath)}`;
+
+function rewriteMentions(text: string, cwd: string) {
+        let changed = false;
+
+        const rewritten = text.replace(MENTION_PATTERN, (original, rawTarget: string | undefined) => {
+                const absolutePath = resolveToAbsolutePath(cwd, rawTarget ?? "");
+                if (!absolutePath) return original;
+
+                const replacement = formatMention(absolutePath);
+                changed ||= replacement !== original;
+                return replacement;
+        });
+
+        return changed ? rewritten : text;
+}
+
+export default function (pi: ExtensionAPI) {
+        pi.on("input", async (event, ctx) => {
+                if (event.source === "extension" || !event.text.includes("@") || !isGptSeriesModel(ctx.model?.id)) {
+                        return { action: "continue" };
+                }
+
+                const rewritten = rewriteMentions(event.text, ctx.cwd);
+                if (rewritten === event.text) {
+                        return { action: "continue" };
+                }
+
+                return { action: "transform", text: rewritten, images: event.images };
         });
 }
 #+end_src
