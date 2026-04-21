@@ -79,8 +79,6 @@ pimacs 在 Emacs 里的体验基本和在终端里一致。我挺喜欢这个项
 ** Command Rule
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit。
 
-需要配合 https://github.com/mitsuhiko/agent-stuff/tree/main/intercepted-commands 里的内容。
-
 #+begin_src typescript
 /**
  * Command Permissions Extension
@@ -1507,6 +1505,8 @@ export default function agentsBuffExtension(pi: ExtensionAPI): void {
 但 pi 里 bash 指令是 工具函数 bash("command") 通过 Node.js child_process 执行，所以这个 extension 用 pi.registerTool() 重新注册 bash tool，用 spawnHook 来修改 bash 指令。
 
 还注册了一个 ~/rtk-status~ 指令来查看 bash 指令的 rewrite 情况还有 token 的节省统计。
+
+UV 部分需要配合 https://github.com/mitsuhiko/agent-stuff/tree/main/intercepted-commands 里的内容。
 
 command-integration.ts:
 
