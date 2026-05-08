@@ -59,6 +59,8 @@ Pacman 是 Arch Linux 默认的包管理器 ，[[https://github.com/Morganamilo/
 
 DM 我选择的是 [[https://github.com/coastalwhite/lemurs][Lemurs]] 也是因为它足够简单。
 
+保险起见，在 ~/etc/lemurs/config.toml~ 里加上 ~include_tty_shell = true~ ，这样有时候 Wayland 出现问题方便直接调试。
+
 ** App launcher
 [[https://codeberg.org/dnkl/fuzzel][dnkl/fuzzel]]
 
@@ -249,7 +251,7 @@ done
   更轻量化的：sudo pacman -S volumeicon
 
 * Tips
-最近更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 ~nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings~ 了，导致驱动无法适配。
+最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 ~nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings~ 了，导致驱动无法适配。
 
 Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 
@@ -259,11 +261,50 @@ Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 
 ~dkms status | grep nvidia~ 确定是否 Linux-lts 和当前 Linux kernel 的 NVIDIA 模块都编译成功
 
-~sudo grub-mkconfig -o /boot/grub/grub.cfg~ 重新生成 grub 菜单
+~sudo grub-mkconfig -o /boot/grub/grub.cfg~ 重新生成 grub 配置
 
 这样在开机的时候就可以选 LTS 了。
 
-** 其他事项：
+默认情况下，Linux-lts 会排在前面，如果想更改默认的 grub 为最新的 Linux 版本，官方推荐在 ~/etc/default/grub~ 里修改：
+
+~GRUB_DEFAULT='Advanced options for Arch Linux>Arch Linux, with Linux linux'~
+
+** Grub 修复
+如果你和我一样瞎折腾把 grub 弄坏了，可以 Arch Linux Live USB 引导修复。
+
+~lsblk~ 查看分区，找到 EFI 的分区，
+
+#+begin_src bash
+
+# /etc/default/grub 里找到下面，临时开启
+# Uncomment to enable booting from LUKS encrypted devices
+GRUB_ENABLE_CRYPTODISK=y
+
+cryptsetup open /dev/sda2 root #解锁，如果设置了 LUKS
+mount /dev/mapper/root /mnt
+mount /dev/sda1 /mnt/boot  #我的是 sda1 的固态
+arch-chroot /mnt
+#+end_src
+
+重新配置 GRUB：
+
+#+begin_src bash
+pacman -S grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
+grub-mkconfig -o /boot/grub/grub.cfg
+#+end_src
+
+如果 grub 没有读到配置，我的特例，让新的 GRUB 配置走 ~/boot/grub/grub.cfg~ ：
+
+#+begin_src bash
+cat > /boot/EFI/GRUB/grub.cfg <<'EOF'
+search --no-floppy --fs-uuid --set=root {/boot 的 UUID，blkid /dev/sda1 获取}
+set prefix=($root)/grub
+configfile $prefix/grub.cfg
+EOF
+#+end_src
+
+** NVIDIA 配置
 我另外一个 x86 电脑的 NVIDIA 显卡很老了，下面的方法管用
 
 1. 禁用开源的 Nouveau 驱动
