@@ -247,3 +247,53 @@ done
 - 音量控制：sudo pacman -S pavucontrol
 
   更轻量化的：sudo pacman -S volumeicon
+
+* Tips
+最近更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 ~nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings~ 了，导致驱动无法适配。
+
+Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
+
+~sudo pacman -S linux-lts linux-lts-headers~ 安装 Linux LTS
+
+~sudo dkms autoinstall~ 编译 NVIDIA
+
+~dkms status | grep nvidia~ 确定是否 Linux-lts 和当前 Linux kernel 的 NVIDIA 模块都编译成功
+
+~sudo grub-mkconfig -o /boot/grub/grub.cfg~ 重新生成 grub 菜单
+
+这样在开机的时候就可以选 LTS 了。
+
+** 其他事项：
+我另外一个 x86 电脑的 NVIDIA 显卡很老了，下面的方法管用
+
+1. 禁用开源的 Nouveau 驱动
+
+Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
+
+创建一个新的 modprobe 配置文件：
+
+~sudo vim /etc/modprobe.d/blacklist-nouveau.conf~
+
+在文件中添加：blacklist nouveau
+
+2. 配置 Initramfs (初始 RAM 文件系统)
+
+将 NVIDIA 模块添加到 initramfs 中，以确保它们在启动早期被加载。编辑 /etc/mkinitcpio.conf 文件：
+
+找到 MODULES= 这一行，并添加以下模块：
+
+~MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)~
+
+在 HOOKS= 这一行中，如果存在 kms，将其移除。
+
+完成修改后，重新生成 initramfs： ~sudo mkinitcpio -P~
+
+3. 设置内核参数
+
+为了启用 DRM (Direct Rendering Manager) 内核模式设置 (KMS)，需要向引导加载程序添加一个内核参数。这对于 Wayland 的正常工作是必需的，并且从较新版本的驱动开始默认启用。
+
+编辑 ~/etc/default/grub~ 文件：
+
+在 ~GRUB_CMDLINE_LINUX_DEFAULT~ 这一行中，添加 ~nvidia_drm.modeset=1~ 。
+
+然后，更新 GRUB 配置： ~sudo grub-mkconfig -o /boot/grub/grub.cfg~
