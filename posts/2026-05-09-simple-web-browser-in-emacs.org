@@ -1,0 +1,103 @@
+#+title: 极简浏览器也可以在 Emacs
+#+date: <2026-05-09 13:54>
+#+description: 或许 AI 会发展出用 token 来传递信息的新互联网传输协议? 浏览器这种实现说不定再过十年真的会大变样。用户不再需要受到前端框架、环境的限制，内容和信息的传递成为核心，当然这个成本是很大的。有了 AI 之后，打开浏览器这个动作已经被各种 agent 在慢慢替代。
+#+filetags: Emacs Ramble
+
+* Intro
+很久以前，我只知道浏览器是可以打开网页的一个东西。随着对代码的学习，现在才真正了解到它是什么。
+
+我不是特别在乎互联网隐私，而且一些对我无关紧要的数据，如果对提升产品和用户体验有帮助，我甚至很乐于提供。
+
+但随着 AI 的发展，互联网的这些变得越来越没有原则，产品和用户之间的信任也越来越差。我没有什么特别的网络用户隐私要保护，隐私也从来只是一个相对概念。我也没有想着这些环境会变得很好，只是觉得至少我可以做出一些选择，而不只是当问题发生在自己身上的时候抱怨。
+
+浏览器，JavaScript，Node.js，HTML，WebAssembly，WebView，这些相关实现在我现在的代码认知里，很不优雅。特别是混乱的 JavaScript 和前端体系。我慢慢了解了一些相关的发展历史，这些本身在底层就存在着不可能修复的 “漏洞”，太纠结隐私没啥必要。
+
+或许 AI 会发展出用 token 来传递信息的新互联网传输协议? 浏览器这种实现路径说不定再过十年真的会大变样。用户不再需要受到前端框架、环境的限制，内容和信息的传递成为核心，当然这个成本是很大的。有了 AI 之后，打开浏览器这个动作已经被各种 agent 在慢慢替代。TUI 和 CLI 现在是我用的最多的 UI 了。界面就是和用户意图之间的交互，用户 UI 和 interface 在以后一定会发生天翻地覆的变化，现在的 GUI 底层框架逻辑，我觉得承载不了这些交互，也很没有未来感。扯远了。
+
+我不是在批判这些前端和相关语言实现，只是个人想选择一些更简单的打开网页，看看内容的方式。特别是，现在的互联网内容也确实没有太多让我想多花点时间慢慢看了。
+
+而且，如果只是想看文本信息，一直以来也确实不需要太依赖浏览器。
+
+* Emacs 配置
+[[https://joshblais.com/blog/emacs-as-my-browser/][Emacs is my browser - The Universe of Joshua Blais]] 偶然看到这篇文章。
+
+和作者一样 [[https://en.wikipedia.org/wiki/Lynx_(web_browser)][Lynx (web browser)]], [[https://www.brow.sh/][Browsh]], [[https://github.com/atlas-engineer/nyxt][nyxt]] 我也都尝试过。
+
+之前只是稍微尝试了一下 eww，没想到稍微多配置一下就完全可以满足我现在的需求了！
+
+网页用 eww，视频用 mpv，PDF 在 Emacs 里也可以直接看。
+
+越来越觉得，all you need is a text editor.
+
+根据作者的文章，下面是具体配置：
+
+#+begin_src elisp
+;; eww
+;; 禁止eww生成cookie
+;; https://github.com/lujun9972/lujun9972.github.com/blob/source/Emacs%E4%B9%8B%E6%80%92/%E5%A6%82%E4%BD%95%E7%A6%81%E6%AD%A2eww%E7%94%9F%E6%88%90cookie.org
+(setq url-cookie-trusted-urls '()        ;不设置白名单
+      url-cookie-untrusted-urls '(".*")  ;所有内容都匹配黑名单
+      eww-readable-urls '(".*"))         ;默认开启 readable
+
+;; https://joshblais.com/blog/emacs-as-my-browser/
+(setq eww-search-prefix "https://duckduckgo.com/search?q=")
+(setq eww-download-directory (expand-file-name "~/Downloads/"))
+
+(defun my-browse-url-mpv (url &rest _args)
+  "Open URL in mpv."
+  (start-process "mpv" nil "mpv" url))
+
+(defun my-browse-url-pdf (url &rest _args)
+  "Fetch remote PDF and open in pdf-tools within Emacs."
+  (let ((tmp (make-temp-file "emacs-pdf-" nil ".pdf")))
+    (url-copy-file url tmp t)
+    (find-file-other-window tmp)
+    (pdf-view-mode)))
+
+(setq browse-url-handlers
+      '(("\\(youtube\\.com\\|youtu\\.be\\|vimeo\\.com\\|twitch\\.tv\\|bilibili\\.com\\|b23\\.tv\\)" . my-browse-url-mpv)
+        ("\\.mp4$" . my-browse-url-mpv)
+        ("\\.pdf$" . my-browse-url-pdf)
+        ("." . eww-browse-url)))
+
+;; Keep your fallback setting
+(setq browse-url-secondary-browser-function 'browse-url-generic
+      browse-url-generic-program "librewolf")
+
+(with-eval-after-load 'eww
+  (define-key eww-mode-map (kbd "=") #'text-scale-increase)
+  (define-key eww-mode-map (kbd "-") #'text-scale-decrease)
+  (define-key eww-mode-map (kbd "0") #'text-scale-adjust))
+
+(setq shr-width 100)
+(setq shr-max-width 120)
+(setq shr-indentation 4)
+
+(setq shr-use-fonts nil)
+(setq shr-max-image-size '(800 . 600))
+(setq shr-image-animate t)
+
+(defun my/eww-download-image-at-point ()
+  "Download image at point to `eww-download-directory'."
+  (interactive)
+  (let ((url (or (get-text-property (point) 'image-url)
+                 (get-text-property (point) 'shr-url))))
+    (if (not url)
+        (message "No image at point")
+      (let* ((filename (file-name-nondirectory (url-filename (url-generic-parse-url url))))
+             (dest (expand-file-name filename eww-download-directory)))
+        (url-copy-file url dest t)
+        (message "Saved: %s" dest)))))
+
+;; Keybinds
+(with-eval-after-load 'eww
+  (define-key eww-mode-map (kbd "b") #'eww-back-url)
+  (define-key eww-mode-map (kbd "a") #'eww-add-bookmark)
+  (define-key eww-mode-map (kbd "U") #'shr-copy-url)
+  (define-key eww-mode-map (kbd "D") #'my/eww-download-image-at-point))
+
+(with-eval-after-load 'evil
+  (evil-define-key 'normal eww-mode-map
+    (kbd "&") #'eww-browse-with-external-browser))
+
+#+end_src

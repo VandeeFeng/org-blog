@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="或许 AI 会发展出用 token 来传递信息的新互联网传输协议? 浏览器这种实现说不定再过十年真的会大变样。用户不再需要受到前端框架、环境的限制，内容和信息的传递成为核心，当然这个成本是很大的。有了 AI 之后，打开浏览器这个动作已经被各种 agent 在慢慢替代。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>极简浏览器也可以在 Emacs</title>
+<meta property="og:title" content="极简浏览器也可以在 Emacs">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="或许 AI 会发展出用 token 来传递信息的新互联网传输协议? 浏览器这种实现说不定再过十年真的会大变样。用户不再需要受到前端框架、环境的限制，内容和信息的传递成为核心，当然这个成本是很大的。有了 AI 之后，打开浏览器这个动作已经被各种 agent 在慢慢替代。">
+<meta property="og:url" content="https://www.vandee.art/blog/2026-05-09-simple-web-browser-in-emacs.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
+       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
+       <script defer>
+         document.addEventListener("DOMContentLoaded", () => {
+           pangu.autoSpacingPage();
+         });
+       </script>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/copyCode.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script>
+       <script src="assets/js/search.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="projects.html">Projects</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="ri-search-line ri-xl"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">09 May 2026</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2026-05-09-simple-web-browser-in-emacs.html">极简浏览器也可以在 Emacs</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb334b6e">Intro</a></li>
+<li><a href="#orgd9ae492">Emacs 配置</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orgb334b6e" class="outline-2">
+<h2 id="orgb334b6e">Intro</h2>
+<div class="outline-text-2" id="text-orgb334b6e">
+<p>
+很久以前，我只知道浏览器是可以打开网页的一个东西。随着对代码的学习，现在才真正了解到它是什么。
+</p>
+
+<p>
+我不是特别在乎互联网隐私，而且一些对我无关紧要的数据，如果对提升产品和用户体验有帮助，我甚至很乐于提供。
+</p>
+
+<p>
+但随着 AI 的发展，互联网的这些变得越来越没有原则，产品和用户之间的信任也越来越差。我没有什么特别的网络用户隐私要保护，隐私也从来只是一个相对概念。我也没有想着这些环境会变得很好，只是觉得至少我可以做出一些选择，而不只是当问题发生在自己身上的时候抱怨。
+</p>
+
+<p>
+浏览器，JavaScript，Node.js，HTML，WebAssembly，WebView，这些相关实现在我现在的代码认知里，很不优雅。特别是混乱的 JavaScript 和前端体系。我慢慢了解了一些相关的发展历史，这些本身在底层就存在着不可能修复的 “漏洞”，太纠结隐私没啥必要。
+</p>
+
+<p>
+或许 AI 会发展出用 token 来传递信息的新互联网传输协议? 浏览器这种实现路径说不定再过十年真的会大变样。用户不再需要受到前端框架、环境的限制，内容和信息的传递成为核心，当然这个成本是很大的。有了 AI 之后，打开浏览器这个动作已经被各种 agent 在慢慢替代。TUI 和 CLI 现在是我用的最多的 UI 了。界面就是和用户意图之间的交互，用户 UI 和 interface 在以后一定会发生天翻地覆的变化，现在的 GUI 底层框架逻辑，我觉得承载不了这些交互，也很没有未来感。扯远了。
+</p>
+
+<p>
+我不是在批判这些前端和相关语言实现，只是个人想选择一些更简单的打开网页，看看内容的方式。特别是，现在的互联网内容也确实没有太多让我想多花点时间慢慢看了。
+</p>
+
+<p>
+而且，如果只是想看文本信息，一直以来也确实不需要太依赖浏览器。
+</p>
+</div>
+</div>
+<div id="outline-container-orgd9ae492" class="outline-2">
+<h2 id="orgd9ae492">Emacs 配置</h2>
+<div class="outline-text-2" id="text-orgd9ae492">
+<p>
+<a href="https://joshblais.com/blog/emacs-as-my-browser/">Emacs is my browser - The Universe of Joshua Blais</a> 偶然看到这篇文章。
+</p>
+
+<p>
+和作者一样 <a href="https://en.wikipedia.org/wiki/Lynx_(web_browser)">Lynx (web browser)</a>, <a href="https://www.brow.sh/">Browsh</a>, <a href="https://github.com/atlas-engineer/nyxt">nyxt</a> 我也都尝试过。
+</p>
+
+<p>
+之前只是稍微尝试了一下 eww，没想到稍微多配置一下就完全可以满足我现在的需求了！
+</p>
+
+<p>
+网页用 eww，视频用 mpv，PDF 在 Emacs 里也可以直接看。
+</p>
+
+<p>
+越来越觉得，all you need is a text editor.
+</p>
+
+<p>
+根据作者的文章，下面是具体配置：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">eww
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">&#31105;&#27490;eww&#29983;&#25104;cookie
+</span><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/lujun9972/lujun9972.github.com/blob/source/Emacs%E4%B9%8B%E6%80%92/%E5%A6%82%E4%BD%95%E7%A6%81%E6%AD%A2eww%E7%94%9F%E6%88%90cookie.org
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> url-cookie-trusted-urls <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">()</span>        <span style="color: #787878;">;</span><span style="color: #787878;">&#19981;&#35774;&#32622;&#30333;&#21517;&#21333;
+</span>      url-cookie-untrusted-urls <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">".*"</span><span style="color: #93a8c6;">)</span>  <span style="color: #787878;">;</span><span style="color: #787878;">&#25152;&#26377;&#20869;&#23481;&#37117;&#21305;&#37197;&#40657;&#21517;&#21333;
+</span>      eww-readable-urls <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">".*"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>         <span style="color: #787878;">;</span><span style="color: #787878;">&#40664;&#35748;&#24320;&#21551; readable
+</span>
+<span style="color: #787878;">;; </span><span style="color: #787878;">https://joshblais.com/blog/emacs-as-my-browser/
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> eww-search-prefix <span style="color: #A1D08E;">"https://duckduckgo.com/search?q="</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> eww-download-directory <span style="color: #93a8c6;">(</span>expand-file-name <span style="color: #A1D08E;">"~/Downloads/"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-browse-url-mpv</span> <span style="color: #93a8c6;">(</span>url <span style="color: #95a99f;">&amp;rest</span> _args<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">"Open URL in mpv."</span>
+  <span style="color: #93a8c6;">(</span>start-process <span style="color: #A1D08E;">"mpv"</span> nil <span style="color: #A1D08E;">"mpv"</span> url<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-browse-url-pdf</span> <span style="color: #93a8c6;">(</span>url <span style="color: #95a99f;">&amp;rest</span> _args<span style="color: #93a8c6;">)</span>
+  <span style="color: #787878;">"Fetch remote PDF and open in pdf-tools within Emacs."</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>tmp <span style="color: #aebed8;">(</span>make-temp-file <span style="color: #A1D08E;">"emacs-pdf-"</span> nil <span style="color: #A1D08E;">".pdf"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span>url-copy-file url tmp t<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span>find-file-other-window tmp<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span>pdf-view-mode<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> browse-url-handlers
+      <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">youtube</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">youtu</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.be</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">vimeo</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">twitch</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.tv</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">bilibili</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">b23</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.tv</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">"</span> . my-browse-url-mpv<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.mp4$"</span> . my-browse-url-mpv<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.pdf$"</span> . my-browse-url-pdf<span style="color: #b0b1a3;">)</span>
+        <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"."</span> . eww-browse-url<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Keep your fallback setting
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> browse-url-secondary-browser-function <span style="color: #FFA657;">'</span><span style="color: #95a99f;">browse-url-generic</span>
+      browse-url-generic-program <span style="color: #A1D08E;">"librewolf"</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">eww</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"="</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">text-scale-increase</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"-"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">text-scale-decrease</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"0"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">text-scale-adjust</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-width 100<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-max-width 120<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-indentation 4<span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-use-fonts nil<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-max-image-size <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>800 . 600<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-image-animate t<span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/eww-download-image-at-point</span> <span style="color: #93a8c6;">()</span>
+  <span style="color: #787878;">"Download image at point to `</span><span style="color: #95a99f;">eww-download-directory</span><span style="color: #787878;">'."</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>url <span style="color: #aebed8;">(</span><span style="color: #FFA657;">or</span> <span style="color: #b0b0b3;">(</span>get-text-property <span style="color: #90a890;">(</span>point<span style="color: #90a890;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">image-url</span><span style="color: #b0b0b3;">)</span>
+                 <span style="color: #b0b0b3;">(</span>get-text-property <span style="color: #90a890;">(</span>point<span style="color: #90a890;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">shr-url</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>not url<span style="color: #97b098;">)</span>
+        <span style="color: #97b098;">(</span>message <span style="color: #A1D08E;">"No image at point"</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>filename <span style="color: #90a890;">(</span>file-name-nondirectory <span style="color: #a2b6da;">(</span>url-filename <span style="color: #9cb6ad;">(</span>url-generic-parse-url url<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+             <span style="color: #b0b0b3;">(</span>dest <span style="color: #90a890;">(</span>expand-file-name filename eww-download-directory<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>url-copy-file url dest t<span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span>message <span style="color: #A1D08E;">"Saved: %s"</span> dest<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #787878;">;; </span><span style="color: #787878;">Keybinds
+</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">eww</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"b"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">eww-back-url</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"a"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">eww-add-bookmark</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"U"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">shr-copy-url</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"D"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">my/eww-download-image-at-point</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">normal</span> eww-mode-map
+    <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"&amp;"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">eww-browse-with-external-browser</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+
+</pre>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="ri-arrow-up-double-line ri-3x"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>
