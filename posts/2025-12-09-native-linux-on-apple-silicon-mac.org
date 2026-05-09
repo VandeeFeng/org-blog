@@ -251,7 +251,7 @@ done
   更轻量化的：sudo pacman -S volumeicon
 
 * Tips
-最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 ~nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings~ 了，导致驱动无法适配。
+最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 ~nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings lib32-nvidia-580xx-utils~ 了，导致驱动无法适配。
 
 Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 
