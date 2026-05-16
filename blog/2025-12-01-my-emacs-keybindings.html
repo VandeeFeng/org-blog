@@ -19,22 +19,10 @@
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", () => {
-           pangu.autoSpacingPage();
-         });
-       </script>
-
        <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
+       <script src="assets/js/shiba.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
@@ -59,30 +47,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org98886a9">TL;DR</a></li>
-<li><a href="#org2044cb1">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#org6c2776b">我的键位设置</a>
+<li><a href="#orgd038e20">TL;DR</a></li>
+<li><a href="#orgab12484">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#orgfa211d9">我的键位设置</a>
 <ul>
-<li><a href="#orgcb95c7e">General</a></li>
-<li><a href="#org1f6fe3d">mark &amp; move</a></li>
-<li><a href="#org589b34f">hydra &amp; general</a></li>
-<li><a href="#org88a7249">Misc</a></li>
+<li><a href="#orgd34b232">General</a></li>
+<li><a href="#org969fc1d">mark &amp; move</a></li>
+<li><a href="#org5ab8277">hydra &amp; general</a></li>
+<li><a href="#orgfe582ba">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org98886a9" class="outline-2">
-<h2 id="org98886a9">TL;DR</h2>
-<div class="outline-text-2" id="text-org98886a9">
+<div id="outline-container-orgd038e20" class="outline-2">
+<h2 id="orgd038e20">TL;DR</h2>
+<div class="outline-text-2" id="text-orgd038e20">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org2044cb1" class="outline-2">
-<h2 id="org2044cb1">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org2044cb1">
+<div id="outline-container-orgab12484" class="outline-2">
+<h2 id="orgab12484">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-orgab12484">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -111,9 +99,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-org6c2776b" class="outline-2">
-<h2 id="org6c2776b">我的键位设置</h2>
-<div class="outline-text-2" id="text-org6c2776b">
+<div id="outline-container-orgfa211d9" class="outline-2">
+<h2 id="orgfa211d9">我的键位设置</h2>
+<div class="outline-text-2" id="text-orgfa211d9">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -134,9 +122,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-orgcb95c7e" class="outline-3">
-<h3 id="orgcb95c7e">General</h3>
-<div class="outline-text-3" id="text-orgcb95c7e">
+<div id="outline-container-orgd34b232" class="outline-3">
+<h3 id="orgd34b232">General</h3>
+<div class="outline-text-3" id="text-orgd34b232">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -206,9 +194,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-org1f6fe3d" class="outline-3">
-<h3 id="org1f6fe3d">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org1f6fe3d">
+<div id="outline-container-org969fc1d" class="outline-3">
+<h3 id="org969fc1d">mark &amp; move</h3>
+<div class="outline-text-3" id="text-org969fc1d">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -290,9 +278,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org589b34f" class="outline-3">
-<h3 id="org589b34f">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org589b34f">
+<div id="outline-container-org5ab8277" class="outline-3">
+<h3 id="org5ab8277">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org5ab8277">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -338,9 +326,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org88a7249" class="outline-3">
-<h3 id="org88a7249">Misc</h3>
-<div class="outline-text-3" id="text-org88a7249">
+<div id="outline-container-orgfe582ba" class="outline-3">
+<h3 id="orgfe582ba">Misc</h3>
+<div class="outline-text-3" id="text-orgfe582ba">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>

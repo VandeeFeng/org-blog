@@ -19,22 +19,10 @@
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", () => {
-           pangu.autoSpacingPage();
-         });
-       </script>
-
        <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
+       <script src="assets/js/shiba.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
@@ -59,38 +47,38 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org07b22a2">TL;DR</a></li>
-<li><a href="#orgb3382e9">Why Linux</a></li>
-<li><a href="#orgda40882">Asahi Alarm</a>
+<li><a href="#org8290809">TL;DR</a></li>
+<li><a href="#org14a7dc5">Why Linux</a></li>
+<li><a href="#orgd43079f">Asahi Alarm</a>
 <ul>
-<li><a href="#org81876ff">初始化安装</a></li>
-<li><a href="#orgfe0b123">WM &amp; DM</a></li>
-<li><a href="#org37f097d">App launcher</a></li>
-<li><a href="#orgd52ed39">Theme</a></li>
-<li><a href="#org15dbb74">Bluetooth &amp;&amp; Wi-Fi</a></li>
-<li><a href="#org5846d1a">Fcitx &amp;&amp; Rime 输入法</a></li>
-<li><a href="#orge241068">Obs Studio</a></li>
+<li><a href="#orgcf02b8a">初始化安装</a></li>
+<li><a href="#orgf353a7a">WM &amp; DM</a></li>
+<li><a href="#org8462fe6">App launcher</a></li>
+<li><a href="#orgf7d5edd">Theme</a></li>
+<li><a href="#orgeb30817">Bluetooth &amp;&amp; Wi-Fi</a></li>
+<li><a href="#org7d53b87">Fcitx &amp;&amp; Rime 输入法</a></li>
+<li><a href="#org2197d90">Obs Studio</a></li>
 </ul>
 </li>
-<li><a href="#orga1b474c">Settings</a>
+<li><a href="#orge2b5d88">Settings</a>
 <ul>
-<li><a href="#org3a8bfb1">Sway</a></li>
-<li><a href="#org3604498">充电提示音</a></li>
-<li><a href="#org25476f6">Others</a></li>
+<li><a href="#org353c304">Sway</a></li>
+<li><a href="#orgc3458b2">充电提示音</a></li>
+<li><a href="#orgded3815">Others</a></li>
 </ul>
 </li>
-<li><a href="#org0828fde">Tips</a>
+<li><a href="#org3a3e27b">Tips</a>
 <ul>
-<li><a href="#orgf5a5256">Grub 修复</a></li>
-<li><a href="#org0630d19">NVIDIA 配置</a></li>
+<li><a href="#org3d1cc07">Grub 修复</a></li>
+<li><a href="#org1181a8a">NVIDIA 配置</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org07b22a2" class="outline-2">
-<h2 id="org07b22a2">TL;DR</h2>
-<div class="outline-text-2" id="text-org07b22a2">
+<div id="outline-container-org8290809" class="outline-2">
+<h2 id="org8290809">TL;DR</h2>
+<div class="outline-text-2" id="text-org8290809">
 <p>
 几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 </p>
@@ -104,9 +92,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgb3382e9" class="outline-2">
-<h2 id="orgb3382e9">Why Linux</h2>
-<div class="outline-text-2" id="text-orgb3382e9">
+<div id="outline-container-org14a7dc5" class="outline-2">
+<h2 id="org14a7dc5">Why Linux</h2>
+<div class="outline-text-2" id="text-org14a7dc5">
 <p>
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 </p>
@@ -128,11 +116,11 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgda40882" class="outline-2">
-<h2 id="orgda40882">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-orgda40882">
+<div id="outline-container-orgd43079f" class="outline-2">
+<h2 id="orgd43079f">Asahi Alarm</h2>
+<div class="outline-text-2" id="text-orgd43079f">
 
-<figure id="orgd798522">
+<figure id="orgca7403b">
 <img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
 
 </figure>
@@ -165,9 +153,9 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
 </p>
 </div>
-<div id="outline-container-org81876ff" class="outline-3">
-<h3 id="org81876ff">初始化安装</h3>
-<div class="outline-text-3" id="text-org81876ff">
+<div id="outline-container-orgcf02b8a" class="outline-3">
+<h3 id="orgcf02b8a">初始化安装</h3>
+<div class="outline-text-3" id="text-orgcf02b8a">
 <p>
 它就是一个裸的 Arch Linux。
 </p>
@@ -189,9 +177,9 @@ Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morga
 </p>
 </div>
 </div>
-<div id="outline-container-orgfe0b123" class="outline-3">
-<h3 id="orgfe0b123">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-orgfe0b123">
+<div id="outline-container-orgf353a7a" class="outline-3">
+<h3 id="orgf353a7a">WM &amp; DM</h3>
+<div class="outline-text-3" id="text-orgf353a7a">
 <p>
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 </p>
@@ -213,9 +201,9 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 </p>
 </div>
 </div>
-<div id="outline-container-org37f097d" class="outline-3">
-<h3 id="org37f097d">App launcher</h3>
-<div class="outline-text-3" id="text-org37f097d">
+<div id="outline-container-org8462fe6" class="outline-3">
+<h3 id="org8462fe6">App launcher</h3>
+<div class="outline-text-3" id="text-org8462fe6">
 <p>
 <a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
 </p>
@@ -233,9 +221,9 @@ Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq
 </p>
 </div>
 </div>
-<div id="outline-container-orgd52ed39" class="outline-3">
-<h3 id="orgd52ed39">Theme</h3>
-<div class="outline-text-3" id="text-orgd52ed39">
+<div id="outline-container-orgf7d5edd" class="outline-3">
+<h3 id="orgf7d5edd">Theme</h3>
+<div class="outline-text-3" id="text-orgf7d5edd">
 <p>
 <a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
 </p>
@@ -257,9 +245,9 @@ wayland 里用 nwg-look
 </ul>
 </div>
 </div>
-<div id="outline-container-org15dbb74" class="outline-3">
-<h3 id="org15dbb74">Bluetooth &amp;&amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-org15dbb74">
+<div id="outline-container-orgeb30817" class="outline-3">
+<h3 id="orgeb30817">Bluetooth &amp;&amp; Wi-Fi</h3>
+<div class="outline-text-3" id="text-orgeb30817">
 <ul class="org-ul">
 <li><p>
 impala: 🛜 TUI for managing wifi on Linux
@@ -279,9 +267,9 @@ bluetui: 🛜 TUI for managing bluetooth on Linux
 </ul>
 </div>
 </div>
-<div id="outline-container-org5846d1a" class="outline-3">
-<h3 id="org5846d1a">Fcitx &amp;&amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-org5846d1a">
+<div id="outline-container-org7d53b87" class="outline-3">
+<h3 id="org7d53b87">Fcitx &amp;&amp; Rime 输入法</h3>
+<div class="outline-text-3" id="text-org7d53b87">
 <p>
 参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
 </p>
@@ -299,9 +287,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </p>
 </div>
 </div>
-<div id="outline-container-orge241068" class="outline-3">
-<h3 id="orge241068">Obs Studio</h3>
-<div class="outline-text-3" id="text-orge241068">
+<div id="outline-container-org2197d90" class="outline-3">
+<h3 id="org2197d90">Obs Studio</h3>
+<div class="outline-text-3" id="text-org2197d90">
 <p>
 Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包。
 </p>
@@ -340,9 +328,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 </div>
 </div>
 </div>
-<div id="outline-container-orga1b474c" class="outline-2">
-<h2 id="orga1b474c">Settings</h2>
-<div class="outline-text-2" id="text-orga1b474c">
+<div id="outline-container-orge2b5d88" class="outline-2">
+<h2 id="orge2b5d88">Settings</h2>
+<div class="outline-text-2" id="text-orge2b5d88">
 <p>
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
 </p>
@@ -351,9 +339,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 </p>
 </div>
-<div id="outline-container-org3a8bfb1" class="outline-3">
-<h3 id="org3a8bfb1">Sway</h3>
-<div class="outline-text-3" id="text-org3a8bfb1">
+<div id="outline-container-org353c304" class="outline-3">
+<h3 id="org353c304">Sway</h3>
+<div class="outline-text-3" id="text-org353c304">
 <p>
 Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
 </p>
@@ -432,9 +420,9 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 </p>
 </div>
 </div>
-<div id="outline-container-org3604498" class="outline-3">
-<h3 id="org3604498">充电提示音</h3>
-<div class="outline-text-3" id="text-org3604498">
+<div id="outline-container-orgc3458b2" class="outline-3">
+<h3 id="orgc3458b2">充电提示音</h3>
+<div class="outline-text-3" id="text-orgc3458b2">
 <p>
 Asahi Linux 判断电池是通过 <code>/sys/class/power_supply/macsmc-ac</code>
 </p>
@@ -509,9 +497,9 @@ udev 的方式在我的电脑上不管用，所以用了一个笨办法。
 </div>
 </div>
 </div>
-<div id="outline-container-org25476f6" class="outline-3">
-<h3 id="org25476f6">Others</h3>
-<div class="outline-text-3" id="text-org25476f6">
+<div id="outline-container-orgded3815" class="outline-3">
+<h3 id="orgded3815">Others</h3>
+<div class="outline-text-3" id="text-orgded3815">
 <ul class="org-ul">
 <li><p>
 调整对比度(X11)
@@ -561,9 +549,9 @@ opensnatch 因为 eBPF 报错
 </div>
 </div>
 </div>
-<div id="outline-container-org0828fde" class="outline-2">
-<h2 id="org0828fde">Tips</h2>
-<div class="outline-text-2" id="text-org0828fde">
+<div id="outline-container-org3a3e27b" class="outline-2">
+<h2 id="org3a3e27b">Tips</h2>
+<div class="outline-text-2" id="text-org3a3e27b">
 <p>
 最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 <code>nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings lib32-nvidia-580xx-utils</code> 了，导致驱动无法适配。
 </p>
@@ -600,9 +588,9 @@ Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 <code>GRUB_DEFAULT='Advanced options for Arch Linux&gt;Arch Linux, with Linux linux'</code>
 </p>
 </div>
-<div id="outline-container-orgf5a5256" class="outline-3">
-<h3 id="orgf5a5256">Grub 修复</h3>
-<div class="outline-text-3" id="text-orgf5a5256">
+<div id="outline-container-org3d1cc07" class="outline-3">
+<h3 id="org3d1cc07">Grub 修复</h3>
+<div class="outline-text-3" id="text-org3d1cc07">
 <p>
 如果你和我一样瞎折腾把 grub 弄坏了，可以 Arch Linux Live USB 引导修复。
 </p>
@@ -649,9 +637,9 @@ EOF</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org0630d19" class="outline-3">
-<h3 id="org0630d19">NVIDIA 配置</h3>
-<div class="outline-text-3" id="text-org0630d19">
+<div id="outline-container-org1181a8a" class="outline-3">
+<h3 id="org1181a8a">NVIDIA 配置</h3>
+<div class="outline-text-3" id="text-org1181a8a">
 <p>
 我另外一个 x86 电脑的 NVIDIA 显卡很老了，下面的方法管用
 </p>

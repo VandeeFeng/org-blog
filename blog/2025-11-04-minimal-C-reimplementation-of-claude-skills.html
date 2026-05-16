@@ -19,22 +19,10 @@
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", () => {
-           pangu.autoSpacingPage();
-         });
-       </script>
-
        <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
+       <script src="assets/js/shiba.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
@@ -59,27 +47,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6ef2e81">TL;DR</a></li>
-<li><a href="#org4a8d38d">Claude Skills</a></li>
-<li><a href="#org9a5ea2d">复现 Claude Skills</a>
+<li><a href="#orgab7a5b5">TL;DR</a></li>
+<li><a href="#org48e6416">Claude Skills</a></li>
+<li><a href="#org5c90a45">复现 Claude Skills</a>
 <ul>
-<li><a href="#orgf2e0ec3">核心实现</a></li>
+<li><a href="#orgac17437">核心实现</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org6ef2e81" class="outline-2">
-<h2 id="org6ef2e81">TL;DR</h2>
-<div class="outline-text-2" id="text-org6ef2e81">
+<div id="outline-container-orgab7a5b5" class="outline-2">
+<h2 id="orgab7a5b5">TL;DR</h2>
+<div class="outline-text-2" id="text-orgab7a5b5">
 <p>
 大道至简，Claude Skills 的这个思路很符合我对 LLM 工具能力扩展的构想。
 </p>
 </div>
 </div>
-<div id="outline-container-org4a8d38d" class="outline-2">
-<h2 id="org4a8d38d">Claude Skills</h2>
-<div class="outline-text-2" id="text-org4a8d38d">
+<div id="outline-container-org48e6416" class="outline-2">
+<h2 id="org48e6416">Claude Skills</h2>
+<div class="outline-text-2" id="text-org48e6416">
 <p>
 Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Claude 模型的工具能力。
 </p>
@@ -142,9 +130,9 @@ Reference:
 </ul>
 </div>
 </div>
-<div id="outline-container-org9a5ea2d" class="outline-2">
-<h2 id="org9a5ea2d">复现 Claude Skills</h2>
-<div class="outline-text-2" id="text-org9a5ea2d">
+<div id="outline-container-org5c90a45" class="outline-2">
+<h2 id="org5c90a45">复现 Claude Skills</h2>
+<div class="outline-text-2" id="text-org5c90a45">
 <p>
 最近正好看到一个项目 <a href="https://github.com/bravenewxyz/agent-c">GitHub - bravenewxyz/agent-c: Ultra-lightweight AI Agent</a> ，从来没有想过一个 agent 可以有这么极简的实现方式。
 </p>
@@ -159,7 +147,7 @@ Reference:
 </p>
 
 
-<figure id="orgf54dc17">
+<figure id="org03bbf8e">
 <img src="https://pic.vandee.art/images/agent-c-skills.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -168,9 +156,9 @@ Reference:
 源码在：<a href="https://github.com/VandeeFeng/agent-c">https://github.com/VandeeFeng/agent-c</a>
 </p>
 </div>
-<div id="outline-container-orgf2e0ec3" class="outline-3">
-<h3 id="orgf2e0ec3">核心实现</h3>
-<div class="outline-text-3" id="text-orgf2e0ec3">
+<div id="outline-container-orgac17437" class="outline-3">
+<h3 id="orgac17437">核心实现</h3>
+<div class="outline-text-3" id="text-orgac17437">
 <p>
 agent.c:6-41 - init_agent() 函数: 在系统初始化时将技能列表添加到 system prompt
 </p>

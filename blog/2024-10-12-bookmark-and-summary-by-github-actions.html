@@ -19,22 +19,10 @@
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", () => {
-           pangu.autoSpacingPage();
-         });
-       </script>
-
        <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
+       <script src="assets/js/shiba.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
@@ -59,14 +47,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2e0cfd4">GitHub 书签</a></li>
-<li><a href="#org6dbe8b3">从GitHub书签到页面</a></li>
+<li><a href="#orge9ebb82">GitHub 书签</a></li>
+<li><a href="#org96c21ee">从GitHub书签到页面</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org2e0cfd4" class="outline-2">
-<h2 id="org2e0cfd4">GitHub 书签</h2>
-<div class="outline-text-2" id="text-org2e0cfd4">
+<div id="outline-container-orge9ebb82" class="outline-2">
+<h2 id="orge9ebb82">GitHub 书签</h2>
+<div class="outline-text-2" id="text-orge9ebb82">
 <p>
 看到了<a href="https://nekonull.me/posts/llm_x_bookmark/">LLM x 书签收藏：摘要 &amp; 全文索引 - Nekonull's Garden</a>这篇文章，思路很值得借鉴，通过 GitHub Actions 来总结网页文章内容并写入到GitHub仓库里。
 </p>
@@ -120,7 +108,7 @@ process_changes.py
 </p>
 
 
-<figure id="org524917f">
+<figure id="org7e86b8b">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/Kapture%202024-10-12%20at%2017.38.32.gif" class="img" width="60%" height="60%">
 
 </figure>
@@ -356,15 +344,15 @@ logging.basicConfig<span style="color: #8c8c8c;">(</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org6dbe8b3" class="outline-2">
-<h2 id="org6dbe8b3">从GitHub书签到页面</h2>
-<div class="outline-text-2" id="text-org6dbe8b3">
+<div id="outline-container-org96c21ee" class="outline-2">
+<h2 id="org96c21ee">从GitHub书签到页面</h2>
+<div class="outline-text-2" id="text-org96c21ee">
 <p>
 突然想起来了之前的<a href="https://www.vandee.art/posts/2024-04-29-vandee-clip/">clip</a>，这两个整合到一起正好。于是进一步修改 <code>process_changes.py</code> 代码，更改文件生成的路径以符合clip，将AI总结和原文内容整合到 <code>index.md</code> ，这是现在的保存书签 - AI总结 - clip页面全流程：
 </p>
 
 
-<figure id="org547ec1e">
+<figure id="org530707b">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/clipsummary-min.gif" class="img" width="60%" height="60%">
 
 </figure>

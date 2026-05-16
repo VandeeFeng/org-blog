@@ -1,7 +1,6 @@
 /* A client-side global search function for all blog posts. */
 
-// Ensure the code only runs after the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function () {
+function initSearch() {
   const searchInput = document.getElementById("search-input");
   const searchResults = document.getElementById("search-results");
   const content = document.getElementById("content"); // the main post content
@@ -275,4 +274,10 @@ document.addEventListener("DOMContentLoaded", function () {
       return [];
     }
   }
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initSearch);
+} else {
+  initSearch();
+}

@@ -19,22 +19,10 @@
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", () => {
-           pangu.autoSpacingPage();
-         });
-       </script>
-
        <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
+       <script src="assets/js/shiba.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
@@ -59,19 +47,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3ce2d5b">TL;DR</a></li>
-<li><a href="#org459d943">Pimacs</a></li>
-<li><a href="#org81569f0">My Pi Extensions</a>
+<li><a href="#org1ccc9a2">TL;DR</a></li>
+<li><a href="#orgb0101a0">Pimacs</a></li>
+<li><a href="#org2576773">My Pi Extensions</a>
 <ul>
-<li><a href="#org65aaea7">Command Rule</a></li>
-<li><a href="#org3031ce5">Subagent</a></li>
-<li><a href="#org94612a8">Rtk Command Proxy</a></li>
-<li><a href="#org604ae69">File Explore</a></li>
-<li><a href="#org643fc4e">@file Improve</a></li>
-<li><a href="#org1ec68ec">Others</a></li>
+<li><a href="#org917fdd8">Command Rule</a></li>
+<li><a href="#org8978f8e">Subagent</a></li>
+<li><a href="#org4088fb5">Rtk Command Proxy</a></li>
+<li><a href="#orgf5403c0">File Explore</a></li>
+<li><a href="#orgd68d64f">@file Improve</a></li>
+<li><a href="#org7ba1d8c">Others</a></li>
 </ul>
 </li>
-<li><a href="#orge8101cf">Custom Emacs Functions</a></li>
+<li><a href="#org86098ff">Custom Emacs Functions</a></li>
 </ul>
 </div>
 </nav>
@@ -106,9 +94,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 <p>
 我看了一下最近的几个版本 release，有一部分是为了 OpenClaw。
 </p>
-<div id="outline-container-org3ce2d5b" class="outline-2">
-<h2 id="org3ce2d5b">TL;DR</h2>
-<div class="outline-text-2" id="text-org3ce2d5b">
+<div id="outline-container-org1ccc9a2" class="outline-2">
+<h2 id="org1ccc9a2">TL;DR</h2>
+<div class="outline-text-2" id="text-org1ccc9a2">
 <p>
 记录一下现在在 Emacs 里使用 pi 的配置。
 </p>
@@ -118,9 +106,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 </p>
 </div>
 </div>
-<div id="outline-container-org459d943" class="outline-2">
-<h2 id="org459d943">Pimacs</h2>
-<div class="outline-text-2" id="text-org459d943">
+<div id="outline-container-orgb0101a0" class="outline-2">
+<h2 id="orgb0101a0">Pimacs</h2>
+<div class="outline-text-2" id="text-orgb0101a0">
 <p>
 <a href="https://github.com/VandeeFeng/pimacs">VandeeFeng/pimacs: Emacs frontend for the pi coding agent</a> forked from <a href="https://github.com/dnouri/pi-coding-agent">https://github.com/dnouri/pi-coding-agent</a> ，后面就叫他 pimacs。
 </p>
@@ -204,9 +192,9 @@ insert region:
 </ul>
 </div>
 </div>
-<div id="outline-container-org81569f0" class="outline-2">
-<h2 id="org81569f0">My Pi Extensions</h2>
-<div class="outline-text-2" id="text-org81569f0">
+<div id="outline-container-org2576773" class="outline-2">
+<h2 id="org2576773">My Pi Extensions</h2>
+<div class="outline-text-2" id="text-org2576773">
 <p>
 <a href="https://www.vandee.art/blog/2026-02-17-my-minimalist-approach-to-agent-memory-management.html">我的 Agent Memory 极简管理方案</a> 之前在这里已经列出了几个，统一再这里补充一下。
 </p>
@@ -215,9 +203,9 @@ insert region:
 后面有更新就只在这里更新了，自己看起来也方便一点。
 </p>
 </div>
-<div id="outline-container-org65aaea7" class="outline-3">
-<h3 id="org65aaea7">Command Rule</h3>
-<div class="outline-text-3" id="text-org65aaea7">
+<div id="outline-container-org917fdd8" class="outline-3">
+<h3 id="org917fdd8">Command Rule</h3>
+<div class="outline-text-3" id="text-org917fdd8">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit。
 </p>
@@ -574,9 +562,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-org3031ce5" class="outline-3">
-<h3 id="org3031ce5">Subagent</h3>
-<div class="outline-text-3" id="text-org3031ce5">
+<div id="outline-container-org8978f8e" class="outline-3">
+<h3 id="org8978f8e">Subagent</h3>
+<div class="outline-text-3" id="text-org8978f8e">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -1656,9 +1644,9 @@ export default function agentsBuffExtension(</span><span style="color: #f4f4ff;"
 </div>
 </div>
 </div>
-<div id="outline-container-org94612a8" class="outline-3">
-<h3 id="org94612a8">Rtk Command Proxy</h3>
-<div class="outline-text-3" id="text-org94612a8">
+<div id="outline-container-org4088fb5" class="outline-3">
+<h3 id="org4088fb5">Rtk Command Proxy</h3>
+<div class="outline-text-3" id="text-org4088fb5">
 <p>
 <a href="https://github.com/rtk-ai/rtk">GitHub - rtk-ai/rtk</a> 这个项目可以简化常用 bash 指令的输出结果，长期使用可以节省许多 token。
 </p>
@@ -1941,9 +1929,9 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-org604ae69" class="outline-3">
-<h3 id="org604ae69">File Explore</h3>
-<div class="outline-text-3" id="text-org604ae69">
+<div id="outline-container-orgf5403c0" class="outline-3">
+<h3 id="orgf5403c0">File Explore</h3>
+<div class="outline-text-3" id="text-orgf5403c0">
 <p>
 原始版本是：<a href="https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts">https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts</a>
 </p>
@@ -3050,9 +3038,9 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-org643fc4e" class="outline-3">
-<h3 id="org643fc4e">@file Improve</h3>
-<div class="outline-text-3" id="text-org643fc4e">
+<div id="outline-container-orgd68d64f" class="outline-3">
+<h3 id="orgd68d64f">@file Improve</h3>
+<div class="outline-text-3" id="text-orgd68d64f">
 <p>
 有些模型在 Pi 里会识别不了 <code>@file</code> 的完整路径，这个插件就只是简单的 transform 了完整的路径到 input：
 </p>
@@ -3139,9 +3127,9 @@ pi 的 <a href="https://github.com/badlogic/pi-mono/releases/tag/v0.68.0">v0.68.
 </div>
 </div>
 </div>
-<div id="outline-container-org1ec68ec" class="outline-3">
-<h3 id="org1ec68ec">Others</h3>
-<div class="outline-text-3" id="text-org1ec68ec">
+<div id="outline-container-org7ba1d8c" class="outline-3">
+<h3 id="org7ba1d8c">Others</h3>
+<div class="outline-text-3" id="text-org7ba1d8c">
 <p>
 <a href="https://github.com/mitsuhiko/agent-stuff/">https://github.com/mitsuhiko/agent-stuff/</a> 的作者写的这些 extension 都是很好的设计模板。
 </p>
@@ -3174,9 +3162,9 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 </div>
 </div>
 </div>
-<div id="outline-container-orge8101cf" class="outline-2">
-<h2 id="orge8101cf">Custom Emacs Functions</h2>
-<div class="outline-text-2" id="text-orge8101cf">
+<div id="outline-container-org86098ff" class="outline-2">
+<h2 id="org86098ff">Custom Emacs Functions</h2>
+<div class="outline-text-2" id="text-org86098ff">
 <p>
 有时候只是一些简单的小问题，不想打开终端或者 pimacs，就会用到这个在 Emacs 里快速用 <code>pi --no-session -p</code> 提问:
 </p>

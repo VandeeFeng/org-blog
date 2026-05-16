@@ -19,22 +19,10 @@
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", () => {
-           pangu.autoSpacingPage();
-         });
-       </script>
-
        <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
+       <script src="assets/js/shiba.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
@@ -59,25 +47,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc157cce">起因</a></li>
-<li><a href="#org7e6fe3a">Memos</a></li>
-<li><a href="#orgb93e56c">SSL</a></li>
-<li><a href="#org97bf70e">Memos 自定义</a>
+<li><a href="#org3dd18b4">起因</a></li>
+<li><a href="#org035045b">Memos</a></li>
+<li><a href="#org8a37c4b">SSL</a></li>
+<li><a href="#orge61c723">Memos 自定义</a>
 <ul>
-<li><a href="#orgaa805cd">自定义 css 和 JavaScript</a></li>
-<li><a href="#orgdb06b35">Memos.top</a></li>
+<li><a href="#org47d8f02">自定义 css 和 JavaScript</a></li>
+<li><a href="#org5cc9b43">Memos.top</a></li>
 </ul>
 </li>
-<li><a href="#org43b8387">小结</a></li>
+<li><a href="#org93671d6">小结</a></li>
 </ul>
 </div>
 </nav>
 <p>
 记录一下 VPS 配置 Memos 和 SSL 证书的配置。当作朋友圈和备忘录，Memos 还是值得玩玩的。
 </p>
-<div id="outline-container-orgc157cce" class="outline-2">
-<h2 id="orgc157cce">起因</h2>
-<div class="outline-text-2" id="text-orgc157cce">
+<div id="outline-container-org3dd18b4" class="outline-2">
+<h2 id="org3dd18b4">起因</h2>
+<div class="outline-text-2" id="text-org3dd18b4">
 <p>
 前几天，用 <a href="https://github.com/ccbikai/BroadcastChannel">ccbikai/BroadcastChannel</a> 在 Vercel 上部署着玩了一下，用来做极简朋友圈其实效果真的很不错了，但有个问题就是备份和导出。由于这个项目是利用 Telegram Channel 的发布来同步到页面，Telegram 的数据管理就有点麻烦了。
 </p>
@@ -95,9 +83,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org7e6fe3a" class="outline-2">
-<h2 id="org7e6fe3a">Memos</h2>
-<div class="outline-text-2" id="text-org7e6fe3a">
+<div id="outline-container-org035045b" class="outline-2">
+<h2 id="org035045b">Memos</h2>
+<div class="outline-text-2" id="text-org035045b">
 <p>
 几个版本的主要特色：
 </p>
@@ -165,9 +153,9 @@ sudo nginx -t <span style="color: #787878;"># </span><span style="color: #787878
 </div>
 </div>
 </div>
-<div id="outline-container-orgb93e56c" class="outline-2">
-<h2 id="orgb93e56c">SSL</h2>
-<div class="outline-text-2" id="text-orgb93e56c">
+<div id="outline-container-org8a37c4b" class="outline-2">
+<h2 id="org8a37c4b">SSL</h2>
+<div class="outline-text-2" id="text-org8a37c4b">
 <p>
 在网上找了一大圈，发现一个最简单也最符合现在需求的：<a href="https://certd.docmirror.cn/">Certd</a>，可以在 VPS 上用 docker 部署，一键生成 SSL 证书，还可以定时自动化续签。
 </p>
@@ -271,13 +259,13 @@ sudo apt install certbot python3-certbot-nginx
 </p>
 </div>
 </div>
-<div id="outline-container-org97bf70e" class="outline-2">
-<h2 id="org97bf70e">Memos 自定义</h2>
-<div class="outline-text-2" id="text-org97bf70e">
+<div id="outline-container-orge61c723" class="outline-2">
+<h2 id="orge61c723">Memos 自定义</h2>
+<div class="outline-text-2" id="text-orge61c723">
 </div>
-<div id="outline-container-orgaa805cd" class="outline-3">
-<h3 id="orgaa805cd">自定义 css 和 JavaScript</h3>
-<div class="outline-text-3" id="text-orgaa805cd">
+<div id="outline-container-org47d8f02" class="outline-3">
+<h3 id="org47d8f02">自定义 css 和 JavaScript</h3>
+<div class="outline-text-3" id="text-org47d8f02">
 <p>
 适用 0.20.X 以上版本
 </p>
@@ -298,9 +286,9 @@ sudo apt install certbot python3-certbot-nginx
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb06b35" class="outline-3">
-<h3 id="orgdb06b35">Memos.top</h3>
-<div class="outline-text-3" id="text-orgdb06b35">
+<div id="outline-container-org5cc9b43" class="outline-3">
+<h3 id="org5cc9b43">Memos.top</h3>
+<div class="outline-text-3" id="text-org5cc9b43">
 <p>
 <a href="https://github.com/eallion/memos.top">eallion/memos.top</a> 这个项目利用 Memos 的 API 获取数据，生成静态页面。设置很简单，作者默认的设计也挺简洁的，CSS 可以自己修改。
 </p>
@@ -318,13 +306,13 @@ sudo apt install certbot python3-certbot-nginx
 </p>
 
 
-<figure id="org38c935f">
+<figure id="org2acec38">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memos.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org1e396eb">
+<figure id="org96670dc">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/memo-web.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -335,9 +323,9 @@ Memos 的 0.22.4 版本在 explore 页面支持搜索和标签统计，Memos.top
 </div>
 </div>
 </div>
-<div id="outline-container-org43b8387" class="outline-2">
-<h2 id="org43b8387">小结</h2>
-<div class="outline-text-2" id="text-org43b8387">
+<div id="outline-container-org93671d6" class="outline-2">
+<h2 id="org93671d6">小结</h2>
+<div class="outline-text-2" id="text-org93671d6">
 <p>
 记录是存在的一种最简单的证明，某种意义上，如果在一个体系或者规则里没有留下痕迹，那么就是不存在的。历史是过往，更是现时的延展，所有的过往，都构成了自己此刻的一部分。一个没有历史的国家也很难有未来。
 </p>

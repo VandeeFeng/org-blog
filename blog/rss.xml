@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Sat, 09 May 2026 21:12:50 +0800</lastBuildDate>
+<lastBuildDate>Sat, 16 May 2026 19:53:09 +0800</lastBuildDate>
 <item>
   <title><![CDATA[极简浏览器也可以在 Emacs]]></title>
   <description><![CDATA[
@@ -12,14 +12,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2fb119d">Intro</a></li>
-<li><a href="#orgbc14c15">Emacs 配置</a></li>
+<li><a href="#orgdbf055c">Intro</a></li>
+<li><a href="#org9d7eb17">Emacs 配置</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org2fb119d" class="outline-2">
-<h2 id="org2fb119d">Intro</h2>
-<div class="outline-text-2" id="text-org2fb119d">
+<div id="outline-container-orgdbf055c" class="outline-2">
+<h2 id="orgdbf055c">Intro</h2>
+<div class="outline-text-2" id="text-orgdbf055c">
 <p>
 很久以前，我只知道浏览器是可以打开网页的一个东西。随着对代码的学习，现在才真正了解到它是什么。
 </p>
@@ -49,9 +49,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc14c15" class="outline-2">
-<h2 id="orgbc14c15">Emacs 配置</h2>
-<div class="outline-text-2" id="text-orgbc14c15">
+<div id="outline-container-org9d7eb17" class="outline-2">
+<h2 id="org9d7eb17">Emacs 配置</h2>
+<div class="outline-text-2" id="text-org9d7eb17">
 <p>
 <a href="https://joshblais.com/blog/emacs-as-my-browser/">Emacs is my browser - The Universe of Joshua Blais</a> 偶然看到这篇文章。
 </p>
@@ -163,19 +163,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3ce2d5b">TL;DR</a></li>
-<li><a href="#org459d943">Pimacs</a></li>
-<li><a href="#org81569f0">My Pi Extensions</a>
+<li><a href="#org1ccc9a2">TL;DR</a></li>
+<li><a href="#orgb0101a0">Pimacs</a></li>
+<li><a href="#org2576773">My Pi Extensions</a>
 <ul>
-<li><a href="#org65aaea7">Command Rule</a></li>
-<li><a href="#org3031ce5">Subagent</a></li>
-<li><a href="#org94612a8">Rtk Command Proxy</a></li>
-<li><a href="#org604ae69">File Explore</a></li>
-<li><a href="#org643fc4e">@file Improve</a></li>
-<li><a href="#org1ec68ec">Others</a></li>
+<li><a href="#org917fdd8">Command Rule</a></li>
+<li><a href="#org8978f8e">Subagent</a></li>
+<li><a href="#org4088fb5">Rtk Command Proxy</a></li>
+<li><a href="#orgf5403c0">File Explore</a></li>
+<li><a href="#orgd68d64f">@file Improve</a></li>
+<li><a href="#org7ba1d8c">Others</a></li>
 </ul>
 </li>
-<li><a href="#orge8101cf">Custom Emacs Functions</a></li>
+<li><a href="#org86098ff">Custom Emacs Functions</a></li>
 </ul>
 </div>
 </nav>
@@ -210,9 +210,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 <p>
 我看了一下最近的几个版本 release，有一部分是为了 OpenClaw。
 </p>
-<div id="outline-container-org3ce2d5b" class="outline-2">
-<h2 id="org3ce2d5b">TL;DR</h2>
-<div class="outline-text-2" id="text-org3ce2d5b">
+<div id="outline-container-org1ccc9a2" class="outline-2">
+<h2 id="org1ccc9a2">TL;DR</h2>
+<div class="outline-text-2" id="text-org1ccc9a2">
 <p>
 记录一下现在在 Emacs 里使用 pi 的配置。
 </p>
@@ -222,9 +222,9 @@ Pi 现在加入 earendil 公司了，增加了一个很小的遥测，可以主�
 </p>
 </div>
 </div>
-<div id="outline-container-org459d943" class="outline-2">
-<h2 id="org459d943">Pimacs</h2>
-<div class="outline-text-2" id="text-org459d943">
+<div id="outline-container-orgb0101a0" class="outline-2">
+<h2 id="orgb0101a0">Pimacs</h2>
+<div class="outline-text-2" id="text-orgb0101a0">
 <p>
 <a href="https://github.com/VandeeFeng/pimacs">VandeeFeng/pimacs: Emacs frontend for the pi coding agent</a> forked from <a href="https://github.com/dnouri/pi-coding-agent">https://github.com/dnouri/pi-coding-agent</a> ，后面就叫他 pimacs。
 </p>
@@ -308,9 +308,9 @@ insert region:
 </ul>
 </div>
 </div>
-<div id="outline-container-org81569f0" class="outline-2">
-<h2 id="org81569f0">My Pi Extensions</h2>
-<div class="outline-text-2" id="text-org81569f0">
+<div id="outline-container-org2576773" class="outline-2">
+<h2 id="org2576773">My Pi Extensions</h2>
+<div class="outline-text-2" id="text-org2576773">
 <p>
 <a href="https://www.vandee.art/blog/2026-02-17-my-minimalist-approach-to-agent-memory-management.html">我的 Agent Memory 极简管理方案</a> 之前在这里已经列出了几个，统一再这里补充一下。
 </p>
@@ -319,9 +319,9 @@ insert region:
 后面有更新就只在这里更新了，自己看起来也方便一点。
 </p>
 </div>
-<div id="outline-container-org65aaea7" class="outline-3">
-<h3 id="org65aaea7">Command Rule</h3>
-<div class="outline-text-3" id="text-org65aaea7">
+<div id="outline-container-org917fdd8" class="outline-3">
+<h3 id="org917fdd8">Command Rule</h3>
+<div class="outline-text-3" id="text-org917fdd8">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit。
 </p>
@@ -678,9 +678,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-org3031ce5" class="outline-3">
-<h3 id="org3031ce5">Subagent</h3>
-<div class="outline-text-3" id="text-org3031ce5">
+<div id="outline-container-org8978f8e" class="outline-3">
+<h3 id="org8978f8e">Subagent</h3>
+<div class="outline-text-3" id="text-org8978f8e">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -1760,9 +1760,9 @@ export default function agentsBuffExtension(</span><span style="color: #f4f4ff;"
 </div>
 </div>
 </div>
-<div id="outline-container-org94612a8" class="outline-3">
-<h3 id="org94612a8">Rtk Command Proxy</h3>
-<div class="outline-text-3" id="text-org94612a8">
+<div id="outline-container-org4088fb5" class="outline-3">
+<h3 id="org4088fb5">Rtk Command Proxy</h3>
+<div class="outline-text-3" id="text-org4088fb5">
 <p>
 <a href="https://github.com/rtk-ai/rtk">GitHub - rtk-ai/rtk</a> 这个项目可以简化常用 bash 指令的输出结果，长期使用可以节省许多 token。
 </p>
@@ -2045,9 +2045,9 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-org604ae69" class="outline-3">
-<h3 id="org604ae69">File Explore</h3>
-<div class="outline-text-3" id="text-org604ae69">
+<div id="outline-container-orgf5403c0" class="outline-3">
+<h3 id="orgf5403c0">File Explore</h3>
+<div class="outline-text-3" id="text-orgf5403c0">
 <p>
 原始版本是：<a href="https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts">https://github.com/mitsuhiko/agent-stuff/blob/main/extensions/files.ts</a>
 </p>
@@ -3154,9 +3154,9 @@ command-integration.ts:
 </div>
 </div>
 </div>
-<div id="outline-container-org643fc4e" class="outline-3">
-<h3 id="org643fc4e">@file Improve</h3>
-<div class="outline-text-3" id="text-org643fc4e">
+<div id="outline-container-orgd68d64f" class="outline-3">
+<h3 id="orgd68d64f">@file Improve</h3>
+<div class="outline-text-3" id="text-orgd68d64f">
 <p>
 有些模型在 Pi 里会识别不了 <code>@file</code> 的完整路径，这个插件就只是简单的 transform 了完整的路径到 input：
 </p>
@@ -3243,9 +3243,9 @@ pi 的 <a href="https://github.com/badlogic/pi-mono/releases/tag/v0.68.0">v0.68.
 </div>
 </div>
 </div>
-<div id="outline-container-org1ec68ec" class="outline-3">
-<h3 id="org1ec68ec">Others</h3>
-<div class="outline-text-3" id="text-org1ec68ec">
+<div id="outline-container-org7ba1d8c" class="outline-3">
+<h3 id="org7ba1d8c">Others</h3>
+<div class="outline-text-3" id="text-org7ba1d8c">
 <p>
 <a href="https://github.com/mitsuhiko/agent-stuff/">https://github.com/mitsuhiko/agent-stuff/</a> 的作者写的这些 extension 都是很好的设计模板。
 </p>
@@ -3278,9 +3278,9 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 </div>
 </div>
 </div>
-<div id="outline-container-orge8101cf" class="outline-2">
-<h2 id="orge8101cf">Custom Emacs Functions</h2>
-<div class="outline-text-2" id="text-orge8101cf">
+<div id="outline-container-org86098ff" class="outline-2">
+<h2 id="org86098ff">Custom Emacs Functions</h2>
+<div class="outline-text-2" id="text-org86098ff">
 <p>
 有时候只是一些简单的小问题，不想打开终端或者 pimacs，就会用到这个在 Emacs 里快速用 <code>pi --no-session -p</code> 提问:
 </p>
@@ -3357,8 +3357,8 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgaab0867">源码之外</a></li>
-<li><a href="#org65e1803">Agent Interaction Interface</a></li>
+<li><a href="#orgcbaaeb8">源码之外</a></li>
+<li><a href="#org3cb2a53">Agent Interaction Interface</a></li>
 </ul>
 </div>
 </nav>
@@ -3369,9 +3369,9 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 <p>
 但其实对 Claude Code 各方面的逆向其实就从来没有停止过。在愚人节前后放出来，让我觉得这可能不是巧合，Hacker 是最喜欢这种玩笑了。
 </p>
-<div id="outline-container-orgaab0867" class="outline-2">
-<h2 id="orgaab0867">源码之外</h2>
-<div class="outline-text-2" id="text-orgaab0867">
+<div id="outline-container-orgcbaaeb8" class="outline-2">
+<h2 id="orgcbaaeb8">源码之外</h2>
+<div class="outline-text-2" id="text-orgcbaaeb8">
 <p>
 在 Claude Code 公开火了之后，各大 LLM 厂商也陆续推出了自己的 Coding CLI。
 </p>
@@ -3427,9 +3427,9 @@ via: <a href="https://interconnected.org/home/2026/04/18/headless">https://inter
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org65e1803" class="outline-2">
-<h2 id="org65e1803">Agent Interaction Interface</h2>
-<div class="outline-text-2" id="text-org65e1803">
+<div id="outline-container-org3cb2a53" class="outline-2">
+<h2 id="org3cb2a53">Agent Interaction Interface</h2>
+<div class="outline-text-2" id="text-org3cb2a53">
 <p>
 模型能力卷到现在互相蒸馏，我感觉其实已经翻不出什么大的浪花了，各大厂有的没的隔一段时间就更新一个模型，在 benchmark 上刷刷数据。反倒是 interface 这块，由于 Claude Code 的这次泄露，今年下半年可能会百花齐放了。
 </p>
@@ -3570,10 +3570,10 @@ Karpathy 在去年的一个演讲里提到了软件 2.0 的概念，这个主要
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgbf87985">Pi-memory-md</a></li>
-<li><a href="#org24dce07">我现在的 memory 架构</a>
+<li><a href="#org4e75190">Pi-memory-md</a></li>
+<li><a href="#org1fdfaee">我现在的 memory 架构</a>
 <ul>
-<li><a href="#orgdcf307c">handoff</a></li>
+<li><a href="#org8b3b974">handoff</a></li>
 </ul>
 </li>
 </ul>
@@ -3602,9 +3602,9 @@ Karpathy 在去年的一个演讲里提到了软件 2.0 的概念，这个主要
 <p>
 我没有那么多 issue 和 task 需要用 beads 来管理，所以 beads 的核心功能其实我都用不上。
 </p>
-<div id="outline-container-orgbf87985" class="outline-2">
-<h2 id="orgbf87985">Pi-memory-md</h2>
-<div class="outline-text-2" id="text-orgbf87985">
+<div id="outline-container-org4e75190" class="outline-2">
+<h2 id="org4e75190">Pi-memory-md</h2>
+<div class="outline-text-2" id="text-org4e75190">
 <p>
 <a href="https://github.com/VandeeFeng/pi-memory-md">VandeeFeng/pi-memory-md</a>: 根据 letta 的核心实现，在 pi 里做了一个 pi 包来管理项目的 memory。
 </p>
@@ -3700,9 +3700,9 @@ memory 文件通过 GitHub 仓库来管理，在 session 开始的时候会自�
 </p>
 </div>
 </div>
-<div id="outline-container-org24dce07" class="outline-2">
-<h2 id="org24dce07">我现在的 memory 架构</h2>
-<div class="outline-text-2" id="text-org24dce07">
+<div id="outline-container-org1fdfaee" class="outline-2">
+<h2 id="org1fdfaee">我现在的 memory 架构</h2>
+<div class="outline-text-2" id="text-org1fdfaee">
 <p>
 除了 pi-memory-md，我还有两个管理 memory 的部分：handoff 和 planning-with-files。
 </p>
@@ -3711,9 +3711,9 @@ memory 文件通过 GitHub 仓库来管理，在 session 开始的时候会自�
 planning-with-files 把文件的保存目录设置为了 pi-memory-md 的项目目录下的 plan 文件夹，方便回顾一些复杂实现做了些什么，再用 learn skill 把有价值的部分生成可复用的 learnd skills。
 </p>
 </div>
-<div id="outline-container-orgdcf307c" class="outline-3">
-<h3 id="orgdcf307c">handoff</h3>
-<div class="outline-text-3" id="text-orgdcf307c">
+<div id="outline-container-org8b3b974" class="outline-3">
+<h3 id="org8b3b974">handoff</h3>
+<div class="outline-text-3" id="text-org8b3b974">
 <p>
 handoff 是 copy 的 <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a> ，但是作者现在已经删除了这个文件。
 </p>
@@ -3904,12 +3904,12 @@ If a handoff file was provided, locate it in <span style="color: #b3b3b3;">`</sp
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org00f4277">Pi-mono</a></li>
-<li><a href="#orgbc1c4e4">Pi-mono Extension</a>
+<li><a href="#orgd211305">Pi-mono</a></li>
+<li><a href="#orged54281">Pi-mono Extension</a>
 <ul>
-<li><a href="#orgca0e079">Command Rule</a></li>
-<li><a href="#org0f10b40">Subagent</a></li>
-<li><a href="#orgf733195">Rtk command proxy</a></li>
+<li><a href="#org86fbd63">Command Rule</a></li>
+<li><a href="#orgd530474">Subagent</a></li>
+<li><a href="#orgceb37b8">Rtk command proxy</a></li>
 </ul>
 </li>
 </ul>
@@ -3926,9 +3926,9 @@ If a handoff file was provided, locate it in <span style="color: #b3b3b3;">`</sp
 <p>
 大道至简，这大概是 Scaling Law 之后，agent 领域现在的新铁律了。
 </p>
-<div id="outline-container-org00f4277" class="outline-2">
-<h2 id="org00f4277">Pi-mono</h2>
-<div class="outline-text-2" id="text-org00f4277">
+<div id="outline-container-orgd211305" class="outline-2">
+<h2 id="orgd211305">Pi-mono</h2>
+<div class="outline-text-2" id="text-orgd211305">
 <p>
 pi-mono 的 agent 设计的极为简洁：只有 read，bash，edit，write 四个基础工具，system prompt 也设计的非常简洁。AI agent ≈ Tools + loops.
 </p>
@@ -4008,16 +4008,16 @@ Coding agents have this nice property that they're basically a chat interface. T
 </p>
 </div>
 </div>
-<div id="outline-container-orgbc1c4e4" class="outline-2">
-<h2 id="orgbc1c4e4">Pi-mono Extension</h2>
-<div class="outline-text-2" id="text-orgbc1c4e4">
+<div id="outline-container-orged54281" class="outline-2">
+<h2 id="orged54281">Pi-mono Extension</h2>
+<div class="outline-text-2" id="text-orged54281">
 <p>
 前段时间刚开始深入一点折腾和看 OpenCode 的源码，想实现一些自定义的功能，但是这个项目已经做的太大了，pi-mono 更适合个人折腾。
 </p>
 </div>
-<div id="outline-container-orgca0e079" class="outline-3">
-<h3 id="orgca0e079">Command Rule</h3>
-<div class="outline-text-3" id="text-orgca0e079">
+<div id="outline-container-org86fbd63" class="outline-3">
+<h3 id="org86fbd63">Command Rule</h3>
+<div class="outline-text-3" id="text-org86fbd63">
 <p>
 pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 生成了一个 extension 来禁止一些 shell 指令的调用，例如 rm，git push，git commit:
 </p>
@@ -4319,9 +4319,9 @@ pi-mono 没有对 tool 调用的规则设定，参考 OpenCode 的实现 让 pi 
 </div>
 </div>
 </div>
-<div id="outline-container-org0f10b40" class="outline-3">
-<h3 id="org0f10b40">Subagent</h3>
-<div class="outline-text-3" id="text-org0f10b40">
+<div id="outline-container-orgd530474" class="outline-3">
+<h3 id="orgd530474">Subagent</h3>
+<div class="outline-text-3" id="text-orgd530474">
 <p>
 pi 的原始设计理念里，没有 subagent，所以也就没有 @agent 这种快速调用 subagent 在独立上下文里运行再返回结果给主 agent 的设计。
 </p>
@@ -4343,19 +4343,19 @@ tmux 的运行状态会在 TUI 的 footer 部分持续显示。直接用 tmux �
 </p>
 
 
-<figure id="org2f03eac">
+<figure id="org58a144a">
 <img src="https://pic.vandee.art/images/20260211_125004-agent1.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org43fe6ec">
+<figure id="orgb07fe80">
 <img src="https://pic.vandee.art/images/20260211_125302-agent2.png" class="img" width="60%" height="60%">
 
 </figure>
 
 
-<figure id="org82bf67d">
+<figure id="orga48c4b0">
 <img src="https://pic.vandee.art/images/20260211_125325-agent3.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -5419,9 +5419,9 @@ export default function agentsBuffExtension(</span><span style="color: #f4f4ff;"
 </div>
 </div>
 </div>
-<div id="outline-container-orgf733195" class="outline-3">
-<h3 id="orgf733195">Rtk command proxy</h3>
-<div class="outline-text-3" id="text-orgf733195">
+<div id="outline-container-orgceb37b8" class="outline-3">
+<h3 id="orgceb37b8">Rtk command proxy</h3>
+<div class="outline-text-3" id="text-orgceb37b8">
 <p>
 <a href="https://github.com/rtk-ai/rtk">GitHub - rtk-ai/rtk</a> 这个项目可以简化常用 bash 指令的输出结果，长期使用可以节省许多 token。
 </p>
@@ -5714,34 +5714,34 @@ command-integration.ts:
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8d7805b">TL;DR</a></li>
-<li><a href="#org18b6976">Agent Skills</a>
+<li><a href="#orgfa8d3e0">TL;DR</a></li>
+<li><a href="#orgd5fc3af">Agent Skills</a>
 <ul>
-<li><a href="#org2cb1bf8">简介</a></li>
-<li><a href="#orgb094bd4">SKILL 解决了什么问题</a></li>
-<li><a href="#orge356c90">编写 SKILL 是在干什么</a></li>
+<li><a href="#orga6a33d5">简介</a></li>
+<li><a href="#org78a91b4">SKILL 解决了什么问题</a></li>
+<li><a href="#org2bb11c1">编写 SKILL 是在干什么</a></li>
 </ul>
 </li>
-<li><a href="#orgc94363f">My Agent Conf</a>
+<li><a href="#org64cd82f">My Agent Conf</a>
 <ul>
-<li><a href="#orgcaeccb8">Core Rules</a></li>
-<li><a href="#org7e89609">Maintain a hierarchical codebase map</a></li>
-<li><a href="#org0b5ecef">Prepared with clear purpose</a></li>
-<li><a href="#org8f03e85">Just files and loops, no more complicated</a></li>
-<li><a href="#orgde2cde9">Handoff when stucked</a></li>
-<li><a href="#org2cc2682">Maintain memory</a></li>
-<li><a href="#org9b163f4">Maintain useful patterns</a></li>
-<li><a href="#org0030c3c">Maintain code quality and style</a></li>
+<li><a href="#org7093372">Core Rules</a></li>
+<li><a href="#orgb928c4f">Maintain a hierarchical codebase map</a></li>
+<li><a href="#org187dc08">Prepared with clear purpose</a></li>
+<li><a href="#orgecd820e">Just files and loops, no more complicated</a></li>
+<li><a href="#org0136e2a">Handoff when stucked</a></li>
+<li><a href="#org04a85fb">Maintain memory</a></li>
+<li><a href="#org4c8296f">Maintain useful patterns</a></li>
+<li><a href="#org842b58f">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#org09851a9">OpenCode in Emacs</a></li>
-<li><a href="#orgd27bfa2">Bubblewrap Sandbox</a></li>
+<li><a href="#org763d99d">OpenCode in Emacs</a></li>
+<li><a href="#org6cfea1d">Bubblewrap Sandbox</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org8d7805b" class="outline-2">
-<h2 id="org8d7805b">TL;DR</h2>
-<div class="outline-text-2" id="text-org8d7805b">
+<div id="outline-container-orgfa8d3e0" class="outline-2">
+<h2 id="orgfa8d3e0">TL;DR</h2>
+<div class="outline-text-2" id="text-orgfa8d3e0">
 <p>
 虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
 </p>
@@ -5755,13 +5755,13 @@ Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口�
 </p>
 </div>
 </div>
-<div id="outline-container-org18b6976" class="outline-2">
-<h2 id="org18b6976">Agent Skills</h2>
-<div class="outline-text-2" id="text-org18b6976">
+<div id="outline-container-orgd5fc3af" class="outline-2">
+<h2 id="orgd5fc3af">Agent Skills</h2>
+<div class="outline-text-2" id="text-orgd5fc3af">
 </div>
-<div id="outline-container-org2cb1bf8" class="outline-3">
-<h3 id="org2cb1bf8">简介</h3>
-<div class="outline-text-3" id="text-org2cb1bf8">
+<div id="outline-container-orga6a33d5" class="outline-3">
+<h3 id="orga6a33d5">简介</h3>
+<div class="outline-text-3" id="text-orga6a33d5">
 <p>
 <a href="https://github.com/agentskills/agentskills">agentskills/agentskills</a> 是前段时间 <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)</a> Claude 开源的。
 </p>
@@ -5801,9 +5801,9 @@ SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、tem
 </p>
 </div>
 </div>
-<div id="outline-container-orgb094bd4" class="outline-3">
-<h3 id="orgb094bd4">SKILL 解决了什么问题</h3>
-<div class="outline-text-3" id="text-orgb094bd4">
+<div id="outline-container-org78a91b4" class="outline-3">
+<h3 id="org78a91b4">SKILL 解决了什么问题</h3>
+<div class="outline-text-3" id="text-org78a91b4">
 <p>
 MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
 </p>
@@ -5817,9 +5817,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </p>
 </div>
 </div>
-<div id="outline-container-orge356c90" class="outline-3">
-<h3 id="orge356c90">编写 SKILL 是在干什么</h3>
-<div class="outline-text-3" id="text-orge356c90">
+<div id="outline-container-org2bb11c1" class="outline-3">
+<h3 id="org2bb11c1">编写 SKILL 是在干什么</h3>
+<div class="outline-text-3" id="text-org2bb11c1">
 <p>
 当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
 </p>
@@ -5842,9 +5842,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </div>
 </div>
 </div>
-<div id="outline-container-orgc94363f" class="outline-2">
-<h2 id="orgc94363f">My Agent Conf</h2>
-<div class="outline-text-2" id="text-orgc94363f">
+<div id="outline-container-org64cd82f" class="outline-2">
+<h2 id="org64cd82f">My Agent Conf</h2>
+<div class="outline-text-2" id="text-org64cd82f">
 <p>
 下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
 </p>
@@ -5869,9 +5869,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 再一个，不了解 vibe 又怎么能说自己不喜欢呢？
 </p>
 </div>
-<div id="outline-container-orgcaeccb8" class="outline-3">
-<h3 id="orgcaeccb8">Core Rules</h3>
-<div class="outline-text-3" id="text-orgcaeccb8">
+<div id="outline-container-org7093372" class="outline-3">
+<h3 id="org7093372">Core Rules</h3>
+<div class="outline-text-3" id="text-org7093372">
 <p>
 Just files and loops!
 </p>
@@ -5885,9 +5885,9 @@ Keep it simple!
 </p>
 </div>
 </div>
-<div id="outline-container-org7e89609" class="outline-3">
-<h3 id="org7e89609">Maintain a hierarchical codebase map</h3>
-<div class="outline-text-3" id="text-org7e89609">
+<div id="outline-container-orgb928c4f" class="outline-3">
+<h3 id="orgb928c4f">Maintain a hierarchical codebase map</h3>
+<div class="outline-text-3" id="text-orgb928c4f">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -5924,9 +5924,9 @@ also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/comm
 </p>
 </div>
 </div>
-<div id="outline-container-org0b5ecef" class="outline-3">
-<h3 id="org0b5ecef">Prepared with clear purpose</h3>
-<div class="outline-text-3" id="text-org0b5ecef">
+<div id="outline-container-org187dc08" class="outline-3">
+<h3 id="org187dc08">Prepared with clear purpose</h3>
+<div class="outline-text-3" id="text-org187dc08">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -5944,9 +5944,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </p>
 </div>
 </div>
-<div id="outline-container-org8f03e85" class="outline-3">
-<h3 id="org8f03e85">Just files and loops, no more complicated</h3>
-<div class="outline-text-3" id="text-org8f03e85">
+<div id="outline-container-orgecd820e" class="outline-3">
+<h3 id="orgecd820e">Just files and loops, no more complicated</h3>
+<div class="outline-text-3" id="text-orgecd820e">
 <p>
 SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a>
 </p>
@@ -6022,9 +6022,9 @@ session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 ses
 </div>
 </div>
 </div>
-<div id="outline-container-orgde2cde9" class="outline-3">
-<h3 id="orgde2cde9">Handoff when stucked</h3>
-<div class="outline-text-3" id="text-orgde2cde9">
+<div id="outline-container-org0136e2a" class="outline-3">
+<h3 id="org0136e2a">Handoff when stucked</h3>
+<div class="outline-text-3" id="text-org0136e2a">
 <p>
 SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a>
 </p>
@@ -6034,9 +6034,9 @@ SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/comma
 </p>
 </div>
 </div>
-<div id="outline-container-org2cc2682" class="outline-3">
-<h3 id="org2cc2682">Maintain memory</h3>
-<div class="outline-text-3" id="text-org2cc2682">
+<div id="outline-container-org04a85fb" class="outline-3">
+<h3 id="org04a85fb">Maintain memory</h3>
+<div class="outline-text-3" id="text-org04a85fb">
 <p>
 我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
 </p>
@@ -6187,9 +6187,9 @@ rg -i -C 2 -t md "$keywords" "$memory_dir" --follow
 </div>
 </div>
 </div>
-<div id="outline-container-org9b163f4" class="outline-3">
-<h3 id="org9b163f4">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-org9b163f4">
+<div id="outline-container-org4c8296f" class="outline-3">
+<h3 id="org4c8296f">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-org4c8296f">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -6470,9 +6470,9 @@ Last updated: [date]
 </div>
 </div>
 </div>
-<div id="outline-container-org0030c3c" class="outline-3">
-<h3 id="org0030c3c">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org0030c3c">
+<div id="outline-container-org842b58f" class="outline-3">
+<h3 id="org842b58f">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org842b58f">
 <p>
 SKILL: code-simplifier: <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
 </p>
@@ -6491,9 +6491,9 @@ LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，�
 </div>
 </div>
 </div>
-<div id="outline-container-org09851a9" class="outline-2">
-<h2 id="org09851a9">OpenCode in Emacs</h2>
-<div class="outline-text-2" id="text-org09851a9">
+<div id="outline-container-org763d99d" class="outline-2">
+<h2 id="org763d99d">OpenCode in Emacs</h2>
+<div class="outline-text-2" id="text-org763d99d">
 <p>
 在 Emacs 里现在和 OpenCode 交互最方便的就是 <a href="https://github.com/xenodium/agent-shell">agent-shell</a> 了。
 </p>
@@ -6683,9 +6683,9 @@ Returns list of agent alists with :id, :name, :description."</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd27bfa2" class="outline-2">
-<h2 id="orgd27bfa2">Bubblewrap Sandbox</h2>
-<div class="outline-text-2" id="text-orgd27bfa2">
+<div id="outline-container-org6cfea1d" class="outline-2">
+<h2 id="org6cfea1d">Bubblewrap Sandbox</h2>
+<div class="outline-text-2" id="text-org6cfea1d">
 <p>
 Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了许多针对性的优化。
 </p>
@@ -6769,17 +6769,17 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org137931a">TL;DR</a></li>
-<li><a href="#orgf947fb0">结果还是过程？</a></li>
-<li><a href="#orgb57199e">我不喜欢 LLM 代码生成</a></li>
-<li><a href="#org39af924">不同的立场</a></li>
-<li><a href="#org1ddb9bf">2026-03-24 add</a></li>
+<li><a href="#orgc524a44">TL;DR</a></li>
+<li><a href="#org274b110">结果还是过程？</a></li>
+<li><a href="#org12f71b8">我不喜欢 LLM 代码生成</a></li>
+<li><a href="#orgfc274dd">不同的立场</a></li>
+<li><a href="#orgb804739">2026-03-24 add</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org137931a" class="outline-2">
-<h2 id="org137931a">TL;DR</h2>
-<div class="outline-text-2" id="text-org137931a">
+<div id="outline-container-orgc524a44" class="outline-2">
+<h2 id="orgc524a44">TL;DR</h2>
+<div class="outline-text-2" id="text-orgc524a44">
 <p>
 Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
@@ -6789,9 +6789,9 @@ Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
 </div>
 </div>
-<div id="outline-container-orgf947fb0" class="outline-2">
-<h2 id="orgf947fb0">结果还是过程？</h2>
-<div class="outline-text-2" id="text-orgf947fb0">
+<div id="outline-container-org274b110" class="outline-2">
+<h2 id="org274b110">结果还是过程？</h2>
+<div class="outline-text-2" id="text-org274b110">
 <blockquote>
 <p>
 对于这样的现象，我先下一个结论：软件开发向来是为了解决问题（Problem Solving），重要的是解决问题的结果，而不是解决的方式。
@@ -6849,9 +6849,9 @@ via: <a href="https://simonwillison.net/2026/Jan/2/ben-werdmuller/">https://simo
 </p>
 </div>
 </div>
-<div id="outline-container-orgb57199e" class="outline-2">
-<h2 id="orgb57199e">我不喜欢 LLM 代码生成</h2>
-<div class="outline-text-2" id="text-orgb57199e">
+<div id="outline-container-org12f71b8" class="outline-2">
+<h2 id="org12f71b8">我不喜欢 LLM 代码生成</h2>
+<div class="outline-text-2" id="text-org12f71b8">
 <p>
 但对于 Vibe Coding 和 LLM 代码生成，我始终不太喜欢。
 </p>
@@ -6990,9 +6990,9 @@ via: <a href="https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb
 </p>
 </div>
 </div>
-<div id="outline-container-org39af924" class="outline-2">
-<h2 id="org39af924">不同的立场</h2>
-<div class="outline-text-2" id="text-org39af924">
+<div id="outline-container-orgfc274dd" class="outline-2">
+<h2 id="orgfc274dd">不同的立场</h2>
+<div class="outline-text-2" id="text-orgfc274dd">
 <p>
 <a href="https://antirez.com/news/158">Don't fall into the anti-AI hype - &lt;antirez&gt;</a>
 </p>
@@ -7042,9 +7042,9 @@ antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: <a href="https:
 </p>
 </div>
 </div>
-<div id="outline-container-org1ddb9bf" class="outline-2">
-<h2 id="org1ddb9bf">2026-03-24 add</h2>
-<div class="outline-text-2" id="text-org1ddb9bf">
+<div id="outline-container-orgb804739" class="outline-2">
+<h2 id="orgb804739">2026-03-24 add</h2>
+<div class="outline-text-2" id="text-orgb804739">
 <p>
 <a href="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/">https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/</a> 这篇文章的这部分说的挺好，但对马克思和资本主义之间的那些观点在我看来有些片面甚至理解偏差了：
 </p>
@@ -7138,15 +7138,15 @@ No matter what tools arrive, no matter how powerful they become, they will alway
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org0759f01">益</a></li>
-<li><a href="#orge2af0ab">黑客帝国</a></li>
-<li><a href="#orgf80bfc8">2025 回顾</a></li>
+<li><a href="#org12c254b">益</a></li>
+<li><a href="#orgcad999e">黑客帝国</a></li>
+<li><a href="#orge81340b">2025 回顾</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org0759f01" class="outline-2">
-<h2 id="org0759f01">益</h2>
-<div class="outline-text-2" id="text-org0759f01">
+<div id="outline-container-org12c254b" class="outline-2">
+<h2 id="org12c254b">益</h2>
+<div class="outline-text-2" id="text-org12c254b">
 <p>
 今年我给自己的周易卦象是益，风雷益 ䷩，上巽（风）下震（雷），卦辞：“益：利有攸往，利涉大川。”
 </p>
@@ -7194,9 +7194,9 @@ Merriam-Webster’s human editors have chosen <i>slop</i> as the 2025 Word of th
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orge2af0ab" class="outline-2">
-<h2 id="orge2af0ab">黑客帝国</h2>
-<div class="outline-text-2" id="text-orge2af0ab">
+<div id="outline-container-orgcad999e" class="outline-2">
+<h2 id="orgcad999e">黑客帝国</h2>
+<div class="outline-text-2" id="text-orgcad999e">
 <p>
 不知道从什么时候开始，每年都会在不确定的时间看至少一次《黑客帝国》，从结果来看，这个现象勉强可以被描述为习惯。
 </p>
@@ -7333,9 +7333,9 @@ Just believe ，and believe in yourself！
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf80bfc8" class="outline-2">
-<h2 id="orgf80bfc8">2025 回顾</h2>
-<div class="outline-text-2" id="text-orgf80bfc8">
+<div id="outline-container-orge81340b" class="outline-2">
+<h2 id="orge81340b">2025 回顾</h2>
+<div class="outline-text-2" id="text-orge81340b">
 <p>
 今年在 <a href="https://www.vandee.art/blog/2025-12-09-native-linux-on-apple-silicon-mac.html">MacBook 上安装了 Linux</a> ，Linux 成了我日常主要使用的操作系统。
 </p>
@@ -7391,38 +7391,38 @@ Just believe ，and believe in yourself！
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org07b22a2">TL;DR</a></li>
-<li><a href="#orgb3382e9">Why Linux</a></li>
-<li><a href="#orgda40882">Asahi Alarm</a>
+<li><a href="#org8290809">TL;DR</a></li>
+<li><a href="#org14a7dc5">Why Linux</a></li>
+<li><a href="#orgd43079f">Asahi Alarm</a>
 <ul>
-<li><a href="#org81876ff">初始化安装</a></li>
-<li><a href="#orgfe0b123">WM &amp; DM</a></li>
-<li><a href="#org37f097d">App launcher</a></li>
-<li><a href="#orgd52ed39">Theme</a></li>
-<li><a href="#org15dbb74">Bluetooth &amp;&amp; Wi-Fi</a></li>
-<li><a href="#org5846d1a">Fcitx &amp;&amp; Rime 输入法</a></li>
-<li><a href="#orge241068">Obs Studio</a></li>
+<li><a href="#orgcf02b8a">初始化安装</a></li>
+<li><a href="#orgf353a7a">WM &amp; DM</a></li>
+<li><a href="#org8462fe6">App launcher</a></li>
+<li><a href="#orgf7d5edd">Theme</a></li>
+<li><a href="#orgeb30817">Bluetooth &amp;&amp; Wi-Fi</a></li>
+<li><a href="#org7d53b87">Fcitx &amp;&amp; Rime 输入法</a></li>
+<li><a href="#org2197d90">Obs Studio</a></li>
 </ul>
 </li>
-<li><a href="#orga1b474c">Settings</a>
+<li><a href="#orge2b5d88">Settings</a>
 <ul>
-<li><a href="#org3a8bfb1">Sway</a></li>
-<li><a href="#org3604498">充电提示音</a></li>
-<li><a href="#org25476f6">Others</a></li>
+<li><a href="#org353c304">Sway</a></li>
+<li><a href="#orgc3458b2">充电提示音</a></li>
+<li><a href="#orgded3815">Others</a></li>
 </ul>
 </li>
-<li><a href="#org0828fde">Tips</a>
+<li><a href="#org3a3e27b">Tips</a>
 <ul>
-<li><a href="#orgf5a5256">Grub 修复</a></li>
-<li><a href="#org0630d19">NVIDIA 配置</a></li>
+<li><a href="#org3d1cc07">Grub 修复</a></li>
+<li><a href="#org1181a8a">NVIDIA 配置</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org07b22a2" class="outline-2">
-<h2 id="org07b22a2">TL;DR</h2>
-<div class="outline-text-2" id="text-org07b22a2">
+<div id="outline-container-org8290809" class="outline-2">
+<h2 id="org8290809">TL;DR</h2>
+<div class="outline-text-2" id="text-org8290809">
 <p>
 几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 </p>
@@ -7436,9 +7436,9 @@ Just believe ，and believe in yourself！
 </p>
 </div>
 </div>
-<div id="outline-container-orgb3382e9" class="outline-2">
-<h2 id="orgb3382e9">Why Linux</h2>
-<div class="outline-text-2" id="text-orgb3382e9">
+<div id="outline-container-org14a7dc5" class="outline-2">
+<h2 id="org14a7dc5">Why Linux</h2>
+<div class="outline-text-2" id="text-org14a7dc5">
 <p>
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 </p>
@@ -7460,11 +7460,11 @@ Just believe ，and believe in yourself！
 </p>
 </div>
 </div>
-<div id="outline-container-orgda40882" class="outline-2">
-<h2 id="orgda40882">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-orgda40882">
+<div id="outline-container-orgd43079f" class="outline-2">
+<h2 id="orgd43079f">Asahi Alarm</h2>
+<div class="outline-text-2" id="text-orgd43079f">
 
-<figure id="orgd798522">
+<figure id="orgca7403b">
 <img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
 
 </figure>
@@ -7497,9 +7497,9 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
 </p>
 </div>
-<div id="outline-container-org81876ff" class="outline-3">
-<h3 id="org81876ff">初始化安装</h3>
-<div class="outline-text-3" id="text-org81876ff">
+<div id="outline-container-orgcf02b8a" class="outline-3">
+<h3 id="orgcf02b8a">初始化安装</h3>
+<div class="outline-text-3" id="text-orgcf02b8a">
 <p>
 它就是一个裸的 Arch Linux。
 </p>
@@ -7521,9 +7521,9 @@ Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morga
 </p>
 </div>
 </div>
-<div id="outline-container-orgfe0b123" class="outline-3">
-<h3 id="orgfe0b123">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-orgfe0b123">
+<div id="outline-container-orgf353a7a" class="outline-3">
+<h3 id="orgf353a7a">WM &amp; DM</h3>
+<div class="outline-text-3" id="text-orgf353a7a">
 <p>
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 </p>
@@ -7545,9 +7545,9 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 </p>
 </div>
 </div>
-<div id="outline-container-org37f097d" class="outline-3">
-<h3 id="org37f097d">App launcher</h3>
-<div class="outline-text-3" id="text-org37f097d">
+<div id="outline-container-org8462fe6" class="outline-3">
+<h3 id="org8462fe6">App launcher</h3>
+<div class="outline-text-3" id="text-org8462fe6">
 <p>
 <a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
 </p>
@@ -7565,9 +7565,9 @@ Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq
 </p>
 </div>
 </div>
-<div id="outline-container-orgd52ed39" class="outline-3">
-<h3 id="orgd52ed39">Theme</h3>
-<div class="outline-text-3" id="text-orgd52ed39">
+<div id="outline-container-orgf7d5edd" class="outline-3">
+<h3 id="orgf7d5edd">Theme</h3>
+<div class="outline-text-3" id="text-orgf7d5edd">
 <p>
 <a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
 </p>
@@ -7589,9 +7589,9 @@ wayland 里用 nwg-look
 </ul>
 </div>
 </div>
-<div id="outline-container-org15dbb74" class="outline-3">
-<h3 id="org15dbb74">Bluetooth &amp;&amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-org15dbb74">
+<div id="outline-container-orgeb30817" class="outline-3">
+<h3 id="orgeb30817">Bluetooth &amp;&amp; Wi-Fi</h3>
+<div class="outline-text-3" id="text-orgeb30817">
 <ul class="org-ul">
 <li><p>
 impala: 🛜 TUI for managing wifi on Linux
@@ -7611,9 +7611,9 @@ bluetui: 🛜 TUI for managing bluetooth on Linux
 </ul>
 </div>
 </div>
-<div id="outline-container-org5846d1a" class="outline-3">
-<h3 id="org5846d1a">Fcitx &amp;&amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-org5846d1a">
+<div id="outline-container-org7d53b87" class="outline-3">
+<h3 id="org7d53b87">Fcitx &amp;&amp; Rime 输入法</h3>
+<div class="outline-text-3" id="text-org7d53b87">
 <p>
 参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
 </p>
@@ -7631,9 +7631,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </p>
 </div>
 </div>
-<div id="outline-container-orge241068" class="outline-3">
-<h3 id="orge241068">Obs Studio</h3>
-<div class="outline-text-3" id="text-orge241068">
+<div id="outline-container-org2197d90" class="outline-3">
+<h3 id="org2197d90">Obs Studio</h3>
+<div class="outline-text-3" id="text-org2197d90">
 <p>
 Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包。
 </p>
@@ -7672,9 +7672,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 </div>
 </div>
 </div>
-<div id="outline-container-orga1b474c" class="outline-2">
-<h2 id="orga1b474c">Settings</h2>
-<div class="outline-text-2" id="text-orga1b474c">
+<div id="outline-container-orge2b5d88" class="outline-2">
+<h2 id="orge2b5d88">Settings</h2>
+<div class="outline-text-2" id="text-orge2b5d88">
 <p>
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
 </p>
@@ -7683,9 +7683,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 </p>
 </div>
-<div id="outline-container-org3a8bfb1" class="outline-3">
-<h3 id="org3a8bfb1">Sway</h3>
-<div class="outline-text-3" id="text-org3a8bfb1">
+<div id="outline-container-org353c304" class="outline-3">
+<h3 id="org353c304">Sway</h3>
+<div class="outline-text-3" id="text-org353c304">
 <p>
 Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
 </p>
@@ -7764,9 +7764,9 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 </p>
 </div>
 </div>
-<div id="outline-container-org3604498" class="outline-3">
-<h3 id="org3604498">充电提示音</h3>
-<div class="outline-text-3" id="text-org3604498">
+<div id="outline-container-orgc3458b2" class="outline-3">
+<h3 id="orgc3458b2">充电提示音</h3>
+<div class="outline-text-3" id="text-orgc3458b2">
 <p>
 Asahi Linux 判断电池是通过 <code>/sys/class/power_supply/macsmc-ac</code>
 </p>
@@ -7841,9 +7841,9 @@ udev 的方式在我的电脑上不管用，所以用了一个笨办法。
 </div>
 </div>
 </div>
-<div id="outline-container-org25476f6" class="outline-3">
-<h3 id="org25476f6">Others</h3>
-<div class="outline-text-3" id="text-org25476f6">
+<div id="outline-container-orgded3815" class="outline-3">
+<h3 id="orgded3815">Others</h3>
+<div class="outline-text-3" id="text-orgded3815">
 <ul class="org-ul">
 <li><p>
 调整对比度(X11)
@@ -7893,9 +7893,9 @@ opensnatch 因为 eBPF 报错
 </div>
 </div>
 </div>
-<div id="outline-container-org0828fde" class="outline-2">
-<h2 id="org0828fde">Tips</h2>
-<div class="outline-text-2" id="text-org0828fde">
+<div id="outline-container-org3a3e27b" class="outline-2">
+<h2 id="org3a3e27b">Tips</h2>
+<div class="outline-text-2" id="text-org3a3e27b">
 <p>
 最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 <code>nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings lib32-nvidia-580xx-utils</code> 了，导致驱动无法适配。
 </p>
@@ -7932,9 +7932,9 @@ Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 <code>GRUB_DEFAULT='Advanced options for Arch Linux&gt;Arch Linux, with Linux linux'</code>
 </p>
 </div>
-<div id="outline-container-orgf5a5256" class="outline-3">
-<h3 id="orgf5a5256">Grub 修复</h3>
-<div class="outline-text-3" id="text-orgf5a5256">
+<div id="outline-container-org3d1cc07" class="outline-3">
+<h3 id="org3d1cc07">Grub 修复</h3>
+<div class="outline-text-3" id="text-org3d1cc07">
 <p>
 如果你和我一样瞎折腾把 grub 弄坏了，可以 Arch Linux Live USB 引导修复。
 </p>
@@ -7981,9 +7981,9 @@ EOF</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org0630d19" class="outline-3">
-<h3 id="org0630d19">NVIDIA 配置</h3>
-<div class="outline-text-3" id="text-org0630d19">
+<div id="outline-container-org1181a8a" class="outline-3">
+<h3 id="org1181a8a">NVIDIA 配置</h3>
+<div class="outline-text-3" id="text-org1181a8a">
 <p>
 我另外一个 x86 电脑的 NVIDIA 显卡很老了，下面的方法管用
 </p>
@@ -8067,30 +8067,30 @@ Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org98886a9">TL;DR</a></li>
-<li><a href="#org2044cb1">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#org6c2776b">我的键位设置</a>
+<li><a href="#orgd038e20">TL;DR</a></li>
+<li><a href="#orgab12484">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#orgfa211d9">我的键位设置</a>
 <ul>
-<li><a href="#orgcb95c7e">General</a></li>
-<li><a href="#org1f6fe3d">mark &amp; move</a></li>
-<li><a href="#org589b34f">hydra &amp; general</a></li>
-<li><a href="#org88a7249">Misc</a></li>
+<li><a href="#orgd34b232">General</a></li>
+<li><a href="#org969fc1d">mark &amp; move</a></li>
+<li><a href="#org5ab8277">hydra &amp; general</a></li>
+<li><a href="#orgfe582ba">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org98886a9" class="outline-2">
-<h2 id="org98886a9">TL;DR</h2>
-<div class="outline-text-2" id="text-org98886a9">
+<div id="outline-container-orgd038e20" class="outline-2">
+<h2 id="orgd038e20">TL;DR</h2>
+<div class="outline-text-2" id="text-orgd038e20">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-org2044cb1" class="outline-2">
-<h2 id="org2044cb1">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-org2044cb1">
+<div id="outline-container-orgab12484" class="outline-2">
+<h2 id="orgab12484">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-orgab12484">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -8119,9 +8119,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-org6c2776b" class="outline-2">
-<h2 id="org6c2776b">我的键位设置</h2>
-<div class="outline-text-2" id="text-org6c2776b">
+<div id="outline-container-orgfa211d9" class="outline-2">
+<h2 id="orgfa211d9">我的键位设置</h2>
+<div class="outline-text-2" id="text-orgfa211d9">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -8142,9 +8142,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-orgcb95c7e" class="outline-3">
-<h3 id="orgcb95c7e">General</h3>
-<div class="outline-text-3" id="text-orgcb95c7e">
+<div id="outline-container-orgd34b232" class="outline-3">
+<h3 id="orgd34b232">General</h3>
+<div class="outline-text-3" id="text-orgd34b232">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -8214,9 +8214,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-org1f6fe3d" class="outline-3">
-<h3 id="org1f6fe3d">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org1f6fe3d">
+<div id="outline-container-org969fc1d" class="outline-3">
+<h3 id="org969fc1d">mark &amp; move</h3>
+<div class="outline-text-3" id="text-org969fc1d">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -8298,9 +8298,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org589b34f" class="outline-3">
-<h3 id="org589b34f">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org589b34f">
+<div id="outline-container-org5ab8277" class="outline-3">
+<h3 id="org5ab8277">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org5ab8277">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -8346,9 +8346,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </div>
 </div>
 </div>
-<div id="outline-container-org88a7249" class="outline-3">
-<h3 id="org88a7249">Misc</h3>
-<div class="outline-text-3" id="text-org88a7249">
+<div id="outline-container-orgfe582ba" class="outline-3">
+<h3 id="orgfe582ba">Misc</h3>
+<div class="outline-text-3" id="text-orgfe582ba">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>

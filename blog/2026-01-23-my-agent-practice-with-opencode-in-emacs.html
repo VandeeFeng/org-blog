@@ -19,22 +19,10 @@
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
-       <link rel="stylesheet"
-             href="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-       <script src="https://testingcf.jsdelivr.net/npm/@fancyapps/ui@4.0.12/dist/fancybox.umd.js" defer></script>
-       <script src="https://testingcf.jsdelivr.net/npm/pangu@7.2.0/dist/browser/pangu.umd.js" defer></script>
-       <script defer>
-         document.addEventListener("DOMContentLoaded", () => {
-           pangu.autoSpacingPage();
-         });
-       </script>
-
        <script src="assets/js/app.js" defer></script>
-       <script src="assets/js/copyCode.js" defer></script>
-       <script src="assets/js/shiba.js" defer></script>
-       <script src="assets/js/search.js" defer></script></head>
+       <script src="assets/js/shiba.js" defer></script></head>
 <body>
 <div id="preamble" class="status">
       <header>
@@ -59,34 +47,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8d7805b">TL;DR</a></li>
-<li><a href="#org18b6976">Agent Skills</a>
+<li><a href="#orgfa8d3e0">TL;DR</a></li>
+<li><a href="#orgd5fc3af">Agent Skills</a>
 <ul>
-<li><a href="#org2cb1bf8">简介</a></li>
-<li><a href="#orgb094bd4">SKILL 解决了什么问题</a></li>
-<li><a href="#orge356c90">编写 SKILL 是在干什么</a></li>
+<li><a href="#orga6a33d5">简介</a></li>
+<li><a href="#org78a91b4">SKILL 解决了什么问题</a></li>
+<li><a href="#org2bb11c1">编写 SKILL 是在干什么</a></li>
 </ul>
 </li>
-<li><a href="#orgc94363f">My Agent Conf</a>
+<li><a href="#org64cd82f">My Agent Conf</a>
 <ul>
-<li><a href="#orgcaeccb8">Core Rules</a></li>
-<li><a href="#org7e89609">Maintain a hierarchical codebase map</a></li>
-<li><a href="#org0b5ecef">Prepared with clear purpose</a></li>
-<li><a href="#org8f03e85">Just files and loops, no more complicated</a></li>
-<li><a href="#orgde2cde9">Handoff when stucked</a></li>
-<li><a href="#org2cc2682">Maintain memory</a></li>
-<li><a href="#org9b163f4">Maintain useful patterns</a></li>
-<li><a href="#org0030c3c">Maintain code quality and style</a></li>
+<li><a href="#org7093372">Core Rules</a></li>
+<li><a href="#orgb928c4f">Maintain a hierarchical codebase map</a></li>
+<li><a href="#org187dc08">Prepared with clear purpose</a></li>
+<li><a href="#orgecd820e">Just files and loops, no more complicated</a></li>
+<li><a href="#org0136e2a">Handoff when stucked</a></li>
+<li><a href="#org04a85fb">Maintain memory</a></li>
+<li><a href="#org4c8296f">Maintain useful patterns</a></li>
+<li><a href="#org842b58f">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#org09851a9">OpenCode in Emacs</a></li>
-<li><a href="#orgd27bfa2">Bubblewrap Sandbox</a></li>
+<li><a href="#org763d99d">OpenCode in Emacs</a></li>
+<li><a href="#org6cfea1d">Bubblewrap Sandbox</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org8d7805b" class="outline-2">
-<h2 id="org8d7805b">TL;DR</h2>
-<div class="outline-text-2" id="text-org8d7805b">
+<div id="outline-container-orgfa8d3e0" class="outline-2">
+<h2 id="orgfa8d3e0">TL;DR</h2>
+<div class="outline-text-2" id="text-orgfa8d3e0">
 <p>
 虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
 </p>
@@ -100,13 +88,13 @@ Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口�
 </p>
 </div>
 </div>
-<div id="outline-container-org18b6976" class="outline-2">
-<h2 id="org18b6976">Agent Skills</h2>
-<div class="outline-text-2" id="text-org18b6976">
+<div id="outline-container-orgd5fc3af" class="outline-2">
+<h2 id="orgd5fc3af">Agent Skills</h2>
+<div class="outline-text-2" id="text-orgd5fc3af">
 </div>
-<div id="outline-container-org2cb1bf8" class="outline-3">
-<h3 id="org2cb1bf8">简介</h3>
-<div class="outline-text-3" id="text-org2cb1bf8">
+<div id="outline-container-orga6a33d5" class="outline-3">
+<h3 id="orga6a33d5">简介</h3>
+<div class="outline-text-3" id="text-orga6a33d5">
 <p>
 <a href="https://github.com/agentskills/agentskills">agentskills/agentskills</a> 是前段时间 <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)</a> Claude 开源的。
 </p>
@@ -146,9 +134,9 @@ SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、tem
 </p>
 </div>
 </div>
-<div id="outline-container-orgb094bd4" class="outline-3">
-<h3 id="orgb094bd4">SKILL 解决了什么问题</h3>
-<div class="outline-text-3" id="text-orgb094bd4">
+<div id="outline-container-org78a91b4" class="outline-3">
+<h3 id="org78a91b4">SKILL 解决了什么问题</h3>
+<div class="outline-text-3" id="text-org78a91b4">
 <p>
 MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
 </p>
@@ -162,9 +150,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </p>
 </div>
 </div>
-<div id="outline-container-orge356c90" class="outline-3">
-<h3 id="orge356c90">编写 SKILL 是在干什么</h3>
-<div class="outline-text-3" id="text-orge356c90">
+<div id="outline-container-org2bb11c1" class="outline-3">
+<h3 id="org2bb11c1">编写 SKILL 是在干什么</h3>
+<div class="outline-text-3" id="text-org2bb11c1">
 <p>
 当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
 </p>
@@ -187,9 +175,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </div>
 </div>
 </div>
-<div id="outline-container-orgc94363f" class="outline-2">
-<h2 id="orgc94363f">My Agent Conf</h2>
-<div class="outline-text-2" id="text-orgc94363f">
+<div id="outline-container-org64cd82f" class="outline-2">
+<h2 id="org64cd82f">My Agent Conf</h2>
+<div class="outline-text-2" id="text-org64cd82f">
 <p>
 下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
 </p>
@@ -214,9 +202,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 再一个，不了解 vibe 又怎么能说自己不喜欢呢？
 </p>
 </div>
-<div id="outline-container-orgcaeccb8" class="outline-3">
-<h3 id="orgcaeccb8">Core Rules</h3>
-<div class="outline-text-3" id="text-orgcaeccb8">
+<div id="outline-container-org7093372" class="outline-3">
+<h3 id="org7093372">Core Rules</h3>
+<div class="outline-text-3" id="text-org7093372">
 <p>
 Just files and loops!
 </p>
@@ -230,9 +218,9 @@ Keep it simple!
 </p>
 </div>
 </div>
-<div id="outline-container-org7e89609" class="outline-3">
-<h3 id="org7e89609">Maintain a hierarchical codebase map</h3>
-<div class="outline-text-3" id="text-org7e89609">
+<div id="outline-container-orgb928c4f" class="outline-3">
+<h3 id="orgb928c4f">Maintain a hierarchical codebase map</h3>
+<div class="outline-text-3" id="text-orgb928c4f">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -269,9 +257,9 @@ also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/comm
 </p>
 </div>
 </div>
-<div id="outline-container-org0b5ecef" class="outline-3">
-<h3 id="org0b5ecef">Prepared with clear purpose</h3>
-<div class="outline-text-3" id="text-org0b5ecef">
+<div id="outline-container-org187dc08" class="outline-3">
+<h3 id="org187dc08">Prepared with clear purpose</h3>
+<div class="outline-text-3" id="text-org187dc08">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -289,9 +277,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </p>
 </div>
 </div>
-<div id="outline-container-org8f03e85" class="outline-3">
-<h3 id="org8f03e85">Just files and loops, no more complicated</h3>
-<div class="outline-text-3" id="text-org8f03e85">
+<div id="outline-container-orgecd820e" class="outline-3">
+<h3 id="orgecd820e">Just files and loops, no more complicated</h3>
+<div class="outline-text-3" id="text-orgecd820e">
 <p>
 SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a>
 </p>
@@ -367,9 +355,9 @@ session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 ses
 </div>
 </div>
 </div>
-<div id="outline-container-orgde2cde9" class="outline-3">
-<h3 id="orgde2cde9">Handoff when stucked</h3>
-<div class="outline-text-3" id="text-orgde2cde9">
+<div id="outline-container-org0136e2a" class="outline-3">
+<h3 id="org0136e2a">Handoff when stucked</h3>
+<div class="outline-text-3" id="text-org0136e2a">
 <p>
 SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a>
 </p>
@@ -379,9 +367,9 @@ SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/comma
 </p>
 </div>
 </div>
-<div id="outline-container-org2cc2682" class="outline-3">
-<h3 id="org2cc2682">Maintain memory</h3>
-<div class="outline-text-3" id="text-org2cc2682">
+<div id="outline-container-org04a85fb" class="outline-3">
+<h3 id="org04a85fb">Maintain memory</h3>
+<div class="outline-text-3" id="text-org04a85fb">
 <p>
 我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
 </p>
@@ -532,9 +520,9 @@ rg -i -C 2 -t md "$keywords" "$memory_dir" --follow
 </div>
 </div>
 </div>
-<div id="outline-container-org9b163f4" class="outline-3">
-<h3 id="org9b163f4">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-org9b163f4">
+<div id="outline-container-org4c8296f" class="outline-3">
+<h3 id="org4c8296f">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-org4c8296f">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -815,9 +803,9 @@ Last updated: [date]
 </div>
 </div>
 </div>
-<div id="outline-container-org0030c3c" class="outline-3">
-<h3 id="org0030c3c">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org0030c3c">
+<div id="outline-container-org842b58f" class="outline-3">
+<h3 id="org842b58f">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org842b58f">
 <p>
 SKILL: code-simplifier: <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
 </p>
@@ -836,9 +824,9 @@ LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，�
 </div>
 </div>
 </div>
-<div id="outline-container-org09851a9" class="outline-2">
-<h2 id="org09851a9">OpenCode in Emacs</h2>
-<div class="outline-text-2" id="text-org09851a9">
+<div id="outline-container-org763d99d" class="outline-2">
+<h2 id="org763d99d">OpenCode in Emacs</h2>
+<div class="outline-text-2" id="text-org763d99d">
 <p>
 在 Emacs 里现在和 OpenCode 交互最方便的就是 <a href="https://github.com/xenodium/agent-shell">agent-shell</a> 了。
 </p>
@@ -1028,9 +1016,9 @@ Returns list of agent alists with :id, :name, :description."</span>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd27bfa2" class="outline-2">
-<h2 id="orgd27bfa2">Bubblewrap Sandbox</h2>
-<div class="outline-text-2" id="text-orgd27bfa2">
+<div id="outline-container-org6cfea1d" class="outline-2">
+<h2 id="org6cfea1d">Bubblewrap Sandbox</h2>
+<div class="outline-text-2" id="text-org6cfea1d">
 <p>
 Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了许多针对性的优化。
 </p>

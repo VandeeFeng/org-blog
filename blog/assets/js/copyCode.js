@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });*/
 
 
-document.addEventListener('DOMContentLoaded', function() {
+function initCopyCode() {
     // 使用 WeakMap 存储状态和原始内容
     const originalContents = new WeakMap();
     const expandStates = new WeakMap();
@@ -97,24 +97,24 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0
     });
 
-    const codeBlocks = document.querySelectorAll('.org-src-container');
+    const runWhenIdle = window.requestIdleCallback || ((callback) => setTimeout(callback, 0));
+    const codeBlocks = Array.from(document.querySelectorAll('.org-src-container'));
 
-    codeBlocks.forEach(block => {
+    const initCodeBlock = (block) => {
         const pre = block.querySelector('pre');
+        if (!pre) return;
+
         const originalHTML = pre.innerHTML;
         const plainText = pre.textContent;
         const lines = originalHTML.split('\n');
 
-        // 存储原始内容
         originalContents.set(block, originalHTML);
         expandStates.set(block, false);
 
-        // 创建复制按钮
         const copyButton = document.createElement('button');
         copyButton.className = 'copy-button';
         copyButton.textContent = 'Copy';
 
-        // 添加复制功能
         copyButton.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(plainText);
@@ -134,79 +134,75 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 将复制按钮添加到代码块容器中
         block.appendChild(copyButton);
 
-        // 处理长代码的折叠功能
-        if (lines.length > 50) { // 移除设备检查，保留折叠功能
-            // 重置pre的内容为前50行
+        const langMatch = pre.className.match(/src-([\w-]+)/);
+        pre.setAttribute('data-lang', langMatch && langMatch[1] !== 'nil' ? langMatch[1] : 'code');
+        pre.style.setProperty('--show-lang-label', 'block');
+
+        if (lines.length <= 50) return;
+
+        pre.innerHTML = lines.slice(0, 50).join('\n');
+
+        const expandWrapper = document.createElement('div');
+        expandWrapper.className = 'expand-wrapper';
+
+        const ellipsis = document.createElement('span');
+        ellipsis.textContent = '...';
+        ellipsis.className = 'code-ellipsis';
+
+        const expandButton = document.createElement('button');
+        expandButton.className = 'toggle-button';
+        expandButton.textContent = 'Expand';
+
+        expandButton.addEventListener('click', () => {
+            const currentState = expandStates.get(block);
+
+            if (!currentState) {
+                pre.innerHTML = originalContents.get(block);
+                pre.style.maxHeight = '700px';
+                expandButton.textContent = 'Collapse';
+                expandWrapper.innerHTML = '';
+                expandWrapper.appendChild(expandButton);
+                pre.appendChild(expandWrapper);
+                expandStates.set(block, true);
+                return;
+            }
+
             pre.innerHTML = lines.slice(0, 50).join('\n');
-
-            // 创建展开包装器
-            const expandWrapper = document.createElement('div');
-            expandWrapper.className = 'expand-wrapper';
-
-            // 创建省略号元素
-            const ellipsis = document.createElement('span');
-            ellipsis.textContent = '...';
-            ellipsis.className = 'code-ellipsis';
-
-            // 创建展开按钮
-            const expandButton = document.createElement('button');
-            expandButton.className = 'toggle-button';
+            pre.style.maxHeight = '400px';
             expandButton.textContent = 'Expand';
-
-            // 添加展开/折叠功能
-            expandButton.addEventListener('click', () => {
-                const currentState = expandStates.get(block);
-
-                if (!currentState) {
-                    // 展开
-                    pre.innerHTML = originalContents.get(block);
-                    pre.style.maxHeight = '700px';
-                    expandButton.textContent = 'Collapse';
-                    expandWrapper.innerHTML = '';
-                    expandWrapper.appendChild(expandButton);
-                    pre.appendChild(expandWrapper);
-                    expandStates.set(block, true);  // 更新状态为展开
-                } else {
-                    // 折叠
-                    pre.innerHTML = lines.slice(0, 50).join('\n');
-                    pre.style.maxHeight = '400px';
-                    expandButton.textContent = 'Expand';
-                    expandWrapper.innerHTML = '';
-                    expandWrapper.appendChild(ellipsis);
-                    expandWrapper.appendChild(expandButton);
-                    pre.appendChild(expandWrapper);
-                    expandStates.set(block, false);  // 更新状态为折叠
-                }
-            });
-
-            // 组装展开部分
+            expandWrapper.innerHTML = '';
             expandWrapper.appendChild(ellipsis);
             expandWrapper.appendChild(expandButton);
             pre.appendChild(expandWrapper);
+            expandStates.set(block, false);
+        });
 
-            // 设置初始状态
-            pre.style.maxHeight = '400px';
+        expandWrapper.appendChild(ellipsis);
+        expandWrapper.appendChild(expandButton);
+        pre.appendChild(expandWrapper);
+        pre.style.maxHeight = '400px';
+        observer.observe(block);
+    };
 
-            // 添加到观察器
-            observer.observe(block);
+    let index = 0;
+    const processBatch = (deadline) => {
+        const end = Math.min(index + 5, codeBlocks.length);
+
+        while (index < end && (!deadline?.timeRemaining || deadline.timeRemaining() > 4)) {
+            initCodeBlock(codeBlocks[index]);
+            index += 1;
         }
-    });
 
-    // 修改语言标签处理逻辑
-    document.querySelectorAll('.org-src-container pre').forEach(pre => {
-        // 检查是否有语言类名
-        const langMatch = pre.className.match(/src-([\w-]+)/);
-        if (langMatch && langMatch[1] !== 'nil') {
-            // 如果有语言类名且不是 nil，添加语言标签
-            pre.setAttribute('data-lang', langMatch[1]);
-            pre.style.setProperty('--show-lang-label', 'block');
-        } else {
-            // 如果没有语言类名或是 nil，添加一个默认的代码标签
-            pre.setAttribute('data-lang', 'code');
-            pre.style.setProperty('--show-lang-label', 'block');
-        }
-    });
-});
+        if (index < codeBlocks.length) runWhenIdle(processBatch);
+    };
+
+    runWhenIdle(processBatch);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCopyCode);
+} else {
+    initCopyCode();
+}
