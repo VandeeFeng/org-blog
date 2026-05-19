@@ -23,15 +23,11 @@ jobs:
             "VandeeFeng/gitmemos"
             "VandeeFeng/pi-memory-md"
             "VandeeFeng/C-blorg"
-            "VandeeFeng/bili-tui"
             "VandeeFeng/smart-cmd"
             "VandeeFeng/promptheus"
-            "VandeeFeng/GitNano"
             "VandeeFeng/Emacs-Hoarder"
             "VandeeFeng/org-hover"
-            "VandeeFeng/bookmark-summary"
-            "VandeeFeng/RSS-CLI"
-            "VandeeFeng/nash"
+            "VandeeFeng/bili-tui"
           )
 
           OUTPUT="blog/assets/projects.json"
