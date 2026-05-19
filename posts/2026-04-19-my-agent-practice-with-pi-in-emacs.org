@@ -1506,8 +1506,6 @@ export default function agentsBuffExtension(pi: ExtensionAPI): void {
 
 还注册了一个 ~/rtk-status~ 指令来查看 bash 指令的 rewrite 情况还有 token 的节省统计。
 
-UV 部分需要配合 https://github.com/mitsuhiko/agent-stuff/tree/main/intercepted-commands 里的内容。
-
 command-integration.ts:
 
 #+begin_src typescript
@@ -1527,8 +1525,8 @@ command-integration.ts:
  * to intercept and rewrite commands before execution.
  */
 
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
-import { createBashTool } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
+import { createBashTool } from "@earendil-works/pi-coding-agent";
 import { execSync } from "node:child_process";
 
 const stats = new Map<string, number>();
@@ -1544,94 +1542,92 @@ function checkToolAvailable(tool: string): boolean {
   }
 }
 
-/**
- * Handle UV command interception and rewriting.
- * Returns the rewritten command, or throws an error with a helpful
-   message.
- */
-function handleUvCommand(command: string): string {
-  const trimmed = command.trim();
-  const parts = trimmed.split(/\s+/);
-  const baseCmd = parts[0];
+// UV command interception
+const pipMessage =
+  "Error: pip is disabled. Use uv instead:\n\n" +
+    "  To install a package for a script: uv run --with PACKAGE python script.py\n" +
+    "  To add a dependency to the project: uv add PACKAGE\n";
 
-  const pipMessage =
-    "Error: pip is disabled. Use uv instead:\n\n" +
-      "  To install a package for a script: uv run --with PACKAGE python script.py\n" +
-      "  To add a dependency to the project: uv add PACKAGE\n";
+const venvMessage =
+  "Error: 'python -m venv' is disabled. Use uv instead:\n\n" +
+    "  To create a virtual environment: uv venv\n";
 
-  const venvMessage =
-    "Error: 'python -m venv' is disabled. Use uv instead:\n\n" +
-      "  To create a virtual environment: uv venv\n";
-
-  if (baseCmd === "pip" || baseCmd === "pip3") {
-    throw new Error(pipMessage);
-  }
-
-  if (baseCmd === "poetry") {
-    throw new Error("Error: Use uv instead of poetry (uv init, uv add, uv sync, uv run)");
-  }
-
-  if (baseCmd === "python" || baseCmd === "python3") {
-    for (let i = 0; i < parts.length; i++) {
-      const arg = parts[i];
-
-      if (arg === "-m" && i + 1 < parts.length) {
-        const nextArg = parts[i + 1];
-        if (nextArg === "pip" || nextArg.startsWith("pip")) {
-          throw new Error(pipMessage);
-        }
-        if (nextArg === "venv" || nextArg.startsWith("venv")) {
-          throw new Error(venvMessage);
-        }
-      }
-
-      if (arg.startsWith("-mpip") || arg === "-m\\pip") {
-        throw new Error(pipMessage);
-      }
-      if (arg.startsWith("-mvenv") || arg === "-m\\venv") {
-        throw new Error(venvMessage);
-      }
-    }
-
-    return `uv run ${trimmed}`;
-  }
-
-  return trimmed;
+function shellQuote(value: string): string {
+  return `'${value.replace(/'/g, `'\\''`)}'`;
 }
 
+function createUvShellPrefix(): string {
+  return `
+resolve_uv_python() {
+  local candidate
 
-// rewrite commands
-const UV_COMMANDS = ["pip", "pip3", "poetry", "python", "python3"];
+  candidate="$(uv python find --managed-python 2>/dev/null || true)"
+  if [ -n "$candidate" ] && [ -x "$candidate" ]; then
+    echo "$candidate"
+    return 0
+  fi
 
-function rewriteCommand(command: string): { command: string; error?: string } {
+  while IFS= read -r candidate; do
+    [ -n "$candidate" ] || continue
+    echo "$candidate"
+    return 0
+  done < <(type -aP python3 2>/dev/null)
+
+  while IFS= read -r candidate; do
+    [ -n "$candidate" ] || continue
+    echo "$candidate"
+    return 0
+  done < <(type -aP python 2>/dev/null)
+
+  return 1
+}
+
+python() {
+  if [ "$1" = "-m" ]; then
+    case "$2" in
+      pip|pip*) echo ${shellQuote(pipMessage)} >&2; return 1 ;;
+      venv|venv*) echo ${shellQuote(venvMessage)} >&2; return 1 ;;
+      py_compile|py_compile*) echo "Error: 'python -m py_compile' is disabled because it writes .pyc files to __pycache__." >&2; return 1 ;;
+    esac
+  fi
+
+  case "$1" in
+    -mpip*|-m\\pip) echo ${shellQuote(pipMessage)} >&2; return 1 ;;
+    -mvenv*|-m\\venv) echo ${shellQuote(venvMessage)} >&2; return 1 ;;
+    -mpy_compile*|-m\\py_compile) echo "Error: 'python -m py_compile' is disabled because it writes .pyc files to __pycache__." >&2; return 1 ;;
+  esac
+
+  local uv_python
+  uv_python="$(resolve_uv_python)"
+  if [ -z "$uv_python" ]; then
+    echo "Error: Unable to locate a Python interpreter outside shim directories." >&2
+    return 1
+  fi
+
+  uv run --python "$uv_python" python "$@"
+}
+python3() { python "$@"; }
+pip() { echo ${shellQuote(pipMessage)} >&2; return 1; }
+pip3() { pip "$@"; }
+poetry() { echo 'Error: Use uv instead of poetry (uv init, uv add, uv sync, uv run)' >&2; return 1; }
+export -f resolve_uv_python python python3 pip pip3 poetry
+`;
+}
+
+function shouldUseUvShim(command: string): boolean {
+  return /(^|[;&|()\s])(python3?|pip3?|poetry)(?=([;&|()\s]|$))/.test(command);
+}
+
+// RTK command rewriting
+function rewriteCommand(command: string): string {
   const trimmed = command.trim();
   if (!trimmed) {
-    return { command };
+    return command;
   }
 
-  // Step 1: UV interception
-  if (uvAvailable) {
-    const baseCmd = trimmed.split(/\s+/)[0];
-    if (UV_COMMANDS.includes(baseCmd)) {
-      try {
-        const rewritten = handleUvCommand(trimmed);
-        if (rewritten !== trimmed) {
-          return { command: rewritten };
-        }
-      } catch (err) {
-        if (err instanceof Error) {
-          return { command: trimmed, error: err.message };
-        }
-      }
-    }
-  }
-
-  // Step 2: RTK rewriting
   if (rtkAvailable && !trimmed.startsWith("rtk ") && trimmed !== "rtk") {
-    // Skip RTK rewriting for find command
-    const baseCmd = trimmed.split(/\s+/)[0];
-    if (baseCmd === "find") {
-      return { command: trimmed };
+    if (/\bfind\b/.test(trimmed)) {
+      return trimmed;
     }
 
     if (!trimmed.includes("<<") && !trimmed.includes("$((")) {
@@ -1643,15 +1639,22 @@ function rewriteCommand(command: string): { command: string; error?: string } {
         }).trim();
 
         if (rewritten && rewritten !== trimmed) {
-          return { command: rewritten };
+          return rewritten;
         }
-      } catch {
+      } catch (error) {
+        const stdout = (error as { stdout?: Buffer | string }).stdout;
+        const rewritten = Buffer.isBuffer(stdout) ? stdout.toString().trim() : stdout?.trim();
+
+        if (rewritten && rewritten !== trimmed) {
+          return rewritten;
+        }
+
         // Command not supported by RTK - continue with original
       }
     }
   }
 
-  return { command: trimmed };
+  return trimmed;
 }
 
 export default function (pi: ExtensionAPI): void {
@@ -1662,9 +1665,9 @@ export default function (pi: ExtensionAPI): void {
 
   const bashTool = createBashTool(cwd, {
     spawnHook: ({ command, cwd, env }) => {
-      const { command: rewritten, error } = rewriteCommand(command);
+      const rewritten = rewriteCommand(command);
 
-      if (rewritten !== command) {
+      if (rewritten !== command.trim()) {
         const baseCmd = command.trim().split(/\s+/)[0] || "";
         if (baseCmd) {
           const count = (stats.get(baseCmd) || 0) + 1;
@@ -1672,15 +1675,10 @@ export default function (pi: ExtensionAPI): void {
         }
       }
 
-      if (error) {
-        return {
-          command: `echo '${error.replace(/'/g, "'\\''")}' >&2 && false`,
-          cwd,
-          env,
-        };
-      }
-
-      return { command: rewritten, cwd, env };
+      const commandToRun = uvAvailable && shouldUseUvShim(rewritten)
+        ? `${createUvShellPrefix()}\n${rewritten}`
+        : rewritten;
+      return { command: commandToRun, cwd, env };
     },
   });
 
