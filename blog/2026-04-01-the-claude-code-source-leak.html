@@ -47,8 +47,8 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgcbaaeb8">源码之外</a></li>
-<li><a href="#org3cb2a53">Agent Interaction Interface</a></li>
+<li><a href="#org2be8515">源码之外</a></li>
+<li><a href="#orgbbdf2cb">Agent Interaction Interface</a></li>
 </ul>
 </div>
 </nav>
@@ -59,9 +59,9 @@
 <p>
 但其实对 Claude Code 各方面的逆向其实就从来没有停止过。在愚人节前后放出来，让我觉得这可能不是巧合，Hacker 是最喜欢这种玩笑了。
 </p>
-<div id="outline-container-orgcbaaeb8" class="outline-2">
-<h2 id="orgcbaaeb8">源码之外</h2>
-<div class="outline-text-2" id="text-orgcbaaeb8">
+<div id="outline-container-org2be8515" class="outline-2">
+<h2 id="org2be8515">源码之外</h2>
+<div class="outline-text-2" id="text-org2be8515">
 <p>
 在 Claude Code 公开火了之后，各大 LLM 厂商也陆续推出了自己的 Coding CLI。
 </p>
@@ -117,9 +117,9 @@ via: <a href="https://interconnected.org/home/2026/04/18/headless">https://inter
 </blockquote>
 </div>
 </div>
-<div id="outline-container-org3cb2a53" class="outline-2">
-<h2 id="org3cb2a53">Agent Interaction Interface</h2>
-<div class="outline-text-2" id="text-org3cb2a53">
+<div id="outline-container-orgbbdf2cb" class="outline-2">
+<h2 id="orgbbdf2cb">Agent Interaction Interface</h2>
+<div class="outline-text-2" id="text-orgbbdf2cb">
 <p>
 模型能力卷到现在互相蒸馏，我感觉其实已经翻不出什么大的浪花了，各大厂有的没的隔一段时间就更新一个模型，在 benchmark 上刷刷数据。反倒是 interface 这块，由于 Claude Code 的这次泄露，今年下半年可能会百花齐放了。
 </p>
@@ -244,6 +244,18 @@ Karpathy 在去年的一个演讲里提到了软件 2.0 的概念，这个主要
 
 <p>
 标题就是蹭热度，但内容是我这段时间一直在思考的。
+</p>
+
+<p>
+2026-05-22 add:
+</p>
+
+<p>
+<a href="https://interconnected.org/home/2026/05/20/resident">Resident: vibe coding firmware (our new sandbox library for ESP32 devices) (Interconnected)</a> 这篇文章里，提到：It’s not an outrageous extrapolation! <a href="https://taalas.com/products/">Taalas</a> is baking LLMs into silicon and delivers 17k tokens per second per user on Llama 3.1 8B (<a href="https://chatjimmy.ai/">try it here</a>, e.g. 4,000 words on Hamlet as a space opera, it’s wild it’s so instant). So GPT-4-equiv is a matter of time.
+</p>
+
+<p>
+就像现在 agent 用简易的 一次性 HTML 代码来做一些简易的一次性结果展示或交互呈现一样，LLM 动态的在 sandbox 里生成 interface 我一直觉得非常有趣也挺可行。
 </p>
 </div>
 </div>

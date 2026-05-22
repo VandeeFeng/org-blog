@@ -103,3 +103,9 @@ Karpathy 在去年的一个演讲里提到了软件 2.0 的概念，这个主要
 简单来说，我期待中的 AI 交互应该是像上面提到的触屏 iPhone 一样，它只是让用户更方便的操作手机，以更便利的方式满足了用户的需求。而不是接管了用户的过程，只是呈现一个结果。
 
 标题就是蹭热度，但内容是我这段时间一直在思考的。
+
+2026-05-22 add:
+
+[[https://interconnected.org/home/2026/05/20/resident][Resident: vibe coding firmware (our new sandbox library for ESP32 devices) (Interconnected)]] 这篇文章里，提到：It’s not an outrageous extrapolation! [[https://taalas.com/products/][Taalas]] is baking LLMs into silicon and delivers 17k tokens per second per user on Llama 3.1 8B ([[https://chatjimmy.ai/][try it here]], e.g. 4,000 words on Hamlet as a space opera, it’s wild it’s so instant). So GPT-4-equiv is a matter of time.
+
+就像现在 agent 用简易的 一次性 HTML 代码来做一些简易的一次性结果展示或交互呈现一样，LLM 动态的在 sandbox 里生成 interface 我一直觉得非常有趣也挺可行。
