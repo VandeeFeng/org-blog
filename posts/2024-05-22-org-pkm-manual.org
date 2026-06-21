@@ -1019,20 +1019,13 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 ** PKM with LLM
 2025-11-15 added: 和 AI 相关的整理到了 [[https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html][PKM（个人知识管理）构建手册 - with AI]] 。关于 RAG 和各类知识文档管理聚合项目，我目前的想法是，如果没有成千上万的笔记，或者专业学习和科研，普通的 tag+关键字检索 足够用了，对笔记和知识有了适合自己的管理方法，AI 的检索其实不那么必须，通过传统检索方法找到相关的，再结合 AI 更简单高效，AI 和 RAG 的相关性也会高很多。再一个，我个人还是习惯自己完成最原始的笔记，AI 帮助我发散思考，而不是生成笔记。
 
-本地笔记的优势除了隐私性，再就是，数据在自己手上，就可以干很多事。把本地的笔记文档结合LLM做思维拓展，基于个人思维习惯更精确的问答。如果说有时候双链不足以串联整个思维链条，下面这些工具如虎添翼。
+现在能不用 AI 搜索就不用了，不想把这些没什么质变的便利建立在 AI 对互联网内容的侵略上。
 
-看到一个大佬已经用Ollama、RAG在MacBook Pro M3 Max上实现了基于obsidian的个人AI知识助手：[[https://lopespm.com/machine_learning/2024/06/24/personal-llm.html][个人本地 (Llama3 8B) LLM 使用 WhatsApp + Obsidian 数据扩展 - Byte Tank]]，和我的思路基本一致。
+但是 AI 搜索对于扩展 agent 的能力来说是很必要的。和 robots.txt 这个君子协定类似，我觉得规范是规范，主要还是看个人。对于内容创作者来说，AI 检索到自己手写的内容，也是有利有弊。很可能今后互联网的部分内容就是 AI 生成的了，正是因为如此，所以我才更原意坚持手写。写给自己的东西，考虑那么多干嘛。
 
-简单写了一个python用来直接获取高亮摘录并与本地LLM问答：[[https://www.vandee.art/posts/2024-07-08-omnivore-with-llm-in-python/][RSS 订阅和本地 LLM 结合的初步尝试 - 流动知识检索 | Vandee's Blog]]
+最大的问题可能还是在知识版权这一块，但是现在对于 LLM 的生成内容还没有严格的界定。如果创作者的目的是内容能够被看到，那么传统搜索引擎和 AI 搜索的区别也不是很大。
 
-很久之前，看到一篇文章提出了一个观点：随着和LLM互动的增多，特别是现在各种LLM平台，ChatGPT、Claude、perplexity等等，查询、回顾、汇总这些问答是一个值得注意的点。
-
-现在我的日常问答都在本地使用Open WebUI，可以导出聊天还有数据库可以直接备份，甚至还可以给对话打tag，当然也可以搜索(open webui 现在也用少了，基本都使用 gptel 在 org 文件里直接对话了)。
-
-#+attr_html: :alt :class img :width 50% :height 50%
-[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-05-50.png]]
-
-需要联网搜索的内容现在基本在perplexity了，碰巧的是，最近搜索到了自己博客的内容🤣，纪念一下(现在能不用 AI 搜索就不用了，不想把这些没什么质变的便利建立在 AI 对互联网内容的侵略上)：
+纪念一下 perplexity 最近搜索到了自己博客的内容🤣。
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png]]
@@ -1048,7 +1041,6 @@ ollama支持主流的开源模型如llama3，所有支持模型可查看：
 相关文章：
 
 - [[https://blog.inoki.cc/2024/04/16/Ollama-cn/][Ollama 架构解析 | Inoki in the world]]
-
 
 *** Open WebUI
 
@@ -1272,32 +1264,6 @@ INFO is the data passed by org-protocol."
 ;; javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
 
 #+end_src
-*** Kotaemon
-
-从发现到现在差不多就一个多星期，GitHub直接飙升到10.9K star，win、mac、Linux都支持。边用边学习它的RAG构建框架，支持ollama，支持docker。
-
-GitHub: https://github.com/Cinnamon/kotaemon
-
-Hugging Face 在线体验: https://huggingface.co/spaces/cin-model/kotaemon-demo
-
-官方介绍：
-
-This project serves as a functional RAG UI for both end users who want to do QA on their documents and developers who want to build their own RAG pipeline.
-
-- For end users:
-  - A clean & minimalistic UI for RAG-based QA.
-  - Supports LLM API providers (OpenAI, AzureOpenAI, Cohere, etc) and local LLMs (via ~ollama~ and ~llama-cpp-python`).
-  - Easy installation scripts.
-- For developers:
-  - A framework for building your own RAG-based document QA pipeline.
-  - Customize and see your RAG pipeline in action with the provided UI (built with [[https://github.com/gradio-app/gradio][Gradio]]).
-  - If you use Gradio for development, check out our theme here: [[https://github.com/lone17/kotaemon-gradio-theme][kotaemon-gradio-theme]].
-*** Chipper
-Github: https://github.com/TilmanGriesel/chipper
-
-其实很早就关注了这个项目，但是一直没有尝试。这个项目基于 Elasticsearch 来实现文档搜索和 RAG。LLM 的提供支持 ollama 和 huggingface。提供脚本一键 docker 部署很方便。
-
-我看重的功能是：它可以提供一个 ollama 的代理。也就是使用这个项目的 ollama 代理之后，就可以直接调用项目的文档 RAG 了，而这个项目管理文档 RAG 很方便。这样就可以把它当作是一个文档搜索引擎了。
 * ChangeLog
 
 - 2024-09-13: 校对文档。在使用了Nvim做MD笔记一个月之后，还是割舍不了org-mode的编辑体验，还有agenda。lisp的可玩性比lua还是高一些，比如[[https://github.com/jwiegley/dot-emacs/blob/master/lisp/org-roam-logseq.el][dot-emacs/lisp/org-roam-logseq.el at master · jwiegley/dot-emacs]]这是一个把org-roam和Logseq联用的el。
@@ -1318,6 +1284,8 @@ Github: https://github.com/TilmanGriesel/chipper
 - 2025-11-15：增加 org-hover
 - 2025-11-16: 增加双链的介绍，把 org-hover 加进去了。更新网页摘录和 after-reading
 - 2025-12-09: 增加链接和一个 gptel 里的小函数用来浏览器提问
+- 2026-06-21: 更新 PKM with LLM 部分，删除了我已经没有使用的。
+
 * Thanks
 
 这个手册会持续更新，如果对你有所帮助，我会很开心。
@@ -1327,7 +1295,5 @@ Github: https://github.com/TilmanGriesel/chipper
 - [[https://www.vandee.art/blog/2025-12-01-my-emacs-keybindings.html][我的 Emacs 键位设置]]
 - [[https://www.vandee.art/blog/2024-08-02-nvim-pkm-manual.html][PKM（个人知识管理）构建手册 - Nvim]]
 - [[https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html][PKM（个人知识管理）构建手册 - with AI]]
-
-这里是我日常使用的实用小工具： [[https://www.vandee.art/blog/2024-07-26-useful-tools-recommended.html][实用小玩意收集]]
 
 Imagining and creating！
