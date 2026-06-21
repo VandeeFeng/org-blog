@@ -111,6 +111,16 @@ via: https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735
 
 心智模型 mental model 在 vibe coding 出现之后，被许多文章提到。LLM 有再大的上下文窗口，能并行处理再多 agent workflow，还是要依赖代码编写者（或者代码监督者？）自己的心智模型。
 
+2026-06-21 added:
+
+你的AI编程助手，也就是你用来写代码的那个，需要降低你的维护成本。而且不是降低一点点。你现在写代码的速度快了两倍？最好希望你的维护成本也减半了。生产力提高了三倍？维护成本就要降到三分之一。否则，你就完蛋了。你是在用暂时的速度提升换取永久的束缚。[...]
+
+只有当LLM降低你的维护成本，且降低幅度恰好与它增加代码的速度成反比时，这个算式才成立。如果你的产出翻倍，维护这些产出的成本也翻倍，那么二乘以二意味着你的维护成本翻了四倍。如果你的产出翻倍，但维护成本保持不变，二乘以一意味着你的维护成本仍然翻了一倍。
+
+— [[https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs][James Shore]], You Need AI That Reduces Maintenance Costs
+
+via: https://simonwillison.net/2026/May/11/james-shore/
+
 * 不同的立场
 [[https://antirez.com/news/158][Don't fall into the anti-AI hype - <antirez>]]
 

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="最开始接触 pi 的时候，就想着自己也造一个出来。最近的精力都放在了 phi 上，现在可以跑跑小任务了。从名字上也不难看出我对 pi 的喜欢。phi 也就是黄金比例 φ ,发音类似于英文单词 “fi”。phi 和 pi 一样，都让我联想到数学上的美感。">
+<link rel="alternate"
+      type="application/rss+xml"
+      href="https://www.vandee.art/blog/rss.xml"
+      title="RSS feed for https://www.vandee.art/blog/">
+<title>Intent Is All You Need</title>
+<meta property="og:title" content="Intent Is All You Need">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="最开始接触 pi 的时候，就想着自己也造一个出来。最近的精力都放在了 phi 上，现在可以跑跑小任务了。从名字上也不难看出我对 pi 的喜欢。phi 也就是黄金比例 φ ,发音类似于英文单词 “fi”。phi 和 pi 一样，都让我联想到数学上的美感。">
+<meta property="og:url" content="https://www.vandee.art/blog/2026-06-21-intent-is-all-you-need.html">
+<meta name="author" content="Vandee">
+       <meta name="referrer" content="origin-when-cross-origin">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+       <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
+       <link rel="stylesheet"
+             href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
+       <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+       <script src="assets/js/app.js" defer></script>
+       <script src="assets/js/shiba.js" defer></script></head>
+<body>
+<div id="preamble" class="status">
+      <header>
+      <h1><a href="https://www.vandee.art/blog/">Vandee's Blog</a></h1>
+      <img class="shiba" width="100px" src="assets/shiba_gif/shiba_idle_8fps.gif">
+      <nav>
+      <a href="https://www.vandee.art/blog/">Home</a>
+      <a href="https://x404.xyz/wiki">Wiki</a>
+      <a href="https://x404.xyz/photo">Photo</a>
+      <a href="projects.html">Projects</a>
+      <a href="archive.html">Archive</a>
+      <a href="tags.html">Tags</a>
+      <div id="search-container">
+        <input type="text" id="search-input" placeholder="e.g. Emacs PKM...">
+        <i class="ri-search-line ri-xl"></i>
+      </div>
+      </nav>
+      </header></div>
+<div id="content">
+<div class="post-date">21 Jun 2026</div><h1 class="post-title"><a href="https://www.vandee.art/blog/2026-06-21-intent-is-all-you-need.html">Intent Is All You Need</a></h1>
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6ba2a92">Intent interface</a></li>
+<li><a href="#org12a61a9">Phi</a></li>
+</ul>
+</div>
+</nav>
+<p>
+看了眼上次 blog 的日期才发现有好久没有更新了。
+</p>
+
+<p>
+前段时间 pi-memory-md 的更新基本停止了，感觉想做的内容差不多都做完了，现有的知识下，想不出什么新的好点子了（其实就是没钱用 token 了）。
+</p>
+
+<p>
+最开始接触 pi 的时候，就想着自己也造一个出来。最近的精力都放在了 phi 上，现在可以跑跑小任务了。从名字上也不难看出我对 pi 的喜欢。phi 也就是黄金比例 φ ,发音类似于英文单词 “fi”。phi 和 pi 一样，都让我联想到数学上的美感。
+</p>
+
+<p>
+Claude Code 官方也说过，它最开始就是一个简易的小玩意，在使用中不断迭代成现在的样子。而且官方也说过，现在 Claude Code 的代码基本都是自迭代了。这就让我更想完成 phi 了。使用一个工具，和自己构建工具的感觉还是挺不一样的。学习和理解一个事物最直接的方式，就是上手。在构建 phi 的过程中，我又学到了许多关于 TUI，agent 的知识。
+</p>
+
+<p>
+对于我来说，phi 不仅仅是一个满足我个性化需求的 CLI Coding Agent，它更是我以后想扩展的 intent 接口。
+</p>
+<div id="outline-container-org6ba2a92" class="outline-2">
+<h2 id="org6ba2a92">Intent interface</h2>
+<div class="outline-text-2" id="text-org6ba2a92">
+<p>
+如果说传统的用户交互界面分为 TUI 和 GUI，那么 AI 成为基础设施之后，我觉得 intent 就是最关键的。传统的用户界面就是用户意图和产品之间的桥梁，AI 可以把用户意图转换成更多的形式，可以传递更多的信息。
+</p>
+
+<p>
+传统的交互里，我们通常需要在界面上点击，意图通过按钮和菜单传递，意图通过用户特定的交互动作来传递（暂不考虑 VR 眼镜的虚拟现实交互）。AI 把意图转换为 token 和一系列的 agent 工作流，从 action -&gt; intent，变成了 intent -&gt; intent。
+</p>
+
+<p>
+AI 眼镜和 AI 可穿戴设备也就是在用户 intent 和 AI agent 之间的一种信息传递介质。当模型的多模态能力更强之后，用户的表情和动作就能传递更多的意图了。除了意图，对于 AI 交互来说，我觉得另一个也很重要的是场景。相似的意图在不同的场景下，想表达的含义可能完全不同。
+</p>
+
+<p>
+今年 agent memory 和 token 压缩的项目看到很多，感觉这方面越来越成熟了，AI 输出内容的相关性越来越高，这也是我们感觉 AI 越来越懂自己的一个原因。再往后，我觉得应该是 intent 的转化。
+</p>
+
+<p>
+实际的应用场景里，很多时候我们觉得 AI 不好用，也就是感觉它不能理解自己的需求，没有准确输出任务结果。这和模型能力有一定关系，但我觉得根本的原因是在设计上，AI 应用没有根据用户意图来设计。实现起来我觉得也不是不可能，主 agent 下，设计一个 intent agent 专门来分析用户意图已经不是很难的事情。现在普遍的 agent 设计是任务驱动，把用户的输入转换为 agent 的任务，在一系列 loop 下得到一个可校验的结果，主 agent 或校验 agent 验证之后返回用户最终的结果。
+</p>
+
+<p>
+任务驱动到意图，我觉得最简单的就是加上场景设计。现阶段，一个 agent 工作流里的任务目标往往是模型根据用户输入总结抽象成的一个任务 prompt 传递给 agent，创建 agent loop。加上预设场景之后，用户的意图就更准确了。例如外卖软件里，用户输入吮指原味鸡，如果是一般的 agent，这个任务可能会偏离的很远，但如果 agent 明确的知道了应用场景（例如 system prompt 里设定），它就能知道用户是在点外卖。
+</p>
+
+<p>
+上下文工程的具体实现，和有没有场景设计是两回事。在 system prompt 里预设的 role 和场景设计也是两回事。
+</p>
+
+<p>
+所以传统的 UI 设计下，按钮这种用户动作驱动的意图交互肯定是无法满足 AI 驱动的交互的。在我的设想里，我打开一个 AI 驱动的软件，界面里应该是根据 memory，用户画像，特定场景，提供一些意图链。例如您是否还想吃吮指原味鸡？需要我帮您预订么，根据您习惯的进餐时间，11:00 可以么？最近吮指原味鸡您吃太多了，建议多吃点蔬菜呢！需要来一份蔬菜水果沙拉么？
+</p>
+
+<p>
+这些都不是几个按钮和 AI 搜索框可以解决的。传统的搜索建议里其实都有这部分内容，但是它很让我反感，感觉是窥探了我的隐私，下面显示一大堆的搜索建议也不是很准确。但是如果是我的私人 AI 助手告诉我，那感觉就完全不一样了🤣，它怎么这么懂我！
+</p>
+
+<p>
+当这些特定场景和服务的软件也成为 agent 工作流里的一个节点的时候，我觉得这些都是可以实现的，这些软件也都没有太大必要做单独的软件和 UI 了。只不过用户可能需要支付更多的会员费了🤣。
+</p>
+
+<p>
+更极端一点，我觉得甚至可以推出用户自定义 UI 的服务，agent 成为 intent 的驱动之后，做什么样的 UI 感觉也不太重要了，反正现在各大场的 Chat UI 看起来也差不多，还不如让用户自定义呢，我进入软件只是要语音输入或者打字而已，UI 张什么样不太关键吧。OpenClaw 一个吸引用户的地方，就是它可以自部署，通过不同的平台接入。把 agent 接口给用户，让用户自定义 “皮肤” ，根据积分解锁稀有的 agent 虚拟形象（集五福春节特供财神爷）,不是可以再赚一笔？
+</p>
+</div>
+</div>
+<div id="outline-container-org12a61a9" class="outline-2">
+<h2 id="org12a61a9">Phi</h2>
+<div class="outline-text-2" id="text-org12a61a9">
+
+<figure id="org83afc4f">
+<img src="https://pic.vandee.art/images/phi.png" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+界面和 pi 很像，说是抄也完全没问题。用习惯 pi 了，footer 的部分看着挺舒服的，不想换了，干脆就搬过来了。
+</p>
+
+<p>
+主语言是 Rust，可扩展的插件使用 lua。这样一个可执行文件 + lua 脚本就可以很方便的在其他环境里使用了。我是在不太喜欢 TypeScript，虽然 ts 对于 AI 应用很友好，模型训练上对 ts 也很熟悉。用 Rust 而不是 C 是因为我现在的 C 水平太差了，判断不了 LLM 生成代码的问题，而且用 C 要从头写许多基础设施。Rust 现在也是刚入门，但是编译器对 AI 太友好了，Rust 的基础库也很全。
+</p>
+
+<p>
+Bash 的部分和 Claude Code 一样，直接通过 shell，内置 bubblewrap sandbox。Agent 和 subagent 也作为一个特殊的 tool 来调用，我觉得 Claude Code 的这个处理很好。
+</p>
+
+<p>
+TUI 在 crossterm 的基础上设计。没有 alternate screen，完全使用终端的 scrollback buffer。这也带来了许多麻烦，在处理 streaming 内容的滚动，展开折叠内容的时候，学到了许多终端的相关知识。
+</p>
+
+<p>
+Agent framework 部分，在 rig 的基础上，单独做了 SDK 让 TUI 调用。Agent 抽象为三层：定义层、运行层、事件层，通过事件和状态设计了 agent events, agent loop，hook，方便自定义不同 agent 阶段的行为。SessioHost -&gt; agent runtime -&gt; agent turn，message、tool call、thinking 这些 agent 的 event 在 TUI 里消费映射成独立的 block。
+</p>
+
+<p>
+使用了一段时间 nvim，入门了一点 lua，所以脚本语言选择了 lua。lua 插件可以像 pi 一样自定义插件，自定义 tool，添加自定义 TUI 的 block。
+</p>
+
+<p>
+Phi 也提供 RPC mode 、TUI 、CLI 三种模式。skill，slash command ，mcp 也都支持。
+</p>
+
+<p>
+Phi 借鉴了 Claude Code，pi 的许多底层设计（TUI 部分偷懒了，用 rust 重写了 pi 里 footer 的部分内容），原创的地方有，但是不多。50% 的代码是在 pi 里 AI 填空生成。手写再让 AI 填空是我现在可以接受的 AI 生成程度，完全让 AI 自己生成总感觉少了点什么。等可以完全手写了，就不用 AI 了。敲代码的时候的那种心流体验，是 AI 生成替代不了的。
+</p>
+
+<p>
+不想继续使用 pi 的一个原因是，它的许多设计需要为 openclaw 服务，现在越做越大，自己自定义起来就越来越麻烦。自己做的更熟悉，更方便实现自定义功能，特别是我后面需要实现的 intent 接口。
+</p>
+
+<p>
+pi + pi-memory-md 让 phi 的实现轻松了许多，再次感谢 pi！
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div id="postamble" class="status"><div id="search-results"></div>
+      <footer>
+         <p>
+            © 2022-<script>document.write(new Date().getFullYear())</script> Vandee. All rights reserved.
+         </p>
+        <div class="social-links"></div>
+      </footer>
+
+      <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)"
+         class="top-link" id="top-link" accesskey="g">
+         <i class="ri-arrow-up-double-line ri-3x"></i>
+      </a>
+
+      <script>
+        var mybutton = document.getElementById('top-link');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+                mybutton.style.visibility = 'visible';
+                mybutton.style.opacity = '1';
+            } else {
+                mybutton.style.visibility = 'hidden';
+                mybutton.style.opacity = '0';
+            }
+        };
+      </script></div>
+</body>
+</html>

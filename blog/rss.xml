@@ -4,7 +4,142 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Sun, 21 Jun 2026 11:21:47 +0800</lastBuildDate>
+<lastBuildDate>Sun, 21 Jun 2026 14:22:47 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[Intent Is All You Need]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6ba2a92">Intent interface</a></li>
+<li><a href="#org12a61a9">Phi</a></li>
+</ul>
+</div>
+</nav>
+<p>
+看了眼上次 blog 的日期才发现有好久没有更新了。
+</p>
+
+<p>
+前段时间 pi-memory-md 的更新基本停止了，感觉想做的内容差不多都做完了，现有的知识下，想不出什么新的好点子了（其实就是没钱用 token 了）。
+</p>
+
+<p>
+最开始接触 pi 的时候，就想着自己也造一个出来。最近的精力都放在了 phi 上，现在可以跑跑小任务了。从名字上也不难看出我对 pi 的喜欢。phi 也就是黄金比例 φ ,发音类似于英文单词 “fi”。phi 和 pi 一样，都让我联想到数学上的美感。
+</p>
+
+<p>
+Claude Code 官方也说过，它最开始就是一个简易的小玩意，在使用中不断迭代成现在的样子。而且官方也说过，现在 Claude Code 的代码基本都是自迭代了。这就让我更想完成 phi 了。使用一个工具，和自己构建工具的感觉还是挺不一样的。学习和理解一个事物最直接的方式，就是上手。在构建 phi 的过程中，我又学到了许多关于 TUI，agent 的知识。
+</p>
+
+<p>
+对于我来说，phi 不仅仅是一个满足我个性化需求的 CLI Coding Agent，它更是我以后想扩展的 intent 接口。
+</p>
+<div id="outline-container-org6ba2a92" class="outline-2">
+<h2 id="org6ba2a92">Intent interface</h2>
+<div class="outline-text-2" id="text-org6ba2a92">
+<p>
+如果说传统的用户交互界面分为 TUI 和 GUI，那么 AI 成为基础设施之后，我觉得 intent 就是最关键的。传统的用户界面就是用户意图和产品之间的桥梁，AI 可以把用户意图转换成更多的形式，可以传递更多的信息。
+</p>
+
+<p>
+传统的交互里，我们通常需要在界面上点击，意图通过按钮和菜单传递，意图通过用户特定的交互动作来传递（暂不考虑 VR 眼镜的虚拟现实交互）。AI 把意图转换为 token 和一系列的 agent 工作流，从 action -&gt; intent，变成了 intent -&gt; intent。
+</p>
+
+<p>
+AI 眼镜和 AI 可穿戴设备也就是在用户 intent 和 AI agent 之间的一种信息传递介质。当模型的多模态能力更强之后，用户的表情和动作就能传递更多的意图了。除了意图，对于 AI 交互来说，我觉得另一个也很重要的是场景。相似的意图在不同的场景下，想表达的含义可能完全不同。
+</p>
+
+<p>
+今年 agent memory 和 token 压缩的项目看到很多，感觉这方面越来越成熟了，AI 输出内容的相关性越来越高，这也是我们感觉 AI 越来越懂自己的一个原因。再往后，我觉得应该是 intent 的转化。
+</p>
+
+<p>
+实际的应用场景里，很多时候我们觉得 AI 不好用，也就是感觉它不能理解自己的需求，没有准确输出任务结果。这和模型能力有一定关系，但我觉得根本的原因是在设计上，AI 应用没有根据用户意图来设计。实现起来我觉得也不是不可能，主 agent 下，设计一个 intent agent 专门来分析用户意图已经不是很难的事情。现在普遍的 agent 设计是任务驱动，把用户的输入转换为 agent 的任务，在一系列 loop 下得到一个可校验的结果，主 agent 或校验 agent 验证之后返回用户最终的结果。
+</p>
+
+<p>
+任务驱动到意图，我觉得最简单的就是加上场景设计。现阶段，一个 agent 工作流里的任务目标往往是模型根据用户输入总结抽象成的一个任务 prompt 传递给 agent，创建 agent loop。加上预设场景之后，用户的意图就更准确了。例如外卖软件里，用户输入吮指原味鸡，如果是一般的 agent，这个任务可能会偏离的很远，但如果 agent 明确的知道了应用场景（例如 system prompt 里设定），它就能知道用户是在点外卖。
+</p>
+
+<p>
+上下文工程的具体实现，和有没有场景设计是两回事。在 system prompt 里预设的 role 和场景设计也是两回事。
+</p>
+
+<p>
+所以传统的 UI 设计下，按钮这种用户动作驱动的意图交互肯定是无法满足 AI 驱动的交互的。在我的设想里，我打开一个 AI 驱动的软件，界面里应该是根据 memory，用户画像，特定场景，提供一些意图链。例如您是否还想吃吮指原味鸡？需要我帮您预订么，根据您习惯的进餐时间，11:00 可以么？最近吮指原味鸡您吃太多了，建议多吃点蔬菜呢！需要来一份蔬菜水果沙拉么？
+</p>
+
+<p>
+这些都不是几个按钮和 AI 搜索框可以解决的。传统的搜索建议里其实都有这部分内容，但是它很让我反感，感觉是窥探了我的隐私，下面显示一大堆的搜索建议也不是很准确。但是如果是我的私人 AI 助手告诉我，那感觉就完全不一样了🤣，它怎么这么懂我！
+</p>
+
+<p>
+当这些特定场景和服务的软件也成为 agent 工作流里的一个节点的时候，我觉得这些都是可以实现的，这些软件也都没有太大必要做单独的软件和 UI 了。只不过用户可能需要支付更多的会员费了🤣。
+</p>
+
+<p>
+更极端一点，我觉得甚至可以推出用户自定义 UI 的服务，agent 成为 intent 的驱动之后，做什么样的 UI 感觉也不太重要了，反正现在各大场的 Chat UI 看起来也差不多，还不如让用户自定义呢，我进入软件只是要语音输入或者打字而已，UI 张什么样不太关键吧。OpenClaw 一个吸引用户的地方，就是它可以自部署，通过不同的平台接入。把 agent 接口给用户，让用户自定义 “皮肤” ，根据积分解锁稀有的 agent 虚拟形象（集五福春节特供财神爷）,不是可以再赚一笔？
+</p>
+</div>
+</div>
+<div id="outline-container-org12a61a9" class="outline-2">
+<h2 id="org12a61a9">Phi</h2>
+<div class="outline-text-2" id="text-org12a61a9">
+
+<figure id="org83afc4f">
+<img src="https://pic.vandee.art/images/phi.png" class="img" width="50%" height="50%">
+
+</figure>
+
+<p>
+界面和 pi 很像，说是抄也完全没问题。用习惯 pi 了，footer 的部分看着挺舒服的，不想换了，干脆就搬过来了。
+</p>
+
+<p>
+主语言是 Rust，可扩展的插件使用 lua。这样一个可执行文件 + lua 脚本就可以很方便的在其他环境里使用了。我是在不太喜欢 TypeScript，虽然 ts 对于 AI 应用很友好，模型训练上对 ts 也很熟悉。用 Rust 而不是 C 是因为我现在的 C 水平太差了，判断不了 LLM 生成代码的问题，而且用 C 要从头写许多基础设施。Rust 现在也是刚入门，但是编译器对 AI 太友好了，Rust 的基础库也很全。
+</p>
+
+<p>
+Bash 的部分和 Claude Code 一样，直接通过 shell，内置 bubblewrap sandbox。Agent 和 subagent 也作为一个特殊的 tool 来调用，我觉得 Claude Code 的这个处理很好。
+</p>
+
+<p>
+TUI 在 crossterm 的基础上设计。没有 alternate screen，完全使用终端的 scrollback buffer。这也带来了许多麻烦，在处理 streaming 内容的滚动，展开折叠内容的时候，学到了许多终端的相关知识。
+</p>
+
+<p>
+Agent framework 部分，在 rig 的基础上，单独做了 SDK 让 TUI 调用。Agent 抽象为三层：定义层、运行层、事件层，通过事件和状态设计了 agent events, agent loop，hook，方便自定义不同 agent 阶段的行为。SessioHost -&gt; agent runtime -&gt; agent turn，message、tool call、thinking 这些 agent 的 event 在 TUI 里消费映射成独立的 block。
+</p>
+
+<p>
+使用了一段时间 nvim，入门了一点 lua，所以脚本语言选择了 lua。lua 插件可以像 pi 一样自定义插件，自定义 tool，添加自定义 TUI 的 block。
+</p>
+
+<p>
+Phi 也提供 RPC mode 、TUI 、CLI 三种模式。skill，slash command ，mcp 也都支持。
+</p>
+
+<p>
+Phi 借鉴了 Claude Code，pi 的许多底层设计（TUI 部分偷懒了，用 rust 重写了 pi 里 footer 的部分内容），原创的地方有，但是不多。50% 的代码是在 pi 里 AI 填空生成。手写再让 AI 填空是我现在可以接受的 AI 生成程度，完全让 AI 自己生成总感觉少了点什么。等可以完全手写了，就不用 AI 了。敲代码的时候的那种心流体验，是 AI 生成替代不了的。
+</p>
+
+<p>
+不想继续使用 pi 的一个原因是，它的许多设计需要为 openclaw 服务，现在越做越大，自己自定义起来就越来越麻烦。自己做的更熟悉，更方便实现自定义功能，特别是我后面需要实现的 intent 接口。
+</p>
+
+<p>
+pi + pi-memory-md 让 phi 的实现轻松了许多，再次感谢 pi！
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div>]]></description>
+  <category><![CDATA[Ramble]]></category>
+  <link>https://www.vandee.art/blog/2026-06-21-intent-is-all-you-need.html</link>
+  <guid>https://www.vandee.art/blog/2026-06-21-intent-is-all-you-need.html</guid>
+  <pubDate>Sun, 21 Jun 2026 11:33:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[极简浏览器也可以在 Emacs]]></title>
   <description><![CDATA[
@@ -6777,17 +6912,17 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc524a44">TL;DR</a></li>
-<li><a href="#org274b110">结果还是过程？</a></li>
-<li><a href="#org12f71b8">我不喜欢 LLM 代码生成</a></li>
-<li><a href="#orgfc274dd">不同的立场</a></li>
-<li><a href="#orgb804739">2026-03-24 add</a></li>
+<li><a href="#org7815aca">TL;DR</a></li>
+<li><a href="#orga207835">结果还是过程？</a></li>
+<li><a href="#orgf94230b">我不喜欢 LLM 代码生成</a></li>
+<li><a href="#orgf957984">不同的立场</a></li>
+<li><a href="#org0cc7ca0">2026-03-24 add</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgc524a44" class="outline-2">
-<h2 id="orgc524a44">TL;DR</h2>
-<div class="outline-text-2" id="text-orgc524a44">
+<div id="outline-container-org7815aca" class="outline-2">
+<h2 id="org7815aca">TL;DR</h2>
+<div class="outline-text-2" id="text-org7815aca">
 <p>
 Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
@@ -6797,9 +6932,9 @@ Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
 </div>
 </div>
-<div id="outline-container-org274b110" class="outline-2">
-<h2 id="org274b110">结果还是过程？</h2>
-<div class="outline-text-2" id="text-org274b110">
+<div id="outline-container-orga207835" class="outline-2">
+<h2 id="orga207835">结果还是过程？</h2>
+<div class="outline-text-2" id="text-orga207835">
 <blockquote>
 <p>
 对于这样的现象，我先下一个结论：软件开发向来是为了解决问题（Problem Solving），重要的是解决问题的结果，而不是解决的方式。
@@ -6857,9 +6992,9 @@ via: <a href="https://simonwillison.net/2026/Jan/2/ben-werdmuller/">https://simo
 </p>
 </div>
 </div>
-<div id="outline-container-org12f71b8" class="outline-2">
-<h2 id="org12f71b8">我不喜欢 LLM 代码生成</h2>
-<div class="outline-text-2" id="text-org12f71b8">
+<div id="outline-container-orgf94230b" class="outline-2">
+<h2 id="orgf94230b">我不喜欢 LLM 代码生成</h2>
+<div class="outline-text-2" id="text-orgf94230b">
 <p>
 但对于 Vibe Coding 和 LLM 代码生成，我始终不太喜欢。
 </p>
@@ -6996,11 +7131,31 @@ via: <a href="https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb
 <p>
 心智模型 mental model 在 vibe coding 出现之后，被许多文章提到。LLM 有再大的上下文窗口，能并行处理再多 agent workflow，还是要依赖代码编写者（或者代码监督者？）自己的心智模型。
 </p>
+
+<p>
+2026-06-21 added:
+</p>
+
+<p>
+你的AI编程助手，也就是你用来写代码的那个，需要降低你的维护成本。而且不是降低一点点。你现在写代码的速度快了两倍？最好希望你的维护成本也减半了。生产力提高了三倍？维护成本就要降到三分之一。否则，你就完蛋了。你是在用暂时的速度提升换取永久的束缚。[&#x2026;]
+</p>
+
+<p>
+只有当LLM降低你的维护成本，且降低幅度恰好与它增加代码的速度成反比时，这个算式才成立。如果你的产出翻倍，维护这些产出的成本也翻倍，那么二乘以二意味着你的维护成本翻了四倍。如果你的产出翻倍，但维护成本保持不变，二乘以一意味着你的维护成本仍然翻了一倍。
+</p>
+
+<p>
+— <a href="https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs">James Shore</a>, You Need AI That Reduces Maintenance Costs
+</p>
+
+<p>
+via: <a href="https://simonwillison.net/2026/May/11/james-shore/">https://simonwillison.net/2026/May/11/james-shore/</a>
+</p>
 </div>
 </div>
-<div id="outline-container-orgfc274dd" class="outline-2">
-<h2 id="orgfc274dd">不同的立场</h2>
-<div class="outline-text-2" id="text-orgfc274dd">
+<div id="outline-container-orgf957984" class="outline-2">
+<h2 id="orgf957984">不同的立场</h2>
+<div class="outline-text-2" id="text-orgf957984">
 <p>
 <a href="https://antirez.com/news/158">Don't fall into the anti-AI hype - &lt;antirez&gt;</a>
 </p>
@@ -7050,9 +7205,9 @@ antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: <a href="https:
 </p>
 </div>
 </div>
-<div id="outline-container-orgb804739" class="outline-2">
-<h2 id="orgb804739">2026-03-24 add</h2>
-<div class="outline-text-2" id="text-orgb804739">
+<div id="outline-container-org0cc7ca0" class="outline-2">
+<h2 id="org0cc7ca0">2026-03-24 add</h2>
+<div class="outline-text-2" id="text-org0cc7ca0">
 <p>
 <a href="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/">https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/</a> 这篇文章的这部分说的挺好，但对马克思和资本主义之间的那些观点在我看来有些片面甚至理解偏差了：
 </p>
@@ -8067,504 +8222,6 @@ Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
   <link>https://www.vandee.art/blog/2025-12-09-native-linux-on-apple-silicon-mac.html</link>
   <guid>https://www.vandee.art/blog/2025-12-09-native-linux-on-apple-silicon-mac.html</guid>
   <pubDate>Tue, 09 Dec 2025 11:03:00 +0800</pubDate>
-</item>
-<item>
-  <title><![CDATA[我的 Emacs 键位设置]]></title>
-  <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgd038e20">TL;DR</a></li>
-<li><a href="#orgab12484">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#orgfa211d9">我的键位设置</a>
-<ul>
-<li><a href="#orgd34b232">General</a></li>
-<li><a href="#org969fc1d">mark &amp; move</a></li>
-<li><a href="#org5ab8277">hydra &amp; general</a></li>
-<li><a href="#orgfe582ba">Misc</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
-<div id="outline-container-orgd038e20" class="outline-2">
-<h2 id="orgd038e20">TL;DR</h2>
-<div class="outline-text-2" id="text-orgd038e20">
-<p>
-我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
-</p>
-</div>
-</div>
-<div id="outline-container-orgab12484" class="outline-2">
-<h2 id="orgab12484">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-orgab12484">
-<p>
-组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
-</p>
-
-<ul class="org-ul">
-<li>组合快捷键的优势: 相应更快，需要执行键位操作的绝对次数更少，按一次组合键视为一次键位操作。</li>
-<li>序列快捷键的优势: 键位的设置更加灵活，手指更轻松。但是需要执行的按键操作的绝对次数更多，同样按一次按键视为依次键位操作。</li>
-</ul>
-
-<p>
-我认为它们对应着两种思维模式:
-</p>
-
-<ul class="org-ul">
-<li>组合快捷键里的 Ctrl、Alt、Shift、Command 是附加键，这些不同的附加键位映射不同的功能。在 window 里，和应用窗口相关的菜单操作通常是 Alt，和系统相关的通常是 Win。也就是说，它是常规按键+功能的叠加组合。Mac 里的 Option 和 Command 同理。</li>
-
-<li>序列快捷键则是设定一个 leader key 作为功能的入口，例如 Nvim 里通常 Space 作为 leader key，Space -&gt; f，表示和 file 文件相关的，Space -&gt; f -&gt; r，表示浏览最近的文件 recent files。它是一种递进的层级设计。不同的功能选择不同的 leader key，vim 里的 g 也就是一个 leader key。</li>
-</ul>
-
-<p>
-在 Emacs 里，C-x(Ctrl+x) 是和 window 窗口相关的快捷键，这个组合键实际上也是一个 leader key。由于 Emacs 和通常的文字编辑器里没有 vim 的输入模式的区分，都是按键直接输入文字，因此必须得加上 Ctrl 这个功能附加键避免输入字符。
-</p>
-
-<p>
-Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移动，visual 对应区域选定，insert 对应输入。按 v 进入 visual，i、a、s、c 都可以进入 insert，jk 快速连按则是退出 insert。jkhl 分别对应光标的下上左右移动，其他的就不展开了。Vim 这套设计逻辑实现了不依赖鼠标的全键盘文本编辑器里的光标移动，页面滚动，快速更改，删除，查找。
-</p>
-</div>
-</div>
-<div id="outline-container-orgfa211d9" class="outline-2">
-<h2 id="orgfa211d9">我的键位设置</h2>
-<div class="outline-text-2" id="text-orgfa211d9">
-<p>
-现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
-</p>
-
-<p>
-按键的设置和设计，往大了说，这些键位的映射也是个人的思维和逻辑习惯的映射。编程是一种表达的艺术，类比绘画，键位的编辑器设置就是画笔笔触的个人艺术风格。
-</p>
-
-<p>
-对于编辑代码的人来说，这些快捷键设置就像一个搞影像编辑的人的 Photoshop 的自定义动作一样，每个人都有自己的思维习惯和操作习惯。让一个程序员失去编程能力只需要一步：换掉他的键盘，然后配置另一个人的按键配置🤣 。
-</p>
-
-<p>
-所以后面也只是简单说明一些配置按键用到的 Emacs 包和键位设置的思路。
-</p>
-
-<p>
-Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
-</p>
-</div>
-<div id="outline-container-orgd34b232" class="outline-3">
-<h3 id="orgd34b232">General</h3>
-<div class="outline-text-3" id="text-orgd34b232">
-<p>
-现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
-</p>
-
-<p>
-Vim 默认的 f，w，e，b 小范围移动，vi，va 选定函数内部特定的内容，gd 跳转到定义，]] 函数间跳转，再加上自定义的 m 序列按键，Emacs 里自带的 <code>forward-sexp</code> , <code>backward-sexp</code> 等函数，日常的代码的选中移动基本可以全键盘覆盖。
-</p>
-
-<p>
-Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 vim 的灵魂，弊端就是需要频繁的切换模式。Normal 模式 c，a，i，d，x，s 提供了非常全面、便捷的增添删减方法，但是 insert 模式下就只是 insert（可以临时执行一次 normal 指令）。
-</p>
-
-<p>
-在 vim 里，快速删除前后的内容可以使用 d 加上方向导航键位，例如 dl,dw,db,de，也可以使用 c 在删除之后直接进入 insert。但是在 insert 之后再想执行 d 的快捷删除就得退出 insert 模式。
-</p>
-
-<p>
-最恶心的就是在输出各种成对出现的 <code>()</code> , <code>{}</code> , <code>""</code> 的时候，这偏偏又是代码里频率很高的。输入完括号内的内容之后，移动光标到括号外再输入，这个过程在 vim 里要先退出 insert，移动光标，再进入 insert，而组合键只需要一次移动光标的操作（Emacs 里是 Ctrl+f,Ctrl+b。箭头方向键在一般的键盘里都太远了），这种场景下我觉得组合键的优势是很明显的，也更符合直觉。当然习惯了也都差不多，多一次 jk 也不麻烦，但有时候就是觉得有点膈应。
-</p>
-
-<p>
-2025-12-07 added：
-</p>
-
-<p>
-这个问题原来很多插件都可以解决。在输入完()之后，只需要再按一次相应成对符号右边的符号就可以移动到成对符号外了。
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">when</span> <span style="color: #93a8c6;">(</span>fboundp <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> electric-pair-pairs <span style="color: #b0b1a3;">(</span>append electric-pair-pairs <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>?\{ . ?\}<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>?\<span style="color: #FFA657;">'</span> <span style="color: #95a99f;">.</span> ?\<span style="color: #FFA657;">'</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-indent-mode</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-
-<p>
-想过其他许多方式来减少 vim 模式切换的操作，但是实际体验下来还是多切换更省事。移动的时候还是退回到 normal，极少数情况下也用 Ctrl 组合键在 insert 模式下移动光标。复制粘贴删除的操作原则上都在 normal 模式里进行，m 键位的设置也是在 normal 模式下的，极少数编辑操作（快速删除到行尾，快速删除当前光标到单词的末尾，快速删除当前光标到单词的开头等）使用 Ctrl 组合键在 insert 模式下使用。
-</p>
-
-<p>
-因此在 Emacs 里补足 insert 模式就好了。
-</p>
-
-<p>
-除去 vim 模式和 Emacs 本身占用的键位，可以自定义的其实不多，我觉得比较合适的是 <code>m</code> , <code>r</code> , <code>,</code> , <code>.</code> , <code>/</code> , <code>;</code> , <code>'</code> , <code>[</code> , <code>]</code>
-</p>
-
-<p>
-它们既可以作为 leader key ，还可以和 Ctrl 等附加键作为组合键。Emacs 和 vim 里它们都没有绑定很核心的功能或是空缺的设置。
-</p>
-
-<p>
-在 Emacs 的快捷键设置里 Ctrl 记作 C，Alt 和 Option 记作 M，Shift 记作 S，Win 和 Command 记作 s(super 键)，组合键用 <code>-</code> 链接起来，ctrl+c 记作 <code>C-c</code> 。Emacs 可以自定义 minor mode，用 hook 在不同的编程语言里激活不同的自定义 minor mode，各自的 mode map 又可以设置不同的快捷键，相同的快捷键就可以实现不同的功能了。
-</p>
-
-<p>
-在这几年的使用中，逐渐形成了下面的这些按键配置和习惯。Evil 里有许多完全不常用的功能会占用快捷键的键位，许多默认键位和原生的 vim 也不相同，所以能取消的都取消了，在函数的选择上也尽量使用 Emacs 原生的函数，Emacs 有的就不用 evil 的了。
-</p>
-
-<p>
-感觉这些快捷键的设置上还是比较符合直觉的。
-</p>
-
-<p>
-下面是一些具体的配置片段和常用的自定义功能:
-</p>
-</div>
-</div>
-<div id="outline-container-org969fc1d" class="outline-3">
-<h3 id="org969fc1d">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org969fc1d">
-<p>
-下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
-</p>
-
-<p>
-对比 vio 选中 symbol -&gt; y 复制，ms 只需要按两次。少一次按键在复杂度上就少了一个层级。
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-editing-utils.el
-</span><span style="color: #787878;">;; </span><span style="color: #787878;">Mark &amp; edit
-</span><span style="color: #8c8c8c;">(</span>global-set-key <span style="color: #93a8c6;">(</span>kbd <span style="color: #A1D08E;">"M-m"</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">set-mark-command</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
-  <span style="color: #93a8c6;">(</span>define-prefix-command <span style="color: #FFA657;">'</span><span style="color: #95a99f;">my/mark-map</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key evil-normal-state-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"m"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">my/mark-map</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key evil-motion-state-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">";"</span><span style="color: #b0b1a3;">)</span> nil<span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>normal visual<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">global</span>
-    <span style="color: #A1D08E;">"gc"</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">comment-dwim</span><span style="color: #93a8c6;">)</span>
-
-  <span style="color: #787878;">;; </span><span style="color: #787878;">this keybindings only use not in insert mode
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"m"</span> . mark-sexp<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"p"</span> . set-pin-mark<span style="color: #aebed8;">)</span> <span style="color: #787878;">; </span><span style="color: #787878;">&#36825;&#26159;&#33258;&#24049;&#23454;&#29616;&#30340; init-mark.el
-</span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"g"</span> . goto-pin-mark<span style="color: #aebed8;">)</span> <span style="color: #787878;">; </span><span style="color: #787878;">&#31616;&#21270;&#29256;&#30340; bookmark
-</span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"d"</span> . mark-defun<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">";"</span> . comment-indent<span style="color: #aebed8;">)</span>
-                     <span style="color: #787878;">;; </span><span style="color: #787878;">(";" . comment-dwim) ; use gc instead
-</span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"k"</span> . move-dup-move-lines-up<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"j"</span> . move-dup-move-lines-down<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"u"</span> . upcase-dwim<span style="color: #aebed8;">)</span> <span style="color: #787878;">; </span><span style="color: #787878;">equal to g U in vim
-</span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"s"</span> . thing-copy-symbol<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"S"</span> . thing-cut-symbol<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"w"</span> . thing-copy-word<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"W"</span> . thing-cut-word<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"-"</span> . thing-copy-to-line-end<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"_"</span> . thing-cut-to-line-end<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"0"</span> . thing-copy-to-line-beginning<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">")"</span> . thing-cut-to-line-beginning<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>define-key my/mark-map <span style="color: #97b098;">(</span>kbd <span style="color: #aebed8;">(</span>car binding<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>cdr binding<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
-  <span style="color: #787878;">;; </span><span style="color: #787878;">normal, visual, insert
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-s"</span> . backward-kill-sexp<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-S-s"</span> . kill-back-to-indentation<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-d"</span> . kill-sexp<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-k"</span> . kill-visual-line<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-y"</span> . clipboard-yank<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-a"</span> . beginning-of-line<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-e"</span> . end-of-line<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-b"</span> . backward-char<span style="color: #aebed8;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#35206;&#30422; evil &#30340;&#38190;&#20301;&#65292;&#22238;&#24402; Emacs &#40664;&#35748;&#38190;&#20301;
-</span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-f"</span> . forward-char<span style="color: #aebed8;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#35206;&#30422; evil &#30340;&#38190;&#20301;&#65292;&#22238;&#24402; Emacs &#40664;&#35748;&#38190;&#20301;
-</span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-n"</span> . next-line<span style="color: #aebed8;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#35206;&#30422; evil &#30340;&#38190;&#20301;&#65292;&#22238;&#24402; Emacs &#40664;&#35748;&#38190;&#20301;
-</span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-p"</span> . previous-line<span style="color: #aebed8;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#35206;&#30422; evil &#30340;&#38190;&#20301;&#65292;&#22238;&#24402; Emacs &#40664;&#35748;&#38190;&#20301;
-</span>                     <span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #97b098;">(</span>state <span style="color: #FFA657;">'</span><span style="color: #aebed8;">(</span>normal visual insert<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span>evil-global-set-key state <span style="color: #aebed8;">(</span>kbd <span style="color: #b0b0b3;">(</span>car binding<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>cdr binding<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-
-  <span style="color: #787878;">;; </span><span style="color: #787878;">;; visual, insert
-</span>  <span style="color: #787878;">;; </span><span style="color: #787878;">(dolist (binding '(("C-h" . backward-char)
-</span>  <span style="color: #787878;">;;                    </span><span style="color: #787878;">("C-l" . forward-char)
-</span>  <span style="color: #787878;">;;                    </span><span style="color: #787878;">("C-j" . next-line)
-</span>  <span style="color: #787878;">;;                    </span><span style="color: #787878;">("C-k" . previous-line)))
-</span>  <span style="color: #787878;">;;   </span><span style="color: #787878;">(dolist (state '(visual insert))
-</span>  <span style="color: #787878;">;;     </span><span style="color: #787878;">(evil-global-set-key state (kbd (car binding)) (cdr binding))))
-</span>
-  <span style="color: #787878;">;; </span><span style="color: #787878;">normal visual
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"-"</span> . end-of-line<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">","</span> . backward-sexp<span style="color: #aebed8;">)</span>
-                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"."</span> . forward-sexp<span style="color: #aebed8;">)</span>
-                     <span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #97b098;">(</span>state <span style="color: #FFA657;">'</span><span style="color: #aebed8;">(</span>normal visual<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span>evil-global-set-key state <span style="color: #aebed8;">(</span>kbd <span style="color: #b0b0b3;">(</span>car binding<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>cdr binding<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-
-  <span style="color: #93a8c6;">(</span>define-key evil-motion-state-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"C-v"</span><span style="color: #b0b1a3;">)</span> nil<span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>global-unset-key <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"C-v"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>global-set-key <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"S-&lt;backspace&gt;"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">delete-char</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org5ab8277" class="outline-3">
-<h3 id="org5ab8277">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org5ab8277">
-<p>
-由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
-</p>
-
-<p>
-我有时候也用 Nvim，所以还是用 SPC 作为 leader key：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-hydra.el
-</span><span style="color: #787878;">;; </span><span style="color: #787878;">general &#35774;&#32622; leader key SPC
-</span><span style="color: #8c8c8c;">(</span>general-define-key
- <span style="color: #79C0FF;">:states</span> <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>normal motion visual<span style="color: #93a8c6;">)</span>
- <span style="color: #79C0FF;">:keymaps</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">override</span>
- <span style="color: #79C0FF;">:prefix</span> <span style="color: #A1D08E;">"SPC"</span>
- <span style="color: #A1D08E;">""</span> <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>hydra-leader/body <span style="color: #79C0FF;">:wk</span> <span style="color: #A1D08E;">"hydra leader"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;; </span><span style="color: #787878;">&#19981;&#21516;&#27169;&#24335;&#30340;&#24120;&#29992;&#24555;&#25463;&#38190;&#35774;&#32622;
-</span><span style="color: #787878;">;; </span><span style="color: #787878;">Mode-specific hydra bindings
-</span><span style="color: #8c8c8c;">(</span>define-key evil-normal-state-map <span style="color: #93a8c6;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #93a8c6;">)</span> nil<span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">hydra-mode-setup</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #787878;">"Setup hydra bindings for specific modes."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">cond</span>
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">dired-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-dired/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-org/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">magit-status-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-magit/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>derived-mode-p <span style="color: #FFA657;">'</span><span style="color: #95a99f;">prog-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-code/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;; </span><span style="color: #787878;">Add mode-specific setup to hooks
-</span><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">dired-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">magit-status-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">prog-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
-
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgfe582ba" class="outline-3">
-<h3 id="orgfe582ba">Misc</h3>
-<div class="outline-text-3" id="text-orgfe582ba">
-<p>
-其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
-</p>
-
-<p>
-jk 退出 insert：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">jk &#36864;&#20986; insert
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">use-package</span> key-chord
-    <span style="color: #79C0FF;">:ensure</span> t
-    <span style="color: #79C0FF;">:config</span>
-    <span style="color: #b0b1a3;">(</span>key-chord-mode 1<span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">setq</span> key-chord-two-keys-delay 0.3<span style="color: #b0b1a3;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#29256;&#26412;&#26356;&#26032;&#20043;&#21518;&#65292;&#40664;&#35748;j k &#30340;&#21028;&#26029;&#26102;&#38388;&#21464;&#23569;&#20102;
-</span>    <span style="color: #b0b1a3;">(</span>key-chord-define evil-insert-state-map <span style="color: #A1D08E;">"jk"</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil-normal-state</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-
-<p>
-compile grep search：
-</p>
-
-<p>
-这是我用的最多的一个搜索。可以用 grep 搜索当前文件目录下关键字。用 Emacs 里的 compile 模式的好处是，它会在搜索结果的 minibuffer 里显示对应的文件的跳转链接，直接点击就跳转了。
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">compile grep
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/compile-grep-rn</span> <span style="color: #93a8c6;">(</span>pattern<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Run `grep -irn` with the given PATTERN in the current directory."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span> <span style="color: #A1D08E;">"sGrep pattern: "</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>compile <span style="color: #b0b1a3;">(</span>format <span style="color: #A1D08E;">"grep -irn '</span><span style="color: #95a99f;">%s</span><span style="color: #A1D08E;">' ."</span> pattern<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-
-<p>
-compile 指令执行之后自动聚焦 compilation buffer：
-</p>
-
-<p>
-默认情况下，执行完 compile 指令，弹出 compilation buffer 的时候，光标还是在原来的 buffer，每次都要移动一次，很烦。
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">Auto switch to compilation buffer after compile finishes
-</span><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">compilation-finish-functions</span>
-          <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b1a3;">(</span>buffer _status<span style="color: #b0b1a3;">)</span>
-            <span style="color: #b0b1a3;">(</span>select-window <span style="color: #97b098;">(</span>get-buffer-window buffer<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-
-<p>
-org-backlink:
-</p>
-
-<p>
-同样也是用 grep 搜索当前 org 笔记的反链，可以结合 embark 添加后续功能。
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp">
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/org-backlink</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #787878;">"Find all org files in the current directory that link to the current file.
-The search is performed using `rgrep` for the specific pattern
-'filename.org][filename]]'."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">unless</span> buffer-file-name
-    <span style="color: #b0b1a3;">(</span><span style="color: #f43841;">error</span> <span style="color: #A1D08E;">"Current buffer is not visiting a file"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>current-file <span style="color: #aebed8;">(</span>file-name-nondirectory buffer-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>current-dir <span style="color: #aebed8;">(</span>file-name-directory buffer-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>file-basename <span style="color: #aebed8;">(</span>file-name-sans-extension current-file<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #787878;">;; </span><span style="color: #787878;">Search for the literal string "filename.org][filename]]"
-</span>         <span style="color: #97b098;">(</span>search-pattern <span style="color: #aebed8;">(</span>concat <span style="color: #b0b0b3;">(</span>regexp-quote current-file<span style="color: #b0b0b3;">)</span>
-                                 <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">]</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">["</span>
-                                 <span style="color: #b0b0b3;">(</span>regexp-quote file-basename<span style="color: #b0b0b3;">)</span>
-                                 <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">]</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">]"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>rgrep search-pattern <span style="color: #A1D08E;">"*.org"</span> current-dir<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-
-<p>
-simple claude:
-</p>
-
-<p>
-使用 shell，快速运行 Claude Code 执行 <code>claude -p</code> 指令回答一些简单的问题，把结果输出到单独的 buffer。有时候不想用 gptel 就用这个。可以替换成 Gemini 和 Codex。
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">simple claude code shell command
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/claude-shell-command</span> <span style="color: #93a8c6;">(</span>prompt<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Execute claude command asynchronously and display the output."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span> <span style="color: #A1D08E;">"sClaude prompt: "</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>output-buffer-name <span style="color: #A1D08E;">"*Claude Output*"</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>output-buffer <span style="color: #aebed8;">(</span>get-buffer-create output-buffer-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>shell-program <span style="color: #aebed8;">(</span><span style="color: #FFA657;">or</span> <span style="color: #b0b0b3;">(</span>getenv <span style="color: #A1D08E;">"SHELL"</span><span style="color: #b0b0b3;">)</span> shell-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #787878;">;; </span><span style="color: #787878;">Use shell-quote-argument
-</span>         <span style="color: #97b098;">(</span>command-str <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"claude -p %s"</span> <span style="color: #b0b0b3;">(</span>shell-quote-argument prompt<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">with-current-buffer</span> output-buffer
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">setq</span> buffer-read-only nil<span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span>erase-buffer<span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">setq-local</span> header-line-format <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"Claude Output for prompt: %s"</span> prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #787878;">;; </span><span style="color: #787878;">(display-buffer output-buffer) ; Show the buffer immediately
-</span>    <span style="color: #b0b1a3;">(</span>message <span style="color: #A1D08E;">"Claude command running asynchronously..."</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #787878;">;; </span><span style="color: #787878;">Start the async process
-</span>    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>process <span style="color: #b0b0b3;">(</span>start-process <span style="color: #A1D08E;">"claude-process"</span>
-                                  output-buffer-name
-                                  shell-program
-                                  <span style="color: #A1D08E;">"-lc"</span>
-                                  command-str<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #787878;">;; </span><span style="color: #787878;">Set a function to be called when the process finishes
-</span>      <span style="color: #97b098;">(</span>set-process-sentinel process <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">my/claude-process-sentinel</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/claude-process-sentinel</span> <span style="color: #93a8c6;">(</span>process _event<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Sentinel for the claude async process. Handles success and error cases."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">when</span> <span style="color: #b0b1a3;">(</span>memq <span style="color: #97b098;">(</span>process-status process<span style="color: #97b098;">)</span> <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span>exit signal<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>buffer <span style="color: #b0b0b3;">(</span>process-buffer process<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-           <span style="color: #aebed8;">(</span>exit-code <span style="color: #b0b0b3;">(</span>process-exit-status process<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">cond</span>
-       <span style="color: #787878;">;; </span><span style="color: #787878;">Case 1: Process failed (non-zero exit code)
-</span>       <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>/= exit-code 0<span style="color: #b0b0b3;">)</span>
-        <span style="color: #b0b0b3;">(</span>kill-buffer buffer<span style="color: #b0b0b3;">)</span>
-        <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">if</span> <span style="color: #90a890;">(</span>= exit-code 127<span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>message <span style="color: #A1D08E;">"Error: '</span><span style="color: #95a99f;">claude</span><span style="color: #A1D08E;">' command not found. Please ensure it's in your shell's PATH."</span><span style="color: #90a890;">)</span>
-          <span style="color: #90a890;">(</span>message <span style="color: #A1D08E;">"Error: Claude command failed with exit code %d."</span> exit-code<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-
-       <span style="color: #787878;">;; </span><span style="color: #787878;">Case 2: Process succeeded but produced no output
-</span>       <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>zerop <span style="color: #90a890;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer <span style="color: #a2b6da;">(</span>buffer-size<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-        <span style="color: #b0b0b3;">(</span>kill-buffer buffer<span style="color: #b0b0b3;">)</span>
-        <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished with no output."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-
-       <span style="color: #787878;">;; </span><span style="color: #787878;">Case 3: Success
-</span>       <span style="color: #aebed8;">(</span>t
-        <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
-          <span style="color: #90a890;">(</span><span style="color: #FFA657;">setq</span> buffer-read-only t<span style="color: #90a890;">)</span>
-          <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-min<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-        <span style="color: #b0b0b3;">(</span>display-buffer buffer<span style="color: #b0b0b3;">)</span>
-        <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-</pre>
-</div>
-
-<p>
-浏览器划词提问：
-</p>
-
-<p>
-利用 org-protocol 和 JavaScript 对浏览器页面里的特定内容在 Emacs 里用 gptel 提问
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-protocol</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">server</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #93a8c6;">(</span>server-running-p<span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>server-start<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;; </span><span style="color: #787878;">Handler for gptel queries from browser
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/gptel-org-protocol-handler</span> <span style="color: #93a8c6;">(</span>info<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Handle gptel query from org-protocol.
-INFO is the data passed by org-protocol."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>text <span style="color: #aebed8;">(</span>plist-get info <span style="color: #79C0FF;">:text</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">when</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">and</span> text <span style="color: #aebed8;">(</span>not <span style="color: #b0b0b3;">(</span>string-empty-p text<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>query <span style="color: #90a890;">(</span>decode-coding-string <span style="color: #a2b6da;">(</span>url-unhex-string text<span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">utf-8</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-        <span style="color: #aebed8;">(</span>message <span style="color: #A1D08E;">"Received gptel query: %s"</span> query<span style="color: #aebed8;">)</span>
-        <span style="color: #787878;">;; </span><span style="color: #787878;">Create or switch to gptel buffer
-</span>        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>buffer <span style="color: #a2b6da;">(</span>get-buffer-create <span style="color: #A1D08E;">"*gptel-browser*"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
-            <span style="color: #90a890;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #a2b6da;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel-default-mode</span><span style="color: #a2b6da;">)</span>
-              <span style="color: #a2b6da;">(</span>funcall gptel-default-mode<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>gptel-mode 1<span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">--- From Browser ---</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>insert query<span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-            <span style="color: #787878;">;; </span><span style="color: #787878;">Send the query to gptel
-</span>            <span style="color: #90a890;">(</span>gptel-send<span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>display-buffer buffer<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;; </span><span style="color: #787878;">Register the protocol handler
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-protocol-protocol-alist
-      <span style="color: #93a8c6;">(</span>append org-protocol-protocol-alist
-              <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">"gptel-browser"</span>
-                 <span style="color: #79C0FF;">:protocol</span> <span style="color: #A1D08E;">"gptel"</span>
-                 <span style="color: #79C0FF;">:function</span> my/gptel-org-protocol-handler<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;; </span><span style="color: #787878;">JavaScript bookmarklet for browser (copy this as bookmark URL):
-</span><span style="color: #787878;">;; </span><span style="color: #787878;">Basic version:
-</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\nSelected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
-</span>
-<span style="color: #787878;">;; </span><span style="color: #787878;">Enhanced version with prompt for question:
-</span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
-</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div>]]></description>
-  <category><![CDATA[Emacs]]></category>
-  <link>https://www.vandee.art/blog/2025-12-01-my-emacs-keybindings.html</link>
-  <guid>https://www.vandee.art/blog/2025-12-01-my-emacs-keybindings.html</guid>
-  <pubDate>Mon, 01 Dec 2025 13:37:00 +0800</pubDate>
 </item>
 </channel>
 </rss>
