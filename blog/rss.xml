@@ -4,7 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Sun, 28 Jun 2026 11:35:23 +0800</lastBuildDate>
+<lastBuildDate>Mon, 06 Jul 2026 22:40:59 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Intent Is All You Need]]></title>
   <description><![CDATA[
@@ -12,12 +12,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org76f2478">Intent interface</a>
+<li><a href="#org9f245cf">Intent interface</a>
 <ul>
-<li><a href="#org2578038">2026-06-28 add</a></li>
+<li><a href="#org51a55c4">2026-06-28 add</a></li>
 </ul>
 </li>
-<li><a href="#org4ee8ce1">Phi</a></li>
+<li><a href="#org2533819">Phi</a></li>
 </ul>
 </div>
 </nav>
@@ -40,9 +40,9 @@ Claude Code 官方说过，它最开始就是一个简易的小玩意，在使�
 <p>
 对于我来说，phi 不仅仅是一个满足我个性化需求的 CLI/TUI Coding Agent，它更是我以后想扩展的 intent 接口。
 </p>
-<div id="outline-container-org76f2478" class="outline-2">
-<h2 id="org76f2478">Intent interface</h2>
-<div class="outline-text-2" id="text-org76f2478">
+<div id="outline-container-org9f245cf" class="outline-2">
+<h2 id="org9f245cf">Intent interface</h2>
+<div class="outline-text-2" id="text-org9f245cf">
 <p>
 如果说传统的用户交互界面分为 TUI 和 GUI，那么 AI 成为基础设施之后，我觉得 intent 就是最关键的。传统的用户界面就是用户意图和产品之间的桥梁，AI 可以把用户意图转换成更多的形式，可以传递更多的信息。
 </p>
@@ -87,9 +87,9 @@ AI 眼镜和 AI 可穿戴设备也就是在用户 intent 和 AI agent 之间的�
 更极端一点，我觉得甚至可以推出用户自定义 UI 的服务，agent 成为 intent 的驱动之后，做什么样的 UI 感觉也不太重要了，反正现在各大场的 Chat UI 看起来也差不多，还不如让用户自定义呢，我进入软件只是要语音输入或者打字而已，UI 张什么样不太关键吧。OpenClaw 一个吸引用户的地方，就是它可以自部署，通过不同的平台接入。把 agent 接口给用户，让用户自定义 “皮肤” ，根据积分解锁稀有的 agent 虚拟形象（集五福春节特供财神爷）,不是可以再赚一笔？
 </p>
 </div>
-<div id="outline-container-org2578038" class="outline-3">
-<h3 id="org2578038">2026-06-28 add</h3>
-<div class="outline-text-3" id="text-org2578038">
+<div id="outline-container-org51a55c4" class="outline-3">
+<h3 id="org51a55c4">2026-06-28 add</h3>
+<div class="outline-text-3" id="text-org51a55c4">
 <blockquote>
 <p>
 So another motivation for form is to imply the first context of use, even if - and especially if - the product can be re-purposed or adapted for other contexts by the end user, once they have internalised the function of it.
@@ -114,11 +114,11 @@ via: <a href="https://interconnected.org/home/2026/06/27/filtered">https://inter
 </div>
 </div>
 </div>
-<div id="outline-container-org4ee8ce1" class="outline-2">
-<h2 id="org4ee8ce1">Phi</h2>
-<div class="outline-text-2" id="text-org4ee8ce1">
+<div id="outline-container-org2533819" class="outline-2">
+<h2 id="org2533819">Phi</h2>
+<div class="outline-text-2" id="text-org2533819">
 
-<figure id="org315447a">
+<figure id="org22810ef">
 <img src="https://pic.vandee.art/images/phi.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -3518,8 +3518,8 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orga6641f4">源码之外</a></li>
-<li><a href="#orgf83c0c3">Agent Interaction Interface</a></li>
+<li><a href="#org2be8515">源码之外</a></li>
+<li><a href="#orgbbdf2cb">Agent Interaction Interface</a></li>
 </ul>
 </div>
 </nav>
@@ -3530,9 +3530,9 @@ prompt-editor.ts: <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/ex
 <p>
 但其实对 Claude Code 各方面的逆向其实就从来没有停止过。在愚人节前后放出来，让我觉得这可能不是巧合，Hacker 是最喜欢这种玩笑了。
 </p>
-<div id="outline-container-orga6641f4" class="outline-2">
-<h2 id="orga6641f4">源码之外</h2>
-<div class="outline-text-2" id="text-orga6641f4">
+<div id="outline-container-org2be8515" class="outline-2">
+<h2 id="org2be8515">源码之外</h2>
+<div class="outline-text-2" id="text-org2be8515">
 <p>
 在 Claude Code 公开火了之后，各大 LLM 厂商也陆续推出了自己的 Coding CLI。
 </p>
@@ -3588,9 +3588,9 @@ via: <a href="https://interconnected.org/home/2026/04/18/headless">https://inter
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgf83c0c3" class="outline-2">
-<h2 id="orgf83c0c3">Agent Interaction Interface</h2>
-<div class="outline-text-2" id="text-orgf83c0c3">
+<div id="outline-container-orgbbdf2cb" class="outline-2">
+<h2 id="orgbbdf2cb">Agent Interaction Interface</h2>
+<div class="outline-text-2" id="text-orgbbdf2cb">
 <p>
 模型能力卷到现在互相蒸馏，我感觉其实已经翻不出什么大的浪花了，各大厂有的没的隔一段时间就更新一个模型，在 benchmark 上刷刷数据。反倒是 interface 这块，由于 Claude Code 的这次泄露，今年下半年可能会百花齐放了。
 </p>
@@ -6942,17 +6942,17 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org13b4e67">TL;DR</a></li>
-<li><a href="#org6775d06">结果还是过程？</a></li>
-<li><a href="#org3c59b00">我不喜欢 LLM 代码生成</a></li>
-<li><a href="#org678cdaa">不同的立场</a></li>
-<li><a href="#org0163fae">2026-03-24 add</a></li>
+<li><a href="#org7815aca">TL;DR</a></li>
+<li><a href="#orga207835">结果还是过程？</a></li>
+<li><a href="#orgf94230b">我不喜欢 LLM 代码生成</a></li>
+<li><a href="#orgf957984">不同的立场</a></li>
+<li><a href="#org0cc7ca0">2026-03-24 add</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org13b4e67" class="outline-2">
-<h2 id="org13b4e67">TL;DR</h2>
-<div class="outline-text-2" id="text-org13b4e67">
+<div id="outline-container-org7815aca" class="outline-2">
+<h2 id="org7815aca">TL;DR</h2>
+<div class="outline-text-2" id="text-org7815aca">
 <p>
 Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
@@ -6962,9 +6962,9 @@ Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
 </div>
 </div>
-<div id="outline-container-org6775d06" class="outline-2">
-<h2 id="org6775d06">结果还是过程？</h2>
-<div class="outline-text-2" id="text-org6775d06">
+<div id="outline-container-orga207835" class="outline-2">
+<h2 id="orga207835">结果还是过程？</h2>
+<div class="outline-text-2" id="text-orga207835">
 <blockquote>
 <p>
 对于这样的现象，我先下一个结论：软件开发向来是为了解决问题（Problem Solving），重要的是解决问题的结果，而不是解决的方式。
@@ -7022,9 +7022,9 @@ via: <a href="https://simonwillison.net/2026/Jan/2/ben-werdmuller/">https://simo
 </p>
 </div>
 </div>
-<div id="outline-container-org3c59b00" class="outline-2">
-<h2 id="org3c59b00">我不喜欢 LLM 代码生成</h2>
-<div class="outline-text-2" id="text-org3c59b00">
+<div id="outline-container-orgf94230b" class="outline-2">
+<h2 id="orgf94230b">我不喜欢 LLM 代码生成</h2>
+<div class="outline-text-2" id="text-orgf94230b">
 <p>
 但对于 Vibe Coding 和 LLM 代码生成，我始终不太喜欢。
 </p>
@@ -7183,9 +7183,9 @@ via: <a href="https://simonwillison.net/2026/May/11/james-shore/">https://simonw
 </p>
 </div>
 </div>
-<div id="outline-container-org678cdaa" class="outline-2">
-<h2 id="org678cdaa">不同的立场</h2>
-<div class="outline-text-2" id="text-org678cdaa">
+<div id="outline-container-orgf957984" class="outline-2">
+<h2 id="orgf957984">不同的立场</h2>
+<div class="outline-text-2" id="text-orgf957984">
 <p>
 <a href="https://antirez.com/news/158">Don't fall into the anti-AI hype - &lt;antirez&gt;</a>
 </p>
@@ -7235,9 +7235,9 @@ antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: <a href="https:
 </p>
 </div>
 </div>
-<div id="outline-container-org0163fae" class="outline-2">
-<h2 id="org0163fae">2026-03-24 add</h2>
-<div class="outline-text-2" id="text-org0163fae">
+<div id="outline-container-org0cc7ca0" class="outline-2">
+<h2 id="org0cc7ca0">2026-03-24 add</h2>
+<div class="outline-text-2" id="text-org0cc7ca0">
 <p>
 <a href="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/">https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/</a> 这篇文章的这部分说的挺好，但对马克思和资本主义之间的那些观点在我看来有些片面甚至理解偏差了：
 </p>

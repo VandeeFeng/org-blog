@@ -1017,7 +1017,16 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 - [[https://mischavandenburg.com/zet/neovim-zettelkasten/][我的 Neovim Zettelkasten：我如何使用 Vim 和 Bash 在 Markdown 中做笔记 |米沙·范登伯格]] 很强，之前用bash来生成md笔记的思路一下子扩展了。使用CLI来做笔记是一个很终极的方案。
 
 ** PKM with LLM
-2025-11-15 added: 和 AI 相关的整理到了 [[https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html][PKM（个人知识管理）构建手册 - with AI]] 。关于 RAG 和各类知识文档管理聚合项目，我目前的想法是，如果没有成千上万的笔记，或者专业学习和科研，普通的 tag+关键字检索 足够用了，对笔记和知识有了适合自己的管理方法，AI 的检索其实不那么必须，通过传统检索方法找到相关的，再结合 AI 更简单高效，AI 和 RAG 的相关性也会高很多。再一个，我个人还是习惯自己完成最原始的笔记，AI 帮助我发散思考，而不是生成笔记。
+
+和 AI 相关的整理到了 [[https://www.vandee.art/blog/2025-08-02-pkm-manual-combined-ai.html][PKM（个人知识管理）构建手册 - with AI]] 。
+
+AI 的迭代发展用星期来计算我觉得一点也不夸张。从 function tool 到 agent framework，再到 Claude Code、agent harness，对于 PKM 和做笔记，流程上的便利其实不那么关键。一句 prompt 可以找到需要了解的全部资料，模型可以马上给出的所有相关回答，但我不喜欢省略“求索”的过程。很多时候，最有价值的部分恰恰是问题的发现、答案的寻找。
+
+所以我现在的 PKM 和 AI 的结合一直很浅。有了 AI 之后也没有觉得有太多地方必须需要它的参与，最有帮助的还是启发式的讨论，帮我提出更多的问题。
+
+*** Intro
+
+关于 RAG 和各类知识文档管理聚合项目，我目前的想法是，如果没有成千上万的笔记，或者专业学习和科研，普通的 tag + 关键字检索 足够用了，有了适合自己的笔记管理方法，AI 的检索其实不那么必须。再一个，我个人还是习惯自己完成最原始的笔记，AI 帮助我发散思考，而不是生成笔记。
 
 现在能不用 AI 搜索就不用了，不想把这些没什么质变的便利建立在 AI 对互联网内容的侵略上。
 
@@ -1025,132 +1034,40 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 
 最大的问题可能还是在知识版权这一块，但是现在对于 LLM 的生成内容还没有严格的界定。如果创作者的目的是内容能够被看到，那么传统搜索引擎和 AI 搜索的区别也不是很大。
 
-纪念一下 perplexity 最近搜索到了自己博客的内容🤣。
+但是还是纪念一下 perplexity 之前搜索到了自己博客的内容🤣
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_11-08-41.png]]
 
-*** Ollama
+*** Local LLM
 
-[[https://ollama.com/][Ollama]] 可以本地部署大语言模型，目前GitHub 69.1k star，一直在用。obsidian，Emacs，Logseq都支持。如果说Cloudflare是赛博活菩萨，那ollama就是LLM筋斗云。
+[[https://sleepingrobots.com/dreams/stop-using-ollama/][Friends Don't Let Friends Use Ollama | Sleeping Robots]]
 
-ollama支持主流的开源模型如llama3，所有支持模型可查看：
+很早之前就陆续看到过和这篇文章相关的内容，开始也不是很有所谓，毕竟 local LLM 开始的时候 Ollama 就是很方便。随着对 LLM 的学习，配置对我来说已经不是很麻烦了，local LLM 领域现在也百花齐放。我已经停止使用 Ollama，转为使用 llama.cpp 了。llama.cpp 现在也直接提供 chat UI。
 
-*Model library* ：Ollama supports a list of models available on [[https://ollama.com/library][ollama.com/library]]
+[[https://github.com/AlexsJones/llmfit][AlexsJones/llmfit]] 这个项目能快速选择适合自己硬件的本地模型，挺实用的。
 
-相关文章：
+我觉得对于普通用户来说，用付费 API（不是订阅）强模型来做一些复杂的推理生成计划，本地模型来执行是性价比很高的方案。Mac mini + 本地模型，效果真挺不错的。
 
-- [[https://blog.inoki.cc/2024/04/16/Ollama-cn/][Ollama 架构解析 | Inoki in the world]]
+*** LLM in Emacs
 
-*** Open WebUI
+[[https://github.com/xenodium/agent-shell][xenodium/agent-shell]] 用过一段时间，在 Emacs 里挺好用。在 Emacs 里，主要是为了把代码定位之后发送给 agent。
 
-[[https://github.com/open-webui/open-webui][Open WebUI]] 提供一个WebUI运行本地LLM，目前GitHub 31k star。良好的兼容ollama，聊天数据本地保存，可本地导入文档做RAG查询。
+[[https://github.com/milanglacier/minuet-ai.el][milanglacier/minuet-ai.el]] 再就是这个自动补全。
 
-[[https://openwebui.com/#open-webui-community][社区]]提供了插件和功能，质变的是：可以让本地LLM搜索web的内容。
+其他时间基本都在终端里了。
 
-Open WebUI 在2024-10-06的版本中[[https://github.com/open-webui/open-webui/releases/tag/v0.3.31][更新]]了支持类似Claude artifacts的artifacts: *🎨 Artifacts Feature*: Render web content and SVGs directly in the interface, supporting quick iterations and live changes，不过只支持原生的HTML和CSS。还更新了Overview，可以在白板里展示对话的内容，太实用了，史诗级更新！
+**** Aider
 
-#+attr_html: :alt :class img :width 50% :height 50%
-[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-03.png]]
+[[https://github.com/Aider-AI/aider][Aider]] 最近挺火的一个 CLI AI 助手，GitHub 20.3K Star. 在 Emacs 有 [[https://github.com/tninja/aider.el][aider.el]] 、[[https://github.com/MatthewZMD/aidermacs][aidermacs]] 。
 
-#+attr_html: :alt :class img :width 50% :height 50%
-[[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/PixPin_2024-10-09_10-56-41.png]]
-
-*其他主要功能* ：
-
-- 📚 本地 RAG 集成：通过突破性的检索增强生成 (RAG) 支持深入探索聊天交互的未来。此功能将文档交互无缝集成到您的聊天体验中。您可以将文档直接加载到聊天中或将文件添加到文档库中，在查询之前使用 ~#~ 命令轻松访问它们。
-
-- 🔍 RAG 的网络搜索：使用 ~SearXNG~ 、 ~Google PSE~ 、 ~Brave Search~ 、 ~serpstack~ 、 ~serper~ 、 ~Serply~ 、 ~DuckDuckGo~ 和 ~TavilySearch~ 并将结果直接注入您的聊天体验中。
-
-- 🌐 网页浏览功能：使用 ~#~ 命令后跟 URL，将网站无缝集成到您的聊天体验中。此功能允许您将网络内容直接合并到您的对话中，从而增强交互的丰富性和深度。
-
-*docker部署相当简单* ：
-
-- CLI: ~docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main~
-
-- Docker compose: https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml
-
-  #+begin_src ymal
-  services:
-    ollama:
-      volumes:
-        - ollama:/root/.ollama
-      container_name: ollama
-      pull_policy: always
-      tty: true
-      restart: unless-stopped
-      image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
-
-    open-webui:
-      build:
-        context: .
-        args:
-          OLLAMA_BASE_URL: '/ollama'
-        dockerfile: Dockerfile
-      image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
-      container_name: open-webui
-      volumes:
-        - open-webui:/app/backend/data
-      depends_on:
-        - ollama
-      ports:
-        - ${OPEN_WEBUI_PORT-3000}:8080
-      environment:
-        - 'OLLAMA_BASE_URL=http://ollama:11434'
-        - 'WEBUI_SECRET_KEY='
-      extra_hosts:
-        - host.docker.internal:host-gateway
-      restart: unless-stopped
-
-  volumes:
-    ollama: {}
-    open-webui: {}
-
-  #+end_src
-
-- [[https://docs.openwebui.com/getting-started/updating][ Updating | Open WebUI]]
-
-Ref：[[https://docs.openwebui.com/][Open WebUI 官方手册]]
-
-*** Aider
-
-[[https://github.com/Aider-AI/aider][Aider]] 最近挺火的一个CLI AI助手，开源，GitHub 20.3K Star，基本可以支持市面上的所有模型。当然也支持ollama，在Emacs里有个大佬做了个[[https://github.com/tninja/aider.el][aider.el]]。
-
-可以像cursor一样有diff，修改代码，比之前看到的许多CLI AI助手（例如 [[https://github.com/ErikBjare/gptme][gtpme]]、[[https://github.com/BuilderIO/ai-shell][ai-shell]] 、[[https://github.com/cline/cline][cline]] 、[[https://github.com/Doriandarko/claude-engineer][claude-enginner]]）全面许多。
-
-先在本机的Python环境里[[https://aider.chat/docs/install.html][Install aider]]，我用的conda，在terminal里：
-
-#+begin_src bash
-conda activate yourenv
-python -m pip install -U aider-chat
-#+end_src
-
-实测在doomEmacs里要使用ollama的本地模型需要这样写：
-
-#+begin_src emacs-lisp
-(use-package aider
-  :config
-  (setq aider-args '("--model" "ollama/llama3.1"))
-  (setenv "OLLAMA_API_BASE" "http://127.0.0.1:11434")
-  (global-set-key (kbd "C-c a") 'aider-transient-menu)
-  )
-#+end_src
-
-另外在package.el里的安装：
-
-#+begin_src emacs-lisp
-(package! aider
-  :recipe (:host github :repo "tninja/aider.el" :files ("aider.el")))
-#+end_src
-
-在Emacs里激活conda环境正常运行Aider.el。
+可以像 cursor 一样有 diff，修改代码，比 [[https://github.com/ErikBjare/gptme][gtpme]]、[[https://github.com/BuilderIO/ai-shell][ai-shell]] 、[[https://github.com/cline/cline][cline]] 、[[https://github.com/Doriandarko/claude-engineer][claude-enginner]] 全面许多。
 
 Ref：[[https://emacs-china.org/t/ai-aider-emacs-aider-el/28064/15][抛砖引玉: 介绍命令行AI编程工具aider以及emacs集成aider.el - Emacs-general - Emacs China]]
 
-又有一个大佬制作了 [[https://github.com/MatthewZMD/aidermacs][aidermacs]] ,功能更加全面。
-*** gptel
+**** gptel
 
-[[https://github.com/karthink/gptel][gptel: A simple LLM client for Emacs]] 是Emacs的一个包，可以在Emacs里直接和LLM对话，目前在用。
+[[https://github.com/karthink/gptel][gptel: A simple LLM client for Emacs]] 是 Emacs 的一个包，可以在 Emacs 里直接和 LLM 对话，目前在用。
 
 #+attr_html: :alt :class img :width 50% :height 50%
 [[https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/ollama-emacs.gif]]
@@ -1285,6 +1202,7 @@ INFO is the data passed by org-protocol."
 - 2025-11-16: 增加双链的介绍，把 org-hover 加进去了。更新网页摘录和 after-reading
 - 2025-12-09: 增加链接和一个 gptel 里的小函数用来浏览器提问
 - 2026-06-21: 更新 PKM with LLM 部分，删除了我已经没有使用的。
+- 2026-07-06：再编辑 PKM with LLM 部分。
 
 * Thanks
 
