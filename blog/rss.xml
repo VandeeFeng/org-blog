@@ -4,7 +4,131 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Mon, 06 Jul 2026 22:40:59 +0800</lastBuildDate>
+<lastBuildDate>Sun, 26 Jul 2026 15:48:03 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[What are you waiting for?]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org3db2710">Intro</a></li>
+<li><a href="#orgb7b65aa">What are you waiting for?</a></li>
+<li><a href="#org0732b5b">Others</a></li>
+</ul>
+</div>
+</nav>
+<p>
+<a href="https://codex-resets.com/">Codex Resets</a> 应该是最近的热门网站了，OpenAI 为了推广最新的 GPT-5.6 模型频繁的重置。<a href="https://status.openai.com/">OpenAI Status</a> 是另一个，同时最近 OpenAI 也出现了几次服务中断。
+</p>
+
+<p>
+我们等待着额度的刷新和功能恢复。但是，What are you waiting for?
+</p>
+<div id="outline-container-org3db2710" class="outline-2">
+<h2 id="org3db2710">Intro</h2>
+<div class="outline-text-2" id="text-org3db2710">
+<p>
+这几天的这种情况，应该能够叫作戒断反应了。我一直对 AI “软隔离”，所以这个戒断反应很小。
+</p>
+
+<p>
+感觉上，有点像以前停电、停网的时候，突然一下子好像不知道可以干嘛了。但是马上我又意识到，它们只是很像而已，AI 现在还不是基础设施，没有它我的一切也还是可以很正常的继续。
+</p>
+
+<p>
+但是 AI 迟早有一天会成为基础设施，我们的生活和工作会像依赖电力和网络一样，依赖 AI 和算力。我也很期待 AI 给生活可能带来的便利。所以我想再继续思考，在这个过渡期，还应该做些什么。
+</p>
+
+<p>
+随即回到 Emacs，开始了这篇 blog。
+</p>
+</div>
+</div>
+<div id="outline-container-orgb7b65aa" class="outline-2">
+<h2 id="orgb7b65aa">What are you waiting for?</h2>
+<div class="outline-text-2" id="text-orgb7b65aa">
+<p>
+巴菲特多次在不同的讲话里提到类似的观点：
+</p>
+
+<blockquote>
+<p>
+“Take the job that you would take if you didn’t need the job—that’s what I’ve got.”
+</p>
+
+<p>
+“You want to be doing something you would do if you didn’t need the money. And most people do need the money. But if you’re in the position where you don’t, you should be doing what you would if you didn’t need the money.”
+</p>
+
+<p>
+via: <a href="https://fortune.com/2024/08/30/warren-buffett-career-advice/">https://fortune.com/2024/08/30/warren-buffett-career-advice/</a> , <a href="https://www.berkshirehathaway.com/letters/2021ltr.pdf">https://www.berkshirehathaway.com/letters/2021ltr.pdf</a>
+</p>
+</blockquote>
+
+<p>
+把上面观点里的 money 换成 AI 同样成立。
+</p>
+
+<p>
+AI 是一个放大器，可以帮助我们在技能缺失的情况下，提供一个强力 buff，让我们一次性的达成某个目标。我强调了技能缺失，暂时，一次性，因为我一直觉得，真正应该提升的还是这个缺失的技能。
+</p>
+
+<p>
+AI 出现之后，许多网络内容里都会提到类似的：有了 AI 之后我实现了许多以前无法实现的想法。那么为什么之前一直没有实现呢？抛开现实的原因，剩下的那个可能就是懒了。从接触 AI 到现在，我一直在问自己这个问题。
+</p>
+
+<p>
+所以每次 AI 帮助我实现一个小玩意之后，我都会强迫自己继续学习这个实现的过程和知识。这并不是因为我有多喜欢学习（当然我确实很喜欢学习🤣），而是总感觉这样并没有真正收获什么。
+</p>
+
+<p>
+AI 帮助我配置好了 Linux -&gt; 学习 Linux 的相关知识，AI 帮助我写好了一段代码实现 -&gt; 学习这段代码，AI 帮我生成了一段和弦旋律 -&gt; 学习相关的乐理。我觉得，这应该是现在 AI 刚开始发展的过渡期对待 AI 更一劳永逸的态度。
+</p>
+
+<p>
+更明确一点，我觉得 token 更应该投资在知识和能够帮助自己实现目标的工具上，而不只是提供结果。例如，把 AI 帮我看论文 -&gt; AI 构建帮我看论文的工具。
+</p>
+
+<p>
+AI 提供了技能和知识的 buff，但它更提供了学习技能和知识的 buff。我从来没有觉得，学习能像现在有了 AI 之后效率这么高。
+</p>
+
+<p>
+有了 AI 之后，我逐渐掌握了许多计算机基础知识、Linux 成为了日常使用的系统、构建了许多以前无法独立实现小玩意、学习了许多代码知识，等等。让我们真正感觉到充实和满足的，一直就应该是这些自我提升。
+</p>
+
+<p>
+这些远路才是捷径。这就好像搭积木，AI 帮我们搭建的越多，对它的依赖就越多，跳过了某些必经之路，后面的积木会越来越难。
+</p>
+
+<p>
+没有这些强力模型，有本地小模型代码补全，我正在进行的一些项目也就是慢一点而已。
+</p>
+</div>
+</div>
+<div id="outline-container-org0732b5b" class="outline-2">
+<h2 id="org0732b5b">Others</h2>
+<div class="outline-text-2" id="text-org0732b5b">
+<p>
+这几年，我慢慢形成了一个很有意思的循环：想法 -&gt; AI 讨论提出问题 -&gt; AI MVP 可能性实现 -&gt; 学习和复现 -&gt; 新的想法。
+</p>
+
+<p>
+最开始我批判过现在互联网内容已经没有不是和 AI 相关的了，但是这一年多自己的 blog 内容也都是和 AI 相关的。这也并不矛盾，AI 有好的部分也有不好的部分，只承认一部分才是矛盾的。这又让我想起了乔帮主的那句名言：在一个产品 ( iPhone ) 出现之前，用户根本就不知道他们想要什么！
+</p>
+
+<p>
+AI 出现之后，纠结对错的口水战没太大意义，谁也不能让历史重来一次。到现在我仍然很讨厌 AI 带来的一些现象，但是也非常感谢 AI，让我更明确了 What are you waiting for.
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div>]]></description>
+  <category><![CDATA[Ramble]]></category>
+  <link>https://www.vandee.art/blog/2026-07-26-what-are-you-waiting-for.html</link>
+  <guid>https://www.vandee.art/blog/2026-07-26-what-are-you-waiting-for.html</guid>
+  <pubDate>Sun, 26 Jul 2026 14:03:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[Intent Is All You Need]]></title>
   <description><![CDATA[
@@ -12,12 +136,12 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9f245cf">Intent interface</a>
+<li><a href="#org76f2478">Intent interface</a>
 <ul>
-<li><a href="#org51a55c4">2026-06-28 add</a></li>
+<li><a href="#org2578038">2026-06-28 add</a></li>
 </ul>
 </li>
-<li><a href="#org2533819">Phi</a></li>
+<li><a href="#org4ee8ce1">Phi</a></li>
 </ul>
 </div>
 </nav>
@@ -40,9 +164,9 @@ Claude Code 官方说过，它最开始就是一个简易的小玩意，在使�
 <p>
 对于我来说，phi 不仅仅是一个满足我个性化需求的 CLI/TUI Coding Agent，它更是我以后想扩展的 intent 接口。
 </p>
-<div id="outline-container-org9f245cf" class="outline-2">
-<h2 id="org9f245cf">Intent interface</h2>
-<div class="outline-text-2" id="text-org9f245cf">
+<div id="outline-container-org76f2478" class="outline-2">
+<h2 id="org76f2478">Intent interface</h2>
+<div class="outline-text-2" id="text-org76f2478">
 <p>
 如果说传统的用户交互界面分为 TUI 和 GUI，那么 AI 成为基础设施之后，我觉得 intent 就是最关键的。传统的用户界面就是用户意图和产品之间的桥梁，AI 可以把用户意图转换成更多的形式，可以传递更多的信息。
 </p>
@@ -87,9 +211,9 @@ AI 眼镜和 AI 可穿戴设备也就是在用户 intent 和 AI agent 之间的�
 更极端一点，我觉得甚至可以推出用户自定义 UI 的服务，agent 成为 intent 的驱动之后，做什么样的 UI 感觉也不太重要了，反正现在各大场的 Chat UI 看起来也差不多，还不如让用户自定义呢，我进入软件只是要语音输入或者打字而已，UI 张什么样不太关键吧。OpenClaw 一个吸引用户的地方，就是它可以自部署，通过不同的平台接入。把 agent 接口给用户，让用户自定义 “皮肤” ，根据积分解锁稀有的 agent 虚拟形象（集五福春节特供财神爷）,不是可以再赚一笔？
 </p>
 </div>
-<div id="outline-container-org51a55c4" class="outline-3">
-<h3 id="org51a55c4">2026-06-28 add</h3>
-<div class="outline-text-3" id="text-org51a55c4">
+<div id="outline-container-org2578038" class="outline-3">
+<h3 id="org2578038">2026-06-28 add</h3>
+<div class="outline-text-3" id="text-org2578038">
 <blockquote>
 <p>
 So another motivation for form is to imply the first context of use, even if - and especially if - the product can be re-purposed or adapted for other contexts by the end user, once they have internalised the function of it.
@@ -114,11 +238,11 @@ via: <a href="https://interconnected.org/home/2026/06/27/filtered">https://inter
 </div>
 </div>
 </div>
-<div id="outline-container-org2533819" class="outline-2">
-<h2 id="org2533819">Phi</h2>
-<div class="outline-text-2" id="text-org2533819">
+<div id="outline-container-org4ee8ce1" class="outline-2">
+<h2 id="org4ee8ce1">Phi</h2>
+<div class="outline-text-2" id="text-org4ee8ce1">
 
-<figure id="org22810ef">
+<figure id="org315447a">
 <img src="https://pic.vandee.art/images/phi.png" class="img" width="50%" height="50%">
 
 </figure>
@@ -7576,682 +7700,6 @@ Just believe ，and believe in yourself！
   <link>https://www.vandee.art/blog/2025-12-10-the-summary-of-2025.html</link>
   <guid>https://www.vandee.art/blog/2025-12-10-the-summary-of-2025.html</guid>
   <pubDate>Wed, 10 Dec 2025 12:24:00 +0800</pubDate>
-</item>
-<item>
-  <title><![CDATA[Native Linux on Apple Silicon Mac]]></title>
-  <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org8290809">TL;DR</a></li>
-<li><a href="#org14a7dc5">Why Linux</a></li>
-<li><a href="#orgd43079f">Asahi Alarm</a>
-<ul>
-<li><a href="#orgcf02b8a">初始化安装</a></li>
-<li><a href="#orgf353a7a">WM &amp; DM</a></li>
-<li><a href="#org8462fe6">App launcher</a></li>
-<li><a href="#orgf7d5edd">Theme</a></li>
-<li><a href="#orgeb30817">Bluetooth &amp;&amp; Wi-Fi</a></li>
-<li><a href="#org7d53b87">Fcitx &amp;&amp; Rime 输入法</a></li>
-<li><a href="#org2197d90">Obs Studio</a></li>
-</ul>
-</li>
-<li><a href="#orge2b5d88">Settings</a>
-<ul>
-<li><a href="#org353c304">Sway</a></li>
-<li><a href="#orgc3458b2">充电提示音</a></li>
-<li><a href="#orgded3815">Others</a></li>
-</ul>
-</li>
-<li><a href="#org3a3e27b">Tips</a>
-<ul>
-<li><a href="#org3d1cc07">Grub 修复</a></li>
-<li><a href="#org1181a8a">NVIDIA 配置</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</nav>
-<div id="outline-container-org8290809" class="outline-2">
-<h2 id="org8290809">TL;DR</h2>
-<div class="outline-text-2" id="text-org8290809">
-<p>
-几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
-</p>
-
-<p>
-这几个月 Windows 持续的一些负面新闻，让 Linux 有一波小热度。整理了一下我在 Mac 上安装 Linux 的过程，分享给想入坑 Linux 的轻度玩家。
-</p>
-
-<p>
-大佬请直接关闭页面。
-</p>
-</div>
-</div>
-<div id="outline-container-org14a7dc5" class="outline-2">
-<h2 id="org14a7dc5">Why Linux</h2>
-<div class="outline-text-2" id="text-org14a7dc5">
-<p>
-买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
-</p>
-
-<p>
-使用 Mac 的普通用户大多数都是因为精致设计感的 UI，苹果的品牌效应，我也是如此。但是这几年苹果的发展实在是让我很没有期待，今年更是大便一坨。
-</p>
-
-<p>
-苹果的品牌效应 90% 来自乔帮主的个人魅力，我觉得一点也不为过。如今苹果的老本快被吃完了，创新的东西有，但是灵魂我觉得早已不在。
-</p>
-
-<p>
-之前都是在虚拟机上使用 Linux，最初也没有想完全入坑 Linux。转折点就是 Linus 的自传《Just For Fun》，我有太多想法和 Linus 不谋而合。在苹果没有了乔布斯的个人魅力之后，它能吸引我的越来越少，Linux 对我的吸引越来越大。
-</p>
-
-<p>
-当个人电脑 PC 对我来说不再只是一个工具，而是一个伙伴的时候，Linux 就是现在最适合我的操作系统，<a href="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">Linux 太自由了</a> 。
-</p>
-</div>
-</div>
-<div id="outline-container-orgd43079f" class="outline-2">
-<h2 id="orgd43079f">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-orgd43079f">
-
-<figure id="orgca7403b">
-<img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
-
-</figure>
-
-<p>
-最开始我尝试的是 Asahi Linux，按照这个视频很快就搞定了： <a href="https://www.youtube.com/watch?v=u_kcXg00R2g">「黑貓」Asahi Linux！M1 Mac 原生運行 Linux 雙系統，簡單流暢！ - YouTube</a>
-</p>
-
-<p>
-Asahi Linux 预装的是 Fedora，初始化安装到进入图形界面都没问题，但是当我执行更新，安装了一些包之后，再重启，总是会遇到各种系统崩溃问题，尝试了数次之后，就没有再折腾了。
-</p>
-
-<p>
-也是巧了，正在我发愁的时候：<a href="https://omarchy.org/">Omarchy — Beautiful, Modern &amp; Opinionated Linux by DHH</a> 出现了。
-</p>
-
-<p>
-Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基于 Arch Linux 的 Linux 发行版。
-</p>
-
-<p>
-但是我不太喜欢它默认的主题，默认快捷键设置也和我的习惯很不一样，还有许多我不需要的预安装。尝试了几天之后也否定了这个方案。
-</p>
-
-<p>
-然后发现宝藏：<a href="https://asahi-alarm.org/">Asahi Alarm</a> , <a href="https://github.com/basecamp/omarchy/discussions/155">https://github.com/basecamp/omarchy/discussions/155</a>
-</p>
-
-<p>
-完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
-</p>
-</div>
-<div id="outline-container-orgcf02b8a" class="outline-3">
-<h3 id="orgcf02b8a">初始化安装</h3>
-<div class="outline-text-3" id="text-orgcf02b8a">
-<p>
-它就是一个裸的 Arch Linux。
-</p>
-
-<p>
-在 Mac 上打开 terminal，运行 <code>curl https://asahi-alarm.org/installer-bootstrap.sh | sh</code> ，基本就全自动安装了，具体的安装过程和 Asahi Linux 是一样的。
-</p>
-
-<p>
-需要科学上网。
-</p>
-
-<p>
-安装完成之后，就可以进入到 Asahi Alarm 了，这个时候还没有图形界面，可以命令行安装一些基础的包。
-</p>
-
-<p>
-Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morganamilo/paru">Morganamilo/paru</a> 是 Rust 版本的 yay AUR 包管理器。
-</p>
-</div>
-</div>
-<div id="outline-container-orgf353a7a" class="outline-3">
-<h3 id="orgf353a7a">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-orgf353a7a">
-<p>
-接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
-</p>
-
-<p>
-创建好 Linux 用户之后 <code>sudo pacman -S wayland sway</code> 安装。
-</p>
-
-<p>
-输入 sway 就可以进入到图形界面了。想自动进入图形界面，Linux 里可以安装 DM（display managers）
-</p>
-
-<p>
-DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> 也是因为它足够简单。
-</p>
-
-<p>
-保险起见，在 <code>/etc/lemurs/config.toml</code> 里加上 <code>include_tty_shell = true</code> ，这样有时候 Wayland 出现问题方便直接调试。
-</p>
-</div>
-</div>
-<div id="outline-container-org8462fe6" class="outline-3">
-<h3 id="org8462fe6">App launcher</h3>
-<div class="outline-text-3" id="text-org8462fe6">
-<p>
-<a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
-</p>
-
-<p>
-因为之前在 i3 里使用 dmenu，fuzzel 也足够简洁，和 sway 的匹配度也很高。
-</p>
-
-<p>
-Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq/vicinae/">https://github.com/vicinaehq/vicinae/</a>
-</p>
-
-<p>
-还有 Rofi：<a href="https://github.com/davatorium/rofi">https://github.com/davatorium/rofi</a>
-</p>
-</div>
-</div>
-<div id="outline-container-orgf7d5edd" class="outline-3">
-<h3 id="orgf7d5edd">Theme</h3>
-<div class="outline-text-3" id="text-orgf7d5edd">
-<p>
-<a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
-</p>
-
-<p>
-theme 文件可以在 ~/.themes/, 或者 /usr/share/themes
-</p>
-
-<ul class="org-ul">
-<li>统一 gtk 和 qt 主题：sudo pacman -S &#x2013;noconfirm lxappearance qt5ct qt6ct kvantum</li>
-
-<li><p>
-lxappearance 来配置主题，可能需要安装：sudo pacman -S gtk-engine-murrine gnome-themes-extra gtk-engines
-</p>
-
-<p>
-wayland 里用 nwg-look
-</p></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orgeb30817" class="outline-3">
-<h3 id="orgeb30817">Bluetooth &amp;&amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-orgeb30817">
-<ul class="org-ul">
-<li><p>
-impala: 🛜 TUI for managing wifi on Linux
-</p>
-
-<p>
-<a href="https://github.com/pythops/impala">https://github.com/pythops/impala</a>
-</p></li>
-
-<li><p>
-bluetui: 🛜 TUI for managing bluetooth on Linux
-</p>
-
-<p>
-<a href="https://github.com/pythops/bluetui">https://github.com/pythops/bluetui</a>
-</p></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org7d53b87" class="outline-3">
-<h3 id="org7d53b87">Fcitx &amp;&amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-org7d53b87">
-<p>
-参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
-</p>
-
-<p>
-Rime + 双拼实在是太巴适了。
-</p>
-
-<p>
-Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 </a> 安装。
-</p>
-
-<p>
-输入法：<a href="https://github.com/iDvel/rime-ice">iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库</a>
-</p>
-</div>
-</div>
-<div id="outline-container-org2197d90" class="outline-3">
-<h3 id="org2197d90">Obs Studio</h3>
-<div class="outline-text-3" id="text-org2197d90">
-<p>
-Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包。
-</p>
-
-<p>
-安装 CMake 自己手动编译:
-</p>
-
-<p>
-下载源代码：
-</p>
-
-<p>
-<code>git clone --depth 1 --recurse --shallow-submodules https://github.com/obsproject/obs-studio.git</code>
-</p>
-
-<p>
-我在编译的时候提示缺少头文件，因此:
-</p>
-
-<p>
-<code>sudo pacman -S qt6-xcb-private-headers</code>
-</p>
-
-<p>
-然后成功编译：
-</p>
-
-<p>
-<code>cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_BROWSER=OFF -DENABLE_VLC=ON -DENABLE_AJA=OFF..</code>
-</p>
-
-<p>
-如果 PipeWire 选项缺失: wlrobs 是一个 OBS 插件，专为 Wayland 提供屏幕捕获支持，尤其在 Hyprland 或 River 等合成器下有效。paru -S wlrobs-hg。
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orge2b5d88" class="outline-2">
-<h2 id="orge2b5d88">Settings</h2>
-<div class="outline-text-2" id="text-orge2b5d88">
-<p>
-其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
-</p>
-
-<p>
-下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
-</p>
-</div>
-<div id="outline-container-org353c304" class="outline-3">
-<h3 id="org353c304">Sway</h3>
-<div class="outline-text-3" id="text-org353c304">
-<p>
-Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
-</p>
-
-<p>
-分辨率设置：如果不放大，字就跟蚂蚁一样小
-</p>
-
-<p>
-Asahi Alarm 由于苹果硬件的限制，只能缩放，更改不了分辨率，也可能是我没有找对方法。常规设置分辨率的方法不管用。
-</p>
-
-<p>
-<code>exec --no-startup-id xrandr --output eDP-1 --scale 1.5x1.5</code>
-</p>
-
-<p>
-截图:
-</p>
-
-<p>
-使用 grim + swappy ,由于之前缩放的原因，flameshot 在截图的时候调用 grim 截图也是放大的，而且有兼容性问题。
-</p>
-
-<p>
-<code>bindsym $mod+s exec --no-startup-id sh -c 'grim -g "$(slurp)" -s 1 - | swappy -f -'</code>
-</p>
-
-<p>
-加上了 -s 1 参数，就可以解决截图放大的问题了。
-</p>
-
-<p>
-OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract-ocr/tesseract</a> 并下载相应语言的包
-</p>
-
-<p>
-<code>bindsym $mod+Shift+s exec --no-startup-id ~/MyScripts/screenshot_ocr.sh</code>
-</p>
-
-<p>
-这个脚本就是一个很简单的创建 tmp 截图文件，用 tesseract 识别保存到系统剪贴板。
-</p>
-
-<p>
-设置系统音量：我耳朵被炸了好几次。。。
-</p>
-
-<p>
-<code>exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ 55%</code>
-</p>
-
-<p>
-设置系统显示器亮度：
-</p>
-
-<p>
-<code>exec --no-startup-id brightnessctl set 20%</code>
-</p>
-
-<p>
-和音量一样，如果不设置它会有一个默认的值，每次重启就需要重新设置。
-</p>
-
-<p>
-设置壁纸：
-</p>
-
-<p>
-<code>output * bg /home/vandee/Pictures/create.jpg fill</code>
-</p>
-
-<p>
-剪贴板：
-<code>exec wl-paste --watch cliphist store</code>
-</p>
-</div>
-</div>
-<div id="outline-container-orgc3458b2" class="outline-3">
-<h3 id="orgc3458b2">充电提示音</h3>
-<div class="outline-text-3" id="text-orgc3458b2">
-<p>
-Asahi Linux 判断电池是通过 <code>/sys/class/power_supply/macsmc-ac</code>
-</p>
-
-<p>
-udev 的方式在我的电脑上不管用，所以用了一个笨办法。
-</p>
-
-<p>
-用 systemd 监控它的状态，处于充电状态的时候播放提示音，把这个 script 设置为 systemd service：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-bash"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
-</span>
-<span style="color: #787878;"># </span><span style="color: #787878;">Charger plug/unplug sound effect script
-</span><span style="color: #787878;"># </span><span style="color: #787878;">Monitors /sys/class/power_supply/macsmc-ac/online and plays appropriate sounds
-</span>
-<span style="color: #f4f4ff;">POWER_SUPPLY_PATH</span>=<span style="color: #A1D08E;">"/sys/class/power_supply/macsmc-ac/online"</span>
-<span style="color: #f4f4ff;">POWER_PLUG_SOUND</span>=<span style="color: #A1D08E;">"/usr/share/sounds/freedesktop/stereo/power-plug.oga"</span>
-<span style="color: #f4f4ff;">POWER_UNPLUG_SOUND</span>=<span style="color: #A1D08E;">"/usr/share/sounds/freedesktop/stereo/power-unplug.oga"</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Check if required files exist
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_SUPPLY_PATH"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: Power supply path not found: $POWER_SUPPLY_PATH"</span>
-    <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
-
-<span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span> || <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: Sound files not found"</span>
-    <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Function to play sound
-</span><span style="color: #96a6c8;">play_sound</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
-    <span style="color: #79C0FF;">local</span> <span style="color: #f4f4ff;">sound_file</span>=<span style="color: #A1D08E;">"$1"</span>
-    <span style="color: #787878;"># </span><span style="color: #787878;">Try different audio players
-</span>    <span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v paplay &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
-        paplay --volume=78643 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
-    <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v aplay &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
-        aplay -v 15 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
-    <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v mplayer &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
-        mplayer -really-quiet -volume 150 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
-    <span style="color: #FFA657;">else</span>
-        <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: No suitable audio player found (paplay, aplay, or mplayer)"</span>
-        <span style="color: #FFA657;">exit</span> 1
-    <span style="color: #FFA657;">fi</span>
-<span style="color: #8c8c8c;">}</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Get initial state
-</span><span style="color: #f4f4ff;">previous_state</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$POWER_SUPPLY_PATH"</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Initial charger state: $previous_state"</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Monitor for changes
-</span><span style="color: #FFA657;">while</span> true; <span style="color: #FFA657;">do</span>
-    <span style="color: #f4f4ff;">current_state</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$POWER_SUPPLY_PATH"</span><span style="color: #8c8c8c;">)</span>
-
-    <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$current_state"</span> != <span style="color: #A1D08E;">"$previous_state"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-        <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$current_state"</span> == <span style="color: #A1D08E;">"1"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-            <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Charger plugged in"</span>
-            play_sound <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span>
-        <span style="color: #FFA657;">else</span>
-            <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Charger unplugged"</span>
-            play_sound <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span>
-        <span style="color: #FFA657;">fi</span>
-        <span style="color: #f4f4ff;">previous_state</span>=<span style="color: #A1D08E;">"$current_state"</span>
-    <span style="color: #FFA657;">fi</span>
-
-    sleep 1
-<span style="color: #FFA657;">done</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgded3815" class="outline-3">
-<h3 id="orgded3815">Others</h3>
-<div class="outline-text-3" id="text-orgded3815">
-<ul class="org-ul">
-<li><p>
-调整对比度(X11)
-</p>
-
-<p>
-<code>sudo pacman -S xorg-xgamma</code>
-</p>
-
-<p>
-<code>xgamma -gamma 0.8</code>
-</p></li>
-<li><p>
-设置屏幕亮度
-</p>
-
-<p>
-<code>brightnessctl set 20%</code>
-</p></li>
-<li><p>
-解决 macbooks 无法播放音频的问题：
-</p>
-
-<p>
-<code>sudo pacman -S asahi-audio</code>
-</p></li>
-<li><p>
-opensnatch 因为 eBPF 报错
-</p>
-
-<p>
-修改 <code>/etc/opensnitchd/default-config.json</code>
-</p>
-
-<p>
-把 procmonitormethod 更改成 proc
-</p></li>
-
-<li><p>
-音量控制：sudo pacman -S pavucontrol
-</p>
-
-<p>
-更轻量化的：sudo pacman -S volumeicon
-</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div id="outline-container-org3a3e27b" class="outline-2">
-<h2 id="org3a3e27b">Tips</h2>
-<div class="outline-text-2" id="text-org3a3e27b">
-<p>
-最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 <code>nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings lib32-nvidia-580xx-utils</code> 了，导致驱动无法适配。
-</p>
-
-<p>
-Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
-</p>
-
-<p>
-<code>sudo pacman -S linux-lts linux-lts-headers</code> 安装 Linux LTS
-</p>
-
-<p>
-<code>sudo dkms autoinstall</code> 编译 NVIDIA
-</p>
-
-<p>
-<code>dkms status | grep nvidia</code> 确定是否 Linux-lts 和当前 Linux kernel 的 NVIDIA 模块都编译成功
-</p>
-
-<p>
-<code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code> 重新生成 grub 配置
-</p>
-
-<p>
-这样在开机的时候就可以选 LTS 了。
-</p>
-
-<p>
-默认情况下，Linux-lts 会排在前面，如果想更改默认的 grub 为最新的 Linux 版本，官方推荐在 <code>/etc/default/grub</code> 里修改：
-</p>
-
-<p>
-<code>GRUB_DEFAULT='Advanced options for Arch Linux&gt;Arch Linux, with Linux linux'</code>
-</p>
-</div>
-<div id="outline-container-org3d1cc07" class="outline-3">
-<h3 id="org3d1cc07">Grub 修复</h3>
-<div class="outline-text-3" id="text-org3d1cc07">
-<p>
-如果你和我一样瞎折腾把 grub 弄坏了，可以 Arch Linux Live USB 引导修复。
-</p>
-
-<p>
-<code>lsblk</code> 查看分区，找到 EFI 的分区，
-</p>
-
-<div class="org-src-container">
-<pre class="src src-bash">
-<span style="color: #787878;"># </span><span style="color: #787878;">/etc/default/grub &#37324;&#25214;&#21040;&#19979;&#38754;&#65292;&#20020;&#26102;&#24320;&#21551;
-</span><span style="color: #787878;"># </span><span style="color: #787878;">Uncomment to enable booting from LUKS encrypted devices
-</span><span style="color: #f4f4ff;">GRUB_ENABLE_CRYPTODISK</span>=y
-
-cryptsetup open /dev/sda2 root <span style="color: #787878;">#</span><span style="color: #787878;">&#35299;&#38145;&#65292;&#22914;&#26524;&#35774;&#32622;&#20102; LUKS
-</span>mount /dev/mapper/root /mnt
-mount /dev/sda1 /mnt/boot  <span style="color: #787878;">#</span><span style="color: #787878;">&#25105;&#30340;&#26159; sda1 &#30340;&#22266;&#24577;
-</span>arch-chroot /mnt
-</pre>
-</div>
-
-<p>
-重新配置 GRUB：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-bash">pacman -S grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
-</pre>
-</div>
-
-<p>
-如果 grub 没有读到配置，我的特例，让新的 GRUB 配置走 <code>/boot/grub/grub.cfg</code> ：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-bash">cat &gt; /boot/EFI/GRUB/grub.cfg &lt;&lt;<span style="color: #A1D08E;">'EOF'</span><span style="color: #ffff00; font-weight: bold;">
-search --no-floppy --fs-uuid --set=root {/boot &#30340; UUID&#65292;blkid /dev/sda1 &#33719;&#21462;}
-set prefix=($root)/grub
-configfile $prefix/grub.cfg
-EOF</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org1181a8a" class="outline-3">
-<h3 id="org1181a8a">NVIDIA 配置</h3>
-<div class="outline-text-3" id="text-org1181a8a">
-<p>
-我另外一个 x86 电脑的 NVIDIA 显卡很老了，下面的方法管用
-</p>
-
-<ol class="org-ol">
-<li>禁用开源的 Nouveau 驱动</li>
-</ol>
-
-<p>
-Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
-</p>
-
-<p>
-创建一个新的 modprobe 配置文件：
-</p>
-
-<p>
-<code>sudo vim /etc/modprobe.d/blacklist-nouveau.conf</code>
-</p>
-
-<p>
-在文件中添加：blacklist nouveau
-</p>
-
-<ol class="org-ol">
-<li>配置 Initramfs (初始 RAM 文件系统)</li>
-</ol>
-
-<p>
-将 NVIDIA 模块添加到 initramfs 中，以确保它们在启动早期被加载。编辑 /etc/mkinitcpio.conf 文件：
-</p>
-
-<p>
-找到 MODULES= 这一行，并添加以下模块：
-</p>
-
-<p>
-<code>MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)</code>
-</p>
-
-<p>
-在 HOOKS= 这一行中，如果存在 kms，将其移除。
-</p>
-
-<p>
-完成修改后，重新生成 initramfs： <code>sudo mkinitcpio -P</code>
-</p>
-
-<ol class="org-ol">
-<li>设置内核参数</li>
-</ol>
-
-<p>
-为了启用 DRM (Direct Rendering Manager) 内核模式设置 (KMS)，需要向引导加载程序添加一个内核参数。这对于 Wayland 的正常工作是必需的，并且从较新版本的驱动开始默认启用。
-</p>
-
-<p>
-编辑 <code>/etc/default/grub</code> 文件：
-</p>
-
-<p>
-在 <code>GRUB_CMDLINE_LINUX_DEFAULT</code> 这一行中，添加 <code>nvidia_drm.modeset=1</code> 。
-</p>
-
-<p>
-然后，更新 GRUB 配置： <code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code>
-</p>
-</div>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-linux.html">Linux</a> </div>]]></description>
-  <category><![CDATA[Linux]]></category>
-  <link>https://www.vandee.art/blog/2025-12-09-native-linux-on-apple-silicon-mac.html</link>
-  <guid>https://www.vandee.art/blog/2025-12-09-native-linux-on-apple-silicon-mac.html</guid>
-  <pubDate>Tue, 09 Dec 2025 11:03:00 +0800</pubDate>
 </item>
 </channel>
 </rss>
