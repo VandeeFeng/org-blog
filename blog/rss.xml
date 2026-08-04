@@ -4,7 +4,8 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<lastBuildDate>Sun, 26 Jul 2026 15:48:03 +0800</lastBuildDate>
+<atom:link href="https://www.vandee.art/blog/rss.xml" rel="self" type="application/rss+xml" />
+<lastBuildDate>Tue, 04 Aug 2026 11:57:57 +0800</lastBuildDate>
 <item>
   <title><![CDATA[What are you waiting for?]]></title>
   <description><![CDATA[
@@ -12,9 +13,9 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3db2710">Intro</a></li>
-<li><a href="#orgb7b65aa">What are you waiting for?</a></li>
-<li><a href="#org0732b5b">Others</a></li>
+<li><a href="#orgde2b315">Intro</a></li>
+<li><a href="#orge6e83a4">What are you waiting for?</a></li>
+<li><a href="#org580b627">Others</a></li>
 </ul>
 </div>
 </nav>
@@ -25,9 +26,9 @@
 <p>
 我们等待着额度的刷新和功能恢复。但是，What are you waiting for?
 </p>
-<div id="outline-container-org3db2710" class="outline-2">
-<h2 id="org3db2710">Intro</h2>
-<div class="outline-text-2" id="text-org3db2710">
+<div id="outline-container-orgde2b315" class="outline-2">
+<h2 id="orgde2b315">Intro</h2>
+<div class="outline-text-2" id="text-orgde2b315">
 <p>
 这几天的这种情况，应该能够叫作戒断反应了。我一直对 AI “软隔离”，所以这个戒断反应很小。
 </p>
@@ -45,9 +46,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgb7b65aa" class="outline-2">
-<h2 id="orgb7b65aa">What are you waiting for?</h2>
-<div class="outline-text-2" id="text-orgb7b65aa">
+<div id="outline-container-orge6e83a4" class="outline-2">
+<h2 id="orge6e83a4">What are you waiting for?</h2>
+<div class="outline-text-2" id="text-orge6e83a4">
 <p>
 巴菲特多次在不同的讲话里提到类似的观点：
 </p>
@@ -107,9 +108,9 @@ AI 提供了技能和知识的 buff，但它更提供了学习技能和知识的
 </p>
 </div>
 </div>
-<div id="outline-container-org0732b5b" class="outline-2">
-<h2 id="org0732b5b">Others</h2>
-<div class="outline-text-2" id="text-org0732b5b">
+<div id="outline-container-org580b627" class="outline-2">
+<h2 id="org580b627">Others</h2>
+<div class="outline-text-2" id="text-org580b627">
 <p>
 这几年，我慢慢形成了一个很有意思的循环：想法 -&gt; AI 讨论提出问题 -&gt; AI MVP 可能性实现 -&gt; 学习和复现 -&gt; 新的想法。
 </p>
@@ -123,7 +124,7 @@ AI 出现之后，纠结对错的口水战没太大意义，谁也不能让历�
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div>]]></description>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-ramble.html" class="tag" data-tag="ramble" data-index="0">Ramble</a> </span></div>]]></description>
   <category><![CDATA[Ramble]]></category>
   <link>https://www.vandee.art/blog/2026-07-26-what-are-you-waiting-for.html</link>
   <guid>https://www.vandee.art/blog/2026-07-26-what-are-you-waiting-for.html</guid>
@@ -7066,17 +7067,17 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7815aca">TL;DR</a></li>
-<li><a href="#orga207835">结果还是过程？</a></li>
-<li><a href="#orgf94230b">我不喜欢 LLM 代码生成</a></li>
-<li><a href="#orgf957984">不同的立场</a></li>
-<li><a href="#org0cc7ca0">2026-03-24 add</a></li>
+<li><a href="#org6586f8d">TL;DR</a></li>
+<li><a href="#orge18ea77">结果还是过程？</a></li>
+<li><a href="#org9510693">我不喜欢 LLM 代码生成</a></li>
+<li><a href="#org044acdd">不同的立场</a></li>
+<li><a href="#org099e817">2026-03-24 add</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org7815aca" class="outline-2">
-<h2 id="org7815aca">TL;DR</h2>
-<div class="outline-text-2" id="text-org7815aca">
+<div id="outline-container-org6586f8d" class="outline-2">
+<h2 id="org6586f8d">TL;DR</h2>
+<div class="outline-text-2" id="text-org6586f8d">
 <p>
 Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
@@ -7086,9 +7087,9 @@ Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
 </div>
 </div>
-<div id="outline-container-orga207835" class="outline-2">
-<h2 id="orga207835">结果还是过程？</h2>
-<div class="outline-text-2" id="text-orga207835">
+<div id="outline-container-orge18ea77" class="outline-2">
+<h2 id="orge18ea77">结果还是过程？</h2>
+<div class="outline-text-2" id="text-orge18ea77">
 <blockquote>
 <p>
 对于这样的现象，我先下一个结论：软件开发向来是为了解决问题（Problem Solving），重要的是解决问题的结果，而不是解决的方式。
@@ -7146,9 +7147,9 @@ via: <a href="https://simonwillison.net/2026/Jan/2/ben-werdmuller/">https://simo
 </p>
 </div>
 </div>
-<div id="outline-container-orgf94230b" class="outline-2">
-<h2 id="orgf94230b">我不喜欢 LLM 代码生成</h2>
-<div class="outline-text-2" id="text-orgf94230b">
+<div id="outline-container-org9510693" class="outline-2">
+<h2 id="org9510693">我不喜欢 LLM 代码生成</h2>
+<div class="outline-text-2" id="text-org9510693">
 <p>
 但对于 Vibe Coding 和 LLM 代码生成，我始终不太喜欢。
 </p>
@@ -7277,7 +7278,7 @@ LLM 生成代码这个过程中，它始终是一个概率结果。传统自动�
 
 <p>
 Naur theory 诺尔理论：
-诺尔理论指的是程序员对代码行为的心理直觉或心智模型。在Peter Naur 1985年的经典论文《Programming as Theory Building》中，他提出了一个革命性的观点：
+诺尔理论指的是程序员对代码行为的心理直觉或心智模型。在 Peter Naur 1985年的经典论文《Programming as Theory Building》中，他提出了一个革命性的观点：
 编程不仅仅是编写代码，而是在脑海中构建一个关于系统如何运作的理论。
 via: <a href="https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735">https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735</a>
 </p>
@@ -7295,7 +7296,7 @@ via: <a href="https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb
 </p>
 
 <p>
-只有当LLM降低你的维护成本，且降低幅度恰好与它增加代码的速度成反比时，这个算式才成立。如果你的产出翻倍，维护这些产出的成本也翻倍，那么二乘以二意味着你的维护成本翻了四倍。如果你的产出翻倍，但维护成本保持不变，二乘以一意味着你的维护成本仍然翻了一倍。
+只有当 LLM 降低你的维护成本，且降低幅度恰好与它增加代码的速度成反比时，这个算式才成立。如果你的产出翻倍，维护这些产出的成本也翻倍，那么二乘以二意味着你的维护成本翻了四倍。如果你的产出翻倍，但维护成本保持不变，二乘以一意味着你的维护成本仍然翻了一倍。
 </p>
 
 <p>
@@ -7305,11 +7306,35 @@ via: <a href="https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb
 <p>
 via: <a href="https://simonwillison.net/2026/May/11/james-shore/">https://simonwillison.net/2026/May/11/james-shore/</a>
 </p>
+
+<p>
+2026-08-04 added:
+</p>
+
+<p>
+The joy of working on personal projects comes from <a href="https://ankursethi.com/blog/results-are-a-side-effect-of-doing-the-work-with-love/">the process, not from the outcome</a>. [&#x2026;]
+</p>
+
+<p>
+Most importantly, this workflow allows me to build a spatial map of my codebase. I know where every bit of functionality lives in the codebase. When I need to make a change, I know exactly where I need to make it. It not only helps me work faster within my projects, it also makes it easier for me to better prompt and instruct the LLM in the future.
+</p>
+
+<p>
+When I was learning to code as a teenager, experienced programmers would often tell me to never copy and paste code into my projects. If I was learning from a book, I was advised to copy all the examples into my computer and make sure I could run them. If I was learning from a blog post or forum answer, I was advised to type it out and adapt it to my codebase so I understood it completely.
+</p>
+
+<p>
+via: <a href="https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/">https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/</a> , <a href="https://news.ycombinator.com/item?id=49153374">https://news.ycombinator.com/item?id=49153374</a>
+</p>
+
+<p>
+作者的这些想法也是我一直对 LLM 生成代码的倾向。那些已经很熟悉的“重复无聊”的代码构建流程交给 LLM 是很省事的，特别是根据现有代码做类推的时候。
+</p>
 </div>
 </div>
-<div id="outline-container-orgf957984" class="outline-2">
-<h2 id="orgf957984">不同的立场</h2>
-<div class="outline-text-2" id="text-orgf957984">
+<div id="outline-container-org044acdd" class="outline-2">
+<h2 id="org044acdd">不同的立场</h2>
+<div class="outline-text-2" id="text-org044acdd">
 <p>
 <a href="https://antirez.com/news/158">Don't fall into the anti-AI hype - &lt;antirez&gt;</a>
 </p>
@@ -7359,9 +7384,9 @@ antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: <a href="https:
 </p>
 </div>
 </div>
-<div id="outline-container-org0cc7ca0" class="outline-2">
-<h2 id="org0cc7ca0">2026-03-24 add</h2>
-<div class="outline-text-2" id="text-org0cc7ca0">
+<div id="outline-container-org099e817" class="outline-2">
+<h2 id="org099e817">2026-03-24 add</h2>
+<div class="outline-text-2" id="text-org099e817">
 <p>
 <a href="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/">https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/</a> 这篇文章的这部分说的挺好，但对马克思和资本主义之间的那些观点在我看来有些片面甚至理解偏差了：
 </p>
@@ -7441,7 +7466,7 @@ No matter what tools arrive, no matter how powerful they become, they will alway
 </blockquote>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-thinking.html">Thinking</a> <a href="https://www.vandee.art/blog/tag-llm.html">LLM</a> </div>]]></description>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-thinking.html" class="tag" data-tag="thinking" data-index="0">Thinking</a> <a href="https://www.vandee.art/blog/tag-llm.html" class="tag" data-tag="llm" data-index="1">LLM</a> </span></div>]]></description>
   <category><![CDATA[Thinking]]></category>
   <category><![CDATA[LLM]]></category>
   <link>https://www.vandee.art/blog/2026-01-05-vibe-coding-is-kind-of-like-borrowing.html</link>
