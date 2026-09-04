@@ -47,38 +47,42 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8290809">TL;DR</a></li>
-<li><a href="#org14a7dc5">Why Linux</a></li>
-<li><a href="#orgd43079f">Asahi Alarm</a>
+<li><a href="#org67e84f9">TL;DR</a></li>
+<li><a href="#org933f89c">Why Linux</a></li>
+<li><a href="#org0ff93e3">Asahi Alarm</a>
 <ul>
-<li><a href="#orgcf02b8a">初始化安装</a></li>
-<li><a href="#orgf353a7a">WM &amp; DM</a></li>
-<li><a href="#org8462fe6">App launcher</a></li>
-<li><a href="#orgf7d5edd">Theme</a></li>
-<li><a href="#orgeb30817">Bluetooth &amp;&amp; Wi-Fi</a></li>
-<li><a href="#org7d53b87">Fcitx &amp;&amp; Rime 输入法</a></li>
-<li><a href="#org2197d90">Obs Studio</a></li>
+<li><a href="#org069d98e">初始化安装</a></li>
+<li><a href="#org4895ce5">WM &amp; DM</a></li>
+<li><a href="#org6f29b81">App launcher</a></li>
+<li><a href="#org4dd0731">Theme</a></li>
+<li><a href="#org4af671b">Bluetooth &amp;&amp; Wi-Fi</a></li>
+<li><a href="#orgd65ce1c">Fcitx &amp;&amp; Rime 输入法</a></li>
+<li><a href="#orgbdaac50">Obs Studio</a></li>
 </ul>
 </li>
-<li><a href="#orge2b5d88">Settings</a>
+<li><a href="#org3843700">Settings</a>
 <ul>
-<li><a href="#org353c304">Sway</a></li>
-<li><a href="#orgc3458b2">充电提示音</a></li>
-<li><a href="#orgded3815">Others</a></li>
+<li><a href="#org5bde332">Sway</a>
+<ul>
+<li><a href="#org6ebd79d">My Sway + i3status config:</a></li>
 </ul>
 </li>
-<li><a href="#org3a3e27b">Tips</a>
+<li><a href="#org9ec7832">充电提示音</a></li>
+<li><a href="#org5dd12fe">Others</a></li>
+</ul>
+</li>
+<li><a href="#orgd4386c4">Tips</a>
 <ul>
-<li><a href="#org3d1cc07">Grub 修复</a></li>
-<li><a href="#org1181a8a">NVIDIA 配置</a></li>
+<li><a href="#org62a07a2">Grub 修复</a></li>
+<li><a href="#org357255a">NVIDIA 配置</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org8290809" class="outline-2">
-<h2 id="org8290809">TL;DR</h2>
-<div class="outline-text-2" id="text-org8290809">
+<div id="outline-container-org67e84f9" class="outline-2">
+<h2 id="org67e84f9">TL;DR</h2>
+<div class="outline-text-2" id="text-org67e84f9">
 <p>
 几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 </p>
@@ -92,9 +96,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org14a7dc5" class="outline-2">
-<h2 id="org14a7dc5">Why Linux</h2>
-<div class="outline-text-2" id="text-org14a7dc5">
+<div id="outline-container-org933f89c" class="outline-2">
+<h2 id="org933f89c">Why Linux</h2>
+<div class="outline-text-2" id="text-org933f89c">
 <p>
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 </p>
@@ -112,15 +116,15 @@
 </p>
 
 <p>
-当个人电脑 PC 对我来说不再只是一个工具，而是一个伙伴的时候，Linux 就是现在最适合我的操作系统，<a href="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">Linux 太自由了</a> 。
+在 x86 的老电脑上体验测试了一段时间，感觉不错，然后就是这台 Mac。当个人电脑 PC 对我来说不再只是一个工具，而是一个伙伴的时候，Linux 就是现在最适合我的操作系统，<a href="https://www.vandee.art/blog/2025-07-16-linux-is-awesome.html">Linux 太自由了</a> 。
 </p>
 </div>
 </div>
-<div id="outline-container-orgd43079f" class="outline-2">
-<h2 id="orgd43079f">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-orgd43079f">
+<div id="outline-container-org0ff93e3" class="outline-2">
+<h2 id="org0ff93e3">Asahi Alarm</h2>
+<div class="outline-text-2" id="text-org0ff93e3">
 
-<figure id="orgca7403b">
+<figure id="org12ace9c">
 <img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
 
 </figure>
@@ -153,9 +157,9 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
 </p>
 </div>
-<div id="outline-container-orgcf02b8a" class="outline-3">
-<h3 id="orgcf02b8a">初始化安装</h3>
-<div class="outline-text-3" id="text-orgcf02b8a">
+<div id="outline-container-org069d98e" class="outline-3">
+<h3 id="org069d98e">初始化安装</h3>
+<div class="outline-text-3" id="text-org069d98e">
 <p>
 它就是一个裸的 Arch Linux。
 </p>
@@ -177,9 +181,9 @@ Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morga
 </p>
 </div>
 </div>
-<div id="outline-container-orgf353a7a" class="outline-3">
-<h3 id="orgf353a7a">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-orgf353a7a">
+<div id="outline-container-org4895ce5" class="outline-3">
+<h3 id="org4895ce5">WM &amp; DM</h3>
+<div class="outline-text-3" id="text-org4895ce5">
 <p>
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 </p>
@@ -201,9 +205,9 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 </p>
 </div>
 </div>
-<div id="outline-container-org8462fe6" class="outline-3">
-<h3 id="org8462fe6">App launcher</h3>
-<div class="outline-text-3" id="text-org8462fe6">
+<div id="outline-container-org6f29b81" class="outline-3">
+<h3 id="org6f29b81">App launcher</h3>
+<div class="outline-text-3" id="text-org6f29b81">
 <p>
 <a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
 </p>
@@ -221,9 +225,9 @@ Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq
 </p>
 </div>
 </div>
-<div id="outline-container-orgf7d5edd" class="outline-3">
-<h3 id="orgf7d5edd">Theme</h3>
-<div class="outline-text-3" id="text-orgf7d5edd">
+<div id="outline-container-org4dd0731" class="outline-3">
+<h3 id="org4dd0731">Theme</h3>
+<div class="outline-text-3" id="text-org4dd0731">
 <p>
 <a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
 </p>
@@ -245,9 +249,9 @@ wayland 里用 nwg-look
 </ul>
 </div>
 </div>
-<div id="outline-container-orgeb30817" class="outline-3">
-<h3 id="orgeb30817">Bluetooth &amp;&amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-orgeb30817">
+<div id="outline-container-org4af671b" class="outline-3">
+<h3 id="org4af671b">Bluetooth &amp;&amp; Wi-Fi</h3>
+<div class="outline-text-3" id="text-org4af671b">
 <ul class="org-ul">
 <li><p>
 impala: 🛜 TUI for managing wifi on Linux
@@ -267,9 +271,9 @@ bluetui: 🛜 TUI for managing bluetooth on Linux
 </ul>
 </div>
 </div>
-<div id="outline-container-org7d53b87" class="outline-3">
-<h3 id="org7d53b87">Fcitx &amp;&amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-org7d53b87">
+<div id="outline-container-orgd65ce1c" class="outline-3">
+<h3 id="orgd65ce1c">Fcitx &amp;&amp; Rime 输入法</h3>
+<div class="outline-text-3" id="text-orgd65ce1c">
 <p>
 参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
 </p>
@@ -287,9 +291,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </p>
 </div>
 </div>
-<div id="outline-container-org2197d90" class="outline-3">
-<h3 id="org2197d90">Obs Studio</h3>
-<div class="outline-text-3" id="text-org2197d90">
+<div id="outline-container-orgbdaac50" class="outline-3">
+<h3 id="orgbdaac50">Obs Studio</h3>
+<div class="outline-text-3" id="text-orgbdaac50">
 <p>
 Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包。
 </p>
@@ -307,7 +311,7 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 </p>
 
 <p>
-我在编译的时候提示缺少头文件，因此:
+我当时编译的时候提示缺少头文件，因此:
 </p>
 
 <p>
@@ -328,9 +332,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 </div>
 </div>
 </div>
-<div id="outline-container-orge2b5d88" class="outline-2">
-<h2 id="orge2b5d88">Settings</h2>
-<div class="outline-text-2" id="text-orge2b5d88">
+<div id="outline-container-org3843700" class="outline-2">
+<h2 id="org3843700">Settings</h2>
+<div class="outline-text-2" id="text-org3843700">
 <p>
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
 </p>
@@ -339,9 +343,9 @@ Asahi Alarm 里， <code>sudo pacman -S obs-studio</code> 显示没有这个包�
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 </p>
 </div>
-<div id="outline-container-org353c304" class="outline-3">
-<h3 id="org353c304">Sway</h3>
-<div class="outline-text-3" id="text-org353c304">
+<div id="outline-container-org5bde332" class="outline-3">
+<h3 id="org5bde332">Sway</h3>
+<div class="outline-text-3" id="text-org5bde332">
 <p>
 Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
 </p>
@@ -395,6 +399,10 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 </p>
 
 <p>
+系统更新了几次之后，现在 100% 差不多是正常可接受的音量了。
+</p>
+
+<p>
 设置系统显示器亮度：
 </p>
 
@@ -419,10 +427,370 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 <code>exec wl-paste --watch cliphist store</code>
 </p>
 </div>
+<div id="outline-container-org6ebd79d" class="outline-4">
+<h4 id="org6ebd79d">My Sway + i3status config:</h4>
+<div class="outline-text-4" id="text-org6ebd79d">
+<p>
+这两个配置加起来就是之前界面截图的样子了
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil"># Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term ghostty
+# Your preferred application launcher
+set $menu fuzzel
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output * bg /home/vandee/Pictures/create.jpg fill
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+exec swayidle -w \
+         timeout 600 'swaylock -f -c 000000' \
+         timeout 2400 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
+
+# timeout 1800 'systemctl suspend-then-hibernate' \
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+### Input configuration
+#
+   input * {
+    natural_scroll enabled
+    dwt enabled
+    }
+# Example configuration:
+#
+#   input type:touchpad {
+#       dwt enabled
+#       tap enabled
+#       natural_scroll enabled
+#       middle_emulation enabled
+#   }
+#
+#   input type:keyboard {
+#       xkb_layout "eu"
+#   }
+#
+# You can also configure each device individually.
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Custom
+#
+    # stacking or floating windows
+    # for_window [app_id="librewolf"] floating enable
+    for_window [app_id="thunar"] floating enable
+    for_window [app_id="opensnitch"] floating enable
+
+    # bindsym $mod+period exec ghostty
+    bindsym $mod+Shift+b exec librewolf --kiosk --new-windows
+    bindsym $mod+b exec librewolf --new-windows
+    bindsym $mod+e exec emacsclient -c -a ""
+    bindsym $mod+f exec thunar
+
+    # Gaps
+    gaps inner 5
+    smart_gaps on
+
+    # hide tiling window title bar
+    for_window [tiling] border pixel 1
+    smart_borders on
+
+    # OCR
+    bindsym $mod+s exec --no-startup-id sh -c 'grim -g "$(slurp)" -s 1 - | swappy -f -'
+    bindsym $mod+Shift+s exec --no-startup-id ~/MyScripts/screenshot_ocr.sh
+
+    # Clipboard
+    exec wl-paste --watch cliphist store
+    bindsym $mod+v exec --no-startup-id bash -c 'cliphist list | fuzzel --dmenu -p "📋:" | cliphist decode | wl-copy'
+
+#
+# Autostart
+#
+    # dunst
+    exec --no-startup-id dunst
+    exec --no-startup-id opensnitch-ui
+    # Set environment variables for Fcitx
+    exec --no-startup-id fcitx5 -d
+    # Set default volume (105%)
+    exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ 105%
+    # Set default brightness (18%)
+    exec --no-startup-id brightnessctl set 19%
+
+#
+# Basics:
+#
+    font pango:monospace 8
+
+    # Start a terminal
+    bindsym $mod+Return exec $term
+
+    # Kill focused window
+    bindsym $mod+q kill
+
+    # Start your launcher
+    bindsym $mod+space exec $menu
+    # bindsym $mod+space exec --no-startup-id i3-dmenu-desktop
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+Ctrl+h split h
+    bindsym $mod+Ctrl+v split v
+
+    # Switch the current container between different layout styles
+    bindsym $mod+bracketleft layout tabbed
+    bindsym $mod+bracketright layout toggle split
+    bindsym $mod+backslash layout stacking
+    # bindsym $mod+w layout tabbed
+    # bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+Shift+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+tab focus mode_toggle
+
+    # Move focus to the parent container
+    # bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+equal scratchpad show
+#
+# Resizing containers:
+#
+    mode "resize" {
+# left will shrink the containers width
+# right will grow the containers width
+# up will shrink the containers height
+# down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    bindsym Print exec grim
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+        status_command i3status -c ~/.config/sway/i3status.conf
+}
+
+
+include /etc/sway/config.d/*
+
+</pre>
 </div>
-<div id="outline-container-orgc3458b2" class="outline-3">
-<h3 id="orgc3458b2">充电提示音</h3>
-<div class="outline-text-3" id="text-orgc3458b2">
+
+<p>
+i3status.conf:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil"># i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+# https://github.com/andreatta/config/blob/master/i3/i3status.conf
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "wireless wlan0"
+order += "battery 0"
+order += "disk /"
+order += "cpu_temperature 0"
+order += "cpu_usage"
+order += "memory"
+order += "tztime local"
+
+wireless wlan0 {
+    format_up = "  %essid"
+    format_down = "  down"
+}
+
+battery 0 {
+    format = "%status%percentage"
+    path = "/sys/class/power_supply/macsmc-battery/uevent"
+    format_down = ""
+    last_full_capacity = true
+    integer_battery_capacity = true
+    low_threshold = 11
+    threshold_type = percentage
+    hide_seconds = true
+    status_chr = " "
+    status_bat = " "
+    status_unk = " "
+    status_full = " "
+}
+
+cpu_usage {
+    format = " %usage"
+}
+
+cpu_temperature 0 {
+          format = " %degrees°C"
+}
+
+disk "/" {
+        format = " %avail"
+}
+
+memory {
+        format = " %used / %available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY &lt; %available"
+}
+
+tztime local {
+        format = " %Y-%m-%d  %H:%M:%S"
+}
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9ec7832" class="outline-3">
+<h3 id="org9ec7832">充电提示音</h3>
+<div class="outline-text-3" id="text-org9ec7832">
 <p>
 Asahi Linux 判断电池是通过 <code>/sys/class/power_supply/macsmc-ac</code>
 </p>
@@ -497,9 +865,9 @@ udev 的方式在我的电脑上不管用，所以用了一个笨办法。
 </div>
 </div>
 </div>
-<div id="outline-container-orgded3815" class="outline-3">
-<h3 id="orgded3815">Others</h3>
-<div class="outline-text-3" id="text-orgded3815">
+<div id="outline-container-org5dd12fe" class="outline-3">
+<h3 id="org5dd12fe">Others</h3>
+<div class="outline-text-3" id="text-org5dd12fe">
 <ul class="org-ul">
 <li><p>
 调整对比度(X11)
@@ -549,9 +917,9 @@ opensnatch 因为 eBPF 报错
 </div>
 </div>
 </div>
-<div id="outline-container-org3a3e27b" class="outline-2">
-<h2 id="org3a3e27b">Tips</h2>
-<div class="outline-text-2" id="text-org3a3e27b">
+<div id="outline-container-orgd4386c4" class="outline-2">
+<h2 id="orgd4386c4">Tips</h2>
+<div class="outline-text-2" id="text-orgd4386c4">
 <p>
 最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 <code>nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings lib32-nvidia-580xx-utils</code> 了，导致驱动无法适配。
 </p>
@@ -588,9 +956,9 @@ Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 <code>GRUB_DEFAULT='Advanced options for Arch Linux&gt;Arch Linux, with Linux linux'</code>
 </p>
 </div>
-<div id="outline-container-org3d1cc07" class="outline-3">
-<h3 id="org3d1cc07">Grub 修复</h3>
-<div class="outline-text-3" id="text-org3d1cc07">
+<div id="outline-container-org62a07a2" class="outline-3">
+<h3 id="org62a07a2">Grub 修复</h3>
+<div class="outline-text-3" id="text-org62a07a2">
 <p>
 如果你和我一样瞎折腾把 grub 弄坏了，可以 Arch Linux Live USB 引导修复。
 </p>
@@ -637,16 +1005,16 @@ EOF</span>
 </div>
 </div>
 </div>
-<div id="outline-container-org1181a8a" class="outline-3">
-<h3 id="org1181a8a">NVIDIA 配置</h3>
-<div class="outline-text-3" id="text-org1181a8a">
+<div id="outline-container-org357255a" class="outline-3">
+<h3 id="org357255a">NVIDIA 配置</h3>
+<div class="outline-text-3" id="text-org357255a">
 <p>
 我另外一个 x86 电脑的 NVIDIA 显卡很老了，下面的方法管用
 </p>
 
-<ol class="org-ol">
-<li>禁用开源的 Nouveau 驱动</li>
-</ol>
+<p>
+1.禁用开源的 Nouveau 驱动
+</p>
 
 <p>
 Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
@@ -661,15 +1029,15 @@ Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
 </p>
 
 <p>
-在文件中添加：blacklist nouveau
+在文件中添加： <code>blacklist nouveau</code>
 </p>
 
-<ol class="org-ol">
-<li>配置 Initramfs (初始 RAM 文件系统)</li>
-</ol>
+<p>
+2.配置 Initramfs (初始 RAM 文件系统)
+</p>
 
 <p>
-将 NVIDIA 模块添加到 initramfs 中，以确保它们在启动早期被加载。编辑 /etc/mkinitcpio.conf 文件：
+将 NVIDIA 模块添加到 initramfs 中，以确保它们在启动早期被加载。编辑 <code>/etc/mkinitcpio.conf</code> 文件：
 </p>
 
 <p>
@@ -688,9 +1056,9 @@ Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
 完成修改后，重新生成 initramfs： <code>sudo mkinitcpio -P</code>
 </p>
 
-<ol class="org-ol">
-<li>设置内核参数</li>
-</ol>
+<p>
+3.设置内核参数
+</p>
 
 <p>
 为了启用 DRM (Direct Rendering Manager) 内核模式设置 (KMS)，需要向引导加载程序添加一个内核参数。这对于 Wayland 的正常工作是必需的，并且从较新版本的驱动开始默认启用。
@@ -710,7 +1078,7 @@ Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-linux.html">Linux</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-linux.html" class="tag" data-tag="linux" data-index="0">Linux</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

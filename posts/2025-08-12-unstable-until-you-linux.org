@@ -136,6 +136,8 @@ QT_IM_MODULE=fcitx
 
 之前的猜测错了，是因为我用 systemd 启动了 Emacs daemon，而 i3 启动的 Fcitx5 获取的是 i3 session 的环境变量。之前就算我在 Emacs 里使用 ~getenv~ 指令获取到了 ~XMODIFIERS=@im=fcitx~ ，输入法框架还是出不来。由于某种原因，systemd 里启动的 Emacs 和 i3 的环境变量没有统一。找到一个最简单的方法，直接用 tmux 后台 ~Emacs --daemon~ 。
 
+用了 Sway + Wayland + emacs-wayland 之后，这些问题又都消失了🤣  --2026-09-04 add
+
 * 小结
 这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
 

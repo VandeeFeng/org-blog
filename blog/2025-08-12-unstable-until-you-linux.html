@@ -47,28 +47,28 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc8d3a4b">TL;DR</a></li>
-<li><a href="#org5086f84">折腾记录</a>
+<li><a href="#org9137701">TL;DR</a></li>
+<li><a href="#org114f985">折腾记录</a>
 <ul>
-<li><a href="#orgf8c8c4d">Arch Linux 初始安装</a></li>
-<li><a href="#orgea7a68a">i3-X11</a>
+<li><a href="#orgbba1cf3">Arch Linux 初始安装</a></li>
+<li><a href="#org373bd29">i3-X11</a>
 <ul>
-<li><a href="#org5a364d5">安装：</a></li>
-<li><a href="#orgadae6f4">配置</a></li>
-<li><a href="#orgffa2c5c">其他设定</a></li>
+<li><a href="#org135b415">安装：</a></li>
+<li><a href="#orgac28ca4">配置</a></li>
+<li><a href="#org5816858">其他设定</a></li>
 </ul>
 </li>
-<li><a href="#org8f482b8">Sway-Wayland</a></li>
+<li><a href="#org51cb987">Sway-Wayland</a></li>
 </ul>
 </li>
-<li><a href="#orge94a2ec">冤家 Fcitx 和 Emacs</a></li>
-<li><a href="#org381e796">小结</a></li>
+<li><a href="#orgcd6cceb">冤家 Fcitx 和 Emacs</a></li>
+<li><a href="#org7ab829e">小结</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgc8d3a4b" class="outline-2">
-<h2 id="orgc8d3a4b">TL;DR</h2>
-<div class="outline-text-2" id="text-orgc8d3a4b">
+<div id="outline-container-org9137701" class="outline-2">
+<h2 id="org9137701">TL;DR</h2>
+<div class="outline-text-2" id="text-org9137701">
 <p>
 Both stable and unstable until you linux.
 </p>
@@ -82,9 +82,9 @@ Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux �
 </p>
 </div>
 </div>
-<div id="outline-container-org5086f84" class="outline-2">
-<h2 id="org5086f84">折腾记录</h2>
-<div class="outline-text-2" id="text-org5086f84">
+<div id="outline-container-org114f985" class="outline-2">
+<h2 id="org114f985">折腾记录</h2>
+<div class="outline-text-2" id="text-org114f985">
 <p>
 近道都是远路，尝试过几个大佬自己封装好的 Arch Linux，附带了桌面环境的安装和配置。是挺方便的，但是遇到一些小问题的时候，由于不知道他具体是怎么实现的一些功能，又要去看文档和源码。我这个电脑又比较老了，很多问题都没有现成的答案和别人的复现。
 </p>
@@ -98,14 +98,14 @@ Linux 好玩是好玩，就是不太稳定，会遇到很多小问题。Linux �
 </p>
 
 
-<figure id="org564dee5">
+<figure id="orgd0855cf">
 <img src="https://pic.vandee.art/images/2025-08-12_16-18.png" class="img" width="70%" height="70%">
 
 </figure>
 </div>
-<div id="outline-container-orgf8c8c4d" class="outline-3">
-<h3 id="orgf8c8c4d">Arch Linux 初始安装</h3>
-<div class="outline-text-3" id="text-orgf8c8c4d">
+<div id="outline-container-orgbba1cf3" class="outline-3">
+<h3 id="orgbba1cf3">Arch Linux 初始安装</h3>
+<div class="outline-text-3" id="text-orgbba1cf3">
 <p>
 <a href="https://archlinux.org/download/">Arch Linux - Downloads</a> 页面下载最新的 ISO 文件，有很多国内镜像可以选。写入 U 盘之后，进入 BIOS 启动 U 盘引导。
 </p>
@@ -130,16 +130,16 @@ Arch Linux 的镜像对国内环境太友好了，差不多 10 分钟就安装�
 </p>
 </div>
 </div>
-<div id="outline-container-orgea7a68a" class="outline-3">
-<h3 id="orgea7a68a">i3-X11</h3>
-<div class="outline-text-3" id="text-orgea7a68a">
+<div id="outline-container-org373bd29" class="outline-3">
+<h3 id="org373bd29">i3-X11</h3>
+<div class="outline-text-3" id="text-org373bd29">
 <p>
 <a href="https://github.com/i3/i3">i3</a> 的简洁实在太爱了。
 </p>
 </div>
-<div id="outline-container-org5a364d5" class="outline-4">
-<h4 id="org5a364d5">安装：</h4>
-<div class="outline-text-4" id="text-org5a364d5">
+<div id="outline-container-org135b415" class="outline-4">
+<h4 id="org135b415">安装：</h4>
+<div class="outline-text-4" id="text-org135b415">
 <div class="org-src-container">
 <pre class="src src-bash">sudo pacman -S i3 xorg xorg-xinit
 
@@ -152,9 +152,9 @@ Arch Linux 的镜像对国内环境太友好了，差不多 10 分钟就安装�
 </p>
 </div>
 </div>
-<div id="outline-container-orgadae6f4" class="outline-4">
-<h4 id="orgadae6f4">配置</h4>
-<div class="outline-text-4" id="text-orgadae6f4">
+<div id="outline-container-orgac28ca4" class="outline-4">
+<h4 id="orgac28ca4">配置</h4>
+<div class="outline-text-4" id="text-orgac28ca4">
 <ul class="org-ul">
 <li><p>
 设置鼠标滚轮翻转
@@ -206,13 +206,13 @@ smart_borders on
 </ul>
 </div>
 </div>
-<div id="outline-container-orgffa2c5c" class="outline-4">
-<h4 id="orgffa2c5c">其他设定</h4>
+<div id="outline-container-org5816858" class="outline-4">
+<h4 id="org5816858">其他设定</h4>
 </div>
 </div>
-<div id="outline-container-org8f482b8" class="outline-3">
-<h3 id="org8f482b8">Sway-Wayland</h3>
-<div class="outline-text-3" id="text-org8f482b8">
+<div id="outline-container-org51cb987" class="outline-3">
+<h3 id="org51cb987">Sway-Wayland</h3>
+<div class="outline-text-3" id="text-org51cb987">
 <p>
 2025-09-01 added
 </p>
@@ -253,9 +253,9 @@ dmenu 换成了 fuzzel，也很轻量。
 </div>
 </div>
 </div>
-<div id="outline-container-orge94a2ec" class="outline-2">
-<h2 id="orge94a2ec">冤家 Fcitx 和 Emacs</h2>
-<div class="outline-text-2" id="text-orge94a2ec">
+<div id="outline-container-orgcd6cceb" class="outline-2">
+<h2 id="orgcd6cceb">冤家 Fcitx 和 Emacs</h2>
+<div class="outline-text-2" id="text-orgcd6cceb">
 <p>
 <code>~/.xprofile</code>
 </p>
@@ -301,11 +301,15 @@ dmenu 换成了 fuzzel，也很轻量。
 <p>
 之前的猜测错了，是因为我用 systemd 启动了 Emacs daemon，而 i3 启动的 Fcitx5 获取的是 i3 session 的环境变量。之前就算我在 Emacs 里使用 <code>getenv</code> 指令获取到了 <code>XMODIFIERS=@im=fcitx</code> ，输入法框架还是出不来。由于某种原因，systemd 里启动的 Emacs 和 i3 的环境变量没有统一。找到一个最简单的方法，直接用 tmux 后台 <code>Emacs --daemon</code> 。
 </p>
+
+<p>
+用了 Sway + Wayland + emacs-wayland 之后，这些问题又都消失了🤣  &#x2013;2026-09-04 add
+</p>
 </div>
 </div>
-<div id="outline-container-org381e796" class="outline-2">
-<h2 id="org381e796">小结</h2>
-<div class="outline-text-2" id="text-org381e796">
+<div id="outline-container-org7ab829e" class="outline-2">
+<h2 id="org7ab829e">小结</h2>
+<div class="outline-text-2" id="text-org7ab829e">
 <p>
 这可能就是 Linux 一直不是流行的桌面环境的原因，它的桌面环境和 win、mac 比起来不那么稳定，不同的硬件配置和环境遇到的问题都不一样，得自己看文档解决。但这同时也是 hacker、nerd 和折腾仔（我）喜欢 Linux 的原因，它和 Emacs 一样，都是我的赛伯乐高。
 </p>
@@ -315,7 +319,7 @@ Linux 就是我会一直使用下去的操作系统, <a href="https://www.vandee
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-linux.html">Linux</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-linux.html" class="tag" data-tag="linux" data-index="0">Linux</a> <a href="https://www.vandee.art/blog/tag-ramble.html" class="tag" data-tag="ramble" data-index="1">Ramble</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>
