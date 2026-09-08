@@ -1,0 +1,316 @@
+#+title: My Experience with LLM-Assisted Coding
+#+date: <2026-09-07 22:25>
+#+description: 我觉得半自动让 LLM 填空挺靠谱的。自己写好函数、结构体的命名语义，固定好大的代码逻辑框架，拿不准、不会写的细节实现让 LLM 扩展生成。
+#+filetags: Coding
+
+* TL;DR
+
+这段时间还是在构建 phi，它更像是一个可以自己迭代成长的小伙伴，不只是一个我在构建的工具。用别人的和自己做的，感觉还是很不一样。
+
+ClaudeCode，OpenCode，pi，现在是自己构建的 phi。汇总整理一下半自动 vibe coding 的一些经验。
+
+* Rules
+** Maintain mental & codebase map
+
+#+begin_quote
+Your best engineers don’t grep randomly. They have a mental map:
+- What each folder owns
+- What breaks if you touch it wrong
+- Where the real logic lives
+
+via: https://www.railly.dev/blog/intent-layer/
+#+end_quote
+
+SKILL: intent-layer https://github.com/crafter-station/skills
+
+also: https://github.com/affaan-m/everything-claude-code/blob/main/commands/update-codemaps.md
+
+心智模型 + AGENTS.md + design.md。
+
+AGENTS.md 简明扼要的给出原则性的要求，一定不能篇幅太大，通过设计文档补充细节，让 LLM 按需索引。
+
+** Maintain clear context
+SKILL: Onboard https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md
+
+明确清晰的描述自己的需求非常重要，这个明确清晰是对 LLM 而言，不是指自然语言。
+
+对于大部分模型，英文 prompt 效果比中文好。现在我更喜欢直接用代码或伪代码。
+
+框定每一次任务的上下文，@file 直接给出关键文件。
+
+** Maintain useful patterns
+SKILL: https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md
+
+在解决实际的代码问题的时候，有许多方案是可以固定下来复用的。
+
+根据这个 SKILL，我设计了一个 learned skill。learn skill 会固有价值的 pattern，生成 learned skill。learned skill 的 SKILL.md 是其他 learned skill 的 index。
+
+不选择把 learned skill 生成单独的 skill 文件夹是因为它们的普遍性不强，也经常要更新和修改，不能完全当作 SKILL 来设计。
+
+Learn skill：
+
+#+BEGIN_SRC
+---
+name: learn
+description: Extract reusable patterns from sessions into Phi learned skills. Use when the user asks to extract learning, save a reusable pattern, preserve an error resolution or debugging technique, or invokes /skill:learn. `[SKILL Path]/learned/SKILL.md` is the index of all learned skills.
+---
+
+# Learn Skill
+
+Dynamically extract and store reusable patterns as skills.
+
+`[SKILL Path]` refers to Phi's skill root: `~/.phi/skills`.
+
+## Quick Start
+
+When user wants to extract learning from current session:
+
+1. Review session context for extractable patterns
+2. Identify the most valuable/reusable insight,list them
+3. Ask user for confirmation before creating skill file
+4. Create `[SKILL Path]/learned/[skill-name].md` using [templates/learned-skill-template.md](templates/learned-skill-template.md)
+5. Update `[SKILL Path]/learned/SKILL.md` using [templates/learned-SKILL.md](templates/learned-SKILL.md)
+6. Update the total skills number in SKILL.md.
+
+## What to Extract
+
+### 1. Error Resolution Patterns
+- What error occurred?
+- What was the root cause?
+- What fixed it?
+- Is this reusable for similar errors?
+
+### 2. Debugging Techniques
+- Non-obvious debugging steps
+- Tool combinations that worked
+- Diagnostic patterns
+
+### 3. Workarounds
+- Library quirks
+- API limitations
+- Version-specific fixes
+
+### 4. Project-Specific Patterns
+- Codebase conventions discovered
+- Architecture decisions made
+- Integration patterns
+
+## Quality Guidelines
+
+### DO Extract:
+- Error patterns that occur more than once
+- Non-obvious debugging techniques
+- Workarounds for library quirks
+- Architecture decisions and their rationale
+- Integration patterns across services/tools
+
+### DO NOT Extract:
+- Trivial fixes (typos, simple syntax errors)
+- One-time issues (specific API outages, temporary glitches)
+- Obvious solutions (standard library usage without special context)
+- Information already well-documented elsewhere
+
+### Tips for Quality Skills
+1. **Be Specific**: Narrow trigger conditions = better matching
+2. **Include Examples**: Code snippets make patterns actionable
+3. **Document Why**: Explain the problem, not just the solution
+4. **Keep Focused**: One pattern per skill
+5. **Use Descriptive Names**: Names should indicate what the skill solves
+
+
+## Skill File Format
+
+### Individual Skill Files
+
+Use the template file [templates/learned-skill-template.md](templates/learned-skill-template.md) as the base for all learned skills.
+
+Key sections:
+- **Frontmatter**: name and description (critical for skill discovery)
+- **Problem**: What specific issue this solves
+- **Solution**: Actionable steps to implement
+- **Example**: Code snippet if applicable
+- **When to Use**: Trigger conditions for activation
+- **Related Patterns**: Cross-references to other skills
+
+### SKILL.md
+
+Use [templates/learned-SKILL.md](templates/learned-SKILL.md) as the base for maintaining the learned skills index.
+
+Purpose:
+- Provides a categorized listing of all learned skills
+- Enables easy browsing and discovery of patterns
+- Tracks skill count and update timestamp
+
+Update SKILL.md whenever saving a new skill.
+
+## Extraction Process
+
+### Step 1: Resolve Phi Context
+
+1. Use `session-info` to retrieve the current Phi session ID, title, and session reference.
+2. Call `memory_check` and read its `Path:` value to resolve the current Phi project memory directory.
+3. Use `memory_search` when related project memories may contain prior decisions or existing patterns.
+4. Review the current conversation and available project context.
+
+Look for:
+- Repeated error fixes
+- Non-obvious solutions
+- Workarounds discovered
+- Best practices learned
+
+### Step 2: Identify Pattern
+
+Ask yourself:
+- Is this reusable? (Will save time in future sessions)
+- Is this non-trivial? (Not typos or simple syntax errors)
+- Is this generalizable? (Not one-time issues)
+
+Prioritize patterns that:
+- Solve common problems
+- Apply across multiple projects
+- Document non-obvious solutions
+
+### Step 3: Draft Skill
+
+Use the skill file format above.
+
+**Naming Convention:**
+- Use kebab-case for skill names
+- Make names descriptive but concise
+- Example: `async-error-handling-pattern`, `docker-volume-permission-fix`
+
+**Frontmatter:**
+```yaml
+---
+name: [skill-name]
+description: Use when [trigger conditions]. Covers [specific problem/solution].
+---
+```
+
+The description is critical - it's what helps the skill system know when to load this skill.
+
+### Step 4: Validate
+
+Before presenting to user:
+- Check that the skill has clear trigger conditions
+- Ensure the solution is actionable
+- Verify code examples are correct
+- Confirm the pattern is truly reusable
+
+### Step 5: Present and Save
+
+Show the user:
+1. Pattern name
+2. Brief description of what was extracted
+3. Why it's valuable
+
+Ask user question: "Save this pattern to learned skills?"
+
+If yes, save to `[SKILL Path]/learned/[skill-name].md`, or use:
+
+```bash
+scripts/save-learned-skill.sh <skill-name> <draft-file>
+```
+
+### Step 6: Update `learned/SKILL.md`
+
+Add the new skill to the index section.
+
+## Common Use Cases
+
+### User runs the Phi skill command
+```
+User: /skill:learn
+```
+1. Review session for extractable patterns
+2. Present candidate patterns to user
+3. Ask which to save
+4. Save selected patterns
+
+### User asks to extract specific topic
+```
+User: Extract what we learned about async error handling
+```
+1. Search session context for async/error patterns
+2. Compile findings
+3. Generate skill file
+4. Present and save
+
+### User wants to capture architecture decision
+```
+User: Save the event sourcing pattern we used
+```
+1. Extract the pattern details
+2. Document rationale and trade-offs
+3. Create skill with example code
+4. Present and save
+
+## Integration with Other Skills
+
+This skill works well with:
+- **session-info**: Retrieve the current Phi session metadata and reference.
+- **memory_check**: Resolve the current Phi project memory directory.
+- **memory_search**: Find related project memories before extracting duplicate patterns.
+- **skill-creator**: Create complex bundled skills with scripts or references.
+
+#+END_SRC
+
+Learnd skill：
+
+#+BEGIN_SRC
+---
+name: learned
+description: >
+  learned skill is a collection of learned skill user create.It's a index of all learned skills.
+---
+
+# Learned Skills Index
+
+You can read the skill file to load the skill you need.
+
+Treat these skill file below as `learned skill`'s references.
+
+## Error Patterns
+- [skill-1.md](skill-1.md)
+- [skill-2.md](skill-2.md)
+
+## Debugging Techniques
+- [skill-3.md](skill-3.md)
+
+## Workarounds
+- [skill-4.md](skill-4.md)
+
+## Project-Specific
+- [skill-5.md](skill-5.md)
+
+# Statistics
+Total skills: [count]
+Last updated: [date]
+#+END_SRC
+
+** Maintain code quality and style
+SKILL: code-simplifier https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md
+
+一定要 review，亲测加上：这是别人的代码，效果会更好🤣，LLM 拍马屁的概率大幅下降。
+
+* Experience
+
+LLM 生成的代码很容易出现这些问题：
+
+- 不准确、不合适的语义命名
+
+- 意义不大的 wrapper 或 projection、完全可以 inline 的独立函数
+
+- 重复的业务逻辑，重复的代码，legacy 代码
+
+- 按照答案出题目的 test
+
+很多 slop 代码在中文里看起来就像：我现在想了一下，我决定就按照一个还比较喜欢的方式来进行这次的写作。
+
+让我印象最深的是之前 pi-memory-md 的时候，用自然语言要求 agent 完成一段获取 memory 目录的逻辑。搞了一大堆复杂的文件、文件夹路径逻辑，还写了能够跑通的 test，其实只需要利用 ~git rev-parse --show-toplevel~ 就可以了。
+
+对于代码量很大，业务逻辑复杂的实现，一次 session 的上下文窗口不够，需要分段实现，自然语言到代码逻辑之间的损耗变大了很多。就算写好了明确的 plan 和 design，也很难保证代码质量和业务逻辑的完整。
+
+比如在实现 phi memory graph 的时候，让 agent 按照已经写好了设计文档执行。一看代码，就是把之前 phi memory 的部分实现换了个名字，写了几个新的结构体，大量的重复性包装，完全没有按照文档实现新的 graph 架构。还有重构 phi SDK public 和 private API 边界时大量的重复代码逻辑和无意义包装，等等。
+
+现在最适合我的方式：半自动让 LLM 填空。自己写好函数、结构体的命名语义，固定好代码逻辑骨架和业务框架，拿不准、不会写的细节用伪代码，再交给 LLM 填空。
