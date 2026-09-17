@@ -47,22 +47,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2ed814d">TL;DR</a></li>
-<li><a href="#org0386fef">Rules</a>
+<li><a href="#org9bfeab5">TL;DR</a></li>
+<li><a href="#orgd9b2614">Rules</a>
 <ul>
-<li><a href="#org7ba22d2">Maintain mental &amp; codebase map</a></li>
-<li><a href="#org4dffe98">Maintain clear context</a></li>
-<li><a href="#orgf836d63">Maintain useful patterns</a></li>
-<li><a href="#org25c918d">Maintain code quality and style</a></li>
+<li><a href="#org08d9c4b">Maintain mental &amp; codebase map</a></li>
+<li><a href="#org50b633f">Maintain clear context</a></li>
+<li><a href="#org51d28e5">Maintain useful patterns</a></li>
+<li><a href="#org0fe320b">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#orgc7efc97">Experience</a></li>
+<li><a href="#org598ab80">Experience</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org2ed814d" class="outline-2">
-<h2 id="org2ed814d">TL;DR</h2>
-<div class="outline-text-2" id="text-org2ed814d">
+<div id="outline-container-org9bfeab5" class="outline-2">
+<h2 id="org9bfeab5">TL;DR</h2>
+<div class="outline-text-2" id="text-org9bfeab5">
 <p>
 这段时间还是在构建 phi，它更像是一个可以自己迭代成长的小伙伴，不只是一个我在构建的工具。用别人的和自己做的，感觉还是很不一样。
 </p>
@@ -72,13 +72,13 @@ ClaudeCode，OpenCode，pi，现在是自己构建的 phi。汇总整理一下�
 </p>
 </div>
 </div>
-<div id="outline-container-org0386fef" class="outline-2">
-<h2 id="org0386fef">Rules</h2>
-<div class="outline-text-2" id="text-org0386fef">
+<div id="outline-container-orgd9b2614" class="outline-2">
+<h2 id="orgd9b2614">Rules</h2>
+<div class="outline-text-2" id="text-orgd9b2614">
 </div>
-<div id="outline-container-org7ba22d2" class="outline-3">
-<h3 id="org7ba22d2">Maintain mental &amp; codebase map</h3>
-<div class="outline-text-3" id="text-org7ba22d2">
+<div id="outline-container-org08d9c4b" class="outline-3">
+<h3 id="org08d9c4b">Maintain mental &amp; codebase map</h3>
+<div class="outline-text-3" id="text-org08d9c4b">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -111,15 +111,20 @@ AGENTS.md 简明扼要的给出原则性的要求，一定不能篇幅太大，�
 </p>
 </div>
 </div>
-<div id="outline-container-org4dffe98" class="outline-3">
-<h3 id="org4dffe98">Maintain clear context</h3>
-<div class="outline-text-3" id="text-org4dffe98">
+<div id="outline-container-org50b633f" class="outline-3">
+<h3 id="org50b633f">Maintain clear context</h3>
+<div class="outline-text-3" id="text-org50b633f">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
 
-<p>
+<ul class="org-ul">
+<li><p>
 明确清晰的描述自己的需求非常重要，这个明确清晰是对 LLM 而言，不是指自然语言。
+</p>
+
+<p>
+给 agent 的任务一定要有具体的实现目标和参考标准，这个目标就是 agent 后续 test 的关键来源。
 </p>
 
 <p>
@@ -128,12 +133,17 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 
 <p>
 框定每一次任务的上下文，@file 直接给出关键文件。
-</p>
+</p></li>
+
+<li>subagent 调用便宜模型准备任务上下文。例如回顾之前的设计计划，搜索网络文章、资料，查看关键文件列出关键代码和对应文件。主 agent 贵模型推理分析固定方案调整 task。</li>
+
+<li>充分利用 cache</li>
+</ul>
 </div>
 </div>
-<div id="outline-container-orgf836d63" class="outline-3">
-<h3 id="orgf836d63">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-orgf836d63">
+<div id="outline-container-org51d28e5" class="outline-3">
+<h3 id="org51d28e5">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-org51d28e5">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -398,9 +408,9 @@ Last updated: [date]
 </div>
 </div>
 </div>
-<div id="outline-container-org25c918d" class="outline-3">
-<h3 id="org25c918d">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org25c918d">
+<div id="outline-container-org0fe320b" class="outline-3">
+<h3 id="org0fe320b">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org0fe320b">
 <p>
 SKILL: code-simplifier <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
 </p>
@@ -411,9 +421,9 @@ SKILL: code-simplifier <a href="https://github.com/anthropics/claude-plugins-off
 </div>
 </div>
 </div>
-<div id="outline-container-orgc7efc97" class="outline-2">
-<h2 id="orgc7efc97">Experience</h2>
-<div class="outline-text-2" id="text-orgc7efc97">
+<div id="outline-container-org598ab80" class="outline-2">
+<h2 id="org598ab80">Experience</h2>
+<div class="outline-text-2" id="text-org598ab80">
 <p>
 LLM 生成的代码很容易出现这些问题：
 </p>
@@ -437,7 +447,7 @@ LLM 生成的代码很容易出现这些问题：
 </p>
 
 <p>
-对于代码量很大，业务逻辑复杂的实现，一次 session 的上下文窗口不够，需要分段实现，自然语言到代码逻辑之间的损耗变大了很多。就算写好了明确的 plan 和 design，也很难保证代码质量和业务逻辑的完整。
+对于代码量很大，业务逻辑复杂的实现，一次 session 的上下文窗口不够，需要分段实现或多 agent 合作，自然语言到代码逻辑之间的损耗变大了很多。就算写好了明确的 plan 和 design，也很难保证代码质量和业务逻辑的完整。
 </p>
 
 <p>
@@ -449,7 +459,7 @@ LLM 生成的代码很容易出现这些问题：
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-coding.html" class="tag" data-tag="coding" data-index="0">Coding</a> </span></div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

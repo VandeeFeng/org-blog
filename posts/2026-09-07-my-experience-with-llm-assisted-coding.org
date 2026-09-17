@@ -32,11 +32,17 @@ AGENTS.md 简明扼要的给出原则性的要求，一定不能篇幅太大，�
 ** Maintain clear context
 SKILL: Onboard https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md
 
-明确清晰的描述自己的需求非常重要，这个明确清晰是对 LLM 而言，不是指自然语言。
+- 明确清晰的描述自己的需求非常重要，这个明确清晰是对 LLM 而言，不是指自然语言。
 
-对于大部分模型，英文 prompt 效果比中文好。现在我更喜欢直接用代码或伪代码。
+  给 agent 的任务一定要有具体的实现目标和参考标准，这个目标就是 agent 后续 test 的关键来源。
 
-框定每一次任务的上下文，@file 直接给出关键文件。
+  对于大部分模型，英文 prompt 效果比中文好。现在我更喜欢直接用代码或伪代码。
+
+  框定每一次任务的上下文，@file 直接给出关键文件。
+
+- subagent 调用便宜模型准备任务上下文。例如回顾之前的设计计划，搜索网络文章、资料，查看关键文件列出关键代码和对应文件。主 agent 贵模型推理分析固定方案调整 task。
+
+- 充分利用 cache
 
 ** Maintain useful patterns
 SKILL: https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md
@@ -309,7 +315,7 @@ LLM 生成的代码很容易出现这些问题：
 
 让我印象最深的是之前 pi-memory-md 的时候，用自然语言要求 agent 完成一段获取 memory 目录的逻辑。搞了一大堆复杂的文件、文件夹路径逻辑，还写了能够跑通的 test，其实只需要利用 ~git rev-parse --show-toplevel~ 就可以了。
 
-对于代码量很大，业务逻辑复杂的实现，一次 session 的上下文窗口不够，需要分段实现，自然语言到代码逻辑之间的损耗变大了很多。就算写好了明确的 plan 和 design，也很难保证代码质量和业务逻辑的完整。
+对于代码量很大，业务逻辑复杂的实现，一次 session 的上下文窗口不够，需要分段实现或多 agent 合作，自然语言到代码逻辑之间的损耗变大了很多。就算写好了明确的 plan 和 design，也很难保证代码质量和业务逻辑的完整。
 
 比如在实现 phi memory graph 的时候，让 agent 按照已经写好了设计文档执行。一看代码，就是把之前 phi memory 的部分实现换了个名字，写了几个新的结构体，大量的重复性包装，完全没有按照文档实现新的 graph 架构。还有重构 phi SDK public 和 private API 边界时大量的重复代码逻辑和无意义包装，等等。
 

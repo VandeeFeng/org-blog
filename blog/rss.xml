@@ -4,8 +4,7 @@
 <title><![CDATA[Vandee's Blog]]></title>
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
-<atom:link href="https://www.vandee.art/blog/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Tue, 08 Sep 2026 11:50:56 +0800</lastBuildDate>
+<lastBuildDate>Thu, 17 Sep 2026 12:32:29 +0800</lastBuildDate>
 <item>
   <title><![CDATA[My Experience with LLM-Assisted Coding]]></title>
   <description><![CDATA[
@@ -13,22 +12,22 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org2ed814d">TL;DR</a></li>
-<li><a href="#org0386fef">Rules</a>
+<li><a href="#org9bfeab5">TL;DR</a></li>
+<li><a href="#orgd9b2614">Rules</a>
 <ul>
-<li><a href="#org7ba22d2">Maintain mental &amp; codebase map</a></li>
-<li><a href="#org4dffe98">Maintain clear context</a></li>
-<li><a href="#orgf836d63">Maintain useful patterns</a></li>
-<li><a href="#org25c918d">Maintain code quality and style</a></li>
+<li><a href="#org08d9c4b">Maintain mental &amp; codebase map</a></li>
+<li><a href="#org50b633f">Maintain clear context</a></li>
+<li><a href="#org51d28e5">Maintain useful patterns</a></li>
+<li><a href="#org0fe320b">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#orgc7efc97">Experience</a></li>
+<li><a href="#org598ab80">Experience</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org2ed814d" class="outline-2">
-<h2 id="org2ed814d">TL;DR</h2>
-<div class="outline-text-2" id="text-org2ed814d">
+<div id="outline-container-org9bfeab5" class="outline-2">
+<h2 id="org9bfeab5">TL;DR</h2>
+<div class="outline-text-2" id="text-org9bfeab5">
 <p>
 这段时间还是在构建 phi，它更像是一个可以自己迭代成长的小伙伴，不只是一个我在构建的工具。用别人的和自己做的，感觉还是很不一样。
 </p>
@@ -38,13 +37,13 @@ ClaudeCode，OpenCode，pi，现在是自己构建的 phi。汇总整理一下�
 </p>
 </div>
 </div>
-<div id="outline-container-org0386fef" class="outline-2">
-<h2 id="org0386fef">Rules</h2>
-<div class="outline-text-2" id="text-org0386fef">
+<div id="outline-container-orgd9b2614" class="outline-2">
+<h2 id="orgd9b2614">Rules</h2>
+<div class="outline-text-2" id="text-orgd9b2614">
 </div>
-<div id="outline-container-org7ba22d2" class="outline-3">
-<h3 id="org7ba22d2">Maintain mental &amp; codebase map</h3>
-<div class="outline-text-3" id="text-org7ba22d2">
+<div id="outline-container-org08d9c4b" class="outline-3">
+<h3 id="org08d9c4b">Maintain mental &amp; codebase map</h3>
+<div class="outline-text-3" id="text-org08d9c4b">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -77,15 +76,20 @@ AGENTS.md 简明扼要的给出原则性的要求，一定不能篇幅太大，�
 </p>
 </div>
 </div>
-<div id="outline-container-org4dffe98" class="outline-3">
-<h3 id="org4dffe98">Maintain clear context</h3>
-<div class="outline-text-3" id="text-org4dffe98">
+<div id="outline-container-org50b633f" class="outline-3">
+<h3 id="org50b633f">Maintain clear context</h3>
+<div class="outline-text-3" id="text-org50b633f">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
 
-<p>
+<ul class="org-ul">
+<li><p>
 明确清晰的描述自己的需求非常重要，这个明确清晰是对 LLM 而言，不是指自然语言。
+</p>
+
+<p>
+给 agent 的任务一定要有具体的实现目标和参考标准，这个目标就是 agent 后续 test 的关键来源。
 </p>
 
 <p>
@@ -94,12 +98,17 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 
 <p>
 框定每一次任务的上下文，@file 直接给出关键文件。
-</p>
+</p></li>
+
+<li>subagent 调用便宜模型准备任务上下文。例如回顾之前的设计计划，搜索网络文章、资料，查看关键文件列出关键代码和对应文件。主 agent 贵模型推理分析固定方案调整 task。</li>
+
+<li>充分利用 cache</li>
+</ul>
 </div>
 </div>
-<div id="outline-container-orgf836d63" class="outline-3">
-<h3 id="orgf836d63">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-orgf836d63">
+<div id="outline-container-org51d28e5" class="outline-3">
+<h3 id="org51d28e5">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-org51d28e5">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -364,9 +373,9 @@ Last updated: [date]
 </div>
 </div>
 </div>
-<div id="outline-container-org25c918d" class="outline-3">
-<h3 id="org25c918d">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org25c918d">
+<div id="outline-container-org0fe320b" class="outline-3">
+<h3 id="org0fe320b">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org0fe320b">
 <p>
 SKILL: code-simplifier <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
 </p>
@@ -377,9 +386,9 @@ SKILL: code-simplifier <a href="https://github.com/anthropics/claude-plugins-off
 </div>
 </div>
 </div>
-<div id="outline-container-orgc7efc97" class="outline-2">
-<h2 id="orgc7efc97">Experience</h2>
-<div class="outline-text-2" id="text-orgc7efc97">
+<div id="outline-container-org598ab80" class="outline-2">
+<h2 id="org598ab80">Experience</h2>
+<div class="outline-text-2" id="text-org598ab80">
 <p>
 LLM 生成的代码很容易出现这些问题：
 </p>
@@ -403,7 +412,7 @@ LLM 生成的代码很容易出现这些问题：
 </p>
 
 <p>
-对于代码量很大，业务逻辑复杂的实现，一次 session 的上下文窗口不够，需要分段实现，自然语言到代码逻辑之间的损耗变大了很多。就算写好了明确的 plan 和 design，也很难保证代码质量和业务逻辑的完整。
+对于代码量很大，业务逻辑复杂的实现，一次 session 的上下文窗口不够，需要分段实现或多 agent 合作，自然语言到代码逻辑之间的损耗变大了很多。就算写好了明确的 plan 和 design，也很难保证代码质量和业务逻辑的完整。
 </p>
 
 <p>
@@ -415,7 +424,7 @@ LLM 生成的代码很容易出现这些问题：
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-coding.html" class="tag" data-tag="coding" data-index="0">Coding</a> </span></div>]]></description>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div>]]></description>
   <category><![CDATA[Coding]]></category>
   <link>https://www.vandee.art/blog/2026-09-07-my-experience-with-llm-assisted-coding.html</link>
   <guid>https://www.vandee.art/blog/2026-09-07-my-experience-with-llm-assisted-coding.html</guid>
@@ -7482,18 +7491,18 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgabffcee">TL;DR</a></li>
-<li><a href="#org2853ec0">结果还是过程？</a></li>
-<li><a href="#orge22a7c6">我不喜欢 LLM 代码生成</a></li>
-<li><a href="#org6f4b5bf">不同的立场</a></li>
-<li><a href="#org6fba73e">2026-03-24 add</a></li>
-<li><a href="#orgd3411d1">2026-08-31 add</a></li>
+<li><a href="#org068b658">TL;DR</a></li>
+<li><a href="#orga380896">结果还是过程？</a></li>
+<li><a href="#org01cc790">我不喜欢 LLM 代码生成</a></li>
+<li><a href="#org57589ff">不同的立场</a></li>
+<li><a href="#org999532d">2026-03-24 add</a></li>
+<li><a href="#org95f9c23">2026-08-31 add</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgabffcee" class="outline-2">
-<h2 id="orgabffcee">TL;DR</h2>
-<div class="outline-text-2" id="text-orgabffcee">
+<div id="outline-container-org068b658" class="outline-2">
+<h2 id="org068b658">TL;DR</h2>
+<div class="outline-text-2" id="text-org068b658">
 <p>
 Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
@@ -7503,9 +7512,9 @@ Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
 </p>
 </div>
 </div>
-<div id="outline-container-org2853ec0" class="outline-2">
-<h2 id="org2853ec0">结果还是过程？</h2>
-<div class="outline-text-2" id="text-org2853ec0">
+<div id="outline-container-orga380896" class="outline-2">
+<h2 id="orga380896">结果还是过程？</h2>
+<div class="outline-text-2" id="text-orga380896">
 <blockquote>
 <p>
 对于这样的现象，我先下一个结论：软件开发向来是为了解决问题（Problem Solving），重要的是解决问题的结果，而不是解决的方式。
@@ -7563,9 +7572,9 @@ via: <a href="https://simonwillison.net/2026/Jan/2/ben-werdmuller/">https://simo
 </p>
 </div>
 </div>
-<div id="outline-container-orge22a7c6" class="outline-2">
-<h2 id="orge22a7c6">我不喜欢 LLM 代码生成</h2>
-<div class="outline-text-2" id="text-orge22a7c6">
+<div id="outline-container-org01cc790" class="outline-2">
+<h2 id="org01cc790">我不喜欢 LLM 代码生成</h2>
+<div class="outline-text-2" id="text-org01cc790">
 <p>
 但对于 Vibe Coding 和 LLM 代码生成，我始终不太喜欢。
 </p>
@@ -7748,9 +7757,9 @@ via: <a href="https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-ret
 </p>
 </div>
 </div>
-<div id="outline-container-org6f4b5bf" class="outline-2">
-<h2 id="org6f4b5bf">不同的立场</h2>
-<div class="outline-text-2" id="text-org6f4b5bf">
+<div id="outline-container-org57589ff" class="outline-2">
+<h2 id="org57589ff">不同的立场</h2>
+<div class="outline-text-2" id="text-org57589ff">
 <p>
 <a href="https://antirez.com/news/158">Don't fall into the anti-AI hype - &lt;antirez&gt;</a>
 </p>
@@ -7800,9 +7809,9 @@ antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: <a href="https:
 </p>
 </div>
 </div>
-<div id="outline-container-org6fba73e" class="outline-2">
-<h2 id="org6fba73e">2026-03-24 add</h2>
-<div class="outline-text-2" id="text-org6fba73e">
+<div id="outline-container-org999532d" class="outline-2">
+<h2 id="org999532d">2026-03-24 add</h2>
+<div class="outline-text-2" id="text-org999532d">
 <p>
 <a href="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/">https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/</a> 这篇文章的这部分说的挺好，但对马克思和资本主义之间的那些观点在我看来有些片面甚至理解偏差了：
 </p>
@@ -7882,9 +7891,9 @@ No matter what tools arrive, no matter how powerful they become, they will alway
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgd3411d1" class="outline-2">
-<h2 id="orgd3411d1">2026-08-31 add</h2>
-<div class="outline-text-2" id="text-orgd3411d1">
+<div id="outline-container-org95f9c23" class="outline-2">
+<h2 id="org95f9c23">2026-08-31 add</h2>
+<div class="outline-text-2" id="text-org95f9c23">
 <p>
 这篇 blog 讨论的范围很窄，就是 vibe coding，不是 AI 和 agent。
 </p>
@@ -7937,7 +7946,7 @@ AI 代码生成之后，代码更像是是机器执行结果的中间过程，�
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-thinking.html" class="tag" data-tag="thinking" data-index="0">Thinking</a> <a href="https://www.vandee.art/blog/tag-llm.html" class="tag" data-tag="llm" data-index="1">LLM</a> </span></div>]]></description>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-thinking.html">Thinking</a> <a href="https://www.vandee.art/blog/tag-llm.html">LLM</a> </div>]]></description>
   <category><![CDATA[Thinking]]></category>
   <category><![CDATA[LLM]]></category>
   <link>https://www.vandee.art/blog/2026-01-05-vibe-coding-is-kind-of-like-borrowing.html</link>
