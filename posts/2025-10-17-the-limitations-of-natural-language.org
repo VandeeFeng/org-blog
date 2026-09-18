@@ -49,6 +49,14 @@
 
 并且这些逻辑输出是可以直接内嵌到编程语言里的，这又少了一次转换，也就又提升了一次准确性。
 
+- 2026-09-18 add：
+  这也是之前我想过的一种方案，针对 AI 设计一个新的编程语言。
+
+  [[https://bend-lang.com/][Bend]]
+  via: https://news.ycombinator.com/item?id=49746163
+
+  除了 bend，之前也看到许多类似文章：https://blog.mempko.com/a-love-letter-to-object-orientation/
+
 - 2025-10-23 add：
 
   几天之后 DeepSeek 发布了 DeepSeek-OCR 论文: https://github.com/deepseek-ai/DeepSeek-OCR
