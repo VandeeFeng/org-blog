@@ -73,11 +73,11 @@ Vicinae 也挺好用，和 raycast 挺像: https://github.com/vicinaehq/vicinae/
 ** Theme
 [[https://github.com/vinceliuice/Qogir-theme][vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK]]
 
-theme 文件可以在 ~/.themes/, 或者 /usr/share/themes
+theme 文件可以在 ~~/.themes/~, 或者 ~/usr/share/themes~
 
-- 统一 gtk 和 qt 主题：sudo pacman -S --noconfirm lxappearance qt5ct qt6ct kvantum
+- 统一 gtk 和 qt 主题: ~sudo pacman -S --noconfirm lxappearance qt5ct qt6ct kvantum~
 
-- lxappearance 来配置主题，可能需要安装：sudo pacman -S gtk-engine-murrine gnome-themes-extra gtk-engines
+- lxappearance 来配置主题，可能需要安装： ~sudo pacman -S gtk-engine-murrine gnome-themes-extra gtk-engines~
 
   wayland 里用 nwg-look
 
@@ -89,6 +89,7 @@ theme 文件可以在 ~/.themes/, 或者 /usr/share/themes
 - bluetui: 🛜 TUI for managing bluetooth on Linux
 
   https://github.com/pythops/bluetui
+
 ** Fcitx && Rime 输入法
 参考：[[https://manateelazycat.github.io/2025/08/31/fcitx-best-config/][Fcitx 最佳配置实践 2025-08-31]]
 
@@ -96,25 +97,14 @@ Rime + 双拼实在是太巴适了。
 
 Rime 推荐使用：[[https://github.com/rime/plum][rime/plum: 東風破 ]] 安装。
 
-输入法：[[https://github.com/iDvel/rime-ice][iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库]]
-** Obs Studio
-Asahi Alarm 里， ~sudo pacman -S obs-studio~ 显示没有这个包。
+词库：[[https://github.com/iDvel/rime-ice][iDvel/rime-ice: Rime 配置：雾凇拼音 | 长期维护的简体词库]]
 
-安装 CMake 自己手动编译:
+** Media
+- 图片查看：[[https://feh.finalrewind.org/][feh]]
 
-下载源代码：
+- 视频播放：[[https://mpv.io/][mpv]]
 
-~git clone --depth 1 --recurse --shallow-submodules https://github.com/obsproject/obs-studio.git~
-
-我当时编译的时候提示缺少头文件，因此:
-
-~sudo pacman -S qt6-xcb-private-headers~
-
-然后成功编译：
-
-~cmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_BROWSER=OFF -DENABLE_VLC=ON -DENABLE_AJA=OFF..~
-
-如果 PipeWire 选项缺失: wlrobs 是一个 OBS 插件，专为 Wayland 提供屏幕捕获支持，尤其在 Hyprland 或 River 等合成器下有效。paru -S wlrobs-hg。
+- 截图：[[https://gitlab.freedesktop.org/emersion/grim][Simon Ser/grim]] + [[https://github.com/jtheoof/swappy][jtheoof/swappy]]
 
 * Settings
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
@@ -124,44 +114,70 @@ Asahi Alarm 里， ~sudo pacman -S obs-studio~ 显示没有这个包。
 ** Sway
 Sway 会初始化一个配置文件在 ~~/.config/sway/config~ ，在配置文件里修改就好了。
 
-分辨率设置：如果不放大，字就跟蚂蚁一样小
+- 分辨率设置：如果不放大，字就跟蚂蚁一样小
 
-Asahi Alarm 由于苹果硬件的限制，只能缩放，更改不了分辨率，也可能是我没有找对方法。常规设置分辨率的方法不管用。
+  Asahi Alarm 由于苹果硬件的限制，只能缩放，更改不了分辨率，也可能是我没有找对方法。常规设置分辨率的方法不管用。
 
-~exec --no-startup-id xrandr --output eDP-1 --scale 1.5x1.5~
+  ~exec --no-startup-id xrandr --output eDP-1 --scale 1.5x1.5~
 
-截图:
+- 截图:
 
-使用 grim + swappy ,由于之前缩放的原因，flameshot 在截图的时候调用 grim 截图也是放大的，而且有兼容性问题。
+  使用 grim + swappy ,由于之前缩放的原因，flameshot 在截图的时候调用 grim 截图也是放大的，而且有兼容性问题。
 
-~bindsym $mod+s exec --no-startup-id sh -c 'grim -g "$(slurp)" -s 1 - | swappy -f -'~
+  ~bindsym $mod+s exec --no-startup-id sh -c 'grim -g "$(slurp)" -s 1 - | swappy -f -'~
 
-加上了 -s 1 参数，就可以解决截图放大的问题了。
+  加上了 -s 1 参数，就可以解决截图放大的问题了。
 
-OCR: 需要安装 [[https://github.com/tesseract-ocr/tesseract][tesseract-ocr/tesseract]] 并下载相应语言的包
+  OCR: 需要安装 [[https://github.com/tesseract-ocr/tesseract][tesseract-ocr/tesseract]] 并下载相应语言的包
 
-~bindsym $mod+Shift+s exec --no-startup-id ~/MyScripts/screenshot_ocr.sh~
+  ~bindsym $mod+Shift+s exec --no-startup-id ~/MyScripts/screenshot_ocr.sh~
 
-这个脚本就是一个很简单的创建 tmp 截图文件，用 tesseract 识别保存到系统剪贴板。
+  这个脚本就是一个很简单的创建 tmp 截图文件，用 tesseract 识别保存到系统剪贴板:
 
-设置系统音量：我耳朵被炸了好几次。。。
+  #+begin_src bash
+#!/bin/bash
 
-~exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ 55%~
+TEMP_FILE="/tmp/screenshot_$(date +%Y%m%d_%H%M%S).png"
 
-系统更新了几次之后，现在 100% 差不多是正常可接受的音量了。
+# Take screenshot with grim and save to temp file
+grim -g "$(slurp)" "$TEMP_FILE"
 
-设置系统显示器亮度：
+# Check if screenshot was taken
+if [ ! -f "$TEMP_FILE" ]; then
+  echo "Screenshot was not taken or saved."
+  exit 1
+fi
 
-~exec --no-startup-id brightnessctl set 20%~
+# Detect display server and use appropriate clipboard command
+if [ -n "$WAYLAND_DISPLAY" ] || [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+  # Wayland
+  tesseract "$TEMP_FILE" - -l eng+chi_sim -c preserve_interword_spaces=1 --oem 1 | wl-copy
+else
+  # X11
+  tesseract "$TEMP_FILE" - -l eng+chi_sim -c preserve_interword_spaces=1 --oem 1 | xclip -selection clipboard
+fi
 
-和音量一样，如果不设置它会有一个默认的值，每次重启就需要重新设置。
+rm "$TEMP_FILE"
+#+end_src
 
-设置壁纸：
+- 设置系统音量：我耳朵被炸了好几次。。。
 
-~output * bg /home/vandee/Pictures/create.jpg fill~
+  ~exec --no-startup-id pactl set-sink-volume \@DEFAULT_SINK@ 55%~
 
-剪贴板：
-~exec wl-paste --watch cliphist store~
+  系统更新了几次之后，现在 100% 差不多是正常可接受的音量了。
+
+- 设置系统显示器亮度：
+
+  ~exec --no-startup-id brightnessctl set 20%~
+
+  和音量一样，如果不设置它会有一个默认的值，每次重启就需要重新设置。
+
+- 设置壁纸：
+
+  ~output * bg /home/vandee/Pictures/create.jpg fill~
+
+- 剪贴板：
+  ~exec wl-paste --watch cliphist store~
 
 *** My Sway + i3status config:
 
