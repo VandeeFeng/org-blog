@@ -49,6 +49,19 @@
 
 并且这些逻辑输出是可以直接内嵌到编程语言里的，这又少了一次转换，也就又提升了一次准确性。
 
+- 2026-09-22 add：
+  
+  最近 jev 热度挺高：https://typesafe.ai/blog/introducing-system-one-models-and-jev
+
+  #+begin_quote
+  上周 TypeSafe AI 发布了 Jev，这是他们称之为“系统一模型”的新类别模型的第一个例子（我同意 Maggie Appleton 的看法，我认为“决策模型”是更好的名称）。Jev 是一种有趣的变体，采用了常规 LLM 格式：它仍然接受文本输入，但返回的是与类别、是/否问题、评分和相关置信度分数相对应的浮点数，而不是文本输出。
+  via: https://simonwillison.net/2026/Sep/21/jev/
+  #+end_quote
+
+  我挺看好这类 “决策模型” Decision Model. 自然语言在很多场景下是不必须的，对特定任务效果也不一定好。
+
+  未来自然语言肯定不是模型的唯一方向，编程语言也是。
+
 - 2026-09-18 add：
   这也是之前我想过的一种方案，针对 AI 设计一个新的编程语言。
 
