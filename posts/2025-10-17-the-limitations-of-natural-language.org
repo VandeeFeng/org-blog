@@ -50,7 +50,7 @@
 并且这些逻辑输出是可以直接内嵌到编程语言里的，这又少了一次转换，也就又提升了一次准确性。
 
 - 2026-09-22 add：
-  
+
   最近 jev 热度挺高：https://typesafe.ai/blog/introducing-system-one-models-and-jev
 
   #+begin_quote
@@ -60,15 +60,24 @@
 
   我挺看好这类 “决策模型” Decision Model. 自然语言在很多场景下是不必须的，对特定任务效果也不一定好。
 
-  未来自然语言肯定不是模型的唯一方向，编程语言也是。
+  未来自然语言肯定不是模型的唯一方向。
 
 - 2026-09-18 add：
+
   这也是之前我想过的一种方案，针对 AI 设计一个新的编程语言。
 
   [[https://bend-lang.com/][Bend]]
   via: https://news.ycombinator.com/item?id=49746163
 
   除了 bend，之前也看到许多类似文章：https://blog.mempko.com/a-love-letter-to-object-orientation/
+
+- 2026-02-25 add:
+
+  https://udara.io/logic-and-noise ,这篇文章里谈到了压缩,谈到了和我相似的一些观点。本质上，我们是在用一种感性的认知在重现宇宙当中被“压缩”的规律。物理，数学，逻辑就是隐藏在这背后的一把把钥匙
+
+  https://www.amzi.com/articles/irq_expert_system.htm ,原来有一种逻辑式编程语言叫作 Prolog
+
+  看来我的直觉还是挺准的🤣。用逻辑来和 LLM 链接应该会比自然语言更有优势。
 
 - 2025-10-23 add：
 
@@ -81,15 +90,6 @@
   Karpathy认为，作为大型语言模型（LLM）的输入，像素比文本标记更具优势。他建议即使是纯文本输入，也可以通过将其渲染为图像输入，从而实现更高的信息压缩（缩短上下文窗口，提高效率）、更丰富的信息流（包括粗体、彩色文本或任意图像），以及轻松使用双向注意力机制（而非仅依赖自回归注意力）。
 
   逻辑中间表示的思路还是停留在文字 token 上，图片和像素天然可以传递更多的信息。果然还是得学数学🙁。
-
-- 2026-02-25 add:
-
-  https://udara.io/logic-and-noise ,这篇文章里谈到了压缩,谈到了和我相似的一些观点。本质上，我们是在用一种感性的认知在重现宇宙当中被“压缩”的规律。物理，数学，逻辑就是隐藏在这背后的一把把钥匙
-
-  https://www.amzi.com/articles/irq_expert_system.htm ,原来有一种逻辑式编程语言叫作 Prolog
-
-  看来我的直觉还是挺准的🤣。用逻辑来和 LLM 链接应该会比自然语言更有优势。
-
 
 * Promptheus
 在这之前，普通用户能提升 LLM 准确性最直接的方法就是 prompt 模板了。

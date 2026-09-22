@@ -45,24 +45,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdb35e83">TL;DR</a></li>
-<li><a href="#org47a610f">Intro</a></li>
-<li><a href="#orgeb19be0">逻辑中间表示</a></li>
-<li><a href="#orgd4cea06">Promptheus</a></li>
+<li><a href="#orgb81971c">TL;DR</a></li>
+<li><a href="#orgbe3b547">Intro</a></li>
+<li><a href="#org6424eb6">逻辑中间表示</a></li>
+<li><a href="#orgb25ae6d">Promptheus</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgdb35e83" class="outline-2">
-<h2 id="orgdb35e83">TL;DR</h2>
-<div class="outline-text-2" id="text-orgdb35e83">
+<div id="outline-container-orgb81971c" class="outline-2">
+<h2 id="orgb81971c">TL;DR</h2>
+<div class="outline-text-2" id="text-orgb81971c">
 <p>
 自然语言作为和 LLM 交互的入口成本很高，如果有一个逻辑的中间表示层作为自然语言和大语言模型的中间层，我感觉会很不一样。
 </p>
 </div>
 </div>
-<div id="outline-container-org47a610f" class="outline-2">
-<h2 id="org47a610f">Intro</h2>
-<div class="outline-text-2" id="text-org47a610f">
+<div id="outline-container-orgbe3b547" class="outline-2">
+<h2 id="orgbe3b547">Intro</h2>
+<div class="outline-text-2" id="text-orgbe3b547">
 <p>
 自然语言，承载了人类数千年的文明。语言的演变，也是人类社会的变迁、人类文明的演变。词汇的兴衰、语法的更迭，都是特定时代的经济、政治、文化烙印，可以说语言就是人类历史的活化石。
 </p>
@@ -96,9 +96,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb19be0" class="outline-2">
-<h2 id="orgeb19be0">逻辑中间表示</h2>
-<div class="outline-text-2" id="text-orgeb19be0">
+<div id="outline-container-org6424eb6" class="outline-2">
+<h2 id="org6424eb6">逻辑中间表示</h2>
+<div class="outline-text-2" id="text-org6424eb6">
 <p>
 我一直有一个隐隐约约的胡思乱想的想法：将自然语言转换为基于逻辑的中间表示（Intermediate Representation, IR），再将逻辑表达式或者数学语言映射到 token。放弃将自然语言直接作为沟通媒介，转而构建一个全新的、基于数学和二进制逻辑的中间层。
 </p>
@@ -149,7 +149,33 @@
 
 <ul class="org-ul">
 <li><p>
+2026-09-22 add：
+</p>
+
+<p>
+最近 jev 热度挺高：<a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev">https://typesafe.ai/blog/introducing-system-one-models-and-jev</a>
+</p>
+
+<blockquote>
+<p>
+上周 TypeSafe AI 发布了 Jev，这是他们称之为“系统一模型”的新类别模型的第一个例子（我同意 Maggie Appleton 的看法，我认为“决策模型”是更好的名称）。Jev 是一种有趣的变体，采用了常规 LLM 格式：它仍然接受文本输入，但返回的是与类别、是/否问题、评分和相关置信度分数相对应的浮点数，而不是文本输出。
+via: <a href="https://simonwillison.net/2026/Sep/21/jev/">https://simonwillison.net/2026/Sep/21/jev/</a>
+</p>
+</blockquote>
+
+<p>
+我挺看好这类 “决策模型” Decision Model. 自然语言在很多场景下是不必须的，对特定任务效果也不一定好。
+</p>
+
+<p>
+未来自然语言肯定不是模型的唯一方向。
+</p></li>
+
+<li><p>
 2026-09-18 add：
+</p>
+
+<p>
 这也是之前我想过的一种方案，针对 AI 设计一个新的编程语言。
 </p>
 
@@ -160,6 +186,22 @@ via: <a href="https://news.ycombinator.com/item?id=49746163">https://news.ycombi
 
 <p>
 除了 bend，之前也看到许多类似文章：<a href="https://blog.mempko.com/a-love-letter-to-object-orientation/">https://blog.mempko.com/a-love-letter-to-object-orientation/</a>
+</p></li>
+
+<li><p>
+2026-02-25 add:
+</p>
+
+<p>
+<a href="https://udara.io/logic-and-noise">https://udara.io/logic-and-noise</a> ,这篇文章里谈到了压缩,谈到了和我相似的一些观点。本质上，我们是在用一种感性的认知在重现宇宙当中被“压缩”的规律。物理，数学，逻辑就是隐藏在这背后的一把把钥匙
+</p>
+
+<p>
+<a href="https://www.amzi.com/articles/irq_expert_system.htm">https://www.amzi.com/articles/irq_expert_system.htm</a> ,原来有一种逻辑式编程语言叫作 Prolog
+</p>
+
+<p>
+看来我的直觉还是挺准的🤣。用逻辑来和 LLM 链接应该会比自然语言更有优势。
 </p></li>
 
 <li><p>
@@ -185,28 +227,12 @@ Karpathy认为，作为大型语言模型（LLM）的输入，像素比文本标
 <p>
 逻辑中间表示的思路还是停留在文字 token 上，图片和像素天然可以传递更多的信息。果然还是得学数学🙁。
 </p></li>
-
-<li><p>
-2026-02-25 add:
-</p>
-
-<p>
-<a href="https://udara.io/logic-and-noise">https://udara.io/logic-and-noise</a> ,这篇文章里谈到了压缩,谈到了和我相似的一些观点。本质上，我们是在用一种感性的认知在重现宇宙当中被“压缩”的规律。物理，数学，逻辑就是隐藏在这背后的一把把钥匙
-</p>
-
-<p>
-<a href="https://www.amzi.com/articles/irq_expert_system.htm">https://www.amzi.com/articles/irq_expert_system.htm</a> ,原来有一种逻辑式编程语言叫作 Prolog
-</p>
-
-<p>
-看来我的直觉还是挺准的🤣。用逻辑来和 LLM 链接应该会比自然语言更有优势。
-</p></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd4cea06" class="outline-2">
-<h2 id="orgd4cea06">Promptheus</h2>
-<div class="outline-text-2" id="text-orgd4cea06">
+<div id="outline-container-orgb25ae6d" class="outline-2">
+<h2 id="orgb25ae6d">Promptheus</h2>
+<div class="outline-text-2" id="text-orgb25ae6d">
 <p>
 在这之前，普通用户能提升 LLM 准确性最直接的方法就是 prompt 模板了。
 </p>
@@ -261,7 +287,7 @@ claude 最新出来的 skills 也是对 prompt 的高级应用：
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-ramble.html" class="tag" data-tag="ramble" data-index="0">Ramble</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>
