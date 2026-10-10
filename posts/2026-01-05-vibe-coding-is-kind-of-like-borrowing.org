@@ -92,37 +92,28 @@ LLM 生成代码这个过程中，它始终是一个概率结果。传统自动�
 
 它们就像贷款，让 AI 帮自己做的越多，将来要还的就越多。(代码水平不高使用者的 vibe coding)
 
-2026-03-01 added：
+** 2026-10-10 added
 
-[[https://www.rockoder.com/beyondthecode/cognitive-debt-when-velocity-exceeds-comprehension/][Cognitive Debt: When Velocity Exceeds Comprehension | rockoder]]
+编程是抽象的艺术。
 
-[[https://simonwillison.net/2026/Feb/15/cognitive-debt][How Generative and Agentic AI Shift Concern from Technical Debt to Cognitive ...]]
+#+begin_quote
+We do have /some/ tradition of self-mystification in software. As [[https://www.goodreads.com/quotes/9168-programs-must-be-written-for-people-to-read-and-only][Abelson memorably put it]], “Programs must be written for people to read, and only incidentally for machines to execute.”, so we have long had some conception of programs as highly expressive, even if we can’t always agree on what they’re expressing or to whom. We will occasionally wax poetical about the [[https://en.wikipedia.org/wiki/Unix_philosophy][philosophical implications]] of a particular piece of software. This is not unique to a single piece of software, either; [[https://peps.python.org/pep-0020/][more than one community has indulged]] in [[https://www.perl.com/pub/2003/06/25/perl6essentials.html/][similar philosophizing]].
 
-认知债务是最近开到文章里讨论的比较多的。代码生成的成本是下来了，但是转嫁到了代码审查和 review，是一种变相的技术栈。
+我们在软件领域确实存在某种自我神秘化的传统。正如 [[https://www.goodreads.com/quotes/9168-programs-must-be-written-for-people-to-read-and-only][Abelson 所言]]，“程序必须为人类阅读而编写，仅附带地供机器执行。”因此，我们长期以来一直认为程序具有高度的表达性，尽管我们并不总能就其所表达的内容或对象达成一致。我们偶尔会就某一特定软件的 [[https://en.wikipedia.org/wiki/Unix_philosophy][哲学意涵]] 进行诗意的阐述。这并非仅限于单一软件；[[https://peps.python.org/pep-0020/][不止一个社区曾沉浸于]] [[https://www.perl.com/pub/2003/06/25/perl6essentials.html/][类似的哲学思辨]]。
 
-这正是之前提到的顾虑：当 LLM 生成的代码自己已经无法理解的时候，应该怎么办？
+[...]
 
-2026-04-03 added:
+This doesn’t mean that we can’t use abstractions, or automation, to make our work easier. Programming is the art of abstraction, of understanding how to compose smaller ideas into bigger ones, of how to understand the automation of a larger system by understanding the rules that automate smaller ones and understanding how to combine them.
 
-Naur theory 诺尔理论：
-诺尔理论指的是程序员对代码行为的心理直觉或心智模型。在 Peter Naur 1985年的经典论文《Programming as Theory Building》中，他提出了一个革命性的观点：
-编程不仅仅是编写代码，而是在脑海中构建一个关于系统如何运作的理论。
-via: https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735
+这并不意味着我们不能使用抽象或自动化来使我们的工作更轻松。编程是抽象的艺术，是理解如何将较小的想法组合成较大的想法，是理解如何通过理解自动化较小系统的规则以及理解如何将它们组合起来，从而理解较大系统的自动化。
 
-心智模型 mental model 在 vibe coding 出现之后，被许多文章提到。LLM 有再大的上下文窗口，能并行处理再多 agent workflow，还是要依赖代码编写者（或者代码监督者？）自己的心智模型。
+via: https://blog.glyph.im/2026/10/programming-isnt-special.html
 
-2026-06-21 added:
+#+end_quote
 
-你的AI编程助手，也就是你用来写代码的那个，需要降低你的维护成本。而且不是降低一点点。你现在写代码的速度快了两倍？最好希望你的维护成本也减半了。生产力提高了三倍？维护成本就要降到三分之一。否则，你就完蛋了。你是在用暂时的速度提升换取永久的束缚。[...]
+** 2026-08-04 added
 
-只有当 LLM 降低你的维护成本，且降低幅度恰好与它增加代码的速度成反比时，这个算式才成立。如果你的产出翻倍，维护这些产出的成本也翻倍，那么二乘以二意味着你的维护成本翻了四倍。如果你的产出翻倍，但维护成本保持不变，二乘以一意味着你的维护成本仍然翻了一倍。
-
-— [[https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs][James Shore]], You Need AI That Reduces Maintenance Costs
-
-via: https://simonwillison.net/2026/May/11/james-shore/
-
-2026-08-04 added:
-
+#+begin_quote
 The joy of working on personal projects comes from [[https://ankursethi.com/blog/results-are-a-side-effect-of-doing-the-work-with-love/][the process, not from the outcome]]. [...]
 
 Most importantly, this workflow allows me to build a spatial map of my codebase. I know where every bit of functionality lives in the codebase. When I need to make a change, I know exactly where I need to make it. It not only helps me work faster within my projects, it also makes it easier for me to better prompt and instruct the LLM in the future.
@@ -131,7 +122,41 @@ When I was learning to code as a teenager, experienced programmers would often t
 
 via: https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/ , https://news.ycombinator.com/item?id=49153374
 
+#+end_quote
+
 作者的这些想法也是我一直对 LLM 生成代码的倾向。那些已经很熟悉的“重复无聊”的代码构建流程交给 LLM 是很省事的，特别是根据现有代码做类推的时候。
+
+** 2026-04-03 added
+
+Naur theory 诺尔理论：
+
+诺尔理论指的是程序员对代码行为的心理直觉或心智模型。在 Peter Naur 1985年的经典论文《Programming as Theory Building》中，他提出了一个革命性的观点：编程不仅仅是编写代码，而是在脑海中构建一个关于系统如何运作的理论。
+
+via: https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735
+
+心智模型 mental model 在 vibe coding 出现之后，被许多文章提到。LLM 有再大的上下文窗口，能并行处理再多 agent workflow，还是要依赖代码编写者（或者代码监督者？）自己的心智模型。
+
+** 2026-06-21 added
+#+begin_quote
+你的AI编程助手，也就是你用来写代码的那个，需要降低你的维护成本。而且不是降低一点点。你现在写代码的速度快了两倍？最好希望你的维护成本也减半了。生产力提高了三倍？维护成本就要降到三分之一。否则，你就完蛋了。你是在用暂时的速度提升换取永久的束缚。[...]
+
+只有当 LLM 降低你的维护成本，且降低幅度恰好与它增加代码的速度成反比时，这个算式才成立。如果你的产出翻倍，维护这些产出的成本也翻倍，那么二乘以二意味着你的维护成本翻了四倍。如果你的产出翻倍，但维护成本保持不变，二乘以一意味着你的维护成本仍然翻了一倍。
+
+— [[https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs][James Shore]], You Need AI That Reduces Maintenance Costs
+
+via: https://simonwillison.net/2026/May/11/james-shore/
+
+#+end_quote
+
+** 2026-03-01 added
+
+[[https://www.rockoder.com/beyondthecode/cognitive-debt-when-velocity-exceeds-comprehension/][Cognitive Debt: When Velocity Exceeds Comprehension | rockoder]]
+
+[[https://simonwillison.net/2026/Feb/15/cognitive-debt][How Generative and Agentic AI Shift Concern from Technical Debt to Cognitive ...]]
+
+认知债务是最近开到文章里讨论的比较多的。代码生成的成本是下来了，但是转嫁到了代码审查和 review，是一种变相的技术栈。
+
+这正是之前提到的顾虑：当 LLM 生成的代码自己已经无法理解的时候，应该怎么办？
 
 * 不同的立场
 [[https://antirez.com/news/158][Don't fall into the anti-AI hype - <antirez>]]
