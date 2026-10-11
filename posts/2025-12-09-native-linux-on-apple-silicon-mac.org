@@ -81,7 +81,7 @@ theme 文件可以在 ~~/.themes/~, 或者 ~/usr/share/themes~
 
   wayland 里用 nwg-look
 
-** Bluetooth && Wi-Fi
+** Bluetooth & Wi-Fi
 - impala: 🛜 TUI for managing wifi on Linux
 
   https://github.com/pythops/impala
@@ -90,7 +90,7 @@ theme 文件可以在 ~~/.themes/~, 或者 ~/usr/share/themes~
 
   https://github.com/pythops/bluetui
 
-** Fcitx && Rime 输入法
+** Fcitx & Rime 输入法
 参考：[[https://manateelazycat.github.io/2025/08/31/fcitx-best-config/][Fcitx 最佳配置实践 2025-08-31]]
 
 Rime + 双拼实在是太巴适了。
@@ -701,7 +701,7 @@ Nouveau 是一个开源的 NVIDIA 驱动，它会与闭源驱动冲突。
 
 3.设置内核参数
 
-为了启用 DRM (Direct Rendering Manager) 内核模式设置 (KMS)，需要向引导加载程序添加一个内核参数。这对于 Wayland 的正常工作是必需的，并且从较新版本的驱动开始默认启用。
+为了启用 DRM (Direct Rendering Manager) 内核模式设置 (KMS)，需要向引导加载程序添加一个内核参数。
 
 编辑 ~/etc/default/grub~ 文件：
 

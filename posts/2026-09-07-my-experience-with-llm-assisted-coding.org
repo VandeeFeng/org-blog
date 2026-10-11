@@ -10,7 +10,7 @@
 ClaudeCode，OpenCode，pi，现在是自己构建的 phi。汇总整理一下半自动 vibe coding 的一些经验。
 
 * Rules
-** Maintain mental & codebase map
+** Maintain Mental & Codebase map
 
 #+begin_quote
 Your best engineers don’t grep randomly. They have a mental map:
@@ -32,15 +32,15 @@ AGENTS.md 简明扼要的给出原则性的要求，一定不能篇幅太大，�
 ** Maintain clear context
 SKILL: Onboard https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md
 
-- 明确清晰的描述自己的需求非常重要，这个明确清晰是对 LLM 而言，不是指自然语言。
+明确清晰的描述自己的需求非常重要，这个明确清晰是对 LLM 而言，不是指自然语言。
 
-  给 agent 的任务一定要有具体的实现目标和参考标准，这个目标就是 agent 后续 test 的关键来源。
+对于大部分模型，英文 prompt 效果比中文好。现在我更喜欢直接用代码或伪代码。
 
-  对于大部分模型，英文 prompt 效果比中文好。现在我更喜欢直接用代码或伪代码。
+- 具体的实现目标和参考标准，这个目标就是 agent 后续 test 的关键来源。
 
   框定每一次任务的上下文，@file 直接给出关键文件。
 
-- subagent 调用便宜模型准备任务上下文。例如回顾之前的设计计划，搜索网络文章、资料，查看关键文件列出关键代码和对应文件。主 agent 贵模型推理分析固定方案调整 task。
+- 明确的 CONSTRAINTS，Mental & Codebase map 是地图，constants 是纠偏导航。
 
 - 充分利用 cache
 
@@ -295,7 +295,16 @@ Last updated: [date]
 #+END_SRC
 
 ** Maintain code quality and style
-SKILL: code-simplifier https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md
+
+SKILL:
+
+- code-simplifier
+
+  https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md
+
+- code-review
+
+  https://github.com/mattpocock/skills/blob/main/skills/engineering/code-review/SKILL.md
 
 一定要 review，亲测加上：这是别人的代码，效果会更好🤣，LLM 拍马屁的概率大幅下降。
 
