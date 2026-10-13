@@ -5,7 +5,118 @@
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
 <atom:link href="https://www.vandee.art/blog/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Sun, 11 Oct 2026 16:10:22 +0800</lastBuildDate>
+<lastBuildDate>Tue, 13 Oct 2026 12:08:29 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[Meet Your Parallel Thread]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org20ca059">TL;DR</a></li>
+<li><a href="#org843e848">Parallel Thread</a></li>
+<li><a href="#org9da21ae">当作是一种投资?</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-org20ca059" class="outline-2">
+<h2 id="org20ca059">TL;DR</h2>
+<div class="outline-text-2" id="text-org20ca059">
+<p>
+2023 年 5 月 ChatGPT 的 App 正式上线，让人工智能、AI 的概念进入了大众视野。三年后，AI 已在信息流里包围了我们的生活。
+</p>
+
+<p>
+大众视野里的 AI 也已经从生成式对话变成了 agent，智能体，harness。
+</p>
+
+<p>
+我觉得对于普通人来说，拥有一个自己的 agent 是挺有必要的。
+</p>
+
+<p>
+Meet Your Parallel Thread，时间就是金钱我的朋友！
+</p>
+</div>
+</div>
+<div id="outline-container-org843e848" class="outline-2">
+<h2 id="org843e848">Parallel Thread</h2>
+<div class="outline-text-2" id="text-org843e848">
+<p>
+现实是自我的一种映射，自我是和现实的交互反馈，而 AI 可以创建自我的虚拟映射。
+</p>
+
+<p>
+LLM 的输出是信息压缩后的概率生成。广义来说，我们对外界的反馈也是一样。听到对方对你说的话做出回答，听到音乐时临时的感受，闻到某种气味突然被勾起的奇怪记忆。这些也是我们的自我、经历、记忆、知识、认知等压缩之后做出的概率生成反馈，每一次也都不会是完全一样。
+</p>
+
+<p>
+所以按这个逻辑，AI 生成自我的虚拟映射也勉强说得通。
+</p>
+
+<p>
+把自我反馈通过大语言模型再输出给外界环境做出交互是一个挺有趣的实验。
+</p>
+
+<p>
+这几年 PKM 积累的内容已经很多了，平常通过 <a href="https://www.vandee.art/blog/2025-06-10-nonotes-auto-completion.html">NoNotes</a> 自动补全初步实现了知识的内循环。
+</p>
+
+<p>
+现在可以扩展成我的 parallel thread，也是另一个 timeline 的 self-instance。这种感觉就像是在和另一个平行时空的自我映射对话。
+</p>
+
+<p>
+同一个需要深度思考的问题，并行跑 10 个自己的 <code>self-instance agent</code> ，分身讨论问题，在多种可能性里，提升最优决策实现的概率。
+</p>
+
+<p>
+这种模拟自己在不同条件下可能做出的决策也挺有意思。
+</p>
+
+<p>
+今年还是持续在 AI 辅助下学习数学，我自认为只是中间不会算🤣，其他部分理解的都挺快。我高中数学基础跟着看 <a href="https://www.bilibili.com/video/BV1u7hQ6rEQB?p=1">3Blue1Brown</a> 的视频也可以自己用数学推演一些东西了，当然计算还是交给计算机和 LLM 了。这个数学分支发展的也挺不错。
+</p>
+
+<p>
+像孙悟空一样，拔一根毫毛，吹一口气，分身练级，经验条蹭蹭的长。
+</p>
+</div>
+</div>
+<div id="outline-container-org9da21ae" class="outline-2">
+<h2 id="org9da21ae">当作是一种投资?</h2>
+<div class="outline-text-2" id="text-org9da21ae">
+<p>
+如果说工作所得（工资）是时间和自身价值的一种投资关系，那么普遍上它是牺牲了极高的自我价值，并且时间成本很高的一种投资，单位时间自身价值的转换率很低。
+</p>
+
+<p>
+现在 AI 订阅套餐 plus 版普遍是 20 刀，以普通人的需求，可以做的事太多了，而且基本用不完。
+</p>
+
+<p>
+这 20 刀能让单位时间自身价值的转换率提升太多了，相同成本比起其他投资收益期望也很高，并且还是可以同时进行的。
+</p>
+
+<p>
+比如 AI 炒股，丢点闲钱进去，不比市面上绝大多数的投资回报率低。我自己也是瞎忙活，还不如直接托管看 AI 瞎忙活呢🤣。说不定基金经理也是用 AI 帮你理财呢。
+</p>
+
+<p>
+现在这些项目很多了：视频搬运，随便起个号，搬运搞笑视频，电影解说。社交网络上，对着流量高的让 agent 起号复刻一个，发发小红书。咸鱼捡漏自动低价秒拍机器人等等等等。（不提倡）
+</p>
+
+<p>
+我觉得最靠谱的还是 <a href="https://wiki.vandee.art/#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%8A%95%E8%B5%84%E6%B0%B8%E8%BF%9C%E6%98%AF%E4%BD%A0%E8%87%AA%E5%B7%B1">自我投资</a> 。把书籍、教材转换为符合自己需求的易懂课程，每天多看 10 页专业书籍，或转换为有声读物、对感兴趣的领域持续关注最新动态做市场调研、发展一个健康的兴趣爱好、掌握一个新的技能。
+</p>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-ramble.html" class="tag" data-tag="ramble" data-index="0">Ramble</a> </span></div>]]></description>
+  <category><![CDATA[Ramble]]></category>
+  <link>https://www.vandee.art/blog/2026-10-13-meet-your-parallel-thread.html</link>
+  <guid>https://www.vandee.art/blog/2026-10-13-meet-your-parallel-thread.html</guid>
+  <pubDate>Tue, 13 Oct 2026 00:06:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[My Experience with LLM-Assisted Coding]]></title>
   <description><![CDATA[
@@ -7502,526 +7613,6 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
   <link>https://www.vandee.art/blog/2026-01-23-my-agent-practice-with-opencode-in-emacs.html</link>
   <guid>https://www.vandee.art/blog/2026-01-23-my-agent-practice-with-opencode-in-emacs.html</guid>
   <pubDate>Fri, 23 Jan 2026 11:11:00 +0800</pubDate>
-</item>
-<item>
-  <title><![CDATA[Vibe Coding is kind of like borrowing]]></title>
-  <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org6d6ed45">TL;DR</a></li>
-<li><a href="#org70abe06">结果还是过程？</a></li>
-<li><a href="#org5418c28">我不喜欢 LLM 代码生成</a>
-<ul>
-<li><a href="#org2ae909e">2026-10-10 added</a></li>
-<li><a href="#org9f619ef">2026-08-04 added</a></li>
-<li><a href="#org9dfffdb">2026-04-03 added</a></li>
-<li><a href="#org1b5d650">2026-06-21 added</a></li>
-<li><a href="#org941f067">2026-03-01 added</a></li>
-</ul>
-</li>
-<li><a href="#orgd0de92d">不同的立场</a></li>
-<li><a href="#orgaebbcd4">2026-03-24 add</a></li>
-<li><a href="#org8fd9a3b">2026-08-31 add</a></li>
-</ul>
-</div>
-</nav>
-<div id="outline-container-org6d6ed45" class="outline-2">
-<h2 id="org6d6ed45">TL;DR</h2>
-<div class="outline-text-2" id="text-org6d6ed45">
-<p>
-Vibe Coding 就像贷款、花呗，只是没有标注还款额和期限。
-</p>
-
-<p>
-选了 borrowing 这个单词是因为它既有贷款的含义，也有借用的含义。
-</p>
-</div>
-</div>
-<div id="outline-container-org70abe06" class="outline-2">
-<h2 id="org70abe06">结果还是过程？</h2>
-<div class="outline-text-2" id="text-org70abe06">
-<blockquote>
-<p>
-对于这样的现象，我先下一个结论：软件开发向来是为了解决问题（Problem Solving），重要的是解决问题的结果，而不是解决的方式。
-</p>
-
-<p>
-大模型的出现让重复基础编码任务的意义快速贬值，但是开源协同的形态并没有因此发生巨变。对于个人而言，此时应该做的是尽快掌握大模型制导的编程能力，将自己从繁琐的重复编码任务里解脱出来，集中注意力投入到其他高价值目标上去。
-</p>
-
-<p>
-否则，这就像十年前别人开发 Java 都用 JetBrains 自动生成模板，自动补齐代码，流畅 DEBUG，光速跳转定义；而你还在手敲每一个符号名，全局搜索文本找代码，不停吐槽为什么别人写的类名方法名都要全拼
-</p>
-
-<p>
-via: <a href="https://tisonkun.org/2025/12/31/open-source-and-ai/">https://tisonkun.org/2025/12/31/open-source-and-ai/</a>
-</p>
-</blockquote>
-
-<blockquote>
-<p>
-[Claude Code] has the potential to transform all of tech. I also think we’re going to see a real split in the tech industry (and everywhere code is written) between people who are <i>outcome-driven</i> and are excited to get to the part where they can test their work with users faster, and people who are <i>process-driven</i> and get their meaning from the engineering itself and are upset about having that taken away.
-</p>
-
-<p>
-[Claude Code] 有潜力改变整个科技行业。我还认为，我们将在科技行业（以及所有编写代码的地方）看到一种真正的分化：一方面是那些以结果为导向、兴奋于更快地将工作交给用户测试的人；另一方面是那些以过程为导向、从工程本身中获取意义、并对这种被剥夺感到不安的人。
-</p>
-
-<p>
-<a href="https://werd.io/2025-the-year-in-llms/">Ben Werdmuller</a>
-</p>
-
-<p>
-via: <a href="https://simonwillison.net/2026/Jan/2/ben-werdmuller/">https://simonwillison.net/2026/Jan/2/ben-werdmuller/</a>
-</p>
-</blockquote>
-
-<p>
-我不排斥也不反感 AI 这个技术，过度批判技术变革带来的改变是弱者的借口，哪怕 AI 真的一无是处。以后完全杜绝 AI 就好像现在完全不使用智能手机和电子设备一样荒谬。工业革命、自动化会让许多人失去现在的岗位，但它同样也提供了更多岗位和需求。
-</p>
-
-<p>
-我不是程序员，也不是相关行业的，编程只是一个爱好。
-</p>
-
-<p>
-编程作为一个爱好、技能，和软件工程、软件开发，是完全不一样的心态。
-</p>
-
-<p>
-对于工程实现，我觉得 AI 的参与完全没有问题。否定它未来的可能性就好像现在关闭所有工厂回到手工制作。让 LLM 来做一些总结、编排的杂活，并行 review 多个项目，这是传统自动化很难实现的。以前需要人力完成的，十分之一不到成本的 token 可能就可以做到。
-</p>
-
-<p>
-软件开发，团队项目是靠产品说话的，这些更注重结果。就像现在的大语言模型和 Claude Code，产出让用户觉得好用的产品才是第一位的。至于这个大语言模型是如何训练出来的，Claude Code 是如何实现的，普通用户其实并不关心，比竞品好用用户就会选择。
-</p>
-</div>
-</div>
-<div id="outline-container-org5418c28" class="outline-2">
-<h2 id="org5418c28">我不喜欢 LLM 代码生成</h2>
-<div class="outline-text-2" id="text-org5418c28">
-<p>
-但对于 Vibe Coding 和 LLM 代码生成，我始终不太喜欢。
-</p>
-
-<blockquote>
-<p>
-I think the job of being paid money to type code into a computer will go the same way as punching punch cards [&#x2026;] in six years time, I do not think anyone will be paid to just to do the thing where you type the code. I think software engineering will still be an enormous career. I just think the software engineers won’t be spending multiple hours of their day in a text editor typing out syntax.
-</p>
-
-<p>
-我认为，作为一份工作，拿钱在电脑上输入代码的工作将在六年后与打孔卡一样消失，我认为到那时不会有人仅仅为了输入代码而获得报酬。我认为软件工程仍将是一个巨大的职业。我只是认为软件工程师不会花费多小时在文本编辑器中输入语法。
-</p>
-
-<p>
-via: <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/">https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/</a>
-</p>
-</blockquote>
-
-<p>
-对于工作，我赞同 Simon 大佬的这个言论，但我认为 LLM 代码生成绝对和打孔卡的取代不是一回事。手拿普通锯子（打孔卡），手拿电锯（现代编程语言），电锯自己动（LLM 生成），这之间的区别不是明摆着的么?
-</p>
-
-<p>
-本质上，编程就是自动化，把需要实现的结果，用代码固定下来，编译好让机器自动化执行。AI（大语言模型）则通过神经网络，让自然语言成为了代码的“解释器”。
-</p>
-
-<p>
-但AI 生成和 AI 自动化有本质上的区别，用 AI 生产内容和用 AI 来管理流程是两码事。
-</p>
-
-<p>
-LLM 生成代码这个过程中，它始终是一个概率结果。传统自动化工具指向一个确定的结果，而 LLM 生成得到的始终是一个随机区间，即使这个随机区间对于简单的代码复制、修剪工作来说，很小，很稳定；即使通过高超的 prompt 技巧、炉火纯青的 AI 技术，得到非常准确的代码。概率性是 LLM 生成始终无法回避的问题。
-</p>
-
-<p>
-编程现在对我而言，是一种自我表达，它有着艺术该有的所有特性。
-</p>
-
-<p>
-把这些交给 AI 来生成给我一个结果，不是我想要的，也很不“自我”。啪啪啪，生成了一些质量也不错的代码，但这太不好玩了，带给不了我什么乐趣。我很享受敲代码的时候键盘敲击的声音，像弹吉他一样，思维和想象力的轨迹在指尖游走，具象化的表现出来。
-</p>
-
-<p>
-编程语言本身也就是一种语言，为什么必须要用自然语言来和计算机对话？
-</p>
-
-<p>
-这是一次进化，但也是退化。当一种语言被另一种语言同化，也就意味着它的消亡。(现代编程语言和汇编、机器码之间的关系和这个不一样)
-</p>
-
-<p>
-为什么现在许多软件开发者，甚至是行业大佬，本身代码能力就很强，但还是会在 AI 代码生成上过于夸大其词，甚至是炫耀高超的 AI 生成技巧，好像是在追逐创造一种流行趋势和潮流。值得拿出来炫耀的不应是自己本身就有的编程能力么？
-</p>
-
-<p>
-我觉得这才是真正的 SKILL，而不是变成了写 prompt、文档和各种 AGENTS.md 来安排 AI 的“架构师”。能用自然语言来编码绝对不是一个值得这么高兴的事情。
-</p>
-
-<p>
-对于代码能力本身很强的人来说，AI 能解放双手，同一时间可以并行构建多个项目。确实现在还是如此，代码能力能纠正 LLM 生成的代码，没有 AI 也还是能写出高质量的代码。
-</p>
-
-<p>
-当 AI 生成的代码比自己还要好的时候，当自己已经无法理解 AI 生成的可运行物件的时候，又该如何？还会觉得这些是在自己的思维主导下创造出来的么？自己不写代码了，还怎么去评判 AI 代码的质量和品味？
-</p>
-
-<p>
-当 LLM 生成的代码质量像现在的工业制造一样，品质可控，误差降低到非常低，软件开发进入 AI 工业时代，现在声称的编程和代码品味还存在么？
-</p>
-
-<p>
-所以，从 Vibe Coding 这个概念出现到现在一直的争论里，我觉得关键还是在于判断：AI 生成代码是否只是一种工具的使用。
-</p>
-
-<p>
-我的答案是：显然不是。
-</p>
-
-<p>
-一个很简单明了的逻辑判断：
-</p>
-
-<p>
-如果 AI 的生成只是工具和智慧劳动的结合，那么离开了它，你还能实现这个结果么？换一个模型，还能生成同样质量的内容么？能找到另一个替代它来帮你完成这个工作的工具么？如果有，那么为什么必须要用 AI 生成？
-</p>
-
-<p>
-用电子画笔画画，算法摄影，这些虽然都有科技技术的融合，但是他们和 AI 生成还是很不一样，这些带有思维创造比重较大的行为，在工具技术的加成下，还是人在主导，它们还是工具。
-</p>
-
-<p>
-再强大的电子画笔，不会画画还是画不出来；再昂贵的相机，没有审美还是拍不出好照片。
-</p>
-
-<p>
-我不会把 AI 生成完全当作是自己思维的创造，这些生成的内容依靠的是模型和神经网络完成的概率计算，它是概率结果，它无法复现，更不是一种技能。
-</p>
-
-<p>
-它们就像贷款，让 AI 帮自己做的越多，将来要还的就越多。(代码水平不高使用者的 vibe coding)
-</p>
-</div>
-<div id="outline-container-org2ae909e" class="outline-3">
-<h3 id="org2ae909e">2026-10-10 added</h3>
-<div class="outline-text-3" id="text-org2ae909e">
-<p>
-编程是抽象的艺术。
-</p>
-
-<blockquote>
-<p>
-We do have <i>some</i> tradition of self-mystification in software. As <a href="https://www.goodreads.com/quotes/9168-programs-must-be-written-for-people-to-read-and-only">Abelson memorably put it</a>, “Programs must be written for people to read, and only incidentally for machines to execute.”, so we have long had some conception of programs as highly expressive, even if we can’t always agree on what they’re expressing or to whom. We will occasionally wax poetical about the <a href="https://en.wikipedia.org/wiki/Unix_philosophy">philosophical implications</a> of a particular piece of software. This is not unique to a single piece of software, either; <a href="https://peps.python.org/pep-0020/">more than one community has indulged</a> in <a href="https://www.perl.com/pub/2003/06/25/perl6essentials.html/">similar philosophizing</a>.
-</p>
-
-<p>
-我们在软件领域确实存在某种自我神秘化的传统。正如 <a href="https://www.goodreads.com/quotes/9168-programs-must-be-written-for-people-to-read-and-only">Abelson 所言</a>，“程序必须为人类阅读而编写，仅附带地供机器执行。”因此，我们长期以来一直认为程序具有高度的表达性，尽管我们并不总能就其所表达的内容或对象达成一致。我们偶尔会就某一特定软件的 <a href="https://en.wikipedia.org/wiki/Unix_philosophy">哲学意涵</a> 进行诗意的阐述。这并非仅限于单一软件；<a href="https://peps.python.org/pep-0020/">不止一个社区曾沉浸于</a> <a href="https://www.perl.com/pub/2003/06/25/perl6essentials.html/">类似的哲学思辨</a>。
-</p>
-
-<p>
-[&#x2026;]
-</p>
-
-<p>
-This doesn’t mean that we can’t use abstractions, or automation, to make our work easier. Programming is the art of abstraction, of understanding how to compose smaller ideas into bigger ones, of how to understand the automation of a larger system by understanding the rules that automate smaller ones and understanding how to combine them.
-</p>
-
-<p>
-这并不意味着我们不能使用抽象或自动化来使我们的工作更轻松。编程是抽象的艺术，是理解如何将较小的想法组合成较大的想法，是理解如何通过理解自动化较小系统的规则以及理解如何将它们组合起来，从而理解较大系统的自动化。
-</p>
-
-<p>
-via: <a href="https://blog.glyph.im/2026/10/programming-isnt-special.html">https://blog.glyph.im/2026/10/programming-isnt-special.html</a>
-</p>
-</blockquote>
-</div>
-</div>
-<div id="outline-container-org9f619ef" class="outline-3">
-<h3 id="org9f619ef">2026-08-04 added</h3>
-<div class="outline-text-3" id="text-org9f619ef">
-<blockquote>
-<p>
-The joy of working on personal projects comes from <a href="https://ankursethi.com/blog/results-are-a-side-effect-of-doing-the-work-with-love/">the process, not from the outcome</a>. [&#x2026;]
-</p>
-
-<p>
-Most importantly, this workflow allows me to build a spatial map of my codebase. I know where every bit of functionality lives in the codebase. When I need to make a change, I know exactly where I need to make it. It not only helps me work faster within my projects, it also makes it easier for me to better prompt and instruct the LLM in the future.
-</p>
-
-<p>
-When I was learning to code as a teenager, experienced programmers would often tell me to never copy and paste code into my projects. If I was learning from a book, I was advised to copy all the examples into my computer and make sure I could run them. If I was learning from a blog post or forum answer, I was advised to type it out and adapt it to my codebase so I understood it completely.
-</p>
-
-<p>
-via: <a href="https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/">https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/</a> , <a href="https://news.ycombinator.com/item?id=49153374">https://news.ycombinator.com/item?id=49153374</a>
-</p>
-</blockquote>
-
-<p>
-作者的这些想法也是我一直对 LLM 生成代码的倾向。那些已经很熟悉的“重复无聊”的代码构建流程交给 LLM 是很省事的，特别是根据现有代码做类推的时候。
-</p>
-</div>
-</div>
-<div id="outline-container-org9dfffdb" class="outline-3">
-<h3 id="org9dfffdb">2026-04-03 added</h3>
-<div class="outline-text-3" id="text-org9dfffdb">
-<p>
-Naur theory 诺尔理论：
-</p>
-
-<p>
-诺尔理论指的是程序员对代码行为的心理直觉或心智模型。在 Peter Naur 1985年的经典论文《Programming as Theory Building》中，他提出了一个革命性的观点：编程不仅仅是编写代码，而是在脑海中构建一个关于系统如何运作的理论。
-</p>
-
-<p>
-via: <a href="https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735">https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735</a>
-</p>
-
-<p>
-心智模型 mental model 在 vibe coding 出现之后，被许多文章提到。LLM 有再大的上下文窗口，能并行处理再多 agent workflow，还是要依赖代码编写者（或者代码监督者？）自己的心智模型。
-</p>
-</div>
-</div>
-<div id="outline-container-org1b5d650" class="outline-3">
-<h3 id="org1b5d650">2026-06-21 added</h3>
-<div class="outline-text-3" id="text-org1b5d650">
-<blockquote>
-<p>
-你的AI编程助手，也就是你用来写代码的那个，需要降低你的维护成本。而且不是降低一点点。你现在写代码的速度快了两倍？最好希望你的维护成本也减半了。生产力提高了三倍？维护成本就要降到三分之一。否则，你就完蛋了。你是在用暂时的速度提升换取永久的束缚。[&#x2026;]
-</p>
-
-<p>
-只有当 LLM 降低你的维护成本，且降低幅度恰好与它增加代码的速度成反比时，这个算式才成立。如果你的产出翻倍，维护这些产出的成本也翻倍，那么二乘以二意味着你的维护成本翻了四倍。如果你的产出翻倍，但维护成本保持不变，二乘以一意味着你的维护成本仍然翻了一倍。
-</p>
-
-<p>
-— <a href="https://www.jamesshore.com/v2/blog/2026/you-need-ai-that-reduces-your-maintenance-costs">James Shore</a>, You Need AI That Reduces Maintenance Costs
-</p>
-
-<p>
-via: <a href="https://simonwillison.net/2026/May/11/james-shore/">https://simonwillison.net/2026/May/11/james-shore/</a>
-</p>
-</blockquote>
-</div>
-</div>
-<div id="outline-container-org941f067" class="outline-3">
-<h3 id="org941f067">2026-03-01 added</h3>
-<div class="outline-text-3" id="text-org941f067">
-<p>
-<a href="https://www.rockoder.com/beyondthecode/cognitive-debt-when-velocity-exceeds-comprehension/">Cognitive Debt: When Velocity Exceeds Comprehension | rockoder</a>
-</p>
-
-<p>
-<a href="https://simonwillison.net/2026/Feb/15/cognitive-debt">How Generative and Agentic AI Shift Concern from Technical Debt to Cognitive &#x2026;</a>
-</p>
-
-<p>
-认知债务是最近开到文章里讨论的比较多的。代码生成的成本是下来了，但是转嫁到了代码审查和 review，是一种变相的技术栈。
-</p>
-
-<p>
-这正是之前提到的顾虑：当 LLM 生成的代码自己已经无法理解的时候，应该怎么办？
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd0de92d" class="outline-2">
-<h2 id="orgd0de92d">不同的立场</h2>
-<div class="outline-text-2" id="text-orgd0de92d">
-<p>
-<a href="https://antirez.com/news/158">Don't fall into the anti-AI hype - &lt;antirez&gt;</a>
-</p>
-
-<p>
-antirez 的这篇写的挺中肯的，Simon 大佬也 quote 了: <a href="https://simonwillison.net/2026/Jan/11/dont-fall-into-the-anti-ai-hype/">Don't fall into the anti-AI hype</a>
-</p>
-
-<p>
-正如文章标题一样，don't fall into，不要被炒作和舆论影响了自己的判断。无论是过度鼓吹 AI 还是过度反对 AI。
-</p>
-
-<p>
-只是大家有不同的立场，有不同的利益相关，有不同的喜好。
-</p>
-
-<p>
-现在 AI 编程、AI 软件开发确实很像工业革命初期，之所以要强调初期是因为工业革命是一个持续了一个世纪的漫长过程。
-</p>
-
-<p>
-每次谈到这些都会让我想到当时的反工业革命的一些艺术运动，例如 <a href="https://zh.wikipedia.org/zh-cn/%E8%89%BA%E6%9C%AF%E4%B8%8E%E5%B7%A5%E8%89%BA%E8%BF%90%E5%8A%A8">艺术与工艺运动</a> (Arts and Crafts Movement)。
-</p>
-
-<p>
-不是工业革命和科学技术发展也不会催生出前拉斐尔派，也就不会有印象派。正是这些在时代中发生的激荡，它激起了巨浪，也激起了人们的思考。
-</p>
-
-<p>
-世界和宇宙本就是无序的（chaos），平常的有序也只是无序呈现的一种方式，无序的微观分子运动宏观上呈现出稳定态。
-</p>
-
-<p>
-我想表达的是，我们本来就无时无刻不处在变化之中，保持自己的品味，坚持自己的喜好就好，自然会随着浪潮到达自己会抵达的地方。
-</p>
-
-<p>
-对我来说，编程是我探究艺术的一个 branch 分支，很幸运它不是我的工作，我也就不用有什么立场。
-</p>
-
-<p>
-即使现在的数码摄影如此发达了，胶片仍然有它独特的味道和价值。
-</p>
-
-<p>
-我相信编程里这些无法被替代的东西会有人继续坚持下去，当狂潮退去，能让内心继续跟随的只有热爱。
-</p>
-</div>
-</div>
-<div id="outline-container-orgaebbcd4" class="outline-2">
-<h2 id="orgaebbcd4">2026-03-24 add</h2>
-<div class="outline-text-2" id="text-orgaebbcd4">
-<p>
-<a href="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/">https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/</a> 这篇文章的这部分说的挺好，但对马克思和资本主义之间的那些观点在我看来有些片面甚至理解偏差了：
-</p>
-
-<blockquote>
-<p>
-Speaking as a developer, this becomes obvious the moment you step outside the romantic framing. I have been doing this for years, and the hardest parts of the job were never about typing out code. I have always struggled most with understanding systems, debugging things that made no sense, designing architectures that wouldn't collapse under heavy load, and making decisions that would save months of pain later.
-</p>
-
-<p>
-作为一名开发者，这一点在你走出浪漫的框架时变得显而易见。我已经做了多年这项工作，工作中最困难的部分从来不是敲代码。我一直最难的地方在于理解系统，调试那些毫无意义的东西，设计在重负载下不会崩溃的架构，以及做出能够节省后续数月痛苦的决策。
-</p>
-
-<p>
-None of these problems can be solved LLMs. They can suggest code, help with boilerplate, sometimes can act as a sounding board. But they don't understand the system, they don't carry context in their "minds", and they certianly don't know why a decision is right or wrong.
-</p>
-
-<p>
-这些问题都无法通过大型语言模型解决。它们可以建议代码，帮助处理样板，有时可以充当一个讨论的对象。但它们并不理解系统，它们的“思维”中没有上下文，而且它们当然不知道一个决定是对还是错。
-</p>
-
-<p>
-And the most importantly, they don't choose. That part is still yours. The real work of software development, the part that makes someone valuable, is knowing what should exist in the first place, and why.
-</p>
-
-<p>
-最重要的是，他们不做选择。那部分仍然是你的。软件开发的真正工作，决定一个人有价值的部分，是知道什么应该存在，以及为什么。
-</p>
-
-<p>
-If you reduce yourself to "the one who types code," then yes, you should feel obsolete. But don't fool yourself any further: typing code that was never the essence of the craft.
-</p>
-
-<p>
-如果你把自己简化为“那个打代码的人”，那么是的，你应该感到过时。但不要再自欺欺人了：打代码从来就不是这门手艺的本质。
-</p>
-
-<p>
-The idea that LLMs are "taking away" coding is the same illusion as the woodworker. Just as higher level languages didn't destroy programming, nad compilers didn't destroy engineering, and cloud didn't destroy infrastructure work, LLMs do not destroy coding.
-</p>
-
-<p>
-大型语言模型（LLMs）"夺走"编码的想法与木匠的幻觉是一样的。正如高级语言并没有摧毁编程，编译器并没有摧毁工程，云计算也没有摧毁基础设施工作，大型语言模型并不会摧毁编码。
-</p>
-
-<p>
-The real danger is that people stop thinking. The actual trap is engineers letting the tool carry the cognitive load they were meant to build &#x2013; The abdication of reason from within.
-</p>
-
-<p>
-真正的危险在于人们停止思考。真正的陷阱是工程师让工具承担他们本应构建的认知负担——理性的放弃。
-</p>
-
-<p>
-I don't see any of this as a tragedy. Because the capacity for good craftsmaship remains. The same tools that let someone drift into shallow work are the tools that let someone else build at a level that was previously impossible.
-</p>
-
-<p>
-我不认为这一切是悲剧。因为良好工艺的能力依然存在。让某人陷入肤浅工作的同样工具，也让其他人能够在以前不可能的水平上进行构建。
-</p>
-
-<p>
-The domain of what can be built is growing and leverage of human reason is increasing. And that creates a split &#x2013; not between "alienated" and "fulfilled," but between those who adapt their thinking and those who retreat into anemoia.
-</p>
-
-<p>
-可以构建的领域正在扩大，人类理性的杠杆作用也在增加。这造成了一种分裂——不是在“疏离”和“满足”之间，而是在那些适应思维的人和那些退缩到怀旧情绪中的人之间。
-</p>
-
-<p>
-No matter what tools arrive, no matter how powerful they become, they will always remain tools. They won't replace our reason nor values. You will still choose what is worth building. And as long you reason, nothing essential has been lost.
-</p>
-
-<p>
-无论什么工具到来，无论它们变得多么强大，它们始终只是工具。它们不会取代我们的理智和价值观。你仍然会选择值得构建的东西。只要你在思考，任何本质的东西都没有丢失。
-</p>
-</blockquote>
-</div>
-</div>
-<div id="outline-container-org8fd9a3b" class="outline-2">
-<h2 id="org8fd9a3b">2026-08-31 add</h2>
-<div class="outline-text-2" id="text-org8fd9a3b">
-<p>
-这篇 blog 讨论的范围很窄，就是 vibe coding，不是 AI 和 agent。
-</p>
-
-<p>
-计算器可以帮我们完成日常生活中的计算需求，但这不意味着数学不需要学习，vibe coding 和编程的关系也是。
-</p>
-
-<p>
-对于 AI 代码生成，我不喜欢的地方在于：它把我觉得编程这个爱好里最有趣的地方替代了。对于工程实现，我完全接受 AI 代码的 “工业化” 方向。多年之后看现在手写编码的感觉可能就像现在回到没有电力、没有网络、没有智能电子设备的时候一样。
-</p>
-
-<p>
-但当 AI 软件开发的流程达到现在的工业水平之后，手写代码仍然可以是爱好。徕卡也出了数码机，甚至还有只能拍黑白的，徕卡独特的色彩科学、镜头和机内模拟，是徕卡这个品牌价值一致延续的内核。
-</p>
-
-<p>
-无论是 AI 代码还是手写代码，品味以及哪些独特的味道是可以延续的。而且比起用自然语言 prompt 反复和 AI 沟通细节，我还是更喜欢更直接的思维到代码的逻辑映射，编码逻辑 -&gt; 自然语言 -&gt; LLM 黑箱 -&gt; 代码实现，这个 LLM 编码的路径里，编码逻辑到自然语言是有损耗的，后面的每一步也都是有损耗的，手写代码这方面就是更直接：编码逻辑 -&gt; 编程语言 -&gt; 代码实现。就像书法绘画、吉他演奏、作曲歌唱一样，王羲之的兰亭序只有在这种心流体验下，才有可能偶然天成。绘画艺术作品里，那些笔触都是当下和外界反馈的最直接映射，中间多转换一次是多余的。
-</p>
-
-<p>
-我一直认为自然语言作为代码的中间载体不合适。自然语言语义的模糊性是它的功能决定的，人类需要用语言来沟通，表达，交流。对于机器和代码，数学和逻辑才是最合适的中间载体。我用 agent 写代码的许多 prompt 都会直接使用逻辑语言、伪代码，而不是大白话，把 LLM/agent 看作是一个自然语言解释器是更合适的。
-</p>
-
-<p>
-比如开发一个天气应用，表达节气的时候，我觉得用 prompt 解释起来实在是太麻烦，代码逻辑直接的多，也避免了 AI 奇奇怪怪的不准确语义的命名：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-C"><span style="color: #FFA657;">typedef</span> <span style="color: #FFA657;">enum</span><span style="color: #8c8c8c;">{</span>
-    <span style="color: #f4f4ff;">LI_CHUN</span>,       <span style="color: #787878;">// </span><span style="color: #787878;">&#31435;&#26149;
-</span>    <span style="color: #f4f4ff;">CHUN_FEN</span>,      <span style="color: #787878;">// </span><span style="color: #787878;">&#26149;&#20998;
-</span>    <span style="color: #f4f4ff;">QING_MING</span>,     <span style="color: #787878;">// </span><span style="color: #787878;">&#28165;&#26126;
-</span>    <span style="color: #f4f4ff;">GU_YU</span>,         <span style="color: #787878;">// </span><span style="color: #787878;">&#35895;&#38632;
-</span>    <span style="color: #f4f4ff;">XIA_ZHI</span>,       <span style="color: #787878;">// </span><span style="color: #787878;">&#22799;&#33267;
-</span>    <span style="color: #f4f4ff;">DA_SHU</span>,        <span style="color: #787878;">// </span><span style="color: #787878;">&#22823;&#26257;
-</span>    <span style="color: #f4f4ff;">QIU_FEN</span>,       <span style="color: #787878;">// </span><span style="color: #787878;">&#31179;&#20998;
-</span>    <span style="color: #f4f4ff;">HAN_LU</span>,        <span style="color: #787878;">// </span><span style="color: #787878;">&#23506;&#38706;
-</span>    <span style="color: #f4f4ff;">DONG_ZHI</span>       <span style="color: #787878;">// </span><span style="color: #787878;">&#20908;&#33267;
-</span><span style="color: #8c8c8c;">}</span><span style="color: #95a99f;">SolarTerm</span>;
-</pre>
-</div>
-
-<p>
-我之前只会基础的 lisp、python 和 C，在写 rust 代码的时候，这样就相当于是代码转写，生成的代码质量会高很多，也省去了许多看文档初次学习的过程，看多了 rust，自然也就学会了。
-</p>
-
-<p>
-AI 代码生成之后，代码更像是是机器执行结果的中间过程，显得不那么重要了，也确实没有必要把代码书写看的太重。但编程就像写作，作为一个爱好，我还是更喜欢这个过程给我带来的乐趣，这是编程艺术体现的核心。
-</p>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-thinking.html" class="tag" data-tag="thinking" data-index="0">Thinking</a> <a href="https://www.vandee.art/blog/tag-llm.html" class="tag" data-tag="llm" data-index="1">LLM</a> </span></div>]]></description>
-  <category><![CDATA[Thinking]]></category>
-  <category><![CDATA[LLM]]></category>
-  <link>https://www.vandee.art/blog/2026-01-05-vibe-coding-is-kind-of-like-borrowing.html</link>
-  <guid>https://www.vandee.art/blog/2026-01-05-vibe-coding-is-kind-of-like-borrowing.html</guid>
-  <pubDate>Mon, 05 Jan 2026 13:26:00 +0800</pubDate>
 </item>
 </channel>
 </rss>
