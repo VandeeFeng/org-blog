@@ -49,6 +49,16 @@
 
 并且这些逻辑输出是可以直接内嵌到编程语言里的，这又少了一次转换，也就又提升了一次准确性。
 
+- 2026-10-23 add：
+
+  原来我对语言和编程的看法更倾向于：[[https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html][E.W.Dijkstra Archive: On the foolishness of "natural language programming". (EWD 667)]]
+
+  Edsger W. Dijkstra（艾兹格·W·迪杰斯特拉）在这篇手稿里提到：自然语言的“自然”恰恰在于它容易说出那些荒谬却不明显的陈述。形式化符号系统（formal symbolism）的真正价值在于它的严格规则，能有效排除自然语言中几乎不可避免的模糊和“无稽之谈”（nonsense）。
+
+  但是强符号是不是一定更好，我现在还不太确定自己的倾向。
+
+  对比自然语言，符号和逻辑的抽象理解起来更复杂，但准确性更高。
+
 - 2026-09-22 add：
 
   最近 jev 热度挺高：https://typesafe.ai/blog/introducing-system-one-models-and-jev
