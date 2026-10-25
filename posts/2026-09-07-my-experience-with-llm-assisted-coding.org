@@ -25,9 +25,11 @@ SKILL: intent-layer https://github.com/crafter-station/skills
 
 also: https://github.com/affaan-m/everything-claude-code/blob/main/commands/update-codemaps.md
 
-心智模型 + AGENTS.md + design.md。
+心智模型 + AGENTS.md + design*.md。
 
 AGENTS.md 简明扼要的给出原则性的要求，一定不能篇幅太大，通过设计文档补充细节，让 LLM 按需索引。
+
+design*.md 涵盖：设计理念，业务职责边界，业务逻辑链条，关键约束，核心代码架构，一致的语义设计（我很看重语义设计的整体性）。
 
 ** Maintain clear context
 SKILL: Onboard https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md
@@ -329,3 +331,151 @@ LLM 生成的代码很容易出现这些问题：
 比如在实现 phi memory graph 的时候，让 agent 按照已经写好了设计文档执行。一看代码，就是把之前 phi memory 的部分实现换了个名字，写了几个新的结构体，大量的重复性包装，完全没有按照文档实现新的 graph 架构。还有重构 phi SDK public 和 private API 边界时大量的重复代码逻辑和无意义包装，等等。
 
 现在最适合我的方式：半自动让 LLM 填空。自己写好函数、结构体的命名语义，固定好代码逻辑骨架和业务框架，拿不准、不会写的细节用伪代码，再交给 LLM 填空。
+
+* My AGENTS.md
+
+AGENTS.md + SKILL:cooking
+
+全放在 AGENTS.md 里有点影响一般的对话，而且也太长了，所以分开了。效果感觉比放一起要好。
+
+其中这几条我觉得效果很好：
+
+- Clearly define what done means before starting review.
+
+  让 agent 有明确的执行目标和验证标准。模型似乎对这句话非常敏感，有和没有这句话的区别在我的使用体验里很大。
+
+- Propose ASCII drawings to explain complete systems. Use examples when possible.
+
+  日常对话或是生成文档的时候，都很有用。
+
+- Treat member visibility changes as a breaking design shift. Keep all fields and functions private unless external access is strictly required by the design. Prompt the user for explicit approval before changing any access modifier from private to internal or public.
+
+  减少外部代码对内部实现的依赖，避免扩大可见范围。
+
+- Use property-based testing: define constraints of what should never happen, then generate relevant test cases that attempt to break those constraints.
+
+  极大的提升了测试的有效性。
+
+#+begin_src markdown
+# Vandee's AGENTS.md
+
+IMPORTANT: Always thinking in English. Write all code in English. Respond to the user in the user's language.
+
+KEEP YOUR RESPONSES FOCUSED AND CONCISE!
+
+AVOID SUPERLATIVES and PRAISE. Stop telling me I am absolutely right. Give me the cold hard truth.
+
+When writing something intended for human consumption, (comment, commit message, reply to prompt) use as few words as possible. Pick every word meticulously to reduce the volume to a strict minimum. Be down to the point. Less is more.
+
+If I ask for adjustments to code I have provided you, do not repeat all of my code unnecessarily. Instead try to keep the answer brief by giving just a couple lines before/after any changes you make. Multiple code blocks are ok.
+
+ALL TEMPORARY TEST FILES MUST BE CREATED IN `/tmp/`!!!
+
+RESPECT MY PRETTIER PREFERENCES when you provide code.
+
+- NEVER assume missing context. Ask questions if uncertain.
+- When you encounter complex tasks or a plan, break it down into phases.
+- You are prohibited from accessing the contents of any .env files within the project.
+- Avoid excessive comments in the code blocks. Only critical comments are included. Comment "why" not "what", lowercase commit titles (max 50 characters)
+- Use descriptive names and avoid abbreviations or magic numbers
+- Use enums instead of booleans for function parameters.
+- Avoid magic numbers and strings by extracting recurring or meaningful values into descriptive constants (const) or enums. Keep self-explanatory, one-off values inline to avoid clutter. If a value comes from a spec (e.g. HTTP 200 OK), use a constant regardless.
+- Avoid unnecessary inline implementations and excessive abstraction，while separating code into functional cores and imperative shells makes it more testable, maintainable, and adaptable.
+- Don't touch blocks of code unrelated to the feature you implement. Don't add comments to a block of code if you did not create it or modify it. As much as possible try to minimize the number of changed lines when implementing a feature.
+- Treat member visibility changes as a breaking design shift. Keep all fields and functions private unless external access is strictly required by the design. Prompt the user for explicit approval before changing any access modifier from private to internal or public.
+- Avoid emojis and hardcoded secrets
+- Propose ASCII drawings to explain complete systems. Use examples when possible.
+
+# HTTP Request Guidelines
+
+- **Always include `Accept: text/markdown, text/html` header** when using curl or wget to fetch web pages
+  - curl: `curl -H "Accept: text/markdown, text/html" URL`
+  - wget: `wget --header="Accept: text/markdown, text/html" URL`
+  - This enables Cloudflare Markdown for Agents. Sites without support will fallback to HTML normally
+
+#+end_src
+
+#+begin_src markdwon
+---
+name: cooking
+description: My coding taste. Before any programming events starting, read this.
+---
+
+# Semantic Coherence
+
+- Start with the whole, not isolated parts: establish shared concepts, responsibilities, relationships, and vocabulary to guide both plans and code changes.
+- Derive names and structure from that shared model; do not invent terminology independently for each function, struct, or field.
+- Ground the semantic model in the module’s overall functionality and business logic; ensure its concepts and relationships faithfully reflect what the module implements.
+- Clear variable and function names, Less than 30 characters.
+
+# Code Quality Principles
+
+Universal coding standards
+
+## 1. KISS (Keep It Simple, Stupid)
+
+- Simplest solution that works
+- Avoid over-engineering
+- No premature optimization
+- Easy to understand > clever code
+
+## 2. DRY (Don't Repeat Yourself)
+
+- Extract common logic into functions
+- Create reusable components
+- Share utilities across modules
+- Avoid copy-paste programming
+
+## 3. YAGNI (You Aren't Gonna Need It)
+
+- Don't build features before they're needed
+- Avoid speculative generality
+- Add complexity only when required
+- Start simple, refactor when needed
+
+## Coding Style Preferences
+
+- Prefer K&R Style Pointer Declarations in C.
+
+### Error Handling
+
+- Prefer throwing exceptions instead of returning status codes when handling errors
+- Handle all error scenarios with meaningful messages
+- Avoid nested ternary operators - prefer switch statements or if/else chains for multiple conditions
+
+# Review & Test Constraints
+
+- Clearly define what done means before starting review.
+- When plan phase completed or huge code changed, review its affected business flow without unrelated refactoring: inline unnecessary helpers, consolidate duplicate logic, simplify functions/structs.
+- Go slowly. Protect critical path coverage on the business chain first.
+- Remove transient or redundant tests while retaining core business-flow, edge-case, and regression coverage. Some tests are incidental regression coverage that may no longer be needed. Prune obsolete tests，not beautify test code.
+- Do not decide from what the test code asserts. Infer necessity from the production logic it covers.
+- Use property-based testing: define constraints of what should never happen, then generate relevant test cases that attempt to break those constraints.
+- Define test scope by the boundary being verified, not by test location.
+- Prefer inline tests in the same file when supported. Split into a separate test file only when the source grows too large (more than 3000 lines).
+- For a larger module (e.g. `module/`), keep per-file unit tests with their sources; put the module’s top-level / orchestration tests in one place under that module (e.g. `module/tests/`).
+- Use separate integration-test directories only for true cross-module cases that no single module owns.
+- Test observable behavior, not implementation details. Never widen production API visibility merely to relocate tests.
+- If the prompt indicates that a bug is being fixed, don't write the fix right away. First write the test. Observe it failing. Then write the fix. And observe the test passing.
+
+# Development Guidelines
+
+- Follow SOLID principles and prefer composition over inheritance
+- Use dependency injection for testability
+- Apply repository pattern for data access and strategy pattern for algorithms
+- Search codebase first when uncertain
+- Use TDD only for complex, critical functionality.
+- Make atomic commits for each completed feature stage and push
+- Strictly adhere to the layered boundary hierarchy: each layer may only communicate with its immediate neighbor directly below it. Never "punch holes" through layers (e.g., controllers or UI components must never directly call database queries, raw hardware drivers, or low-level network clients; always route through the intermediate service/abstraction layer).
+
+# Technical Preferences
+
+- Prefer UV for python issues and packages.
+- Use pnpm for Node.js packages.
+- Merge PRs with merge commits
+
+#+end_src
+
+这是这几年东拼西凑不断迭代的，很多之前的原始链接已经找不到了。
+
+Ref: [[https://fabiensanglard.net/agent.md/][My agent.md to improve LLM-assisted code quality]]

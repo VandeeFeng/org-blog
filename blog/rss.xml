@@ -5,7 +5,7 @@
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
 <atom:link href="https://www.vandee.art/blog/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Fri, 23 Oct 2026 16:01:05 +0800</lastBuildDate>
+<lastBuildDate>Sun, 25 Oct 2026 13:27:48 +0800</lastBuildDate>
 <item>
   <title><![CDATA[Meet Your Parallel Thread]]></title>
   <description><![CDATA[
@@ -124,22 +124,23 @@ LLM 的输出是信息压缩后的概率生成。广义来说，我们对外界�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6cec127">TL;DR</a></li>
-<li><a href="#orge1e2fe6">Rules</a>
+<li><a href="#orgfb9dfb2">TL;DR</a></li>
+<li><a href="#org0fc85bc">Rules</a>
 <ul>
-<li><a href="#org71eb443">Maintain Mental &amp; Codebase map</a></li>
-<li><a href="#orga25f891">Maintain clear context</a></li>
-<li><a href="#org60cb40f">Maintain useful patterns</a></li>
-<li><a href="#org88688ab">Maintain code quality and style</a></li>
+<li><a href="#org061567b">Maintain Mental &amp; Codebase map</a></li>
+<li><a href="#orgfadd565">Maintain clear context</a></li>
+<li><a href="#orgca5d149">Maintain useful patterns</a></li>
+<li><a href="#org57cdc38">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#orgd9823cb">Experience</a></li>
+<li><a href="#orga71e3e1">Experience</a></li>
+<li><a href="#orgba76116">My AGENTS.md</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org6cec127" class="outline-2">
-<h2 id="org6cec127">TL;DR</h2>
-<div class="outline-text-2" id="text-org6cec127">
+<div id="outline-container-orgfb9dfb2" class="outline-2">
+<h2 id="orgfb9dfb2">TL;DR</h2>
+<div class="outline-text-2" id="text-orgfb9dfb2">
 <p>
 这段时间还是在构建 phi，它更像是一个可以自己迭代成长的小伙伴，不只是一个我在构建的工具。用别人的和自己做的，感觉还是很不一样。
 </p>
@@ -149,13 +150,13 @@ ClaudeCode，OpenCode，pi，现在是自己构建的 phi。汇总整理一下�
 </p>
 </div>
 </div>
-<div id="outline-container-orge1e2fe6" class="outline-2">
-<h2 id="orge1e2fe6">Rules</h2>
-<div class="outline-text-2" id="text-orge1e2fe6">
+<div id="outline-container-org0fc85bc" class="outline-2">
+<h2 id="org0fc85bc">Rules</h2>
+<div class="outline-text-2" id="text-org0fc85bc">
 </div>
-<div id="outline-container-org71eb443" class="outline-3">
-<h3 id="org71eb443">Maintain Mental &amp; Codebase map</h3>
-<div class="outline-text-3" id="text-org71eb443">
+<div id="outline-container-org061567b" class="outline-3">
+<h3 id="org061567b">Maintain Mental &amp; Codebase map</h3>
+<div class="outline-text-3" id="text-org061567b">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -180,17 +181,21 @@ also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/comm
 </p>
 
 <p>
-心智模型 + AGENTS.md + design.md。
+心智模型 + AGENTS.md + design*.md。
 </p>
 
 <p>
 AGENTS.md 简明扼要的给出原则性的要求，一定不能篇幅太大，通过设计文档补充细节，让 LLM 按需索引。
 </p>
+
+<p>
+design*.md 涵盖：设计理念，业务职责边界，业务逻辑链条，关键约束，核心代码架构，一致的语义设计（我很看重语义设计的整体性）。
+</p>
 </div>
 </div>
-<div id="outline-container-orga25f891" class="outline-3">
-<h3 id="orga25f891">Maintain clear context</h3>
-<div class="outline-text-3" id="text-orga25f891">
+<div id="outline-container-orgfadd565" class="outline-3">
+<h3 id="orgfadd565">Maintain clear context</h3>
+<div class="outline-text-3" id="text-orgfadd565">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -218,9 +223,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </ul>
 </div>
 </div>
-<div id="outline-container-org60cb40f" class="outline-3">
-<h3 id="org60cb40f">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-org60cb40f">
+<div id="outline-container-orgca5d149" class="outline-3">
+<h3 id="orgca5d149">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-orgca5d149">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -485,9 +490,9 @@ Last updated: [date]
 </div>
 </div>
 </div>
-<div id="outline-container-org88688ab" class="outline-3">
-<h3 id="org88688ab">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org88688ab">
+<div id="outline-container-org57cdc38" class="outline-3">
+<h3 id="org57cdc38">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org57cdc38">
 <p>
 SKILL:
 </p>
@@ -516,9 +521,9 @@ code-review
 </div>
 </div>
 </div>
-<div id="outline-container-orgd9823cb" class="outline-2">
-<h2 id="orgd9823cb">Experience</h2>
-<div class="outline-text-2" id="text-orgd9823cb">
+<div id="outline-container-orga71e3e1" class="outline-2">
+<h2 id="orga71e3e1">Experience</h2>
+<div class="outline-text-2" id="text-orga71e3e1">
 <p>
 LLM 生成的代码很容易出现这些问题：
 </p>
@@ -551,6 +556,186 @@ LLM 生成的代码很容易出现这些问题：
 
 <p>
 现在最适合我的方式：半自动让 LLM 填空。自己写好函数、结构体的命名语义，固定好代码逻辑骨架和业务框架，拿不准、不会写的细节用伪代码，再交给 LLM 填空。
+</p>
+</div>
+</div>
+<div id="outline-container-orgba76116" class="outline-2">
+<h2 id="orgba76116">My AGENTS.md</h2>
+<div class="outline-text-2" id="text-orgba76116">
+<p>
+AGENTS.md + SKILL:cooking
+</p>
+
+<p>
+全放在 AGENTS.md 里有点影响一般的对话，而且也太长了，所以分开了。效果感觉比放一起要好。
+</p>
+
+<p>
+其中这几条我觉得效果很好：
+</p>
+
+<ul class="org-ul">
+<li><p>
+Clearly define what done means before starting review.
+</p>
+
+<p>
+让 agent 有明确的执行目标和验证标准。模型似乎对这句话非常敏感，有和没有这句话的区别在我的使用体验里很大。
+</p></li>
+
+<li><p>
+Propose ASCII drawings to explain complete systems. Use examples when possible.
+</p>
+
+<p>
+日常对话或是生成文档的时候，都很有用。
+</p></li>
+
+<li><p>
+Treat member visibility changes as a breaking design shift. Keep all fields and functions private unless external access is strictly required by the design. Prompt the user for explicit approval before changing any access modifier from private to internal or public.
+</p>
+
+<p>
+减少外部代码对内部实现的依赖，避免扩大可见范围。
+</p></li>
+
+<li><p>
+Use property-based testing: define constraints of what should never happen, then generate relevant test cases that attempt to break those constraints.
+</p>
+
+<p>
+极大的提升了测试的有效性。
+</p></li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-markdown"><span style="color: #b3b3b3;"># </span><span style="color: #96a6c8; font-weight: bold;">Vandee's AGENTS.md</span>
+
+IMPORTANT: Always thinking in English. Write all code in English. Respond to the user in the user's language.
+
+KEEP YOUR RESPONSES FOCUSED AND CONCISE!
+
+AVOID SUPERLATIVES and PRAISE. Stop telling me I am absolutely right. Give me the cold hard truth.
+
+When writing something intended for human consumption, (comment, commit message, reply to prompt) use as few words as possible. Pick every word meticulously to reduce the volume to a strict minimum. Be down to the point. Less is more.
+
+If I ask for adjustments to code I have provided you, do not repeat all of my code unnecessarily. Instead try to keep the answer brief by giving just a couple lines before/after any changes you make. Multiple code blocks are ok.
+
+ALL TEMPORARY TEST FILES MUST BE CREATED IN <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">/tmp/</span><span style="color: #b3b3b3;">`</span>!!!
+
+RESPECT MY PRETTIER PREFERENCES when you provide code.
+
+<span style="color: #b3b3b3;">-</span> NEVER assume missing context. Ask questions if uncertain.
+<span style="color: #b3b3b3;">-</span> When you encounter complex tasks or a plan, break it down into phases.
+<span style="color: #b3b3b3;">-</span> You are prohibited from accessing the contents of any .env files within the project.
+<span style="color: #b3b3b3;">-</span> Avoid excessive comments in the code blocks. Only critical comments are included. Comment "why" not "what", lowercase commit titles (max 50 characters)
+<span style="color: #b3b3b3;">-</span> Use descriptive names and avoid abbreviations or magic numbers
+<span style="color: #b3b3b3;">-</span> Use enums instead of booleans for function parameters.
+<span style="color: #b3b3b3;">-</span> Avoid magic numbers and strings by extracting recurring or meaningful values into descriptive constants (const) or enums. Keep self-explanatory, one-off values inline to avoid clutter. If a value comes from a spec (e.g. HTTP 200 OK), use a constant regardless.
+<span style="color: #b3b3b3;">-</span> Avoid unnecessary inline implementations and excessive abstraction&#65292;while separating code into functional cores and imperative shells makes it more testable, maintainable, and adaptable.
+<span style="color: #b3b3b3;">-</span> Don't touch blocks of code unrelated to the feature you implement. Don't add comments to a block of code if you did not create it or modify it. As much as possible try to minimize the number of changed lines when implementing a feature.
+<span style="color: #b3b3b3;">-</span> Treat member visibility changes as a breaking design shift. Keep all fields and functions private unless external access is strictly required by the design. Prompt the user for explicit approval before changing any access modifier from private to internal or public.
+<span style="color: #b3b3b3;">-</span> Avoid emojis and hardcoded secrets
+<span style="color: #b3b3b3;">-</span> Propose ASCII drawings to explain complete systems. Use examples when possible.
+
+<span style="color: #b3b3b3;"># </span><span style="color: #96a6c8; font-weight: bold;">HTTP Request Guidelines</span>
+
+<span style="color: #b3b3b3;">-</span> <span style="color: #b3b3b3;">**</span><span style="font-weight: bold;">Always include </span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="color: #95a99f; font-weight: bold;">Accept: text/markdown, text/html</span><span style="color: #b3b3b3; font-weight: bold;">`</span><span style="font-weight: bold;"> header</span><span style="color: #b3b3b3;">**</span> when using curl or wget to fetch web pages
+  <span style="color: #b3b3b3;">-</span> curl: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">curl -H "Accept: text/markdown, text/html" URL</span><span style="color: #b3b3b3;">`</span>
+  <span style="color: #b3b3b3;">-</span> wget: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">wget --header="Accept: text/markdown, text/html" URL</span><span style="color: #b3b3b3;">`</span>
+  <span style="color: #b3b3b3;">-</span> This enables Cloudflare Markdown for Agents. Sites without support will fallback to HTML normally
+
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-markdwon">---
+name: cooking
+description: My coding taste. Before any programming events starting, read this.
+---
+
+# Semantic Coherence
+
+- Start with the whole, not isolated parts: establish shared concepts, responsibilities, relationships, and vocabulary to guide both plans and code changes.
+- Derive names and structure from that shared model; do not invent terminology independently for each function, struct, or field.
+- Ground the semantic model in the module’s overall functionality and business logic; ensure its concepts and relationships faithfully reflect what the module implements.
+- Clear variable and function names, Less than 30 characters.
+
+# Code Quality Principles
+
+Universal coding standards
+
+## 1. KISS (Keep It Simple, Stupid)
+
+- Simplest solution that works
+- Avoid over-engineering
+- No premature optimization
+- Easy to understand &gt; clever code
+
+## 2. DRY (Don't Repeat Yourself)
+
+- Extract common logic into functions
+- Create reusable components
+- Share utilities across modules
+- Avoid copy-paste programming
+
+## 3. YAGNI (You Aren't Gonna Need It)
+
+- Don't build features before they're needed
+- Avoid speculative generality
+- Add complexity only when required
+- Start simple, refactor when needed
+
+## Coding Style Preferences
+
+- Prefer K&amp;R Style Pointer Declarations in C.
+
+### Error Handling
+
+- Prefer throwing exceptions instead of returning status codes when handling errors
+- Handle all error scenarios with meaningful messages
+- Avoid nested ternary operators - prefer switch statements or if/else chains for multiple conditions
+
+# Review &amp; Test Constraints
+
+- Clearly define what done means before starting review.
+- When plan phase completed or huge code changed, review its affected business flow without unrelated refactoring: inline unnecessary helpers, consolidate duplicate logic, simplify functions/structs.
+- Go slowly. Protect critical path coverage on the business chain first.
+- Remove transient or redundant tests while retaining core business-flow, edge-case, and regression coverage. Some tests are incidental regression coverage that may no longer be needed. Prune obsolete tests，not beautify test code.
+- Do not decide from what the test code asserts. Infer necessity from the production logic it covers.
+- Use property-based testing: define constraints of what should never happen, then generate relevant test cases that attempt to break those constraints.
+- Define test scope by the boundary being verified, not by test location.
+- Prefer inline tests in the same file when supported. Split into a separate test file only when the source grows too large (more than 3000 lines).
+- For a larger module (e.g. `module/`), keep per-file unit tests with their sources; put the module’s top-level / orchestration tests in one place under that module (e.g. `module/tests/`).
+- Use separate integration-test directories only for true cross-module cases that no single module owns.
+- Test observable behavior, not implementation details. Never widen production API visibility merely to relocate tests.
+- If the prompt indicates that a bug is being fixed, don't write the fix right away. First write the test. Observe it failing. Then write the fix. And observe the test passing.
+
+# Development Guidelines
+
+- Follow SOLID principles and prefer composition over inheritance
+- Use dependency injection for testability
+- Apply repository pattern for data access and strategy pattern for algorithms
+- Search codebase first when uncertain
+- Use TDD only for complex, critical functionality.
+- Make atomic commits for each completed feature stage and push
+- Strictly adhere to the layered boundary hierarchy: each layer may only communicate with its immediate neighbor directly below it. Never "punch holes" through layers (e.g., controllers or UI components must never directly call database queries, raw hardware drivers, or low-level network clients; always route through the intermediate service/abstraction layer).
+
+# Technical Preferences
+
+- Prefer UV for python issues and packages.
+- Use pnpm for Node.js packages.
+- Merge PRs with merge commits
+
+</pre>
+</div>
+
+<p>
+这是这几年东拼西凑不断迭代的，很多之前的原始链接已经找不到了。
+</p>
+
+<p>
+Ref: <a href="https://fabiensanglard.net/agent.md/">My agent.md to improve LLM-assisted code quality</a>
 </p>
 </div>
 </div>
