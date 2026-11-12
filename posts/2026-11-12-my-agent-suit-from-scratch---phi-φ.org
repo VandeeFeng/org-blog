@@ -1,0 +1,81 @@
+#+title: My agent suit from scratch - Phi φ
+#+date: <2026-11-12 12:27>
+#+description: Phi 取自希腊字母 φ。在数学中，它常用来表示黄金比例。斐波那契数列的黄金螺旋，这种迭代和周而复始，也对应着 agent loop 和无尽的未解之谜。φ 也很像 1 穿过 0，也就是二进制。
+#+filetags: Coding Agent
+
+* TL;DR
+
+随着对 AI 的日常使用，我越来越需要一个更符合自己习惯和需求，可以自己掌控细节，不断迭代的 agent framework。另一方面，我觉得学习和了解一个新鲜事物很有效的方式就是直接上手。在从零构建 Phi 的过程中，边做边学，我掌握了许多关于 LLM、agent harness 设计的相关知识。
+
+intent/input -> LLM -> agent harness -> agentic loop -> output -> interface (CLI, GUI, Web) 这条链路里，自己量化训练搞模型、做模型端优化的学习成本和设备成本都比较高，对于普通人来说，我觉得性价比更高的是构建自己的 agent harness。
+
+* Phi 简介
+
+Phi 最初的想法很简单：每个人都应该有一套属于自己的 Agent framework 和 starter kit。Phi 不打算像 Claude Code/Pi 那样全能，而是提供一个可以自由扩展的基础，专注于自己的个性化需求。和 Emacs 一样，Phi 是我的赛博乐高，也是一个可以自迭代的小伙伴。
+
+编程能力有限，Phi 70% 的代码由 AI 生成，它是我学习和构建 agent 的一个实验，现在仍然有一些细小问题或 bug。经过大半年的日常使用和不断自迭代, it just works！(Linux only)
+
+Github: https://github.com/VandeeFeng/phi
+
+Phi 参考了很多 [[https://github.com/earendil-works/pi][Pi]] 的设计和源码，非常感谢 Pi 的开源。
+
+** 命名
+
+[[https://en.wikipedia.org/wiki/Phi][Phi]] （/faɪ/，/fiː/）取自希腊字母 φ。在数学中，它常用来表示黄金比例。斐波那契数列的黄金螺旋，这种迭代和周而复始，也对应着 agent loop 和无尽的未解之谜。φ 也很像 1 穿过 0，也就是二进制。
+
+道生一，一生二，二生三，三生万物；易有太极，是生两仪。两仪生四象，四象生八卦。周易的阴爻，阳爻（阴阳也就是 0 和 1），三条爻共有 2³=8，分别是：
+
+#+begin_src
+☰       乾      天
+☱       兑      泽
+☲       离      火
+☳       震      雷
+☴       巽      风
+☵       坎      水
+☶       艮      山
+☷       坤      地
+#+end_src
+
+也就有了八八六十四挂。
+
+二进制在周易里的抽象很有美感。
+
+** 设计和主要功能
+
+Phi 主要包括 SDK（基于 Rig），CLI/TUI 界面，Gateway。
+
+#+begin_src
+phi-interactive: CLI workflows, Session storage, mode composition
+       |                   |                       |
+       v                   v                       v
+phi-remote ------------> phi-sdk                phi-tui
+gateway                Agent runtime          terminal UI
+#+end_src
+
+Phi 的 CLI 界面很多地方和 Pi 很像，但并不是用 rust 重写了 Pi 的 UI，Phi 基于 crossterm 构建了 phi-tui 库。在这之上，还原了很多我觉得 Pi 里设计的很好的 UI 交互方式。另一部分我不太喜欢的则参考了 Claude Code 的 CLI 界面。Phi 使用 terminal 原生 scrollback, 没有做 alternate screen，终端优化方面参考了许多 Pi 的源码。Phi CLI 界面的组件还可以声明内部能力，在 UI 注册组件的时候开关相应的能力以满足不同场景的需求，例如通过 gateway 开启 CLI 的时候需要关闭一些涉及安全问题的功能。
+
+#+attr_html: :alt  :class img :width 60% :height 60%
+https://pic.vandee.art/images/phi-config.png
+
+KISS (​Keep It Simple, Stupid) ，Everything is a file（一切皆文件）。每一次对话的 history 由 session jsonl 文件持久化记录。而每一个 session 对应一个 Agent Instance，每一个 Agent Instance 实例对象内部是 tool、loop、turn。在这之上抽象出 phi event 和 hook（功能和 Claude Code 的 hook 类似），方便在特定阶段干预。SDK 还提供 Agent API 抽象层，直接控制 agent instance 实例。
+
+agent harness 部分参考了 Claude Code 的设计。subagent 通过 agent tool 来生成，harness manage 层负责 agent 之间的通信 agent message、agent 信息共享 mailbox、agent task 进度跟踪、agent 编排等，它不干预 agent 的内部执行。subagent 的另一个执行单元抽象是 task，由 master agent 通过 agent tool 指定。每一个 subagent 也都是一个 agent instance 实例，拥有各自的 session history 文件。Phi 也简陋的实现了 Claude Code 的 agent team 和 task list。这些都可以通过 Phi 的 ~/tasks~ slash command 弹出的 overlay panel 里观测和控制。
+
+#+attr_html: :alt  :class img :width 60% :height 60%
+https://pic.vandee.art/images/phi-task-panel.png
+
+Memory 在 pi-memory-md 的基础上重构。核心还是 md 文件和 memory anchor，anchor 是 intent 的提前记录，这比事后的搜索效率更高。可以手动创建 anchor，也有关键词匹配，在输入的 prompt 里只要包含特定内容 （例如 harness）就会自动生成 anchor。结合 phi 里的 ~/rewind~ 可以在各个 anchor 和 session entry point (用户消息，工具调用，模型生成内容) 之间跳转。
+
+#+attr_html: :alt  :class img :width 60% :height 60%
+https://pic.vandee.art/images/phi-memory.png
+
+Phi-codemode 直接用 rust 重写了 pi codemode 源码的核心部分。codemode 很符合我在第一次了解 agent tool 内部原理之后的感觉。在最开始 agent 的 tool 功能很简陋，agent 的 workflow 也都是硬编排。当时就在想，要是 agent 能自己编写 tool workflow 就好了。现在模型能力足够了，codemode 的这种实现正是我当时的设想。
+
+除了 tool 层面的 workflow - codemode，phi 也参考 Claude Code 的设计实现了简陋的 agent workflow。通过 json 文件指派大量 parallel agents 跑复杂任务。
+
+扩展方面，Phi 内置 Lua 环境，支持通过 Lua 编写 phi-extension。Lua 就是是随便选的，因为我不太喜欢 JavaScript，又使用过一段时间 Nvim。
+
+Phi-remote 是 gateway 和 remote 插件。使用体验类似 OpenClaw/hermes agent。包括一个简单的 web 界面，方便远程查看和指派 agent，还有用 rust 重写的 OpenClaw 官方 telegram 和 feishu 插件。它们都通过 phi gateway 连接，agent 由 phi-SDK 提供的 public agent API 实现。
+
+#+attr_html: :alt  :class img :width 60% :height 60%
+https://pic.vandee.art/images/phi-web.png

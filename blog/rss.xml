@@ -5,7 +5,168 @@
 <description><![CDATA[Vandee's Blog]]></description>
 <link>https://www.vandee.art/blog/</link>
 <atom:link href="https://www.vandee.art/blog/rss.xml" rel="self" type="application/rss+xml" />
-<lastBuildDate>Sun, 25 Oct 2026 13:27:48 +0800</lastBuildDate>
+<lastBuildDate>Thu, 12 Nov 2026 18:39:47 +0800</lastBuildDate>
+<item>
+  <title><![CDATA[My agent suit from scratch - Phi φ]]></title>
+  <description><![CDATA[
+<nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgcaf3d2b">TL;DR</a></li>
+<li><a href="#org4dceae8">Phi 简介</a>
+<ul>
+<li><a href="#orgb13f0eb">命名</a></li>
+<li><a href="#org3ddc1a3">设计和主要功能</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orgcaf3d2b" class="outline-2">
+<h2 id="orgcaf3d2b">TL;DR</h2>
+<div class="outline-text-2" id="text-orgcaf3d2b">
+<p>
+随着对 AI 的日常使用，我越来越需要一个更符合自己习惯和需求，可以自己掌控细节，不断迭代的 agent framework。另一方面，我觉得学习和了解一个新鲜事物很有效的方式就是直接上手。在从零构建 Phi 的过程中，边做边学，我掌握了许多关于 LLM、agent harness 设计的相关知识。
+</p>
+
+<p>
+intent/input -&gt; LLM -&gt; agent harness -&gt; agentic loop -&gt; output -&gt; interface (CLI, GUI, Web) 这条链路里，自己量化训练搞模型、做模型端优化的学习成本和设备成本都比较高，对于普通人来说，我觉得性价比更高的是构建自己的 agent harness。
+</p>
+</div>
+</div>
+<div id="outline-container-org4dceae8" class="outline-2">
+<h2 id="org4dceae8">Phi 简介</h2>
+<div class="outline-text-2" id="text-org4dceae8">
+<p>
+Phi 最初的想法很简单：每个人都应该有一套属于自己的 Agent framework 和 starter kit。Phi 不打算像 Claude Code/Pi 那样全能，而是提供一个可以自由扩展的基础，专注于自己的个性化需求。和 Emacs 一样，Phi 是我的赛博乐高，也是一个可以自迭代的小伙伴。
+</p>
+
+<p>
+编程能力有限，Phi 70% 的代码由 AI 生成，它是我学习和构建 agent 的一个实验，现在仍然有一些细小问题或 bug。经过大半年的日常使用和不断自迭代, it just works！(Linux only)
+</p>
+
+<p>
+Github: <a href="https://github.com/VandeeFeng/phi">https://github.com/VandeeFeng/phi</a>
+</p>
+
+<p>
+Phi 参考了很多 <a href="https://github.com/earendil-works/pi">Pi</a> 的设计和源码，非常感谢 Pi 的开源。
+</p>
+</div>
+<div id="outline-container-orgb13f0eb" class="outline-3">
+<h3 id="orgb13f0eb">命名</h3>
+<div class="outline-text-3" id="text-orgb13f0eb">
+<p>
+<a href="https://en.wikipedia.org/wiki/Phi">Phi</a> （/faɪ/，/fiː/）取自希腊字母 φ。在数学中，它常用来表示黄金比例。斐波那契数列的黄金螺旋，这种迭代和周而复始，也对应着 agent loop 和无尽的未解之谜。φ 也很像 1 穿过 0，也就是二进制。
+</p>
+
+<p>
+道生一，一生二，二生三，三生万物；易有太极，是生两仪。两仪生四象，四象生八卦。周易的阴爻，阳爻（阴阳也就是 0 和 1），三条爻共有 2³=8，分别是：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">☰       乾      天
+☱       兑      泽
+☲       离      火
+☳       震      雷
+☴       巽      风
+☵       坎      水
+☶       艮      山
+☷       坤      地
+</pre>
+</div>
+
+<p>
+也就有了八八六十四挂。
+</p>
+
+<p>
+二进制在周易里的抽象很有美感。
+</p>
+</div>
+</div>
+<div id="outline-container-org3ddc1a3" class="outline-3">
+<h3 id="org3ddc1a3">设计和主要功能</h3>
+<div class="outline-text-3" id="text-org3ddc1a3">
+<p>
+Phi 主要包括 SDK（基于 Rig），CLI/TUI 界面，Gateway。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nil">phi-interactive: CLI workflows, Session storage, mode composition
+       |                   |                       |
+       v                   v                       v
+phi-remote ------------&gt; phi-sdk                phi-tui
+gateway                Agent runtime          terminal UI
+</pre>
+</div>
+
+<p>
+Phi 的 CLI 界面很多地方和 Pi 很像，但并不是用 rust 重写了 Pi 的 UI，Phi 基于 crossterm 构建了 phi-tui 库。在这之上，还原了很多我觉得 Pi 里设计的很好的 UI 交互方式。另一部分我不太喜欢的则参考了 Claude Code 的 CLI 界面。Phi 使用 terminal 原生 scrollback, 没有做 alternate screen，终端优化方面参考了许多 Pi 的源码。Phi CLI 界面的组件还可以声明内部能力，在 UI 注册组件的时候开关相应的能力以满足不同场景的需求，例如通过 gateway 开启 CLI 的时候需要关闭一些涉及安全问题的功能。
+</p>
+
+
+<figure id="orge1cceaa">
+<img src="https://pic.vandee.art/images/phi-config.png" class="img" width="60%" height="60%">
+
+</figure>
+
+<p>
+KISS (​Keep It Simple, Stupid) ，Everything is a file（一切皆文件）。每一次对话的 history 由 session jsonl 文件持久化记录。而每一个 session 对应一个 Agent Instance，每一个 Agent Instance 实例对象内部是 tool、loop、turn。在这之上抽象出 phi event 和 hook（功能和 Claude Code 的 hook 类似），方便在特定阶段干预。SDK 还提供 Agent API 抽象层，直接控制 agent instance 实例。
+</p>
+
+<p>
+agent harness 部分参考了 Claude Code 的设计。subagent 通过 agent tool 来生成，harness manage 层负责 agent 之间的通信 agent message、agent 信息共享 mailbox、agent task 进度跟踪、agent 编排等，它不干预 agent 的内部执行。subagent 的另一个执行单元抽象是 task，由 master agent 通过 agent tool 指定。每一个 subagent 也都是一个 agent instance 实例，拥有各自的 session history 文件。Phi 也简陋的实现了 Claude Code 的 agent team 和 task list。这些都可以通过 Phi 的 <code>/tasks</code> slash command 弹出的 overlay panel 里观测和控制。
+</p>
+
+
+<figure id="org7825067">
+<img src="https://pic.vandee.art/images/phi-task-panel.png" class="img" width="60%" height="60%">
+
+</figure>
+
+<p>
+Memory 在 pi-memory-md 的基础上重构。核心还是 md 文件和 memory anchor，anchor 是 intent 的提前记录，这比事后的搜索效率更高。可以手动创建 anchor，也有关键词匹配，在输入的 prompt 里只要包含特定内容 （例如 harness）就会自动生成 anchor。结合 phi 里的 <code>/rewind</code> 可以在各个 anchor 和 session entry point (用户消息，工具调用，模型生成内容) 之间跳转。
+</p>
+
+
+<figure id="org8a9ba58">
+<img src="https://pic.vandee.art/images/phi-memory.png" class="img" width="60%" height="60%">
+
+</figure>
+
+<p>
+Phi-codemode 直接用 rust 重写了 pi codemode 源码的核心部分。codemode 很符合我在第一次了解 agent tool 内部原理之后的感觉。在最开始 agent 的 tool 功能很简陋，agent 的 workflow 也都是硬编排。当时就在想，要是 agent 能自己编写 tool workflow 就好了。现在模型能力足够了，codemode 的这种实现正是我当时的设想。
+</p>
+
+<p>
+除了 tool 层面的 workflow - codemode，phi 也参考 Claude Code 的设计实现了简陋的 agent workflow。通过 json 文件指派大量 parallel agents 跑复杂任务。
+</p>
+
+<p>
+扩展方面，Phi 内置 Lua 环境，支持通过 Lua 编写 phi-extension。Lua 就是是随便选的，因为我不太喜欢 JavaScript，又使用过一段时间 Nvim。
+</p>
+
+<p>
+Phi-remote 是 gateway 和 remote 插件。使用体验类似 OpenClaw/hermes agent。包括一个简单的 web 界面，方便远程查看和指派 agent，还有用 rust 重写的 OpenClaw 官方 telegram 和 feishu 插件。它们都通过 phi gateway 连接，agent 由 phi-SDK 提供的 public agent API 实现。
+</p>
+
+
+<figure id="org83dfe81">
+<img src="https://pic.vandee.art/images/phi-web.png" class="img" width="60%" height="60%">
+
+</figure>
+</div>
+</div>
+</div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-coding.html" class="tag" data-tag="coding" data-index="0">Coding</a> <a href="https://www.vandee.art/blog/tag-agent.html" class="tag" data-tag="agent" data-index="1">Agent</a> </span></div>]]></description>
+  <category><![CDATA[Coding]]></category>
+  <category><![CDATA[Agent]]></category>
+  <link>https://www.vandee.art/blog/2026-11-12-my-agent-suit-from-scratch---phi-%CF%86.html</link>
+  <guid>https://www.vandee.art/blog/2026-11-12-my-agent-suit-from-scratch---phi-%CF%86.html</guid>
+  <pubDate>Thu, 12 Nov 2026 12:27:00 +0800</pubDate>
+</item>
 <item>
   <title><![CDATA[Meet Your Parallel Thread]]></title>
   <description><![CDATA[
@@ -124,23 +285,23 @@ LLM 的输出是信息压缩后的概率生成。广义来说，我们对外界�
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfb9dfb2">TL;DR</a></li>
-<li><a href="#org0fc85bc">Rules</a>
+<li><a href="#org3b6a729">TL;DR</a></li>
+<li><a href="#org87bab06">Rules</a>
 <ul>
-<li><a href="#org061567b">Maintain Mental &amp; Codebase map</a></li>
-<li><a href="#orgfadd565">Maintain clear context</a></li>
-<li><a href="#orgca5d149">Maintain useful patterns</a></li>
-<li><a href="#org57cdc38">Maintain code quality and style</a></li>
+<li><a href="#org5d1e948">Maintain Mental &amp; Codebase map</a></li>
+<li><a href="#orgb7b088b">Maintain clear context</a></li>
+<li><a href="#orgd756619">Maintain useful patterns</a></li>
+<li><a href="#orgf632bf2">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#orga71e3e1">Experience</a></li>
-<li><a href="#orgba76116">My AGENTS.md</a></li>
+<li><a href="#org8331d76">Experience</a></li>
+<li><a href="#orge9a1cae">My AGENTS.md</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgfb9dfb2" class="outline-2">
-<h2 id="orgfb9dfb2">TL;DR</h2>
-<div class="outline-text-2" id="text-orgfb9dfb2">
+<div id="outline-container-org3b6a729" class="outline-2">
+<h2 id="org3b6a729">TL;DR</h2>
+<div class="outline-text-2" id="text-org3b6a729">
 <p>
 这段时间还是在构建 phi，它更像是一个可以自己迭代成长的小伙伴，不只是一个我在构建的工具。用别人的和自己做的，感觉还是很不一样。
 </p>
@@ -150,13 +311,13 @@ ClaudeCode，OpenCode，pi，现在是自己构建的 phi。汇总整理一下�
 </p>
 </div>
 </div>
-<div id="outline-container-org0fc85bc" class="outline-2">
-<h2 id="org0fc85bc">Rules</h2>
-<div class="outline-text-2" id="text-org0fc85bc">
+<div id="outline-container-org87bab06" class="outline-2">
+<h2 id="org87bab06">Rules</h2>
+<div class="outline-text-2" id="text-org87bab06">
 </div>
-<div id="outline-container-org061567b" class="outline-3">
-<h3 id="org061567b">Maintain Mental &amp; Codebase map</h3>
-<div class="outline-text-3" id="text-org061567b">
+<div id="outline-container-org5d1e948" class="outline-3">
+<h3 id="org5d1e948">Maintain Mental &amp; Codebase map</h3>
+<div class="outline-text-3" id="text-org5d1e948">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -193,9 +354,9 @@ design*.md 涵盖：设计理念，业务职责边界，业务逻辑链条，关
 </p>
 </div>
 </div>
-<div id="outline-container-orgfadd565" class="outline-3">
-<h3 id="orgfadd565">Maintain clear context</h3>
-<div class="outline-text-3" id="text-orgfadd565">
+<div id="outline-container-orgb7b088b" class="outline-3">
+<h3 id="orgb7b088b">Maintain clear context</h3>
+<div class="outline-text-3" id="text-orgb7b088b">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -223,9 +384,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </ul>
 </div>
 </div>
-<div id="outline-container-orgca5d149" class="outline-3">
-<h3 id="orgca5d149">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-orgca5d149">
+<div id="outline-container-orgd756619" class="outline-3">
+<h3 id="orgd756619">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-orgd756619">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -490,9 +651,9 @@ Last updated: [date]
 </div>
 </div>
 </div>
-<div id="outline-container-org57cdc38" class="outline-3">
-<h3 id="org57cdc38">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org57cdc38">
+<div id="outline-container-orgf632bf2" class="outline-3">
+<h3 id="orgf632bf2">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-orgf632bf2">
 <p>
 SKILL:
 </p>
@@ -521,9 +682,9 @@ code-review
 </div>
 </div>
 </div>
-<div id="outline-container-orga71e3e1" class="outline-2">
-<h2 id="orga71e3e1">Experience</h2>
-<div class="outline-text-2" id="text-orga71e3e1">
+<div id="outline-container-org8331d76" class="outline-2">
+<h2 id="org8331d76">Experience</h2>
+<div class="outline-text-2" id="text-org8331d76">
 <p>
 LLM 生成的代码很容易出现这些问题：
 </p>
@@ -559,9 +720,9 @@ LLM 生成的代码很容易出现这些问题：
 </p>
 </div>
 </div>
-<div id="outline-container-orgba76116" class="outline-2">
-<h2 id="orgba76116">My AGENTS.md</h2>
-<div class="outline-text-2" id="text-orgba76116">
+<div id="outline-container-orge9a1cae" class="outline-2">
+<h2 id="orge9a1cae">My AGENTS.md</h2>
+<div class="outline-text-2" id="text-orge9a1cae">
 <p>
 AGENTS.md + SKILL:cooking
 </p>
@@ -739,8 +900,9 @@ Ref: <a href="https://fabiensanglard.net/agent.md/">My agent.md to improve LLM-a
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-coding.html" class="tag" data-tag="coding" data-index="0">Coding</a> </span></div>]]></description>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-coding.html" class="tag" data-tag="coding" data-index="0">Coding</a> <a href="https://www.vandee.art/blog/tag-agent.html" class="tag" data-tag="agent" data-index="1">Agent</a> </span></div>]]></description>
   <category><![CDATA[Coding]]></category>
+  <category><![CDATA[Agent]]></category>
   <link>https://www.vandee.art/blog/2026-09-07-my-experience-with-llm-assisted-coding.html</link>
   <guid>https://www.vandee.art/blog/2026-09-07-my-experience-with-llm-assisted-coding.html</guid>
   <pubDate>Mon, 07 Sep 2026 22:25:00 +0800</pubDate>
@@ -6743,1061 +6905,6 @@ command-integration.ts:
   <link>https://www.vandee.art/blog/2026-02-11-learn-agents-by-building-one-the-minimal-agent-pi.html</link>
   <guid>https://www.vandee.art/blog/2026-02-11-learn-agents-by-building-one-the-minimal-agent-pi.html</guid>
   <pubDate>Wed, 11 Feb 2026 11:58:00 +0800</pubDate>
-</item>
-<item>
-  <title><![CDATA[My Agent Practice with OpenCode in Emacs]]></title>
-  <description><![CDATA[
-<nav id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#orgfa8d3e0">TL;DR</a></li>
-<li><a href="#orgd5fc3af">Agent Skills</a>
-<ul>
-<li><a href="#orga6a33d5">简介</a></li>
-<li><a href="#org78a91b4">SKILL 解决了什么问题</a></li>
-<li><a href="#org2bb11c1">编写 SKILL 是在干什么</a></li>
-</ul>
-</li>
-<li><a href="#org64cd82f">My Agent Conf</a>
-<ul>
-<li><a href="#org7093372">Core Rules</a></li>
-<li><a href="#orgb928c4f">Maintain a hierarchical codebase map</a></li>
-<li><a href="#org187dc08">Prepared with clear purpose</a></li>
-<li><a href="#orgecd820e">Just files and loops, no more complicated</a></li>
-<li><a href="#org0136e2a">Handoff when stucked</a></li>
-<li><a href="#org04a85fb">Maintain memory</a></li>
-<li><a href="#org4c8296f">Maintain useful patterns</a></li>
-<li><a href="#org842b58f">Maintain code quality and style</a></li>
-</ul>
-</li>
-<li><a href="#org763d99d">OpenCode in Emacs</a></li>
-<li><a href="#org6cfea1d">Bubblewrap Sandbox</a></li>
-</ul>
-</div>
-</nav>
-<div id="outline-container-orgfa8d3e0" class="outline-2">
-<h2 id="orgfa8d3e0">TL;DR</h2>
-<div class="outline-text-2" id="text-orgfa8d3e0">
-<p>
-虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
-</p>
-
-<p>
-一个好的 SKILL 里可以学到工程师的经验、逻辑，以及精炼的 prompt。
-</p>
-
-<p>
-Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口，SKILL 是专家技能文档。
-</p>
-</div>
-</div>
-<div id="outline-container-orgd5fc3af" class="outline-2">
-<h2 id="orgd5fc3af">Agent Skills</h2>
-<div class="outline-text-2" id="text-orgd5fc3af">
-</div>
-<div id="outline-container-orga6a33d5" class="outline-3">
-<h3 id="orga6a33d5">简介</h3>
-<div class="outline-text-3" id="text-orga6a33d5">
-<p>
-<a href="https://github.com/agentskills/agentskills">agentskills/agentskills</a> 是前段时间 <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)</a> Claude 开源的。
-</p>
-
-<p>
-在这之前 SKILL 就已经出现了。
-</p>
-
-<blockquote>
-<p>
-Agent Skills are a simple, open format for giving agents new capabilities and expertise.
-</p>
-
-<p>
-Skills are folders of instructions, scripts, and resources that agents can discover and use to perform better at specific tasks. Write once, use everywhere.
-</p>
-
-<p>
-via: <a href="https://github.com/agentskills/agentskills">https://github.com/agentskills/agentskills</a>
-</p>
-</blockquote>
-
-<p>
-SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、templates，提供 agent 一个专业领域的专业技能。
-</p>
-
-<p>
-这样说，听起来还是有点抽象。我也不想展开说明 SKILL 的概念，自己上手是理解它最好的方式。
-</p>
-
-<p>
-<a href="https://www.vandee.art/blog/2025-11-04-minimal-C-reimplementation-of-claude-skills.html">用 C 极简复现 Claude Skills</a> 里是我之前用 C 实现的简化版的 SKILL 逻辑。
-</p>
-
-<p>
-这两个网站里有很多 SKILL 可以探索学习：<a href="https://skillsmp.com/">https://skillsmp.com/</a>， <a href="https://skills.sh/">https://skills.sh/</a>
-</p>
-</div>
-</div>
-<div id="outline-container-org78a91b4" class="outline-3">
-<h3 id="org78a91b4">SKILL 解决了什么问题</h3>
-<div class="outline-text-3" id="text-org78a91b4">
-<p>
-MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
-</p>
-
-<p>
-在 <code>SKILL.md</code> YAML 部分的 description 是对这个 SKILL 的介绍。当 agent 运行的时候，只会预加载这部分内容，当 agent 判断需要使用到的时候，才会加载完整的 <code>SKILL.md</code> 。
-</p>
-
-<p>
-如果说 MCP 是通用工具，那么 SKILL 就是可以高度自定义的 local tool。
-</p>
-</div>
-</div>
-<div id="outline-container-org2bb11c1" class="outline-3">
-<h3 id="org2bb11c1">编写 SKILL 是在干什么</h3>
-<div class="outline-text-3" id="text-org2bb11c1">
-<p>
-当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
-</p>
-
-<p>
-能够把这个问题以及解决问题的办法完整的抽象成一个 SKILL，也变相的说明了自己已经掌握了一种处理问题的方法。
-</p>
-
-<p>
-所以，我虽然不喜欢 vibe coding，但是很喜欢看 SKILL。
-</p>
-
-<p>
-一个好的 SKILL 里，可以看到优秀工程师对问题处理、抽象的能力。更不用说里面涵盖了 prompt 提示词工程发展到现在的经验和技巧，这么好的学习资源，在以往是付费都很难看到的。
-</p>
-
-<p>
-大厂放出来的官方 SKILL 那都是门面啊，还是有很多干货的。
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org64cd82f" class="outline-2">
-<h2 id="org64cd82f">My Agent Conf</h2>
-<div class="outline-text-2" id="text-org64cd82f">
-<p>
-下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
-</p>
-
-<p>
-从 Claude Code 转到 OpenCode，感觉一切良好。
-</p>
-
-<p>
-我不是程序员，也不需要高质量的代码。我更喜欢 OpenCode 的一些设计理念，Claude Code 限制太多，也公开表示不让我们用，那就不用好了。
-</p>
-
-<p>
-在 OpenCode 里 vibe 一些小玩意还是很够用的。
-</p>
-
-<p>
-我虽然不喜欢 vibe，但是需要实现一些原型假设的时候，vibe 还是极好的。
-</p>
-
-<p>
-再一个，不了解 vibe 又怎么能说自己不喜欢呢？
-</p>
-</div>
-<div id="outline-container-org7093372" class="outline-3">
-<h3 id="org7093372">Core Rules</h3>
-<div class="outline-text-3" id="text-org7093372">
-<p>
-Just files and loops!
-</p>
-
-<p>
-Provide specific <code>Best Practices</code>, <code>Pros &amp; Cons</code>, <code>Red Flags</code>
-</p>
-
-<p>
-Keep it simple!
-</p>
-</div>
-</div>
-<div id="outline-container-orgb928c4f" class="outline-3">
-<h3 id="orgb928c4f">Maintain a hierarchical codebase map</h3>
-<div class="outline-text-3" id="text-orgb928c4f">
-<blockquote>
-<p>
-Your best engineers don’t grep randomly. They have a mental map:
-</p>
-<ul class="org-ul">
-<li>What each folder owns</li>
-<li>What breaks if you touch it wrong</li>
-<li>Where the real logic lives</li>
-</ul>
-
-<p>
-via: <a href="https://www.railly.dev/blog/intent-layer/">https://www.railly.dev/blog/intent-layer/</a>
-</p>
-</blockquote>
-
-<p>
-SKILL: intent-layer <a href="https://github.com/crafter-station/skills">https://github.com/crafter-station/skills</a>
-</p>
-
-<p>
-如果每次新的 session 都让 agent 探索一次项目代码，又不方便，又浪费时间。
-</p>
-
-<p>
-给项目代码提供一个持续更新的 codebase map 还是很必要的。
-</p>
-
-<p>
-这让 agent 在每次对话的时候在 context 里包含项目的基本信息和架构。
-</p>
-
-<p>
-also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/update-codemaps.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/update-codemaps.md</a>
-</p>
-</div>
-</div>
-<div id="outline-container-org187dc08" class="outline-3">
-<h3 id="org187dc08">Prepared with clear purpose</h3>
-<div class="outline-text-3" id="text-org187dc08">
-<p>
-SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
-</p>
-
-<p>
-在开始具体的任务之前，给予 agent 明确的目标以及要涉及到的具体文件。
-</p>
-
-<p>
-明确清晰的描述自己的需求非常重要。DO and DONOT.
-</p>
-
-<p>
-对于大部分模型，英文 prompt 效果比中文好。
-</p>
-</div>
-</div>
-<div id="outline-container-orgecd820e" class="outline-3">
-<h3 id="orgecd820e">Just files and loops, no more complicated</h3>
-<div class="outline-text-3" id="text-orgecd820e">
-<p>
-SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a>
-</p>
-
-<p>
-在 agent 执行具体任务的时候，planning with files 这个框架的设计很值得学习。
-</p>
-
-<p>
-它用三个文件记录和规划 agent 的 task plan，非常简洁，效果拔群。
-</p>
-
-<p>
-结合我在 opencode 里的使用，我加上了 memory 部分：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-nil">1. Use the `session-info` tool to retrieve the current conversation's [session-title]
-2. Run `date +%Y%m%d-%H%M%S` command to get the [YYYYMMDD-HHMMSS timestamp]
-   Create the `session folder`: `mkdir -p $HOME/.MemoryMD/$(basename $(git rev-parse --show-toplevel))/[YYYYMMDD-HHMMSS timestamp]-[session-title]`
-3. All generated markdown files should be created in that `session folder`.
-</pre>
-</div>
-
-<p>
-没有选择在项目根目录下创建是为了多个 session 和 git-worktree 并行场景下，方便共享。
-</p>
-
-<p>
-session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 session 信息，生成上面提到的文件夹：
-</p>
-
-<p>
-<code>tools/session-info.ts</code> :
-</p>
-
-<div class="org-src-container">
-<pre class="src src-js"><span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> tool <span style="color: #8c8c8c;">}</span> from <span style="color: #A1D08E;">"@opencode-ai/plugin"</span>
-<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> execSync <span style="color: #8c8c8c;">}</span> from <span style="color: #A1D08E;">"child_process"</span>
-<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> homedir <span style="color: #8c8c8c;">}</span> from <span style="color: #A1D08E;">"os"</span>
-
-<span style="color: #FFA657;">export</span> <span style="color: #FFA657;">default</span> tool<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>
-  description: <span style="color: #A1D08E;">"Get current session information including title"</span>,
-  args: <span style="color: #b0b1a3;">{}</span>,
-  <span style="color: #FFA657;">async</span> execute<span style="color: #b0b1a3;">(</span>args, context<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-    <span style="color: #FFA657;">const</span> <span style="color: #97b098;">{</span> sessionID, agent <span style="color: #97b098;">}</span> = context
-
-    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionDir</span> = <span style="color: #A1D08E;">`${homedir()}/.local/share/opencode/storage/session`</span>
-
-    <span style="color: #FFA657;">try</span> <span style="color: #97b098;">{</span>
-      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">result</span> = execSync<span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`find ${sessionDir} -name "${sessionID}.json" 2&gt;/dev/null | head -1`</span>, <span style="color: #b0b0b3;">{</span> encoding: <span style="color: #A1D08E;">"utf-8"</span> <span style="color: #b0b0b3;">}</span><span style="color: #aebed8;">)</span>
-
-      <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>!result.trim<span style="color: #b0b0b3;">()</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
-        <span style="color: #FFA657;">throw</span> <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Error</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"Session file not found"</span><span style="color: #b0b0b3;">)</span>
-      <span style="color: #aebed8;">}</span>
-
-      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionFile</span> = result.trim<span style="color: #aebed8;">()</span>
-      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionData</span> = JSON.parse<span style="color: #aebed8;">(</span>require<span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"fs"</span><span style="color: #b0b0b3;">)</span>.readFileSync<span style="color: #b0b0b3;">(</span>sessionFile, <span style="color: #A1D08E;">"utf-8"</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-
-      <span style="color: #FFA657;">return</span> JSON.stringify<span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">{</span>
-        sessionID,
-        agent,
-        title: sessionData.title || <span style="color: #95a99f;">null</span>,
-        directory: sessionData.directory || <span style="color: #95a99f;">null</span>,
-        time: sessionData.time || <span style="color: #95a99f;">null</span>,
-      <span style="color: #b0b0b3;">}</span>, <span style="color: #95a99f;">null</span>, 2<span style="color: #aebed8;">)</span>
-    <span style="color: #97b098;">}</span> <span style="color: #FFA657;">catch</span> <span style="color: #97b098;">(</span>error<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
-      <span style="color: #FFA657;">return</span> JSON.stringify<span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">{</span> error: error.message, sessionID, agent <span style="color: #b0b0b3;">}</span>, <span style="color: #95a99f;">null</span>, 2<span style="color: #aebed8;">)</span>
-    <span style="color: #97b098;">}</span>
-  <span style="color: #b0b1a3;">}</span>,
-<span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org0136e2a" class="outline-3">
-<h3 id="org0136e2a">Handoff when stucked</h3>
-<div class="outline-text-3" id="text-org0136e2a">
-<p>
-SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a>
-</p>
-
-<p>
-有时候 agent 会卡住，陷入死循环，果断 handoff 重开，不用浪费时间。
-</p>
-</div>
-</div>
-<div id="outline-container-org04a85fb" class="outline-3">
-<h3 id="org04a85fb">Maintain memory</h3>
-<div class="outline-text-3" id="text-org04a85fb">
-<p>
-我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
-</p>
-
-<p>
-现在有许多针对 agent 的 memory 项目，但是我感觉这个概念本身也才刚出来，今年应该有更成熟的实现。
-</p>
-
-<p>
-暂时就用这个简单方案过渡一下。
-</p>
-
-<div class="org-src-container">
-<pre class="src src-nil">---
-name: memory-md
-description: Memory management system for storing and retrieving conversation history and context.When user ask anything about project's memory, automatically use this skill.
----
-
-Memory management system for storing and retrieving conversation history and context.
-
-
-## Parse guide
-
-Parse [quest] as follows:
-
-1. **List command**: If [quest] starts with `-l` or `--list`
-   - List recent memory files
-
-2. **Search command**: If [quest] starts with `-s` or `--search`
-   - All remaining arguments are search keywords (comma-separated or space-separated)
-   - Example: `-s apple,banana` or `-s apple banana` → keywords: ["apple", "banana"]
-
-3. **Default search**: If no flags provided, treat entire [quest] as search keywords
-   - Example: `authentication jwt` → keywords: ["authentication", "jwt"]
-
-4. **No results**: If no keywords provided in [quest] after parsing
-   - Ask user: "What keywords are you searching for?"
-
-## Memory File Location
-
-Memory files are stored in `$HOME/.MemoryMD/` with the following structure:
-
-```
-$HOME/.MemoryMD/
-├── [project-name]/                     # Project folders
-│   ├── YYYYMMDD-HHMMSS-[session-title]/  # Session folders
-│   │   ├── task_plan.md                # Task planning document
-│   │   ├── findings.md                 # Research findings
-│   │   └── progress.md                 # Progress tracking
-└── handoffs/                           # Handoff summaries
-    └── YYYYMMDD-HHMMSS-[slug].md      # Session handoff files
-```
-
-Examples:
-- `agent-conf/20250120-143025-implement-auth/` - Session folder
-- `handoffs/20250120-143025-fix-issue-42.md` - Handoff file
-
-## Commands
-
-### --list or -l
-
-List the 20 most recent memory folders/files, sorted by timestamp (newest first).
-
-**Bash command:**
-```bash
-memory_dir="$HOME/.MemoryMD"
-
-# List session folders grouped by project (sorted newest first)
-find "$memory_dir" -maxdepth 2 -type d -name "????????-??????-*" | sort -r | head -20 | awk -F/ '{
-    project = $(NF-1)
-    foldername = $NF
-    timestamp = substr(foldername, 1, 15)
-    title = substr(foldername, 17)
-    if (project != prev_project) {
-        if (prev_project != "") print ""
-        print "**" project "**"
-        prev_project = project
-    }
-    print "  [" timestamp "] " title
-}'
-
-# List handoff files (sorted newest first)
-echo ""
-echo "Recent handoffs:"
-find "$memory_dir/handoffs" -maxdepth 1 -type f -name "*.md" | sort -r | head -20 | while read file; do
-    filename=$(basename "$file")
-    title=${filename#*-}
-    title=${title%.md}
-    echo "$title - $filename"
-done
-```
-
-**Output format:**
-```
-**agent-conf:**
-  [20250120-143025] implement-auth
-  [20250119-091530] fix-issue-42
-
-**another-project:**
-  [20250118-1530] api-handler
-
-Recent handoffs:
-  fix-issue-42 - 20250120-143025-fix-issue-42.md
-  implement-auth - 20250119-091530-implement-auth.md
-```
-
-### --search or -s
-
-Search memory files for keywords in both Chinese and English.
-
-Use your Glob and Grep tools first.
-
-First perform exact keyword search. If no results found, search for related similar keywords.
-
-If still no results after all searches, ask user: "What keywords are you searching for?"
-
-**Output Examples:**
-
-```md
-Search query: [keywords]
-
-## Found in: agent-conf/20250120-143025-implement-auth/task_plan.md
-[summary of your findings]
-
-## Found in: agent-conf/20250120-143025-implement-auth/findings.md
-[summary of your findings]
-```
-
-Bash commands below serve as auxiliary reference:
-
-**Bash command:**
-```bash
-memory_dir="$HOME/.MemoryMD"
-
-# Search for keywords in all markdown files
-rg -i -t md "$keywords" "$memory_dir" --follow
-
-# Alternative: Search with context (2 lines before and after matches)
-rg -i -C 2 -t md "$keywords" "$memory_dir" --follow
-```
-
-**Options:**
-- `-i`: Case-insensitive search
-- `-C N`: Show N lines of context before and after matches
-- `-t md`: Search only markdown files
-- `--follow`: Follow symbolic links
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org4c8296f" class="outline-3">
-<h3 id="org4c8296f">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-org4c8296f">
-<p>
-SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
-</p>
-
-<p>
-在解决实际的代码问题的时候，有许多方案是可以固定下来复用的。
-</p>
-
-<p>
-根据这个 SKILL，我设计了一个 learned skill。这个 SKILL 实际上是一个索引，在 description 部分加上 learned 的描述信息。
-</p>
-
-<p>
-learn skill 会根据当前会话的 session 固定下来有价值的 pattern，生成 skill，自动添加到 learned skill 的 description 部分，这样 agent 在加载的时候就可以知道有哪些 learned skill 了。
-</p>
-
-<p>
-不选择把 learned skill 生成单独的 skill 文件夹是因为它们的普遍性不强，也经常要更新和修改，不能完全当作 SKILL 来设计。
-</p>
-
-<p>
-Learn skill：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-nil">---
-name: learn
-description: &gt;
-  Extract reusable patterns from sessions and create dynamic skills. Use when you need to save learned patterns, error resolutions, debugging techniques, or project-specific knowledge to ~/.config/opencode/skill/learned/.
-  Trigger, User asks to extract learning, save patterns, or run /learn command.
-  All learned skills in `~/.config/opencode/skill/learned/` are automatically discoverable
-  `~/.config/opencode/skill/learned/SKILL.md` is the index off all learned skills
----
-
-# Learn Skill
-
-Dynamically extract and store reusable patterns as skills.
-
-## Quick Start
-
-When user wants to extract learning from current session:
-
-1. Review session context for extractable patterns
-2. Identify the most valuable/reusable insight,list them
-3. Ask user for confirmation before creating skill file
-4. Create `~/.config/opencode/skill/learned/[skill-name].md` - Use [templates/learned-skill-template.md](templates/learned-skill-template.md) as reference
-5. Update `~/.config/opencode/skill/learned/SKILL.md` to include the new skill - Use  [templates/SKILL.md](templates/SKILL.md) as reference
-6. Run `ls -1 ~/.config/opencode/skill/learned/*.md 2&gt;/dev/null | grep -v SKILL.md | wc -l`, update the total skills number.
-
-## What to Extract
-
-### 1. Error Resolution Patterns
-- What error occurred?
-- What was the root cause?
-- What fixed it?
-- Is this reusable for similar errors?
-
-### 2. Debugging Techniques
-- Non-obvious debugging steps
-- Tool combinations that worked
-- Diagnostic patterns
-
-### 3. Workarounds
-- Library quirks
-- API limitations
-- Version-specific fixes
-
-### 4. Project-Specific Patterns
-- Codebase conventions discovered
-- Architecture decisions made
-- Integration patterns
-
-## Quality Guidelines
-
-### DO Extract:
-- Error patterns that occur more than once
-- Non-obvious debugging techniques
-- Workarounds for library quirks
-- Architecture decisions and their rationale
-- Integration patterns across services/tools
-
-### DO NOT Extract:
-- Trivial fixes (typos, simple syntax errors)
-- One-time issues (specific API outages, temporary glitches)
-- Obvious solutions (standard library usage without special context)
-- Information already well-documented elsewhere
-
-### Tips for Quality Skills
-1. **Be Specific**: Narrow trigger conditions = better matching
-2. **Include Examples**: Code snippets make patterns actionable
-3. **Document Why**: Explain the problem, not just the solution
-4. **Keep Focused**: One pattern per skill
-5. **Use Descriptive Names**: Names should indicate what the skill solves
-
-
-## Skill File Format
-
-### Individual Skill Files
-
-Use the template file [templates/learned-skill-template.md](templates/learned-skill-template.md) as the base for all learned skills.
-
-Key sections:
-- **Frontmatter**: name and description (critical for skill discovery)
-- **Problem**: What specific issue this solves
-- **Solution**: Actionable steps to implement
-- **Example**: Code snippet if applicable
-- **When to Use**: Trigger conditions for activation
-- **Related Patterns**: Cross-references to other skills
-
-### SKILL.md
-
-Use the template file [templates/SKILL.md](templates/SKILL.md) as the base for maintaining the learned skills index.
-
-Purpose:
-- Provides a categorized listing of all learned skills
-- Enables easy browsing and discovery of patterns
-- Tracks skill count and update timestamp
-
-Update SKILL.md whenever saving a new skill.
-
-## Extraction Process
-
-### Step 1: Review Session Context
-
-Use `session-info` tool to get session details if needed.
-
-Use `memory-md` skill to find relevant memories.
-
-Look for:
-- Repeated error fixes
-- Non-obvious solutions
-- Workarounds discovered
-- Best practices learned
-
-### Step 2: Identify Pattern
-
-Ask yourself:
-- Is this reusable? (Will save time in future sessions)
-- Is this non-trivial? (Not typos or simple syntax errors)
-- Is this generalizable? (Not one-time issues)
-
-Prioritize patterns that:
-- Solve common problems
-- Apply across multiple projects
-- Document non-obvious solutions
-
-### Step 3: Draft Skill
-
-Use the skill file format above.
-
-**Naming Convention:**
-- Use kebab-case for skill names
-- Make names descriptive but concise
-- Example: `async-error-handling-pattern`, `docker-volume-permission-fix`
-
-**Frontmatter:**
-```yaml
----
-name: [skill-name]
-description: Use when [trigger conditions]. Covers [specific problem/solution].
----
-```
-
-The description is critical - it's what helps the skill system know when to load this skill.
-
-### Step 4: Validate
-
-Before presenting to user:
-- Check that the skill has clear trigger conditions
-- Ensure the solution is actionable
-- Verify code examples are correct
-- Confirm the pattern is truly reusable
-
-### Step 5: Present and Save
-
-Show the user:
-1. Pattern name
-2. Brief description of what was extracted
-3. Why it's valuable
-
-Ask: "Save this pattern to learned skills? (y/n)"
-
-If yes, save to `~/.config/opencode/skill/learned/[skill-name].md`
-
-### Step 6: Update `learned/SKILL.md`
-
-1. Update the description of the new learned skill.Append this part: [name of learned skill 1] - [description of learned skill 1]
-
-example YAML of `learned/SKILL.md`:
-
-```md
----
-name: learned
-description: &gt;
-  learned skill is a collection of learned skill user create.It's a index of all learned skills.
-  We have these learned skill below:
-  [name of learned skill 1] - [description of learned skill 1]
-  [name of learned skill 1] - [description of learned skill 2]
----
-```
-
-2. Update the new skill to the index section.
-
-## Common Use Cases
-
-### User runs /learn command
-```
-User: /learn
-```
-1. Review session for extractable patterns
-2. Present candidate patterns to user
-3. Ask which to save
-4. Save selected patterns
-
-### User asks to extract specific topic
-```
-User: Extract what we learned about async error handling
-```
-1. Search session context for async/error patterns
-2. Compile findings
-3. Generate skill file
-4. Present and save
-
-### User wants to capture architecture decision
-```
-User: Save the event sourcing pattern we used
-```
-1. Extract the pattern details
-2. Document rationale and trade-offs
-3. Create skill with example code
-4. Present and save
-
-## Integration with Other Skills
-
-This skill works well with:
-- **memory-md**: For accessing related patterns from past sessions
-- **skill-creator**: For creating more complex, bundled skills
-</pre>
-</div>
-
-<p>
-Learnd skill：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-nil">---
-name: learned
-description: &gt;
-  learned skill is a collection of learned skill user create.It's a index of all learned skills.
-  We have these learned skill below:
-  [name of learned skill 1] - [description of learned skill 1]
-  [name of learned skill 1] - [description of learned skill 2]
----
-
-# Learned Skills Index
-
-You can read the skill file to load the skill you need.
-
-Treat these skill file below as `learned skill`'s references.
-
-## Error Patterns
-- [skill-1.md](skill-1.md)
-- [skill-2.md](skill-2.md)
-
-## Debugging Techniques
-- [skill-3.md](skill-3.md)
-
-## Workarounds
-- [skill-4.md](skill-4.md)
-
-## Project-Specific
-- [skill-5.md](skill-5.md)
-
-# Statistics
-Total skills: [count]
-Last updated: [date]
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org842b58f" class="outline-3">
-<h3 id="org842b58f">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org842b58f">
-<p>
-SKILL: code-simplifier: <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
-</p>
-
-<p>
-LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，很容易犯病，编写重复性的代码，这是因为上下文多了，准确性下降。
-</p>
-
-<p>
-在每次 agent 写完代码之后进行代码审查和代码优化。
-</p>
-
-<p>
-在 prompt 上，亲测加上：这是别人的代码，效果会更好🤣。LLM 拍马屁的概率大幅下降。
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org763d99d" class="outline-2">
-<h2 id="org763d99d">OpenCode in Emacs</h2>
-<div class="outline-text-2" id="text-org763d99d">
-<p>
-在 Emacs 里现在和 OpenCode 交互最方便的就是 <a href="https://github.com/xenodium/agent-shell">agent-shell</a> 了。
-</p>
-
-<p>
-在终端里用 OpenCode 最不方便的就是不能直接选择文本，agent-shell 解决了这个问题:
-</p>
-
-<p>
-<code>agent-shell-send-dwim</code> 、 <code>agent-shell-send-file</code> 、 <code>agent-shell-send-region</code> 、 <code>agent-shell-insert-file</code> 这几个原生的指令配置好快捷键就 OK 了。
-</p>
-
-<p>
-slash command 通过 Emacs 的自动补全，基本是无感切换。
-</p>
-
-<p>
-不足的地方就是，agent-shell 不会列出 OpenCode 的 subagent。所以我加了一些补丁来显示 subagent。
-</p>
-
-<p>
-由于 @ 在 agent-shell 里默认用来 @file，所以用 @@ 来 @ subagent，并支持了自动补全。Vim 的 normal 模式下按 @ 会选择 primary agent。
-</p>
-
-<p>
-具体代码：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> agent-shell
-  <span style="color: #79C0FF;">:after</span> evil
-  <span style="color: #79C0FF;">:config</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> agent-shell-opencode-authentication
-        <span style="color: #b0b1a3;">(</span>agent-shell-opencode-make-authentication <span style="color: #79C0FF;">:none</span> t<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">;; </span><span style="color: #787878;">disable creating transcript file
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> agent-shell-transcript-file-path-function nil<span style="color: #93a8c6;">)</span>
-
-  <span style="color: #787878;">;; </span><span style="color: #787878;">Evil state-specific RET behavior: insert mode = newline, normal mode = send
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">insert</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"RET"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">newline</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">normal</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"RET"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">comint-send-input</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">normal</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"@"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-set-session-mode</span><span style="color: #93a8c6;">)</span>
-
-  <span style="color: #787878;">;; </span><span style="color: #787878;">Configure *agent-shell-diff* buffers to start in Emacs state
-</span>  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">diff-mode-hook</span>
-            <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #97b098;">()</span>
-              <span style="color: #97b098;">(</span><span style="color: #FFA657;">when</span> <span style="color: #aebed8;">(</span>string-match-p <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*agent-shell-diff</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*"</span> <span style="color: #b0b0b3;">(</span>buffer-name<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-                <span style="color: #aebed8;">(</span>evil-emacs-state<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;;; </span><span style="color: #787878;">agent-shell OpenCode Subagent Support
-</span><span style="color: #787878;">;;; </span><span style="color: #787878;">Shows available subagents and enables @@subagent invocation syntax
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defvar</span> <span style="color: #f4f4ff;">agent-shell-opencode--subagents</span> nil
-  <span style="color: #787878;">"Cached list of available subagents."</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--get-subagent-description</span> <span style="color: #93a8c6;">(</span>agent-name<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Get description for subagent AGENT-NAME from its config file."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>config-file <span style="color: #aebed8;">(</span>expand-file-name <span style="color: #b0b0b3;">(</span>format <span style="color: #A1D08E;">"%s.md"</span> agent-name<span style="color: #b0b0b3;">)</span>
-                                        <span style="color: #A1D08E;">"~/.config/opencode/agents/"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>description
-          <span style="color: #aebed8;">(</span><span style="color: #FFA657;">when</span> <span style="color: #b0b0b3;">(</span>file-exists-p config-file<span style="color: #b0b0b3;">)</span>
-            <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-temp-buffer</span>
-              <span style="color: #90a890;">(</span>insert-file-contents config-file<span style="color: #90a890;">)</span>
-              <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-min<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-              <span style="color: #90a890;">(</span><span style="color: #FFA657;">when</span> <span style="color: #a2b6da;">(</span>re-search-forward <span style="color: #A1D08E;">"^description: </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">$"</span> nil t<span style="color: #a2b6da;">)</span>
-                <span style="color: #a2b6da;">(</span>match-string 1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">or</span> description <span style="color: #A1D08E;">"Subagent"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--list-subagents</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #787878;">"List all subagents using opencode agent list command.
-Returns list of agent alists with :id, :name, :description."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>output <span style="color: #aebed8;">(</span>shell-command-to-string <span style="color: #A1D08E;">"opencode agent list"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>lines <span style="color: #aebed8;">(</span>split-string output <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         agents<span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #97b098;">(</span>line lines<span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">when</span> <span style="color: #aebed8;">(</span>string-match <span style="color: #A1D08E;">"^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">[</span><span style="color: #A1D08E;">^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">s</span><span style="color: #A1D08E;">]+</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;"> (subagent)$"</span> line<span style="color: #aebed8;">)</span>
-        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>name <span style="color: #a2b6da;">(</span>match-string 1 line<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-               <span style="color: #90a890;">(</span>description <span style="color: #a2b6da;">(</span>agent-shell-opencode--get-subagent-description name<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">push</span> <span style="color: #FFA657;">`</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span><span style="color: #79C0FF;">:id</span> . ,name<span style="color: #a2b6da;">)</span>
-                  <span style="color: #a2b6da;">(</span><span style="color: #79C0FF;">:name</span> . ,name<span style="color: #a2b6da;">)</span>
-                  <span style="color: #a2b6da;">(</span><span style="color: #79C0FF;">:description</span> . ,description<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-                agents<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>nreverse agents<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--format-subagents</span> <span style="color: #93a8c6;">(</span>subagents<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Format SUBAGENTS list for display."</span>
-  <span style="color: #93a8c6;">(</span>mapconcat
-   <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #97b098;">(</span>agent<span style="color: #97b098;">)</span>
-     <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>name <span style="color: #90a890;">(</span>map-elt agent <span style="color: #79C0FF;">:name</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-           <span style="color: #b0b0b3;">(</span>desc <span style="color: #90a890;">(</span>map-elt agent <span style="color: #79C0FF;">:description</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-       <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"@@%s - %s"</span> <span style="color: #b0b0b3;">(</span>propertize name <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-face</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-keyword-face</span><span style="color: #b0b0b3;">)</span> desc<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-   subagents
-   <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--show-subagents-fragment</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #787878;">"Add subagents UI fragment after available modes fragment."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">when-let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>subagents agent-shell-opencode--subagents<span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>&gt; <span style="color: #b0b0b3;">(</span>length subagents<span style="color: #b0b0b3;">)</span> 0<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>fboundp <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell--update-fragment</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span>state agent-shell--state<span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span>request-count <span style="color: #aebed8;">(</span>map-elt state <span style="color: #79C0FF;">:request-count</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span>buffer <span style="color: #aebed8;">(</span>map-elt state <span style="color: #79C0FF;">:buffer</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">save-excursion</span>
-        <span style="color: #aebed8;">(</span>goto-char <span style="color: #b0b0b3;">(</span>point-max<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">when</span> <span style="color: #b0b0b3;">(</span>text-property-search-backward
-               <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell-ui-state</span> nil
-               <span style="color: #90a890;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #a2b6da;">(</span>_ prop-state<span style="color: #a2b6da;">)</span>
-                 <span style="color: #a2b6da;">(</span>equal <span style="color: #9cb6ad;">(</span>map-elt prop-state <span style="color: #79C0FF;">:qualified-id</span><span style="color: #9cb6ad;">)</span>
-                        <span style="color: #9cb6ad;">(</span>format <span style="color: #A1D08E;">"%s-available_modes"</span> request-count<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-               t<span style="color: #b0b0b3;">)</span>
-          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span>block-range <span style="color: #9cb6ad;">(</span>agent-shell-ui--block-range <span style="color: #79C0FF;">:position</span> <span style="color: #8c8c8c;">(</span>point<span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>
-                 <span style="color: #a2b6da;">(</span>insert-pos <span style="color: #9cb6ad;">(</span>map-elt block-range <span style="color: #79C0FF;">:end</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span>goto-char insert-pos<span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span><span style="color: #FFA657;">let</span> <span style="color: #a2b6da;">(</span><span style="color: #9cb6ad;">(</span>inhibit-read-only t<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>
-              <span style="color: #a2b6da;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #a2b6da;">)</span>
-              <span style="color: #a2b6da;">(</span>agent-shell-ui--insert-fragment
-               <span style="color: #9cb6ad;">(</span>agent-shell-ui-make-fragment-model
-                <span style="color: #79C0FF;">:namespace-id</span> <span style="color: #8c8c8c;">(</span>number-to-string request-count<span style="color: #8c8c8c;">)</span>
-                <span style="color: #79C0FF;">:block-id</span> <span style="color: #A1D08E;">"available_subagents"</span>
-                <span style="color: #79C0FF;">:label-left</span> <span style="color: #8c8c8c;">(</span>propertize <span style="color: #A1D08E;">"Available subagents"</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-face</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-doc-markup-face</span><span style="color: #8c8c8c;">)</span>
-                <span style="color: #79C0FF;">:body</span> <span style="color: #8c8c8c;">(</span>agent-shell-opencode--format-subagents subagents<span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span>
-               <span style="color: #9cb6ad;">(</span>format <span style="color: #A1D08E;">"%s-available_subagents"</span> request-count<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--load-subagents-delayed</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #787878;">"Load subagents and show them in UI after delay."</span>
-  <span style="color: #93a8c6;">(</span>run-with-timer
-   0.5 nil
-   <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #97b098;">()</span>
-     <span style="color: #97b098;">(</span><span style="color: #FFA657;">when-let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>subagents <span style="color: #90a890;">(</span>agent-shell-opencode--list-subagents<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-                <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>&gt; <span style="color: #a2b6da;">(</span>length subagents<span style="color: #a2b6da;">)</span> 0<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-       <span style="color: #aebed8;">(</span><span style="color: #FFA657;">setq</span> agent-shell-opencode--subagents subagents<span style="color: #aebed8;">)</span>
-       <span style="color: #aebed8;">(</span>agent-shell-opencode--show-subagents-fragment<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--around-initiate-session</span> <span style="color: #93a8c6;">(</span>orig-fun <span style="color: #95a99f;">&amp;rest</span> args<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Around advice for agent-shell--initiate-session."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>plist args<span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>on-session-init <span style="color: #aebed8;">(</span>plist-get plist <span style="color: #79C0FF;">:on-session-init</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>new-on-session-init
-          <span style="color: #aebed8;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b0b3;">()</span>
-            <span style="color: #b0b0b3;">(</span>funcall on-session-init<span style="color: #b0b0b3;">)</span>
-            <span style="color: #b0b0b3;">(</span>agent-shell-opencode--load-subagents-delayed<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>plist-put plist <span style="color: #79C0FF;">:on-session-init</span> new-on-session-init<span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>apply orig-fun plist<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span>advice-add <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell--initiate-session</span> <span style="color: #79C0FF;">:around</span>
-            <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--around-initiate-session</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;;; </span><span style="color: #787878;">Transform @@subagent syntax to @subagent before sending to OpenCode
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--filter-send-command-args</span> <span style="color: #93a8c6;">(</span>args<span style="color: #93a8c6;">)</span>
-  <span style="color: #787878;">"Transform @@subagent to @subagent in prompt before sending."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>prompt <span style="color: #aebed8;">(</span>plist-get args <span style="color: #79C0FF;">:prompt</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">when</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">and</span> prompt <span style="color: #aebed8;">(</span>stringp prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span>plist-put args <span style="color: #79C0FF;">:prompt</span> <span style="color: #aebed8;">(</span>replace-regexp-in-string <span style="color: #A1D08E;">"@@"</span> <span style="color: #A1D08E;">"@"</span> prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-  args<span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span>advice-add <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell--send-command</span> <span style="color: #79C0FF;">:filter-args</span>
-            <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--filter-send-command-args</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #787878;">;;; </span><span style="color: #787878;">@@subagent completion support
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--subagent-completion-at-point</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #787878;">"Complete subagent names after @@ prefix."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">when-let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>bounds <span style="color: #aebed8;">(</span>agent-shell--completion-bounds <span style="color: #A1D08E;">"[:alnum:]_-"</span> ?@<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-              <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #FFA657;">save-excursion</span>
-                 <span style="color: #b0b0b3;">(</span>goto-char <span style="color: #90a890;">(</span>map-elt bounds <span style="color: #79C0FF;">:start</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-                 <span style="color: #b0b0b3;">(</span>eq <span style="color: #90a890;">(</span>char-before<span style="color: #90a890;">)</span> ?@<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-              <span style="color: #97b098;">(</span>subagents agent-shell-opencode--subagents<span style="color: #97b098;">)</span>
-              <span style="color: #97b098;">(</span>descriptions <span style="color: #aebed8;">(</span>mapcar <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #90a890;">(</span>a<span style="color: #90a890;">)</span>
-                                      <span style="color: #90a890;">(</span>cons <span style="color: #a2b6da;">(</span>map-elt a <span style="color: #79C0FF;">:name</span><span style="color: #a2b6da;">)</span>
-                                            <span style="color: #a2b6da;">(</span>map-elt a <span style="color: #79C0FF;">:description</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-                                    subagents<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>list <span style="color: #97b098;">(</span>map-elt bounds <span style="color: #79C0FF;">:start</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>map-elt bounds <span style="color: #79C0FF;">:end</span><span style="color: #97b098;">)</span>
-          <span style="color: #97b098;">(</span>mapcar <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">car</span> descriptions<span style="color: #97b098;">)</span>
-          <span style="color: #79C0FF;">:exclusive</span> t
-          <span style="color: #79C0FF;">:annotation-function</span>
-          <span style="color: #97b098;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #aebed8;">(</span>name<span style="color: #aebed8;">)</span>
-            <span style="color: #aebed8;">(</span><span style="color: #FFA657;">when-let*</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>desc <span style="color: #a2b6da;">(</span>map-elt descriptions name<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-              <span style="color: #b0b0b3;">(</span>concat <span style="color: #A1D08E;">"  "</span> desc<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-          <span style="color: #79C0FF;">:company-kind</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #aebed8;">(</span>_<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">function</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--setup-completion</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #787878;">"Set up @@subagent completion in agent-shell."</span>
-  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">completion-at-point-functions</span>
-            <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--subagent-completion-at-point</span>
-            nil t<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell-mode-hook</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--setup-completion</span><span style="color: #8c8c8c;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org6cfea1d" class="outline-2">
-<h2 id="org6cfea1d">Bubblewrap Sandbox</h2>
-<div class="outline-text-2" id="text-org6cfea1d">
-<p>
-Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了许多针对性的优化。
-</p>
-
-<p>
-让 LLM 生成了一个 bash 脚本在 bubblewrap sandbox 里运行 OpenCode：
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
-</span><span style="color: #787878;"># </span><span style="color: #787878;">opencode bubblewrap sandbox script
-</span><span style="color: #787878;"># </span><span style="color: #787878;">https://patrickmccanna.net/a-better-way-to-limit-claude-code-and-other-coding-agents-access-to-secrets/
-</span><span style="color: #787878;"># </span><span style="color: #787878;">https://www.luiscardoso.dev/blog/sandboxes-for-ai
-</span>
-<span style="color: #79C0FF;">set</span> -euo pipefail
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Configuration
-</span><span style="color: #f4f4ff;">PROJECT_DIR</span>=<span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">pwd</span><span style="color: #A1D08E;">)"</span>
-<span style="color: #f4f4ff;">OPENCODE_BIN</span>=<span style="color: #A1D08E;">"$HOME/.npm-global/bin/opencode"</span>
-<span style="color: #f4f4ff;">OPENCODE_CONFIG</span>=<span style="color: #A1D08E;">"$HOME/.config/opencode"</span>
-<span style="color: #f4f4ff;">NPM_BIN</span>=<span style="color: #A1D08E;">"$HOME/.npm-global"</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Validate paths
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> ! -x <span style="color: #A1D08E;">"$OPENCODE_BIN"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: opencode binary not found or not executable: $OPENCODE_BIN"</span>
-  <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Check if we need to allow network access (default: yes for opencode's MCP servers)
-</span><span style="color: #f4f4ff;">SHARE_NET</span>=<span style="color: #A1D08E;">"--share-net"</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Run opencode in bubblewrap sandbox
-</span>bwrap <span style="color: #A1D08E;">\</span>
-  --ro-bind /usr /usr <span style="color: #A1D08E;">\</span>
-  --ro-bind /lib /lib <span style="color: #A1D08E;">\</span>
-  --ro-bind /bin /bin <span style="color: #A1D08E;">\</span>
-  --ro-bind /etc/resolv.conf /etc/resolv.conf <span style="color: #A1D08E;">\</span>
-  --ro-bind /etc/hosts /etc/hosts <span style="color: #A1D08E;">\</span>
-  --ro-bind /etc/ssl /etc/ssl <span style="color: #A1D08E;">\</span>
-  --ro-bind /etc/passwd /etc/passwd <span style="color: #A1D08E;">\</span>
-  --ro-bind /etc/group /etc/group <span style="color: #A1D08E;">\</span>
-  --ro-bind <span style="color: #A1D08E;">"$NPM_BIN"</span> <span style="color: #A1D08E;">"$NPM_BIN"</span> <span style="color: #A1D08E;">\</span>
-  $<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">for env_file in "$PROJECT_DIR"/.env*; do </span><span style="color: #93a8c6;">[</span><span style="color: #ff4f58;"> -e "$env_file" </span><span style="color: #93a8c6;">]</span><span style="color: #ff4f58;"> &amp;&amp; echo "--ro-bind /dev/null \"$env_file\""; done</span><span style="color: #8c8c8c;">)</span> <span style="color: #A1D08E;">\</span>
-  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.aws"</span> <span style="color: #A1D08E;">\</span>
-  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.ssh"</span> <span style="color: #A1D08E;">\</span>
-  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.gnupg"</span> <span style="color: #A1D08E;">\</span>
-  --ro-bind /dev/null <span style="color: #A1D08E;">"$HOME/.config/gcloud"</span> <span style="color: #A1D08E;">\</span>
-  --bind <span style="color: #A1D08E;">"$OPENCODE_CONFIG"</span> <span style="color: #A1D08E;">"$OPENCODE_CONFIG"</span> <span style="color: #A1D08E;">\</span>
-  --bind <span style="color: #A1D08E;">"$PROJECT_DIR"</span> <span style="color: #A1D08E;">"$PROJECT_DIR"</span> <span style="color: #A1D08E;">\</span>
-  --bind <span style="color: #A1D08E;">"$HOME/.npm-global/"</span> <span style="color: #A1D08E;">"$HOME/.npm-global/"</span> <span style="color: #A1D08E;">\</span>
-  --bind <span style="color: #A1D08E;">"$HOME/.local/share/opencode"</span> <span style="color: #A1D08E;">"$HOME/.local/share/opencode"</span> <span style="color: #A1D08E;">\</span>
-  --bind <span style="color: #A1D08E;">"$HOME/.MemoryMD/"</span> <span style="color: #A1D08E;">"$HOME/.MemoryMD/"</span> <span style="color: #A1D08E;">\</span>
-  --bind <span style="color: #A1D08E;">"$HOME/.cache/opencode/"</span> <span style="color: #A1D08E;">"$HOME/.cache/opencode/"</span> <span style="color: #A1D08E;">\</span>
-  --tmpfs /tmp <span style="color: #A1D08E;">\</span>
-  --proc /proc <span style="color: #A1D08E;">\</span>
-  --dev /dev <span style="color: #A1D08E;">\</span>
-  $<span style="color: #f4f4ff;">SHARE_NET</span> <span style="color: #A1D08E;">\</span>
-  --unshare-pid <span style="color: #A1D08E;">\</span>
-  --unshare-ipc <span style="color: #A1D08E;">\</span>
-  --unshare-uts <span style="color: #A1D08E;">\</span>
-  --die-with-parent <span style="color: #A1D08E;">\</span>
-  --new-session <span style="color: #A1D08E;">\</span>
-  --chdir <span style="color: #A1D08E;">"$PROJECT_DIR"</span> <span style="color: #A1D08E;">\</span>
-  --setenv HOME <span style="color: #A1D08E;">"$HOME"</span> <span style="color: #A1D08E;">\</span>
-  --setenv USER <span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">whoami</span><span style="color: #A1D08E;">)"</span> <span style="color: #A1D08E;">\</span>
-  <span style="color: #A1D08E;">"$OPENCODE_BIN"</span> <span style="color: #A1D08E;">"$@"</span>
-</pre>
-</div>
-</div>
-</div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div>]]></description>
-  <category><![CDATA[Coding]]></category>
-  <link>https://www.vandee.art/blog/2026-01-23-my-agent-practice-with-opencode-in-emacs.html</link>
-  <guid>https://www.vandee.art/blog/2026-01-23-my-agent-practice-with-opencode-in-emacs.html</guid>
-  <pubDate>Fri, 23 Jan 2026 11:11:00 +0800</pubDate>
 </item>
 </channel>
 </rss>

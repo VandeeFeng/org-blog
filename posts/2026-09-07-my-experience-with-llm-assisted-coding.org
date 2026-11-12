@@ -1,7 +1,7 @@
 #+title: My Experience with LLM-Assisted Coding
 #+date: <2026-09-07 22:25>
 #+description: 我觉得半自动让 LLM 填空挺靠谱的。自己写好函数、结构体的命名语义，固定好大的代码逻辑框架，拿不准、不会写的细节实现让 LLM 扩展生成。
-#+filetags: Coding
+#+filetags: Coding Agent
 
 * TL;DR
 
