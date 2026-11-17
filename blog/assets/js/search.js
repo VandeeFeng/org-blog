@@ -1,6 +1,6 @@
 /* Search the publish-time index with Fuse.js. */
 
-function initSearch() {
+function initSearch(indexUrl) {
   const searchInput = document.getElementById("search-input");
   const searchResults = document.getElementById("search-results");
   const content = document.getElementById("content");
@@ -13,6 +13,7 @@ function initSearch() {
   let searchTimer;
 
   if (!searchInput || !searchResults || !content) return;
+  let isComposing = searchInput.dataset.searchComposing === "true";
 
   searchResults.setAttribute("aria-live", "polite");
 
@@ -31,7 +32,7 @@ function initSearch() {
 
   function loadIndex() {
     if (indexPromise) return indexPromise;
-    indexPromise = fetch("assets/search-index.json")
+    indexPromise = fetch(indexUrl)
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Search index load failed: ${response.status}`);
@@ -46,10 +47,12 @@ function initSearch() {
           includeMatches: true,
           minMatchCharLength: minimumQueryLength,
         });
+        search();
       })
       .catch((error) => {
         indexPromise = null;
-        throw error;
+        searchIndex = null;
+        showIndexError(error);
       });
     return indexPromise;
   }
@@ -143,8 +146,9 @@ function initSearch() {
     searchResults.style.display = "block";
   }
 
-  async function search() {
+  function search() {
     clearTimeout(searchTimer);
+    if (isComposing) return;
     const query = searchInput.value.trim();
     if (query.length < minimumQueryLength) {
       content.style.display = "block";
@@ -153,14 +157,7 @@ function initSearch() {
     }
     if (!searchIndex) {
       showMessage("Loading search index...");
-      try {
-        await loadIndex();
-      } catch (error) {
-        showIndexError(error);
-        return;
-      }
-      // The visitor may have changed or cleared the query during loading.
-      search();
+      loadIndex();
       return;
     }
     displayResults(searchIndex.search(query));
@@ -168,14 +165,24 @@ function initSearch() {
 
   searchInput.addEventListener("input", (event) => {
     clearTimeout(searchTimer);
-    if (event.isComposing) return;
+    if (event.isComposing) {
+      isComposing = true;
+      return;
+    }
     if (searchInput.value.trim().length < minimumQueryLength) {
       search();
       return;
     }
     searchTimer = setTimeout(search, searchDelay);
   });
-  searchInput.addEventListener("compositionend", search);
+  searchInput.addEventListener("compositionstart", () => {
+    isComposing = true;
+    clearTimeout(searchTimer);
+  });
+  searchInput.addEventListener("compositionend", () => {
+    isComposing = false;
+    search();
+  });
   searchInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.isComposing) {
       event.preventDefault();
@@ -183,14 +190,23 @@ function initSearch() {
     }
   });
 
-  loadIndex().then(search).catch(showIndexError);
+  searchInput.form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    search();
+  });
+
+  loadIndex();
   if (searchInput.value.trim().length >= minimumQueryLength) {
     showMessage("Loading search index...");
   }
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initSearch);
-} else {
-  initSearch();
-}
+(() => {
+  const indexUrl = new URL("../search-index.json", document.currentScript.src)
+    .href;
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => initSearch(indexUrl));
+  } else {
+    initSearch(indexUrl);
+  }
+})();
