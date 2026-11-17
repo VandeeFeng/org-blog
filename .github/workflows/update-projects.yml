@@ -20,6 +20,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           REPOS=(
+            "VandeeFeng/phi"
+            "VandeeFeng/karacat"
             "VandeeFeng/gitmemos"
             "VandeeFeng/pi-memory-md"
             "VandeeFeng/C-blorg"

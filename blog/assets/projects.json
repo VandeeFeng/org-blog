@@ -1,5 +1,23 @@
 [
   {
+    "description": "Phi",
+    "language": "Rust",
+    "name": "phi",
+    "owner": "VandeeFeng",
+    "repo": "phi",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/phi"
+  },
+  {
+    "description": "A list view of  karakeep public list.",
+    "language": "TypeScript",
+    "name": "karacat",
+    "owner": "VandeeFeng",
+    "repo": "karacat",
+    "stars": 0,
+    "url": "https://github.com/VandeeFeng/karacat"
+  },
+  {
     "description": "An alternative to Memos  depending on github issues and supabase",
     "language": "TypeScript",
     "name": "gitmemos",
@@ -41,7 +59,7 @@
     "name": "promptheus",
     "owner": "VandeeFeng",
     "repo": "promptheus",
-    "stars": 0,
+    "stars": 1,
     "url": "https://github.com/VandeeFeng/promptheus"
   },
   {
@@ -50,7 +68,7 @@
     "name": "Emacs-Hoarder",
     "owner": "VandeeFeng",
     "repo": "Emacs-Hoarder",
-    "stars": 4,
+    "stars": 5,
     "url": "https://github.com/VandeeFeng/Emacs-Hoarder"
   },
   {
