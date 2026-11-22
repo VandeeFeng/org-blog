@@ -263,7 +263,7 @@ exec swayidle -w \
     # bindsym $mod+period exec ghostty
     bindsym $mod+Shift+b exec librewolf --kiosk --new-windows
     bindsym $mod+b exec librewolf --new-windows
-    bindsym $mod+e exec emacsclient -c -a ""
+    bindsym $mod+e exec emacsclient -c -n --alternate-editor=
     bindsym $mod+f exec thunar
 
     # Gaps
@@ -539,63 +539,86 @@ udev 的方式在我的电脑上不管用，所以用了一个笨办法。
 用 systemd 监控它的状态，处于充电状态的时候播放提示音，把这个 script 设置为 systemd service：
 
 #+begin_src bash
-#!/bin/bash
-
-# Charger plug/unplug sound effect script
-# Monitors /sys/class/power_supply/macsmc-ac/online and plays appropriate sounds
+#!/usr/bin/env bash
 
 POWER_SUPPLY_PATH="/sys/class/power_supply/macsmc-ac/online"
 POWER_PLUG_SOUND="/usr/share/sounds/freedesktop/stereo/power-plug.oga"
 POWER_UNPLUG_SOUND="/usr/share/sounds/freedesktop/stereo/power-unplug.oga"
+PAPLAY_VOLUME="${CHARGER_SOUND_VOLUME:-65536}"
+POLL_INTERVAL=1
 
-# Check if required files exist
-if [[ ! -f "$POWER_SUPPLY_PATH" ]]; then
-    echo "Error: Power supply path not found: $POWER_SUPPLY_PATH"
-    exit 1
-fi
-
-if [[ ! -f "$POWER_PLUG_SOUND" ]] || [[ ! -f "$POWER_UNPLUG_SOUND" ]]; then
-    echo "Error: Sound files not found"
-    exit 1
-fi
-
-# Function to play sound
-play_sound() {
-    local sound_file="$1"
-    # Try different audio players
-    if command -v paplay >/dev/null 2>&1; then
-        paplay --volume=78643 "$sound_file" >/dev/null 2>&1 &
-    elif command -v aplay >/dev/null 2>&1; then
-        aplay -v 15 "$sound_file" >/dev/null 2>&1 &
-    elif command -v mplayer >/dev/null 2>&1; then
-        mplayer -really-quiet -volume 150 "$sound_file" >/dev/null 2>&1 &
-    else
-        echo "Error: No suitable audio player found (paplay, aplay, or mplayer)"
-        exit 1
+read_power_state() {
+    local state
+    if ! IFS= read -r state < "$POWER_SUPPLY_PATH"; then
+        return 1
     fi
+    case "$state" in
+        0|1) printf '%s\n' "$state" ;;
+        ,*) return 1 ;;
+    esac
 }
 
-# Get initial state
-previous_state=$(cat "$POWER_SUPPLY_PATH")
-echo "Initial charger state: $previous_state"
+play_sound() {
+    local sound_file="$1"
+    if command -v paplay >/dev/null 2>&1; then
+        if paplay --volume="$PAPLAY_VOLUME" "$sound_file"; then
+            return 0
+        fi
+        printf 'Warning: paplay failed\n' >&2
+    fi
+    if command -v mplayer >/dev/null 2>&1; then
+        if mplayer -really-quiet -volume 75 "$sound_file"; then
+            return 0
+        fi
+    fi
+    printf 'Error: could not play sound: %s\n' "$sound_file" >&2
+    return 1
+}
 
-# Monitor for changes
-while true; do
-    current_state=$(cat "$POWER_SUPPLY_PATH")
+main() {
+    local previous_state current_state
 
-    if [[ "$current_state" != "$previous_state" ]]; then
-        if [[ "$current_state" == "1" ]]; then
-            echo "Charger plugged in"
-            play_sound "$POWER_PLUG_SOUND"
-        else
-            echo "Charger unplugged"
-            play_sound "$POWER_UNPLUG_SOUND"
+    if [[ ! -r "$POWER_SUPPLY_PATH" ]]; then
+        printf 'Error: power supply path is not readable: %s\n' "$POWER_SUPPLY_PATH" >&2
+        return 1
+    fi
+    if [[ ! -r "$POWER_PLUG_SOUND" || ! -r "$POWER_UNPLUG_SOUND" ]]; then
+        printf 'Error: sound files are not readable\n' >&2
+        return 1
+    fi
+    if ! command -v paplay >/dev/null 2>&1 && ! command -v mplayer >/dev/null 2>&1; then
+        printf 'Error: install paplay or mplayer to play sounds\n' >&2
+        return 1
+    fi
+    if ! previous_state=$(read_power_state); then
+        printf 'Error: invalid initial charger state\n' >&2
+        return 1
+    fi
+    printf 'Initial charger state: %s\n' "$previous_state"
+
+    while sleep "$POLL_INTERVAL"; do
+        if ! current_state=$(read_power_state); then
+            printf 'Warning: could not read a valid charger state\n' >&2
+            continue
+        fi
+        if [[ "$current_state" == "$previous_state" ]]; then
+            continue
         fi
         previous_state="$current_state"
-    fi
+        if [[ "$current_state" == 1 ]]; then
+            printf 'Charger plugged in\n'
+            play_sound "$POWER_PLUG_SOUND" || :
+        else
+            printf 'Charger unplugged\n'
+            play_sound "$POWER_UNPLUG_SOUND" || :
+        fi
+    done
+}
 
-    sleep 1
-done
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+    main "$@"
+fi
+
 #+end_src
 
 ** Others

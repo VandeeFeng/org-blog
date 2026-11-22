@@ -47,42 +47,42 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org7a1cf9b">TL;DR</a></li>
-<li><a href="#orgfee5653">Why Linux</a></li>
-<li><a href="#org19ae37d">Asahi Alarm</a>
+<li><a href="#orgdfdb8a5">TL;DR</a></li>
+<li><a href="#org4a0d06a">Why Linux</a></li>
+<li><a href="#orga02ad08">Asahi Alarm</a>
 <ul>
-<li><a href="#org4181414">初始化安装</a></li>
-<li><a href="#orgd54d397">WM &amp; DM</a></li>
-<li><a href="#orge8ab6a8">App launcher</a></li>
-<li><a href="#org3930c76">Theme</a></li>
-<li><a href="#org659c844">Bluetooth &amp; Wi-Fi</a></li>
-<li><a href="#orgf0bb249">Fcitx &amp; Rime 输入法</a></li>
-<li><a href="#orga640400">Media</a></li>
+<li><a href="#org7cac9f4">初始化安装</a></li>
+<li><a href="#org1a45f75">WM &amp; DM</a></li>
+<li><a href="#orge045849">App launcher</a></li>
+<li><a href="#org6541b13">Theme</a></li>
+<li><a href="#org6b66a40">Bluetooth &amp; Wi-Fi</a></li>
+<li><a href="#org82d2462">Fcitx &amp; Rime 输入法</a></li>
+<li><a href="#org0171993">Media</a></li>
 </ul>
 </li>
-<li><a href="#org07517ea">Settings</a>
+<li><a href="#orgdd4a1fb">Settings</a>
 <ul>
-<li><a href="#org07719c4">Sway</a>
+<li><a href="#orge289b22">Sway</a>
 <ul>
-<li><a href="#org34b69e6">My Sway + i3status config:</a></li>
+<li><a href="#org9fa984a">My Sway + i3status config:</a></li>
 </ul>
 </li>
-<li><a href="#org6bda5f8">充电提示音</a></li>
-<li><a href="#org374fbd9">Others</a></li>
+<li><a href="#orgdb9281c">充电提示音</a></li>
+<li><a href="#org116e1cf">Others</a></li>
 </ul>
 </li>
-<li><a href="#orge695ab3">Tips</a>
+<li><a href="#org9b4b715">Tips</a>
 <ul>
-<li><a href="#org7b19233">Grub 修复</a></li>
-<li><a href="#org164151c">NVIDIA 配置</a></li>
+<li><a href="#orge62902f">Grub 修复</a></li>
+<li><a href="#org6ca4f5d">NVIDIA 配置</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org7a1cf9b" class="outline-2">
-<h2 id="org7a1cf9b">TL;DR</h2>
-<div class="outline-text-2" id="text-org7a1cf9b">
+<div id="outline-container-orgdfdb8a5" class="outline-2">
+<h2 id="orgdfdb8a5">TL;DR</h2>
+<div class="outline-text-2" id="text-orgdfdb8a5">
 <p>
 几个月之前我在 MacBook M1 Pro 上安装了 Linux (不是虚拟机)，处理照片的时候切换到 macOS，平常就 Linux，使用下来挺稳定的。
 </p>
@@ -96,9 +96,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-orgfee5653" class="outline-2">
-<h2 id="orgfee5653">Why Linux</h2>
-<div class="outline-text-2" id="text-orgfee5653">
+<div id="outline-container-org4a0d06a" class="outline-2">
+<h2 id="org4a0d06a">Why Linux</h2>
+<div class="outline-text-2" id="text-org4a0d06a">
 <p>
 买这个 MacBook 的初衷主要是处理摄影照片，M1 系列出来的时候一直垂涎它遥遥领先的性能。整体使用下来 Mac 的体验也挺舒适，Mac 在数码影像处理这个生态还是吊的。
 </p>
@@ -120,11 +120,11 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org19ae37d" class="outline-2">
-<h2 id="org19ae37d">Asahi Alarm</h2>
-<div class="outline-text-2" id="text-org19ae37d">
+<div id="outline-container-orga02ad08" class="outline-2">
+<h2 id="orga02ad08">Asahi Alarm</h2>
+<div class="outline-text-2" id="text-orga02ad08">
 
-<figure id="org64dc11f">
+<figure id="org050f8d8">
 <img src="https://pic.vandee.art/images/20251213_maclinux.png" class="img" width="70%" height="70%">
 
 </figure>
@@ -157,9 +157,9 @@ Omarchy 是 Ruby 的联合创始人 DHH 推的一个能在 Mac 上运行的 基�
 完成度相当高啊！除了耗电量略高一点，和原生分辨率不太兼容，其他的相当完美了。
 </p>
 </div>
-<div id="outline-container-org4181414" class="outline-3">
-<h3 id="org4181414">初始化安装</h3>
-<div class="outline-text-3" id="text-org4181414">
+<div id="outline-container-org7cac9f4" class="outline-3">
+<h3 id="org7cac9f4">初始化安装</h3>
+<div class="outline-text-3" id="text-org7cac9f4">
 <p>
 它就是一个裸的 Arch Linux。
 </p>
@@ -181,9 +181,9 @@ Pacman 是 Arch Linux 默认的包管理器 ，<a href="https://github.com/Morga
 </p>
 </div>
 </div>
-<div id="outline-container-orgd54d397" class="outline-3">
-<h3 id="orgd54d397">WM &amp; DM</h3>
-<div class="outline-text-3" id="text-orgd54d397">
+<div id="outline-container-org1a45f75" class="outline-3">
+<h3 id="org1a45f75">WM &amp; DM</h3>
+<div class="outline-text-3" id="text-org1a45f75">
 <p>
 接下来就是安装显示器协议（display server protocol）和 WM（window managers），我选择的是 <a href="https://wiki.archlinux.org/title/Wayland">Wayland</a> + <a href="https://swaywm.org/">Sway</a> ，极简就完事了。Hyprland 也很不错，但是我目前对折腾 Linux 的界面没有太大兴趣，也不需要它多美观。
 </p>
@@ -205,9 +205,9 @@ DM 我选择的是 <a href="https://github.com/coastalwhite/lemurs">Lemurs</a> �
 </p>
 </div>
 </div>
-<div id="outline-container-orge8ab6a8" class="outline-3">
-<h3 id="orge8ab6a8">App launcher</h3>
-<div class="outline-text-3" id="text-orge8ab6a8">
+<div id="outline-container-orge045849" class="outline-3">
+<h3 id="orge045849">App launcher</h3>
+<div class="outline-text-3" id="text-orge045849">
 <p>
 <a href="https://codeberg.org/dnkl/fuzzel">dnkl/fuzzel</a>
 </p>
@@ -225,9 +225,9 @@ Vicinae 也挺好用，和 raycast 挺像: <a href="https://github.com/vicinaehq
 </p>
 </div>
 </div>
-<div id="outline-container-org3930c76" class="outline-3">
-<h3 id="org3930c76">Theme</h3>
-<div class="outline-text-3" id="text-org3930c76">
+<div id="outline-container-org6541b13" class="outline-3">
+<h3 id="org6541b13">Theme</h3>
+<div class="outline-text-3" id="text-org6541b13">
 <p>
 <a href="https://github.com/vinceliuice/Qogir-theme">vinceliuice/Qogir-theme: Qogir is a flat Design theme for GTK</a>
 </p>
@@ -249,9 +249,9 @@ wayland 里用 nwg-look
 </ul>
 </div>
 </div>
-<div id="outline-container-org659c844" class="outline-3">
-<h3 id="org659c844">Bluetooth &amp; Wi-Fi</h3>
-<div class="outline-text-3" id="text-org659c844">
+<div id="outline-container-org6b66a40" class="outline-3">
+<h3 id="org6b66a40">Bluetooth &amp; Wi-Fi</h3>
+<div class="outline-text-3" id="text-org6b66a40">
 <ul class="org-ul">
 <li><p>
 impala: 🛜 TUI for managing wifi on Linux
@@ -271,9 +271,9 @@ bluetui: 🛜 TUI for managing bluetooth on Linux
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf0bb249" class="outline-3">
-<h3 id="orgf0bb249">Fcitx &amp; Rime 输入法</h3>
-<div class="outline-text-3" id="text-orgf0bb249">
+<div id="outline-container-org82d2462" class="outline-3">
+<h3 id="org82d2462">Fcitx &amp; Rime 输入法</h3>
+<div class="outline-text-3" id="text-org82d2462">
 <p>
 参考：<a href="https://manateelazycat.github.io/2025/08/31/fcitx-best-config/">Fcitx 最佳配置实践 2025-08-31</a>
 </p>
@@ -291,9 +291,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </p>
 </div>
 </div>
-<div id="outline-container-orga640400" class="outline-3">
-<h3 id="orga640400">Media</h3>
-<div class="outline-text-3" id="text-orga640400">
+<div id="outline-container-org0171993" class="outline-3">
+<h3 id="org0171993">Media</h3>
+<div class="outline-text-3" id="text-org0171993">
 <ul class="org-ul">
 <li>图片查看：<a href="https://feh.finalrewind.org/">feh</a></li>
 
@@ -304,9 +304,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 </div>
 </div>
 </div>
-<div id="outline-container-org07517ea" class="outline-2">
-<h2 id="org07517ea">Settings</h2>
-<div class="outline-text-2" id="text-org07517ea">
+<div id="outline-container-orgdd4a1fb" class="outline-2">
+<h2 id="orgdd4a1fb">Settings</h2>
+<div class="outline-text-2" id="text-orgdd4a1fb">
 <p>
 其他的初始化安装，我让 LLM 写了一个简单的小脚本来安装一些我需要的软件，字体，rime 输入法等。
 </p>
@@ -315,9 +315,9 @@ Rime 推荐使用：<a href="https://github.com/rime/plum">rime/plum: 東風破 
 下面列举的是一些困扰过我的地方，其他细小的设置 Claude CLI 基本都可以解决。
 </p>
 </div>
-<div id="outline-container-org07719c4" class="outline-3">
-<h3 id="org07719c4">Sway</h3>
-<div class="outline-text-3" id="text-org07719c4">
+<div id="outline-container-orge289b22" class="outline-3">
+<h3 id="orge289b22">Sway</h3>
+<div class="outline-text-3" id="text-orge289b22">
 <p>
 Sway 会初始化一个配置文件在 <code>~/.config/sway/config</code> ，在配置文件里修改就好了。
 </p>
@@ -364,7 +364,7 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
+<pre class="src src-bash"><code><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
 </span>
 <span style="color: #f4f4ff;">TEMP_FILE</span>=<span style="color: #A1D08E;">"/tmp/screenshot_$(</span><span style="color: #ff4f58;">date +%Y%m%d_%H%M%S</span><span style="color: #A1D08E;">).png"</span>
 
@@ -387,7 +387,7 @@ OCR: 需要安装 <a href="https://github.com/tesseract-ocr/tesseract">tesseract
 <span style="color: #FFA657;">fi</span>
 
 rm <span style="color: #A1D08E;">"$TEMP_FILE"</span>
-</pre>
+</code></pre>
 </div></li>
 
 <li><p>
@@ -426,15 +426,15 @@ rm <span style="color: #A1D08E;">"$TEMP_FILE"</span>
 <code>exec wl-paste --watch cliphist store</code></li>
 </ul>
 </div>
-<div id="outline-container-org34b69e6" class="outline-4">
-<h4 id="org34b69e6">My Sway + i3status config:</h4>
-<div class="outline-text-4" id="text-org34b69e6">
+<div id="outline-container-org9fa984a" class="outline-4">
+<h4 id="org9fa984a">My Sway + i3status config:</h4>
+<div class="outline-text-4" id="text-org9fa984a">
 <p>
 这两个配置加起来就是之前界面截图的样子了
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil"># Default config for sway
+<pre class="src src-nil"><code># Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
@@ -513,7 +513,7 @@ exec swayidle -w \
     # bindsym $mod+period exec ghostty
     bindsym $mod+Shift+b exec librewolf --kiosk --new-windows
     bindsym $mod+b exec librewolf --new-windows
-    bindsym $mod+e exec emacsclient -c -a ""
+    bindsym $mod+e exec emacsclient -c -n --alternate-editor=
     bindsym $mod+f exec thunar
 
     # Gaps
@@ -709,7 +709,7 @@ bar {
 
 include /etc/sway/config.d/*
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -717,7 +717,7 @@ i3status.conf:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil"># i3status configuration file.
+<pre class="src src-nil"><code># i3status configuration file.
 # see "man i3status" for documentation.
 
 # It is important that this file is edited as UTF-8.
@@ -782,14 +782,14 @@ tztime local {
         format = " %Y-%m-%d  %H:%M:%S"
 }
 
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org6bda5f8" class="outline-3">
-<h3 id="org6bda5f8">充电提示音</h3>
-<div class="outline-text-3" id="text-org6bda5f8">
+<div id="outline-container-orgdb9281c" class="outline-3">
+<h3 id="orgdb9281c">充电提示音</h3>
+<div class="outline-text-3" id="text-orgdb9281c">
 <p>
 Asahi Linux 判断电池是通过 <code>/sys/class/power_supply/macsmc-ac</code>
 </p>
@@ -803,70 +803,93 @@ udev 的方式在我的电脑上不管用，所以用了一个笨办法。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
-</span>
-<span style="color: #787878;"># </span><span style="color: #787878;">Charger plug/unplug sound effect script
-</span><span style="color: #787878;"># </span><span style="color: #787878;">Monitors /sys/class/power_supply/macsmc-ac/online and plays appropriate sounds
+<pre class="src src-bash"><code><span style="color: #787878;">#</span><span style="color: #787878;">!/usr/bin/</span><span style="color: #FFA657;">env</span><span style="color: #787878;"> bash
 </span>
 <span style="color: #f4f4ff;">POWER_SUPPLY_PATH</span>=<span style="color: #A1D08E;">"/sys/class/power_supply/macsmc-ac/online"</span>
 <span style="color: #f4f4ff;">POWER_PLUG_SOUND</span>=<span style="color: #A1D08E;">"/usr/share/sounds/freedesktop/stereo/power-plug.oga"</span>
 <span style="color: #f4f4ff;">POWER_UNPLUG_SOUND</span>=<span style="color: #A1D08E;">"/usr/share/sounds/freedesktop/stereo/power-unplug.oga"</span>
+<span style="color: #f4f4ff;">PAPLAY_VOLUME</span>=<span style="color: #A1D08E;">"${CHARGER_SOUND_VOLUME:-65536}"</span>
+<span style="color: #f4f4ff;">POLL_INTERVAL</span>=1
 
-<span style="color: #787878;"># </span><span style="color: #787878;">Check if required files exist
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_SUPPLY_PATH"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: Power supply path not found: $POWER_SUPPLY_PATH"</span>
-    <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
-
-<span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span> || <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> ! -f <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: Sound files not found"</span>
-    <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
-
-<span style="color: #787878;"># </span><span style="color: #787878;">Function to play sound
-</span><span style="color: #96a6c8;">play_sound</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
-    <span style="color: #79C0FF;">local</span> <span style="color: #f4f4ff;">sound_file</span>=<span style="color: #A1D08E;">"$1"</span>
-    <span style="color: #787878;"># </span><span style="color: #787878;">Try different audio players
-</span>    <span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v paplay &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
-        paplay --volume=78643 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
-    <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v aplay &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
-        aplay -v 15 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
-    <span style="color: #FFA657;">elif </span><span style="color: #79C0FF;">command</span> -v mplayer &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
-        mplayer -really-quiet -volume 150 <span style="color: #A1D08E;">"$sound_file"</span> &gt;/dev/null 2&gt;&amp;1 &amp;
-    <span style="color: #FFA657;">else</span>
-        <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: No suitable audio player found (paplay, aplay, or mplayer)"</span>
-        <span style="color: #FFA657;">exit</span> 1
+<span style="color: #96a6c8;">read_power_state</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #79C0FF;">local</span> state
+    <span style="color: #FFA657;">if</span> ! <span style="color: #f4f4ff;">IFS</span>= read -r state &lt; <span style="color: #A1D08E;">"$POWER_SUPPLY_PATH"</span>; <span style="color: #FFA657;">then</span>
+        <span style="color: #FFA657;">return</span> 1
     <span style="color: #FFA657;">fi</span>
+    <span style="color: #FFA657;">case</span> <span style="color: #A1D08E;">"$state"</span><span style="color: #FFA657;"> in</span>
+        0|1) <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'%s\n'</span> <span style="color: #A1D08E;">"$state"</span> ;;
+        *) <span style="color: #FFA657;">return</span> 1 ;;
+    <span style="color: #FFA657;">esac</span>
 <span style="color: #8c8c8c;">}</span>
 
-<span style="color: #787878;"># </span><span style="color: #787878;">Get initial state
-</span><span style="color: #f4f4ff;">previous_state</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$POWER_SUPPLY_PATH"</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Initial charger state: $previous_state"</span>
+<span style="color: #96a6c8;">play_sound</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #79C0FF;">local</span> <span style="color: #f4f4ff;">sound_file</span>=<span style="color: #A1D08E;">"$1"</span>
+    <span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v paplay &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
+        <span style="color: #FFA657;">if</span> paplay --volume=<span style="color: #A1D08E;">"$PAPLAY_VOLUME"</span> <span style="color: #A1D08E;">"$sound_file"</span>; <span style="color: #FFA657;">then</span>
+            <span style="color: #FFA657;">return</span> 0
+        <span style="color: #FFA657;">fi</span>
+        <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Warning: paplay failed\n'</span> &gt;&amp;2
+    <span style="color: #FFA657;">fi</span>
+    <span style="color: #FFA657;">if </span><span style="color: #79C0FF;">command</span> -v mplayer &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
+        <span style="color: #FFA657;">if</span> mplayer -really-quiet -volume 75 <span style="color: #A1D08E;">"$sound_file"</span>; <span style="color: #FFA657;">then</span>
+            <span style="color: #FFA657;">return</span> 0
+        <span style="color: #FFA657;">fi</span>
+    <span style="color: #FFA657;">fi</span>
+    <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Error: could not play sound: %s\n'</span> <span style="color: #A1D08E;">"$sound_file"</span> &gt;&amp;2
+    <span style="color: #FFA657;">return</span> 1
+<span style="color: #8c8c8c;">}</span>
 
-<span style="color: #787878;"># </span><span style="color: #787878;">Monitor for changes
-</span><span style="color: #FFA657;">while</span> true; <span style="color: #FFA657;">do</span>
-    <span style="color: #f4f4ff;">current_state</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">cat "$POWER_SUPPLY_PATH"</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #96a6c8;">main</span><span style="color: #8c8c8c;">()</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #79C0FF;">local</span> previous_state current_state
 
-    <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$current_state"</span> != <span style="color: #A1D08E;">"$previous_state"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-        <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$current_state"</span> == <span style="color: #A1D08E;">"1"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-            <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Charger plugged in"</span>
-            play_sound <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span>
-        <span style="color: #FFA657;">else</span>
-            <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Charger unplugged"</span>
-            play_sound <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">[</span><span style="color: #b0b1a3;">[</span> ! -r <span style="color: #A1D08E;">"$POWER_SUPPLY_PATH"</span> <span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">]</span>; <span style="color: #FFA657;">then</span>
+        <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Error: power supply path is not readable: %s\n'</span> <span style="color: #A1D08E;">"$POWER_SUPPLY_PATH"</span> &gt;&amp;2
+        <span style="color: #FFA657;">return</span> 1
+    <span style="color: #FFA657;">fi</span>
+    <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">[</span><span style="color: #b0b1a3;">[</span> ! -r <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span> || ! -r <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span> <span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">]</span>; <span style="color: #FFA657;">then</span>
+        <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Error: sound files are not readable\n'</span> &gt;&amp;2
+        <span style="color: #FFA657;">return</span> 1
+    <span style="color: #FFA657;">fi</span>
+    <span style="color: #FFA657;">if ! </span><span style="color: #79C0FF;">command</span> -v paplay &gt;/dev/null 2&gt;&amp;1 &amp;&amp; <span style="color: #FFA657;">! </span><span style="color: #79C0FF;">command</span> -v mplayer &gt;/dev/null 2&gt;&amp;1; <span style="color: #FFA657;">then</span>
+        <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Error: install paplay or mplayer to play sounds\n'</span> &gt;&amp;2
+        <span style="color: #FFA657;">return</span> 1
+    <span style="color: #FFA657;">fi</span>
+    <span style="color: #FFA657;">if</span> ! <span style="color: #f4f4ff;">previous_state</span>=$<span style="color: #93a8c6;">(</span><span style="color: #ff4f58;">read_power_state</span><span style="color: #93a8c6;">)</span>; <span style="color: #FFA657;">then</span>
+        <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Error: invalid initial charger state\n'</span> &gt;&amp;2
+        <span style="color: #FFA657;">return</span> 1
+    <span style="color: #FFA657;">fi</span>
+    <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Initial charger state: %s\n'</span> <span style="color: #A1D08E;">"$previous_state"</span>
+
+    <span style="color: #FFA657;">while</span> sleep <span style="color: #A1D08E;">"$POLL_INTERVAL"</span>; <span style="color: #FFA657;">do</span>
+        <span style="color: #FFA657;">if</span> ! <span style="color: #f4f4ff;">current_state</span>=$<span style="color: #93a8c6;">(</span><span style="color: #ff4f58;">read_power_state</span><span style="color: #93a8c6;">)</span>; <span style="color: #FFA657;">then</span>
+            <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Warning: could not read a valid charger state\n'</span> &gt;&amp;2
+            <span style="color: #FFA657;">continue</span>
+        <span style="color: #FFA657;">fi</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">[</span><span style="color: #b0b1a3;">[</span> <span style="color: #A1D08E;">"$current_state"</span> == <span style="color: #A1D08E;">"$previous_state"</span> <span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">]</span>; <span style="color: #FFA657;">then</span>
+            <span style="color: #FFA657;">continue</span>
         <span style="color: #FFA657;">fi</span>
         <span style="color: #f4f4ff;">previous_state</span>=<span style="color: #A1D08E;">"$current_state"</span>
-    <span style="color: #FFA657;">fi</span>
+        <span style="color: #FFA657;">if</span> <span style="color: #93a8c6;">[</span><span style="color: #b0b1a3;">[</span> <span style="color: #A1D08E;">"$current_state"</span> == 1 <span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">]</span>; <span style="color: #FFA657;">then</span>
+            <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Charger plugged in\n'</span>
+            play_sound <span style="color: #A1D08E;">"$POWER_PLUG_SOUND"</span> || :
+        <span style="color: #FFA657;">else</span>
+            <span style="color: #79C0FF;">printf</span> <span style="color: #A1D08E;">'Charger unplugged\n'</span>
+            play_sound <span style="color: #A1D08E;">"$POWER_UNPLUG_SOUND"</span> || :
+        <span style="color: #FFA657;">fi</span>
+    <span style="color: #FFA657;">done</span>
+<span style="color: #8c8c8c;">}</span>
 
-    sleep 1
-<span style="color: #FFA657;">done</span>
-</pre>
+<span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"${BASH_SOURCE[0]}"</span> == <span style="color: #A1D08E;">"$0"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+    main <span style="color: #A1D08E;">"$@"</span>
+<span style="color: #FFA657;">fi</span>
+
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org374fbd9" class="outline-3">
-<h3 id="org374fbd9">Others</h3>
-<div class="outline-text-3" id="text-org374fbd9">
+<div id="outline-container-org116e1cf" class="outline-3">
+<h3 id="org116e1cf">Others</h3>
+<div class="outline-text-3" id="text-org116e1cf">
 <ul class="org-ul">
 <li><p>
 调整对比度(X11)
@@ -916,9 +939,9 @@ opensnatch 因为 eBPF 报错
 </div>
 </div>
 </div>
-<div id="outline-container-orge695ab3" class="outline-2">
-<h2 id="orge695ab3">Tips</h2>
-<div class="outline-text-2" id="text-orge695ab3">
+<div id="outline-container-org9b4b715" class="outline-2">
+<h2 id="org9b4b715">Tips</h2>
+<div class="outline-text-2" id="text-org9b4b715">
 <p>
 最近老 x86 电脑更新到 Linux 最新的 kernel，不出意外的出意外了，我又忘记手动 paru 更新 <code>nvidia-580xx-dkms nvidia-580xx-utils nvidia-580xx-settings lib32-nvidia-580xx-utils</code> 了，导致驱动无法适配。
 </p>
@@ -955,9 +978,9 @@ Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 <code>GRUB_DEFAULT='Advanced options for Arch Linux&gt;Arch Linux, with Linux linux'</code>
 </p>
 </div>
-<div id="outline-container-org7b19233" class="outline-3">
-<h3 id="org7b19233">Grub 修复</h3>
-<div class="outline-text-3" id="text-org7b19233">
+<div id="outline-container-orge62902f" class="outline-3">
+<h3 id="orge62902f">Grub 修复</h3>
+<div class="outline-text-3" id="text-orge62902f">
 <p>
 如果你和我一样瞎折腾把 grub 弄坏了，可以 Arch Linux Live USB 引导修复。
 </p>
@@ -967,7 +990,7 @@ Arch Linux 还是搞一个 LTS 内核作为兜底比较保险。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">
+<pre class="src src-bash"><code>
 <span style="color: #787878;"># </span><span style="color: #787878;">/etc/default/grub &#37324;&#25214;&#21040;&#19979;&#38754;&#65292;&#20020;&#26102;&#24320;&#21551;
 </span><span style="color: #787878;"># </span><span style="color: #787878;">Uncomment to enable booting from LUKS encrypted devices
 </span><span style="color: #f4f4ff;">GRUB_ENABLE_CRYPTODISK</span>=y
@@ -976,7 +999,7 @@ cryptsetup open /dev/sda2 root <span style="color: #787878;">#</span><span style
 </span>mount /dev/mapper/root /mnt
 mount /dev/sda1 /mnt/boot  <span style="color: #787878;">#</span><span style="color: #787878;">&#25105;&#30340;&#26159; sda1 &#30340;&#22266;&#24577;
 </span>arch-chroot /mnt
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -984,10 +1007,10 @@ mount /dev/sda1 /mnt/boot  <span style="color: #787878;">#</span><span style="co
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">pacman -S grub efibootmgr
+<pre class="src src-bash"><code>pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
 grub-mkconfig -o /boot/grub/grub.cfg
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -995,18 +1018,18 @@ grub-mkconfig -o /boot/grub/grub.cfg
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">cat &gt; /boot/EFI/GRUB/grub.cfg &lt;&lt;<span style="color: #A1D08E;">'EOF'</span><span style="color: #ffff00; font-weight: bold;">
+<pre class="src src-bash"><code>cat &gt; /boot/EFI/GRUB/grub.cfg &lt;&lt;<span style="color: #A1D08E;">'EOF'</span><span style="color: #ffff00; font-weight: bold;">
 search --no-floppy --fs-uuid --set=root {/boot &#30340; UUID&#65292;blkid /dev/sda1 &#33719;&#21462;}
 set prefix=($root)/grub
 configfile $prefix/grub.cfg
 EOF</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org164151c" class="outline-3">
-<h3 id="org164151c">NVIDIA 配置</h3>
-<div class="outline-text-3" id="text-org164151c">
+<div id="outline-container-org6ca4f5d" class="outline-3">
+<h3 id="org6ca4f5d">NVIDIA 配置</h3>
+<div class="outline-text-3" id="text-org6ca4f5d">
 <p>
 我另外一个 x86 电脑的 NVIDIA 显卡很老了，下面的方法管用
 </p>
