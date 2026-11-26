@@ -99,7 +99,7 @@ blockquote p+p {
   margin-top: 1em;
 }
 
-code {
+code:not(pre code) {
   font-family: "JetBrains Mono", "Menlo", "Monaco", "Consolas", "Courier New",
                monospace;
   font-size: 0.9em;
