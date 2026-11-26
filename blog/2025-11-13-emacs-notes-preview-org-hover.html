@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,23 +49,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9dcbfaf">TL;DR</a></li>
-<li><a href="#orgda4027e">为什么做这个</a></li>
-<li><a href="#orgd6c83ed">Org Hover</a></li>
+<li><a href="#org6f430e1">TL;DR</a></li>
+<li><a href="#org568a43d">为什么做这个</a></li>
+<li><a href="#org34d2d23">Org Hover</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org9dcbfaf" class="outline-2">
-<h2 id="org9dcbfaf">TL;DR</h2>
-<div class="outline-text-2" id="text-org9dcbfaf">
+<div id="outline-container-org6f430e1" class="outline-2">
+<h2 id="org6f430e1">TL;DR</h2>
+<div class="outline-text-2" id="text-org6f430e1">
 <p>
 Org Hover ，在 Emacs 里实现 preview hover 快速预览笔记。
 </p>
 </div>
 </div>
-<div id="outline-container-orgda4027e" class="outline-2">
-<h2 id="orgda4027e">为什么做这个</h2>
-<div class="outline-text-2" id="text-orgda4027e">
+<div id="outline-container-org568a43d" class="outline-2">
+<h2 id="org568a43d">为什么做这个</h2>
+<div class="outline-text-2" id="text-org568a43d">
 <p>
 很久以前在使用 Obsidian 和 Logseq 的时候，它们都有一个功能：能够快速预览引入的笔记。预览双链里链接的笔记弹出一个小的浮窗，或是根据引入的其他笔记片段快速定位到该笔记的原文的位置并提供预览。
 </p>
@@ -81,11 +83,11 @@ Org Hover ，在 Emacs 里实现 preview hover 快速预览笔记。
 </p>
 </div>
 </div>
-<div id="outline-container-orgd6c83ed" class="outline-2">
-<h2 id="orgd6c83ed">Org Hover</h2>
-<div class="outline-text-2" id="text-orgd6c83ed">
+<div id="outline-container-org34d2d23" class="outline-2">
+<h2 id="org34d2d23">Org Hover</h2>
+<div class="outline-text-2" id="text-org34d2d23">
 
-<figure id="org7aea022">
+<figure id="orge8a84d4">
 <img src="https://pic.vandee.art/images/org-hover.gif" class="img" width="70%" height="70%">
 
 </figure>
@@ -99,14 +101,14 @@ Org Hover ，在 Emacs 里实现 preview hover 快速预览笔记。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">#+begin_quote
+<pre class="src src-elisp"><code>#+begin_quote
 #+INCLUDE: <span style="color: #A1D08E;">"file.org"</span>
 or
 #+INCLUDE: <span style="color: #A1D08E;">"file.org::Header"</span>
 or
-#+INCLUDE: <span style="color: #A1D08E;">"file.org"</span> <span style="color: #79C0FF;">:lines</span> <span style="color: #A1D08E;">"1-30"</span>
+#+INCLUDE: <span style="color: #A1D08E;">"file.org"</span> <span style="color: #8ac6f2;">:lines</span> <span style="color: #A1D08E;">"1-30"</span>
 #+end_quote
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -126,11 +128,11 @@ header 能够预览链接文件指定的 header 标题部分，lines 能够预�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">#+begin_quote
+<pre class="src src-elisp"><code>#+begin_quote
 #+INCLUDE: <span style="color: #A1D08E;">"file.org"</span>
 text
 #+end_quote
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -142,7 +144,7 @@ text
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-emacs.html" class="tag" data-tag="emacs" data-index="0">Emacs</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

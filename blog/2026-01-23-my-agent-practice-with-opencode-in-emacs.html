@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,34 +49,34 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfa8d3e0">TL;DR</a></li>
-<li><a href="#orgd5fc3af">Agent Skills</a>
+<li><a href="#org197df00">TL;DR</a></li>
+<li><a href="#orgeb98ea8">Agent Skills</a>
 <ul>
-<li><a href="#orga6a33d5">简介</a></li>
-<li><a href="#org78a91b4">SKILL 解决了什么问题</a></li>
-<li><a href="#org2bb11c1">编写 SKILL 是在干什么</a></li>
+<li><a href="#org499b57f">简介</a></li>
+<li><a href="#org1f14231">SKILL 解决了什么问题</a></li>
+<li><a href="#org1ed5dc0">编写 SKILL 是在干什么</a></li>
 </ul>
 </li>
-<li><a href="#org64cd82f">My Agent Conf</a>
+<li><a href="#orgb8fa868">My Agent Conf</a>
 <ul>
-<li><a href="#org7093372">Core Rules</a></li>
-<li><a href="#orgb928c4f">Maintain a hierarchical codebase map</a></li>
-<li><a href="#org187dc08">Prepared with clear purpose</a></li>
-<li><a href="#orgecd820e">Just files and loops, no more complicated</a></li>
-<li><a href="#org0136e2a">Handoff when stucked</a></li>
-<li><a href="#org04a85fb">Maintain memory</a></li>
-<li><a href="#org4c8296f">Maintain useful patterns</a></li>
-<li><a href="#org842b58f">Maintain code quality and style</a></li>
+<li><a href="#org1bdb276">Core Rules</a></li>
+<li><a href="#orgb91283e">Maintain a hierarchical codebase map</a></li>
+<li><a href="#org8baa0e3">Prepared with clear purpose</a></li>
+<li><a href="#org3f41858">Just files and loops, no more complicated</a></li>
+<li><a href="#org54c1a10">Handoff when stucked</a></li>
+<li><a href="#orga5cbd56">Maintain memory</a></li>
+<li><a href="#orgc6f6615">Maintain useful patterns</a></li>
+<li><a href="#orga2942c2">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#org763d99d">OpenCode in Emacs</a></li>
-<li><a href="#org6cfea1d">Bubblewrap Sandbox</a></li>
+<li><a href="#orgcc210ca">OpenCode in Emacs</a></li>
+<li><a href="#org45091d4">Bubblewrap Sandbox</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgfa8d3e0" class="outline-2">
-<h2 id="orgfa8d3e0">TL;DR</h2>
-<div class="outline-text-2" id="text-orgfa8d3e0">
+<div id="outline-container-org197df00" class="outline-2">
+<h2 id="org197df00">TL;DR</h2>
+<div class="outline-text-2" id="text-org197df00">
 <p>
 虽然我不喜欢 vibe coding，但是 SKILL 是很值得学习的。
 </p>
@@ -88,13 +90,13 @@ Tool 是 LLM 的基础工具，agent 框架是操作系统，MCP 是 USB 接口�
 </p>
 </div>
 </div>
-<div id="outline-container-orgd5fc3af" class="outline-2">
-<h2 id="orgd5fc3af">Agent Skills</h2>
-<div class="outline-text-2" id="text-orgd5fc3af">
+<div id="outline-container-orgeb98ea8" class="outline-2">
+<h2 id="orgeb98ea8">Agent Skills</h2>
+<div class="outline-text-2" id="text-orgeb98ea8">
 </div>
-<div id="outline-container-orga6a33d5" class="outline-3">
-<h3 id="orga6a33d5">简介</h3>
-<div class="outline-text-3" id="text-orga6a33d5">
+<div id="outline-container-org499b57f" class="outline-3">
+<h3 id="org499b57f">简介</h3>
+<div class="outline-text-3" id="text-org499b57f">
 <p>
 <a href="https://github.com/agentskills/agentskills">agentskills/agentskills</a> 是前段时间 <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation">Linux Foundation Announces the Formation of the Agentic AI Foundation (AAIF)</a> Claude 开源的。
 </p>
@@ -134,9 +136,9 @@ SKILL 是一个本地文件夹，里面是 SKILL.md、scripts、references、tem
 </p>
 </div>
 </div>
-<div id="outline-container-org78a91b4" class="outline-3">
-<h3 id="org78a91b4">SKILL 解决了什么问题</h3>
-<div class="outline-text-3" id="text-org78a91b4">
+<div id="outline-container-org1f14231" class="outline-3">
+<h3 id="org1f14231">SKILL 解决了什么问题</h3>
+<div class="outline-text-3" id="text-org1f14231">
 <p>
 MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了这个问题。
 </p>
@@ -150,9 +152,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </p>
 </div>
 </div>
-<div id="outline-container-org2bb11c1" class="outline-3">
-<h3 id="org2bb11c1">编写 SKILL 是在干什么</h3>
-<div class="outline-text-3" id="text-org2bb11c1">
+<div id="outline-container-org1ed5dc0" class="outline-3">
+<h3 id="org1ed5dc0">编写 SKILL 是在干什么</h3>
+<div class="outline-text-3" id="text-org1ed5dc0">
 <p>
 当遇到一种类型的问题时，把处理它们的方式规范性的固定下来，它就是一个 SKILL 了。
 </p>
@@ -175,9 +177,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 </div>
 </div>
 </div>
-<div id="outline-container-org64cd82f" class="outline-2">
-<h2 id="org64cd82f">My Agent Conf</h2>
-<div class="outline-text-2" id="text-org64cd82f">
+<div id="outline-container-orgb8fa868" class="outline-2">
+<h2 id="orgb8fa868">My Agent Conf</h2>
+<div class="outline-text-2" id="text-orgb8fa868">
 <p>
 下面的每个标题就是我觉得在和 agent 合作的时候比较值得关注的地方，也是我现阶段理解到的一些实践原则。
 </p>
@@ -202,9 +204,9 @@ MCP 的工具信息会占用大量的 context 窗口，SKILL 很好的避免了�
 再一个，不了解 vibe 又怎么能说自己不喜欢呢？
 </p>
 </div>
-<div id="outline-container-org7093372" class="outline-3">
-<h3 id="org7093372">Core Rules</h3>
-<div class="outline-text-3" id="text-org7093372">
+<div id="outline-container-org1bdb276" class="outline-3">
+<h3 id="org1bdb276">Core Rules</h3>
+<div class="outline-text-3" id="text-org1bdb276">
 <p>
 Just files and loops!
 </p>
@@ -218,9 +220,9 @@ Keep it simple!
 </p>
 </div>
 </div>
-<div id="outline-container-orgb928c4f" class="outline-3">
-<h3 id="orgb928c4f">Maintain a hierarchical codebase map</h3>
-<div class="outline-text-3" id="text-orgb928c4f">
+<div id="outline-container-orgb91283e" class="outline-3">
+<h3 id="orgb91283e">Maintain a hierarchical codebase map</h3>
+<div class="outline-text-3" id="text-orgb91283e">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -257,9 +259,9 @@ also: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/comm
 </p>
 </div>
 </div>
-<div id="outline-container-org187dc08" class="outline-3">
-<h3 id="org187dc08">Prepared with clear purpose</h3>
-<div class="outline-text-3" id="text-org187dc08">
+<div id="outline-container-org8baa0e3" class="outline-3">
+<h3 id="org8baa0e3">Prepared with clear purpose</h3>
+<div class="outline-text-3" id="text-org8baa0e3">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -277,9 +279,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </p>
 </div>
 </div>
-<div id="outline-container-orgecd820e" class="outline-3">
-<h3 id="orgecd820e">Just files and loops, no more complicated</h3>
-<div class="outline-text-3" id="text-orgecd820e">
+<div id="outline-container-org3f41858" class="outline-3">
+<h3 id="org3f41858">Just files and loops, no more complicated</h3>
+<div class="outline-text-3" id="text-org3f41858">
 <p>
 SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-files">https://github.com/OthmanAdi/planning-with-files</a>
 </p>
@@ -297,11 +299,11 @@ SKILL: Planning with Files <a href="https://github.com/OthmanAdi/planning-with-f
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">1. Use the `session-info` tool to retrieve the current conversation's [session-title]
+<pre class="src src-nil"><code>1. Use the `session-info` tool to retrieve the current conversation's [session-title]
 2. Run `date +%Y%m%d-%H%M%S` command to get the [YYYYMMDD-HHMMSS timestamp]
    Create the `session folder`: `mkdir -p $HOME/.MemoryMD/$(basename $(git rev-parse --show-toplevel))/[YYYYMMDD-HHMMSS timestamp]-[session-title]`
 3. All generated markdown files should be created in that `session folder`.
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -317,47 +319,47 @@ session-info 是一个很简单的 tool，在 OpenCode 里用来获取当前 ses
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js"><span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> tool <span style="color: #8c8c8c;">}</span> from <span style="color: #A1D08E;">"@opencode-ai/plugin"</span>
-<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> execSync <span style="color: #8c8c8c;">}</span> from <span style="color: #A1D08E;">"child_process"</span>
-<span style="color: #FFA657;">import</span> <span style="color: #8c8c8c;">{</span> homedir <span style="color: #8c8c8c;">}</span> from <span style="color: #A1D08E;">"os"</span>
+<pre class="src src-js"><code><span style="color: #f3be7c;">import</span> <span style="color: #8c8c8c;">{</span> <span style="color: #f4f4ff;">tool</span> <span style="color: #8c8c8c;">}</span> <span style="color: #f3be7c;">from</span> <span style="color: #A1D08E;">"@opencode-ai/plugin"</span>
+<span style="color: #f3be7c;">import</span> <span style="color: #8c8c8c;">{</span> <span style="color: #f4f4ff;">execSync</span> <span style="color: #8c8c8c;">}</span> <span style="color: #f3be7c;">from</span> <span style="color: #A1D08E;">"child_process"</span>
+<span style="color: #f3be7c;">import</span> <span style="color: #8c8c8c;">{</span> <span style="color: #f4f4ff;">homedir</span> <span style="color: #8c8c8c;">}</span> <span style="color: #f3be7c;">from</span> <span style="color: #A1D08E;">"os"</span>
 
-<span style="color: #FFA657;">export</span> <span style="color: #FFA657;">default</span> tool<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>
-  description: <span style="color: #A1D08E;">"Get current session information including title"</span>,
-  args: <span style="color: #b0b1a3;">{}</span>,
-  <span style="color: #FFA657;">async</span> execute<span style="color: #b0b1a3;">(</span>args, context<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-    <span style="color: #FFA657;">const</span> <span style="color: #97b098;">{</span> sessionID, agent <span style="color: #97b098;">}</span> = context
+<span style="color: #f3be7c;">export</span> <span style="color: #f3be7c;">default</span> <span style="color: #96a6c8;">tool</span><span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>
+  <span style="color: #f4f4ff;">description</span>: <span style="color: #A1D08E;">"Get current session information including title"</span>,
+  <span style="color: #f4f4ff;">args</span>: <span style="color: #b0b1a3;">{}</span>,
+  <span style="color: #f3be7c;">async</span> <span style="color: #96a6c8;">execute</span><span style="color: #b0b1a3;">(</span><span style="color: #f4f4ff;">args</span>, <span style="color: #f4f4ff;">context</span><span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
+    <span style="color: #f3be7c;">const</span> <span style="color: #97b098;">{</span> <span style="color: #f4f4ff;">sessionID</span>, <span style="color: #f4f4ff;">agent</span> <span style="color: #97b098;">}</span> = context
 
-    <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionDir</span> = <span style="color: #A1D08E;">`${homedir()}/.local/share/opencode/storage/session`</span>
+    <span style="color: #f3be7c;">const</span> <span style="color: #f4f4ff;">sessionDir</span> = <span style="color: #A1D08E;">`</span>${<span style="color: #96a6c8;">homedir</span>()}<span style="color: #A1D08E;">/.local/share/opencode/storage/session`</span>
 
-    <span style="color: #FFA657;">try</span> <span style="color: #97b098;">{</span>
-      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">result</span> = execSync<span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`find ${sessionDir} -name "${sessionID}.json" 2&gt;/dev/null | head -1`</span>, <span style="color: #b0b0b3;">{</span> encoding: <span style="color: #A1D08E;">"utf-8"</span> <span style="color: #b0b0b3;">}</span><span style="color: #aebed8;">)</span>
+    <span style="color: #f3be7c;">try</span> <span style="color: #97b098;">{</span>
+      <span style="color: #f3be7c;">const</span> <span style="color: #f4f4ff;">result</span> = <span style="color: #96a6c8;">execSync</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">`find </span>${sessionDir}<span style="color: #A1D08E;"> -name "</span>${sessionID}<span style="color: #A1D08E;">.json" 2&gt;/dev/null | head -1`</span>, <span style="color: #b0b0b3;">{</span> <span style="color: #f4f4ff;">encoding</span>: <span style="color: #A1D08E;">"utf-8"</span> <span style="color: #b0b0b3;">}</span><span style="color: #aebed8;">)</span>
 
-      <span style="color: #FFA657;">if</span> <span style="color: #aebed8;">(</span>!result.trim<span style="color: #b0b0b3;">()</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
-        <span style="color: #FFA657;">throw</span> <span style="color: #FFA657;">new</span> <span style="color: #95a99f;">Error</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"Session file not found"</span><span style="color: #b0b0b3;">)</span>
+      <span style="color: #f3be7c;">if</span> <span style="color: #aebed8;">(</span>!result.<span style="color: #96a6c8;">trim</span><span style="color: #b0b0b3;">()</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">{</span>
+        <span style="color: #f3be7c;">throw</span> <span style="color: #f3be7c;">new</span> Error<span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"Session file not found"</span><span style="color: #b0b0b3;">)</span>
       <span style="color: #aebed8;">}</span>
 
-      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionFile</span> = result.trim<span style="color: #aebed8;">()</span>
-      <span style="color: #FFA657;">const</span> <span style="color: #f4f4ff;">sessionData</span> = JSON.parse<span style="color: #aebed8;">(</span>require<span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"fs"</span><span style="color: #b0b0b3;">)</span>.readFileSync<span style="color: #b0b0b3;">(</span>sessionFile, <span style="color: #A1D08E;">"utf-8"</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+      <span style="color: #f3be7c;">const</span> <span style="color: #f4f4ff;">sessionFile</span> = result.<span style="color: #96a6c8;">trim</span><span style="color: #aebed8;">()</span>
+      <span style="color: #f3be7c;">const</span> <span style="color: #f4f4ff;">sessionData</span> = <span style="color: #95a99f;">JSON</span>.<span style="color: #96a6c8;">parse</span><span style="color: #aebed8;">(</span><span style="color: #96a6c8;">require</span><span style="color: #b0b0b3;">(</span><span style="color: #A1D08E;">"fs"</span><span style="color: #b0b0b3;">)</span>.<span style="color: #96a6c8;">readFileSync</span><span style="color: #b0b0b3;">(</span>sessionFile, <span style="color: #A1D08E;">"utf-8"</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
 
-      <span style="color: #FFA657;">return</span> JSON.stringify<span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">{</span>
-        sessionID,
-        agent,
-        title: sessionData.title || <span style="color: #95a99f;">null</span>,
-        directory: sessionData.directory || <span style="color: #95a99f;">null</span>,
-        time: sessionData.time || <span style="color: #95a99f;">null</span>,
+      <span style="color: #f3be7c;">return</span> <span style="color: #95a99f;">JSON</span>.<span style="color: #96a6c8;">stringify</span><span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">{</span>
+        <span style="color: #f4f4ff;">sessionID</span>,
+        <span style="color: #f4f4ff;">agent</span>,
+        <span style="color: #f4f4ff;">title</span>: sessionData.<span style="color: #f4f4ff;">title</span> || <span style="color: #95a99f;">null</span>,
+        <span style="color: #f4f4ff;">directory</span>: sessionData.<span style="color: #f4f4ff;">directory</span> || <span style="color: #95a99f;">null</span>,
+        <span style="color: #f4f4ff;">time</span>: sessionData.<span style="color: #f4f4ff;">time</span> || <span style="color: #95a99f;">null</span>,
       <span style="color: #b0b0b3;">}</span>, <span style="color: #95a99f;">null</span>, 2<span style="color: #aebed8;">)</span>
-    <span style="color: #97b098;">}</span> <span style="color: #FFA657;">catch</span> <span style="color: #97b098;">(</span>error<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
-      <span style="color: #FFA657;">return</span> JSON.stringify<span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">{</span> error: error.message, sessionID, agent <span style="color: #b0b0b3;">}</span>, <span style="color: #95a99f;">null</span>, 2<span style="color: #aebed8;">)</span>
+    <span style="color: #97b098;">}</span> <span style="color: #f3be7c;">catch</span> <span style="color: #97b098;">(</span>error<span style="color: #97b098;">)</span> <span style="color: #97b098;">{</span>
+      <span style="color: #f3be7c;">return</span> <span style="color: #95a99f;">JSON</span>.<span style="color: #96a6c8;">stringify</span><span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">{</span> <span style="color: #f4f4ff;">error</span>: error.<span style="color: #f4f4ff;">message</span>, <span style="color: #f4f4ff;">sessionID</span>, <span style="color: #f4f4ff;">agent</span> <span style="color: #b0b0b3;">}</span>, <span style="color: #95a99f;">null</span>, 2<span style="color: #aebed8;">)</span>
     <span style="color: #97b098;">}</span>
   <span style="color: #b0b1a3;">}</span>,
 <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0136e2a" class="outline-3">
-<h3 id="org0136e2a">Handoff when stucked</h3>
-<div class="outline-text-3" id="text-org0136e2a">
+<div id="outline-container-org54c1a10" class="outline-3">
+<h3 id="org54c1a10">Handoff when stucked</h3>
+<div class="outline-text-3" id="text-org54c1a10">
 <p>
 SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a>
 </p>
@@ -367,9 +369,9 @@ SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/comma
 </p>
 </div>
 </div>
-<div id="outline-container-org04a85fb" class="outline-3">
-<h3 id="org04a85fb">Maintain memory</h3>
-<div class="outline-text-3" id="text-org04a85fb">
+<div id="outline-container-orga5cbd56" class="outline-3">
+<h3 id="orga5cbd56">Maintain memory</h3>
+<div class="outline-text-3" id="text-orga5cbd56">
 <p>
 我把 planning-with-files 的文档和 Handoff 的文档当作项目的 memory，设计了一个简单的 SKILL 来根据关键字搜索：
 </p>
@@ -383,7 +385,7 @@ SKILL: handoff <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/comma
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">---
+<pre class="src src-nil"><code>---
 name: memory-md
 description: Memory management system for storing and retrieving conversation history and context.When user ask anything about project's memory, automatically use this skill.
 ---
@@ -516,13 +518,13 @@ rg -i -C 2 -t md "$keywords" "$memory_dir" --follow
 - `-C N`: Show N lines of context before and after matches
 - `-t md`: Search only markdown files
 - `--follow`: Follow symbolic links
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org4c8296f" class="outline-3">
-<h3 id="org4c8296f">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-org4c8296f">
+<div id="outline-container-orgc6f6615" class="outline-3">
+<h3 id="orgc6f6615">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-orgc6f6615">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -548,7 +550,7 @@ Learn skill：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">---
+<pre class="src src-nil"><code>---
 name: learn
 description: &gt;
   Extract reusable patterns from sessions and create dynamic skills. Use when you need to save learned patterns, error resolutions, debugging techniques, or project-specific knowledge to ~/.config/opencode/skill/learned/.
@@ -760,7 +762,7 @@ User: Save the event sourcing pattern we used
 This skill works well with:
 - **memory-md**: For accessing related patterns from past sessions
 - **skill-creator**: For creating more complex, bundled skills
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -768,7 +770,7 @@ Learnd skill：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">---
+<pre class="src src-nil"><code>---
 name: learned
 description: &gt;
   learned skill is a collection of learned skill user create.It's a index of all learned skills.
@@ -799,13 +801,13 @@ Treat these skill file below as `learned skill`'s references.
 # Statistics
 Total skills: [count]
 Last updated: [date]
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org842b58f" class="outline-3">
-<h3 id="org842b58f">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-org842b58f">
+<div id="outline-container-orga2942c2" class="outline-3">
+<h3 id="orga2942c2">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-orga2942c2">
 <p>
 SKILL: code-simplifier: <a href="https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md">https://github.com/anthropics/claude-plugins-official/blob/main/plugins/code-simplifier/agents/code-simplifier.md</a>
 </p>
@@ -824,9 +826,9 @@ LLM 在编写代码的时候，特别是大量代码，复杂代码的时候，�
 </div>
 </div>
 </div>
-<div id="outline-container-org763d99d" class="outline-2">
-<h2 id="org763d99d">OpenCode in Emacs</h2>
-<div class="outline-text-2" id="text-org763d99d">
+<div id="outline-container-orgcc210ca" class="outline-2">
+<h2 id="orgcc210ca">OpenCode in Emacs</h2>
+<div class="outline-text-2" id="text-orgcc210ca">
 <p>
 在 Emacs 里现在和 OpenCode 交互最方便的就是 <a href="https://github.com/xenodium/agent-shell">agent-shell</a> 了。
 </p>
@@ -856,169 +858,169 @@ slash command 通过 Emacs 的自动补全，基本是无感切换。
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">use-package</span> agent-shell
-  <span style="color: #79C0FF;">:after</span> evil
-  <span style="color: #79C0FF;">:config</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> agent-shell-opencode-authentication
-        <span style="color: #b0b1a3;">(</span>agent-shell-opencode-make-authentication <span style="color: #79C0FF;">:none</span> t<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+<pre class="src src-elisp"><code><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">use-package</span> agent-shell
+  <span style="color: #8ac6f2;">:after</span> evil
+  <span style="color: #8ac6f2;">:config</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">setq</span> agent-shell-opencode-authentication
+        <span style="color: #b0b1a3;">(</span>agent-shell-opencode-make-authentication <span style="color: #8ac6f2;">:none</span> t<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">;; </span><span style="color: #787878;">disable creating transcript file
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> agent-shell-transcript-file-path-function nil<span style="color: #93a8c6;">)</span>
+</span>  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">setq</span> agent-shell-transcript-file-path-function nil<span style="color: #93a8c6;">)</span>
 
   <span style="color: #787878;">;; </span><span style="color: #787878;">Evil state-specific RET behavior: insert mode = newline, normal mode = send
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">insert</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"RET"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">newline</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">normal</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"RET"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">comint-send-input</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">normal</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"@"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-set-session-mode</span><span style="color: #93a8c6;">)</span>
+</span>  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">evil-define-key</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">insert</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"RET"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">newline</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">evil-define-key</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">normal</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"RET"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">comint-send-input</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">evil-define-key</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">normal</span> agent-shell-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"@"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">agent-shell-set-session-mode</span><span style="color: #93a8c6;">)</span>
 
   <span style="color: #787878;">;; </span><span style="color: #787878;">Configure *agent-shell-diff* buffers to start in Emacs state
-</span>  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">diff-mode-hook</span>
-            <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #97b098;">()</span>
-              <span style="color: #97b098;">(</span><span style="color: #FFA657;">when</span> <span style="color: #aebed8;">(</span>string-match-p <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*agent-shell-diff</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*"</span> <span style="color: #b0b0b3;">(</span>buffer-name<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+</span>  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">diff-mode-hook</span>
+            <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #97b098;">()</span>
+              <span style="color: #97b098;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #aebed8;">(</span>string-match-p <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*agent-shell-diff</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">*"</span> <span style="color: #b0b0b3;">(</span>buffer-name<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
                 <span style="color: #aebed8;">(</span>evil-emacs-state<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;;; </span><span style="color: #787878;">agent-shell OpenCode Subagent Support
 </span><span style="color: #787878;">;;; </span><span style="color: #787878;">Shows available subagents and enables @@subagent invocation syntax
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defvar</span> <span style="color: #f4f4ff;">agent-shell-opencode--subagents</span> nil
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defvar</span> <span style="color: #f4f4ff;">agent-shell-opencode--subagents</span> nil
   <span style="color: #787878;">"Cached list of available subagents."</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--get-subagent-description</span> <span style="color: #93a8c6;">(</span>agent-name<span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--get-subagent-description</span> <span style="color: #93a8c6;">(</span>agent-name<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Get description for subagent AGENT-NAME from its config file."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>config-file <span style="color: #aebed8;">(</span>expand-file-name <span style="color: #b0b0b3;">(</span>format <span style="color: #A1D08E;">"%s.md"</span> agent-name<span style="color: #b0b0b3;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>config-file <span style="color: #aebed8;">(</span>expand-file-name <span style="color: #b0b0b3;">(</span>format <span style="color: #A1D08E;">"%s.md"</span> agent-name<span style="color: #b0b0b3;">)</span>
                                         <span style="color: #A1D08E;">"~/.config/opencode/agents/"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          <span style="color: #97b098;">(</span>description
-          <span style="color: #aebed8;">(</span><span style="color: #FFA657;">when</span> <span style="color: #b0b0b3;">(</span>file-exists-p config-file<span style="color: #b0b0b3;">)</span>
-            <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-temp-buffer</span>
+          <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #b0b0b3;">(</span>file-exists-p config-file<span style="color: #b0b0b3;">)</span>
+            <span style="color: #b0b0b3;">(</span><span style="color: #f3be7c;">with-temp-buffer</span>
               <span style="color: #90a890;">(</span>insert-file-contents config-file<span style="color: #90a890;">)</span>
               <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-min<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
-              <span style="color: #90a890;">(</span><span style="color: #FFA657;">when</span> <span style="color: #a2b6da;">(</span>re-search-forward <span style="color: #A1D08E;">"^description: </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">$"</span> nil t<span style="color: #a2b6da;">)</span>
+              <span style="color: #90a890;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #a2b6da;">(</span>re-search-forward <span style="color: #A1D08E;">"^description: </span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">.*</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">$"</span> nil t<span style="color: #a2b6da;">)</span>
                 <span style="color: #a2b6da;">(</span>match-string 1<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">or</span> description <span style="color: #A1D08E;">"Subagent"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">or</span> description <span style="color: #A1D08E;">"Subagent"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--list-subagents</span> <span style="color: #93a8c6;">()</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--list-subagents</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"List all subagents using opencode agent list command.
 Returns list of agent alists with :id, :name, :description."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>output <span style="color: #aebed8;">(</span>shell-command-to-string <span style="color: #A1D08E;">"opencode agent list"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>output <span style="color: #aebed8;">(</span>shell-command-to-string <span style="color: #A1D08E;">"opencode agent list"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          <span style="color: #97b098;">(</span>lines <span style="color: #aebed8;">(</span>split-string output <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          agents<span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #97b098;">(</span>line lines<span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">when</span> <span style="color: #aebed8;">(</span>string-match <span style="color: #A1D08E;">"^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">[</span><span style="color: #A1D08E;">^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">s</span><span style="color: #A1D08E;">]+</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;"> (subagent)$"</span> line<span style="color: #aebed8;">)</span>
-        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>name <span style="color: #a2b6da;">(</span>match-string 1 line<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">dolist</span> <span style="color: #97b098;">(</span>line lines<span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #aebed8;">(</span>string-match <span style="color: #A1D08E;">"^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">[</span><span style="color: #A1D08E;">^</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">s</span><span style="color: #A1D08E;">]+</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;"> (subagent)$"</span> line<span style="color: #aebed8;">)</span>
+        <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>name <span style="color: #a2b6da;">(</span>match-string 1 line<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
                <span style="color: #90a890;">(</span>description <span style="color: #a2b6da;">(</span>agent-shell-opencode--get-subagent-description name<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">push</span> <span style="color: #FFA657;">`</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span><span style="color: #79C0FF;">:id</span> . ,name<span style="color: #a2b6da;">)</span>
-                  <span style="color: #a2b6da;">(</span><span style="color: #79C0FF;">:name</span> . ,name<span style="color: #a2b6da;">)</span>
-                  <span style="color: #a2b6da;">(</span><span style="color: #79C0FF;">:description</span> . ,description<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+          <span style="color: #b0b0b3;">(</span><span style="color: #f3be7c;">push</span> <span style="color: #f3be7c;">`</span><span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span><span style="color: #8ac6f2;">:id</span> . ,name<span style="color: #a2b6da;">)</span>
+                  <span style="color: #a2b6da;">(</span><span style="color: #8ac6f2;">:name</span> . ,name<span style="color: #a2b6da;">)</span>
+                  <span style="color: #a2b6da;">(</span><span style="color: #8ac6f2;">:description</span> . ,description<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
                 agents<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
     <span style="color: #b0b1a3;">(</span>nreverse agents<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--format-subagents</span> <span style="color: #93a8c6;">(</span>subagents<span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--format-subagents</span> <span style="color: #93a8c6;">(</span>subagents<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Format SUBAGENTS list for display."</span>
   <span style="color: #93a8c6;">(</span>mapconcat
-   <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #97b098;">(</span>agent<span style="color: #97b098;">)</span>
-     <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>name <span style="color: #90a890;">(</span>map-elt agent <span style="color: #79C0FF;">:name</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-           <span style="color: #b0b0b3;">(</span>desc <span style="color: #90a890;">(</span>map-elt agent <span style="color: #79C0FF;">:description</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-       <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"@@%s - %s"</span> <span style="color: #b0b0b3;">(</span>propertize name <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-face</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-keyword-face</span><span style="color: #b0b0b3;">)</span> desc<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+   <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #97b098;">(</span>agent<span style="color: #97b098;">)</span>
+     <span style="color: #97b098;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>name <span style="color: #90a890;">(</span>map-elt agent <span style="color: #8ac6f2;">:name</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+           <span style="color: #b0b0b3;">(</span>desc <span style="color: #90a890;">(</span>map-elt agent <span style="color: #8ac6f2;">:description</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+       <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"@@%s - %s"</span> <span style="color: #b0b0b3;">(</span>propertize name <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">font-lock-face</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">font-lock-keyword-face</span><span style="color: #b0b0b3;">)</span> desc<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
    subagents
    <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--show-subagents-fragment</span> <span style="color: #93a8c6;">()</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--show-subagents-fragment</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"Add subagents UI fragment after available modes fragment."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">when-let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>subagents agent-shell-opencode--subagents<span style="color: #97b098;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">when-let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>subagents agent-shell-opencode--subagents<span style="color: #97b098;">)</span>
              <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>&gt; <span style="color: #b0b0b3;">(</span>length subagents<span style="color: #b0b0b3;">)</span> 0<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>fboundp <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell--update-fragment</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+             <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>fboundp <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">agent-shell--update-fragment</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
              <span style="color: #97b098;">(</span>state agent-shell--state<span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span>request-count <span style="color: #aebed8;">(</span>map-elt state <span style="color: #79C0FF;">:request-count</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-             <span style="color: #97b098;">(</span>buffer <span style="color: #aebed8;">(</span>map-elt state <span style="color: #79C0FF;">:buffer</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">save-excursion</span>
+             <span style="color: #97b098;">(</span>request-count <span style="color: #aebed8;">(</span>map-elt state <span style="color: #8ac6f2;">:request-count</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+             <span style="color: #97b098;">(</span>buffer <span style="color: #aebed8;">(</span>map-elt state <span style="color: #8ac6f2;">:buffer</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">with-current-buffer</span> buffer
+      <span style="color: #97b098;">(</span><span style="color: #f3be7c;">save-excursion</span>
         <span style="color: #aebed8;">(</span>goto-char <span style="color: #b0b0b3;">(</span>point-max<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">when</span> <span style="color: #b0b0b3;">(</span>text-property-search-backward
-               <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell-ui-state</span> nil
-               <span style="color: #90a890;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #a2b6da;">(</span>_ prop-state<span style="color: #a2b6da;">)</span>
-                 <span style="color: #a2b6da;">(</span>equal <span style="color: #9cb6ad;">(</span>map-elt prop-state <span style="color: #79C0FF;">:qualified-id</span><span style="color: #9cb6ad;">)</span>
+        <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #b0b0b3;">(</span>text-property-search-backward
+               <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">agent-shell-ui-state</span> nil
+               <span style="color: #90a890;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #a2b6da;">(</span>_ prop-state<span style="color: #a2b6da;">)</span>
+                 <span style="color: #a2b6da;">(</span>equal <span style="color: #9cb6ad;">(</span>map-elt prop-state <span style="color: #8ac6f2;">:qualified-id</span><span style="color: #9cb6ad;">)</span>
                         <span style="color: #9cb6ad;">(</span>format <span style="color: #A1D08E;">"%s-available_modes"</span> request-count<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
                t<span style="color: #b0b0b3;">)</span>
-          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span>block-range <span style="color: #9cb6ad;">(</span>agent-shell-ui--block-range <span style="color: #79C0FF;">:position</span> <span style="color: #8c8c8c;">(</span>point<span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>
-                 <span style="color: #a2b6da;">(</span>insert-pos <span style="color: #9cb6ad;">(</span>map-elt block-range <span style="color: #79C0FF;">:end</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
+          <span style="color: #b0b0b3;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #90a890;">(</span><span style="color: #a2b6da;">(</span>block-range <span style="color: #9cb6ad;">(</span>agent-shell-ui--block-range <span style="color: #8ac6f2;">:position</span> <span style="color: #8c8c8c;">(</span>point<span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>
+                 <span style="color: #a2b6da;">(</span>insert-pos <span style="color: #9cb6ad;">(</span>map-elt block-range <span style="color: #8ac6f2;">:end</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
             <span style="color: #90a890;">(</span>goto-char insert-pos<span style="color: #90a890;">)</span>
-            <span style="color: #90a890;">(</span><span style="color: #FFA657;">let</span> <span style="color: #a2b6da;">(</span><span style="color: #9cb6ad;">(</span>inhibit-read-only t<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>
+            <span style="color: #90a890;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #a2b6da;">(</span><span style="color: #9cb6ad;">(</span>inhibit-read-only t<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span>
               <span style="color: #a2b6da;">(</span>insert <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span><span style="color: #a2b6da;">)</span>
               <span style="color: #a2b6da;">(</span>agent-shell-ui--insert-fragment
                <span style="color: #9cb6ad;">(</span>agent-shell-ui-make-fragment-model
-                <span style="color: #79C0FF;">:namespace-id</span> <span style="color: #8c8c8c;">(</span>number-to-string request-count<span style="color: #8c8c8c;">)</span>
-                <span style="color: #79C0FF;">:block-id</span> <span style="color: #A1D08E;">"available_subagents"</span>
-                <span style="color: #79C0FF;">:label-left</span> <span style="color: #8c8c8c;">(</span>propertize <span style="color: #A1D08E;">"Available subagents"</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-face</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">font-lock-doc-markup-face</span><span style="color: #8c8c8c;">)</span>
-                <span style="color: #79C0FF;">:body</span> <span style="color: #8c8c8c;">(</span>agent-shell-opencode--format-subagents subagents<span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span>
+                <span style="color: #8ac6f2;">:namespace-id</span> <span style="color: #8c8c8c;">(</span>number-to-string request-count<span style="color: #8c8c8c;">)</span>
+                <span style="color: #8ac6f2;">:block-id</span> <span style="color: #A1D08E;">"available_subagents"</span>
+                <span style="color: #8ac6f2;">:label-left</span> <span style="color: #8c8c8c;">(</span>propertize <span style="color: #A1D08E;">"Available subagents"</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">font-lock-face</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">font-lock-doc-markup-face</span><span style="color: #8c8c8c;">)</span>
+                <span style="color: #8ac6f2;">:body</span> <span style="color: #8c8c8c;">(</span>agent-shell-opencode--format-subagents subagents<span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span>
                <span style="color: #9cb6ad;">(</span>format <span style="color: #A1D08E;">"%s-available_subagents"</span> request-count<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--load-subagents-delayed</span> <span style="color: #93a8c6;">()</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--load-subagents-delayed</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"Load subagents and show them in UI after delay."</span>
   <span style="color: #93a8c6;">(</span>run-with-timer
    0.5 nil
-   <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #97b098;">()</span>
-     <span style="color: #97b098;">(</span><span style="color: #FFA657;">when-let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>subagents <span style="color: #90a890;">(</span>agent-shell-opencode--list-subagents<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+   <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #97b098;">()</span>
+     <span style="color: #97b098;">(</span><span style="color: #f3be7c;">when-let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>subagents <span style="color: #90a890;">(</span>agent-shell-opencode--list-subagents<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
                 <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>&gt; <span style="color: #a2b6da;">(</span>length subagents<span style="color: #a2b6da;">)</span> 0<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
-       <span style="color: #aebed8;">(</span><span style="color: #FFA657;">setq</span> agent-shell-opencode--subagents subagents<span style="color: #aebed8;">)</span>
+       <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">setq</span> agent-shell-opencode--subagents subagents<span style="color: #aebed8;">)</span>
        <span style="color: #aebed8;">(</span>agent-shell-opencode--show-subagents-fragment<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--around-initiate-session</span> <span style="color: #93a8c6;">(</span>orig-fun <span style="color: #95a99f;">&amp;rest</span> args<span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--around-initiate-session</span> <span style="color: #93a8c6;">(</span>orig-fun <span style="color: #95a99f;">&amp;rest</span> args<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Around advice for agent-shell--initiate-session."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>plist args<span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>on-session-init <span style="color: #aebed8;">(</span>plist-get plist <span style="color: #79C0FF;">:on-session-init</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>plist args<span style="color: #97b098;">)</span>
+         <span style="color: #97b098;">(</span>on-session-init <span style="color: #aebed8;">(</span>plist-get plist <span style="color: #8ac6f2;">:on-session-init</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          <span style="color: #97b098;">(</span>new-on-session-init
-          <span style="color: #aebed8;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b0b3;">()</span>
+          <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #b0b0b3;">()</span>
             <span style="color: #b0b0b3;">(</span>funcall on-session-init<span style="color: #b0b0b3;">)</span>
             <span style="color: #b0b0b3;">(</span>agent-shell-opencode--load-subagents-delayed<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>plist-put plist <span style="color: #79C0FF;">:on-session-init</span> new-on-session-init<span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span>plist-put plist <span style="color: #8ac6f2;">:on-session-init</span> new-on-session-init<span style="color: #b0b1a3;">)</span>
     <span style="color: #b0b1a3;">(</span>apply orig-fun plist<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span>advice-add <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell--initiate-session</span> <span style="color: #79C0FF;">:around</span>
-            <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--around-initiate-session</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>advice-add <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">agent-shell--initiate-session</span> <span style="color: #8ac6f2;">:around</span>
+            <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">agent-shell-opencode--around-initiate-session</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;;; </span><span style="color: #787878;">Transform @@subagent syntax to @subagent before sending to OpenCode
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--filter-send-command-args</span> <span style="color: #93a8c6;">(</span>args<span style="color: #93a8c6;">)</span>
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--filter-send-command-args</span> <span style="color: #93a8c6;">(</span>args<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Transform @@subagent to @subagent in prompt before sending."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>prompt <span style="color: #aebed8;">(</span>plist-get args <span style="color: #79C0FF;">:prompt</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">when</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">and</span> prompt <span style="color: #aebed8;">(</span>stringp prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span>plist-put args <span style="color: #79C0FF;">:prompt</span> <span style="color: #aebed8;">(</span>replace-regexp-in-string <span style="color: #A1D08E;">"@@"</span> <span style="color: #A1D08E;">"@"</span> prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>prompt <span style="color: #aebed8;">(</span>plist-get args <span style="color: #8ac6f2;">:prompt</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #97b098;">(</span><span style="color: #f3be7c;">and</span> prompt <span style="color: #aebed8;">(</span>stringp prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span>plist-put args <span style="color: #8ac6f2;">:prompt</span> <span style="color: #aebed8;">(</span>replace-regexp-in-string <span style="color: #A1D08E;">"@@"</span> <span style="color: #A1D08E;">"@"</span> prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
   args<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span>advice-add <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell--send-command</span> <span style="color: #79C0FF;">:filter-args</span>
-            <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--filter-send-command-args</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>advice-add <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">agent-shell--send-command</span> <span style="color: #8ac6f2;">:filter-args</span>
+            <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">agent-shell-opencode--filter-send-command-args</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;;; </span><span style="color: #787878;">@@subagent completion support
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--subagent-completion-at-point</span> <span style="color: #93a8c6;">()</span>
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--subagent-completion-at-point</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"Complete subagent names after @@ prefix."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">when-let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>bounds <span style="color: #aebed8;">(</span>agent-shell--completion-bounds <span style="color: #A1D08E;">"[:alnum:]_-"</span> ?@<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-              <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #FFA657;">save-excursion</span>
-                 <span style="color: #b0b0b3;">(</span>goto-char <span style="color: #90a890;">(</span>map-elt bounds <span style="color: #79C0FF;">:start</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">when-let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>bounds <span style="color: #aebed8;">(</span>agent-shell--completion-bounds <span style="color: #A1D08E;">"[:alnum:]_-"</span> ?@<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+              <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #f3be7c;">save-excursion</span>
+                 <span style="color: #b0b0b3;">(</span>goto-char <span style="color: #90a890;">(</span>map-elt bounds <span style="color: #8ac6f2;">:start</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
                  <span style="color: #b0b0b3;">(</span>eq <span style="color: #90a890;">(</span>char-before<span style="color: #90a890;">)</span> ?@<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
               <span style="color: #97b098;">(</span>subagents agent-shell-opencode--subagents<span style="color: #97b098;">)</span>
-              <span style="color: #97b098;">(</span>descriptions <span style="color: #aebed8;">(</span>mapcar <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #90a890;">(</span>a<span style="color: #90a890;">)</span>
-                                      <span style="color: #90a890;">(</span>cons <span style="color: #a2b6da;">(</span>map-elt a <span style="color: #79C0FF;">:name</span><span style="color: #a2b6da;">)</span>
-                                            <span style="color: #a2b6da;">(</span>map-elt a <span style="color: #79C0FF;">:description</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+              <span style="color: #97b098;">(</span>descriptions <span style="color: #aebed8;">(</span>mapcar <span style="color: #b0b0b3;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #90a890;">(</span>a<span style="color: #90a890;">)</span>
+                                      <span style="color: #90a890;">(</span>cons <span style="color: #a2b6da;">(</span>map-elt a <span style="color: #8ac6f2;">:name</span><span style="color: #a2b6da;">)</span>
+                                            <span style="color: #a2b6da;">(</span>map-elt a <span style="color: #8ac6f2;">:description</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
                                     subagents<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span>list <span style="color: #97b098;">(</span>map-elt bounds <span style="color: #79C0FF;">:start</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>map-elt bounds <span style="color: #79C0FF;">:end</span><span style="color: #97b098;">)</span>
-          <span style="color: #97b098;">(</span>mapcar <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">car</span> descriptions<span style="color: #97b098;">)</span>
-          <span style="color: #79C0FF;">:exclusive</span> t
-          <span style="color: #79C0FF;">:annotation-function</span>
-          <span style="color: #97b098;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #aebed8;">(</span>name<span style="color: #aebed8;">)</span>
-            <span style="color: #aebed8;">(</span><span style="color: #FFA657;">when-let*</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>desc <span style="color: #a2b6da;">(</span>map-elt descriptions name<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+    <span style="color: #b0b1a3;">(</span>list <span style="color: #97b098;">(</span>map-elt bounds <span style="color: #8ac6f2;">:start</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>map-elt bounds <span style="color: #8ac6f2;">:end</span><span style="color: #97b098;">)</span>
+          <span style="color: #97b098;">(</span>mapcar <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">car</span> descriptions<span style="color: #97b098;">)</span>
+          <span style="color: #8ac6f2;">:exclusive</span> t
+          <span style="color: #8ac6f2;">:annotation-function</span>
+          <span style="color: #97b098;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #aebed8;">(</span>name<span style="color: #aebed8;">)</span>
+            <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">when-let*</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>desc <span style="color: #a2b6da;">(</span>map-elt descriptions name<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
               <span style="color: #b0b0b3;">(</span>concat <span style="color: #A1D08E;">"  "</span> desc<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-          <span style="color: #79C0FF;">:company-kind</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #aebed8;">(</span>_<span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">function</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+          <span style="color: #8ac6f2;">:company-kind</span> <span style="color: #97b098;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #aebed8;">(</span>_<span style="color: #aebed8;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">function</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--setup-completion</span> <span style="color: #93a8c6;">()</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">agent-shell-opencode--setup-completion</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"Set up @@subagent completion in agent-shell."</span>
-  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">completion-at-point-functions</span>
-            <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--subagent-completion-at-point</span>
+  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">completion-at-point-functions</span>
+            <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">agent-shell-opencode--subagent-completion-at-point</span>
             nil t<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">agent-shell-mode-hook</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">agent-shell-opencode--setup-completion</span><span style="color: #8c8c8c;">)</span>
-</pre>
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">agent-shell-mode-hook</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">agent-shell-opencode--setup-completion</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org6cfea1d" class="outline-2">
-<h2 id="org6cfea1d">Bubblewrap Sandbox</h2>
-<div class="outline-text-2" id="text-org6cfea1d">
+<div id="outline-container-org45091d4" class="outline-2">
+<h2 id="org45091d4">Bubblewrap Sandbox</h2>
+<div class="outline-text-2" id="text-org45091d4">
 <p>
 Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了许多针对性的优化。
 </p>
@@ -1028,12 +1030,12 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-shell"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
+<pre class="src src-shell"><code><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #f3be7c;">bash</span><span style="color: #787878;">
 </span><span style="color: #787878;"># </span><span style="color: #787878;">opencode bubblewrap sandbox script
 </span><span style="color: #787878;"># </span><span style="color: #787878;">https://patrickmccanna.net/a-better-way-to-limit-claude-code-and-other-coding-agents-access-to-secrets/
 </span><span style="color: #787878;"># </span><span style="color: #787878;">https://www.luiscardoso.dev/blog/sandboxes-for-ai
 </span>
-<span style="color: #79C0FF;">set</span> -euo pipefail
+<span style="color: #8ac6f2;">set</span> -euo pipefail
 
 <span style="color: #787878;"># </span><span style="color: #787878;">Configuration
 </span><span style="color: #f4f4ff;">PROJECT_DIR</span>=<span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">pwd</span><span style="color: #A1D08E;">)"</span>
@@ -1042,10 +1044,10 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
 <span style="color: #f4f4ff;">NPM_BIN</span>=<span style="color: #A1D08E;">"$HOME/.npm-global"</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">Validate paths
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> ! -x <span style="color: #A1D08E;">"$OPENCODE_BIN"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Error: opencode binary not found or not executable: $OPENCODE_BIN"</span>
-  <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
+</span><span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span> ! -x <span style="color: #A1D08E;">"$OPENCODE_BIN"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
+  <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Error: opencode binary not found or not executable: $OPENCODE_BIN"</span>
+  <span style="color: #f3be7c;">exit</span> 1
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">Check if we need to allow network access (default: yes for opencode's MCP servers)
 </span><span style="color: #f4f4ff;">SHARE_NET</span>=<span style="color: #A1D08E;">"--share-net"</span>
@@ -1085,11 +1087,11 @@ Claude 官方在 Linux 里也是使用的 bubblewrap 作为 sandbox，并做了�
   --setenv HOME <span style="color: #A1D08E;">"$HOME"</span> <span style="color: #A1D08E;">\</span>
   --setenv USER <span style="color: #A1D08E;">"$(</span><span style="color: #ff4f58;">whoami</span><span style="color: #A1D08E;">)"</span> <span style="color: #A1D08E;">\</span>
   <span style="color: #A1D08E;">"$OPENCODE_BIN"</span> <span style="color: #A1D08E;">"$@"</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-coding.html" class="tag" data-tag="coding" data-index="0">Coding</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

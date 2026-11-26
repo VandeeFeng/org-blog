@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,16 +49,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgf41ccac">TL;DR</a></li>
-<li><a href="#orgcee2b0c">知识的流动性</a></li>
-<li><a href="#orga30f576">自动补全 VS RAG</a></li>
-<li><a href="#org5373482">NoNotes</a></li>
+<li><a href="#org062cbd6">TL;DR</a></li>
+<li><a href="#org7265859">知识的流动性</a></li>
+<li><a href="#org7ce9a10">自动补全 VS RAG</a></li>
+<li><a href="#org93a3164">NoNotes</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgf41ccac" class="outline-2">
-<h2 id="orgf41ccac">TL;DR</h2>
-<div class="outline-text-2" id="text-orgf41ccac">
+<div id="outline-container-org062cbd6" class="outline-2">
+<h2 id="org062cbd6">TL;DR</h2>
+<div class="outline-text-2" id="text-org062cbd6">
 <p>
 NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个接口，通过向量相似性检索，根据当前输入自动补全相关的笔记。
 </p>
@@ -66,9 +68,9 @@ NoNotes 的意思就是字面上的意思，没有笔记。NoNotes 提供一个�
 </p>
 </div>
 </div>
-<div id="outline-container-orgcee2b0c" class="outline-2">
-<h2 id="orgcee2b0c">知识的流动性</h2>
-<div class="outline-text-2" id="text-orgcee2b0c">
+<div id="outline-container-org7265859" class="outline-2">
+<h2 id="org7265859">知识的流动性</h2>
+<div class="outline-text-2" id="text-org7265859">
 <p>
 在最开始，我设定 PKM（个人知识管理）系统的几个底层原则之一就是：知识一定要能够自然的流动起来。如果一个笔记，它不能和其他笔记通过自然的逻辑有机的联系起来，不能流动起来，时间久了它就会被遗忘，这种笔记是无效的。
 </p>
@@ -112,9 +114,9 @@ Steve Jobs on why thinking without doing is incomplete:
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orga30f576" class="outline-2">
-<h2 id="orga30f576">自动补全 VS RAG</h2>
-<div class="outline-text-2" id="text-orga30f576">
+<div id="outline-container-org7ce9a10" class="outline-2">
+<h2 id="org7ce9a10">自动补全 VS RAG</h2>
+<div class="outline-text-2" id="text-org7ce9a10">
 <p>
 大语言模型的相关概念给了我一些启发，如果说 LLM 本身就是一个通过知识库联想输出最大可能性结果的系统，那么做笔记也可以是这样。再结合 LSP、IDE 的自动补全，NoNotes 的雏形逐渐清晰起来：根据知识库的内容，根据当前的输入自动补全最相关的内容。
 </p>
@@ -144,9 +146,9 @@ RAG 已经很好的实现了 LLM 和外部数据交互的问题，MCP (Model Con
 </p>
 </div>
 </div>
-<div id="outline-container-org5373482" class="outline-2">
-<h2 id="org5373482">NoNotes</h2>
-<div class="outline-text-2" id="text-org5373482">
+<div id="outline-container-org93a3164" class="outline-2">
+<h2 id="org93a3164">NoNotes</h2>
+<div class="outline-text-2" id="text-org93a3164">
 <p>
 无论 LLM 技术怎么迭代，最核心的还是数据，没有输入，LLM 就没有输出。NoNotes 只想提供一个数据接口，技术栈也非常简单，数据库，向量相似性检索，embedding 嵌入。把知识库的文档分块，向量化储存在数据库就完事了。
 </p>
@@ -164,7 +166,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="org7aa3cfc">
+<figure id="org315ebd9">
 <img src="https://pic.vandee.art/images/nonotes-cli.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -174,7 +176,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 
 
-<figure id="orgd05c41a">
+<figure id="org9a27525">
 <img src="https://pic.vandee.art/images/nonotes.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -192,7 +194,7 @@ NoNotes 现在支持 CLI 导入单个文件、单个句子、文件夹，暂时�
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-emacs.html" class="tag" data-tag="emacs" data-index="0">Emacs</a> <a href="https://www.vandee.art/blog/tag-pkm.html" class="tag" data-tag="pkm" data-index="1">PKM</a> <a href="https://www.vandee.art/blog/tag-ramble.html" class="tag" data-tag="ramble" data-index="2">Ramble</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

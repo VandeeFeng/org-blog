@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,23 +49,23 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org3b6a729">TL;DR</a></li>
-<li><a href="#org87bab06">Rules</a>
+<li><a href="#org8fea8bc">TL;DR</a></li>
+<li><a href="#org200d56d">Rules</a>
 <ul>
-<li><a href="#org5d1e948">Maintain Mental &amp; Codebase map</a></li>
-<li><a href="#orgb7b088b">Maintain clear context</a></li>
-<li><a href="#orgd756619">Maintain useful patterns</a></li>
-<li><a href="#orgf632bf2">Maintain code quality and style</a></li>
+<li><a href="#org0631d0b">Maintain Mental &amp; Codebase map</a></li>
+<li><a href="#org79b485a">Maintain clear context</a></li>
+<li><a href="#orgf529879">Maintain useful patterns</a></li>
+<li><a href="#org7ef04c3">Maintain code quality and style</a></li>
 </ul>
 </li>
-<li><a href="#org8331d76">Experience</a></li>
-<li><a href="#orge9a1cae">My AGENTS.md</a></li>
+<li><a href="#org9a04ad6">Experience</a></li>
+<li><a href="#orgcd32fe8">My AGENTS.md</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org3b6a729" class="outline-2">
-<h2 id="org3b6a729">TL;DR</h2>
-<div class="outline-text-2" id="text-org3b6a729">
+<div id="outline-container-org8fea8bc" class="outline-2">
+<h2 id="org8fea8bc">TL;DR</h2>
+<div class="outline-text-2" id="text-org8fea8bc">
 <p>
 这段时间还是在构建 phi，它更像是一个可以自己迭代成长的小伙伴，不只是一个我在构建的工具。用别人的和自己做的，感觉还是很不一样。
 </p>
@@ -73,13 +75,13 @@ ClaudeCode，OpenCode，pi，现在是自己构建的 phi。汇总整理一下�
 </p>
 </div>
 </div>
-<div id="outline-container-org87bab06" class="outline-2">
-<h2 id="org87bab06">Rules</h2>
-<div class="outline-text-2" id="text-org87bab06">
+<div id="outline-container-org200d56d" class="outline-2">
+<h2 id="org200d56d">Rules</h2>
+<div class="outline-text-2" id="text-org200d56d">
 </div>
-<div id="outline-container-org5d1e948" class="outline-3">
-<h3 id="org5d1e948">Maintain Mental &amp; Codebase map</h3>
-<div class="outline-text-3" id="text-org5d1e948">
+<div id="outline-container-org0631d0b" class="outline-3">
+<h3 id="org0631d0b">Maintain Mental &amp; Codebase map</h3>
+<div class="outline-text-3" id="text-org0631d0b">
 <blockquote>
 <p>
 Your best engineers don’t grep randomly. They have a mental map:
@@ -116,9 +118,9 @@ design*.md 涵盖：设计理念，业务职责边界，业务逻辑链条，关
 </p>
 </div>
 </div>
-<div id="outline-container-orgb7b088b" class="outline-3">
-<h3 id="orgb7b088b">Maintain clear context</h3>
-<div class="outline-text-3" id="text-orgb7b088b">
+<div id="outline-container-org79b485a" class="outline-3">
+<h3 id="org79b485a">Maintain clear context</h3>
+<div class="outline-text-3" id="text-org79b485a">
 <p>
 SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md">https://github.com/ChrisWiles/claude-code-showcase/blob/main/.claude/commands/onboard.md</a>
 </p>
@@ -146,9 +148,9 @@ SKILL: Onboard <a href="https://github.com/ChrisWiles/claude-code-showcase/blob/
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd756619" class="outline-3">
-<h3 id="orgd756619">Maintain useful patterns</h3>
-<div class="outline-text-3" id="text-orgd756619">
+<div id="outline-container-orgf529879" class="outline-3">
+<h3 id="orgf529879">Maintain useful patterns</h3>
+<div class="outline-text-3" id="text-orgf529879">
 <p>
 SKILL: <a href="https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md">https://github.com/affaan-m/everything-claude-code/blob/main/commands/learn.md</a>
 </p>
@@ -170,7 +172,7 @@ Learn skill：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">---
+<pre class="src src-nil"><code>---
 name: learn
 description: Extract reusable patterns from sessions into Phi learned skills. Use when the user asks to extract learning, save a reusable pattern, preserve an error resolution or debugging technique, or invokes /skill:learn. `[SKILL Path]/learned/SKILL.md` is the index of all learned skills.
 ---
@@ -373,7 +375,7 @@ This skill works well with:
 - **memory_search**: Find related project memories before extracting duplicate patterns.
 - **skill-creator**: Create complex bundled skills with scripts or references.
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -381,7 +383,7 @@ Learnd skill：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">---
+<pre class="src src-nil"><code>---
 name: learned
 description: &gt;
   learned skill is a collection of learned skill user create.It's a index of all learned skills.
@@ -409,13 +411,13 @@ Treat these skill file below as `learned skill`'s references.
 # Statistics
 Total skills: [count]
 Last updated: [date]
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf632bf2" class="outline-3">
-<h3 id="orgf632bf2">Maintain code quality and style</h3>
-<div class="outline-text-3" id="text-orgf632bf2">
+<div id="outline-container-org7ef04c3" class="outline-3">
+<h3 id="org7ef04c3">Maintain code quality and style</h3>
+<div class="outline-text-3" id="text-org7ef04c3">
 <p>
 SKILL:
 </p>
@@ -444,9 +446,9 @@ code-review
 </div>
 </div>
 </div>
-<div id="outline-container-org8331d76" class="outline-2">
-<h2 id="org8331d76">Experience</h2>
-<div class="outline-text-2" id="text-org8331d76">
+<div id="outline-container-org9a04ad6" class="outline-2">
+<h2 id="org9a04ad6">Experience</h2>
+<div class="outline-text-2" id="text-org9a04ad6">
 <p>
 LLM 生成的代码很容易出现这些问题：
 </p>
@@ -482,9 +484,9 @@ LLM 生成的代码很容易出现这些问题：
 </p>
 </div>
 </div>
-<div id="outline-container-orge9a1cae" class="outline-2">
-<h2 id="orge9a1cae">My AGENTS.md</h2>
-<div class="outline-text-2" id="text-orge9a1cae">
+<div id="outline-container-orgcd32fe8" class="outline-2">
+<h2 id="orgcd32fe8">My AGENTS.md</h2>
+<div class="outline-text-2" id="text-orgcd32fe8">
 <p>
 AGENTS.md + SKILL:cooking
 </p>
@@ -532,7 +534,7 @@ Use property-based testing: define constraints of what should never happen, then
 </ul>
 
 <div class="org-src-container">
-<pre class="src src-markdown"><span style="color: #b3b3b3;"># </span><span style="color: #96a6c8; font-weight: bold;">Vandee's AGENTS.md</span>
+<pre class="src src-markdown"><code><span style="color: #b3b3b3;"># </span><span style="color: #96a6c8; font-weight: bold;">Vandee's AGENTS.md</span>
 
 IMPORTANT: Always thinking in English. Write all code in English. Respond to the user in the user's language.
 
@@ -568,11 +570,11 @@ RESPECT MY PRETTIER PREFERENCES when you provide code.
   <span style="color: #b3b3b3;">-</span> wget: <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">wget --header="Accept: text/markdown, text/html" URL</span><span style="color: #b3b3b3;">`</span>
   <span style="color: #b3b3b3;">-</span> This enables Cloudflare Markdown for Agents. Sites without support will fallback to HTML normally
 
-</pre>
+</code></pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-markdwon">---
+<pre class="src src-markdwon"><code>---
 name: cooking
 description: My coding taste. Before any programming events starting, read this.
 ---
@@ -650,7 +652,7 @@ Universal coding standards
 - Use pnpm for Node.js packages.
 - Merge PRs with merge commits
 
-</pre>
+</code></pre>
 </div>
 
 <p>

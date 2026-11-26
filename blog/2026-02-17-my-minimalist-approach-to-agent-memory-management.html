@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,10 +49,10 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org4e75190">Pi-memory-md</a></li>
-<li><a href="#org1fdfaee">我现在的 memory 架构</a>
+<li><a href="#org10c1bd0">Pi-memory-md</a></li>
+<li><a href="#orgf00f848">我现在的 memory 架构</a>
 <ul>
-<li><a href="#org8b3b974">handoff</a></li>
+<li><a href="#org4c88af5">handoff</a></li>
 </ul>
 </li>
 </ul>
@@ -79,9 +81,9 @@
 <p>
 我没有那么多 issue 和 task 需要用 beads 来管理，所以 beads 的核心功能其实我都用不上。
 </p>
-<div id="outline-container-org4e75190" class="outline-2">
-<h2 id="org4e75190">Pi-memory-md</h2>
-<div class="outline-text-2" id="text-org4e75190">
+<div id="outline-container-org10c1bd0" class="outline-2">
+<h2 id="org10c1bd0">Pi-memory-md</h2>
+<div class="outline-text-2" id="text-org10c1bd0">
 <p>
 <a href="https://github.com/VandeeFeng/pi-memory-md">VandeeFeng/pi-memory-md</a>: 根据 letta 的核心实现，在 pi 里做了一个 pi 包来管理项目的 memory。
 </p>
@@ -103,7 +105,7 @@ pi-memory-md 提供了六个内置的工具 memory_init、memory_sync、memory_r
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">~/.pi/memory-md/
+<pre class="src src-nil"><code>~/.pi/memory-md/
 └── project-name/
     ├── core/
     │   ├── user/           # Your preferences
@@ -112,7 +114,7 @@ pi-memory-md 提供了六个内置的工具 memory_init、memory_sync、memory_r
     │   └── project/        # Project context
     │       └── tech-stack.md
     └── reference/          # On-demand docs
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -152,16 +154,16 @@ memory 文件通过 GitHub 仓库来管理，在 session 开始的时候会自�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-json">  <span style="color: #FFA657;">"pi-memory-md"</span>: <span style="color: #8c8c8c;">{</span>
-    <span style="color: #FFA657;">"enabled"</span>: <span style="color: #95a99f;">true</span>,
-    <span style="color: #FFA657;">"repoUrl"</span>: <span style="color: #A1D08E;">"git@github.com:username/repo.git"</span>,
-    <span style="color: #FFA657;">"localPath"</span>: <span style="color: #A1D08E;">"~/.pi/memory-md"</span>,
-    <span style="color: #FFA657;">"injection"</span>: <span style="color: #A1D08E;">"message-append"</span>,
-    <span style="color: #FFA657;">"autoSync"</span>: <span style="color: #93a8c6;">{</span>
-      <span style="color: #FFA657;">"onSessionStart"</span>: <span style="color: #95a99f;">true</span>
+<pre class="src src-json"><code>  <span style="color: #A1D08E;">"pi-memory-md"</span><span style="color: #f43841;">:</span> <span style="color: #8c8c8c;">{</span>
+    <span style="color: #f4f4ff;">"enabled"</span>: <span style="color: #95a99f;">true</span>,
+    <span style="color: #f4f4ff;">"repoUrl"</span>: <span style="color: #A1D08E;">"git@github.com:username/repo.git"</span>,
+    <span style="color: #f4f4ff;">"localPath"</span>: <span style="color: #A1D08E;">"~/.pi/memory-md"</span>,
+    <span style="color: #f4f4ff;">"injection"</span>: <span style="color: #A1D08E;">"message-append"</span>,
+    <span style="color: #f4f4ff;">"autoSync"</span>: <span style="color: #93a8c6;">{</span>
+      <span style="color: #f4f4ff;">"onSessionStart"</span>: <span style="color: #95a99f;">true</span>
     <span style="color: #93a8c6;">}</span>
   <span style="color: #8c8c8c;">}</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -177,9 +179,9 @@ memory 文件通过 GitHub 仓库来管理，在 session 开始的时候会自�
 </p>
 </div>
 </div>
-<div id="outline-container-org1fdfaee" class="outline-2">
-<h2 id="org1fdfaee">我现在的 memory 架构</h2>
-<div class="outline-text-2" id="text-org1fdfaee">
+<div id="outline-container-orgf00f848" class="outline-2">
+<h2 id="orgf00f848">我现在的 memory 架构</h2>
+<div class="outline-text-2" id="text-orgf00f848">
 <p>
 除了 pi-memory-md，我还有两个管理 memory 的部分：handoff 和 planning-with-files。
 </p>
@@ -188,9 +190,9 @@ memory 文件通过 GitHub 仓库来管理，在 session 开始的时候会自�
 planning-with-files 把文件的保存目录设置为了 pi-memory-md 的项目目录下的 plan 文件夹，方便回顾一些复杂实现做了些什么，再用 learn skill 把有价值的部分生成可复用的 learnd skills。
 </p>
 </div>
-<div id="outline-container-org8b3b974" class="outline-3">
-<h3 id="org8b3b974">handoff</h3>
-<div class="outline-text-3" id="text-org8b3b974">
+<div id="outline-container-org4c88af5" class="outline-3">
+<h3 id="org4c88af5">handoff</h3>
+<div class="outline-text-3" id="text-org4c88af5">
 <p>
 handoff 是 copy 的 <a href="https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md">https://github.com/mitsuhiko/agent-stuff/blob/main/commands/handoff.md</a> ，但是作者现在已经删除了这个文件。
 </p>
@@ -204,7 +206,7 @@ handoff slash command:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-markdown"><span style="color: #b3b3b3;">---</span>
+<pre class="src src-markdown"><code><span style="color: #b3b3b3;">---</span>
 <span style="color: #f4f4ff;">description</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">Creates a detailed handoff plan of the conversation for continuing the work in a new session.</span>
 <span style="color: #f4f4ff;">argument-hint</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">[purpose]</span>
 <span style="color: #b3b3b3;">---</span>
@@ -315,7 +317,7 @@ Where [timestamp] is the current date in format YYYYMMDD-HHMMSS and the slug is 
 
 Then tell the user about this file and that they can use <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">/pickup FILENAME</span><span style="color: #b3b3b3;">`</span> to continue.
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -323,7 +325,7 @@ pickup slash command:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-markdown"><span style="color: #b3b3b3;">---</span>
+<pre class="src src-markdown"><code><span style="color: #b3b3b3;">---</span>
 <span style="color: #f4f4ff;">description</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">Resumes work from a previous handoff session</span>
 <span style="color: #f4f4ff;">argument-hint</span><span style="color: #b3b3b3;">: </span><span style="color: #A1D08E;">[name of handoff]</span>
 <span style="color: #b3b3b3;">---</span>
@@ -363,12 +365,12 @@ echo "To pickup a handoff, use: /pickup &lt;filename&gt;"
 <span style="color: #b3b3b3;">### </span><span style="color: #96a6c8; font-weight: bold;">2. List handoff file</span>
 
 If a handoff file was provided, locate it in <span style="color: #b3b3b3;">`</span><span style="color: #95a99f;">[localPath]/[project-name]/handoffs</span><span style="color: #b3b3b3;">`</span> and read it. Note that this file might be misspelled or the user might have only partially listed it. If there are multiple matches, ask the user which one they want to continue with. The file contains the instructions for how you should continue.
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-llm.html">LLM</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-llm.html" class="tag" data-tag="llm" data-index="0">LLM</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

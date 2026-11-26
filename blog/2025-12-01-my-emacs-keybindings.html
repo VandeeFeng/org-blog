@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,30 +49,30 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd038e20">TL;DR</a></li>
-<li><a href="#orgab12484">组合快捷键 VS 序列快捷键</a></li>
-<li><a href="#orgfa211d9">我的键位设置</a>
+<li><a href="#org8d00bbc">TL;DR</a></li>
+<li><a href="#org701e588">组合快捷键 VS 序列快捷键</a></li>
+<li><a href="#org90fc998">我的键位设置</a>
 <ul>
-<li><a href="#orgd34b232">General</a></li>
-<li><a href="#org969fc1d">mark &amp; move</a></li>
-<li><a href="#org5ab8277">hydra &amp; general</a></li>
-<li><a href="#orgfe582ba">Misc</a></li>
+<li><a href="#org3dcf220">General</a></li>
+<li><a href="#org8808315">mark &amp; move</a></li>
+<li><a href="#org1582580">hydra &amp; general</a></li>
+<li><a href="#orgc9fd9cd">Misc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgd038e20" class="outline-2">
-<h2 id="orgd038e20">TL;DR</h2>
-<div class="outline-text-2" id="text-orgd038e20">
+<div id="outline-container-org8d00bbc" class="outline-2">
+<h2 id="org8d00bbc">TL;DR</h2>
+<div class="outline-text-2" id="text-org8d00bbc">
 <p>
 我更喜欢在 Emacs 里编辑文字和代码，但是更习惯 vim 的编辑模式和设计，Emacs 里原生的 Ctrl 组合键设计对于频繁的代码编辑来说，有点反人类。
 </p>
 </div>
 </div>
-<div id="outline-container-orgab12484" class="outline-2">
-<h2 id="orgab12484">组合快捷键 VS 序列快捷键</h2>
-<div class="outline-text-2" id="text-orgab12484">
+<div id="outline-container-org701e588" class="outline-2">
+<h2 id="org701e588">组合快捷键 VS 序列快捷键</h2>
+<div class="outline-text-2" id="text-org701e588">
 <p>
 组合快捷键位：Ctrl+C，序列快捷键：leader key + 按键，Space -&gt; C。
 </p>
@@ -99,9 +101,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 </p>
 </div>
 </div>
-<div id="outline-container-orgfa211d9" class="outline-2">
-<h2 id="orgfa211d9">我的键位设置</h2>
-<div class="outline-text-2" id="text-orgfa211d9">
+<div id="outline-container-org90fc998" class="outline-2">
+<h2 id="org90fc998">我的键位设置</h2>
+<div class="outline-text-2" id="text-org90fc998">
 <p>
 现在 vibe 这么方便了，为什么还要在这个上面花这么多心思？我觉得用键盘打字 coding 和弹吉他的感觉很像。在 Emacs 里配置这些键位对我来说，就像在调琴弦，调合成器一样。vibe 更多的是享受结果，而这些则是享受过程。
 </p>
@@ -122,9 +124,9 @@ Vim 有三种编辑模式：Normal，Visual，Insert。normal 对应光标的移
 Why emacs not vim? 只是因为更习惯 Emacs 了，这些在 vim 和 Nvim 里同样可以。
 </p>
 </div>
-<div id="outline-container-orgd34b232" class="outline-3">
-<h3 id="orgd34b232">General</h3>
-<div class="outline-text-3" id="text-orgd34b232">
+<div id="outline-container-org3dcf220" class="outline-3">
+<h3 id="org3dcf220">General</h3>
+<div class="outline-text-3" id="text-org3dcf220">
 <p>
 现在配置了 m 作为 mark 的 leader key。Emacs 里的 mark 相当于 vim 里的 visual 模式。但是 Emacs 默认的 mark 键位我很不习惯，vim 里 visual 模式快速选择 symbol，word，sentence 中英混合再加上代码又不是那么方便。把 m 绑定在了 Emacs 的 <code>mark-sexp</code> 上，现在 mm 就可以连续 mark 了。
 </p>
@@ -154,11 +156,11 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">when</span> <span style="color: #93a8c6;">(</span>fboundp <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">setq</span> electric-pair-pairs <span style="color: #b0b1a3;">(</span>append electric-pair-pairs <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>?\{ . ?\}<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>?\<span style="color: #FFA657;">'</span> <span style="color: #95a99f;">.</span> ?\<span style="color: #FFA657;">'</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">electric-indent-mode</span><span style="color: #8c8c8c;">)</span>
-</pre>
+<pre class="src src-elisp"><code><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #93a8c6;">(</span>fboundp <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">setq</span> electric-pair-pairs <span style="color: #b0b1a3;">(</span>append electric-pair-pairs <span style="color: #f3be7c;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>?\{ . ?\}<span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>?\<span style="color: #f3be7c;">'</span> <span style="color: #95a99f;">.</span> ?\<span style="color: #f3be7c;">'</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">electric-pair-mode</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">after-init-hook</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">electric-indent-mode</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -194,9 +196,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 </div>
 </div>
-<div id="outline-container-org969fc1d" class="outline-3">
-<h3 id="org969fc1d">mark &amp; move</h3>
-<div class="outline-text-3" id="text-org969fc1d">
+<div id="outline-container-org8808315" class="outline-3">
+<h3 id="org8808315">mark &amp; move</h3>
+<div class="outline-text-3" id="text-org8808315">
 <p>
 下面的配置包含了设定 mark 方便在代码编辑里来回跳转，defun，symbol，word 的快速复制剪切。
 </p>
@@ -206,19 +208,19 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-editing-utils.el
+<pre class="src src-elisp"><code><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-editing-utils.el
 </span><span style="color: #787878;">;; </span><span style="color: #787878;">Mark &amp; edit
-</span><span style="color: #8c8c8c;">(</span>global-set-key <span style="color: #93a8c6;">(</span>kbd <span style="color: #A1D08E;">"M-m"</span><span style="color: #93a8c6;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">set-mark-command</span><span style="color: #8c8c8c;">)</span>
+</span><span style="color: #8c8c8c;">(</span>global-set-key <span style="color: #93a8c6;">(</span>kbd <span style="color: #A1D08E;">"M-m"</span><span style="color: #93a8c6;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">set-mark-command</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
-  <span style="color: #93a8c6;">(</span>define-prefix-command <span style="color: #FFA657;">'</span><span style="color: #95a99f;">my/mark-map</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key evil-normal-state-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"m"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">my/mark-map</span><span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">with-eval-after-load</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">evil</span>
+  <span style="color: #93a8c6;">(</span>define-prefix-command <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">my/mark-map</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key evil-normal-state-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"m"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">my/mark-map</span><span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>define-key evil-motion-state-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">";"</span><span style="color: #b0b1a3;">)</span> nil<span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span>normal visual<span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">global</span>
-    <span style="color: #A1D08E;">"gc"</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">comment-dwim</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">evil-define-key</span> <span style="color: #f3be7c;">'</span><span style="color: #b0b1a3;">(</span>normal visual<span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">global</span>
+    <span style="color: #A1D08E;">"gc"</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">comment-dwim</span><span style="color: #93a8c6;">)</span>
 
   <span style="color: #787878;">;; </span><span style="color: #787878;">this keybindings only use not in insert mode
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"m"</span> . mark-sexp<span style="color: #aebed8;">)</span>
+</span>  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #f3be7c;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"m"</span> . mark-sexp<span style="color: #aebed8;">)</span>
                      <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"p"</span> . set-pin-mark<span style="color: #aebed8;">)</span> <span style="color: #787878;">; </span><span style="color: #787878;">&#36825;&#26159;&#33258;&#24049;&#23454;&#29616;&#30340; init-mark.el
 </span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"g"</span> . goto-pin-mark<span style="color: #aebed8;">)</span> <span style="color: #787878;">; </span><span style="color: #787878;">&#31616;&#21270;&#29256;&#30340; bookmark
 </span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"d"</span> . mark-defun<span style="color: #aebed8;">)</span>
@@ -238,9 +240,9 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
     <span style="color: #b0b1a3;">(</span>define-key my/mark-map <span style="color: #97b098;">(</span>kbd <span style="color: #aebed8;">(</span>car binding<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span> <span style="color: #97b098;">(</span>cdr binding<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
   <span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">with-eval-after-load</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">evil</span>
   <span style="color: #787878;">;; </span><span style="color: #787878;">normal, visual, insert
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-s"</span> . backward-kill-sexp<span style="color: #aebed8;">)</span>
+</span>  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #f3be7c;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-s"</span> . backward-kill-sexp<span style="color: #aebed8;">)</span>
                      <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-S-s"</span> . kill-back-to-indentation<span style="color: #aebed8;">)</span>
                      <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-d"</span> . kill-sexp<span style="color: #aebed8;">)</span>
                      <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-k"</span> . kill-visual-line<span style="color: #aebed8;">)</span>
@@ -252,7 +254,7 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-n"</span> . next-line<span style="color: #aebed8;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#35206;&#30422; evil &#30340;&#38190;&#20301;&#65292;&#22238;&#24402; Emacs &#40664;&#35748;&#38190;&#20301;
 </span>                     <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"C-p"</span> . previous-line<span style="color: #aebed8;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#35206;&#30422; evil &#30340;&#38190;&#20301;&#65292;&#22238;&#24402; Emacs &#40664;&#35748;&#38190;&#20301;
 </span>                     <span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #97b098;">(</span>state <span style="color: #FFA657;">'</span><span style="color: #aebed8;">(</span>normal visual insert<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">dolist</span> <span style="color: #97b098;">(</span>state <span style="color: #f3be7c;">'</span><span style="color: #aebed8;">(</span>normal visual insert<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
       <span style="color: #97b098;">(</span>evil-global-set-key state <span style="color: #aebed8;">(</span>kbd <span style="color: #b0b0b3;">(</span>car binding<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>cdr binding<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
 
   <span style="color: #787878;">;; </span><span style="color: #787878;">;; visual, insert
@@ -264,23 +266,23 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </span>  <span style="color: #787878;">;;     </span><span style="color: #787878;">(evil-global-set-key state (kbd (car binding)) (cdr binding))))
 </span>
   <span style="color: #787878;">;; </span><span style="color: #787878;">normal visual
-</span>  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"-"</span> . end-of-line<span style="color: #aebed8;">)</span>
+</span>  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">dolist</span> <span style="color: #b0b1a3;">(</span>binding <span style="color: #f3be7c;">'</span><span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"-"</span> . end-of-line<span style="color: #aebed8;">)</span>
                      <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">","</span> . backward-sexp<span style="color: #aebed8;">)</span>
                      <span style="color: #aebed8;">(</span><span style="color: #A1D08E;">"."</span> . forward-sexp<span style="color: #aebed8;">)</span>
                      <span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">dolist</span> <span style="color: #97b098;">(</span>state <span style="color: #FFA657;">'</span><span style="color: #aebed8;">(</span>normal visual<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">dolist</span> <span style="color: #97b098;">(</span>state <span style="color: #f3be7c;">'</span><span style="color: #aebed8;">(</span>normal visual<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
       <span style="color: #97b098;">(</span>evil-global-set-key state <span style="color: #aebed8;">(</span>kbd <span style="color: #b0b0b3;">(</span>car binding<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span> <span style="color: #aebed8;">(</span>cdr binding<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
 
   <span style="color: #93a8c6;">(</span>define-key evil-motion-state-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"C-v"</span><span style="color: #b0b1a3;">)</span> nil<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>global-unset-key <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"C-v"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>global-set-key <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"S-&lt;backspace&gt;"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">delete-char</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
+  <span style="color: #93a8c6;">(</span>global-set-key <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"S-&lt;backspace&gt;"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">delete-char</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5ab8277" class="outline-3">
-<h3 id="org5ab8277">hydra &amp; general</h3>
-<div class="outline-text-3" id="text-org5ab8277">
+<div id="outline-container-org1582580" class="outline-3">
+<h3 id="org1582580">hydra &amp; general</h3>
+<div class="outline-text-3" id="text-org1582580">
 <p>
 由于我使用 evil，设置 leader key 还是用的 general，但是最近把按键的设置转到了 hydra，因为它可以根据不同的 Emacs 的 major mode 显示不同的 hydra key body。同样一个触发键，在 org mode 里可以显示 org 的快捷键设置，在不同的编程语言 mode 里可以专门的快捷键。
 </p>
@@ -290,45 +292,45 @@ Vim 最核心设计的就是它的三个编辑模式，便利的移动导航是 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-hydra.el
+<pre class="src src-elisp"><code><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-hydra.el
 </span><span style="color: #787878;">;; </span><span style="color: #787878;">general &#35774;&#32622; leader key SPC
 </span><span style="color: #8c8c8c;">(</span>general-define-key
- <span style="color: #79C0FF;">:states</span> <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>normal motion visual<span style="color: #93a8c6;">)</span>
- <span style="color: #79C0FF;">:keymaps</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">override</span>
- <span style="color: #79C0FF;">:prefix</span> <span style="color: #A1D08E;">"SPC"</span>
- <span style="color: #A1D08E;">""</span> <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>hydra-leader/body <span style="color: #79C0FF;">:wk</span> <span style="color: #A1D08E;">"hydra leader"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+ <span style="color: #8ac6f2;">:states</span> <span style="color: #f3be7c;">'</span><span style="color: #93a8c6;">(</span>normal motion visual<span style="color: #93a8c6;">)</span>
+ <span style="color: #8ac6f2;">:keymaps</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">override</span>
+ <span style="color: #8ac6f2;">:prefix</span> <span style="color: #A1D08E;">"SPC"</span>
+ <span style="color: #A1D08E;">""</span> <span style="color: #f3be7c;">'</span><span style="color: #93a8c6;">(</span>hydra-leader/body <span style="color: #8ac6f2;">:wk</span> <span style="color: #A1D08E;">"hydra leader"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;; </span><span style="color: #787878;">&#19981;&#21516;&#27169;&#24335;&#30340;&#24120;&#29992;&#24555;&#25463;&#38190;&#35774;&#32622;
 </span><span style="color: #787878;">;; </span><span style="color: #787878;">Mode-specific hydra bindings
 </span><span style="color: #8c8c8c;">(</span>define-key evil-normal-state-map <span style="color: #93a8c6;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #93a8c6;">)</span> nil<span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">hydra-mode-setup</span> <span style="color: #93a8c6;">()</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">hydra-mode-setup</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"Setup hydra bindings for specific modes."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">cond</span>
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">dired-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-dired/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">cond</span>
+   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">dired-mode</span><span style="color: #97b098;">)</span>
+    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-dired/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
 
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-org/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">org-mode</span><span style="color: #97b098;">)</span>
+    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-org/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
 
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">magit-status-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-magit/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>eq major-mode <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">magit-status-mode</span><span style="color: #97b098;">)</span>
+    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-magit/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
 
-   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>derived-mode-p <span style="color: #FFA657;">'</span><span style="color: #95a99f;">prog-mode</span><span style="color: #97b098;">)</span>
-    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-code/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+   <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>derived-mode-p <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">prog-mode</span><span style="color: #97b098;">)</span>
+    <span style="color: #97b098;">(</span>local-set-key <span style="color: #aebed8;">(</span>kbd <span style="color: #A1D08E;">"C-."</span><span style="color: #aebed8;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-code/body</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;; </span><span style="color: #787878;">Add mode-specific setup to hooks
-</span><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">dired-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">magit-status-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">prog-mode-hook</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
+</span><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">dired-mode-hook</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">org-mode-hook</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">magit-status-mode-hook</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">prog-mode-hook</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">hydra-mode-setup</span><span style="color: #8c8c8c;">)</span>
 
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfe582ba" class="outline-3">
-<h3 id="orgfe582ba">Misc</h3>
-<div class="outline-text-3" id="text-orgfe582ba">
+<div id="outline-container-orgc9fd9cd" class="outline-3">
+<h3 id="orgc9fd9cd">Misc</h3>
+<div class="outline-text-3" id="text-orgc9fd9cd">
 <p>
 其他自定义函数在：<a href="https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el">https://github.com/VandeeFeng/emacs.d/blob/archlinux/lisp/init-custom-functions.el</a>
 </p>
@@ -338,15 +340,15 @@ jk 退出 insert：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">jk &#36864;&#20986; insert
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">use-package</span> key-chord
-    <span style="color: #79C0FF;">:ensure</span> t
-    <span style="color: #79C0FF;">:config</span>
+<pre class="src src-elisp"><code><span style="color: #787878;">;; </span><span style="color: #787878;">jk &#36864;&#20986; insert
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">with-eval-after-load</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">evil</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">use-package</span> key-chord
+    <span style="color: #8ac6f2;">:ensure</span> t
+    <span style="color: #8ac6f2;">:config</span>
     <span style="color: #b0b1a3;">(</span>key-chord-mode 1<span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">setq</span> key-chord-two-keys-delay 0.3<span style="color: #b0b1a3;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#29256;&#26412;&#26356;&#26032;&#20043;&#21518;&#65292;&#40664;&#35748;j k &#30340;&#21028;&#26029;&#26102;&#38388;&#21464;&#23569;&#20102;
-</span>    <span style="color: #b0b1a3;">(</span>key-chord-define evil-insert-state-map <span style="color: #A1D08E;">"jk"</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil-normal-state</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">setq</span> key-chord-two-keys-delay 0.3<span style="color: #b0b1a3;">)</span> <span style="color: #787878;">;; </span><span style="color: #787878;">&#29256;&#26412;&#26356;&#26032;&#20043;&#21518;&#65292;&#40664;&#35748;j k &#30340;&#21028;&#26029;&#26102;&#38388;&#21464;&#23569;&#20102;
+</span>    <span style="color: #b0b1a3;">(</span>key-chord-define evil-insert-state-map <span style="color: #A1D08E;">"jk"</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">evil-normal-state</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</code></pre>
 </div>
 
 <p>
@@ -358,12 +360,12 @@ compile grep search：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">compile grep
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/compile-grep-rn</span> <span style="color: #93a8c6;">(</span>pattern<span style="color: #93a8c6;">)</span>
+<pre class="src src-elisp"><code><span style="color: #787878;">;; </span><span style="color: #787878;">compile grep
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my/compile-grep-rn</span> <span style="color: #93a8c6;">(</span>pattern<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Run `grep -irn` with the given PATTERN in the current directory."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span> <span style="color: #A1D08E;">"sGrep pattern: "</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">interactive</span> <span style="color: #A1D08E;">"sGrep pattern: "</span><span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>compile <span style="color: #b0b1a3;">(</span>format <span style="color: #A1D08E;">"grep -irn '</span><span style="color: #95a99f;">%s</span><span style="color: #A1D08E;">' ."</span> pattern<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -375,11 +377,11 @@ compile 指令执行之后自动聚焦 compilation buffer：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">Auto switch to compilation buffer after compile finishes
-</span><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #FFA657;">'</span><span style="color: #95a99f;">compilation-finish-functions</span>
-          <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">lambda</span> <span style="color: #b0b1a3;">(</span>buffer _status<span style="color: #b0b1a3;">)</span>
+<pre class="src src-elisp"><code><span style="color: #787878;">;; </span><span style="color: #787878;">Auto switch to compilation buffer after compile finishes
+</span><span style="color: #8c8c8c;">(</span>add-hook <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">compilation-finish-functions</span>
+          <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">lambda</span> <span style="color: #b0b1a3;">(</span>buffer _status<span style="color: #b0b1a3;">)</span>
             <span style="color: #b0b1a3;">(</span>select-window <span style="color: #97b098;">(</span>get-buffer-window buffer<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -391,16 +393,16 @@ org-backlink:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp">
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/org-backlink</span> <span style="color: #93a8c6;">()</span>
+<pre class="src src-elisp"><code>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my/org-backlink</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"Find all org files in the current directory that link to the current file.
 The search is performed using `rgrep` for the specific pattern
 'filename.org][filename]]'."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">unless</span> buffer-file-name
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">interactive</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">unless</span> buffer-file-name
     <span style="color: #b0b1a3;">(</span><span style="color: #f43841;">error</span> <span style="color: #A1D08E;">"Current buffer is not visiting a file"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
 
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>current-file <span style="color: #aebed8;">(</span>file-name-nondirectory buffer-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>current-file <span style="color: #aebed8;">(</span>file-name-nondirectory buffer-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          <span style="color: #97b098;">(</span>current-dir <span style="color: #aebed8;">(</span>file-name-directory buffer-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          <span style="color: #97b098;">(</span>file-basename <span style="color: #aebed8;">(</span>file-name-sans-extension current-file<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          <span style="color: #787878;">;; </span><span style="color: #787878;">Search for the literal string "filename.org][filename]]"
@@ -409,7 +411,7 @@ The search is performed using `rgrep` for the specific pattern
                                  <span style="color: #b0b0b3;">(</span>regexp-quote file-basename<span style="color: #b0b0b3;">)</span>
                                  <span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">]</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">]"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
     <span style="color: #b0b1a3;">(</span>rgrep search-pattern <span style="color: #A1D08E;">"*.org"</span> current-dir<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -421,57 +423,57 @@ simple claude:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">simple claude code shell command
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/claude-shell-command</span> <span style="color: #93a8c6;">(</span>prompt<span style="color: #93a8c6;">)</span>
+<pre class="src src-elisp"><code><span style="color: #787878;">;; </span><span style="color: #787878;">simple claude code shell command
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my/claude-shell-command</span> <span style="color: #93a8c6;">(</span>prompt<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Execute claude command asynchronously and display the output."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span> <span style="color: #A1D08E;">"sClaude prompt: "</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>output-buffer-name <span style="color: #A1D08E;">"*Claude Output*"</span><span style="color: #97b098;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">interactive</span> <span style="color: #A1D08E;">"sClaude prompt: "</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>output-buffer-name <span style="color: #A1D08E;">"*Claude Output*"</span><span style="color: #97b098;">)</span>
          <span style="color: #97b098;">(</span>output-buffer <span style="color: #aebed8;">(</span>get-buffer-create output-buffer-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-         <span style="color: #97b098;">(</span>shell-program <span style="color: #aebed8;">(</span><span style="color: #FFA657;">or</span> <span style="color: #b0b0b3;">(</span>getenv <span style="color: #A1D08E;">"SHELL"</span><span style="color: #b0b0b3;">)</span> shell-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+         <span style="color: #97b098;">(</span>shell-program <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">or</span> <span style="color: #b0b0b3;">(</span>getenv <span style="color: #A1D08E;">"SHELL"</span><span style="color: #b0b0b3;">)</span> shell-file-name<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
          <span style="color: #787878;">;; </span><span style="color: #787878;">Use shell-quote-argument
 </span>         <span style="color: #97b098;">(</span>command-str <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"claude -p %s"</span> <span style="color: #b0b0b3;">(</span>shell-quote-argument prompt<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">with-current-buffer</span> output-buffer
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">setq</span> buffer-read-only nil<span style="color: #97b098;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">with-current-buffer</span> output-buffer
+      <span style="color: #97b098;">(</span><span style="color: #f3be7c;">setq</span> buffer-read-only nil<span style="color: #97b098;">)</span>
       <span style="color: #97b098;">(</span>erase-buffer<span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">setq-local</span> header-line-format <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"Claude Output for prompt: %s"</span> prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #f3be7c;">setq-local</span> header-line-format <span style="color: #aebed8;">(</span>format <span style="color: #A1D08E;">"Claude Output for prompt: %s"</span> prompt<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
     <span style="color: #787878;">;; </span><span style="color: #787878;">(display-buffer output-buffer) ; Show the buffer immediately
 </span>    <span style="color: #b0b1a3;">(</span>message <span style="color: #A1D08E;">"Claude command running asynchronously..."</span><span style="color: #b0b1a3;">)</span>
     <span style="color: #787878;">;; </span><span style="color: #787878;">Start the async process
-</span>    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>process <span style="color: #b0b0b3;">(</span>start-process <span style="color: #A1D08E;">"claude-process"</span>
+</span>    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>process <span style="color: #b0b0b3;">(</span>start-process <span style="color: #A1D08E;">"claude-process"</span>
                                   output-buffer-name
                                   shell-program
                                   <span style="color: #A1D08E;">"-lc"</span>
                                   command-str<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
       <span style="color: #787878;">;; </span><span style="color: #787878;">Set a function to be called when the process finishes
-</span>      <span style="color: #97b098;">(</span>set-process-sentinel process <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">my/claude-process-sentinel</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</span>      <span style="color: #97b098;">(</span>set-process-sentinel process <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">my/claude-process-sentinel</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/claude-process-sentinel</span> <span style="color: #93a8c6;">(</span>process _event<span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my/claude-process-sentinel</span> <span style="color: #93a8c6;">(</span>process _event<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Sentinel for the claude async process. Handles success and error cases."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">when</span> <span style="color: #b0b1a3;">(</span>memq <span style="color: #97b098;">(</span>process-status process<span style="color: #97b098;">)</span> <span style="color: #FFA657;">'</span><span style="color: #97b098;">(</span>exit signal<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>buffer <span style="color: #b0b0b3;">(</span>process-buffer process<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #b0b1a3;">(</span>memq <span style="color: #97b098;">(</span>process-status process<span style="color: #97b098;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #97b098;">(</span>exit signal<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>buffer <span style="color: #b0b0b3;">(</span>process-buffer process<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
            <span style="color: #aebed8;">(</span>exit-code <span style="color: #b0b0b3;">(</span>process-exit-status process<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">cond</span>
+      <span style="color: #97b098;">(</span><span style="color: #f3be7c;">cond</span>
        <span style="color: #787878;">;; </span><span style="color: #787878;">Case 1: Process failed (non-zero exit code)
 </span>       <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>/= exit-code 0<span style="color: #b0b0b3;">)</span>
         <span style="color: #b0b0b3;">(</span>kill-buffer buffer<span style="color: #b0b0b3;">)</span>
-        <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">if</span> <span style="color: #90a890;">(</span>= exit-code 127<span style="color: #90a890;">)</span>
+        <span style="color: #b0b0b3;">(</span><span style="color: #f3be7c;">if</span> <span style="color: #90a890;">(</span>= exit-code 127<span style="color: #90a890;">)</span>
             <span style="color: #90a890;">(</span>message <span style="color: #A1D08E;">"Error: '</span><span style="color: #95a99f;">claude</span><span style="color: #A1D08E;">' command not found. Please ensure it's in your shell's PATH."</span><span style="color: #90a890;">)</span>
           <span style="color: #90a890;">(</span>message <span style="color: #A1D08E;">"Error: Claude command failed with exit code %d."</span> exit-code<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
 
        <span style="color: #787878;">;; </span><span style="color: #787878;">Case 2: Process succeeded but produced no output
-</span>       <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>zerop <span style="color: #90a890;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer <span style="color: #a2b6da;">(</span>buffer-size<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+</span>       <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>zerop <span style="color: #90a890;">(</span><span style="color: #f3be7c;">with-current-buffer</span> buffer <span style="color: #a2b6da;">(</span>buffer-size<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
         <span style="color: #b0b0b3;">(</span>kill-buffer buffer<span style="color: #b0b0b3;">)</span>
         <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished with no output."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
 
        <span style="color: #787878;">;; </span><span style="color: #787878;">Case 3: Success
 </span>       <span style="color: #aebed8;">(</span>t
-        <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
-          <span style="color: #90a890;">(</span><span style="color: #FFA657;">setq</span> buffer-read-only t<span style="color: #90a890;">)</span>
+        <span style="color: #b0b0b3;">(</span><span style="color: #f3be7c;">with-current-buffer</span> buffer
+          <span style="color: #90a890;">(</span><span style="color: #f3be7c;">setq</span> buffer-read-only t<span style="color: #90a890;">)</span>
           <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-min<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
         <span style="color: #b0b0b3;">(</span>display-buffer buffer<span style="color: #b0b0b3;">)</span>
         <span style="color: #b0b0b3;">(</span>message <span style="color: #A1D08E;">"Claude command finished."</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -483,25 +485,25 @@ simple claude:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">org-protocol</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-elisp"><code><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">require</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">org-protocol</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">require</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">gptel</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">require</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">server</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #93a8c6;">(</span>server-running-p<span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">require</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">server</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">unless</span> <span style="color: #93a8c6;">(</span>server-running-p<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>server-start<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;; </span><span style="color: #787878;">Handler for gptel queries from browser
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/gptel-org-protocol-handler</span> <span style="color: #93a8c6;">(</span>info<span style="color: #93a8c6;">)</span>
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my/gptel-org-protocol-handler</span> <span style="color: #93a8c6;">(</span>info<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Handle gptel query from org-protocol.
 INFO is the data passed by org-protocol."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>text <span style="color: #aebed8;">(</span>plist-get info <span style="color: #79C0FF;">:text</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">when</span> <span style="color: #97b098;">(</span><span style="color: #FFA657;">and</span> text <span style="color: #aebed8;">(</span>not <span style="color: #b0b0b3;">(</span>string-empty-p text<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>query <span style="color: #90a890;">(</span>decode-coding-string <span style="color: #a2b6da;">(</span>url-unhex-string text<span style="color: #a2b6da;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">utf-8</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>text <span style="color: #aebed8;">(</span>plist-get info <span style="color: #8ac6f2;">:text</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">when</span> <span style="color: #97b098;">(</span><span style="color: #f3be7c;">and</span> text <span style="color: #aebed8;">(</span>not <span style="color: #b0b0b3;">(</span>string-empty-p text<span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>query <span style="color: #90a890;">(</span>decode-coding-string <span style="color: #a2b6da;">(</span>url-unhex-string text<span style="color: #a2b6da;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">utf-8</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
         <span style="color: #aebed8;">(</span>message <span style="color: #A1D08E;">"Received gptel query: %s"</span> query<span style="color: #aebed8;">)</span>
         <span style="color: #787878;">;; </span><span style="color: #787878;">Create or switch to gptel buffer
-</span>        <span style="color: #aebed8;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>buffer <span style="color: #a2b6da;">(</span>get-buffer-create <span style="color: #A1D08E;">"*gptel-browser*"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
-          <span style="color: #b0b0b3;">(</span><span style="color: #FFA657;">with-current-buffer</span> buffer
-            <span style="color: #90a890;">(</span><span style="color: #FFA657;">unless</span> <span style="color: #a2b6da;">(</span>eq major-mode <span style="color: #FFA657;">'</span><span style="color: #95a99f;">gptel-default-mode</span><span style="color: #a2b6da;">)</span>
+</span>        <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #b0b0b3;">(</span><span style="color: #90a890;">(</span>buffer <span style="color: #a2b6da;">(</span>get-buffer-create <span style="color: #A1D08E;">"*gptel-browser*"</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+          <span style="color: #b0b0b3;">(</span><span style="color: #f3be7c;">with-current-buffer</span> buffer
+            <span style="color: #90a890;">(</span><span style="color: #f3be7c;">unless</span> <span style="color: #a2b6da;">(</span>eq major-mode <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">gptel-default-mode</span><span style="color: #a2b6da;">)</span>
               <span style="color: #a2b6da;">(</span>funcall gptel-default-mode<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
             <span style="color: #90a890;">(</span>gptel-mode 1<span style="color: #90a890;">)</span>
             <span style="color: #90a890;">(</span>goto-char <span style="color: #a2b6da;">(</span>point-max<span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span>
@@ -514,11 +516,11 @@ INFO is the data passed by org-protocol."</span>
             <span style="color: #90a890;">(</span>display-buffer buffer<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;; </span><span style="color: #787878;">Register the protocol handler
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> org-protocol-protocol-alist
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> org-protocol-protocol-alist
       <span style="color: #93a8c6;">(</span>append org-protocol-protocol-alist
-              <span style="color: #FFA657;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">"gptel-browser"</span>
-                 <span style="color: #79C0FF;">:protocol</span> <span style="color: #A1D08E;">"gptel"</span>
-                 <span style="color: #79C0FF;">:function</span> my/gptel-org-protocol-handler<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+              <span style="color: #f3be7c;">'</span><span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #A1D08E;">"gptel-browser"</span>
+                 <span style="color: #8ac6f2;">:protocol</span> <span style="color: #A1D08E;">"gptel"</span>
+                 <span style="color: #8ac6f2;">:function</span> my/gptel-org-protocol-handler<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;; </span><span style="color: #787878;">JavaScript bookmarklet for browser (copy this as bookmark URL):
 </span><span style="color: #787878;">;; </span><span style="color: #787878;">Basic version:
@@ -527,12 +529,12 @@ INFO is the data passed by org-protocol."</span>
 <span style="color: #787878;">;; </span><span style="color: #787878;">Enhanced version with prompt for question:
 </span><span style="color: #787878;">;; </span><span style="color: #787878;">javascript:(function(){const selectedText=window.getSelection().toString().trim();if(!selectedText){alert('Please select some text first');return;}const pageTitle=document.title;const pageUrl=window.location.href;const userQuestion=prompt('Optional: Add a question or context:');let fullText=`From: ${pageTitle}\nURL: ${pageUrl}\n\n`;if(userQuestion){fullText+=`Question: ${userQuestion}\n\n`;}fullText+=`Selected text:\n${selectedText}`;const encodedText=encodeURIComponent(fullText);const protocolUrl=`org-protocol://gptel?text=${encodedText}`;window.location.href=protocolUrl;})();
 </span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-emacs.html" class="tag" data-tag="emacs" data-index="0">Emacs</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

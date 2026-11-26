@@ -16,6 +16,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -45,25 +47,25 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org20576f4">Intro</a></li>
-<li><a href="#orgac19138">Manual</a>
+<li><a href="#org16e7e52">Intro</a></li>
+<li><a href="#org1cca28e">Manual</a>
 <ul>
-<li><a href="#org061a7ec">Prerequisites</a></li>
-<li><a href="#org5c209fc">PKM</a>
+<li><a href="#orgde2abb0">Prerequisites</a></li>
+<li><a href="#org0fcd203">PKM</a>
 <ul>
-<li><a href="#org2117645">Principles</a></li>
-<li><a href="#orgc318ed2">Methods</a></li>
+<li><a href="#org9ef08ce">Principles</a></li>
+<li><a href="#org8391ec8">Methods</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgafe3c46">Thanks</a></li>
+<li><a href="#orgd0a909b">Thanks</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-org20576f4" class="outline-2">
-<h2 id="org20576f4">Intro</h2>
-<div class="outline-text-2" id="text-org20576f4">
+<div id="outline-container-org16e7e52" class="outline-2">
+<h2 id="org16e7e52">Intro</h2>
+<div class="outline-text-2" id="text-org16e7e52">
 <p>
 在之前的使用 nb 的时候已经在琢磨使用bash脚本来做笔记的框架。期间因为没有找到有效的处理双链和反链的方法，无意间了解到了Emacs里的org-roam可以提供反链，正好又在学习代码的初期急需一个编辑器，于是在Emacs还是Nvim之间选择了Emacs。
 </p>
@@ -121,15 +123,15 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 </p>
 
 
-<figure id="org4f0a918">
+<figure id="org28166ce">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/nvimdash.png" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 </div>
-<div id="outline-container-orgac19138" class="outline-2">
-<h2 id="orgac19138">Manual</h2>
-<div class="outline-text-2" id="text-orgac19138">
+<div id="outline-container-org1cca28e" class="outline-2">
+<h2 id="org1cca28e">Manual</h2>
+<div class="outline-text-2" id="text-org1cca28e">
 <p>
 这是一个以 <a href="https://neovim.io/">Neovim</a> 为基础编辑器、文件管理的Markdown本地笔记PKM。
 </p>
@@ -144,9 +146,9 @@ Vim 编辑模式、PKM方法才是那支笔，它们把笔记数据、操作系�
 <li>PKM with LLM：PKM和大语言模型结合的使用</li>
 </ul>
 </div>
-<div id="outline-container-org061a7ec" class="outline-3">
-<h3 id="org061a7ec">Prerequisites</h3>
-<div class="outline-text-3" id="text-org061a7ec">
+<div id="outline-container-orgde2abb0" class="outline-3">
+<h3 id="orgde2abb0">Prerequisites</h3>
+<div class="outline-text-3" id="text-orgde2abb0">
 <p>
 Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://neovim.io/">Neovim</a>，<a href="https://github.com/LazyVim/LazyVim">LazyVim</a>，<a href="https://github.com/vimwiki/vimwiki">Vimwiki</a>，<a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a>，<a href="https://sw.kovidgoyal.net/kitty/">kitty</a> 或其他terminal。
 </p>
@@ -175,9 +177,9 @@ Start with：<a href="https://git-scm.com/download">Git</a>，<a href="https://n
 </p>
 </div>
 </div>
-<div id="outline-container-org5c209fc" class="outline-3">
-<h3 id="org5c209fc">PKM</h3>
-<div class="outline-text-3" id="text-org5c209fc">
+<div id="outline-container-org0fcd203" class="outline-3">
+<h3 id="org0fcd203">PKM</h3>
+<div class="outline-text-3" id="text-org0fcd203">
 <p>
 整体的笔记文件管理结构，还是<a href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/ACCESS%E7%AC%94%E8%AE%B0%E6%B3%95">ACCESS</a>，可以选择不用。有文件夹和没有文件夹是两种不同的管理模式，例如ob和Logseq。这个手册里更主要的是分享我在构建PKM的过程中迭代的一些原则和方法，以供参考，形成、巩固自己的方法才是这个手册真正的目的，remember：有形易于无形。具体可以参看：<a href="https://dg.vandee.art/Atlas/MOC/%C2%A7Vandee%E7%9A%84PKM">§Vandee的PKM</a>
 </p>
@@ -191,7 +193,7 @@ Journals用来记录每天的日志，作为简单明了的回顾和展开。如
 </p>
 
 
-<figure id="org7ef0175">
+<figure id="orgfd03b7a">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/jounalbash.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -224,9 +226,9 @@ Stay foolish，stay simple。
 本地笔记没有在线笔记软件方便的地方就是多端同步与预览。我的本地笔记已经上传到了GitHub仓库，通过Git同步。临时需要修改的直接在GitHub仓库里就修改了。预览方面，我的笔记输出到了<a href="https://dg.vandee.art/">Vandee's Digital Garden</a>。
 </p>
 </div>
-<div id="outline-container-org2117645" class="outline-4">
-<h4 id="org2117645">Principles</h4>
-<div class="outline-text-4" id="text-org2117645">
+<div id="outline-container-org9ef08ce" class="outline-4">
+<h4 id="org9ef08ce">Principles</h4>
+<div class="outline-text-4" id="text-org9ef08ce">
 <ul class="org-ul">
 <li><a href="https://dg.vandee.art/Cards/%E4%B8%80%E4%B8%AA%E8%89%AF%E5%A5%BD%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BE%AA%E7%8E%AF%E7%B3%BB%E7%BB%9F%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%9C%89%E4%BC%98%E7%A7%80%E7%9A%84%E6%A3%80%E7%B4%A2%E9%80%BB%E8%BE%91">一个良好的知识循环系统，应该有优秀的检索逻辑</a></li>
 <li><a href="https://dg.vandee.art/Cards/%E7%AC%94%E8%AE%B0%E6%98%AF%E6%80%9D%E7%BB%B4%E7%9A%84%E5%91%88%E7%8E%B0%EF%BC%8C%E5%AE%83%E5%BA%94%E8%AF%A5%E6%98%AF%E7%9F%A2%E9%87%8F%E7%9A%84">笔记是思维的呈现，它应该是矢量的</a>，当然也是<a href="https://notes.andymatuschak.org/zNUaiGAXp21eorsER1Jm9yU">原子化</a>的</li>
@@ -241,9 +243,9 @@ Stay foolish，stay simple。
 </p>
 </div>
 </div>
-<div id="outline-container-orgc318ed2" class="outline-4">
-<h4 id="orgc318ed2">Methods</h4>
-<div class="outline-text-4" id="text-orgc318ed2">
+<div id="outline-container-org8391ec8" class="outline-4">
+<h4 id="org8391ec8">Methods</h4>
+<div class="outline-text-4" id="text-org8391ec8">
 <p>
 在最开始需要构建的关键体系就是检索的逻辑。
 </p>
@@ -273,8 +275,8 @@ Stay foolish，stay simple。
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org6091dd5"></a>Vimwiki<br>
-<div class="outline-text-5" id="text-org6091dd5">
+<li><a id="org1de0a64"></a>Vimwiki<br>
+<div class="outline-text-5" id="text-org1de0a64">
 <p>
 Vimwiki提供了类似于org-roam的insert功能，选中文字直接Enter即可在配置的笔记目录下生成笔记。当然也可以 <code>/path/notes</code> 的形式在相对路径的文件夹里生成对应文件。
 </p>
@@ -305,7 +307,7 @@ Lazy安装：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lua"><span style="color: #787878;">-- </span><span style="color: #787878;">vim
+<pre class="src src-lua"><code><span style="color: #787878;">-- </span><span style="color: #787878;">vim
 </span>let g:vimwiki_list = <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">{</span><span style="color: #A1D08E;">'path'</span>: <span style="color: #A1D08E;">'~/vimwiki/'</span>,
                       \ <span style="color: #A1D08E;">'syntax'</span>: <span style="color: #A1D08E;">'markdown'</span>, <span style="color: #A1D08E;">'ext'</span>: <span style="color: #A1D08E;">'md'</span><span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">]</span>
 
@@ -317,26 +319,26 @@ Lazy安装：
     ext = <span style="color: #A1D08E;">'md'</span>
   <span style="color: #93a8c6;">}</span>
 <span style="color: #8c8c8c;">}</span>
-</pre>
+</code></pre>
 </div></li>
 </ul>
 </div>
 </li>
-<li><a id="orgd942999"></a>Bash - MD capture<br>
-<div class="outline-text-5" id="text-orgd942999">
+<li><a id="orge9b0eb7"></a>Bash - MD capture<br>
+<div class="outline-text-5" id="text-orge9b0eb7">
 <p>
 我现在自用的bash脚本包括导航脚本和特定笔记脚本两种，根据这两个模板常用的笔记需求基本可以满足。基本复现org-capture里自定义模板、特定位置写入内容、指定文件生成位置。
 </p>
 
 
-<figure id="orga346e8a">
+<figure id="orgc632a57">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/mdnotesbash.gif" class="img" width="50%" height="50%">
 
 </figure>
 </div>
 <ul class="org-ul">
-<li><a id="org68101c5"></a>使用Bash脚本步骤<br>
-<div class="outline-text-6" id="text-org68101c5">
+<li><a id="org0963505"></a>使用Bash脚本步骤<br>
+<div class="outline-text-6" id="text-org0963505">
 <ul class="org-ul">
 <li>添加脚本文件夹环境全局访问： <code>.bash_profile</code>  or  <code>.bashrc</code> 文件里写入 <code>export PATH="~/path/my_scripts:$PATH"</code></li>
 
@@ -349,24 +351,24 @@ Lazy安装：
 </ul>
 </div>
 </li>
-<li><a id="orga83a918"></a>脚本模板参考<br>
-<div class="outline-text-6" id="text-orga83a918">
+<li><a id="org445cbd7"></a>脚本模板参考<br>
+<div class="outline-text-6" id="text-org445cbd7">
 <ul class="org-ul">
 <li><p>
 导航脚本，选择创建笔记的类型：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
+<pre class="src src-bash"><code><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #f3be7c;">bash</span><span style="color: #787878;">
 </span>
 <span style="color: #787878;"># </span><span style="color: #787878;">&#35774;&#32622;&#36864;&#20986;&#33050;&#26412;&#30340;&#38519;&#38449;
-</span><span style="color: #FFA657;">trap</span> <span style="color: #A1D08E;">'echo "&#36864;&#20986;&#33050;&#26412;&#12290;"; exit'</span> SIGINT
+</span><span style="color: #f3be7c;">trap</span> <span style="color: #A1D08E;">'echo "&#36864;&#20986;&#33050;&#26412;&#12290;"; exit'</span> SIGINT
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#23450;&#20041;&#33050;&#26412;&#30446;&#24405;
 </span><span style="color: #f4f4ff;">script_dir</span>=<span style="color: #A1D08E;">"$HOME/path/"</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#23450;&#20041;&#25805;&#20316;&#21644;&#23545;&#24212;&#30340;&#33050;&#26412;
-</span><span style="color: #79C0FF;">declare</span> -A <span style="color: #f4f4ff;">operations</span>=<span style="color: #8c8c8c;">(</span>
+</span><span style="color: #8ac6f2;">declare</span> -A <span style="color: #f4f4ff;">operations</span>=<span style="color: #8c8c8c;">(</span>
   <span style="color: #93a8c6;">[</span>1<span style="color: #93a8c6;">]</span>=<span style="color: #A1D08E;">"Journals.sh"</span>
   <span style="color: #93a8c6;">[</span>2<span style="color: #93a8c6;">]</span>=<span style="color: #A1D08E;">"NotesMD.sh"</span>
   <span style="color: #93a8c6;">[</span>3<span style="color: #93a8c6;">]</span>=<span style="color: #A1D08E;">"AtomicMD.sh"</span>
@@ -374,47 +376,47 @@ Lazy安装：
 <span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26174;&#31034;&#25805;&#20316;&#36873;&#25321;&#21015;&#34920;&#24182;&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;
-</span><span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#35831;&#36873;&#25321;&#35201;&#25191;&#34892;&#30340;&#25805;&#20316;&#65288;&#36755;&#20837;&#24207;&#21495;&#65289;:"</span>
-<span style="color: #FFA657;">for</span> i<span style="color: #FFA657;"> in</span> $<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">seq 1 $</span><span style="color: #93a8c6;">{</span><span style="color: #ff4f58;">#operations</span><span style="color: #b0b1a3;">[</span><span style="color: #ff4f58;">@</span><span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>; <span style="color: #FFA657;">do</span>
-  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"$i. ${operations[$i]}"</span>
-<span style="color: #FFA657;">done</span>
-<span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#25110;&#32773;&#36755;&#20837; 'q' &#36864;&#20986;&#33050;&#26412;"</span>
+</span><span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#35831;&#36873;&#25321;&#35201;&#25191;&#34892;&#30340;&#25805;&#20316;&#65288;&#36755;&#20837;&#24207;&#21495;&#65289;:"</span>
+<span style="color: #f3be7c;">for</span> i<span style="color: #f3be7c;"> in</span> $<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">seq 1 $</span><span style="color: #93a8c6;">{</span><span style="color: #ff4f58;">#operations</span><span style="color: #b0b1a3;">[</span><span style="color: #ff4f58;">@</span><span style="color: #b0b1a3;">]</span><span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>; <span style="color: #f3be7c;">do</span>
+  <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"$i. ${operations[$i]}"</span>
+<span style="color: #f3be7c;">done</span>
+<span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#25110;&#32773;&#36755;&#20837; 'q' &#36864;&#20986;&#33050;&#26412;"</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#35835;&#21462;&#29992;&#25143;&#36755;&#20837;
-</span><span style="color: #79C0FF;">read</span> -p <span style="color: #A1D08E;">"&#36755;&#20837;&#24207;&#21495;: "</span> choice
+</span><span style="color: #8ac6f2;">read</span> -p <span style="color: #A1D08E;">"&#36755;&#20837;&#24207;&#21495;: "</span> choice
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#29992;&#25143;&#26159;&#21542;&#36873;&#25321;&#36864;&#20986;&#33050;&#26412;
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$choice"</span> == <span style="color: #A1D08E;">"q"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#36864;&#20986;&#33050;&#26412;&#12290;"</span>
-  <span style="color: #FFA657;">exit</span>
-<span style="color: #FFA657;">fi</span>
+</span><span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$choice"</span> == <span style="color: #A1D08E;">"q"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
+  <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#36864;&#20986;&#33050;&#26412;&#12290;"</span>
+  <span style="color: #f3be7c;">exit</span>
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26681;&#25454;&#29992;&#25143;&#36755;&#20837;&#30340;&#24207;&#21495;&#25191;&#34892;&#30456;&#24212;&#30340;&#33050;&#26412;
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> -n <span style="color: #A1D08E;">"${operations[$choice]}"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+</span><span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> -n <span style="color: #A1D08E;">"${operations[$choice]}"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
   <span style="color: #f4f4ff;">script_path</span>=<span style="color: #A1D08E;">"${script_dir}${operations[$choice]}"</span>
-  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#25191;&#34892; ${operations[$choice]} &#33050;&#26412;..."</span>
+  <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#25191;&#34892; ${operations[$choice]} &#33050;&#26412;..."</span>
   <span style="color: #787878;"># </span><span style="color: #787878;">&#25191;&#34892;&#30456;&#24212;&#30340;&#33050;&#26412;
 </span>  <span style="color: #A1D08E;">"$script_path"</span>
-<span style="color: #FFA657;">else</span>
-  <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#26080;&#25928;&#30340;&#24207;&#21495;&#65292;&#35831;&#36755;&#20837;1&#21040;4&#20043;&#38388;&#30340;&#25968;&#23383;&#12290;"</span>
-  <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
+<span style="color: #f3be7c;">else</span>
+  <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#26080;&#25928;&#30340;&#24207;&#21495;&#65292;&#35831;&#36755;&#20837;1&#21040;4&#20043;&#38388;&#30340;&#25968;&#23383;&#12290;"</span>
+  <span style="color: #f3be7c;">exit</span> 1
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#25552;&#37266;&#29992;&#25143;&#24050;&#25191;&#34892;&#30456;&#24212;&#33050;&#26412;
-</span><span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#24050;&#25191;&#34892;&#36873;&#25321;&#30340;&#33050;&#26412;&#12290;"</span>
+</span><span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#24050;&#25191;&#34892;&#36873;&#25321;&#30340;&#33050;&#26412;&#12290;"</span>
 
-</pre>
+</code></pre>
 </div></li>
 <li><p>
 Journal脚本，生成每天的日志：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
+<pre class="src src-bash"><code><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #f3be7c;">bash</span><span style="color: #787878;">
 </span>
 <span style="color: #787878;"># </span><span style="color: #787878;">&#35774;&#32622;&#31995;&#32479;&#35821;&#35328;&#29615;&#22659;&#20026;&#33521;&#25991;
-</span><span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">LC_ALL</span>=en_US.UTF-8
-<span style="color: #79C0FF;">export</span> <span style="color: #f4f4ff;">LANG</span>=en_US.UTF-8
+</span><span style="color: #8ac6f2;">export</span> <span style="color: #f4f4ff;">LC_ALL</span>=en_US.UTF-8
+<span style="color: #8ac6f2;">export</span> <span style="color: #f4f4ff;">LANG</span>=en_US.UTF-8
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#35774;&#32622;&#32477;&#23545;&#36335;&#24452;
 </span><span style="color: #f4f4ff;">base_path</span>=<span style="color: #A1D08E;">"$HOME/path/Journals"</span>
@@ -423,48 +425,48 @@ Journal脚本，生成每天的日志：
 </span><span style="color: #f4f4ff;">current_year</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">date +"%Y"</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#35810;&#38382;&#29992;&#25143;&#36755;&#20837;&#26085;&#26399;
-</span><span style="color: #79C0FF;">read</span> -p <span style="color: #A1D08E;">"Please enter the date (YYYY-MM-DD or MM-DD) [default: $(</span><span style="color: #ff4f58;">date +"%Y-%m-%d"</span><span style="color: #A1D08E;">)], or 'q' to quit: "</span> input_date
+</span><span style="color: #8ac6f2;">read</span> -p <span style="color: #A1D08E;">"Please enter the date (YYYY-MM-DD or MM-DD) [default: $(</span><span style="color: #ff4f58;">date +"%Y-%m-%d"</span><span style="color: #A1D08E;">)], or 'q' to quit: "</span> input_date
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#22914;&#26524;&#29992;&#25143;&#36755;&#20837; 'q'&#65292;&#21017;&#36864;&#20986;&#33050;&#26412;
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$input_date"</span> == <span style="color: #A1D08E;">"q"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Exiting the script."</span>
-    <span style="color: #FFA657;">exit</span> 0
-<span style="color: #FFA657;">fi</span>
+</span><span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span> <span style="color: #A1D08E;">"$input_date"</span> == <span style="color: #A1D08E;">"q"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Exiting the script."</span>
+    <span style="color: #f3be7c;">exit</span> 0
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#22914;&#26524;&#29992;&#25143;&#27809;&#26377;&#36755;&#20837;&#26085;&#26399;&#65292;&#21017;&#20351;&#29992;&#24403;&#22825;&#26085;&#26399;
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$input_date"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+</span><span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$input_date"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
     <span style="color: #f4f4ff;">input_date</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">date +"%Y-%m-%d"</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #FFA657;">fi</span>
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#36755;&#20837;&#26684;&#24335;
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> $<span style="color: #f4f4ff;">input_date</span> =~ ^<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>4<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>-<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>-<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>$ <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+</span><span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> $<span style="color: #f4f4ff;">input_date</span> =~ ^<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>4<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>-<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>-<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>$ <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
     <span style="color: #787878;"># </span><span style="color: #787878;">&#23436;&#25972;&#30340; YYYY-MM-DD &#26684;&#24335;
 </span>    <span style="color: #f4f4ff;">input_year</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$input_date" | cut -d'-' -f1</span><span style="color: #8c8c8c;">)</span>
     <span style="color: #f4f4ff;">input_month</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$input_date" | cut -d'-' -f2</span><span style="color: #8c8c8c;">)</span>
     <span style="color: #f4f4ff;">input_day</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$input_date" | cut -d'-' -f3</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #FFA657;">elif</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> $<span style="color: #f4f4ff;">input_date</span> =~ ^<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>-<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>$ <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+<span style="color: #f3be7c;">elif</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> $<span style="color: #f4f4ff;">input_date</span> =~ ^<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>-<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">[</span>0-9<span style="color: #97b098;">]{</span>2<span style="color: #97b098;">}</span><span style="color: #b0b1a3;">)</span>$ <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
     <span style="color: #787878;"># </span><span style="color: #787878;">MM-DD &#26684;&#24335;&#65292;&#20351;&#29992;&#24403;&#21069;&#24180;&#20221;
 </span>    <span style="color: #f4f4ff;">input_year</span>=$<span style="color: #f4f4ff;">current_year</span>
     <span style="color: #f4f4ff;">input_month</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$input_date" | cut -d'-' -f1</span><span style="color: #8c8c8c;">)</span>
     <span style="color: #f4f4ff;">input_day</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">echo "$input_date" | cut -d'-' -f2</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #FFA657;">else</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Invalid date format. Please use YYYY-MM-DD or MM-DD."</span>
-    <span style="color: #FFA657;">exit</span> 1
-<span style="color: #FFA657;">fi</span>
+<span style="color: #f3be7c;">else</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Invalid date format. Please use YYYY-MM-DD or MM-DD."</span>
+    <span style="color: #f3be7c;">exit</span> 1
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#29983;&#25104; Journal &#25991;&#20214;&#36335;&#24452;
 </span><span style="color: #f4f4ff;">journal_filename</span>=<span style="color: #A1D08E;">"Journal-$input_year.md"</span>
 <span style="color: #f4f4ff;">journal_path</span>=<span style="color: #A1D08E;">"$base_path/$journal_filename"</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#25991;&#20214;&#26159;&#21542;&#24050;&#23384;&#22312;
-</span><span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -f <span style="color: #A1D08E;">"$journal_path"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Journal file already exists: $journal_path"</span>
+</span><span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span> -f <span style="color: #A1D08E;">"$journal_path"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Journal file already exists: $journal_path"</span>
     <span style="color: #f4f4ff;">target_file</span>=<span style="color: #A1D08E;">"$journal_path"</span>
-<span style="color: #FFA657;">else</span>
+<span style="color: #f3be7c;">else</span>
     touch <span style="color: #A1D08E;">"$journal_path"</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Journal file created: $journal_path"</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Journal file created: $journal_path"</span>
     <span style="color: #f4f4ff;">target_file</span>=<span style="color: #A1D08E;">"$journal_path"</span>
-<span style="color: #FFA657;">fi</span>
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#33719;&#21462;&#24403;&#21069;&#26085;&#26399;&#20449;&#24687;
 </span><span style="color: #f4f4ff;">current_date</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">date +"%Y-%m-%d"</span><span style="color: #8c8c8c;">)</span>
@@ -476,38 +478,38 @@ Journal脚本，生成每天的日志：
 <span style="color: #f4f4ff;">input_day_name</span>=$<span style="color: #8c8c8c;">(</span><span style="color: #ff4f58;">date -j -f "%Y-%m-%d" "$input_year-$input_month-$input_day" +"%A"</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#24403;&#21069;&#24180;&#20221;&#22836;&#26159;&#21542;&#23384;&#22312;
-</span><span style="color: #FFA657;">if</span> ! grep -q <span style="color: #A1D08E;">"# $input_year"</span> <span style="color: #A1D08E;">"$target_file"</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"# $input_year"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Current year header inserted in $target_file: # $input_year"</span>
-<span style="color: #FFA657;">else</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Current year header already exists, no need to insert it again"</span>
-<span style="color: #FFA657;">fi</span>
+</span><span style="color: #f3be7c;">if</span> ! grep -q <span style="color: #A1D08E;">"# $input_year"</span> <span style="color: #A1D08E;">"$target_file"</span>; <span style="color: #f3be7c;">then</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"# $input_year"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Current year header inserted in $target_file: # $input_year"</span>
+<span style="color: #f3be7c;">else</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Current year header already exists, no need to insert it again"</span>
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#24403;&#21069;&#26376;&#20221;&#22836;&#26159;&#21542;&#23384;&#22312;
-</span><span style="color: #FFA657;">if</span> ! grep -q <span style="color: #A1D08E;">"## $input_year-$input_month $input_month_name"</span> <span style="color: #A1D08E;">"$target_file"</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"## $input_year-$input_month $input_month_name"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Current month header inserted in $target_file: ## $input_year-$input_month $input_month_name"</span>
-<span style="color: #FFA657;">else</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Current month header already exists, no need to insert it again"</span>
-<span style="color: #FFA657;">fi</span>
+</span><span style="color: #f3be7c;">if</span> ! grep -q <span style="color: #A1D08E;">"## $input_year-$input_month $input_month_name"</span> <span style="color: #A1D08E;">"$target_file"</span>; <span style="color: #f3be7c;">then</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"## $input_year-$input_month $input_month_name"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Current month header inserted in $target_file: ## $input_year-$input_month $input_month_name"</span>
+<span style="color: #f3be7c;">else</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Current month header already exists, no need to insert it again"</span>
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#24403;&#21069;&#26085;&#26399;&#22836;&#26159;&#21542;&#23384;&#22312;
-</span><span style="color: #FFA657;">if</span> ! grep -q <span style="color: #A1D08E;">"### $input_year-$input_month-$input_day $input_day_name"</span> <span style="color: #A1D08E;">"$target_file"</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"### $input_year-$input_month-$input_day $input_day_name"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Current day of the week header inserted in $target_file: ### $input_year-$input_month-$input_day $input_day_name"</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">""</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"- TODOs"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"- Inbox"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
+</span><span style="color: #f3be7c;">if</span> ! grep -q <span style="color: #A1D08E;">"### $input_year-$input_month-$input_day $input_day_name"</span> <span style="color: #A1D08E;">"$target_file"</span>; <span style="color: #f3be7c;">then</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"### $input_year-$input_month-$input_day $input_day_name"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Current day of the week header inserted in $target_file: ### $input_year-$input_month-$input_day $input_day_name"</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">""</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"- TODOs"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"- Inbox"</span> &gt;&gt; <span style="color: #A1D08E;">"$target_file"</span>
     <span style="color: #787878;"># </span><span style="color: #787878;">&#23558;&#20809;&#26631;&#23450;&#20301;&#22312;"- Inbox"&#36825;&#19968;&#34892;
 </span>    sed -i <span style="color: #A1D08E;">''</span> -e <span style="color: #A1D08E;">'/- Inbox/G'</span> <span style="color: #A1D08E;">"$target_file"</span>
-<span style="color: #FFA657;">else</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Current day of the week header already exists"</span>
-<span style="color: #FFA657;">fi</span>
+<span style="color: #f3be7c;">else</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Current day of the week header already exists"</span>
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#29992;Typora&#25171;&#24320;&#29983;&#25104;&#30340;&#26085;&#35760;&#25991;&#20214;
 </span>open -a Typora <span style="color: #A1D08E;">"$target_file"</span>
 
-</pre>
+</code></pre>
 </div></li>
 
 <li><p>
@@ -515,31 +517,31 @@ Notes脚本，生成一般的笔记：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash"><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #FFA657;">bash</span><span style="color: #787878;">
+<pre class="src src-bash"><code><span style="color: #787878;">#</span><span style="color: #787878;">!/bin/</span><span style="color: #f3be7c;">bash</span><span style="color: #787878;">
 </span>
 <span style="color: #787878;"># </span><span style="color: #787878;">&#25552;&#31034;&#29992;&#25143;&#36755;&#20837;Markdown&#25991;&#20214;&#30340;&#21517;&#31216;&#65292;&#24182;&#26816;&#26597;&#26159;&#21542;&#36755;&#20837;&#20102;"q"&#20197;&#36864;&#20986;&#33050;&#26412;
-</span><span style="color: #FFA657;">while</span> true; <span style="color: #FFA657;">do</span>
-  <span style="color: #79C0FF;">read</span> -p <span style="color: #A1D08E;">"&#35831;&#36755;&#20837;Markdown&#25991;&#20214;&#30340;&#21517;&#31216;&#65288;&#19981;&#21253;&#21547;.md&#25193;&#23637;&#21517;&#65289;&#25110;&#36755;&#20837;'q'&#36864;&#20986;: "</span> filename
-  <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$filename"</span> == <span style="color: #A1D08E;">"q"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#36864;&#20986;&#33050;&#26412;&#12290;"</span>
-    <span style="color: #FFA657;">exit</span>
-  <span style="color: #FFA657;">fi</span>
+</span><span style="color: #f3be7c;">while</span> true; <span style="color: #f3be7c;">do</span>
+  <span style="color: #8ac6f2;">read</span> -p <span style="color: #A1D08E;">"&#35831;&#36755;&#20837;Markdown&#25991;&#20214;&#30340;&#21517;&#31216;&#65288;&#19981;&#21253;&#21547;.md&#25193;&#23637;&#21517;&#65289;&#25110;&#36755;&#20837;'q'&#36864;&#20986;: "</span> filename
+  <span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span><span style="color: #93a8c6;">[</span> <span style="color: #A1D08E;">"$filename"</span> == <span style="color: #A1D08E;">"q"</span> <span style="color: #93a8c6;">]</span><span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#36864;&#20986;&#33050;&#26412;&#12290;"</span>
+    <span style="color: #f3be7c;">exit</span>
+  <span style="color: #f3be7c;">fi</span>
   <span style="color: #787878;"># </span><span style="color: #787878;">&#22914;&#26524;&#29992;&#25143;&#27809;&#26377;&#36755;&#20837;&#20219;&#20309;&#20869;&#23481;&#65292;&#21017;&#20351;&#29992;&#24403;&#21069;&#26085;&#26399;&#21644;&#26102;&#38388;&#20316;&#20026;&#25991;&#20214;&#21517;
 </span>  <span style="color: #f4f4ff;">filename</span>=$<span style="color: #8c8c8c;">{</span><span style="color: #f4f4ff;">filename</span>:-$<span style="color: #93a8c6;">(</span><span style="color: #ff4f58;">date '+%Y%m%d%H%M%S'</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">}</span>
   <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#36755;&#20837;&#26159;&#21542;&#26377;&#25928;&#65292;&#22914;&#26524;&#20026;&#31354;&#21017;&#32487;&#32493;&#35810;&#38382;
-</span>  <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$filename"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
-    <span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"&#25991;&#20214;&#21517;&#19981;&#33021;&#20026;&#31354;&#65292;&#35831;&#36755;&#20837;&#25991;&#20214;&#21517;&#25110;&#36755;&#20837;'q'&#36864;&#20986;&#12290;"</span>
-    <span style="color: #FFA657;">continue</span>
-  <span style="color: #FFA657;">fi</span>
+</span>  <span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span> -z <span style="color: #A1D08E;">"$filename"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
+    <span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"&#25991;&#20214;&#21517;&#19981;&#33021;&#20026;&#31354;&#65292;&#35831;&#36755;&#20837;&#25991;&#20214;&#21517;&#25110;&#36755;&#20837;'q'&#36864;&#20986;&#12290;"</span>
+    <span style="color: #f3be7c;">continue</span>
+  <span style="color: #f3be7c;">fi</span>
   <span style="color: #787878;"># </span><span style="color: #787878;">&#19968;&#26086;&#33719;&#24471;&#26377;&#25928;&#36755;&#20837;&#65292;&#36339;&#20986;&#24490;&#29615;
-</span>  <span style="color: #FFA657;">break</span>
-<span style="color: #FFA657;">done</span>
+</span>  <span style="color: #f3be7c;">break</span>
+<span style="color: #f3be7c;">done</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26816;&#26597;&#26159;&#21542;&#24050;&#32463;&#23384;&#22312;&#35813;&#30446;&#24405;&#65292;&#22914;&#26524;&#19981;&#23384;&#22312;&#21017;&#21019;&#24314;
 </span><span style="color: #f4f4ff;">mdNotesDir</span>=<span style="color: #A1D08E;">"$HOME/path/"</span>
-<span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">[</span> ! -d <span style="color: #A1D08E;">"$mdNotesDir"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #FFA657;">then</span>
+<span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">[</span> ! -d <span style="color: #A1D08E;">"$mdNotesDir"</span> <span style="color: #8c8c8c;">]</span>; <span style="color: #f3be7c;">then</span>
   mkdir -p <span style="color: #A1D08E;">"$mdNotesDir"</span>
-<span style="color: #FFA657;">fi</span>
+<span style="color: #f3be7c;">fi</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#26500;&#24314;&#23436;&#25972;&#30340;&#25991;&#20214;&#36335;&#24452;
 </span><span style="color: #f4f4ff;">fullPath</span>=<span style="color: #A1D08E;">"${mdNotesDir}${filename}.md"</span>
@@ -564,22 +566,22 @@ date: $current_date
 EOF
 </span>
 <span style="color: #787878;"># </span><span style="color: #787878;">&#25552;&#37266;&#29992;&#25143;&#25991;&#20214;&#24050;&#21019;&#24314;
-</span><span style="color: #79C0FF;">echo</span> <span style="color: #A1D08E;">"Markdown &#25991;&#20214; '$fullPath' &#24050;&#21019;&#24314;&#12290;"</span>
+</span><span style="color: #8ac6f2;">echo</span> <span style="color: #A1D08E;">"Markdown &#25991;&#20214; '$fullPath' &#24050;&#21019;&#24314;&#12290;"</span>
 
 <span style="color: #787878;"># </span><span style="color: #787878;">&#20351;&#29992; open &#21629;&#20196;&#33258;&#21160;&#25171;&#24320;&#25991;&#20214;
 </span>open -a <span style="color: #A1D08E;">"typora"</span> <span style="color: #A1D08E;">"$fullPath"</span>
 
-</pre>
+</code></pre>
 </div></li>
 </ul>
 </div>
 </li>
 </ul>
 </li>
-<li><a id="orgbdcdd27"></a>ToggleTerm<br>
-<div class="outline-text-5" id="text-orgbdcdd27">
+<li><a id="org6caa8c8"></a>ToggleTerm<br>
+<div class="outline-text-5" id="text-org6caa8c8">
 
-<figure id="org8fd3c9d">
+<figure id="orgbdf13c6">
 <img src="https://testingcf.jsdelivr.net/gh/vandeefeng/gitbox@main/img/bash-quote.gif" class="img" width="50%" height="50%">
 
 </figure>
@@ -594,20 +596,20 @@ EOF
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lua">  <span style="color: #8c8c8c;">{</span>
+<pre class="src src-lua"><code>  <span style="color: #8c8c8c;">{</span>
     <span style="color: #787878;">-- </span><span style="color: #787878;">amongst your other plugins
 </span>    <span style="color: #93a8c6;">{</span><span style="color: #A1D08E;">'akinsho/toggleterm.nvim'</span>, version = <span style="color: #A1D08E;">"*"</span>, config = <span style="color: #95a99f;">true</span><span style="color: #93a8c6;">}</span>
     <span style="color: #787878;">-- </span><span style="color: #787878;">or
 </span>    <span style="color: #93a8c6;">{</span><span style="color: #A1D08E;">'akinsho/toggleterm.nvim'</span>, version = <span style="color: #A1D08E;">"*"</span>, opts = <span style="color: #b0b1a3;">{</span><span style="color: #787878;">--</span><span style="color: #787878;">[[ things you want to change go here]]</span><span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">}</span>
   <span style="color: #8c8c8c;">}</span>
-</pre>
+</code></pre>
 </div></li>
 <li><p>
 参考配置：
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lua"><span style="color: #FFA657;">local</span> <span style="color: #f4f4ff;">toggleterm</span> = <span style="color: #79C0FF;">require</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"toggleterm"</span><span style="color: #8c8c8c;">)</span>
+<pre class="src src-lua"><code><span style="color: #f3be7c;">local</span> <span style="color: #f4f4ff;">toggleterm</span> = <span style="color: #8ac6f2;">require</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"toggleterm"</span><span style="color: #8c8c8c;">)</span>
 
   toggleterm.setup<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span>
       size = 15, - &#35774;&#32622;&#31383;&#21475;&#22823;&#23567;
@@ -618,54 +620,54 @@ EOF
   <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
 
   - &#22312;Terminal&#37324;&#20351;&#29992;vim&#30340;&#31227;&#21160;&#25351;&#20196;
-  <span style="color: #FFA657;">function</span> <span style="color: #79C0FF;">_G</span>.set_terminal_keymaps<span style="color: #8c8c8c;">()</span>
-    <span style="color: #FFA657;">local</span> <span style="color: #f4f4ff;">opts</span> = <span style="color: #8c8c8c;">{</span> noremap = <span style="color: #95a99f;">true</span> <span style="color: #8c8c8c;">}</span>
+  <span style="color: #f3be7c;">function</span> <span style="color: #8ac6f2;">_G</span>.set_terminal_keymaps<span style="color: #8c8c8c;">()</span>
+    <span style="color: #f3be7c;">local</span> <span style="color: #f4f4ff;">opts</span> = <span style="color: #8c8c8c;">{</span> noremap = <span style="color: #95a99f;">true</span> <span style="color: #8c8c8c;">}</span>
     vim.api.nvim_buf_set_keymap<span style="color: #8c8c8c;">(</span>0, <span style="color: #A1D08E;">'t'</span>, <span style="color: #A1D08E;">'&lt;esc&gt;'</span>, <span style="color: #A1D08E;">[[&lt;C-\&gt;&lt;C-n&gt;]]</span>, opts<span style="color: #8c8c8c;">)</span>
     vim.api.nvim_buf_set_keymap<span style="color: #8c8c8c;">(</span>0, <span style="color: #A1D08E;">'t'</span>, <span style="color: #A1D08E;">'jk'</span>, <span style="color: #A1D08E;">[[&lt;C-\&gt;&lt;C-n&gt;]]</span>, opts<span style="color: #8c8c8c;">)</span>
     vim.api.nvim_buf_set_keymap<span style="color: #8c8c8c;">(</span>0, <span style="color: #A1D08E;">'t'</span>, <span style="color: #A1D08E;">'&lt;C-h&gt;'</span>, <span style="color: #A1D08E;">[[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;h]]</span>, opts<span style="color: #8c8c8c;">)</span>
     vim.api.nvim_buf_set_keymap<span style="color: #8c8c8c;">(</span>0, <span style="color: #A1D08E;">'t'</span>, <span style="color: #A1D08E;">'&lt;C-j&gt;'</span>, <span style="color: #A1D08E;">[[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;j]]</span>, opts<span style="color: #8c8c8c;">)</span>
     vim.api.nvim_buf_set_keymap<span style="color: #8c8c8c;">(</span>0, <span style="color: #A1D08E;">'t'</span>, <span style="color: #A1D08E;">'&lt;C-k&gt;'</span>, <span style="color: #A1D08E;">[[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;k]]</span>, opts<span style="color: #8c8c8c;">)</span>
     vim.api.nvim_buf_set_keymap<span style="color: #8c8c8c;">(</span>0, <span style="color: #A1D08E;">'t'</span>, <span style="color: #A1D08E;">'&lt;C-l&gt;'</span>, <span style="color: #A1D08E;">[[&lt;C-\&gt;&lt;C-n&gt;&lt;C-W&gt;l]]</span>, opts<span style="color: #8c8c8c;">)</span>
-  <span style="color: #FFA657;">end</span>
+  <span style="color: #f3be7c;">end</span>
 
   vim.cmd<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'autocmd! TermOpen term://* lua set_terminal_keymaps()'</span><span style="color: #8c8c8c;">)</span>
 
-  <span style="color: #FFA657;">local</span> <span style="color: #f4f4ff;">Terminal</span> = <span style="color: #79C0FF;">require</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"toggleterm.terminal"</span><span style="color: #8c8c8c;">)</span>.Terminal
-  <span style="color: #FFA657;">local</span> <span style="color: #f4f4ff;">lazygit</span> = Terminal:new<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span> cmd = <span style="color: #A1D08E;">"lazygit"</span>, hidden = <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
+  <span style="color: #f3be7c;">local</span> <span style="color: #f4f4ff;">Terminal</span> = <span style="color: #8ac6f2;">require</span><span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"toggleterm.terminal"</span><span style="color: #8c8c8c;">)</span>.Terminal
+  <span style="color: #f3be7c;">local</span> <span style="color: #f4f4ff;">lazygit</span> = Terminal:new<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span> cmd = <span style="color: #A1D08E;">"lazygit"</span>, hidden = <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
 
-  <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">_LAZYGIT_TOGGLE</span><span style="color: #8c8c8c;">()</span>
+  <span style="color: #f3be7c;">function</span> <span style="color: #96a6c8;">_LAZYGIT_TOGGLE</span><span style="color: #8c8c8c;">()</span>
     lazygit:toggle<span style="color: #8c8c8c;">()</span>
-  <span style="color: #FFA657;">end</span>
+  <span style="color: #f3be7c;">end</span>
 
-  <span style="color: #FFA657;">local</span> <span style="color: #f4f4ff;">node</span> = Terminal:new<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span> cmd = <span style="color: #A1D08E;">"node"</span>, hidden = <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
+  <span style="color: #f3be7c;">local</span> <span style="color: #f4f4ff;">node</span> = Terminal:new<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span> cmd = <span style="color: #A1D08E;">"node"</span>, hidden = <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
 
-  <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">_NODE_TOGGLE</span><span style="color: #8c8c8c;">()</span>
+  <span style="color: #f3be7c;">function</span> <span style="color: #96a6c8;">_NODE_TOGGLE</span><span style="color: #8c8c8c;">()</span>
     node:toggle<span style="color: #8c8c8c;">()</span>
-  <span style="color: #FFA657;">end</span>
+  <span style="color: #f3be7c;">end</span>
 
-  <span style="color: #FFA657;">local</span> <span style="color: #f4f4ff;">python</span> = Terminal:new<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span> cmd = <span style="color: #A1D08E;">"python3"</span>, hidden = <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
+  <span style="color: #f3be7c;">local</span> <span style="color: #f4f4ff;">python</span> = Terminal:new<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{</span> cmd = <span style="color: #A1D08E;">"python3"</span>, hidden = <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
 
-  <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">_PYTHON_TOGGLE</span><span style="color: #8c8c8c;">()</span>
+  <span style="color: #f3be7c;">function</span> <span style="color: #96a6c8;">_PYTHON_TOGGLE</span><span style="color: #8c8c8c;">()</span>
     python:toggle<span style="color: #8c8c8c;">()</span>
-  <span style="color: #FFA657;">end</span>
+  <span style="color: #f3be7c;">end</span>
 
   <span style="color: #787878;">-- </span><span style="color: #787878;">&#20026; Python &#32456;&#31471;&#35774;&#32622;&#24555;&#25463;&#38190;
 </span>  vim.api.nvim_set_keymap<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'n'</span>, <span style="color: #A1D08E;">'&lt;leader&gt;tp'</span>, <span style="color: #A1D08E;">':lua _PYTHON_TOGGLE()&lt;CR&gt;'</span>, <span style="color: #93a8c6;">{</span> noremap = <span style="color: #95a99f;">true</span>, silent = <span style="color: #95a99f;">true</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
   <span style="color: #787878;">-- </span><span style="color: #787878;">&#24555;&#36895;&#25171;&#24320;Terminal
-</span>  vim.keymap.set<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"n"</span>, <span style="color: #A1D08E;">"&lt;Leader&gt;tt"</span>, <span style="color: #FFA657;">function</span><span style="color: #93a8c6;">()</span>
-    <span style="color: #79C0FF;">require</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"toggleterm"</span><span style="color: #93a8c6;">)</span>.toggle<span style="color: #93a8c6;">()</span>
-  <span style="color: #FFA657;">end</span>, <span style="color: #93a8c6;">{</span> desc = <span style="color: #A1D08E;">"ToggleTerm"</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
+</span>  vim.keymap.set<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">"n"</span>, <span style="color: #A1D08E;">"&lt;Leader&gt;tt"</span>, <span style="color: #f3be7c;">function</span><span style="color: #93a8c6;">()</span>
+    <span style="color: #8ac6f2;">require</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"toggleterm"</span><span style="color: #93a8c6;">)</span>.toggle<span style="color: #93a8c6;">()</span>
+  <span style="color: #f3be7c;">end</span>, <span style="color: #93a8c6;">{</span> desc = <span style="color: #A1D08E;">"ToggleTerm"</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
 
   <span style="color: #787878;">-- </span><span style="color: #787878;">end</span>
-</pre>
+</code></pre>
 </div></li>
 </ul>
 </div>
 </li>
-<li><a id="org373a2c6"></a>中英输入法问题<br>
+<li><a id="org28b1ebc"></a>中英输入法问题<br>
 <ul class="org-ul">
-<li><a id="orgbccf1df"></a>im-select-nvim<br>
-<div class="outline-text-6" id="text-orgbccf1df">
+<li><a id="org5114b40"></a>im-select-nvim<br>
+<div class="outline-text-6" id="text-org5114b40">
 <p>
 <a href="https://github.com/keaising/im-select.nvim">keaising/im-select.nvim</a> 这个插件可以在Nvim里让nomal模式下自动切换成英文输入，在insert模式下自动切换回中文输入。刚需。
 </p>
@@ -675,11 +677,11 @@ EOF
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">Install
+<pre class="src src-bash"><code>Install
 
 Download URL: https://github.com/daipeihust/im-select
 
-Check installation<span style="color: #FFA657;"> in</span> bash/zsh
+Check installation<span style="color: #f3be7c;"> in</span> bash/zsh
 
 <span style="color: #787878;"># </span><span style="color: #787878;">find binary
 </span>$ which im-select
@@ -690,11 +692,11 @@ Check installation<span style="color: #FFA657;"> in</span> bash/zsh
 <span style="color: #787878;"># </span><span style="color: #787878;">Try to switch to English keyboard
 </span>$ im-select com.apple.keylayout.ABC
 
-Check<span style="color: #FFA657;"> in</span> NeoVim
+Check<span style="color: #f3be7c;"> in</span> NeoVim
 
 :!which im-select
 
-</pre>
+</code></pre>
 </div></li>
 
 <li><p>
@@ -702,10 +704,10 @@ im-select-nvim的安装和配置
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lua"><span style="color: #8c8c8c;">{</span>
+<pre class="src src-lua"><code><span style="color: #8c8c8c;">{</span>
     <span style="color: #A1D08E;">"keaising/im-select.nvim"</span>,
-    <span style="color: #96a6c8;">config</span> = <span style="color: #FFA657;">function</span><span style="color: #93a8c6;">()</span>
-        <span style="color: #79C0FF;">require</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">'im_select'</span><span style="color: #93a8c6;">)</span>.setup<span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">{</span>
+    <span style="color: #96a6c8;">config</span> = <span style="color: #f3be7c;">function</span><span style="color: #93a8c6;">()</span>
+        <span style="color: #8ac6f2;">require</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">'im_select'</span><span style="color: #93a8c6;">)</span>.setup<span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">{</span>
             <span style="color: #787878;">-- </span><span style="color: #787878;">IM will be set to `default_im_select` in `normal` mode
 </span>            <span style="color: #787878;">-- </span><span style="color: #787878;">For Windows/WSL, default: "1033", aka: English US Keyboard
 </span>            <span style="color: #787878;">-- </span><span style="color: #787878;">For macOS, default: "com.apple.keylayout.ABC", aka: US
@@ -739,10 +741,10 @@ im-select-nvim的安装和配置
             <span style="color: #787878;">-- </span><span style="color: #787878;">Async run `default_command` to switch IM or not
 </span>            async_switch_im = <span style="color: #95a99f;">true</span>
         <span style="color: #b0b1a3;">}</span><span style="color: #93a8c6;">)</span>
-    <span style="color: #FFA657;">end</span>,
+    <span style="color: #f3be7c;">end</span>,
 <span style="color: #8c8c8c;">}</span>,
 
-</pre>
+</code></pre>
 </div></li>
 </ul>
 
@@ -756,8 +758,8 @@ Ref:
 </ul>
 </div>
 </li>
-<li><a id="orgd6564e6"></a>RIME<br>
-<div class="outline-text-6" id="text-orgd6564e6">
+<li><a id="org837c015"></a>RIME<br>
+<div class="outline-text-6" id="text-org837c015">
 <p>
 如果说PKM是纸，那么输入法就是笔。
 </p>
@@ -775,9 +777,9 @@ Ref:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">style/horizontal 將徹底移除，雖然本版程序仍支持，但會被新控件的默認值覆蓋
+<pre class="src src-nil"><code>style/horizontal 將徹底移除，雖然本版程序仍支持，但會被新控件的默認值覆蓋
 請使用 candidate_list_layout: stacked/linear 和 text_orientation: horizontal/vertical
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -789,7 +791,7 @@ Ref:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-bash">;; mac:
+<pre class="src src-bash"><code>;; mac:
 ;; mac rime: https://rime.im/download/
 Homebrew: brew install --cask squirrel
 &#25110;&#32773;&#30452;&#25509;&#19979;&#36733;
@@ -831,7 +833,7 @@ plum and rime-ice&#65306;
 git clone --depth 1 https://github.com/rime/plum ~/plum
 
 ;; &#20999;&#25442;&#21040;&#19996;&#39118;&#30772;&#30340;&#30446;&#24405;
-<span style="color: #79C0FF;">cd</span> ~/plum
+<span style="color: #8ac6f2;">cd</span> ~/plum
 
 ;; &#22914;&#26524;&#20320;&#20351;&#29992;Fcitx5&#65292;&#20320;&#38656;&#35201;&#21152;&#20837;&#21442;&#25968;&#65292;&#35753;&#19996;&#39118;&#30772;&#25226;&#37197;&#32622;&#25991;&#20214;&#20889;&#21040;&#27491;&#30830;&#30340;&#20301;&#32622;
 <span style="color: #f4f4ff;">rime_frontend</span>=fcitx5-rime bash rime-install iDvel/rime-ice:others/recipes/full
@@ -839,7 +841,7 @@ git clone --depth 1 https://github.com/rime/plum ~/plum
 ;; &#22914;&#26524;&#20320;&#26159;&#29992;IBus&#65292;&#21017;&#19981;&#38656;&#21152;&#21442;&#25968;&#65292;&#22240;&#20026;&#19996;&#39118;&#30772;&#40664;&#35748;&#26159;&#20026;IBus&#29256;&#30340;RIME&#25171;&#36896;&#12290;
 bash rime-install iDvel/rime-ice:others/recipes/full
 
-</pre>
+</code></pre>
 </div>
 
 
@@ -862,8 +864,8 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 </li>
 </ul>
 </li>
-<li><a id="org9a8fed7"></a>MarkdownPreview<br>
-<div class="outline-text-5" id="text-org9a8fed7">
+<li><a id="orgfb4aacd"></a>MarkdownPreview<br>
+<div class="outline-text-5" id="text-orgfb4aacd">
 <p>
 <a href="https://github.com/iamcco/markdown-preview.nvim">iamcco/markdown-preview.nvim</a>提供实时的markdown预览，对于经常写md的不是那么必须，拿不准的可以预览看看的整体效果。输入 <code>:MarkdownPreview</code> 就会在浏览器里打开预览。
 </p>
@@ -873,18 +875,18 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lua">
+<pre class="src src-lua"><code>
 <span style="color: #787878;">-- </span><span style="color: #787878;">&#23450;&#20041;&#19968;&#20010;&#20989;&#25968;,&#29992;&#20110;&#22312; Typora &#20013;&#25171;&#24320;&#24403;&#21069;&#32531;&#20914;&#21306;&#25991;&#20214; --
-</span><span style="color: #FFA657;">local</span> <span style="color: #FFA657;">function</span> <span style="color: #96a6c8;">open_with_typora</span><span style="color: #8c8c8c;">()</span>
-    <span style="color: #FFA657;">local</span> <span style="color: #f4f4ff;">current_file</span> = vim.api.nvim_buf_get_name<span style="color: #8c8c8c;">(</span>0<span style="color: #8c8c8c;">)</span>
+</span><span style="color: #f3be7c;">local</span> <span style="color: #f3be7c;">function</span> <span style="color: #96a6c8;">open_with_typora</span><span style="color: #8c8c8c;">()</span>
+    <span style="color: #f3be7c;">local</span> <span style="color: #f4f4ff;">current_file</span> = vim.api.nvim_buf_get_name<span style="color: #8c8c8c;">(</span>0<span style="color: #8c8c8c;">)</span>
     vim.cmd<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'!open -a Typora "'</span> .. current_file .. <span style="color: #A1D08E;">'"'</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #FFA657;">end</span>
+<span style="color: #f3be7c;">end</span>
 
 <span style="color: #787878;">-- </span><span style="color: #787878;">&#23558;&#35813;&#20989;&#25968;&#32465;&#23450;&#21040; &lt;leader&gt;t &#24555;&#25463;&#38190;
 </span>vim.keymap.set<span style="color: #8c8c8c;">(</span><span style="color: #A1D08E;">'n'</span>, <span style="color: #A1D08E;">'&lt;leader&gt;fo'</span>, open_with_typora, <span style="color: #93a8c6;">{</span> desc = <span style="color: #A1D08E;">'Open current buffer in Typora'</span> <span style="color: #93a8c6;">}</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">-- </span><span style="color: #787878;">end</span>
-</pre>
+</code></pre>
 </div>
 
 <ul class="org-ul">
@@ -897,24 +899,24 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 </p>
 
 <div class="org-src-container">
-<pre class="src src-lua">  <span style="color: #8c8c8c;">{</span>
+<pre class="src src-lua"><code>  <span style="color: #8c8c8c;">{</span>
     <span style="color: #787878;">-- </span><span style="color: #787878;">Install markdown preview, use npx if available.
 </span>    <span style="color: #A1D08E;">"iamcco/markdown-preview.nvim"</span>,
     cmd = <span style="color: #93a8c6;">{</span> <span style="color: #A1D08E;">"MarkdownPreviewToggle"</span>, <span style="color: #A1D08E;">"MarkdownPreview"</span>, <span style="color: #A1D08E;">"MarkdownPreviewStop"</span> <span style="color: #93a8c6;">}</span>,
     ft = <span style="color: #93a8c6;">{</span> <span style="color: #A1D08E;">"markdown"</span> <span style="color: #93a8c6;">}</span>,
-    <span style="color: #96a6c8;">build</span> = <span style="color: #FFA657;">function</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">plugin</span><span style="color: #93a8c6;">)</span>
-      <span style="color: #FFA657;">if</span> vim.fn.executable <span style="color: #A1D08E;">"npx"</span> <span style="color: #FFA657;">then</span>
+    <span style="color: #96a6c8;">build</span> = <span style="color: #f3be7c;">function</span><span style="color: #93a8c6;">(</span><span style="color: #f4f4ff;">plugin</span><span style="color: #93a8c6;">)</span>
+      <span style="color: #f3be7c;">if</span> vim.fn.executable <span style="color: #A1D08E;">"npx"</span> <span style="color: #f3be7c;">then</span>
         vim.cmd<span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">"!cd "</span> .. plugin.dir .. <span style="color: #A1D08E;">" &amp;&amp; cd app &amp;&amp; npx --yes yarn install"</span><span style="color: #93a8c6;">)</span>
-      <span style="color: #FFA657;">else</span>
+      <span style="color: #f3be7c;">else</span>
         vim.cmd <span style="color: #A1D08E;">[[Lazy load markdown-preview.nvim]]</span>
         vim.fn<span style="color: #93a8c6;">[</span><span style="color: #A1D08E;">"mkdp#util#install"</span><span style="color: #93a8c6;">]()</span>
-      <span style="color: #FFA657;">end</span>
-    <span style="color: #FFA657;">end</span>,
-    <span style="color: #96a6c8;">init</span> = <span style="color: #FFA657;">function</span><span style="color: #93a8c6;">()</span>
-      <span style="color: #FFA657;">if</span> vim.fn.executable <span style="color: #A1D08E;">"npx"</span> <span style="color: #FFA657;">then</span> vim.g.mkdp_filetypes = <span style="color: #93a8c6;">{</span> <span style="color: #A1D08E;">"markdown"</span> <span style="color: #93a8c6;">}</span> <span style="color: #FFA657;">end</span>
-    <span style="color: #FFA657;">end</span>,
+      <span style="color: #f3be7c;">end</span>
+    <span style="color: #f3be7c;">end</span>,
+    <span style="color: #96a6c8;">init</span> = <span style="color: #f3be7c;">function</span><span style="color: #93a8c6;">()</span>
+      <span style="color: #f3be7c;">if</span> vim.fn.executable <span style="color: #A1D08E;">"npx"</span> <span style="color: #f3be7c;">then</span> vim.g.mkdp_filetypes = <span style="color: #93a8c6;">{</span> <span style="color: #A1D08E;">"markdown"</span> <span style="color: #93a8c6;">}</span> <span style="color: #f3be7c;">end</span>
+    <span style="color: #f3be7c;">end</span>,
   <span style="color: #8c8c8c;">}</span>,
-</pre>
+</code></pre>
 </div></li>
 
 <li><p>
@@ -926,7 +928,7 @@ bash rime-install iDvel/rime-ice:others/recipes/full
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">Add the following to your Neovim init script:
+<pre class="src src-nil"><code>Add the following to your Neovim init script:
 
 Linux
 
@@ -946,13 +948,13 @@ macOS
 
 Replace Firefox with Google\ Chrome or Brave\ Browser if you prefer. They all recognize the --new-window option.
 
-</pre>
+</code></pre>
 </div></li>
 </ul>
 </div>
 </li>
-<li><a id="orgee1e7f5"></a>网页摘录和after-reading<br>
-<div class="outline-text-5" id="text-orgee1e7f5">
+<li><a id="orgb978d59"></a>网页摘录和after-reading<br>
+<div class="outline-text-5" id="text-orgb978d59">
 <p>
 利用org-capture，做剪藏和摘录很方便。现在保存在~clip.org~文件里，可以在agenda里按时间线回顾，由于agenda里只有标题，也起到了类似Anki卡片回顾的作用：
 </p>
@@ -966,8 +968,8 @@ Replace Firefox with Google\ Chrome or Brave\ Browser if you prefer. They all re
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">javascript:(function(){var e=document.body;const n=document.head.appendChild(document.createElement("style"));n.textContent=".mainonly { outline: 2px solid red; }";const t=CSS.supports("selector(:has(*))");function o(n){n instanceof HTMLElement&amp;&amp;(e.classList.remove("mainonly"),(e=n).classList.add("mainonly"))}function s(e){o(e.target)}function a(o){if(o.preventDefault(),t)n.textContent=":not(:has(.mainonly), .mainonly, .mainonly *) { display: none; }";else{n.textContent=":not(.mainonly *, .mainonly-ancestor) { display: none; }";var s=e;do{s.classList.add("mainonly-ancestor")}while(s=s.parentElement)}l()}function i(n){n.preventDefault(),n.deltaY&lt;0?o(e.parentElement):o(e.firstElementChild)}function l(){document.removeEventListener("mouseover",s),document.removeEventListener("click",a),document.removeEventListener("wheel",i)}document.addEventListener("mouseover",s),document.addEventListener("click",a),document.addEventListener("wheel",i,{passive:!1}),document.addEventListener("keydown",(function o(s){if("Escape"===s.key&amp;&amp;(n.remove(),document.removeEventListener("keydown",o),l(),e?.classList.remove("mainonly"),!t))for(const e of document.getElementsByClassName("mainonly-ancestor"))e.classList.remove("mainonly-ancestor")}))}())
-</pre>
+<pre class="src src-nil"><code>javascript:(function(){var e=document.body;const n=document.head.appendChild(document.createElement("style"));n.textContent=".mainonly { outline: 2px solid red; }";const t=CSS.supports("selector(:has(*))");function o(n){n instanceof HTMLElement&amp;&amp;(e.classList.remove("mainonly"),(e=n).classList.add("mainonly"))}function s(e){o(e.target)}function a(o){if(o.preventDefault(),t)n.textContent=":not(:has(.mainonly), .mainonly, .mainonly *) { display: none; }";else{n.textContent=":not(.mainonly *, .mainonly-ancestor) { display: none; }";var s=e;do{s.classList.add("mainonly-ancestor")}while(s=s.parentElement)}l()}function i(n){n.preventDefault(),n.deltaY&lt;0?o(e.parentElement):o(e.firstElementChild)}function l(){document.removeEventListener("mouseover",s),document.removeEventListener("click",a),document.removeEventListener("wheel",i)}document.addEventListener("mouseover",s),document.addEventListener("click",a),document.addEventListener("wheel",i,{passive:!1}),document.addEventListener("keydown",(function o(s){if("Escape"===s.key&amp;&amp;(n.remove(),document.removeEventListener("keydown",o),l(),e?.classList.remove("mainonly"),!t))for(const e of document.getElementsByClassName("mainonly-ancestor"))e.classList.remove("mainonly-ancestor")}))}())
+</code></pre>
 </div>
 
 <p>
@@ -991,8 +993,8 @@ after-reading我一直用的 <a href="https://docs.omnivore.app/zh/">Omnivore</a
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgde95d11"></a>tools<br>
-<div class="outline-text-6" id="text-orgde95d11">
+<li><a id="orgdc1051b"></a>tools<br>
+<div class="outline-text-6" id="text-orgdc1051b">
 <ul class="org-ul">
 <li><p>
 网站：<a href="https://jina.ai/reader/">https://jina.ai/reader/</a>
@@ -1020,8 +1022,8 @@ Reader does two things:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-javascript">  javascript: <span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">currentUrl</span> = window.location.href;<span style="color: #FFA657;">var</span> <span style="color: #f4f4ff;">newUrl</span> = <span style="color: #A1D08E;">"https://r.jina.ai/"</span> + currentUrl;window.open<span style="color: #8c8c8c;">(</span>newUrl, <span style="color: #A1D08E;">'_blank'</span><span style="color: #8c8c8c;">)</span>;window.history.pushState<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{}</span>, <span style="color: #A1D08E;">''</span>, currentUrl<span style="color: #8c8c8c;">)</span>;
-</pre>
+<pre class="src src-javascript"><code>  javascript: <span style="color: #f3be7c;">var</span> <span style="color: #f4f4ff;">currentUrl</span> = window.location.href;<span style="color: #f3be7c;">var</span> <span style="color: #f4f4ff;">newUrl</span> = <span style="color: #A1D08E;">"https://r.jina.ai/"</span> + currentUrl;window.open<span style="color: #8c8c8c;">(</span>newUrl, <span style="color: #A1D08E;">'_blank'</span><span style="color: #8c8c8c;">)</span>;window.history.pushState<span style="color: #8c8c8c;">(</span><span style="color: #93a8c6;">{}</span>, <span style="color: #A1D08E;">''</span>, currentUrl<span style="color: #8c8c8c;">)</span>;
+</code></pre>
 </div></li>
 </ul>
 
@@ -1043,9 +1045,9 @@ Reader does two things:
 </div>
 </div>
 </div>
-<div id="outline-container-orgafe3c46" class="outline-2">
-<h2 id="orgafe3c46">Thanks</h2>
-<div class="outline-text-2" id="text-orgafe3c46">
+<div id="outline-container-orgd0a909b" class="outline-2">
+<h2 id="orgd0a909b">Thanks</h2>
+<div class="outline-text-2" id="text-orgd0a909b">
 <p>
 这个手册会持续更新，如果对你有所帮助，我会很开心。
 </p>
@@ -1059,7 +1061,7 @@ Imagining and creating！
 </p>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-pkm.html">PKM</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-pkm.html" class="tag" data-tag="pkm" data-index="0">PKM</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,27 +49,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgab7a5b5">TL;DR</a></li>
-<li><a href="#org48e6416">Claude Skills</a></li>
-<li><a href="#org5c90a45">复现 Claude Skills</a>
+<li><a href="#orgdcc2ecf">TL;DR</a></li>
+<li><a href="#org0c4ebbc">Claude Skills</a></li>
+<li><a href="#org5e9ee0b">复现 Claude Skills</a>
 <ul>
-<li><a href="#orgac17437">核心实现</a></li>
+<li><a href="#orgc5e4f2b">核心实现</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgab7a5b5" class="outline-2">
-<h2 id="orgab7a5b5">TL;DR</h2>
-<div class="outline-text-2" id="text-orgab7a5b5">
+<div id="outline-container-orgdcc2ecf" class="outline-2">
+<h2 id="orgdcc2ecf">TL;DR</h2>
+<div class="outline-text-2" id="text-orgdcc2ecf">
 <p>
 大道至简，Claude Skills 的这个思路很符合我对 LLM 工具能力扩展的构想。
 </p>
 </div>
 </div>
-<div id="outline-container-org48e6416" class="outline-2">
-<h2 id="org48e6416">Claude Skills</h2>
-<div class="outline-text-2" id="text-org48e6416">
+<div id="outline-container-org0c4ebbc" class="outline-2">
+<h2 id="org0c4ebbc">Claude Skills</h2>
+<div class="outline-text-2" id="text-org0c4ebbc">
 <p>
 Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Claude 模型的工具能力。
 </p>
@@ -77,7 +79,7 @@ Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Cla
 </p>
 
 <div class="org-src-container">
-<pre class="src src-nil">  skills/
+<pre class="src src-nil"><code>  skills/
   ├── skill1/
   │   ├── SKILL.md
   │   ├── scripts/
@@ -87,7 +89,7 @@ Claude Skills 是 Claude 最近发布的新功能，它可以进一步扩展 Cla
       ├── SKILL.md
       └── scripts/
           └── script.sh
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -130,9 +132,9 @@ Reference:
 </ul>
 </div>
 </div>
-<div id="outline-container-org5c90a45" class="outline-2">
-<h2 id="org5c90a45">复现 Claude Skills</h2>
-<div class="outline-text-2" id="text-org5c90a45">
+<div id="outline-container-org5e9ee0b" class="outline-2">
+<h2 id="org5e9ee0b">复现 Claude Skills</h2>
+<div class="outline-text-2" id="text-org5e9ee0b">
 <p>
 最近正好看到一个项目 <a href="https://github.com/bravenewxyz/agent-c">GitHub - bravenewxyz/agent-c: Ultra-lightweight AI Agent</a> ，从来没有想过一个 agent 可以有这么极简的实现方式。
 </p>
@@ -147,7 +149,7 @@ Reference:
 </p>
 
 
-<figure id="org03bbf8e">
+<figure id="orgdf00048">
 <img src="https://pic.vandee.art/images/agent-c-skills.png" class="img" width="60%" height="60%">
 
 </figure>
@@ -156,26 +158,26 @@ Reference:
 源码在：<a href="https://github.com/VandeeFeng/agent-c">https://github.com/VandeeFeng/agent-c</a>
 </p>
 </div>
-<div id="outline-container-orgac17437" class="outline-3">
-<h3 id="orgac17437">核心实现</h3>
-<div class="outline-text-3" id="text-orgac17437">
+<div id="outline-container-orgc5e4f2b" class="outline-3">
+<h3 id="orgc5e4f2b">核心实现</h3>
+<div class="outline-text-3" id="text-orgc5e4f2b">
 <p>
 agent.c:6-41 - init_agent() 函数: 在系统初始化时将技能列表添加到 system prompt
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">
+<pre class="src src-C"><code>
   <span style="color: #787878;">// </span><span style="color: #787878;">&#26500;&#24314;&#22522;&#30784;&#31995;&#32479;&#25552;&#31034;
 </span>  <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">base_prompt</span><span style="color: #8c8c8c;">[</span>MAX_CONTENT<span style="color: #8c8c8c;">]</span>;
-  <span style="color: #96a6c8;">snprintf</span><span style="color: #8c8c8c;">(</span>base_prompt, <span style="color: #FFA657;">sizeof</span><span style="color: #93a8c6;">(</span>base_prompt<span style="color: #93a8c6;">)</span>,
+  <span style="color: #96a6c8;">snprintf</span><span style="color: #8c8c8c;">(</span><span style="color: #95a99f;">base_prompt</span>, <span style="color: #f3be7c;">sizeof</span><span style="color: #93a8c6;">(</span><span style="color: #95a99f;">base_prompt</span><span style="color: #93a8c6;">)</span>,
            <span style="color: #A1D08E;">"You are JARVIS..."</span> <span style="color: #787878;">/* </span><span style="color: #787878;">&#22522;&#30784;&#25552;&#31034;&#20869;&#23481;</span><span style="color: #787878;"> */</span><span style="color: #8c8c8c;">)</span>;
 
   <span style="color: #787878;">// </span><span style="color: #787878;">&#21457;&#29616;&#25216;&#33021;&#24182;&#26500;&#24314;&#25216;&#33021;&#21015;&#34920;
 </span>  <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">skills_list</span><span style="color: #8c8c8c;">[</span>MAX_CONTENT<span style="color: #8c8c8c;">]</span>;
-  <span style="color: #95a99f;">int</span> <span style="color: #f4f4ff;">skill_count</span> = discover_skills<span style="color: #8c8c8c;">(</span>skills_list, <span style="color: #FFA657;">sizeof</span><span style="color: #93a8c6;">(</span>skills_list<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>;
+  <span style="color: #95a99f;">int</span> <span style="color: #f4f4ff;">skill_count</span> = discover_skills<span style="color: #8c8c8c;">(</span>skills_list, <span style="color: #f3be7c;">sizeof</span><span style="color: #93a8c6;">(</span>skills_list<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>;
 
   <span style="color: #787878;">// </span><span style="color: #787878;">&#23558;&#25216;&#33021;&#21015;&#34920;&#28155;&#21152;&#21040;&#31995;&#32479;&#25552;&#31034;&#20013;
-</span>  <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span>skill_count &gt; 0<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+</span>  <span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">(</span>skill_count &gt; 0<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
       snprintf<span style="color: #93a8c6;">(</span>agent.messages<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span>.content, MAX_CONTENT,
                <span style="color: #A1D08E;">"%s=== AVAILABLE SKILLS ===</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">%s"</span>
                <span style="color: #A1D08E;">"HOW TO USE SKILLS:</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span>
@@ -185,7 +187,7 @@ agent.c:6-41 - init_agent() 函数: 在系统初始化时将技能列表添加�
 </span>               , base_prompt, skills_list<span style="color: #93a8c6;">)</span>;
   <span style="color: #8c8c8c;">}</span>
 
-</pre>
+</code></pre>
 </div>
 
 
@@ -194,7 +196,7 @@ agent.c:84-100 - 动态技能内容注入: 当调用 extract_skill 时，会将�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">  <span style="color: #FFA657;">if</span> <span style="color: #8c8c8c;">(</span>result == 0<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+<pre class="src src-C"><code>  <span style="color: #f3be7c;">if</span> <span style="color: #8c8c8c;">(</span>result == 0<span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
       <span style="color: #787878;">// </span><span style="color: #787878;">&#33719;&#21462;&#24403;&#21069;&#31995;&#32479;&#25552;&#31034;
 </span>      <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">current_system</span><span style="color: #93a8c6;">[</span>MAX_CONTENT<span style="color: #93a8c6;">]</span>;
       strncpy<span style="color: #93a8c6;">(</span>current_system, agent.messages<span style="color: #b0b1a3;">[</span>0<span style="color: #b0b1a3;">]</span>.content, MAX_CONTENT - 1<span style="color: #93a8c6;">)</span>;
@@ -205,7 +207,7 @@ agent.c:84-100 - 动态技能内容注入: 当调用 extract_skill 时，会将�
                current_system, skill_name, skill_content<span style="color: #93a8c6;">)</span>;
   <span style="color: #8c8c8c;">}</span>
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -213,18 +215,18 @@ skill.c:91-153 - extract_skill_description() 函数:从 SKILL.md 文件中提取
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">  <span style="color: #FFA657;">static</span> <span style="color: #95a99f;">int</span> <span style="color: #96a6c8;">extract_skill_description</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">const</span> <span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">skill_name</span>, <span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">description</span>, <span style="color: #95a99f;">size_t</span>
+<pre class="src src-C"><code>  <span style="color: #f3be7c;">static</span> <span style="color: #95a99f;">int</span> <span style="color: #96a6c8;">extract_skill_description</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">const</span> <span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">skill_name</span>, <span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">description</span>, <span style="color: #95a99f;">size_t</span>
    <span style="color: #f4f4ff;">desc_size</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
       <span style="color: #787878;">// </span><span style="color: #787878;">&#26500;&#24314; SKILL.md &#25991;&#20214;&#36335;&#24452;
 </span>      <span style="color: #95a99f;">char</span> <span style="color: #f4f4ff;">md_path</span><span style="color: #93a8c6;">[</span>MAX_SKILL_PATH<span style="color: #93a8c6;">]</span>;
-      snprintf<span style="color: #93a8c6;">(</span>md_path, <span style="color: #FFA657;">sizeof</span><span style="color: #b0b1a3;">(</span>md_path<span style="color: #b0b1a3;">)</span>, <span style="color: #A1D08E;">"%s/SKILL.md"</span>, skill_path<span style="color: #93a8c6;">)</span>;
+      snprintf<span style="color: #93a8c6;">(</span>md_path, <span style="color: #f3be7c;">sizeof</span><span style="color: #b0b1a3;">(</span>md_path<span style="color: #b0b1a3;">)</span>, <span style="color: #A1D08E;">"%s/SKILL.md"</span>, skill_path<span style="color: #93a8c6;">)</span>;
 
       <span style="color: #787878;">// </span><span style="color: #787878;">&#35835;&#21462; SKILL.md &#25991;&#20214;&#20869;&#23481;
 </span>      <span style="color: #95a99f;">FILE</span>* <span style="color: #f4f4ff;">file</span> = fopen<span style="color: #93a8c6;">(</span>md_path, <span style="color: #A1D08E;">"r"</span><span style="color: #93a8c6;">)</span>;
       <span style="color: #787878;">// </span><span style="color: #787878;">...&#25552;&#21462;&#25551;&#36848;&#20869;&#23481;...
 </span>  <span style="color: #8c8c8c;">}</span>
 
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -232,26 +234,26 @@ skill.c:156-219 - discover_skills() 函数: 发现所有可用技能并构建技
 </p>
 
 <div class="org-src-container">
-<pre class="src src-C">  <span style="color: #95a99f;">int</span> <span style="color: #96a6c8;">discover_skills</span><span style="color: #8c8c8c;">(</span><span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">skills_list</span>, <span style="color: #95a99f;">size_t</span> <span style="color: #f4f4ff;">list_size</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
+<pre class="src src-C"><code>  <span style="color: #95a99f;">int</span> <span style="color: #96a6c8;">discover_skills</span><span style="color: #8c8c8c;">(</span><span style="color: #95a99f;">char</span>* <span style="color: #f4f4ff;">skills_list</span>, <span style="color: #95a99f;">size_t</span> <span style="color: #f4f4ff;">list_size</span><span style="color: #8c8c8c;">)</span> <span style="color: #8c8c8c;">{</span>
       <span style="color: #787878;">// </span><span style="color: #787878;">&#36941;&#21382;&#25216;&#33021;&#30446;&#24405;
-</span>      <span style="color: #FFA657;">while</span> <span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>entry = readdir<span style="color: #97b098;">(</span>dir<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span> != <span style="color: #95a99f;">NULL</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
+</span>      <span style="color: #f3be7c;">while</span> <span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>entry = readdir<span style="color: #97b098;">(</span>dir<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span> != <span style="color: #95a99f;">NULL</span><span style="color: #93a8c6;">)</span> <span style="color: #93a8c6;">{</span>
           <span style="color: #787878;">// </span><span style="color: #787878;">&#25552;&#21462;&#27599;&#20010;&#25216;&#33021;&#30340;&#25551;&#36848;
-</span>          <span style="color: #FFA657;">if</span> <span style="color: #b0b1a3;">(</span>extract_skill_description<span style="color: #97b098;">(</span>entry-&gt;d_name, description, <span style="color: #FFA657;">sizeof</span><span style="color: #aebed8;">(</span>description<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+</span>          <span style="color: #f3be7c;">if</span> <span style="color: #b0b1a3;">(</span>extract_skill_description<span style="color: #97b098;">(</span>entry-&gt;d_name, description, <span style="color: #f3be7c;">sizeof</span><span style="color: #aebed8;">(</span>description<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
    != 0<span style="color: #b0b1a3;">)</span> <span style="color: #b0b1a3;">{</span>
-              snprintf<span style="color: #97b098;">(</span>description, <span style="color: #FFA657;">sizeof</span><span style="color: #aebed8;">(</span>description<span style="color: #aebed8;">)</span>, <span style="color: #A1D08E;">"Skill: %s"</span>, entry-&gt;d_name<span style="color: #97b098;">)</span>;
+              snprintf<span style="color: #97b098;">(</span>description, <span style="color: #f3be7c;">sizeof</span><span style="color: #aebed8;">(</span>description<span style="color: #aebed8;">)</span>, <span style="color: #A1D08E;">"Skill: %s"</span>, entry-&gt;d_name<span style="color: #97b098;">)</span>;
           <span style="color: #b0b1a3;">}</span>
 
           <span style="color: #787878;">// </span><span style="color: #787878;">&#26500;&#24314;&#25216;&#33021;&#21015;&#34920;&#26465;&#30446;
-</span>          snprintf<span style="color: #b0b1a3;">(</span>skill_entry, <span style="color: #FFA657;">sizeof</span><span style="color: #97b098;">(</span>skill_entry<span style="color: #97b098;">)</span>, <span style="color: #A1D08E;">"- %s: %s</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span>, entry-&gt;d_name,
+</span>          snprintf<span style="color: #b0b1a3;">(</span>skill_entry, <span style="color: #f3be7c;">sizeof</span><span style="color: #97b098;">(</span>skill_entry<span style="color: #97b098;">)</span>, <span style="color: #A1D08E;">"- %s: %s</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">n</span><span style="color: #A1D08E;">"</span>, entry-&gt;d_name,
   description<span style="color: #b0b1a3;">)</span>;
       <span style="color: #93a8c6;">}</span>
   <span style="color: #8c8c8c;">}</span>
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-llm.html">LLM</a> <a href="https://www.vandee.art/blog/tag-coding.html">Coding</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-llm.html" class="tag" data-tag="llm" data-index="0">LLM</a> <a href="https://www.vandee.art/blog/tag-coding.html" class="tag" data-tag="coding" data-index="1">Coding</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>

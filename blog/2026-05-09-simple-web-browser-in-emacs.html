@@ -18,6 +18,8 @@
 
        <link rel="stylesheet" href="assets/css/blog-style.css" type="text/css"/>
        <link rel="stylesheet"
+             href="https://fonts.googleapis.cn/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;display=swap"/>
+       <link rel="stylesheet"
              href="https://testingcf.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"/>
        <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
@@ -47,14 +49,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgdbf055c">Intro</a></li>
-<li><a href="#org9d7eb17">Emacs 配置</a></li>
+<li><a href="#orgf43f2d8">Intro</a></li>
+<li><a href="#orgb35c7f9">Emacs 配置</a></li>
 </ul>
 </div>
 </nav>
-<div id="outline-container-orgdbf055c" class="outline-2">
-<h2 id="orgdbf055c">Intro</h2>
-<div class="outline-text-2" id="text-orgdbf055c">
+<div id="outline-container-orgf43f2d8" class="outline-2">
+<h2 id="orgf43f2d8">Intro</h2>
+<div class="outline-text-2" id="text-orgf43f2d8">
 <p>
 很久以前，我只知道浏览器是可以打开网页的一个东西。随着对代码的学习，现在才真正了解到它是什么。
 </p>
@@ -84,9 +86,9 @@
 </p>
 </div>
 </div>
-<div id="outline-container-org9d7eb17" class="outline-2">
-<h2 id="org9d7eb17">Emacs 配置</h2>
-<div class="outline-text-2" id="text-org9d7eb17">
+<div id="outline-container-orgb35c7f9" class="outline-2">
+<h2 id="orgb35c7f9">Emacs 配置</h2>
+<div class="outline-text-2" id="text-orgb35c7f9">
 <p>
 <a href="https://joshblais.com/blog/emacs-as-my-browser/">Emacs is my browser - The Universe of Joshua Blais</a> 偶然看到这篇文章。
 </p>
@@ -112,79 +114,79 @@
 </p>
 
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #787878;">;; </span><span style="color: #787878;">eww
+<pre class="src src-elisp"><code><span style="color: #787878;">;; </span><span style="color: #787878;">eww
 </span><span style="color: #787878;">;; </span><span style="color: #787878;">&#31105;&#27490;eww&#29983;&#25104;cookie
 </span><span style="color: #787878;">;; </span><span style="color: #787878;">https://github.com/lujun9972/lujun9972.github.com/blob/source/Emacs%E4%B9%8B%E6%80%92/%E5%A6%82%E4%BD%95%E7%A6%81%E6%AD%A2eww%E7%94%9F%E6%88%90cookie.org
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> url-cookie-trusted-urls <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">()</span>        <span style="color: #787878;">;</span><span style="color: #787878;">&#19981;&#35774;&#32622;&#30333;&#21517;&#21333;
-</span>      url-cookie-untrusted-urls <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">".*"</span><span style="color: #93a8c6;">)</span>  <span style="color: #787878;">;</span><span style="color: #787878;">&#25152;&#26377;&#20869;&#23481;&#37117;&#21305;&#37197;&#40657;&#21517;&#21333;
-</span>      eww-readable-urls <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">".*"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>         <span style="color: #787878;">;</span><span style="color: #787878;">&#40664;&#35748;&#24320;&#21551; readable
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> url-cookie-trusted-urls <span style="color: #f3be7c;">'</span><span style="color: #93a8c6;">()</span>        <span style="color: #787878;">;</span><span style="color: #787878;">&#19981;&#35774;&#32622;&#30333;&#21517;&#21333;
+</span>      url-cookie-untrusted-urls <span style="color: #f3be7c;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">".*"</span><span style="color: #93a8c6;">)</span>  <span style="color: #787878;">;</span><span style="color: #787878;">&#25152;&#26377;&#20869;&#23481;&#37117;&#21305;&#37197;&#40657;&#21517;&#21333;
+</span>      eww-readable-urls <span style="color: #f3be7c;">'</span><span style="color: #93a8c6;">(</span><span style="color: #A1D08E;">".*"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>         <span style="color: #787878;">;</span><span style="color: #787878;">&#40664;&#35748;&#24320;&#21551; readable
 </span>
 <span style="color: #787878;">;; </span><span style="color: #787878;">https://joshblais.com/blog/emacs-as-my-browser/
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> eww-search-prefix <span style="color: #A1D08E;">"https://duckduckgo.com/search?q="</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> eww-download-directory <span style="color: #93a8c6;">(</span>expand-file-name <span style="color: #A1D08E;">"~/Downloads/"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> eww-search-prefix <span style="color: #A1D08E;">"https://duckduckgo.com/search?q="</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> eww-download-directory <span style="color: #93a8c6;">(</span>expand-file-name <span style="color: #A1D08E;">"~/Downloads/"</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-browse-url-mpv</span> <span style="color: #93a8c6;">(</span>url <span style="color: #95a99f;">&amp;rest</span> _args<span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my-browse-url-mpv</span> <span style="color: #93a8c6;">(</span>url <span style="color: #95a99f;">&amp;rest</span> _args<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Open URL in mpv."</span>
   <span style="color: #93a8c6;">(</span>start-process <span style="color: #A1D08E;">"mpv"</span> nil <span style="color: #A1D08E;">"mpv"</span> url<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my-browse-url-pdf</span> <span style="color: #93a8c6;">(</span>url <span style="color: #95a99f;">&amp;rest</span> _args<span style="color: #93a8c6;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my-browse-url-pdf</span> <span style="color: #93a8c6;">(</span>url <span style="color: #95a99f;">&amp;rest</span> _args<span style="color: #93a8c6;">)</span>
   <span style="color: #787878;">"Fetch remote PDF and open in pdf-tools within Emacs."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>tmp <span style="color: #aebed8;">(</span>make-temp-file <span style="color: #A1D08E;">"emacs-pdf-"</span> nil <span style="color: #A1D08E;">".pdf"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>tmp <span style="color: #aebed8;">(</span>make-temp-file <span style="color: #A1D08E;">"emacs-pdf-"</span> nil <span style="color: #A1D08E;">".pdf"</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
     <span style="color: #b0b1a3;">(</span>url-copy-file url tmp t<span style="color: #b0b1a3;">)</span>
     <span style="color: #b0b1a3;">(</span>find-file-other-window tmp<span style="color: #b0b1a3;">)</span>
     <span style="color: #b0b1a3;">(</span>pdf-view-mode<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> browse-url-handlers
-      <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">youtube</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">youtu</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.be</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">vimeo</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">twitch</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.tv</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">bilibili</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">b23</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.tv</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">"</span> . my-browse-url-mpv<span style="color: #b0b1a3;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> browse-url-handlers
+      <span style="color: #f3be7c;">'</span><span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">(</span><span style="color: #A1D08E;">youtube</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">youtu</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.be</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">vimeo</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">twitch</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.tv</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">bilibili</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.com</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">|</span><span style="color: #A1D08E;">b23</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.tv</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">)</span><span style="color: #A1D08E;">"</span> . my-browse-url-mpv<span style="color: #b0b1a3;">)</span>
         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.mp4$"</span> . my-browse-url-mpv<span style="color: #b0b1a3;">)</span>
         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E; font-weight: bold;">\</span><span style="color: #A1D08E;">.pdf$"</span> . my-browse-url-pdf<span style="color: #b0b1a3;">)</span>
         <span style="color: #b0b1a3;">(</span><span style="color: #A1D08E;">"."</span> . eww-browse-url<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;; </span><span style="color: #787878;">Keep your fallback setting
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> browse-url-secondary-browser-function <span style="color: #FFA657;">'</span><span style="color: #95a99f;">browse-url-generic</span>
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> browse-url-secondary-browser-function <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">browse-url-generic</span>
       browse-url-generic-program <span style="color: #A1D08E;">"librewolf"</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">eww</span>
-  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"="</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">text-scale-increase</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"-"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">text-scale-decrease</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"0"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">text-scale-adjust</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">with-eval-after-load</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">eww</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"="</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">text-scale-increase</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"-"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">text-scale-decrease</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"0"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">text-scale-adjust</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-width 100<span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-max-width 120<span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-indentation 4<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> shr-width 100<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> shr-max-width 120<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> shr-indentation 4<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-use-fonts nil<span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-max-image-size <span style="color: #FFA657;">'</span><span style="color: #93a8c6;">(</span>800 . 600<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">setq</span> shr-image-animate t<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> shr-use-fonts nil<span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> shr-max-image-size <span style="color: #f3be7c;">'</span><span style="color: #93a8c6;">(</span>800 . 600<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">setq</span> shr-image-animate t<span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">defun</span> <span style="color: #96a6c8;">my/eww-download-image-at-point</span> <span style="color: #93a8c6;">()</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">defun</span> <span style="color: #96a6c8;">my/eww-download-image-at-point</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #787878;">"Download image at point to `</span><span style="color: #95a99f;">eww-download-directory</span><span style="color: #787878;">'."</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">interactive</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>url <span style="color: #aebed8;">(</span><span style="color: #FFA657;">or</span> <span style="color: #b0b0b3;">(</span>get-text-property <span style="color: #90a890;">(</span>point<span style="color: #90a890;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">image-url</span><span style="color: #b0b0b3;">)</span>
-                 <span style="color: #b0b0b3;">(</span>get-text-property <span style="color: #90a890;">(</span>point<span style="color: #90a890;">)</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">shr-url</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-    <span style="color: #b0b1a3;">(</span><span style="color: #FFA657;">if</span> <span style="color: #97b098;">(</span>not url<span style="color: #97b098;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">interactive</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">let</span> <span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span>url <span style="color: #aebed8;">(</span><span style="color: #f3be7c;">or</span> <span style="color: #b0b0b3;">(</span>get-text-property <span style="color: #90a890;">(</span>point<span style="color: #90a890;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">image-url</span><span style="color: #b0b0b3;">)</span>
+                 <span style="color: #b0b0b3;">(</span>get-text-property <span style="color: #90a890;">(</span>point<span style="color: #90a890;">)</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">shr-url</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
+    <span style="color: #b0b1a3;">(</span><span style="color: #f3be7c;">if</span> <span style="color: #97b098;">(</span>not url<span style="color: #97b098;">)</span>
         <span style="color: #97b098;">(</span>message <span style="color: #A1D08E;">"No image at point"</span><span style="color: #97b098;">)</span>
-      <span style="color: #97b098;">(</span><span style="color: #FFA657;">let*</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>filename <span style="color: #90a890;">(</span>file-name-nondirectory <span style="color: #a2b6da;">(</span>url-filename <span style="color: #9cb6ad;">(</span>url-generic-parse-url url<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
+      <span style="color: #97b098;">(</span><span style="color: #f3be7c;">let*</span> <span style="color: #aebed8;">(</span><span style="color: #b0b0b3;">(</span>filename <span style="color: #90a890;">(</span>file-name-nondirectory <span style="color: #a2b6da;">(</span>url-filename <span style="color: #9cb6ad;">(</span>url-generic-parse-url url<span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span>
              <span style="color: #b0b0b3;">(</span>dest <span style="color: #90a890;">(</span>expand-file-name filename eww-download-directory<span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span>
         <span style="color: #aebed8;">(</span>url-copy-file url dest t<span style="color: #aebed8;">)</span>
         <span style="color: #aebed8;">(</span>message <span style="color: #A1D08E;">"Saved: %s"</span> dest<span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
 <span style="color: #787878;">;; </span><span style="color: #787878;">Keybinds
-</span><span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">eww</span>
-  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"b"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">eww-back-url</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"a"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">eww-add-bookmark</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"U"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">shr-copy-url</span><span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"D"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">my/eww-download-image-at-point</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</span><span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">with-eval-after-load</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">eww</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"b"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">eww-back-url</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"a"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">eww-add-bookmark</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"U"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">shr-copy-url</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>define-key eww-mode-map <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"D"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">my/eww-download-image-at-point</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-<span style="color: #8c8c8c;">(</span><span style="color: #FFA657;">with-eval-after-load</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">evil</span>
-  <span style="color: #93a8c6;">(</span><span style="color: #FFA657;">evil-define-key</span> <span style="color: #FFA657;">'</span><span style="color: #95a99f;">normal</span> eww-mode-map
-    <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"&amp;"</span><span style="color: #b0b1a3;">)</span> <span style="color: #FFA657;">#'</span><span style="color: #95a99f;">eww-browse-with-external-browser</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+<span style="color: #8c8c8c;">(</span><span style="color: #f3be7c;">with-eval-after-load</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">evil</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #f3be7c;">evil-define-key</span> <span style="color: #f3be7c;">'</span><span style="color: #95a99f;">normal</span> eww-mode-map
+    <span style="color: #b0b1a3;">(</span>kbd <span style="color: #A1D08E;">"&amp;"</span><span style="color: #b0b1a3;">)</span> <span style="color: #f3be7c;">#'</span><span style="color: #95a99f;">eww-browse-with-external-browser</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 
-</pre>
+</code></pre>
 </div>
 </div>
 </div>
-<div class="taglist"><a href="https://www.vandee.art/blog/tags.html">Tags</a>: <a href="https://www.vandee.art/blog/tag-emacs.html">Emacs</a> <a href="https://www.vandee.art/blog/tag-ramble.html">Ramble</a> </div></div>
+<div class="taglist"><a href="https://www.vandee.art/blog/tags.html"><span class="tag-label">Tags</span></a><span class="tag-separator">: </span><span class="taglist__tags"><a href="https://www.vandee.art/blog/tag-emacs.html" class="tag" data-tag="emacs" data-index="0">Emacs</a> <a href="https://www.vandee.art/blog/tag-ramble.html" class="tag" data-tag="ramble" data-index="1">Ramble</a> </span></div></div>
 <div id="postamble" class="status"><div id="search-results"></div>
       <footer>
          <p>
