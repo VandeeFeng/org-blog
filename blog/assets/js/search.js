@@ -195,9 +195,8 @@ function initSearch(indexUrl) {
     search();
   });
 
-  loadIndex();
   if (searchInput.value.trim().length >= minimumQueryLength) {
-    showMessage("Loading search index...");
+    search();
   }
 }
 
